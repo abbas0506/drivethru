@@ -1,0 +1,54 @@
+//turn row into col and expand to its full with on smaller screen
+@media only screen and (max-width: 768px) {
+    .auto-col {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .auto-resize {
+        width: 100%;
+    }
+    .r-px-5 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    .mx-10 {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .px-10 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .mx-5 {
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+    }
+    .px-5 {
+        padding-left: 1rem;
+        padding-right: 20px !important;
+    }
+    .txt-s {
+        font-size: 0.6rem;
+    }
+    .r-show {
+        visibility: visible !important;
+    }
+    .r-hide {
+        visibility: hidden !important;
+        display: none !important;
+    }
+}
+
+.r-show {
+    visibility: hidden;
+}
+
+.r-hide {
+    visibility: visible;
+    display: block;
+}
+
+.r-px-5 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

@@ -1,8 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
+//my css
 @import 'variables';
-
+@import 'font';
+@import 'colors';
+@import 'flex';
+@import 'box';
+@import 'fancyinput';
+@import 'feather';
+@import'responsive';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
