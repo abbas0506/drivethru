@@ -6,40 +6,22 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="/css/app.css" rel="stylesheet">
-   <link href="/public/.css" rel="stylesheet">
-
-   <!-- <link href="/fonts/linear_icons/webfont/selection.json" rel="stylesheet"> -->
-   <!-- <link href="/css/linear_icons.css" rel="stylesheet"> -->
    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
    <!-- <link href="/fonts/icon-font/lineicons.css" rel="stylesheet"> -->
-   <script src="/js/app.js"></script>
-   <script src="/js/autoformat.js"></script>
-   <script src="/js/feather.min.js"></script>
-   <script src="{{ asset('js/echarts.min.js')}}" type="text/javascript"></script>
+   <!-- <link href="/fonts/linear_icons/webfont/selection.json" rel="stylesheet"> -->
+   <!-- <link href="/css/linear_icons.css" rel="stylesheet"> -->
+
+   <!-- external js files -->
+   <script src="js/app.js"></script>
+   <script src="js/autoformat.js"></script>
+   <script src="js/feather.min.js"></script>
+   <script src="js/scrolltop.js"></script>
+   <script src="js/carousel.js"></script>
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <title>Drive Thru</title>
 
    <style>
-   .header {
-      height: 15vh;
-      background-color: teal;
-
-   }
-
-   .hoverable {
-      cursor: pointer;
-   }
-
-   .background-frame {
-      position: absolute;
-      left: 0px;
-      background-color: black;
-      width: 100%;
-      height: 100%;
-
-   }
-
    #scrollup_btn {
       display: none;
       position: fixed;
@@ -53,10 +35,9 @@
 </head>
 
 <body>
-   <div class="background-frame">
-      <img class="mySlides  w-100 h-100" src="images//banner/1.jpg">
-      <img class="mySlides w-100 h-100" src="images/banner/2.jpg">
-   </div>
+
+   @yield('background-frame')
+   <!-- Navbar -->
    <div class='frow h-15 bg-transparent txt-white mid-left px-10 stretched sticky-top'>
 
       <!-- small screen navigation menu    -->
@@ -76,7 +57,7 @@
 
          </div>
       </div> -->
-      <div class='logo txt-m mr-auto'><img src="images/logo/dark_logo.png" style="height:25px"></div>
+      <div class='logo txt-m mr-auto'><img src="/images/logo/dark_logo.png" style="height:25px"></div>
       <div class="frow h-15 spaced-10">
          <div class="fcol centered menu-item r-hide">
             Create or Manage
@@ -85,7 +66,7 @@
                <div class='chevron-up-mega'></div>
                <div class="fcol w-30 auto-resize">
 
-                  <div class="mb-2 txt-b"><a href="" class='menu-link'>Countries</a></div>
+                  <div class="mb-2 txt-b"><a href="{{route('countries.index')}}" class='menu-link'>Countries</a></div>
                   <div class="mb-2"><a href="http://" class='menu-link'>Visa check list</a></div>
                   <div class="mb-2"><a href="http://" class='menu-link'>Scholarship Types</a></div>
                   <div class="mb-2"><a href="http://" class='menu-link'>Job Categories</a></div>
@@ -165,62 +146,22 @@
 
                </div>
             </div>
-
-
          </div>
-
       </div>
-   </div>
-   <div id='scrollup_btn' onclick='scrollup()' class="box-25 circular border centered bg-transparent hoverable"><i data-feather='arrow-up' class="feather-xsmall"></i></div>
+   </div> <!--    navbar ends -->
 
-   <script>
-   var myIndex = 0;
-   carousel();
 
-   function carousel() {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      for (i = 0; i < x.length; i++) {
-         x[i].style.display = "none";
-      }
-      myIndex++;
-      if (myIndex > x.length) {
-         myIndex = 1
-      }
-      x[myIndex - 1].style.display = "block";
-      setTimeout(carousel, 10000); // Change image every 2 seconds
-   }
-   //Get the button
-   var mybutton = document.getElementById("scrollup_btn");
+   @yield('page-content')
 
-   // When the user scrolls down 20px from the top of the document, show the button
-   window.onscroll = function() {
-      scrollFunction()
-   };
+   <div id='scrollup_btn' onclick='scrolltop()' class="frow box-30 circular centered bg-orange hoverable txt-white hidden"><i data-feather='arrow-up' class="feather-xsmall"></i></div>
 
-   function scrollFunction() {
-      $("#scrollpos").val(document.documentElement.scrollTop);
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-
-         $('#scrollup_btn').show();
-      } else {
-         $('#scrollup_btn').hide();
-      }
-   }
-
-   //Click event to scroll to top
-   function scrollup() {
-      $('html, body').animate({
-         scrollTop: 0
-      }, 360);
-      return false;
-
-   }
-   </script>
-
+   <!-- for feather icons display -->
    <script>
    feather.replace()
    </script>
+
+
+
 </body>
 
 </html>

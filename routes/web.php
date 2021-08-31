@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Routing\RouteBinding;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/my', 'layouts.admin');
-route::view('/admin', 'admin.index');
+Route::view('/admin', 'admin.index');
+Route::resource('countries', CountryController::class);

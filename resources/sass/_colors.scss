@@ -28,6 +28,9 @@ body {
     &-silver {
         background-color: silver;
     }
+    &-orange {
+        background-color: $custom_orange;
+    }
 }
 
 .hide {

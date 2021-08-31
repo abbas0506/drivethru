@@ -70,33 +70,33 @@
         justify-content: flex-start;
         align-items: flex-start;
     }
-    &.mid-right {
-        justify-content: center;
-        align-items: flex-end;
+    &.top-mid {
+        justify-content: flex-start;
+        align-items: center;
     }
     &.top-right {
         justify-content: flex-start;
         align-items: flex-end;
     }
-    &.top-mid {
-        align-items: center;
-        justify-content: flex-start;
-    }
     &.mid-left {
         justify-content: center;
         align-items: flex-start;
+    }
+    &.mid-right {
+        justify-content: center;
+        align-items: flex-end;
     }
     &.btm-left {
         justify-content: flex-end;
         align-items: flex-start;
     }
-    &.btm-right {
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
     &.btm-mid {
         justify-content: flex-end;
         align-items: center;
+    }
+    &.btm-right {
+        justify-content: flex-end;
+        align-items: flex-end;
     }
 }
 
@@ -225,4 +225,12 @@
 
 .relative {
     position: relative;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.hoverable {
+    cursor: pointer;
 }
