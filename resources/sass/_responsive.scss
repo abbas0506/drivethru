@@ -1,5 +1,5 @@
 //turn row into col and expand to its full with on smaller screen
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1000px) {
     .auto-col {
         flex-direction: column;
         flex-wrap: nowrap;
@@ -37,6 +37,11 @@
         visibility: hidden !important;
         display: none !important;
     }
+    // .mega-menu {
+    //     overflow: scroll !important;
+    //     left: 0px;
+    //     width: 100%;
+    // }
 }
 
 .r-show {

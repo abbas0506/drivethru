@@ -1,7 +1,4 @@
-@extends('layouts.user1')
-@section('sidebar')
-<x-sidebar></x-sidebar>
-@endsection
+@extends('layouts.admin')
 @section('page')
 <div class="flexrow vh-90 content-center">
 

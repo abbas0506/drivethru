@@ -1,0 +1,102 @@
+.flexrow {
+    display: flex !important;
+    flex-direction: row;
+    &.content-center {
+        align-items: center;
+        justify-content: center;
+    }
+    &.content-top-left {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    &.content-top-right {
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+    &.content-top-mid {
+        align-items: flex-start;
+        justify-content: center;
+    }
+    &.content-mid-left {
+        align-items: center;
+        justify-content: flex-start;
+    }
+    &.content-mid-right {
+        align-items: center;
+        justify-content: flex-end;
+    }
+    &.content-bottom-left {
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+    &.content-bottom-right {
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+    &.content-bottom-mid {
+        align-items: flex-end;
+        justify-content: center;
+    }
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    
+}
+
+.flexcol {
+    display: flex !important;
+    flex-direction: column;
+    &.content-center {
+        align-items: center;
+        justify-content: center;
+    }
+    &.content-top-left {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    &.content-mid-right {
+        justify-content: center;
+        align-items: flex-end;
+    }
+    &.content-top-right {
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+    &.content-top-mid {
+        align-items: center;
+        justify-content: flex-start;
+    }
+    &.content-mid-left {
+        justify-content: center;
+        align-items: flex-start;
+    }
+    &.content-bottom-left {
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    &.content-bottom-right {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    &.content-bottom-mid {
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+}
+
+.space-between {
+    justify-content: space-between !important;
+}
+
+.space-around {
+    justify-content: space-around !important;
+}
+
+.space-even {
+    justify-content: space-evenly !important;
+}
+
+.rounded-cricle {
+    border-radius: 50%;
+}
