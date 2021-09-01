@@ -13,14 +13,26 @@
         font-family: inherit;
         width: 100%;
         border: none;
-        border-left: 5px solid darkblue;
+        // border-left: 5px solid darkblue;
         font-size: 1.0rem;
-        padding: 5px;
+        padding: 10px;
         outline: none;
         border-radius: 0px;
         box-shadow: none;
         background-color: rgb(185, 203, 226);
         transition: border-color 0.2s;
+        &:not(:placeholder-shown) {
+            color: rgb(17, 28, 59);
+            top: -20px;
+            // padding: 0px 2px;
+            left: 5px;
+            border: 0;
+            font-size: 0.8rem;
+            visibility: visible;
+            transition: 0.5s;
+            cursor: text;
+            background-color: transparent;
+        }
         &:not(:placeholder-shown)~label {
             color: rgb(17, 28, 59);
             top: -20px;
@@ -59,24 +71,19 @@
         font-family: inherit;
         width: 100%;
         border: none;
-        border-left: 2px solid darkblue;
+        // border-left: 2px solid darkblue;
         font-size: 1.0rem;
-        padding: 5px;
+        padding: 10px;
         outline: none;
         border-radius: 0px;
         box-shadow: none;
         background-color: rgb(185, 203, 226);
         transition: border-color 0.2s;
         &:not(:placeholder-shown)~label {
-            color: rgb(17, 28, 59);
-            top: -20px;
-            // padding: 0px 2px;
-            left: 5px;
-            border: 0;
-            font-size: 0.8rem;
-            visibility: visible;
-            transition: 0.5s;
-            cursor: text;
+            outline: none;
+            border: 1px solid rgba($primary, 0.2);
+            border-radius: 0px;
+            box-shadow: none;
             background-color: transparent;
         }
         &:focus {
@@ -102,7 +109,7 @@
     input {
         font-family: inherit;
         width: 100%;
-        border-bottom: 1px solid rgba($primary, 0.2);
+        // border-bottom: 1px solid rgba($primary, 0.5);
         font-size: 1.0rem;
         padding: 10px;
         outline: none;
@@ -112,7 +119,7 @@
         background-color: transparent;
         transition: border-color 0.2s;
         &:not(:placeholder-shown)~label {
-            color: $primary;
+            color: rgb(113, 112, 148);
             top: -12px;
             padding: 0px 2px;
             left: 10px;
@@ -124,7 +131,7 @@
             background-color: white;
         }
         &:focus {
-            border-color: #85a897;
+            border-color: rgba($primary, 0.5);
             transition: border-color 0.2s;
         }
     }
@@ -155,16 +162,20 @@
     select {
         font-family: inherit;
         width: 100%;
-        border: 1px solid rgba($dark, 0.2);
+        border: 1px solid rgba($primary, 0.2);
         outline: 0;
         font-size: 1.0rem;
         padding: 10px;
         border-radius: 0px;
         background-color: transparent;
         transition: border-color 0.2s;
+        &:focus {
+            border-color: rgba($primary, 0.5);
+            transition: border-color 0.2s;
+        }
         option {
             background-color: rgba(white, 0.5);
-            color: $dark;
+            color: #333;
         }
     }
     label {
@@ -187,7 +198,7 @@
         border-width: thin;
         border-color: silver;
         border-radius: 50px;
-        width: 60%;
+        width: 30%;
         line-height: 1.2rem;
         background-color: transparent;
         padding: 0px 15px 0px 15px;
@@ -197,15 +208,7 @@
         }
         &:not(:placeholder-shown) {
             outline: 0;
-            width: 100%;
-            transition: 0.5s;
-        }
-        &:not(:placeholder-shown)~.search-ico {
-            visibility: visible;
-            transition: 1s;
-        }
-        &:placeholder-shown~.search-ico {
-            visibility: hidden;
+            width: 50%;
             transition: 1s;
         }
     }
