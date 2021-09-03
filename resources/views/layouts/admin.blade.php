@@ -12,11 +12,11 @@
    <!-- <link href="/css/linear_icons.css" rel="stylesheet"> -->
 
    <!-- external js files -->
-   <script src="js/app.js"></script>
-   <script src="js/autoformat.js"></script>
-   <script src="js/feather.min.js"></script>
-   <script src="js/scrolltop.js"></script>
-   <script src="js/carousel.js"></script>
+   <script src="/js/app.js"></script>
+   <script src="/js/autoformat.js"></script>
+   <script src="/js/feather.min.js"></script>
+   <script src="/js/scrolltop.js"></script>
+   <script src="/js/carousel.js"></script>
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <title>Drive Thru</title>

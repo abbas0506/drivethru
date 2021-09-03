@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisachecklistsTable extends Migration
+class CreateScholarshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVisachecklistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('visachecklists', function (Blueprint $table) {
+        Schema::create('scholarships', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateVisachecklistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visachecklists');
+        Schema::dropIfExists('scholarships');
     }
 }

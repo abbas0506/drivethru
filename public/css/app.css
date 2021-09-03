@@ -84,6 +84,9 @@ body {
 .bg-orange {
   background-color: #ff5421;
 }
+.bg-lightsky {
+  background-color: #dde3e9;
+}
 
 .hide {
   display: none !important;
@@ -217,12 +220,16 @@ body {
   width: 20%;
 }
 
-.w-25 {
+.hw-25 {
   width: 25%;
 }
 
 .w-30 {
   width: 30%;
+}
+
+.w-32 {
+  width: 32%;
 }
 
 .w-40 {
@@ -233,7 +240,7 @@ body {
   width: 48%;
 }
 
-.w-50 {
+.hw-50 {
   width: 50%;
 }
 
@@ -245,7 +252,7 @@ body {
   width: 70%;
 }
 
-.w-75 {
+.hw-75 {
   width: 75%;
 }
 
@@ -429,179 +436,6 @@ body {
   height: 120px;
 }
 
-.fancy-input {
-  position: relative;
-}
-.fancy-input label {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  transition: 0.5s;
-  background-color: transparent;
-  color: #0b0b36;
-}
-.fancy-input input, .fancy-input .fancyinput textarea, .fancyinput .fancy-input textarea {
-  font-family: inherit;
-  width: 100%;
-  border: none;
-  font-size: 1rem;
-  padding: 10px;
-  outline: none;
-  border-radius: 0px;
-  box-shadow: none;
-  background-color: #b9cbe2;
-  transition: border-color 0.2s;
-}
-.fancy-input input:not(:-moz-placeholder-shown), .fancy-input .fancyinput textarea:not(:-moz-placeholder-shown), .fancyinput .fancy-input textarea:not(:-moz-placeholder-shown) {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:not(:-ms-input-placeholder), .fancy-input .fancyinput textarea:not(:-ms-input-placeholder), .fancyinput .fancy-input textarea:not(:-ms-input-placeholder) {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:not(:placeholder-shown), .fancy-input .fancyinput textarea:not(:placeholder-shown), .fancyinput .fancy-input textarea:not(:placeholder-shown) {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:not(:-moz-placeholder-shown) ~ label, .fancy-input .fancyinput textarea:not(:-moz-placeholder-shown) ~ label, .fancyinput .fancy-input textarea:not(:-moz-placeholder-shown) ~ label {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  -moz-transition: 0.5s;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:not(:-ms-input-placeholder) ~ label, .fancy-input .fancyinput textarea:not(:-ms-input-placeholder) ~ label, .fancyinput .fancy-input textarea:not(:-ms-input-placeholder) ~ label {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:not(:placeholder-shown) ~ label, .fancy-input .fancyinput textarea:not(:placeholder-shown) ~ label, .fancyinput .fancy-input textarea:not(:placeholder-shown) ~ label {
-  color: #111c3b;
-  top: -20px;
-  left: 5px;
-  border: 0;
-  font-size: 0.8rem;
-  visibility: visible;
-  transition: 0.5s;
-  cursor: text;
-  background-color: transparent;
-}
-.fancy-input input:focus, .fancy-input .fancyinput textarea:focus, .fancyinput .fancy-input textarea:focus {
-  border-color: #1a1aec;
-  transition: border-color 0.2s;
-}
-.fancy-input input::-moz-placeholder, .fancy-input .fancyinput textarea::-moz-placeholder, .fancyinput .fancy-input textarea::-moz-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-.fancy-input input:-ms-input-placeholder, .fancy-input .fancyinput textarea:-ms-input-placeholder, .fancyinput .fancy-input textarea:-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-.fancy-input input::placeholder, .fancy-input .fancyinput textarea::placeholder, .fancyinput .fancy-input textarea::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-
-.fancy-input-search {
-  position: relative;
-}
-.fancy-input-search label {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  transition: 0.5s;
-  background-color: transparent;
-  color: #0b0b36;
-}
-.fancy-input-search input, .fancy-input-search .fancyinput textarea, .fancyinput .fancy-input-search textarea {
-  font-family: inherit;
-  width: 100%;
-  border: none;
-  font-size: 1rem;
-  padding: 10px;
-  outline: none;
-  border-radius: 0px;
-  box-shadow: none;
-  background-color: #b9cbe2;
-  transition: border-color 0.2s;
-}
-.fancy-input-search input:not(:-moz-placeholder-shown) ~ label, .fancy-input-search .fancyinput textarea:not(:-moz-placeholder-shown) ~ label, .fancyinput .fancy-input-search textarea:not(:-moz-placeholder-shown) ~ label {
-  outline: none;
-  border: 1px solid rgba(52, 144, 220, 0.2);
-  border-radius: 0px;
-  box-shadow: none;
-  background-color: transparent;
-}
-.fancy-input-search input:not(:-ms-input-placeholder) ~ label, .fancy-input-search .fancyinput textarea:not(:-ms-input-placeholder) ~ label, .fancyinput .fancy-input-search textarea:not(:-ms-input-placeholder) ~ label {
-  outline: none;
-  border: 1px solid rgba(52, 144, 220, 0.2);
-  border-radius: 0px;
-  box-shadow: none;
-  background-color: transparent;
-}
-.fancy-input-search input:not(:placeholder-shown) ~ label, .fancy-input-search .fancyinput textarea:not(:placeholder-shown) ~ label, .fancyinput .fancy-input-search textarea:not(:placeholder-shown) ~ label {
-  outline: none;
-  border: 1px solid rgba(52, 144, 220, 0.2);
-  border-radius: 0px;
-  box-shadow: none;
-  background-color: transparent;
-}
-.fancy-input-search input:focus, .fancy-input-search .fancyinput textarea:focus, .fancyinput .fancy-input-search textarea:focus {
-  border-color: #1a1aec;
-  transition: border-color 0.2s;
-}
-.fancy-input-search input::-moz-placeholder, .fancy-input-search .fancyinput textarea::-moz-placeholder, .fancyinput .fancy-input-search textarea::-moz-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-.fancy-input-search input:-ms-input-placeholder, .fancy-input-search .fancyinput textarea:-ms-input-placeholder, .fancyinput .fancy-input-search textarea:-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-.fancy-input-search input::placeholder, .fancy-input-search .fancyinput textarea::placeholder, .fancyinput .fancy-input-search textarea::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: whitesmoke;
-}
-
 .fancyinput {
   position: relative;
 }
@@ -611,6 +445,7 @@ body {
   top: 0;
   left: 10px;
   transition: 0.5s;
+  color: #3490dc;
 }
 .fancyinput input, .fancyinput textarea {
   font-family: inherit;
@@ -618,14 +453,13 @@ body {
   font-size: 1rem;
   padding: 10px;
   outline: none;
-  border: 1px solid rgba(52, 144, 220, 0.2);
+  border: 1px solid rgba(52, 144, 220, 0.4);
   border-radius: 0px;
   box-shadow: none;
   background-color: transparent;
   transition: border-color 0.2s;
 }
 .fancyinput input:not(:-moz-placeholder-shown) ~ label, .fancyinput textarea:not(:-moz-placeholder-shown) ~ label {
-  color: #717094;
   top: -12px;
   padding: 0px 2px;
   left: 10px;
@@ -638,7 +472,6 @@ body {
   background-color: white;
 }
 .fancyinput input:not(:-ms-input-placeholder) ~ label, .fancyinput textarea:not(:-ms-input-placeholder) ~ label {
-  color: #717094;
   top: -12px;
   padding: 0px 2px;
   left: 10px;
@@ -651,7 +484,6 @@ body {
   background-color: white;
 }
 .fancyinput input:not(:placeholder-shown) ~ label, .fancyinput textarea:not(:placeholder-shown) ~ label {
-  color: #717094;
   top: -12px;
   padding: 0px 2px;
   left: 10px;
@@ -663,8 +495,12 @@ body {
   background-color: white;
 }
 .fancyinput input:focus, .fancyinput textarea:focus {
-  border-color: rgba(52, 144, 220, 0.5);
+  background-color: rgba(52, 144, 220, 0.2);
+  border-color: rgba(52, 144, 220, 0.8);
   transition: border-color 0.2s;
+}
+.fancyinput input:focus ~ label, .fancyinput textarea:focus ~ label {
+  background-color: transparent;
 }
 .fancyinput textarea:not(:-moz-placeholder-shown) ~ label {
   color: #3490dc;
@@ -717,8 +553,12 @@ body {
   transition: border-color 0.2s;
 }
 .fancyselect select:focus {
+  background-color: rgba(52, 144, 220, 0.3);
   border-color: rgba(52, 144, 220, 0.5);
   transition: border-color 0.2s;
+}
+.fancyselect select:focus ~ label {
+  background-color: transparent;
 }
 .fancyselect select option {
   background-color: rgba(255, 255, 255, 0.5);
@@ -741,10 +581,10 @@ body {
   border-width: thin;
   border-color: silver;
   border-radius: 50px;
-  width: 30%;
+  width: 20%;
   line-height: 1.2rem;
   background-color: transparent;
-  padding: 0px 15px 0px 15px;
+  padding: 5px 15px 5px 15px;
 }
 .fancy-search-grow input:focus, .fancy-search-grow .fancyinput textarea:focus, .fancyinput .fancy-search-grow textarea:focus {
   outline: 0;
@@ -752,19 +592,19 @@ body {
 }
 .fancy-search-grow input:not(:-moz-placeholder-shown), .fancy-search-grow .fancyinput textarea:not(:-moz-placeholder-shown), .fancyinput .fancy-search-grow textarea:not(:-moz-placeholder-shown) {
   outline: 0;
-  width: 50%;
+  width: 30%;
   -moz-transition: 1s;
   transition: 1s;
 }
 .fancy-search-grow input:not(:-ms-input-placeholder), .fancy-search-grow .fancyinput textarea:not(:-ms-input-placeholder), .fancyinput .fancy-search-grow textarea:not(:-ms-input-placeholder) {
   outline: 0;
-  width: 50%;
+  width: 30%;
   -ms-transition: 1s;
   transition: 1s;
 }
 .fancy-search-grow input:not(:placeholder-shown), .fancy-search-grow .fancyinput textarea:not(:placeholder-shown), .fancyinput .fancy-search-grow textarea:not(:placeholder-shown) {
   outline: 0;
-  width: 50%;
+  width: 30%;
   transition: 1s;
 }
 
@@ -804,6 +644,11 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+  .fcol {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
   .auto-col {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -849,6 +694,11 @@ body {
   .r-hide {
     visibility: hidden !important;
     display: none !important;
+  }
+
+  .navstep {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 .r-show {
@@ -941,6 +791,56 @@ body {
 .bg-banner {
   background-image: url("/images/banner/1.jpg");
   background-size: 100% 100%;
+}
+
+.navstep {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.navstep .roundbtn {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #b0dac1;
+  color: white;
+}
+.navstep .super-underline {
+  position: absolute;
+  left: 30px;
+  top: -8px;
+  width: 85%;
+  padding-left: 20px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: slategray;
+  color: slategray;
+}
+.navstep.active .roundbtn {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #38c172;
+}
+.navstep.active .super-underline {
+  position: absolute;
+  left: 30px;
+  top: -8px;
+  width: 85%;
+  padding-left: 20px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #333;
+  color: #333;
+  font-weight: bold;
 }
 
 /*!

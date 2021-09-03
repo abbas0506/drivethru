@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
-use App\Models\Visachecklist;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Exception;
+
+use App\Models\Country;
+use App\Models\Countryscholarship;
+use App\Models\Countryvisadocs;
+use App\Models\Document;
+use App\Models\Scholarship;
 
 class CountryController extends Controller
 {
@@ -28,8 +34,9 @@ class CountryController extends Controller
     public function create()
     {
         //
-        $visachecklist = Visachecklist::all();
-        return view('admin.countries.create', compact('visachecklist'));
+        $docs = Document::all();
+        $scholarships = Scholarship::all();
+        return view('admin.countries.create', compact('docs', 'scholarships'));
     }
 
     /**
@@ -49,11 +56,45 @@ class CountryController extends Controller
             'lifethere' => 'required',
         ]);
 
-        $latest = Country::create($request->all());
-        $latest->save();
+        $doc_ids = array();
+        $scholarship_ids = array();
 
-        return redirect()->route('countries.index')
-            ->with('success', 'Country created successfully.');
+
+
+
+        DB::beginTransaction();
+
+        try {
+
+            $latest = Country::create($request->all());
+            $latest->save();
+
+            if ($request->doc_ids) {
+                $doc_ids = explode(',', $request->doc_ids);
+                foreach ($doc_ids as $doc_id) {
+                    Countryvisadocs::create(['doc_id' => $doc_id, 'country_id' => $latest->id]);
+                }
+            }
+
+            if ($request->scholarship_ids) {
+                $scholarship_ids = explode(',', $request->scholarship_ids);
+                foreach ($scholarship_ids as $scholarship_id) {
+                    Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $latest->id]);
+                }
+            }
+
+
+            DB::commit();
+            // all good
+            return redirect()->route('countries.index')
+                ->with('success', 'Country created successfully.');
+        } catch (Exception $e) {
+            DB::rollback();
+
+            return redirect()->route('countries.index')
+                ->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**

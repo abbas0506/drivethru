@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Level;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             CountrySeeder::class,
-            VisachecklistSeeder::class,
+            DocumentSeeder::class,
+            ScholarshipSeeder::class,
+            JobdepttSeeder::class,
+            LevelSeeder::class,
         ]);
     }
 }

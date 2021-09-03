@@ -26,10 +26,13 @@ body {
         background-color: #8E9085;
     }
     &-silver {
-        background-color: silver;
+        background-color: rgb(192, 192, 192);
     }
     &-orange {
         background-color: $custom_orange;
+    }
+    &-lightsky {
+        background-color: rgb(221, 227, 233);
     }
 }
 

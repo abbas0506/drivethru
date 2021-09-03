@@ -31,36 +31,36 @@
 @endif
 
 <!-- search option -->
-<div class="frow my-4 mx-10 fancy-search-grow">
-   <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24; top:5px"></i>
+<div class="frow my-4 mx-10 mid-left fancy-search-grow">
+   <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
    <div class="frow box-25 circular bg-success text-light centered mr-2"><a href="{{route('countries.create')}}" class="hoverable txt-white">+</a></div> Create New
 </div>
 
 <!-- page content -->
-<div class="frow px-2 mb-2 mx-10 txt-b bg-info">
+<div class="frow p-2 mb-2 mx-10 txt-b bg-info">
    <div class="fcol mid-left w-10">Sr </div>
-   <div class="fcol mid-left w-25">Name </div>
-   <div class="fcol mid-left w-10">Visa Required</div>
-   <div class="fcol mid-left w-10">Visa Duration</div>
-   <div class="fcol mid-left w-10">Living Cost</div>
-   <div class="fcol mid-left w-25">Life There</div>
+   <div class="fcol mid-left w-20">Name </div>
+   <div class="fcol centered w-10">Visa Required</div>
+   <div class="fcol centered w-10">Visa Duration</div>
+   <div class="fcol centered w-10">Living Cost</div>
+   <div class="fcol mid-left w-30">Life There</div>
    <div class="fcol centered w-10"><i data-feather='settings' class="feather-xsmall"></i></div>
 </div>
 
 @foreach($countries as $country)
-<div class="frow px-2 my-1 mx-10 tr">
+<div class="frow px-2 my-2 mx-10 tr">
    <div class="fcol mid-left w-10">{{$country->id}} </div>
-   <div class="fcol mid-left w-25"> {{$country->name}} </div>
-   <div class='fcol col-center w-10'>
+   <div class="fcol mid-left w-20"> {{$country->name}} </div>
+   <div class='fcol centered w-10'>
       @if($country->visarequired==1)
       <span class='txt-green'>Yes</span>
       @else
       <span class='txt-red'>No</span>
       @endif
    </div>
-   <div class="fcol mid-left w-10">{{$country->visaduration}} </div>
-   <div class="fcol mid-left w-10">{{$country->livingcost}} </div>
-   <div class="fcol mid-left w-25">{{$country->lifethere}} </div>
+   <div class="fcol centered w-10">{{$country->visaduration}} </div>
+   <div class="fcol centered w-10">{{$country->livingcost}} </div>
+   <div class="fcol mid-left w-30">{{$country->lifethere}} </div>
    <div class="fcol centered w-10">
       <div class="frow stretched">
          <div><a href="{{route('countries.show',$country)}}"><i data-feather='eye' class="feather-xsmall mx-1"></i></a></div>

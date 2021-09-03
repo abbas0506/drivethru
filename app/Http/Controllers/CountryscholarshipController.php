@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Visachecklist;
+use App\Models\Countryscholarship;
 use Illuminate\Http\Request;
 
-class VisachecklistController extends Controller
+class CountryscholarshipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class VisachecklistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Visachecklist  $visachecklist
+     * @param  \App\Models\Countryscholarship  $countryscholarship
      * @return \Illuminate\Http\Response
      */
-    public function show(Visachecklist $visachecklist)
+    public function show(Countryscholarship $countryscholarship)
     {
         //
     }
@@ -52,10 +52,10 @@ class VisachecklistController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Visachecklist  $visachecklist
+     * @param  \App\Models\Countryscholarship  $countryscholarship
      * @return \Illuminate\Http\Response
      */
-    public function edit(Visachecklist $visachecklist)
+    public function edit(Countryscholarship $countryscholarship)
     {
         //
     }
@@ -64,10 +64,10 @@ class VisachecklistController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Visachecklist  $visachecklist
+     * @param  \App\Models\Countryscholarship  $countryscholarship
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Visachecklist $visachecklist)
+    public function update(Request $request, Countryscholarship $countryscholarship)
     {
         //
     }
@@ -75,10 +75,10 @@ class VisachecklistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Visachecklist  $visachecklist
+     * @param  \App\Models\Countryscholarship  $countryscholarship
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Visachecklist $visachecklist)
+    public function destroy(Countryscholarship $countryscholarship)
     {
         //
     }
