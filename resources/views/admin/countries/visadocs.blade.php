@@ -54,7 +54,7 @@
    </div>
    <div class="frow border-bottom border-thin my-4">
       <div class="fcol mid-left w-90 txt-b">Document Name</div>
-      <div class="fcol centered w-10 txt-b">...</div>
+      <div class="fcol centered w-10 txt-b"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @foreach($country->visadocs() as $doc)
    <div class="frow my-2">
@@ -65,21 +65,29 @@
 
    <!-- submit form -->
    <div class="frow mid-right my-5">
-      <button type="submit" class="btn btn-success">Add Visa Docs</button>
+      <button type="button" class="btn btn-success" onclick="slideleft()">Add Visa Docs</button>
    </div>
 
-   <form action="{{route('postvisadocs')}}" method='post' onsubmit="postdata()" id='myform'>
-      @csrf
-      @foreach($country->not_visadocs() as $doc)
+   <div class="slider" id='slider'>
 
-      <div class="frow my-2">
-         <div class="fcol mid-left w-90">{{$doc->name}}</div>
-         <div class="fcol centered w-10"><input type="checkbox" value='{{$doc->id}}' name='chk'></div>
-      </div>
-      @endforeach
-      <input type="hidden" id='doc_ids' name='doc_ids'>
-      <button type="submit" class="btn btn-success">Add</button>
-   </form>
+      <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="slideleft()"><i data-feather='x' class="feather-xsmall"></i></div>
+      <form action="{{route('postvisadocs')}}" method='post' onsubmit="postdata()" id='myform'>
+         @csrf
+         @foreach($country->not_visadocs() as $doc)
+
+         <div class="frow my-1 stretched" style="width:350px !important">
+            <div class="">{{$doc->name}}</div>
+            <div class=""><input type="checkbox" value='{{$doc->id}}' name='chk'></div>
+         </div>
+         @endforeach
+         <input type="hidden" id='doc_ids' name='doc_ids'>
+         <div class="frow mid-right mt-5">
+            <button type="submit" class="btn btn-success">Add</button>
+         </div>
+      </form>
+
+   </div> <!-- slider ends -->
+
 </div>
 @endsection
 
@@ -102,5 +110,9 @@ $('#flag').change(function() {
       flag_img.src = URL.createObjectURL(file)
    }
 });
+
+function slideleft() {
+   $("#slider").toggleClass('slide-left');
+}
 </script>
 @endsection

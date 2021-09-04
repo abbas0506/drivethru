@@ -6,7 +6,7 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> New</div>
+   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>Countries </div>
 </div>
 @endsection
 @section('page-content')
@@ -34,32 +34,30 @@
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <div class="frow box-25 circular bg-success text-light centered mr-2"><a href="{{route('countries.create')}}" class="hoverable txt-white">+</a></div> Create New
+      <a href="{{route('countries.create')}}" class="hoverable txt-white">
+         <div class="frow box-25 circular bg-success text-light centered mr-2">+</div>
+      </a>
+      Create New
    </div>
 
    <!-- page content -->
    <div class="frow px-2 py-1 mb-2 txt-b bg-info">
       <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-30">Name </div>
-      <div class="fcol centered w-15">Visa Required</div>
-      <div class="fcol centered w-15">Visa Duration</div>
-      <div class="fcol centered w-15">Living Cost</div>
+      <div class="fcol mid-left w-60">Name </div>
+      <div class="fcol mid-left w-15">Completion</div>
       <div class="fcol mid-right pr-4 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
 
    @foreach($countries as $country)
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$country->id}} </div>
-      <div class="fcol mid-left w-30"> {{$country->name}} </div>
-      <div class='fcol centered w-15'>
-         @if($country->visarequired==1)
-         <span class='txt-green'>Yes</span>
-         @else
-         <span class='txt-red'>No</span>
-         @endif
+      <div class="fcol mid-left w-60"> {{$country->name}} </div>
+      <div class="fcol centered w-15">
+         <div class="frow w-100 mid-left">
+            <div class="bar bar-1 bar-green" style="width:{{$country->finishedstep*20}}%"></div>
+            <div class="bar-val">{{$country->finishedstep*25}}%</div>
+         </div>
       </div>
-      <div class="fcol centered w-15">{{$country->visaduration}} </div>
-      <div class="fcol centered w-15">{{$country->livingcost}} </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
             <div><a href="{{route('countries.show',$country)}}"><i data-feather='eye' class="feather-xsmall mx-1"></i></a></div>

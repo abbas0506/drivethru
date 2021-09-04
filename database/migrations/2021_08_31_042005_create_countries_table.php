@@ -21,6 +21,7 @@ class CreateCountriesTable extends Migration
             $table->unsignedInteger('livingcost');
             $table->string('lifethere', 200);
             $table->string('flag', 40)->nullable();
+            $table->unsignedInteger('finishedstep')->nullable();
 
             $table->timestamps();
         });

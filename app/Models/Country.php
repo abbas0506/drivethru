@@ -15,6 +15,7 @@ class Country extends Model
         'livingcost',
         'lifethere',
         'flag',
+        'finishedstep'
     ];
 
     public $timestamps = false;

@@ -1,0 +1,28 @@
+.bar {
+    border: solid;
+    &-1 {
+        border-width: 1px;
+    }
+    &-2 {
+        border-width: 2px;
+    }
+    &-3 {
+        border-width: 3px;
+    }
+    &-green {
+        border-color: green;
+    }
+    &-sky {
+        border-color: rgb(157, 214, 211);
+    }
+    &-red {
+        border-color: red;
+    }
+    &-grey {
+        border-color: rgb(204, 197, 197);
+    }
+    &-val {
+        font-size: 0.6rem;
+        margin-left: 5px;
+    }
+}

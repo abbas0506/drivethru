@@ -58,8 +58,6 @@ class CountryController extends Controller
             'lifethere' => 'required',
         ]);
 
-        $doc_ids = array();
-        $scholarship_ids = array();
         try {
 
             $country = Country::create($request->all());
@@ -67,26 +65,10 @@ class CountryController extends Controller
             $imageName = $country->id . '.' . $request->flag->extension();
             $request->flag->move(public_path('images/flags'), $imageName);
             $country->flag = $imageName;
-
+            $country->finishedstep = 1;
             $country->save();
 
             session(['country' => $country]);
-
-            // if ($request->doc_ids) {
-            //     $doc_ids = explode(',', $request->doc_ids);
-            //     foreach ($doc_ids as $doc_id) {
-            //         Countryvisadocs::create(['doc_id' => $doc_id, 'country_id' => $country->id]);
-            //     }
-            // }
-
-            // if ($request->scholarship_ids) {
-            //     $scholarship_ids = explode(',', $request->scholarship_ids);
-            //     foreach ($scholarship_ids as $scholarship_id) {
-            //         Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $country->id]);
-            //     }
-            // }
-
-
 
             return redirect()->route('editcountryvisadocs')
                 ->with('success', 'Country created successfully.');
@@ -154,22 +136,23 @@ class CountryController extends Controller
     }
     function postvisadocs(Request $request)
     {
-
-
         $country = session('country');
-
+        DB::beginTransaction();
         try {
             if ($request->doc_ids) {
                 $doc_ids = explode(',', $request->doc_ids);
                 foreach ($doc_ids as $doc_id) {
                     Countryvisadoc::create(['doc_id' => $doc_id, 'country_id' => $country->id]);
                 }
+                $country->finishedstep = 2;
+                $country->update();
             }
-
+            DB::commit();
             //all good
             return redirect()->route('editcountryvisadocs');
         } catch (Exception $ex) {
             echo $ex->getMessage();
+            DB::rollBack();
         }
     }
 }
