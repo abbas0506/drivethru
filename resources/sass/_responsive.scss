@@ -1,5 +1,8 @@
 //turn row into col and expand to its full with on smaller screen
 @media only screen and (max-width: 1000px) {
+    .container {
+        width: 100% !important;
+    }
     .fcol {
         width: 100%;
         margin-bottom: 20px;

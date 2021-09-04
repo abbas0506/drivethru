@@ -644,6 +644,10 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+  .container {
+    width: 100% !important;
+  }
+
   .fcol {
     width: 100%;
     margin-bottom: 20px;

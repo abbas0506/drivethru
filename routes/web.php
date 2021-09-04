@@ -26,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view('/my', 'layouts.admin');
 Route::view('/admin', 'admin.index');
 Route::resource('countries', CountryController::class);
+Route::get('editcountryvisadocs', [CountryController::class, 'editcountryvisadocs'])->name('editcountryvisadocs');
+Route::post('postvisadocs', [CountryController::class, 'postvisadocs'])->name('postvisadocs');

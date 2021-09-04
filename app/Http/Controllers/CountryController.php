@@ -8,7 +8,7 @@ use Exception;
 
 use App\Models\Country;
 use App\Models\Countryscholarship;
-use App\Models\Countryvisadocs;
+use App\Models\Countryvisadoc;
 use App\Models\Document;
 use App\Models\Scholarship;
 
@@ -47,9 +47,11 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
         $request->validate([
             'name' => 'required',
+            'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visarequired' => 'required',
             'visaduration' => 'required',
             'livingcost' => 'required',
@@ -58,39 +60,37 @@ class CountryController extends Controller
 
         $doc_ids = array();
         $scholarship_ids = array();
-
-
-
-
-        DB::beginTransaction();
-
         try {
 
-            $latest = Country::create($request->all());
-            $latest->save();
+            $country = Country::create($request->all());
+            //save flag image into separate folder
+            $imageName = $country->id . '.' . $request->flag->extension();
+            $request->flag->move(public_path('images/flags'), $imageName);
+            $country->flag = $imageName;
 
-            if ($request->doc_ids) {
-                $doc_ids = explode(',', $request->doc_ids);
-                foreach ($doc_ids as $doc_id) {
-                    Countryvisadocs::create(['doc_id' => $doc_id, 'country_id' => $latest->id]);
-                }
-            }
+            $country->save();
 
-            if ($request->scholarship_ids) {
-                $scholarship_ids = explode(',', $request->scholarship_ids);
-                foreach ($scholarship_ids as $scholarship_id) {
-                    Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $latest->id]);
-                }
-            }
+            session(['country' => $country]);
+
+            // if ($request->doc_ids) {
+            //     $doc_ids = explode(',', $request->doc_ids);
+            //     foreach ($doc_ids as $doc_id) {
+            //         Countryvisadocs::create(['doc_id' => $doc_id, 'country_id' => $country->id]);
+            //     }
+            // }
+
+            // if ($request->scholarship_ids) {
+            //     $scholarship_ids = explode(',', $request->scholarship_ids);
+            //     foreach ($scholarship_ids as $scholarship_id) {
+            //         Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $country->id]);
+            //     }
+            // }
 
 
-            DB::commit();
-            // all good
-            return redirect()->route('countries.index')
+
+            return redirect()->route('editcountryvisadocs')
                 ->with('success', 'Country created successfully.');
         } catch (Exception $e) {
-            DB::rollback();
-
             return redirect()->route('countries.index')
                 ->withErrors($e->getMessage());
             // something went wrong
@@ -145,5 +145,31 @@ class CountryController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Country removed successfully');
+    }
+    function editcountryvisadocs()
+    {
+        $country = session('country');
+        $docs = Document::all();
+        return view("admin.countries.visadocs", compact('country', 'docs'));
+    }
+    function postvisadocs(Request $request)
+    {
+
+
+        $country = session('country');
+
+        try {
+            if ($request->doc_ids) {
+                $doc_ids = explode(',', $request->doc_ids);
+                foreach ($doc_ids as $doc_id) {
+                    Countryvisadoc::create(['doc_id' => $doc_id, 'country_id' => $country->id]);
+                }
+            }
+
+            //all good
+            return redirect()->route('editcountryvisadocs');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }

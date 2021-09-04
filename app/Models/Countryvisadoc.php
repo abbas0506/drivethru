@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Countryvisadocs extends Model
+class Countryvisadoc extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,4 +13,9 @@ class Countryvisadocs extends Model
         'country_id',
     ];
     public $timestamps = false;
+
+    public function doc()
+    {
+        return $this->belongsTo(Document::class, 'doc_id');
+    }
 }

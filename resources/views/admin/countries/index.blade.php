@@ -30,55 +30,52 @@
 
 @endif
 
-<!-- search option -->
-<div class="frow my-4 mx-10 mid-left fancy-search-grow">
-   <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-   <div class="frow box-25 circular bg-success text-light centered mr-2"><a href="{{route('countries.create')}}" class="hoverable txt-white">+</a></div> Create New
-</div>
-
-<!-- page content -->
-<div class="frow p-2 mb-2 mx-10 txt-b bg-info">
-   <div class="fcol mid-left w-10">Sr </div>
-   <div class="fcol mid-left w-20">Name </div>
-   <div class="fcol centered w-10">Visa Required</div>
-   <div class="fcol centered w-10">Visa Duration</div>
-   <div class="fcol centered w-10">Living Cost</div>
-   <div class="fcol mid-left w-30">Life There</div>
-   <div class="fcol centered w-10"><i data-feather='settings' class="feather-xsmall"></i></div>
-</div>
-
-@foreach($countries as $country)
-<div class="frow px-2 my-2 mx-10 tr">
-   <div class="fcol mid-left w-10">{{$country->id}} </div>
-   <div class="fcol mid-left w-20"> {{$country->name}} </div>
-   <div class='fcol centered w-10'>
-      @if($country->visarequired==1)
-      <span class='txt-green'>Yes</span>
-      @else
-      <span class='txt-red'>No</span>
-      @endif
+<div class="container" style="width:60%">
+   <!-- search option -->
+   <div class="frow my-4 mid-left fancy-search-grow">
+      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
+      <div class="frow box-25 circular bg-success text-light centered mr-2"><a href="{{route('countries.create')}}" class="hoverable txt-white">+</a></div> Create New
    </div>
-   <div class="fcol centered w-10">{{$country->visaduration}} </div>
-   <div class="fcol centered w-10">{{$country->livingcost}} </div>
-   <div class="fcol mid-left w-30">{{$country->lifethere}} </div>
-   <div class="fcol centered w-10">
-      <div class="frow stretched">
-         <div><a href="{{route('countries.show',$country)}}"><i data-feather='eye' class="feather-xsmall mx-1"></i></a></div>
-         <div><a href="{{route('countries.edit',$country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
-         <div>
-            <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>
-               @csrf
-               @method('DELETE')
-               <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$country->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-            </form>
+
+   <!-- page content -->
+   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+      <div class="fcol mid-left w-10">Sr </div>
+      <div class="fcol mid-left w-30">Name </div>
+      <div class="fcol centered w-15">Visa Required</div>
+      <div class="fcol centered w-15">Visa Duration</div>
+      <div class="fcol centered w-15">Living Cost</div>
+      <div class="fcol mid-right pr-4 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+   </div>
+
+   @foreach($countries as $country)
+   <div class="frow px-2 my-2 tr">
+      <div class="fcol mid-left w-10">{{$country->id}} </div>
+      <div class="fcol mid-left w-30"> {{$country->name}} </div>
+      <div class='fcol centered w-15'>
+         @if($country->visarequired==1)
+         <span class='txt-green'>Yes</span>
+         @else
+         <span class='txt-red'>No</span>
+         @endif
+      </div>
+      <div class="fcol centered w-15">{{$country->visaduration}} </div>
+      <div class="fcol centered w-15">{{$country->livingcost}} </div>
+      <div class="fcol mid-right w-15">
+         <div class="frow stretched">
+            <div><a href="{{route('countries.show',$country)}}"><i data-feather='eye' class="feather-xsmall mx-1"></i></a></div>
+            <div><a href="{{route('countries.edit',$country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
+            <div>
+               <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$country->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+               </form>
+            </div>
          </div>
       </div>
    </div>
-
+   @endforeach
 </div>
-
-@endforeach
-
 @endsection
 
 @section('script')
