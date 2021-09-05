@@ -11,26 +11,26 @@
 @endsection
 @section('page-content')
 
-<!-- display record save, del, update message if any -->
-@if ($errors->any())
-<div class="alert alert-danger mx-10 mt-5">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-<br />
-@elseif(session('success'))
-<div class="alert alert-success mx-10 mt-5 alert-dismissible">
-   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-   {{session('success')}}
-</div>
-<br />
-
-@endif
-
 <div class="container" style="width:60%">
+   <!-- display record save, del, update message if any -->
+   @if ($errors->any())
+   <div class="alert alert-danger mt-5">
+      <ul>
+         @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+         @endforeach
+      </ul>
+   </div>
+   <br />
+   @elseif(session('success'))
+   <div class="alert alert-success mt-5 alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      {{session('success')}}
+   </div>
+   <br />
+
+   @endif
+
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
@@ -89,8 +89,6 @@ function search(event) {
       } else {
          $(this).removeClass('hide');
       }
-
-
    });
 }
 

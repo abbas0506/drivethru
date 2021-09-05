@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Countryvisadoc;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
-class CountryvisadocsController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CountryvisadocsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Countryvisadocs  $countryvisadocs
+     * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Countryvisadoc $countryvisadoc)
+    public function show(Job $job)
     {
         //
     }
@@ -52,10 +52,10 @@ class CountryvisadocsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Countryvisadocs  $countryvisadocs
+     * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Countryvisadoc $countryvisadoc)
+    public function edit(Job $job)
     {
         //
     }
@@ -64,10 +64,10 @@ class CountryvisadocsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Countryvisadocs  $countryvisadocs
+     * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Countryvisadoc $countryvisadoc)
+    public function update(Request $request, Job $job)
     {
         //
     }
@@ -75,16 +75,11 @@ class CountryvisadocsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Countryvisadocs  $countryvisadocs
+     * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Countryvisadoc $countryvisadoc)
+    public function destroy(Job $job)
     {
         //
-        $countryvisadoc->delete();
-        return redirect()
-            ->back()
-            ->with('success', 'Document removed successfully');
-        //echo $countryvisadoc . "to del";
     }
 }

@@ -70,7 +70,7 @@ class CountryController extends Controller
 
             session(['country' => $country]);
 
-            return redirect()->route('editcountryvisadocs')
+            return redirect()->route('country_visadocs')
                 ->with('success', 'Country created successfully.');
         } catch (Exception $e) {
             return redirect()->route('countries.index')
@@ -128,13 +128,13 @@ class CountryController extends Controller
             ->back()
             ->with('success', 'Country removed successfully');
     }
-    function editcountryvisadocs()
+    function country_visadocs()
     {
         $country = session('country');
         $docs = Document::all();
         return view("admin.countries.visadocs", compact('country', 'docs'));
     }
-    function postvisadocs(Request $request)
+    function post_country_visadocs(Request $request)
     {
         $country = session('country');
         DB::beginTransaction();
@@ -149,10 +149,56 @@ class CountryController extends Controller
             }
             DB::commit();
             //all good
-            return redirect()->route('editcountryvisadocs');
+            return redirect()->route('country_visadocs');
         } catch (Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
         }
+    }
+
+    function delete_country_visadoc($doc_id)
+    {
+        $country = session('country');
+        $countryvisadoc = $country->countryvisadocs()->where('doc_id', $doc_id)->first();
+        $countryvisadoc->delete();
+        return redirect()->back();
+    }
+
+    //scholarshis
+    function country_scholarships()
+    {
+        $country = session('country');
+        // $scholarships = Scholarship::all();
+        return view("admin.countries.scholarships", compact('country'));
+    }
+
+    function post_country_scholarship(Request $request)
+    {
+        $country = session('country');
+        DB::beginTransaction();
+        try {
+            if ($request->scholarship_ids) {
+                $scholarship_ids = explode(',', $request->scholarship_ids);
+                foreach ($scholarship_ids as $scholarship_id) {
+                    Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $country->id]);
+                }
+                $country->finishedstep = 3;
+                $country->update();
+            }
+            DB::commit();
+            //all good
+            return redirect()->route('country_scholarships');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            DB::rollBack();
+        }
+    }
+
+    function delete_country_scholarship($scholarship_id)
+    {
+        $country = session('country');
+        $country_scholarship = $country->countryscholarships()->where('scholarship_id', $scholarship_id)->first();
+        $country_scholarship->delete();
+        return redirect()->back();
     }
 }

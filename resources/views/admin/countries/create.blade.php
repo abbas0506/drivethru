@@ -26,7 +26,7 @@
 
 <div class="container" style="width:60% !important">
    <!-- step naviagation  -->
-   <div class="frow my-5 p-3 auto-col border rounded bg-lightsky">
+   <div class="frow mb-5 p-3 auto-col border rounded bg-lightsky">
       <div class="navstep active hw-25">
          <div class="roundbtn">1</div>
          <div class="super-underline">Basic Info</div>
@@ -61,7 +61,7 @@
          </div>
          <div class="fcol centered hw-25">
             <div class="fancyinput w-100">
-               <input type="file" id='flag' name='flag' placeholder="flag" class='w-100 m-0 p-2' required>
+               <input type="file" id='flag' name='flag' placeholder="flag" class='w-100 m-0 p-2' onchange='preview_flag()' required>
                <label for="Name">Flag</label>
             </div>
          </div>
@@ -79,13 +79,13 @@
          </div>
          <div class="fcol w-32">
             <div class="fancyinput w-100">
-               <input type="number" name='visaduration' placeholder="Visa duration" required>
+               <input type="number" name='visaduration' placeholder="Visa duration" min='0' max='100' required>
                <label for="Name">Visa Duration (Yr)</label>
             </div>
          </div>
          <div class="fcol w-32">
             <div class="fancyinput w-100">
-               <input type="number" name='livingcost' placeholder="Living cost" required>
+               <input type="number" name='livingcost' placeholder="Living cost" min='0' required>
                <label for="Name">Living Cost</label>
             </div>
          </div>
@@ -110,11 +110,15 @@
 
 @section('script')
 <script lang="javascript">
-$('#flag').change(function() {
+// $('#flag').change(function() {
+
+// });
+
+function preview_flag() {
    const [file] = flag.files
    if (file) {
       flag_img.src = URL.createObjectURL(file)
    }
-});
+}
 </script>
 @endsection

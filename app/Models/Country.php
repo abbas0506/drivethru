@@ -20,6 +20,7 @@ class Country extends Model
 
     public $timestamps = false;
 
+    //visa docs
     public function countryvisadocs()
     {
         return $this->hasMany(Countryvisadoc::class, 'country_id');
@@ -41,5 +42,30 @@ class Country extends Model
         $visadoc_ids = $this->visadocs()->pluck('id')->toArray();
         $docs = Document::whereNotIn('id', $visadoc_ids)->get();
         return $docs;
+    }
+
+    //scholarships
+
+    public function countryscholarships()
+    {
+        return $this->hasMany(Countryscholarship::class, 'country_id');
+    }
+
+    public function scholarships()
+    {
+
+        $mycollection = collect();
+        foreach ($this->countryscholarships()->get() as $countryscholarship) {
+            $mycollection->add($countryscholarship->scholarship);
+        }
+        return $mycollection;
+    }
+
+    public function not_scholarships()
+    {
+
+        $scholarship_ids = $this->scholarships()->pluck('id')->toArray();
+        $scholarships = Scholarship::whereNotIn('id', $scholarship_ids)->get();
+        return $scholarships;
     }
 }

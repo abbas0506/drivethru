@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Countryscholarship extends Model
+class Job extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'scholarship_id',
+        'name',
+        'maxhrs',
+        'hourlyrate',
+        'jobdeptt_id',
+        'level_id',
         'country_id',
     ];
     public $timestamps = false;
-
-    public function scholarship()
-    {
-        return $this->belongsTo(Scholarship::class, 'scholarship_id');
-    }
 }

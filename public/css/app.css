@@ -802,6 +802,9 @@ body {
   flex-direction: row;
   position: relative;
 }
+.navstep > a {
+  text-decoration: none !important;
+}
 .navstep .roundbtn {
   display: flex;
   flex-direction: column;
@@ -812,6 +815,10 @@ body {
   justify-content: center;
   background-color: #b0dac1;
   color: white;
+}
+.navstep .roundbtn:hover {
+  background-color: #38c172;
+  cursor: pointer;
 }
 .navstep .super-underline {
   position: absolute;
@@ -830,6 +837,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  border: solid;
+  border-width: 1px;
+  border-color: #333;
   align-items: center;
   justify-content: center;
   background-color: #38c172;
