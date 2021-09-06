@@ -41,7 +41,9 @@
          <div class="super-underline">Scholarships</div>
       </div>
       <div class="navstep hw-25">
-         <div class="roundbtn">4</div>
+         <a href="{{route('countryjobs.index')}}">
+            <div class="roundbtn">4</div>
+         </a>
          <div class="super-underline">Job</div>
       </div>
    </div>

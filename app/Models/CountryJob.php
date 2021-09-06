@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model
+class CountryJob extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -17,4 +17,9 @@ class Job extends Model
         'country_id',
     ];
     public $timestamps = false;
+
+    public function jobdeptt()
+    {
+        return $this->belongsTo(Jobdeptt::class, 'jobdeptt_id');
+    }
 }

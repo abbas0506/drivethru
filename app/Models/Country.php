@@ -25,6 +25,10 @@ class Country extends Model
     {
         return $this->hasMany(Countryvisadoc::class, 'country_id');
     }
+    public function countryjobs()
+    {
+        return $this->hasMany(CountryJob::class, 'country_id');
+    }
 
     public function visadocs()
     {

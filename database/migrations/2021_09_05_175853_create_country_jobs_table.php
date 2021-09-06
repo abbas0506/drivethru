@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobsTable extends Migration
+class CreateCountryJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('country_jobs', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
             $table->unsignedInteger('maxhrs');
             $table->unsignedInteger('hourlyrate');
             $table->unsignedBigInteger('jobdeptt_id');
@@ -43,6 +44,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('country_jobs');
     }
 }
