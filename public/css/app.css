@@ -82,7 +82,7 @@ body {
   background-color: silver;
 }
 .bg-orange {
-  background-color: #ff5421;
+  background-color: #ee9a81;
 }
 .bg-lightsky {
   background-color: #dde3e9;
@@ -719,72 +719,65 @@ body {
   padding-right: 2rem;
 }
 
-.menu-item {
-  height: 15vh;
+.navbar {
+  height: 12vh;
+  color: white;
+  padding: 0px 50px;
 }
-
-.simple-menu {
+.navbar .navlink {
+  padding: 0px 10px;
+}
+.navbar .navlink a {
+  color: inherit;
+}
+.navbar .navlink a:hover {
+  color: #ee9a81;
+  text-decoration: none;
+}
+.navbar .navlink .chevron-up, .navbar .navlink .navsub {
   display: none !important;
-  position: absolute;
-  top: 15vh;
+  transition: display 0.5s ease-in-out;
 }
-
-.mega-menu {
-  display: none !important;
-  position: absolute;
-  top: 15vh;
-  left: 20%;
-  width: 60%;
-  z-index: 1000;
+.navbar .navlink.has-sub {
+  height: 12vh;
 }
-
-.chevron-up-menu {
-  display: none;
+.navbar .navlink.has-sub:hover .chevron-up {
+  display: flex !important;
   position: absolute;
   background-color: white;
   border: none;
   height: 12px;
   width: 12px;
-  top: 14.3vh;
+  top: 65px;
   z-index: 1001;
   transform: rotate(45deg);
 }
-
-.simple-menu,
-.mega-menu {
+.navbar .navlink.has-sub:hover .navsub {
+  display: flex !important;
+  position: absolute;
+  top: 12vh;
+  min-width: 200px;
+  right: 10px;
+  padding: 10px;
   background-color: #fff;
   border-bottom: solid;
-  border-color: #ff5421;
+  border-color: #ee9a81;
   border-width: 5px;
+  border-radius: 3px;
 }
-
-.menu-item:hover {
-  color: #ff5421;
+.navbar .navlink.has-sub:hover .navsub .navlink {
+  line-height: 2;
 }
-
-.menu-item:hover .mega-menu,
-.menu-item:hover .simple-menu {
-  display: flex !important;
-}
-
-.menu-item:hover .chevron-up-menu,
-.menu-item:hover .chevron-up-menu {
-  display: flex !important;
-}
-
-.menu-link {
+.navbar .navlink.has-sub:hover .navsub .navlink a {
   color: #333;
-  text-decoration: none !important;
 }
-
-.menu-link:hover {
-  color: #ff5421;
-  cursor: pointer;
+.navbar .navlink.has-sub:hover .navsub .navlink a:hover {
+  color: #ee9a81;
 }
 
 .notification-count {
   position: absolute;
-  background-color: orange;
+  background-color: #ee9a81;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -802,8 +795,12 @@ body {
   flex-direction: row;
   position: relative;
 }
-.navstep > a {
+.navstep a {
   text-decoration: none !important;
+}
+.navstep a .roundbtn:hover {
+  background-color: #38c172;
+  cursor: pointer;
 }
 .navstep .roundbtn {
   display: flex;
@@ -815,10 +812,6 @@ body {
   justify-content: center;
   background-color: #b0dac1;
   color: white;
-}
-.navstep .roundbtn:hover {
-  background-color: #38c172;
-  cursor: pointer;
 }
 .navstep .super-underline {
   position: absolute;

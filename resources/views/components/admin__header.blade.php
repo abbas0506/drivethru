@@ -1,38 +1,42 @@
-<div class='frow w-100 bg-transparent txt-white mid-left px-10 stretched'>
-   <div class='logo txt-m mr-auto'><img src="/images/logo/dark_logo.png" style="height:25px"></div>
-   <x-admin__navbar></x-admin__navbar>
-   <div class="fcol centered menu-item">
-      <div class='relative'>
-         <i data-feather='bell' class="feather-small mx-1 txt-white"></i>
-         <div class='notification-count'></div>
-      </div>
-      <div class='chevron-up-menu'></div>
-      <div class='frow simple-menu p-3'>
-         <div class="fcol">
-            <div class="mb-2"><a href="http://" class='menu-link'>Notification 1</a></div>
-            <div class="mb-2"><a href="http://" class='menu-link'>Notification 1</a></div>
-            <div class="mb-2"><a href="http://" class='menu-link'>Notification 1</a></div>
-            <div class="mb-2"><a href="http://" class='menu-link'>Notification 1</a></div>
+<div class='frow navbar w-100 bg-transparent txt-white stretched px-5'>
+   <div class='logo mr-auto'><img src="/images/logo/dark_logo.png" style="height:25px"></div>
+   <div class="frow">
+      <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Countries</a></div>
+      <div class="fcol centered navlink r-hide"><a href="#">Universities</a></div>
+      <div class="fcol centered navlink r-hide"><a href="#">Faculties</a></div>
+      <div class="fcol centered navlink r-hide"><a href="#">Courses</a></div>
 
+      <div class="fcol centered navlink has-sub">
+         <div class='relative'>
+            <i data-feather='bell' class="feather-small"></i>
+            <div class='notification-count'></div>
+         </div>
+         <div class='chevron-up'></div>
+         <div class='frow navsub'>
+            <div class="fcol">
+               <div class=" navlink"><a href="http://">Admission requests</a></div>
+               <div class=" navlink"><a href="http://">Career counselling requests</a></div>
+            </div>
+         </div>
+
+      </div>
+      <div class="fcol centered navlink has-sub">
+         <div class="relative text-center">
+            <div class='box-25 border border-light rounded-circle'>
+               <span class="lnr lnr-user"></span>
+            </div>
+         </div>
+
+
+         <div class='chevron-up'></div>
+         <div class='frow navsub'>
+            <div class="fcol">
+               <div class="navlink txt-b "><a href="http://">Your Profile</a></div>
+               <div class="navlink"><a href="http://">Change Password</a></div>
+               <div class="navlink"><a href="http://">Sign out</a></div>
+
+            </div>
          </div>
       </div>
-
    </div>
-   <div class="fcol centered txt-white menu-item">
-
-      <div class='box-25 border border-light rounded-circle relative'>
-         <span class="lnr lnr-user" style="position:absolute; top:4px; left:4px"></span>
-      </div>
-
-      <div class='chevron-up-menu'></div>
-      <div class='frow simple-menu p-3'>
-         <div class="fcol">
-            <div class="mb-2 txt-b"><a href="http://" class='menu-link'>Your Profile</a></div>
-            <div class="mb-2"><a href="http://" class='menu-link'>Change Password</a></div>
-            <div class="mb-2"><a href="http://" class='menu-link'>Sign out</a></div>
-
-         </div>
-      </div>
-   </div>
-</div>
 </div> <!--    navbar ends -->

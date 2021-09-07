@@ -41,9 +41,7 @@
          <div class="super-underline">Scholarships</div>
       </div>
       <div class="navstep hw-25">
-         <a href="{{route('countryjobs.index')}}">
-            <div class="roundbtn">4</div>
-         </a>
+         <div class="roundbtn">4</div>
          <div class="super-underline">Job</div>
       </div>
    </div>
@@ -55,14 +53,14 @@
    <div class="frow mid-left">
       <div class="txt-l mr-4">{{$country->name}}</div><img src={{$flag_url}} alt='flag' id='flag_img' width=30 height=30 class='rounded-circle'>
    </div>
-   <div class="frow border-bottom border-thin my-4">
-      <div class="fcol mid-left w-90 txt-b">Document Name</div>
-      <div class="fcol centered w-10 txt-b"><i data-feather='settings' class="feather-xsmall"></i></div>
+   <div class="frow border-bottom stretched border-thin my-4">
+      <div class="fcol txt-b">Document Name</div>
+      <div class="fcol mid-right"><a href="#" onclick="slideleft()">Click here to Add New</a></div>
    </div>
    @foreach($country->visadocs() as $doc)
-   <div class="frow my-2">
-      <div class="fcol mid-left w-90">{{$doc->name}}</div>
-      <div class="fcol centered w-10">
+   <div class="frow my-2 stretched">
+      <div class="fcol">{{$doc->name}}</div>
+      <div class="fcol mid-right">
          <form action="{{route('delete_country_visadoc',$doc->id)}}" method="POST" id='deleteform{{$doc->id}}'>
             @csrf
             @method('DELETE')
@@ -72,11 +70,7 @@
    </div>
    @endforeach
 
-   <!-- submit form -->
-   <div class="frow mid-right my-5">
-      <button type="button" class="btn btn-success" onclick="slideleft()">Add Visa Docs</button>
-   </div>
-
+   <!-- slider on right side -->
    <div class="slider" id='slider'>
 
       <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="slideleft()"><i data-feather='x' class="feather-xsmall"></i></div>
