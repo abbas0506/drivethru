@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Exception;
 
 class DocumentController extends Controller
 {
@@ -15,6 +16,8 @@ class DocumentController extends Controller
     public function index()
     {
         //
+        $data = Document::all();
+        return view('admin.primary.documents.index', compact('data'));
     }
 
     /**
@@ -25,6 +28,7 @@ class DocumentController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,6 +40,19 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        try {
+
+            $new = Document::create($request->all());
+            $new->save();
+            return redirect()->back()->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -72,6 +89,28 @@ class DocumentController extends Controller
         //
     }
 
+    public function documents_update(Request $request)
+    {
+        //
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+        ]);
+
+        $instance = Document::find($request->id);
+        $instance->name = $request->name;
+
+        try {
+            $instance->update();
+
+            return redirect()->back()->with('success', 'Successfully updated');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -81,5 +120,12 @@ class DocumentController extends Controller
     public function destroy(Document $document)
     {
         //
+        try {
+            $document->delete();
+            return redirect()->back()->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 }

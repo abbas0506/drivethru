@@ -44,8 +44,8 @@
    <div class="frow px-2 py-1 mb-2 txt-b bg-info">
       <div class="fcol mid-left w-10">Sr </div>
       <div class="fcol mid-left w-60">Name </div>
-      <div class="fcol mid-left w-15">Completion</div>
-      <div class="fcol mid-right pr-4 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+      <div class="fcol mid-left w-15">Data Feed</div>
+      <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
 
    @foreach($countries as $country)
@@ -54,13 +54,13 @@
       <div class="fcol mid-left w-60"> {{$country->name}} </div>
       <div class="fcol centered w-15">
          <div class="frow w-100 mid-left">
-            <div class="bar bar-1 bar-green" style="width:{{$country->finishedstep*20}}%"></div>
-            <div class="bar-val">{{$country->finishedstep*25}}%</div>
+            @php $numofsteps_completed=$country->step1+$country->step2+$country->step3+$country->step4; @endphp
+            <div class="bar bar-1 bar-green" style="width:{{$numofsteps_completed*20}}%"></div>
+            <div class="bar-val">{{$numofsteps_completed*25}}%</div>
          </div>
       </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div><a href="{{route('countries.show',$country)}}"><i data-feather='eye' class="feather-xsmall mx-1"></i></a></div>
             <div><a href="{{route('countries.edit',$country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
             <div>
                <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>

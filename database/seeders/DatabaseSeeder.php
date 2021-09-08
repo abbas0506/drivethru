@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             DocumentSeeder::class,
             ScholarshipSeeder::class,
-            JobdepttSeeder::class,
             LevelSeeder::class,
+            FacultySeeder::class,
         ]);
     }
 }

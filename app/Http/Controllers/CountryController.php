@@ -65,13 +65,12 @@ class CountryController extends Controller
             $imageName = $country->id . '.' . $request->flag->extension();
             $request->flag->move(public_path('images/flags'), $imageName);
             $country->flag = $imageName;
-            $country->finishedstep = 1;
+            $country->step1 = 1;
             $country->save();
 
             session(['country' => $country]);
 
-            return redirect()->route('country_visadocs')
-                ->with('success', 'Country created successfully.');
+            return redirect()->route('countries.show', $country);
         } catch (Exception $e) {
             return redirect()->route('countries.index')
                 ->withErrors($e->getMessage());
@@ -88,6 +87,7 @@ class CountryController extends Controller
     public function show(Country $country)
     {
         //
+        return view('admin.countries.show', compact('country'));
     }
 
     /**
@@ -98,7 +98,9 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        //renew country selection 
+        session(['country' => $country]);
+        return view('admin.countries.show', compact('country'));
     }
 
     /**
@@ -111,7 +113,25 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            // 'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'visarequired' => 'required',
+            'visaduration' => 'required',
+            'livingcost' => 'required',
+            'lifethere' => 'required',
+        ]);
 
+        try {
+
+            $country->update($request->all());
+            return redirect()->back()
+                ->with('success', 'Basic info updated successfully.');
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -145,7 +165,7 @@ class CountryController extends Controller
                 foreach ($doc_ids as $doc_id) {
                     Countryvisadoc::create(['doc_id' => $doc_id, 'country_id' => $country->id]);
                 }
-                $country->finishedstep = 2;
+                $country->step2 = 1;
                 $country->update();
             }
             DB::commit();
@@ -183,7 +203,7 @@ class CountryController extends Controller
                 foreach ($scholarship_ids as $scholarship_id) {
                     Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $country->id]);
                 }
-                $country->finishedstep = 3;
+                $country->step3 = 1;
                 $country->update();
             }
             DB::commit();
@@ -201,5 +221,25 @@ class CountryController extends Controller
         $country_scholarship = $country->countryscholarships()->where('scholarship_id', $scholarship_id)->first();
         $country_scholarship->delete();
         return redirect()->back();
+    }
+
+    function country_jobs()
+    {
+        $country = session('country');
+        return view("admin.countries.jobs", compact('country'));
+    }
+    function post_country_jobs(Request $request)
+    {
+
+        try {
+            $country = session('country');
+            $country->jobdesc = $request->jobdesc;
+            $country->step4 = 1;
+            $country->save();
+            //all good
+            return redirect()->back()->with('success', 'Basic info updated successfully.');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }

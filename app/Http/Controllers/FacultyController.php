@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Level;
+use App\Models\Faculty;
 use Illuminate\Http\Request;
 use Exception;
 
-class LevelController extends Controller
+class FacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class LevelController extends Controller
     public function index()
     {
         //
-        $data = Level::all();
-        return view('admin.primary.levels.index', compact('data'));
+        $data = Faculty::all();
+        return view('admin.primary.faculties.index', compact('data'));
     }
 
     /**
@@ -46,7 +46,7 @@ class LevelController extends Controller
 
         try {
 
-            $new = Level::create($request->all());
+            $new = Faculty::create($request->all());
             $new->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -58,10 +58,10 @@ class LevelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(Faculty $faculty)
     {
         //
     }
@@ -69,10 +69,10 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit(Faculty $faculty)
     {
         //
     }
@@ -81,15 +81,15 @@ class LevelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Level $level)
+    public function update(Request $request, Faculty $faculty)
     {
         //
     }
 
-    public function levels_update(Request $request)
+    public function faculties_update(Request $request)
     {
         //
         $request->validate([
@@ -97,7 +97,7 @@ class LevelController extends Controller
             'name' => 'required',
         ]);
 
-        $instance = Level::find($request->id);
+        $instance = Faculty::find($request->id);
         $instance->name = $request->name;
 
         try {
@@ -114,14 +114,14 @@ class LevelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Level $level)
+    public function destroy(Faculty $faculty)
     {
         //
         try {
-            $level->delete();
+            $faculty->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());

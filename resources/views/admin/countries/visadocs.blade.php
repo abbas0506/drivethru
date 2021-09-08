@@ -27,22 +27,31 @@
    <!-- step naviagation  -->
    <div class="frow mb-5 p-3 auto-col border bg-lightsky">
       <div class="navstep hw-25">
-         <div class="roundbtn">1</div>
+         <a href="{{route('countries.show', $country)}}">
+            <div class="roundbtn">@if($country->step1==1) <i data-feather='check' class="feather-small"></i> @else 1 @endif</div>
+         </a>
          <div class="super-underline">Basic Info</div>
       </div>
       <div class="navstep hw-25 active">
-         <div class="roundbtn">2</div>
+         <div class="roundbtn">@if($country->step2==1) <i data-feather='check' class="feather-small"></i> @else 2 @endif</div>
          <div class="super-underline">Visa Docs</div>
       </div>
       <div class="navstep hw-25">
          <a href="{{route('country_scholarships')}}">
-            <div class="roundbtn">3</div>
+            <div class="roundbtn">@if($country->step3==1) <i data-feather='check' class="feather-small"></i> @else 3 @endif</div>
          </a>
          <div class="super-underline">Scholarships</div>
       </div>
       <div class="navstep hw-25">
-         <div class="roundbtn">4</div>
-         <div class="super-underline">Job</div>
+         <a href="{{route('country_jobs')}}">
+            <div class="roundbtn">@if($country->step4==1) <i data-feather='check' class="feather-small"></i> @else 4 @endif</div>
+         </a>
+         <div class="super-underline">Job Desc</div>
+      </div>
+      <div class="navstep">
+         <a href="{{route('countries.index')}}">
+            <div class="roundbtn"><i data-feather='pause' class="feather-xsmall"></i></div>
+         </a>
       </div>
    </div>
 
@@ -55,7 +64,7 @@
    </div>
    <div class="frow border-bottom stretched border-thin my-4">
       <div class="fcol txt-b">Document Name</div>
-      <div class="fcol mid-right"><a href="#" onclick="slideleft()">Click here to Add New</a></div>
+      <div class="fcol mid-right"><a href="#" onclick="slideleft()"><i data-feather='plus-circle' class="feather-small mx-1 mb-1"></i>Click here to Add New</a></div>
    </div>
    @foreach($country->visadocs() as $doc)
    <div class="frow my-2 stretched">

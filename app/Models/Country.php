@@ -14,8 +14,12 @@ class Country extends Model
         'visaduration',
         'livingcost',
         'lifethere',
+        'jobdesc',
         'flag',
-        'finishedstep'
+        'step1',
+        'step2',
+        'step3',
+        'step4',
     ];
 
     public $timestamps = false;

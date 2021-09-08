@@ -110,10 +110,6 @@
 
 @section('script')
 <script lang="javascript">
-// $('#flag').change(function() {
-
-// });
-
 function preview_flag() {
    const [file] = flag.files
    if (file) {

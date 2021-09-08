@@ -896,6 +896,22 @@ body {
   transform: translateX(0);
 }
 
+.primary-option span {
+  margin-right: 20px;
+  color: blue;
+  opacity: 0;
+}
+.primary-option a {
+  text-decoration: none !important;
+  color: #333;
+}
+.primary-option:hover span {
+  opacity: 1;
+}
+.primary-option:hover a {
+  color: blue;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

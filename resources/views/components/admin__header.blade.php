@@ -1,6 +1,7 @@
 <div class='frow navbar w-100 bg-transparent txt-white stretched px-5'>
    <div class='logo mr-auto'><img src="/images/logo/dark_logo.png" style="height:25px"></div>
    <div class="frow">
+      <div class="fcol centered navlink r-hide"><a href="{{url('primary')}}"> Primary</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Countries</a></div>
       <div class="fcol centered navlink r-hide"><a href="#">Universities</a></div>
       <div class="fcol centered navlink r-hide"><a href="#">Faculties</a></div>

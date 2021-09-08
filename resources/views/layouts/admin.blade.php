@@ -38,6 +38,7 @@
 
    @yield('header')
    @yield('page-content')
+   @yield('slider')
    @yield('script')
 
    <!-- for feather icons display -->
