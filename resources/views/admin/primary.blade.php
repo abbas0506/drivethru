@@ -5,8 +5,8 @@
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
-   <div class='txt-l txt-white'>Primary Feed</div>
-   <div class='frow txt-s text-info'>Click an option to feed data</div>
+   <div class='txt-l txt-white'>Primary Data</div>
+   <div class='frow txt-s text-info'>Click on any option to feed data</div>
 </div>
 @endsection
 @section('page-content')
@@ -17,7 +17,7 @@
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">Cities</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">Faculties</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">Study levels</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Courses</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">Courses</a></div>
 
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">Document titles</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>

@@ -5,13 +5,13 @@
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
-   <div class='txt-l txt-white'>Scholarships</div>
-   <div class='frow txt-s txt-white'><a href="{{url('primary')}}">Primary </a> <span class="mx-1"> / </span>scholarships </div>
+   <div class='txt-l txt-white'>Courses</div>
+   <div class='frow txt-s txt-white'><a href="{{url('primary')}}">Primary </a> <span class="mx-1"> / </span>courses </div>
 </div>
 @endsection
 @section('page-content')
 
-<div class="container" style="width:60%">
+<div class="container" style="width:75%">
    <!-- display record save, del, update message if any -->
    @if ($errors->any())
    <div class="alert alert-danger mt-5">
@@ -46,21 +46,25 @@
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+   <div class="frow px-2 py-1 mb-2 txt-b txt-s bg-info">
       <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-75">Name </div>
-      <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+      <div class="fcol mid-left w-25">Course Name </div>
+      <div class="fcol mid-left w-30">Faculty </div>
+      <div class="fcol mid-left w-25">Level </div>
+      <div class="fcol mid-right pr-3 w-10"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($data as $scholarship)
-   <div class="frow px-2 my-2 tr">
+   @foreach($data as $course)
+   <div class="frow px-2 my-2 txt-s tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$scholarship->name}} </div>
-      <div class="fcol mid-right w-15">
+      <div class="fcol mid-left w-25"> {{$course->name}} </div>
+      <div class="fcol mid-left w-30"> {{$course->faculty->name}} </div>
+      <div class="fcol mid-left w-25"> {{$course->level->name}} </div>
+      <div class="fcol mid-right w-10">
          <div class="frow stretched">
-            <div onclick="toggle_editslider('{{$scholarship->id}}','{{$scholarship->name}}')"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></div>
+            <div onclick="toggle_editslider('{{$course->id}}','{{$course->name}}','{{$course->faculty_id}}','{{$course->level_id}}')"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></div>
             <div>
-               <form action="{{route('scholarships.destroy',$scholarship)}}" method="POST" id='del_form{{$sr}}'>
+               <form action="{{route('courses.destroy',$course)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
@@ -81,15 +85,31 @@
    <div class="frow centered my-4 txt-b">NEW</div>
 
    <!-- data form -->
-   <form action="{{route('scholarships.store')}}" method='post'>
+   <form action="{{route('courses.store')}}" method='post'>
       @csrf
-      <div class="frow stretched my-4 auto-col">
-         <div class="fancyinput w-100">
+      <div class="fcol my-4">
+         <div class="fancyinput my-2 w-100">
             <input type="text" name='name' placeholder="Enter name" required>
             <label for="Name">Name</label>
          </div>
+         <div class="fancyselect my-2 w-100">
+            <select name="faculty_id">
+               @foreach($faculties as $faculty)
+               <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+               @endforeach
+            </select>
+            <label for="Name">Faculty</label>
+         </div>
+         <div class="fancyselect my-2 w-100">
+            <select name="level_id">
+               @foreach($levels as $level)
+               <option value="{{$level->id}}">{{$level->name}}</option>
+               @endforeach
+            </select>
+            <label for="Name">Level</label>
+         </div>
       </div>
-      <div class="frow mid-right my-5">
+      <div class="frow mid-right mt-4">
          <button type="submit" class="btn btn-success">Create</button>
       </div>
    </form>
@@ -103,12 +123,28 @@
    <div class="frow centered my-4 txt-b">EDIT</div>
 
    <!-- data form -->
-   <form action="{{route('scholarships_update')}}" method='post'>
+   <form action="{{route('courses_update')}}" method='post'>
       @csrf
-      <div class="frow stretched my-4 auto-col">
-         <div class="fancyinput w-100">
+      <div class="fcol my-4">
+         <div class="fancyinput my-2 w-100">
             <input type="text" id='edit_name' name='name' placeholder="Enter name" required>
             <label for="Name">Name</label>
+         </div>
+         <div class="fancyselect my-2 w-100">
+            <select name="faculty_id" id='edit_faculty_id'>
+               @foreach($faculties as $faculty)
+               <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+               @endforeach
+            </select>
+            <label for="Name">Faculty</label>
+         </div>
+         <div class="fancyselect my-2 w-100">
+            <select name="level_id" id='edit_level_id'>
+               @foreach($levels as $level)
+               <option value="{{$level->id}}">{{$level->name}}</option>
+               @endforeach
+            </select>
+            <label for="Name">Level</label>
          </div>
       </div>
       <input type="text" id='edit_id' name='id' hidden>
@@ -160,9 +196,11 @@ function toggle_addslider() {
    $("#addslider").toggleClass('slide-left');
 }
 
-function toggle_editslider(id, name) {
+function toggle_editslider(id, name, faculty_id, level_id) {
    $('#edit_id').val(id);
    $('#edit_name').val(name);
+   $('#edit_faculty_id').val(faculty_id);
+   $('#edit_level_id').val(level_id);
    $("#editslider").toggleClass('slide-left');
 }
 </script>

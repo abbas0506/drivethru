@@ -16,9 +16,9 @@ class LevelSeeder extends Seeder
     {
         //
         Level::create(['name' => 'ADP']);
-        Level::create(['name' => 'BSc - 2 years']);
-        Level::create(['name' => 'BSc Hons- 4 years']);
-        Level::create(['name' => 'MA/MSc']);
+        Level::create(['name' => 'BA / BSc - 2 years']);
+        Level::create(['name' => 'BSc Hons / BSc Professional']);
+        Level::create(['name' => 'MA / MSc']);
         Level::create(['name' => 'BS']);
         Level::create(['name' => 'MS / MPhil']);
         Level::create(['name' => 'Ph.D']);

@@ -36,6 +36,31 @@ body {
     }
 }
 
+.txt {
+    //text colors
+    &-white {
+        color: white;
+    }
+    &-red {
+        color: red;
+    }
+    &-blue {
+        color: blue;
+    }
+    &-green {
+        color: green
+    }
+    &-silver {
+        color: silver;
+    }
+    &-yellow {
+        color: yellow;
+    }
+    &-orange {
+        color: $custom_orange;
+    }
+}
+
 .hide {
     display: none !important;
 }

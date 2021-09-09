@@ -58,7 +58,7 @@
       <div class="fcol mid-left w-75"> {{$test_type->name}} </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div onclick="show_editslider('{{$test_type->id}}','{{$test_type->name}}')"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></div>
+            <div onclick="toggle_editslider('{{$test_type->id}}','{{$test_type->name}}')"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></div>
             <div>
                <form action="{{route('test_types.destroy',$test_type)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
@@ -99,7 +99,7 @@
 
 <!-- EDIT SLIDER -->
 <div class="slider" id='editslider'>
-   <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
+   <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_editslider()"><i data-feather='x' class="feather-xsmall"></i></div>
    <div class="frow centered my-4 txt-b">EDIT</div>
 
    <!-- data form -->
@@ -160,7 +160,7 @@ function toggle_addslider() {
    $("#addslider").toggleClass('slide-left');
 }
 
-function show_editslider(id, name) {
+function toggle_editslider(id, name) {
    $('#edit_id').val(id);
    $('#edit_name').val(name);
    $("#editslider").toggleClass('slide-left');

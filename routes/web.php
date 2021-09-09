@@ -12,6 +12,7 @@ use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\CouncelTypeController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\CourseController;
 
 use App\Models\Countryvisadoc;
 
@@ -69,3 +70,6 @@ Route::post('cities_update', [CityController::class, 'cities_update'])->name('ci
 
 Route::resource('test_types', TestTypeController::class)->except(['update', 'show']);
 Route::post('test_types_update', [TestTypeController::class, 'test_types_update'])->name('test_types_update');
+
+Route::resource('courses', CourseController::class)->except(['update', 'show']);
+Route::post('courses_update', [CourseController::class, 'courses_update'])->name('courses_update');
