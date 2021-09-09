@@ -14,16 +14,17 @@
 <div class="container p-5" style="width:60% !important">
    <div class="frow border rounded relative">
       <div class="fcol p-5">
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">Document Types</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Scholarship Types</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Counselling Types</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Counselling Status</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">Course Levels</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">Cities</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">Faculties</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Cuorses</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Applicaiton Status</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Test Types</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Cities</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">Study levels</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Courses</a></div>
+
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">Document titles</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>
+
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('councel_types.index')}}">Counselling request types</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('test_types.index')}}">Test types - past papers</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Applicaiton statuses</a></div>
       </div>
       <div class="absolute" style="top:-20px; left:10px; font-size:xx-large"><span class="lnr lnr-cog"></span></div>
 

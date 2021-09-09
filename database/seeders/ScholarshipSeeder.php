@@ -17,7 +17,7 @@ class ScholarshipSeeder extends Seeder
         //
         Scholarship::create(['name' => 'Presidential']);
         Scholarship::create(['name' => 'Madam Curi']);
-        Scholarship::create(['name' => 'Govt Funded']);
-        Scholarship::create(['name' => 'Fully Funded University']);
+        Scholarship::create(['name' => 'British Council']);
+        Scholarship::create(['name' => 'Fully Funded by University']);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Scholarship;
+use App\Models\TestType;
 use Illuminate\Http\Request;
 use Exception;
 
-class ScholarshipController extends Controller
+class TestTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ScholarshipController extends Controller
     public function index()
     {
         //
-        $data = Scholarship::all();
-        return view('admin.primary.scholarships.index', compact('data'));
+        $data = TestType::all();
+        return view('admin.primary.test_types.index', compact('data'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ScholarshipController extends Controller
 
         try {
 
-            $new = Scholarship::create($request->all());
+            $new = TestType::create($request->all());
             $new->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -58,10 +58,10 @@ class ScholarshipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Scholarship  $scholarship
+     * @param  \App\Models\TestType  $test_type
      * @return \Illuminate\Http\Response
      */
-    public function show(Scholarship $scholarship)
+    public function show(TestType $test_type)
     {
         //
     }
@@ -69,10 +69,10 @@ class ScholarshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Scholarship  $scholarship
+     * @param  \App\Models\TestType  $test_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Scholarship $scholarship)
+    public function edit(TestType $test_type)
     {
         //
     }
@@ -81,15 +81,15 @@ class ScholarshipController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Scholarship  $scholarship
+     * @param  \App\Models\TestType  $test_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Scholarship $scholarship)
+    public function update(Request $request, TestType $test_type)
     {
         //
     }
 
-    public function scholarships_update(Request $request)
+    public function test_types_update(Request $request)
     {
         //
         $request->validate([
@@ -97,7 +97,7 @@ class ScholarshipController extends Controller
             'name' => 'required',
         ]);
 
-        $instance = Scholarship::find($request->id);
+        $instance = TestType::find($request->id);
         $instance->name = $request->name;
 
         try {
@@ -114,14 +114,14 @@ class ScholarshipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Scholarship  $scholarship
+     * @param  \App\Models\TestType  $test_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Scholarship $scholarship)
+    public function destroy(TestType $test_type)
     {
         //
         try {
-            $scholarship->delete();
+            $test_type->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());

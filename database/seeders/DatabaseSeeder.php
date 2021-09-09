@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\CouncelTypeController;
 use App\Models\Level;
+use App\Models\TestType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +23,9 @@ class DatabaseSeeder extends Seeder
             ScholarshipSeeder::class,
             LevelSeeder::class,
             FacultySeeder::class,
+            CouncelTypeSeeder::class,
+            CitySeeder::class,
+            TestTypeSeeder::class,
         ]);
     }
 }

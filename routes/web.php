@@ -8,6 +8,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\CouncelTypeController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\TestTypeController;
+
 use App\Models\Countryvisadoc;
 
 /*
@@ -55,3 +60,12 @@ Route::post('documents_update', [DocumentController::class, 'documents_update'])
 
 Route::resource('scholarships', ScholarshipController::class)->except(['update', 'show']);
 Route::post('scholarhips_update', [ScholarshipController::class, 'scholarships_update'])->name('scholarships_update');
+
+Route::resource('councel_types', CouncelTypeController::class)->except(['update', 'show']);
+Route::post('councel_types_update', [CouncelTypeController::class, 'councel_types_update'])->name('councel_types_update');
+
+Route::resource('cities', CityController::class)->except(['update', 'show']);
+Route::post('cities_update', [CityController::class, 'cities_update'])->name('cities_update');
+
+Route::resource('test_types', TestTypeController::class)->except(['update', 'show']);
+Route::post('test_types_update', [TestTypeController::class, 'test_types_update'])->name('test_types_update');
