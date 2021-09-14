@@ -62,3 +62,30 @@
     width: 200px;
     height: 120px;
 }
+
+.image-frame {
+    position: relative;
+    & img {
+        z-index: 200;
+    }
+    & .no-image-caption {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px;
+        border-color: rgb(224, 224, 224);
+        color: grey;
+        background-color: rgb(241, 243, 245);
+        z-index: 300;
+    }
+    &.has-image {
+        & img {
+            z-index: 300;
+        }
+        & .no-image-caption {
+            position: absolute;
+            z-index: 200;
+        }
+    }
+}

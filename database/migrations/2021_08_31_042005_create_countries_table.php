@@ -17,9 +17,9 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->string('name', 70);
             $table->boolean('visarequired');
-            $table->unsignedInteger('visaduration');
+            $table->unsignedInteger('visaduration')->default(0);
             $table->unsignedInteger('livingcost');
-            $table->string('lifethere', 200);
+            $table->string('lifethere', 200)->nullable();
             $table->string('jobdesc', 400)->nullable();
             $table->string('flag', 40)->default('default.jpg');
             $table->boolean('step1')->default(0);

@@ -14,16 +14,16 @@
 <div class="container p-5" style="width:60% !important">
    <div class="frow border rounded relative">
       <div class="fcol p-5">
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">Cities</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">Faculties</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">Study levels</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">Courses</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">List of Cities</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">List of Faculties</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">List of Study levels</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">List of Faculty Courses</a></div>
 
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">Document titles</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>
 
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('councel_types.index')}}">Counselling request types</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('test_types.index')}}">Test types - past papers</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('papertypes.index')}}">Paper types - past papers</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Applicaiton statuses</a></div>
       </div>
       <div class="absolute" style="top:-20px; left:10px; font-size:xx-large"><span class="lnr lnr-cog"></span></div>

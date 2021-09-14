@@ -11,6 +11,7 @@ use App\Models\Countryscholarship;
 use App\Models\Countryvisadoc;
 use App\Models\Document;
 use App\Models\Scholarship;
+use App\Models\City;
 
 class CountryController extends Controller
 {
@@ -21,8 +22,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
-        $countries = Country::all();
+        //exclude pakistan from show list
+        $countries = Country::where('id', '>', 1)->get()->sortByDesc('id');
         return view('admin.countries.index', compact('countries'));
     }
 
@@ -34,9 +35,6 @@ class CountryController extends Controller
     public function create()
     {
         //
-        $docs = Document::all();
-        $scholarships = Scholarship::all();
-        return view('admin.countries.create', compact('docs', 'scholarships'));
     }
 
     /**
@@ -53,7 +51,6 @@ class CountryController extends Controller
             'name' => 'required',
             'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visarequired' => 'required',
-            'visaduration' => 'required',
             'livingcost' => 'required',
             'lifethere' => 'required',
         ]);
@@ -66,14 +63,12 @@ class CountryController extends Controller
             $request->flag->move(public_path('images/flags'), $imageName);
             $country->flag = $imageName;
             $country->step1 = 1;
+            if (!$request->visarequired)
+                $country->step2 = 1; //if visa not requird, auto complete 2nd step
             $country->save();
-
-            session(['country' => $country]);
-
-            return redirect()->route('countries.show', $country);
+            return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->route('countries.index')
-                ->withErrors($e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
     }
@@ -87,7 +82,7 @@ class CountryController extends Controller
     public function show(Country $country)
     {
         //
-        return view('admin.countries.show', compact('country'));
+        //return view('admin.countries.show', compact('country'));
     }
 
     /**
@@ -100,7 +95,7 @@ class CountryController extends Controller
     {
         //renew country selection 
         session(['country' => $country]);
-        return view('admin.countries.show', compact('country'));
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
@@ -115,19 +110,60 @@ class CountryController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            // 'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'flag' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visarequired' => 'required',
-            'visaduration' => 'required',
             'livingcost' => 'required',
             'lifethere' => 'required',
         ]);
 
+        $path = public_path() . "/images/flags/";
+        DB::beginTransaction();
         try {
+            //if flag updated
+            if (isset($request->flag)) {
+                //unlink old image
+                $oldfile = $path . $country->flag;
+                if (file_exists($oldfile)) {
+                    unlink($oldfile);
+                }
 
-            $country->update($request->all());
+                //save new pic after renaming
+                $file = $request->file('flag');
+                $filename = $country->id . '.' . $request->flag->extension();
+                $file->move($path, $filename);
+
+                $country->flag = $filename;
+            }
+
+            //initially assign incoming visa duration as it is, may update on next line if required
+            $country->visaduration = $request->visaduration;
+            //if visa requirement changes from yes to no
+            if ($country->visarequired && !$request->visarequired) {
+                $country->step2 = 1;            //auto complete step 2
+
+                foreach ($country->countryvisadocs()->get() as $countryvisadoc) {
+                    $countryvisadoc->delete();  //remove visa doc entries if any
+                }
+                $country->visaduration = 0;     //reset visa duration
+            }
+            //else if visa requiremtn changes from no to yes
+            else if (!$country->visarequired && $request->visarequired) {
+                $country->step2 = 0;            //revert step 2
+
+            } //else if no change, do nothing
+
+            //set remainging fields
+            $country->name = $request->name;
+            $country->visarequired = $request->visarequired;
+            $country->livingcost = $request->livingcost;
+            $country->lifethere = $request->lifethere;
+
+            $country->save();   //update the record
+            DB::commit();
             return redirect()->back()
                 ->with('success', 'Basic info updated successfully.');
         } catch (Exception $e) {
+            DB::rollBack();
             return redirect()->back()
                 ->withErrors($e->getMessage());
             // something went wrong
@@ -149,6 +185,8 @@ class CountryController extends Controller
             ->back()
             ->with('success', 'Country removed successfully');
     }
+
+
     function country_visadocs()
     {
         $country = session('country');

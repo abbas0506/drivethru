@@ -6,7 +6,7 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> New</div>
+   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> Edit</div>
 </div>
 @endsection
 @section('page-content')
@@ -27,7 +27,7 @@
    <!-- step naviagation  -->
    <div class="frow mb-5 p-3 auto-col border bg-lightsky">
       <div class="navstep hw-25">
-         <a href="{{route('countries.show', $country)}}">
+         <a href="{{route('countries.edit', $country)}}">
             <div class="roundbtn">@if($country->step1==1) <i data-feather='check' class="feather-small"></i> @else 1 @endif</div>
          </a>
          <div class="super-underline">Basic Info</div>
@@ -62,9 +62,15 @@
    <div class="frow mid-left">
       <div class="txt-l mr-4">{{$country->name}}</div><img src={{$flag_url}} alt='flag' id='flag_img' width=30 height=30 class='rounded-circle'>
    </div>
+
+   @if(!$country->visarequired)
+   <div class="frow border-bottom border-top centered border-thin txt-orange my-4">Visa not required</div>
+   @else
    <div class="frow border-bottom stretched border-thin my-4">
       <div class="fcol txt-b">Document Name</div>
-      <div class="fcol mid-right"><a href="#" onclick="slideleft()"><i data-feather='plus-circle' class="feather-small mx-1 mb-1"></i>Click here to Add New</a></div>
+      <div class="fcol mid-right">
+         <a href="#" onclick="slideleft()"><i data-feather='plus-circle' class="feather-small mx-1 mb-1"></i>Click here to Add New</a>
+      </div>
    </div>
    @foreach($country->visadocs() as $doc)
    <div class="frow my-2 stretched">
@@ -104,9 +110,9 @@
       <div class="">No more document available. If you want to create a new document, <a href='#'>click here</a></div>
 
       @endif
-
    </div> <!-- slider ends -->
-
+   @endif
+   <!-- else: visarequired ends -->
 </div>
 @endsection
 

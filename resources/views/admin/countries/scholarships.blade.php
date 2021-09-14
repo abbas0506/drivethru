@@ -6,7 +6,7 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> New</div>
+   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> Edit</div>
 </div>
 @endsection
 @section('page-content')
@@ -28,7 +28,7 @@
    <!-- step naviagation  -->
    <div class="frow mb-5 p-3 auto-col border bg-lightsky">
       <div class="navstep hw-25">
-         <a href="{{route('countries.show', $country)}}">
+         <a href="{{route('countries.edit', $country)}}">
             <div class="roundbtn">@if($country->step1==1) <i data-feather='check' class="feather-small"></i> @else 1 @endif</div>
          </a>
          <div class="super-underline">Basic Info</div>

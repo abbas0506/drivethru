@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TestType;
+use App\Models\PaperType;
 use Illuminate\Http\Request;
 use Exception;
 
-class TestTypeController extends Controller
+class PaperTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class TestTypeController extends Controller
     public function index()
     {
         //
-        $data = TestType::all();
-        return view('admin.primary.test_types.index', compact('data'));
+        $data = PaperType::all();
+        return view('admin.primary.papertypes.index', compact('data'));
     }
 
     /**
@@ -46,7 +46,7 @@ class TestTypeController extends Controller
 
         try {
 
-            $new = TestType::create($request->all());
+            $new = PaperType::create($request->all());
             $new->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -58,10 +58,10 @@ class TestTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TestType  $test_type
+     * @param  \App\Models\PaperType  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function show(TestType $test_type)
+    public function show(PaperType $papertype)
     {
         //
     }
@@ -69,10 +69,10 @@ class TestTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TestType  $test_type
+     * @param  \App\Models\PaperType  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestType $test_type)
+    public function edit(PaperType $papertype)
     {
         //
     }
@@ -81,15 +81,15 @@ class TestTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TestType  $test_type
+     * @param  \App\Models\PaperType  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TestType $test_type)
+    public function update(Request $request, PaperType $papertype)
     {
         //
     }
 
-    public function test_types_update(Request $request)
+    public function papertypes_update(Request $request)
     {
         //
         $request->validate([
@@ -97,7 +97,7 @@ class TestTypeController extends Controller
             'name' => 'required',
         ]);
 
-        $instance = TestType::find($request->id);
+        $instance = PaperType::find($request->id);
         $instance->name = $request->name;
 
         try {
@@ -114,14 +114,14 @@ class TestTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TestType  $test_type
+     * @param  \App\Models\PaperType  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TestType $test_type)
+    public function destroy(PaperType $papertype)
     {
         //
         try {
-            $test_type->delete();
+            $papertype->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());

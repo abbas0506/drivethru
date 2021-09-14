@@ -3,8 +3,8 @@
    <div class="frow">
       <div class="fcol centered navlink r-hide"><a href="{{url('primary')}}"> Primary Data</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Countries</a></div>
-      <div class="fcol centered navlink r-hide"><a href="#">Universities</a></div>
-      <div class="fcol centered navlink r-hide"><a href="#">Past Papers</a></div>
+      <div class="fcol centered navlink r-hide"><a href="{{route('universities.index')}}">Universities</a></div>
+      <div class="fcol centered navlink r-hide"><a href="{{route('papers.index')}}">Past Papers</a></div>
 
       <div class="fcol centered navlink has-sub">
          <div class='relative'>

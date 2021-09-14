@@ -6,7 +6,7 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> New</div>
+   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> Edit</div>
 </div>
 @endsection
 @section('page-content')
@@ -54,11 +54,15 @@
    </div>
    <br />
    @elseif(session('success'))
-   <div class="alert alert-success mt-5 alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      {{session('success')}}
-   </div>
-   <br />
+   <script>
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
+   </script>
+
    @endif
 
    <!-- find image url of the country -->
@@ -77,7 +81,7 @@
          <div class="fcol w-25">Visa Required: </div>
          <div class="fcol w-50">@if($country->visarequired==1) Yes @else No @endif</div>
       </div>
-      <div class="frow centered">
+      <div class="frow centered @if($country->visarequired==0) hide @endif">
          <div class="fcol w-25">Visa Duration: </div>
          <div class="fcol w-50">{{$country->visaduration}}</div>
       </div>
@@ -96,7 +100,7 @@
    </div>
 
 
-   <!-- slider that holds data to be updated -->
+   <!-- EDIT SLIDER -->
    <div class="slider" id='slider'>
       <!-- close button -->
       <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="slideleft()"><i data-feather='x' class="feather-xsmall"></i></div>
@@ -106,44 +110,36 @@
          <div class="fcol centered">
             <img src="{{$flag_url}}" alt='flag' id='flag_img' width=40 height=40 class='rounded-circle'>
          </div>
-
-         <div class="frow my-4">
-            <div class="fancyinput w-100">
-               <input type="text" name='name' placeholder="Country name" value='{{$country->name}}' required>
-               <label for="Name">Name</label>
-            </div>
+         <div class="fancyinput my-3">
+            <input type="text" name='name' placeholder="Country name" value='{{$country->name}}' required>
+            <label for="Name">Name</label>
+         </div>
+         <div class="fancyinput my-2 w-100">
+            <input type="file" id='flag' name='flag' placeholder="flag" class='w-100 m-0 p-2' onchange='preview_flag()'>
+            <label for="Name">Flag</label>
+         </div>
+         <div class="fancyselect my-3">
+            <select name='visarequired' value='{{$country->visarequired}}' onchange="showOrHideDuration(event)">
+               <option value='1' @if($country->visarequired==1) selected @endif>Yes</option>
+               <option value='0' @if($country->visarequired==0) selected @endif>No</option>
+            </select>
+            <label for="Name">Visa Required</label>
          </div>
 
-         <div class="frow mb-4">
-            <div class="fancyselect w-100">
-               <select name='visarequired' value='{{$country->visarequired}}'>
-                  <option value='1' @if($country->visarequired==1) selected @endif>Yes</option>
-                  <option value='0' @if($country->visarequired==0) selected @endif>No</option>
-               </select>
-               <label for="Name">Visa Required</label>
-            </div>
+         <div class="fancyinput my-3" id='visaduration' @if($country->visarequired==0) style="display:none" @endif>
+            <input type="number" name='visaduration' placeholder="Visa duration" min='0' max='100' value='{{$country->visaduration}}' required>
+            <label for="Name">Visa Duration (Yr)</label>
          </div>
          <div>
-            <div class="frow mb-4">
-               <div class="fancyinput w-100">
-                  <input type="number" name='visaduration' placeholder="Visa duration" min='0' max='100' value='{{$country->visaduration}}' required>
-                  <label for="Name">Visa Duration (Yr)</label>
-               </div>
+            <div class="fancyinput my-3">
+               <input type="number" name='livingcost' placeholder="Living cost" min='0' value='{{$country->livingcost}}' required>
+               <label for="Name">Living Cost</label>
             </div>
+
          </div>
-         <div>
-            <div class="frow mb-4">
-               <div class="fancyinput w-100">
-                  <input type="number" name='livingcost' placeholder="Living cost" min='0' value='{{$country->livingcost}}' required>
-                  <label for="Name">Living Cost</label>
-               </div>
-            </div>
-         </div>
-         <div class="frow my-4">
-            <div class="fancyinput w-100">
-               <input type="text" name='lifethere' placeholder="Life there" value='{{$country->lifethere}}' required>
-               <label for="Name">Life there</label>
-            </div>
+         <div class="fancyinput my-3">
+            <input type="text" name='lifethere' placeholder="Life there" value='{{$country->lifethere}}' required>
+            <label for="Name">Life there</label>
          </div>
 
          <div class="frow mid-right my-5">
@@ -167,6 +163,15 @@ function preview_flag() {
 
 function slideleft() {
    $("#slider").toggleClass('slide-left');
+}
+
+function showOrHideDuration(event) {
+   if (event.target.value == 0) {
+      $('#visaduration').hide()
+   } else {
+      $('#visaduration').show()
+      $('[name=visaduration]').val(1)
+   }
 }
 </script>
 @endsection

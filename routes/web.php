@@ -11,8 +11,11 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\CouncelTypeController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\PaperTypeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PaperController;
+use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\UnicourseController;
 
 use App\Models\Countryvisadoc;
 
@@ -68,8 +71,16 @@ Route::post('councel_types_update', [CouncelTypeController::class, 'councel_type
 Route::resource('cities', CityController::class)->except(['update', 'show']);
 Route::post('cities_update', [CityController::class, 'cities_update'])->name('cities_update');
 
-Route::resource('test_types', TestTypeController::class)->except(['update', 'show']);
-Route::post('test_types_update', [TestTypeController::class, 'test_types_update'])->name('test_types_update');
+Route::resource('papertypes', PaperTypeController::class)->except(['update', 'show']);
+Route::post('papertypes_update', [PaperTypeController::class, 'papertypes_update'])->name('papertypes_update');
 
 Route::resource('courses', CourseController::class)->except(['update', 'show']);
 Route::post('courses_update', [CourseController::class, 'courses_update'])->name('courses_update');
+
+Route::resource('papers', PaperController::class);
+
+Route::resource('universities', UniversityController::class);
+Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
+Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
+Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
+Route::resource('unicourses', UnicourseController::class);

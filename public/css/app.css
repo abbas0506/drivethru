@@ -206,6 +206,10 @@ body {
   background-color: transparent;
 }
 
+.w-5 {
+  width: 5%;
+}
+
 .w-10 {
   width: 10%;
 }
@@ -240,6 +244,10 @@ body {
 
 .hw-50 {
   width: 50%;
+}
+
+.w-55 {
+  width: 55%;
 }
 
 .w-60 {
@@ -432,6 +440,31 @@ body {
 .box-120x200 {
   width: 200px;
   height: 120px;
+}
+
+.image-frame {
+  position: relative;
+}
+.image-frame img {
+  z-index: 200;
+}
+.image-frame .no-image-caption {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px;
+  border-color: #e0e0e0;
+  color: grey;
+  background-color: #f1f3f5;
+  z-index: 300;
+}
+.image-frame.has-image img {
+  z-index: 300;
+}
+.image-frame.has-image .no-image-caption {
+  position: absolute;
+  z-index: 200;
 }
 
 .fancyinput {
