@@ -50,9 +50,10 @@ class CountryController extends Controller
         $request->validate([
             'name' => 'required',
             'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'currency' => 'required',
             'visarequired' => 'required',
-            'livingcost' => 'required',
             'lifethere' => 'required',
+            'jobdesc' => 'required',
         ]);
 
         try {
@@ -111,9 +112,11 @@ class CountryController extends Controller
         $request->validate([
             'name' => 'required',
             'flag' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'currency' => 'required',
             'visarequired' => 'required',
-            'livingcost' => 'required',
             'lifethere' => 'required',
+            'jobdesc' => 'required',
+            'intro' => 'required',
         ]);
 
         $path = public_path() . "/images/flags/";
@@ -154,9 +157,11 @@ class CountryController extends Controller
 
             //set remainging fields
             $country->name = $request->name;
+            $country->currency = $request->currency;
             $country->visarequired = $request->visarequired;
-            $country->livingcost = $request->livingcost;
             $country->lifethere = $request->lifethere;
+            $country->jobdesc = $request->jobdesc;
+            $country->intro = $request->intro;
 
             $country->save();   //update the record
             DB::commit();
@@ -241,12 +246,12 @@ class CountryController extends Controller
                 foreach ($scholarship_ids as $scholarship_id) {
                     Countryscholarship::create(['scholarship_id' => $scholarship_id, 'country_id' => $country->id]);
                 }
-                $country->step3 = 1;
+                $country->step4 = 1;
                 $country->update();
             }
             DB::commit();
             //all good
-            return redirect()->route('country_scholarships');
+            return redirect()->back()->with('success', 'Scuccesful');
         } catch (Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();

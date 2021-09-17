@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Countryvisadoc extends Model
+class Visadoc extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'doc_id',
         'country_id',
+        'doc_id',
     ];
+
     public $timestamps = false;
 
     public function doc()

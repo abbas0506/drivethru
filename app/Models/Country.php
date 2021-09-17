@@ -10,16 +10,20 @@ class Country extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'intro',
+        'flag',
+        'currency',
         'visarequired',
         'visaduration',
-        'livingcost',
         'lifethere',
         'jobdesc',
-        'flag',
+
         'step1',
         'step2',
         'step3',
         'step4',
+        'step5',
+        'step6',
     ];
 
     public $timestamps = false;
@@ -29,28 +33,24 @@ class Country extends Model
     {
         return $this->hasMany(Countryvisadoc::class, 'country_id');
     }
-    public function countryjobs()
-    {
-        return $this->hasMany(CountryJob::class, 'country_id');
-    }
 
-    public function visadocs()
-    {
+    // public function visadocs()
+    // {
 
-        $mycollection = collect();
-        foreach ($this->countryvisadocs()->get() as $countryvisadoc) {
-            $mycollection->add($countryvisadoc->doc);
-        }
-        return $mycollection;
-    }
+    //     $mycollection = collect();
+    //     foreach ($this->countryvisadocs()->get() as $countryvisadoc) {
+    //         $mycollection->add($countryvisadoc->doc);
+    //     }
+    //     return $mycollection;
+    // }
 
-    public function not_visadocs()
-    {
+    // public function not_visadocs()
+    // {
 
-        $visadoc_ids = $this->visadocs()->pluck('id')->toArray();
-        $docs = Document::whereNotIn('id', $visadoc_ids)->get();
-        return $docs;
-    }
+    //     $visadoc_ids = $this->visadocs()->pluck('id')->toArray();
+    //     $docs = Document::whereNotIn('id', $visadoc_ids)->get();
+    //     return $docs;
+    // }
 
     //scholarships
 
@@ -59,21 +59,45 @@ class Country extends Model
         return $this->hasMany(Countryscholarship::class, 'country_id');
     }
 
-    public function scholarships()
+    public function favcourses()
     {
-
-        $mycollection = collect();
-        foreach ($this->countryscholarships()->get() as $countryscholarship) {
-            $mycollection->add($countryscholarship->scholarship);
-        }
-        return $mycollection;
+        return $this->hasMany(Favcourse::class, 'country_id')->get();
+    }
+    public function xfavcourses()
+    {
+        $favcourse_ids = Favcourse::where('country_id', $this->id)->pluck('course_id')->toArray();
+        $xfavcourses = Course::whereNotIn('id', $favcourse_ids)->get();
+        return $xfavcourses;
+    }
+    public function visadocs()
+    {
+        return $this->hasMany(Visadoc::class, 'country_id')->get();
+    }
+    public function xvisadocs()
+    {
+        $xvisadoc_ids = Visadoc::where('country_id', $this->id)->pluck('doc_id')->toArray();
+        $xvisadocs = Document::whereNotIn('id', $xvisadoc_ids)->get();
+        return $xvisadocs;
+    }
+    public function admdocs()
+    {
+        return $this->hasMany(Admdoc::class, 'country_id')->get();
+    }
+    public function xadmdocs()
+    {
+        $xadmdoc_ids = Admdoc::where('country_id', $this->id)->pluck('doc_id')->toArray();
+        $xadmdocs = Document::whereNotIn('id', $xadmdoc_ids)->get();
+        return $xadmdocs;
     }
 
-    public function not_scholarships()
+    public function scholarships()
     {
-
-        $scholarship_ids = $this->scholarships()->pluck('id')->toArray();
-        $scholarships = Scholarship::whereNotIn('id', $scholarship_ids)->get();
-        return $scholarships;
+        return $this->hasMany(ScholarshipOffer::class, 'country_id')->get();
+    }
+    public function xscholarships()
+    {
+        $xscholarships_ids = ScholarshipOffer::where('country_id', $this->id)->pluck('scholarship_id')->toArray();
+        $xscholarships = Scholarship::whereNotIn('id', $xscholarships_ids)->get();
+        return $xscholarships;
     }
 }

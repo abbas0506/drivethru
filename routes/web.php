@@ -16,8 +16,10 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\UnicourseController;
-
-use App\Models\Countryvisadoc;
+use App\Http\Controllers\FavcourseController;
+use App\Http\Controllers\VisadocController;
+use App\Http\Controllers\AdmdocController;
+use App\Http\Controllers\ScholarshipOfferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,18 +41,6 @@ Route::resource('user', UserController::class);
 
 Route::view('admin', 'admin.index');
 Route::resource('countries', CountryController::class);
-Route::resource('countryvisadocs', Countryvisadoc::class);
-
-Route::get('country_visadocs', [CountryController::class, 'country_visadocs'])->name('country_visadocs');
-Route::post('post_country_visadocs', [CountryController::class, 'post_country_visadocs'])->name('post_country_visadocs');
-Route::delete('delete_country_visadoc/{id}', [CountryController::class, 'delete_country_visadoc'])->name('delete_country_visadoc');
-
-Route::get('country_scholarships', [CountryController::class, 'country_scholarships'])->name('country_scholarships');
-Route::post('post_country_scholarship', [CountryController::class, 'post_country_scholarship'])->name('post_country_scholarship');
-Route::delete('delete_country_scholarship/{id}', [CountryController::class, 'delete_country_scholarship'])->name('delete_country_scholarship');
-
-Route::get('country_jobs', [CountryController::class, 'country_jobs'])->name('country_jobs');
-Route::post('post_country_jobs', [CountryController::class, 'post_country_jobs'])->name('post_country_jobs');
 Route::view('primary', 'admin.primary');
 
 Route::resource('faculties', FacultyController::class)->except(['update', 'show']);
@@ -84,3 +74,7 @@ Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('u
 Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
 Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
 Route::resource('unicourses', UnicourseController::class);
+Route::resource('favcourses', FavcourseController::class);
+Route::resource('visadocs', VisadocController::class);
+Route::resource('admdocs', AdmdocController::class);
+Route::resource('scholarship_offers', ScholarshipOfferController::class);

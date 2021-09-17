@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCountryvisadocsTable extends Migration
+class CreateVisadocsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateCountryvisadocsTable extends Migration
      */
     public function up()
     {
-        Schema::create('countryvisadocs', function (Blueprint $table) {
+        Schema::create('visadocs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('doc_id');
             $table->unsignedBigInteger('country_id');
-
-            $table->foreign('doc_id')
-                ->references('id')
-                ->on('documents')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->unsignedBigInteger('doc_id');
 
             $table->foreign('country_id')
                 ->references('id')
                 ->on('countries')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('doc_id')
+                ->references('id')
+                ->on('documents')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -41,6 +41,6 @@ class CreateCountryvisadocsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countryvisadocs');
+        Schema::dropIfExists('visadocs');
     }
 }

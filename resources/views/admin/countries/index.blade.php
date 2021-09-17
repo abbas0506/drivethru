@@ -88,11 +88,7 @@
 <div class="slider" id='addslider'>
    <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
    <div class="frow centered my-4 txt-b">New Country</div>
-   <!-- flag image preview -->
-   <div class="frow centered image-frame" id='image_frame'>
-      <img src="#" alt='flag' id='preview_img' width=75 height=75>
-      <div class="no-image-caption txt-s" style='width:75px; height:75px'>Flag</div>
-   </div>
+
    <!--data input -->
    <form action="{{route('countries.store')}}" method='post' enctype="multipart/form-data">
       @csrf
@@ -102,10 +98,21 @@
             <input type="text" name='name' placeholder="Country name" required>
             <label for="Name">Name</label>
          </div>
+         <div class="frow my-2 stretched">
+            <div class="fcol fancyinput">
+               <input type="file" id='flag' name='flag' placeholder="flag" class='w-90 m-0 mr-1 p-2' onchange='preview_flag()' required>
+               <label for="Name">Flag</label>
+            </div>
 
+            <!-- flag image preview -->
+            <div class="fcol centered image-frame" id='image_frame'>
+               <img src="#" alt='flag' id='preview_img' width=50 height=49>
+               <div class="no-image-caption txt-xs" style='width:50px; height:49px'>Flag</div>
+            </div>
+         </div>
          <div class="fancyinput my-2 w-100">
-            <input type="file" id='flag' name='flag' placeholder="flag" class='w-100 m-0 p-2' onchange='preview_flag()' required>
-            <label for="Name">Flag</label>
+            <input type="text" name='currency' placeholder="Currency e.g USD" required>
+            <label for="Name">Currency</label>
          </div>
 
          <div class="frow my-2 stretched">
@@ -121,15 +128,17 @@
                <label for="Name">Visa Duration (Yr)</label>
             </div>
          </div>
-
-         <div class="fancyinput my-2 w-100">
-            <input type="number" name='livingcost' placeholder="Living cost" min='0' value="1000" required>
-            <label for="Name">Living Cost ($)</label>
-         </div>
-
          <div class="fancyinput my-2 w-100">
             <textarea rows="3" name='lifethere' placeholder="Life there" required></textarea>
             <label>Life there</label>
+         </div>
+         <div class="fancyinput my-2 w-100">
+            <textarea rows="3" name='jobdesc' placeholder="Job desc" required></textarea>
+            <label>Job Desc</label>
+         </div>
+         <div class="fancyinput my-2 w-100">
+            <textarea rows="3" name='intro' placeholder="Brief introduction" required></textarea>
+            <label>Introduction</label>
          </div>
       </div>
 

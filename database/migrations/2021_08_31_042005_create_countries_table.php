@@ -16,16 +16,19 @@ class CreateCountriesTable extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name', 70);
+            $table->string('intro', 200);
+            $table->string('flag', 40)->default('default.jpg');
+            $table->string('currency', 10)->default('USD');
             $table->boolean('visarequired');
             $table->unsignedInteger('visaduration')->default(0);
-            $table->unsignedInteger('livingcost');
-            $table->string('lifethere', 200)->nullable();
+            $table->string('lifethere', 300)->nullable();
             $table->string('jobdesc', 400)->nullable();
-            $table->string('flag', 40)->default('default.jpg');
             $table->boolean('step1')->default(0);
             $table->boolean('step2')->default(0);
             $table->boolean('step3')->default(0);
             $table->boolean('step4')->default(0);
+            $table->boolean('step5')->default(0);
+            $table->boolean('step6')->default(0);
 
             $table->timestamps();
         });

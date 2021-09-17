@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="/css/app.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
    <!-- <link href="/fonts/icon-font/lineicons.css" rel="stylesheet"> -->
    <!-- <link href="/fonts/linear_icons/webfont/selection.json" rel="stylesheet"> -->
    <!-- <link href="/css/linear_icons.css" rel="stylesheet"> -->
@@ -34,7 +35,7 @@
 
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".spy" data-offset="200">
 
    @yield('header')
    @yield('page-content')
