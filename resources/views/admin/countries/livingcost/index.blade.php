@@ -10,7 +10,7 @@
       <a href="{{url('/admin')}}">Home </a><span class="mx-1"> / </span>
       <a href="{{route('countries.index')}}">countries </a><span class="mx-1"> / </span>
       <a href="{{route('countries.edit',$country)}}">{{$country->name}}</a><span class="mx-1"> / </span>
-      study cost
+      living cost
    </div>
 </div>
 @endsection
@@ -48,21 +48,21 @@
    <!-- page content -->
    <div class="frow px-2 py-1 mb-2 txt-b bg-info">
       <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-50">Level </div>
-      <div class="frow mid-left w-25">Cost <span class="txt-s ml-1"> / year</span></div>
+      <div class="fcol mid-left w-50">Expense Type </div>
+      <div class="frow mid-left w-25">Cost <span class="txt-s ml-1"> / month</span></div>
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($studycosts as $studycost)
+   @foreach($livingcosts as $livingcost)
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-50"> {{$studycost->level->name}} </div>
-      <div class="fcol mid-left w-25"> {{$studycost->minfee}} - {{$studycost->maxfee}} {{$country->currency}}</div>
+      <div class="fcol mid-left w-50"> {{$livingcost->expensetype->name}} </div>
+      <div class="fcol mid-left w-25"> {{$livingcost->minexp}} - {{$livingcost->maxexp}} {{$country->currency}}</div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <a href="{{route('studycosts.edit',$studycost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+            <a href="{{route('livingcosts.edit',$livingcost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
             <div>
-               <form action="{{route('studycosts.destroy',$studycost)}}" method="POST" id='del_form{{$sr}}'>
+               <form action="{{route('livingcosts.destroy',$livingcost)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
@@ -83,23 +83,24 @@
    <div class="frow centered my-4 txt-b">New Study Cost</div>
 
    <!-- data form -->
-   <form action="{{route('studycosts.store')}}" method='post'>
+   <form action="{{route('livingcosts.store')}}" method='post'>
       @csrf
+      <input type="text" name="country_id" value="{{$country->id}}" hidden>
       <div class="fcol my-4">
          <div class="fancyselect w-100 my-2">
-            <select name="level_id">
-               @foreach($levels as $level)
-               <option value="{{$level->id}}">{{$level->name}}</option>
+            <select name="expensetype_id">
+               @foreach($expensetypes as $expensetype)
+               <option value="{{$expensetype->id}}">{{$expensetype->name}}</option>
                @endforeach
             </select>
          </div>
          <div class="fancyinput w-100 my-2">
-            <input type="number" name='minfee' placeholder="minimum cost" required>
-            <label>Min Cost</label>
+            <input type="number" name='minexp' placeholder="minimum cost" required>
+            <label>Min Cost (k)</label>
          </div>
          <div class="fancyinput w-100 my-2">
-            <input type="number" name='maxfee' placeholder="maximum cost" required>
-            <label>Max Cost</label>
+            <input type="number" name='maxexp' placeholder="maximum cost" required>
+            <label>Max Cost (k)</label>
          </div>
       </div>
       <div class="frow mid-right my-5">
