@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CouncelType;
+use App\Models\Expensetype;
 use Illuminate\Http\Request;
 use Exception;
 
-class CouncelTypeController extends Controller
+class ExpensetypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CouncelTypeController extends Controller
     public function index()
     {
         //
-        $data = CouncelType::all();
-        return view('admin.primary.councel_types.index', compact('data'));
+        $expensetypes = Expensetype::all();
+        return view('admin.primary.expensetypes.index', compact('expensetypes'));
     }
 
     /**
@@ -28,7 +28,6 @@ class CouncelTypeController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -46,8 +45,9 @@ class CouncelTypeController extends Controller
 
         try {
 
-            $new = CouncelType::create($request->all());
-            $new->save();
+            $expensetype = Expensetype::create($request->all());
+            $expensetype->save();
+
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -58,10 +58,10 @@ class CouncelTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Expensetype  $expensetype
      * @return \Illuminate\Http\Response
      */
-    public function show(CouncelType $councel_type)
+    public function show(Expensetype $expensetype)
     {
         //
     }
@@ -69,23 +69,23 @@ class CouncelTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Expensetype  $expensetype
      * @return \Illuminate\Http\Response
      */
-    public function edit(CouncelType $councel_type)
+    public function edit(Expensetype $expensetype)
     {
         //
-        return view('admin.primary.councel_types.edit', compact('councel_type'));
+        return view('admin.primary.expensetypes.edit', compact('expensetype'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Expensetype  $expensetype
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CouncelType $councel_type)
+    public function update(Request $request, Expensetype $expensetype)
     {
         //
         $request->validate([
@@ -94,10 +94,10 @@ class CouncelTypeController extends Controller
 
         try {
 
-            $councel_type->update($request->all());
-            return redirect()->route('councel_types.index')->with('success', 'Successfully created');
+            $expensetype->update($request->all());
+            return redirect()->route('expensetypes.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->route('councel_types.index')->withErrors($e->getMessage());
+            return redirect()->route('expensetypes.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
@@ -105,18 +105,15 @@ class CouncelTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Expensetype  $expensetype
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CouncelType $councel_type)
+    public function destroy(Expensetype $expensetype)
     {
         //
-        try {
-            $councel_type->delete();
-            return redirect()->back()->with('success', 'Successfully deleted');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-            // something went wrong
-        }
+        $expensetype->delete();
+        return redirect()
+            ->back()
+            ->with('success', 'Successfully removed');
     }
 }

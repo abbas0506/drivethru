@@ -5,11 +5,9 @@
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
-   <div class='txt-l txt-white'>Councelling Types</div>
+   <div class='txt-l txt-white'>Expense Types</div>
    <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
-      <a href="{{url('primary')}}">primary data</a> <span class="mx-1"> / </span>
-      councelling types
+      <a href="{{url('/admin')}}">Home</a><span class="mx-1"> / </span><a href="{{url('primary')}}">primary</a><span class="mx-1"> / </span>expense types
    </div>
 </div>
 @endsection
@@ -50,15 +48,15 @@ Swal.fire({
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($data as $councel_type)
+   @foreach($expensetypes as $expensetype)
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$councel_type->name}} </div>
+      <div class="fcol mid-left w-75"> {{$expensetype->name}} </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <a href="{{route('councel_types.edit',$councel_type)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+            <a href="{{route('expensetypes.edit',$expensetype)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
             <div>
-               <form action="{{route('councel_types.destroy',$councel_type)}}" method="POST" id='del_form{{$sr}}'>
+               <form action="{{route('expensetypes.destroy',$expensetype)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
@@ -76,10 +74,10 @@ Swal.fire({
 <!-- ADD SLIDER -->
 <div class="slider" id='addslider'>
    <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">NEW</div>
+   <div class="frow centered my-4 txt-b">New Expense Type</div>
 
    <!-- data form -->
-   <form action="{{route('councel_types.store')}}" method='post'>
+   <form action="{{route('expensetypes.store')}}" method='post'>
       @csrf
       <div class="frow stretched my-4 auto-col">
          <div class="fancyinput w-100">
@@ -93,6 +91,7 @@ Swal.fire({
    </form>
 
 </div>
+<!--add slider ends -->
 @endsection
 
 @section('script')
@@ -131,6 +130,12 @@ function delme(formid) {
 
 function toggle_addslider() {
    $("#addslider").toggleClass('slide-left');
+}
+
+function toggle_editslider(id, name) {
+   $('#edit_id').val(id);
+   $('#edit_name').val(name);
+   $("#editslider").toggleClass('slide-left');
 }
 </script>
 @endsection

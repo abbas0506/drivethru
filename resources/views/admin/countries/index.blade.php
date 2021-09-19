@@ -61,9 +61,8 @@
       <div class="fcol mid-left w-60"> {{$country->name}} </div>
       <div class="fcol centered w-15">
          <div class="frow w-100 mid-left">
-            @php $numofsteps_completed=$country->step1+$country->step2+$country->step3+$country->step4; @endphp
-            <div class="bar bar-1 bar-green" style="width:{{$numofsteps_completed*20}}%"></div>
-            <div class="bar-val">{{$numofsteps_completed*25}}%</div>
+            <div class="bar bar-1 bar-green" style="width:{{$country->progress()}}%"></div>
+            <div class="bar-val">{{$country->progress()}}%</div>
          </div>
       </div>
       <div class="fcol mid-right w-15">

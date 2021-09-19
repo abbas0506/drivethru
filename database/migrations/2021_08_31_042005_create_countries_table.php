@@ -29,6 +29,9 @@ class CreateCountriesTable extends Migration
             $table->boolean('step4')->default(0);
             $table->boolean('step5')->default(0);
             $table->boolean('step6')->default(0);
+            $table->boolean('step7')->default(0);
+            $table->boolean('step8')->default(0);
+
 
             $table->timestamps();
         });

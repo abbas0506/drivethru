@@ -24,51 +24,13 @@ class Country extends Model
         'step4',
         'step5',
         'step6',
+        'step7',
+        'step8',
     ];
 
     public $timestamps = false;
 
     //visa docs
-    public function countryvisadocs()
-    {
-        return $this->hasMany(Countryvisadoc::class, 'country_id');
-    }
-
-    // public function visadocs()
-    // {
-
-    //     $mycollection = collect();
-    //     foreach ($this->countryvisadocs()->get() as $countryvisadoc) {
-    //         $mycollection->add($countryvisadoc->doc);
-    //     }
-    //     return $mycollection;
-    // }
-
-    // public function not_visadocs()
-    // {
-
-    //     $visadoc_ids = $this->visadocs()->pluck('id')->toArray();
-    //     $docs = Document::whereNotIn('id', $visadoc_ids)->get();
-    //     return $docs;
-    // }
-
-    //scholarships
-
-    public function countryscholarships()
-    {
-        return $this->hasMany(Countryscholarship::class, 'country_id');
-    }
-
-    public function favcourses()
-    {
-        return $this->hasMany(Favcourse::class, 'country_id')->get();
-    }
-    public function xfavcourses()
-    {
-        $favcourse_ids = Favcourse::where('country_id', $this->id)->pluck('course_id')->toArray();
-        $xfavcourses = Course::whereNotIn('id', $favcourse_ids)->get();
-        return $xfavcourses;
-    }
     public function visadocs()
     {
         return $this->hasMany(Visadoc::class, 'country_id')->get();
@@ -99,5 +61,27 @@ class Country extends Model
         $xscholarships_ids = ScholarshipOffer::where('country_id', $this->id)->pluck('scholarship_id')->toArray();
         $xscholarships = Scholarship::whereNotIn('id', $xscholarships_ids)->get();
         return $xscholarships;
+    }
+    public function favcourses()
+    {
+        return $this->hasMany(Favcourse::class, 'country_id')->get();
+    }
+    public function xfavcourses()
+    {
+        $favcourse_ids = Favcourse::where('country_id', $this->id)->pluck('course_id')->toArray();
+        $xfavcourses = Course::whereNotIn('id', $favcourse_ids)->get();
+        return $xfavcourses;
+    }
+    public function universities()
+    {
+        return $this->hasMany(Funiversity::class, 'country_id')->get();
+    }
+    public function progress()
+    {
+        return ($this->step1 + $this->step2 + $this->step3 + $this->step4 + $this->step5 + $this->step6 + $this->step7 + $this->step8) * 100 / 8;
+    }
+    public function studycosts()
+    {
+        return $this->hasMany(Studycost::class, 'country_id')->get();
     }
 }

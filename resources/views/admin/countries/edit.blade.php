@@ -6,7 +6,11 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> Edit</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
+      <a href="{{route('countries.index')}}">Countries </a><span class="mx-1"> / </span>
+      {{$country->name}}
+   </div>
 </div>
 @endsection
 
@@ -48,7 +52,7 @@ $flag_url=url("/images/flags/".$country->flag);
          <!-- border -->
          <!-- <div class="frow border-bottom stretched border-thin my-4"></div> -->
          <div class='progress mb-4' style='height:5px'>
-            <div class='progress-bar' style='width:30%'> </div>
+            <div class='progress-bar' style='width:{{$country->progress()}}%'> </div>
          </div>
 
          <div class="frow navstep mid-left">
@@ -223,19 +227,36 @@ $flag_url=url("/images/flags/".$country->flag);
          <div class="frow mid-left txt-m">Universities</div>
          <div class="frow border-bottom stretched border-thin my-4"></div>
          <!-- edit icon on top right corner -->
-         <div class='absolute' style='top:5px; right:5px' onclick="slideleft()">
-            <i data-feather='edit-2' class="feather-small txt-blue"></i>
+         <div class='absolute' style='top:5px; right:5px'>
+            <a href="{{route('funiversities.index')}}"><i data-feather='edit-2' class="feather-small txt-blue"></i></a>
          </div>
-
+         @if($country->universities()->count()>0)
+         @foreach($country->universities() as $university)
+         <div class="frow my-2 px-4">{{$university->name}}</div>
+         @endforeach
+         @else
+         <div class="frow centered txt-orange my-4">No university found</div>
+         @endif
       </div>
+
       <!-- Study Cost -->
       <div class="p-4 my-4 border shadow relative" id='studycost'>
          <div class="frow mid-left txt-m">Study Cost</div>
          <div class="frow border-bottom stretched border-thin my-4"></div>
          <!-- edit icon on top right corner -->
-         <div class='absolute' style='top:5px; right:5px' onclick="slideleft()">
-            <i data-feather='edit-2' class="feather-small txt-blue"></i>
+         <div class='absolute' style='top:5px; right:5px'>
+            <a href="{{route('studycosts.index')}}"><i data-feather='edit-2' class=" feather-small txt-blue"></i></a>
          </div>
+         @if($country->studycosts()->count()>0)
+         @foreach($country->studycosts() as $studycost)
+         <div class="frow stretched px-4">
+            <div>{{$studycost->level->name}}</div>
+            <div>{{$studycost->minfee}}-{{$studycost->maxfee}} @ {{$country->currency}} / year</div>
+         </div>
+         @endforeach
+         @else
+         <div class="frow centered txt-orange my-4">No university found</div>
+         @endif
 
       </div>
       <!-- Study Cost -->
@@ -243,8 +264,8 @@ $flag_url=url("/images/flags/".$country->flag);
          <div class="frow mid-left txt-m">Living Cost</div>
          <div class="frow border-bottom stretched border-thin my-4"></div>
          <!-- edit icon on top right corner -->
-         <div class='absolute' style='top:5px; right:5px' onclick="slideleft()">
-            <i data-feather='edit-2' class="feather-small txt-blue"></i>
+         <div class='absolute' style='top:5px; right:5px'>
+            <a href="{{route('studycosts.index')}}"><i data-feather='edit-2' class=" feather-small txt-blue"></i></a>
          </div>
 
       </div>
@@ -410,7 +431,7 @@ $flag_url=url("/images/flags/".$country->flag);
       <div class="slider" id='favcourseSlider'>
 
          <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggleFavcourseSlider()"><i data-feather='x' class="feather-xsmall"></i></div>
-         <div class="frow centered my-4 txt-b">DOCUMENTS</div>
+         <div class="frow centered my-4 txt-b">Available Courses</div>
          @if($country->xfavcourses()->count()>0)
          <form action="{{route('favcourses.store')}}" method='post' onsubmit="postFavcourse()" id='myform'>
             @csrf

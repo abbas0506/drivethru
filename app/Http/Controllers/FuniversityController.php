@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CouncelType;
+use App\Models\Funiversity;
 use Illuminate\Http\Request;
 use Exception;
 
-class CouncelTypeController extends Controller
+class FuniversityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class CouncelTypeController extends Controller
     public function index()
     {
         //
-        $data = CouncelType::all();
-        return view('admin.primary.councel_types.index', compact('data'));
+        $country = session('country');
+        $funiversities = Funiversity::where('country_id', $country->id)->get();
+        return view('admin.countries.funiversities.index', compact('funiversities', 'country'));
     }
 
     /**
@@ -28,7 +29,6 @@ class CouncelTypeController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -45,9 +45,17 @@ class CouncelTypeController extends Controller
         ]);
 
         try {
+            $country = session('country');
+            $favuniversity = Funiversity::create([
+                'name' => $request->name,
+                'country_id' => $country->id,
 
-            $new = CouncelType::create($request->all());
-            $new->save();
+            ]);
+            $favuniversity->save();
+
+            $country->step6 = 1;
+            $country->save();
+
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -58,10 +66,10 @@ class CouncelTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Funiversity  $funiversity
      * @return \Illuminate\Http\Response
      */
-    public function show(CouncelType $councel_type)
+    public function show(Funiversity $funiversity)
     {
         //
     }
@@ -69,23 +77,24 @@ class CouncelTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Funiversity  $funiversity
      * @return \Illuminate\Http\Response
      */
-    public function edit(CouncelType $councel_type)
+    public function edit(Funiversity $funiversity)
     {
         //
-        return view('admin.primary.councel_types.edit', compact('councel_type'));
+        $country = session('country');
+        return view('admin.countries.funiversities.edit', compact('funiversity', 'country'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Funiversity  $funiversity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CouncelType $councel_type)
+    public function update(Request $request, Funiversity $funiversity)
     {
         //
         $request->validate([
@@ -93,30 +102,25 @@ class CouncelTypeController extends Controller
         ]);
 
         try {
-
-            $councel_type->update($request->all());
-            return redirect()->route('councel_types.index')->with('success', 'Successfully created');
+            $funiversity->update($request->all());
+            return redirect()->route('funiversities.index')->with('success', 'Successfully updated');
         } catch (Exception $e) {
-            return redirect()->route('councel_types.index')->withErrors($e->getMessage());
-            // something went wrong
+            return redirect()->route('funiversities.index')->withErrors($e->getMessage());
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CouncelType  $councel_type
+     * @param  \App\Models\Funiversity  $funiversity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CouncelType $councel_type)
+    public function destroy(Funiversity $funiversity)
     {
         //
-        try {
-            $councel_type->delete();
-            return redirect()->back()->with('success', 'Successfully deleted');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-            // something went wrong
-        }
+        $funiversity->delete();
+        return redirect()
+            ->back()
+            ->with('success', 'Successfully removed');
     }
 }

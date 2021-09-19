@@ -6,7 +6,9 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Primary Data</div>
-   <div class='frow txt-s text-info'>Click on any option to feed data</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('/admin')}}">Home</a><span class="mx-1"> / </span>primary data
+   </div>
 </div>
 @endsection
 @section('page-content')
@@ -18,11 +20,11 @@
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">List of Faculties</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">List of Study levels</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">List of Faculty Courses</a></div>
-
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">Document titles</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">List of documents required for visa or admission</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>
 
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('councel_types.index')}}">Counselling request types</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('expensetypes.index')}}">Living Expense Types</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('papertypes.index')}}">Paper types - past papers</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Applicaiton statuses</a></div>
       </div>

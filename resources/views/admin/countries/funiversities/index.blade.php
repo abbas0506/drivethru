@@ -5,37 +5,47 @@
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
-   <div class='txt-l txt-white'>Councelling Types</div>
+   <div class='txt-l txt-white'>Countries</div>
    <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
-      <a href="{{url('primary')}}">primary data</a> <span class="mx-1"> / </span>
-      councelling types
+      <a href="{{url('/admin')}}">Home </a>
+      <span class="mx-1"> / </span>
+      <a href="{{route('countries.index')}}">Countries </a>
+      <span class="mx-1"> / </span>
+      <a href="{{route('countries.edit',$country)}}">{{$country->name}}</a>
+      <span class="mx-1"> / </span>
+      Universities
    </div>
 </div>
 @endsection
 @section('page-content')
-<!-- display record save, del, update message if any -->
-@if ($errors->any())
-<div class="alert alert-danger mt-5">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-<br />
-@elseif(session('success'))
-<script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
-</script>
-@endif
 
 <div class="container" style="width:60%">
+   <!-- display record save, del, update message if any -->
+   @if ($errors->any())
+   <div class="alert alert-danger mt-5">
+      <ul>
+         @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+         @endforeach
+      </ul>
+   </div>
+   <br />
+   @elseif(session('success'))
+   <!-- <div class="alert alert-success mt-5 alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      {{session('success')}}
+   </div>
+   <br /> -->
+   <script>
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
+   </script>
+   @endif
+
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
@@ -46,19 +56,19 @@ Swal.fire({
    <!-- page content -->
    <div class="frow px-2 py-1 mb-2 txt-b bg-info">
       <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-75">Name </div>
+      <div class="fcol mid-left w-75">University Name </div>
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($data as $councel_type)
+   @foreach($funiversities as $funiversity)
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$councel_type->name}} </div>
+      <div class="fcol mid-left w-75"> {{$funiversity->name}} </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <a href="{{route('councel_types.edit',$councel_type)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+            <a href="{{route('funiversities.edit',$funiversity)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
             <div>
-               <form action="{{route('councel_types.destroy',$councel_type)}}" method="POST" id='del_form{{$sr}}'>
+               <form action="{{route('funiversities.destroy',$funiversity)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
@@ -76,10 +86,10 @@ Swal.fire({
 <!-- ADD SLIDER -->
 <div class="slider" id='addslider'>
    <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">NEW</div>
+   <div class="frow centered my-4 txt-b">New Univesity</div>
 
    <!-- data form -->
-   <form action="{{route('councel_types.store')}}" method='post'>
+   <form action="{{route('funiversities.store')}}" method='post'>
       @csrf
       <div class="frow stretched my-4 auto-col">
          <div class="fancyinput w-100">
@@ -93,6 +103,8 @@ Swal.fire({
    </form>
 
 </div>
+<!--add slider ends -->
+
 @endsection
 
 @section('script')

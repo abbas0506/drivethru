@@ -75,6 +75,7 @@ class CityController extends Controller
     public function edit(City $city)
     {
         //
+        return view('admin.primary.cities.edit', compact('city'));
     }
 
     /**
@@ -87,29 +88,19 @@ class CityController extends Controller
     public function update(Request $request, City $city)
     {
         //
-    }
-
-    public function cities_update(Request $request)
-    {
-        //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
         ]);
 
-        $instance = City::find($request->id);
-        $instance->name = $request->name;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $city->update($request->all());
+            return redirect()->route('cities.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('cities.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
