@@ -48,8 +48,8 @@ class UnicourseController extends Controller
             'university_id' => 'required',
             'course_id' => 'required',
             'duration' => 'required',
-            'fee' => 'required',
-            'studycost' => 'required',
+            'minfee' => 'required',
+            'maxfee' => 'required',
 
         ]);
 
@@ -105,8 +105,8 @@ class UnicourseController extends Controller
         //
         $request->validate([
             'duration' => 'required',
-            'fee' => 'required',
-            'studycost' => 'required',
+            'minfee' => 'required',
+            'maxfee' => 'required',
 
         ]);
 

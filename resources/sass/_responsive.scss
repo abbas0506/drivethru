@@ -3,6 +3,18 @@
     .container {
         width: 100% !important;
     }
+    .container {
+        &-50,
+        &-60,
+        &-70,
+        &-75 {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 100% !important;
+        }
+    }
     .fcol {
         width: 100%;
         margin-bottom: 20px;

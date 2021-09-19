@@ -255,18 +255,30 @@ $flag_url=url("/images/flags/".$country->flag);
          </div>
          @endforeach
          @else
-         <div class="frow centered txt-orange my-4">No university found</div>
+         <div class="frow centered txt-orange my-4">No study cost found</div>
          @endif
 
       </div>
-      <!-- Study Cost -->
+
+      <!-- Living Cost -->
       <div class="p-4 my-4 border shadow relative" id='livingcost'>
          <div class="frow mid-left txt-m">Living Cost</div>
          <div class="frow border-bottom stretched border-thin my-4"></div>
          <!-- edit icon on top right corner -->
          <div class='absolute' style='top:5px; right:5px'>
-            <a href="{{route('studycosts.index')}}"><i data-feather='edit-2' class=" feather-small txt-blue"></i></a>
+            <a href="{{route('livingcosts.index')}}"><i data-feather='edit-2' class=" feather-small txt-blue"></i></a>
          </div>
+
+         @if($country->livingcosts()->count()>0)
+         @foreach($country->livingcosts() as $livingcost)
+         <div class="frow stretched px-4">
+            <div>{{$livingcost->expensetype->name}}</div>
+            <div>{{$livingcost->minexp}}-{{$livingcost->maxexp}} @ {{$country->currency}} / month</div>
+         </div>
+         @endforeach
+         @else
+         <div class="frow centered txt-orange my-4">No living cost found</div>
+         @endif
 
       </div>
 

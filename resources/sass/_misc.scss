@@ -1,0 +1,23 @@
+.container {
+    &-50,
+    &-60,
+    &-70,
+    &-75 {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    &-50 {
+        width: 50%;
+    }
+    &-60 {
+        width: 60%;
+    }
+    &-70 {
+        width: 70%;
+    }
+    &-75 {
+        width: 75%;
+    }
+}

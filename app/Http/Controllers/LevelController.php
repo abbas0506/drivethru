@@ -16,8 +16,8 @@ class LevelController extends Controller
     public function index()
     {
         //
-        $data = Level::all();
-        return view('admin.primary.levels.index', compact('data'));
+        $levels = Level::all();
+        return view('admin.primary.levels.index', compact('levels'));
     }
 
     /**
@@ -75,41 +75,32 @@ class LevelController extends Controller
     public function edit(Level $level)
     {
         //
+        return view('admin.primary.levels.edit', compact('level'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param  \App\Models\level  $level
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Level $level)
     {
         //
-    }
-
-    public function levels_update(Request $request)
-    {
-        //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
         ]);
 
-        $instance = Level::find($request->id);
-        $instance->name = $request->name;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $level->update($request->all());
+            return redirect()->route('levels.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('levels.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

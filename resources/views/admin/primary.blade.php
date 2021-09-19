@@ -13,7 +13,7 @@
 @endsection
 @section('page-content')
 
-<div class="container p-5" style="width:60% !important">
+<div class="container-75 p-5">
    <div class="frow border rounded relative">
       <div class="fcol p-5">
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">List of Cities</a></div>

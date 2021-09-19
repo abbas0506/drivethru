@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\Country;
 use App\Models\University;
 use App\Models\Faculty;
 use App\Models\Course;
@@ -21,9 +20,8 @@ class UniversityController extends Controller
     {
         //
         $universities = University::all()->sortBy('name');
-        $countries = Country::all()->sortBy('name');
         $cities = City::all()->sortBy('name');
-        return view('admin.universities.index', compact('universities', 'countries', 'cities'));
+        return view('admin.universities.index', compact('universities', 'cities'));
     }
 
     /**
@@ -49,7 +47,6 @@ class UniversityController extends Controller
         $request->validate([
             'name' => 'required',
             'city_id' => 'required',
-            'country_id' => 'required',
             'type' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -100,9 +97,8 @@ class UniversityController extends Controller
     {
         //
         session(['university' => $university]);
-        $countries = Country::all()->sortBy('name');
         $cities = City::all()->sortBy('name');
-        return view('admin.universities.edit', compact('university', 'countries', 'cities'));
+        return view('admin.universities.edit', compact('university', 'cities'));
     }
 
     /**
@@ -118,7 +114,6 @@ class UniversityController extends Controller
         $request->validate([
             'name' => 'required',
             'city_id' => 'required',
-            'country_id' => 'required',
             'type' => 'required',
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -144,7 +139,6 @@ class UniversityController extends Controller
             //update field values
             $university->name = $request->name;
             $university->city_id = $request->city_id;
-            $university->country_id = $request->country_id;
             $university->type = $request->type;
             $university->update();
 

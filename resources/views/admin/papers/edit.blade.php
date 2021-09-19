@@ -24,7 +24,7 @@
    <br />
    @endif
 </div>
-<div class="container" style='width:60% !important'>
+<div class="container-60">
 
    <!-- data form -->
    <form action="{{route('papers.update', $paper)}}" method='post' enctype="multipart/form-data">

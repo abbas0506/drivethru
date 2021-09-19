@@ -33,7 +33,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="container" style="width:60%">
+<div class="container-60">
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>

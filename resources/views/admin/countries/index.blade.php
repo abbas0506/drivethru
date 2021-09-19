@@ -11,7 +11,7 @@
 @endsection
 @section('page-content')
 
-<div class="container" style="width:60%">
+<div class="container-60">
    <!-- display record save, del, update message if any -->
    <!-- display record save, del, update message if any -->
    @if ($errors->any())

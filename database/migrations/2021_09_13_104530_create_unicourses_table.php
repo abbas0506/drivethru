@@ -18,12 +18,11 @@ class CreateUnicoursesTable extends Migration
             $table->unsignedBigInteger('university_id');
             $table->unsignedBigInteger('course_id');
             $table->unsignedInteger('duration');
-            $table->unsignedInteger('fee');
-            $table->unsignedInteger('studycost');
+            $table->unsignedInteger('minfee');
+            $table->unsignedInteger('maxfee');
             $table->string('criteria');
             $table->string('requirement');
             $table->date('closing')->nullable();
-            $table->unsignedInteger('numofseats')->nullable();
             $table->unsignedInteger('lastmerit')->nullable();
             $table->timestamps();
 

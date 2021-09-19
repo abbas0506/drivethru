@@ -16,8 +16,8 @@ class PaperTypeController extends Controller
     public function index()
     {
         //
-        $data = PaperType::all();
-        return view('admin.primary.papertypes.index', compact('data'));
+        $papertypes = PaperType::all();
+        return view('admin.primary.papertypes.index', compact('papertypes'));
     }
 
     /**
@@ -72,43 +72,36 @@ class PaperTypeController extends Controller
      * @param  \App\Models\PaperType  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function edit(PaperType $papertype)
+    public function edit(papertype $papertype)
     {
         //
+        return view('admin.primary.papertypes.edit', compact('papertype'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PaperType  $papertype
+     * @param  \App\Models\papertype  $papertype
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaperType $papertype)
-    {
-        //
-    }
-
-    public function papertypes_update(Request $request)
+    public function update(Request $request, papertype $papertype)
     {
         //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
         ]);
 
-        $instance = PaperType::find($request->id);
-        $instance->name = $request->name;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $papertype->update($request->all());
+            return redirect()->route('papertypes.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('papertypes.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
+
 
 
     /**

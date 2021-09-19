@@ -84,4 +84,8 @@ class Country extends Model
     {
         return $this->hasMany(Studycost::class, 'country_id')->get();
     }
+    public function livingcosts()
+    {
+        return $this->hasMany(Livingcost::class, 'country_id')->get();
+    }
 }

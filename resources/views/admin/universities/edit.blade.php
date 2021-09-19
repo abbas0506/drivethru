@@ -6,69 +6,49 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Universities</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('universities.index')}}">Universities </a> <span class="mx-1"> / </span> Edit</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>
+      <a href="{{route('universities.index')}}">universities </a> <span class="mx-1"> / </span>
+      {{$university->name}}
+   </div>
 </div>
 @endsection
 @section('page-content')
+<!-- display record save, del, update message if any -->
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
+</div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
+</script>
+@endif
+<!-- find url of university logo -->
+@php
+$logo_url=url("/images/universities/".$university->logo);
+@endphp
 
-<div class="container" style="width:60% !important">
-   <!-- step naviagation  -->
-   <div class="frow mb-5 p-3 auto-col border bg-lightsky">
-      <div class="navstep hw-50 active">
-         <div class="roundbtn">@if($university->step1==1) <i data-feather='check' class="feather-small"></i> @else 1 @endif</div>
-         <div class="super-underline">Basic Info</div>
-      </div>
-      <div class="navstep hw-50">
-         <a href="{{route('unicourses.index')}}">
-            <div class="roundbtn">@if($university->step2==1) <i data-feather='check' class="feather-small"></i> @else 2 @endif</div>
-         </a>
-         <div class="super-underline">Course Feeding</div>
-      </div>
-      <div class="navstep">
-         <a href="{{route('universities.index')}}">
-            <div class="roundbtn"><i data-feather='pause' class="feather-xsmall"></i></div>
-         </a>
-      </div>
-   </div>
+<div class="container-60">
+   <!-- basic info box -->
+   <div class="p-4 my-5 border shadow relative">
 
-   <!-- display record save, del, update message if any -->
-   @if ($errors->any())
-   <div class="alert alert-danger mt-5">
-      <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-      </ul>
-   </div>
-   <br />
-   @elseif(session('success'))
-   <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
-   </script>
-   @endif
-
-   <!-- find image url of the country -->
-   @php
-   $logo_url=url("/images/universities/".$university->logo);
-   @endphp
-
-   <!-- display data with edit option on right upper corner -->
-   <div class="p-4 border shadow relative">
       <div class="frow mid-left">
-         <div class="txt-l mr-4">{{$university->name}}</div><img src={{$logo_url}} alt='logo' width=30 height=30 class='rounded-circle'>
+         <div class="txt-m mr-4">{{$university->name}}</div><img src={{$logo_url}} alt='logo' width=30 height=30 class='rounded-circle'>
       </div>
       <div class="frow border-bottom stretched border-thin my-4">
       </div>
       <div class="frow centered">
-         <div class="fcol w-25">Country: </div>
-         <div class="fcol w-50">{{$university->country->name}}</div>
-      </div>
-      <div class="frow centered @if($university->country_id!=1) hide @endif">
          <div class="fcol w-25">City </div>
          <div class="fcol w-50">{{$university->city->name}}</div>
       </div>
@@ -82,6 +62,49 @@
       </div>
    </div>
 
+   <!-- courses box -->
+   <div class="p-4 mt-5 border shadow relative">
+      <div class="frow mid-left txt-m">Courses</div>
+      <div class="frow border-bottom stretched border-thin my-4"></div>
+
+      <!-- edit icon on top right corner -->
+      <div class='absolute' style='top:5px; right:5px'>
+         <a href="{{route('unicourses.index')}}"><i data-feather='edit-2' class="feather-small txt-blue"></i></a>
+      </div>
+
+      @if($university->faculties()->count()>0)
+      @foreach($university->faculties() as $faculty)
+      <div class="frow card my-2">
+         <div class="card-header txt-b">
+            {{$faculty->name}}
+         </div>
+         <div class="card-body px-5">
+            @foreach($faculty->unicourses() as $unicourse)
+            <div class="frow">
+               <div class="fcol mid-left w-70">{{$unicourse->course->name}}</div>
+               <div class="fcol mid-left w-20">{{$unicourse->minfee}}-{{$unicourse->maxfee}} k</div>
+               <div class="fcol mid-right w-10">
+                  <div class="frow stretched">
+                     <div><a href="{{route('unicourses.edit',$unicourse)}}"> <i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
+                     <div>
+                        <form action="{{route('unicourses.destroy', $unicourse)}}" method="POST" id='deleteform{{$unicourse->id}}'>
+                           @csrf
+                           @method('DELETE')
+                           <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$unicourse->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            @endforeach
+         </div>
+      </div>
+      @endforeach
+      @else
+      <div class="frow centered txt-orange my-4">No courses found</div>
+      @endif
+
+   </div>
 
    <!-- slider that holds data to be updated -->
    <div class="slider" id='slider'>
@@ -104,15 +127,8 @@
                <input type="file" id='logo' name='logo' placeholder="uni logo" class='w-100 m-0 p-2' onchange='preview_logo()'>
                <label>Logo</label>
             </div>
+
             <div class="fancyselect my-2 w-100">
-               <select name="country_id" onchange="showOrHideCity(event)">
-                  @foreach($countries as $country)
-                  <option value="{{$country->id}}" @if($country->id==$university->country_id)selected @endif>{{$country->name}}</option>
-                  @endforeach
-               </select>
-               <label>Country *</label>
-            </div>
-            <div class="fancyselect my-2 w-100" id='city_id' @if($university->country_id!=1) style="display:none" @endif>
                <select name="city_id">
                   @foreach($cities as $city)
                   <option value="{{$city->id}}" @if($city->id==$university->city_id)selected @endif>{{$city->name}}</option>

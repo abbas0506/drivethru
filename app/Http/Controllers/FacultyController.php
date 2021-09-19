@@ -75,41 +75,32 @@ class FacultyController extends Controller
     public function edit(Faculty $faculty)
     {
         //
+        return view('admin.primary.faculties.edit', compact('faculty'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Faculty  $faculty
+     * @param  \App\Models\faculty  $faculty
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Faculty $faculty)
     {
         //
-    }
-
-    public function faculties_update(Request $request)
-    {
-        //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
         ]);
 
-        $instance = Faculty::find($request->id);
-        $instance->name = $request->name;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $faculty->update($request->all());
+            return redirect()->route('faculties.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('faculties.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

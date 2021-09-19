@@ -10,28 +10,28 @@
 </div>
 @endsection
 @section('page-content')
+<!-- display record save, del, update message if any -->
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
+</div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
+</script>
+@endif
 
-<div class="container" style="width:60%">
-   <!-- display record save, del, update message if any -->
-   @if ($errors->any())
-   <div class="alert alert-danger mt-5">
-      <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-      </ul>
-   </div>
-   <br />
-   @elseif(session('success'))
-   <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
-   </script>
-   @endif
+<div class="container-60">
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
@@ -102,14 +102,6 @@
          <div class="fancyinput my-2 w-100">
             <input type="file" id='logo' name='logo' placeholder="uni logo" class='w-100 m-0 p-2' onchange='preview_logo()' required>
             <label>Logo</label>
-         </div>
-         <div class="fancyselect my-2 w-100">
-            <select name="country_id" onchange="showOrHideCity(event)">
-               @foreach($countries as $country)
-               <option value="{{$country->id}}" @if($country->id==1) selected @endif>{{$country->name}}</option>
-               @endforeach
-            </select>
-            <label>Country *</label>
          </div>
          <div class="fancyselect my-2 w-100" id='city_id'>
             <select name="city_id">
@@ -183,14 +175,6 @@ function preview_logo() {
       preview_img.src = URL.createObjectURL(file)
       $('#image_frame').addClass('has-image');
    }
-}
-
-function showOrHideCity(event) {
-   //if foreign country, hide city
-   if (event.target.value != 1) {
-      $('#city_id').hide();
-   } else
-      $('#city_id').show();
 }
 </script>
 @endsection

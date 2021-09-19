@@ -6,7 +6,11 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Cities</div>
-   <div class='frow txt-s txt-white'><a href="{{url('primary')}}">Primary </a> <span class="mx-1"> / </span>cities </div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home</a> <span class="mx-1"> / </span>
+      <a href="{{url('primary')}}">primary data </a> <span class="mx-1"> / </span>
+      cities
+   </div>
 </div>
 @endsection
 @section('page-content')
@@ -31,7 +35,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="container" style="width:60%">
+<div class="container-60">
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>

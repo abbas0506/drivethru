@@ -16,8 +16,8 @@ class DocumentController extends Controller
     public function index()
     {
         //
-        $data = Document::all();
-        return view('admin.primary.documents.index', compact('data'));
+        $documents = Document::all();
+        return view('admin.primary.documents.index', compact('documents'));
     }
 
     /**
@@ -45,9 +45,8 @@ class DocumentController extends Controller
         ]);
 
         try {
-
-            $new = Document::create($request->all());
-            $new->save();
+            $document = Document::create($request->all());
+            $document->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -75,6 +74,7 @@ class DocumentController extends Controller
     public function edit(Document $document)
     {
         //
+        return view('admin.primary.documents.edit', compact('document'));
     }
 
     /**
@@ -87,29 +87,19 @@ class DocumentController extends Controller
     public function update(Request $request, Document $document)
     {
         //
-    }
-
-    public function documents_update(Request $request)
-    {
-        //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
         ]);
 
-        $instance = Document::find($request->id);
-        $instance->name = $request->name;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $document->update($request->all());
+            return redirect()->route('documents.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('documents.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

@@ -6,7 +6,13 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Universities</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span><a href="{{route('universities.index')}}">Universities </a> <span class="mx-1"> / </span> <a href="{{route('unicourses.index')}}" class="mr-1">Courses</a> / {{$unicourse->course->name}} / Edit</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>
+      <a href="{{route('universities.index')}}">universities </a> <span class="mx-1"> / </span>
+      <a href="{{route('universities.edit',$university)}}">{{$university->name}} </a> <span class="mx-1"> / </span>
+      <a href="{{route('unicourses.index')}}" class="mr-1">courses</a> <span class="mx-1"> / </span>
+      {{$unicourse->course->name}} / Edit
+   </div>
 </div>
 @endsection
 @section('page-content')
@@ -23,37 +29,15 @@
 <br />
 @endif
 
-<div class="container" style="width:60% !important">
-
-   <!-- step naviagation  -->
-   <div class="frow mb-5 p-3 auto-col border bg-lightsky">
-      <div class="navstep hw-50">
-         <a href="{{route('universities.edit', $university)}}">
-            <div class="roundbtn">@if($university->step1==1) <i data-feather='check' class="feather-small"></i> @else 1 @endif</div>
-         </a>
-         <div class="super-underline">Basic Info</div>
-
-      </div>
-      <div class="navstep hw-50 active">
-         <div class="roundbtn">@if($university->step2==1) <i data-feather='check' class="feather-small"></i> @else 2 @endif</div>
-         <div class="super-underline">Course Feeding</div>
-      </div>
-      <div class="navstep">
-         <a href="{{route('universities.index')}}">
-            <div class="roundbtn"><i data-feather='pause' class="feather-xsmall"></i></div>
-         </a>
-      </div>
-   </div>
-
+<div class="container-60">
 
    @php
    $logo_url=url("/images/universities/".$university->logo);
    @endphp
    <!-- form input -->
-   <div class="frow mid-left">
+   <div class="frow mid-left my-4">
       <div class="txt-l mr-4">{{$university->name}}</div><img src={{$logo_url}} alt='flag' id='flag_img' width=30 height=30 class='rounded-circle'>
    </div>
-
 
    <form action="{{route('unicourses.update',$unicourse)}}" method="POST">
       @csrf
@@ -62,20 +46,20 @@
       <div class="frow my-3 stretched">
          <div class="fcol w-32">
             <div class="fancyinput w-100">
-               <input type="number" name='duration' min=0 placeholder="Duration" value='{{$unicourse->duration}}' required>
+               <input type="number" name='duration' min=0 max=20 placeholder="Duration" value='{{$unicourse->duration}}' required>
                <label>Duration</label>
             </div>
          </div>
          <div class="fcol w-32">
             <div class="fancyinput w-100">
-               <input type="number" name='fee' min=0 placeholder="Fee" value='{{$unicourse->fee}}' required>
-               <label>Fee</label>
+               <input type="number" name='minfee' min=0 max='10000' placeholder="minimum fee" value='{{$unicourse->minfee}}' required>
+               <label>Min Fee (k)</label>
             </div>
          </div>
          <div class="fcol w-32">
             <div class="fancyinput w-100">
-               <input type="number" name='studycost' min=0 placeholder="Study cost" value='{{$unicourse->studycost}}' required>
-               <label>Study Cost</label>
+               <input type="number" name='maxfee' min=0 max=10000 placeholder="maximum fee" value='{{$unicourse->maxfee}}' required>
+               <label>Max Fee (k)</label>
             </div>
          </div>
       </div>

@@ -11,7 +11,6 @@ class University extends Model
     protected $fillable = [
         'name',
         'city_id',
-        'country_id',
         'type',
         'logo'
     ];
@@ -22,19 +21,11 @@ class University extends Model
         return $this->belongsTo(City::class, 'city_id');
     }
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id');
-    }
     public function faculties()
     {
-        // $courses = Course::join('unicourses', 'unicourses.course_id', 'courses.id')
-        //->where('university_id', $this->id)->get();
-
         $faculty_ids = Course::join('unicourses', 'unicourses.course_id', 'courses.id')
             ->where('university_id', $this->id)
             ->distinct()
-            //->get('faculty_id')
             ->pluck('faculty_id')
             ->toArray();
         $faculties = Faculty::whereIn('id', $faculty_ids)->get();

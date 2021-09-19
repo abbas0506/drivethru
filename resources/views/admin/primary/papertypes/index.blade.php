@@ -5,39 +5,37 @@
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
-   <div class='txt-l txt-white'>Paper Types</div>
-   <div class='frow txt-s txt-white'><a href="{{url('primary')}}">Primary </a> <span class="mx-1"> / </span>paper types </div>
+   <div class='txt-l txt-white'>Past Paper Types</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home</a> <span class="mx-1"> / </span>
+      <a href="{{url('primary')}}">primary data </a> <span class="mx-1"> / </span>
+      paper types
+   </div>
 </div>
 @endsection
 @section('page-content')
+<!-- display record save, del, update message if any -->
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
+</div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
+</script>
+@endif
 
-<div class="container" style="width:60%">
-   <!-- display record save, del, update message if any -->
-   @if ($errors->any())
-   <div class="alert alert-danger mt-5">
-      <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-      </ul>
-   </div>
-   <br />
-   @elseif(session('success'))
-   <!-- <div class="alert alert-success mt-5 alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      {{session('success')}}
-   </div>
-   <br /> -->
-   <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
-   </script>
-   @endif
-
+<div class="container-60">
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
@@ -52,13 +50,13 @@
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($data as $papertype)
+   @foreach($papertypes as $papertype)
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
       <div class="fcol mid-left w-75"> {{$papertype->name}} </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div onclick="toggle_editslider('{{$papertype->id}}','{{$papertype->name}}')"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></div>
+            <a href="{{route('papertypes.edit',$papertype)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
             <div>
                <form action="{{route('papertypes.destroy',$papertype)}}" method="POST" id='del_form{{$sr}}'>
                   @csrf
@@ -78,7 +76,7 @@
 <!-- ADD SLIDER -->
 <div class="slider" id='addslider'>
    <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">NEW</div>
+   <div class="frow centered my-4 txt-b">New Paper Type</div>
 
    <!-- data form -->
    <form action="{{route('papertypes.store')}}" method='post'>
@@ -95,31 +93,6 @@
    </form>
 
 </div>
-<!--add slider ends -->
-
-<!-- EDIT SLIDER -->
-<div class="slider" id='editslider'>
-   <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_editslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">EDIT</div>
-
-   <!-- data form -->
-   <form action="{{route('papertypes_update')}}" method='post'>
-      @csrf
-      <div class="frow stretched my-4 auto-col">
-         <div class="fancyinput w-100">
-            <input type="text" id='edit_name' name='name' placeholder="Enter name" required>
-            <label for="Name">Name</label>
-         </div>
-      </div>
-      <input type="text" id='edit_id' name='id' hidden>
-      <div class="frow mid-right my-5">
-         <button type="submit" class="btn btn-success">Update</button>
-      </div>
-   </form>
-
-</div>
-<!--edit slider ends -->
-
 @endsection
 
 @section('script')
@@ -158,12 +131,6 @@ function delme(formid) {
 
 function toggle_addslider() {
    $("#addslider").toggleClass('slide-left');
-}
-
-function toggle_editslider(id, name) {
-   $('#edit_id').val(id);
-   $('#edit_name').val(name);
-   $("#editslider").toggleClass('slide-left');
 }
 </script>
 @endsection

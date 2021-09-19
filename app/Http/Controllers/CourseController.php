@@ -18,10 +18,10 @@ class CourseController extends Controller
     public function index()
     {
         //
-        $data = Course::all();
+        $courses = Course::orderBy('faculty_id', 'asc')->orderBy('level_id', 'asc')->get();
         $faculties = Faculty::all();
         $levels = Level::all();
-        return view('admin.primary.courses.index', compact('data', 'faculties', 'levels'));
+        return view('admin.primary.courses.index', compact('courses', 'faculties', 'levels'));
     }
 
     /**
@@ -81,6 +81,9 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         //
+        $faculties = Faculty::all();
+        $levels = Level::all();
+        return view('admin.primary.courses.edit', compact('course', 'faculties', 'levels'));
     }
 
     /**
@@ -92,30 +95,18 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
-    }
-
-    public function courses_update(Request $request)
-    {
-        //
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
             'faculty_id' => 'required',
             'level_id' => 'required',
         ]);
 
-        $instance = Course::find($request->id);
-        $instance->name = $request->name;
-        $instance->faculty_id = $request->faculty_id;
-        $instance->level_id = $request->level_id;
-
         try {
-            $instance->update();
 
-            return redirect()->back()->with('success', 'Successfully updated');
+            $course->update($request->all());
+            return redirect()->route('courses.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            return redirect()->route('courses.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }

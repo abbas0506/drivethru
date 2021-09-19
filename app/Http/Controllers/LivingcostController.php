@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Scholarship;
+use App\Models\Expensetype;
+use App\Models\Livingcost;
 use Illuminate\Http\Request;
 use Exception;
 
-class ScholarshipController extends Controller
+class LivingcostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,10 @@ class ScholarshipController extends Controller
     public function index()
     {
         //
-        $scholarships = Scholarship::all();
-        return view('admin.primary.scholarships.index', compact('scholarships'));
+        $expensetypes = Expensetype::all();
+        $country = session('country');
+        $livingcosts = Livingcost::where('country_id', $country->id)->get();
+        return view('admin.countries.livingcost.index', compact('livingcosts', 'expensetypes', 'country'));
     }
 
     /**
@@ -28,7 +31,6 @@ class ScholarshipController extends Controller
     public function create()
     {
         //
-
     }
 
     /**
@@ -41,12 +43,19 @@ class ScholarshipController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'country_id' => 'required',
+            'expensetype_id' => 'required',
+            'minexp' => 'required',
+            'maxexp' => 'required',
         ]);
 
         try {
-            $scholarship = Scholarship::create($request->all());
-            $scholarship->save();
+            $country = session('country');
+            $livingcost = Livingcost::create($request->all());
+            $livingcost->save();
+
+            $country->step8 = 1;
+            $country->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -57,10 +66,10 @@ class ScholarshipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\scholarship  $scholarship
+     * @param  \App\Models\livingcost  $livingcost
      * @return \Illuminate\Http\Response
      */
-    public function show(Scholarship $scholarship)
+    public function show(Livingcost $livingcost)
     {
         //
     }
@@ -68,35 +77,37 @@ class ScholarshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\scholarship  $scholarship
+     * @param  \App\Models\livingcost  $livingcost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Scholarship $scholarship)
+    public function edit(Livingcost $livingcost)
     {
         //
-        return view('admin.primary.scholarships.edit', compact('scholarship'));
+        $country = session('country');
+        return view('admin.countries.livingcost.edit', compact('livingcost', 'country'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\scholarship  $scholarship
+     * @param  \App\Models\livingcost  $livingcost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Scholarship $scholarship)
+    public function update(Request $request, Livingcost $livingcost)
     {
         //
         $request->validate([
-            'name' => 'required',
+            'minexp' => 'required',
+            'maxexp' => 'required',
         ]);
 
         try {
 
-            $scholarship->update($request->all());
-            return redirect()->route('scholarships.index')->with('success', 'Successfully created');
+            $livingcost->update($request->all());
+            return redirect()->route('livingcosts.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
-            return redirect()->route('scholarships.index')->withErrors($e->getMessage());
+            return redirect()->route('livingcosts.index')->withErrors($e->getMessage());
             // something went wrong
         }
     }
@@ -104,14 +115,14 @@ class ScholarshipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\scholarship  $scholarship
+     * @param  \App\Models\livingcost  $livingcost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Scholarship $scholarship)
+    public function destroy(Livingcost $livingcost)
     {
         //
         try {
-            $scholarship->delete();
+            $livingcost->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());

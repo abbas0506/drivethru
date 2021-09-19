@@ -679,6 +679,14 @@ body {
     width: 100% !important;
   }
 
+  .container-50, .container-60, .container-70, .container-75 {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100% !important;
+  }
+
   .fcol {
     width: 100%;
     margin-bottom: 20px;
@@ -830,23 +838,25 @@ body {
   display: flex;
   flex-direction: row;
   position: relative;
+  margin-bottom: 2px;
 }
 .navstep a {
   text-decoration: none !important;
+  color: #28283b;
 }
 .navstep a .roundbtn:hover {
-  background-color: #38c172;
+  background-color: #e07f0f;
   cursor: pointer;
 }
 .navstep .roundbtn {
   display: flex;
   flex-direction: column;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  background-color: #b0dac1;
+  background-color: #c09c6d;
   color: white;
 }
 .navstep .super-underline {
@@ -863,15 +873,15 @@ body {
 .navstep.active .roundbtn {
   display: flex;
   flex-direction: column;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   border: solid;
   border-width: 1px;
-  border-color: #333;
+  border-color: #575353;
   align-items: center;
   justify-content: center;
-  background-color: #38c172;
+  background-color: #e07f0f;
 }
 .navstep.active .super-underline {
   position: absolute;
@@ -946,6 +956,25 @@ body {
 }
 .primary-option:hover a {
   color: blue;
+}
+
+.container-50, .container-60, .container-70, .container-75 {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container-50 {
+  width: 50%;
+}
+.container-60 {
+  width: 60%;
+}
+.container-70 {
+  width: 70%;
+}
+.container-75 {
+  width: 75%;
 }
 
 /*!

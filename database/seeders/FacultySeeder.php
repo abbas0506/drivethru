@@ -21,6 +21,6 @@ class FacultySeeder extends Seeder
         Faculty::create(['name' => 'Faculty of Computer Science & IT']);
         Faculty::create(['name' => 'Faculty of Business & Management']);
         Faculty::create(['name' => 'Faculty of Social Sciences']);
-        Faculty::create(['name' => 'Faculty of Liguistics']);
+        Faculty::create(['name' => 'Faculty of Langauges']);
     }
 }

@@ -1,11 +1,13 @@
-$active-color:#38c172;
-$inactive-color:#b0dac1;
+$active-color:#e07f0f;
+$inactive-color:#c09c6d;
 .navstep {
     display: flex;
     flex-direction: row;
     position: relative;
+    margin-bottom: 2px;
     & a {
         text-decoration: none !important;
+        color: rgb(40, 40, 59);
         & .roundbtn:hover {
             background-color: $active-color;
             cursor: pointer;
@@ -14,8 +16,8 @@ $inactive-color:#b0dac1;
     & .roundbtn {
         display: flex;
         flex-direction: column;
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         align-items: center;
         justify-content: center;
@@ -37,12 +39,12 @@ $inactive-color:#b0dac1;
         & .roundbtn {
             display: flex;
             flex-direction: column;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             border: solid;
             border-width: 1px;
-            border-color: #333;
+            border-color: rgb(87, 83, 83);
             align-items: center;
             justify-content: center;
             background-color: $active-color;

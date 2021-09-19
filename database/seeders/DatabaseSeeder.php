@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             PaperTypeSeeder::class,
             CourseSeeder::class,
+            ExpensetypeSeeder::class,
         ]);
     }
 }

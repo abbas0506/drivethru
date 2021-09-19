@@ -16,7 +16,7 @@
 @endsection
 @section('page-content')
 
-<div class="container" style="width:60%">
+<div class="container-60">
 
    <form action="{{route('expensetypes.update',$expensetype)}}" method='post'>
       @csrf
