@@ -52,11 +52,7 @@
    @foreach($countries as $country)
 
    @php
-   @if($country->flag)
    $flag_url=url("storage/images/flags/".$country->flag);
-   @else
-   $flag_url=url("storage/images/flags/"."default.jpg");
-   @endif
    @endphp
 
    <div class="frow px-2 my-2 tr">
