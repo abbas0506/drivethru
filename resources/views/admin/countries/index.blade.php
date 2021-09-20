@@ -52,7 +52,7 @@
    @foreach($countries as $country)
 
    @php
-   $flag_url=url("/storage/images/flags/".$country->flag);
+   $flag_url=url("storage/images/flags/".$country->flag);
    @endphp
 
    <div class="frow px-2 my-2 tr">
