@@ -23,7 +23,7 @@ class CountryController extends Controller
     public function index()
     {
         //exclude pakistan from show list
-        $countries = Country::where('id', '>', 1)->get()->sortByDesc('id');
+        $countries = Country::all()->sortByDesc('id');
         return view('admin.countries.index', compact('countries'));
     }
 
