@@ -38,7 +38,7 @@ Swal.fire({
 
 <!-- find image url of the country -->
 @php
-$flag_url=url("/images/flags/".$country->flag);
+$flag_url=url("public/images/flags/".$country->flag);
 @endphp
 
 @section('page-content')

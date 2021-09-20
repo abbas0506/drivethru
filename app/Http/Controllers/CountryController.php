@@ -51,7 +51,6 @@ class CountryController extends Controller
             'lifethere' => 'required',
             'jobdesc' => 'required',
         ]);
-        Storage::disk('public');
         try {
 
             $country = Country::create($request->all());
