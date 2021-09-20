@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Exception;
 
 use App\Models\Country;
+use App\Models\Countryscholarship;
+use App\Models\Countryvisadoc;
+use App\Models\Document;
+use App\Models\Scholarship;
+use App\Models\City;
+use App\Models\Visadoc;
 
 class CountryController extends Controller
 {
@@ -51,20 +56,14 @@ class CountryController extends Controller
             'lifethere' => 'required',
             'jobdesc' => 'required',
         ]);
-        Storage::disk('public');
+
         try {
 
             $country = Country::create($request->all());
-            if ($request->hasFile('flag')) {
-                $destination_path = 'public/images/flags';
-                //save flag image into separate folder
-                $imageName = $country->id . '.' . $request->flag->extension();
-                //$request->flag->move(public_path('images/flags'), $imageName);
-                $path = $request->file('flag')->storeAs($destination_path, $imageName);
-                $country->flag = $imageName;
-            }
-
-
+            //save flag image into separate folder
+            $imageName = $country->id . '.' . $request->flag->extension();
+            $request->flag->move(public_path('images/flags'), $imageName);
+            $country->flag = $imageName;
             $country->step1 = 1;
             if (!$request->visarequired)
                 $country->step2 = 1; //if visa not requird, auto complete 2nd step
