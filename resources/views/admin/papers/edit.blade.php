@@ -55,7 +55,7 @@
          <!-- left column ends -->
 
          @php
-         $pic_url=url("/images/papers/".$paper->pic);
+         $pic_url=url("storage/images/papers/".$paper->pic);
          @endphp
 
          <div class="fcol w-40 p-5">

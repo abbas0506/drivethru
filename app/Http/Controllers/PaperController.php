@@ -48,19 +48,19 @@ class PaperController extends Controller
             'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $path = public_path() . "/images/papers/";
-
-
         try {
 
-            $new = Paper::create($request->all());
+            $paper = Paper::create($request->all());
 
-            $filename = $new->id . '.' . $request->pic->extension();
-            $file = $request->file('pic');
-            $file->move($path, $filename);
+            if ($request->hasFile('pic')) {
+                $destination_path = 'public/images/papers';
+                //save paper image into separate folder
+                $file_name = $paper->id . '.' . $request->pic->extension();
+                $request->file('pic')->storeAs($destination_path, $file_name);
+                $paper->pic = $file_name;
+            }
 
-            $new->pic = $filename;
-            $new->save();
+            $paper->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -108,23 +108,21 @@ class PaperController extends Controller
             'pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $path = public_path() . "/images/papers/";
 
         try {
             //if picture updated
-            if (isset($request->pic)) {
+            if ($request->hasFile('pic')) {
                 //unlink old image
-                $oldfile = $path . $paper->pic;
-                if (file_exists($oldfile)) {
-                    unlink($oldfile);
+                $destination_path = 'public/images/papers/';
+                $file_path = $destination_path . $paper->pic;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
                 }
 
                 //save new pic after renaming
-                $file = $request->file('pic');
-                $filename = $paper->id . '.' . $request->pic->extension();
-                $file->move($path, $filename);
-
-                $paper->pic = $filename;
+                $file_name = $paper->id . '.' . $request->pic->extension();
+                $request->file('pic')->storeAs($destination_path, $file_name);
+                $paper->pic = $file_name;
             }
             //update field values
             $paper->papertype_id = $request->papertype_id;
@@ -149,6 +147,15 @@ class PaperController extends Controller
     {
         //
         try {
+
+            unlink(storage_path('app/public/images/papers/' . $paper->pic));
+
+            //$destination_path = 'public/images/papers/';
+            // $file_path = $destination_path . $paper->pic;
+            // if (file_exists($file_path)) {
+            //     unlink(storage_path('app/folder/' . $file));
+            //     unlink($file_path);
+            // }
             $paper->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {

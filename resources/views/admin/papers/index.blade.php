@@ -55,7 +55,7 @@
       <div class="fcol mid-left w-60"> {{$paper->papertype->name}} - {{$paper->year}} </div>
 
       @php
-      $pic_url=url("/images/papers/".$paper->pic);
+      $pic_url=url("storage/images/papers/".$paper->pic);
       @endphp
 
       <div class="fcol centered w-20"> <img src={{$pic_url}} alt='flag' width=50 height=60> </div>

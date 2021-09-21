@@ -123,10 +123,12 @@ class UniversityController extends Controller
             if ($request->hasFile('logo')) {
                 //unlink old image
                 $destination_path = 'public/images/logos/';
-                $file_path = $destination_path . $university->logo;
-                if (file_exists($file_path)) {
-                    unlink($file_path);
-                }
+                // $file_path = $destination_path . $university->logo;
+                // if (file_exists($file_path)) {
+                //     unlink($file_path);
+                // }
+
+                unlink(storage_path('app/public/images/logos/' . $university->logo));
 
                 //save new pic after renaming
                 $file_name = $university->id . '.' . $request->logo->extension();
@@ -156,11 +158,12 @@ class UniversityController extends Controller
     {
         //
         try {
-            $destination_path = 'public/images/logos/';
-            $file_path = $destination_path . $university->logo;
-            if (file_exists($file_path)) {
-                unlink($file_path);
-            }
+            unlink(storage_path('app/public/images/logos/' . $university->logo));
+            // $destination_path = 'public/images/logos/';
+            // $file_path = $destination_path . $university->logo;
+            // if (file_exists($file_path)) {
+            //     unlink($file_path);
+            // }
             $university->delete();
             return redirect()
                 ->back()

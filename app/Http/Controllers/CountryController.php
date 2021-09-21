@@ -124,10 +124,11 @@ class CountryController extends Controller
             if ($request->hasFile('flag')) {
                 //unlink old image
                 $destination_path = 'public/images/flags/';
-                $file_path = $destination_path . $country->flag;
-                if (file_exists($file_path)) {
-                    unlink($file_path);
-                }
+                unlink(storage_path('app/public/images/flags/' . $country->flag));
+                // $file_path = $destination_path . $country->flag;
+                // if (file_exists($file_path)) {
+                //     unlink($file_path);
+                // }
 
                 //save new pic after renaming
                 $file_name = $country->id . '.' . $request->flag->extension();
@@ -182,11 +183,12 @@ class CountryController extends Controller
     {
         //
         try {
-            $destination_path = 'public/images/flags/';
-            $file_path = $destination_path . $country->flag;
-            if (file_exists($file_path)) {
-                unlink($file_path);
-            }
+            unlink(storage_path('app/public/images/flags/' . $country->flag));
+            // $destination_path = 'public/images/flags/';
+            // $file_path = $destination_path . $country->flag;
+            // if (file_exists($file_path)) {
+            //     unlink($file_path);
+            // }
             $country->delete();
             return redirect()
                 ->back()
