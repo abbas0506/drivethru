@@ -50,7 +50,7 @@ Swal.fire({
    @foreach($universities as $university)
 
    @php
-   $logo_url=url("/images/universities/".$university->logo);
+   $logo_url=url("storage/images/logos/".$university->logo);
    @endphp
 
    <div class="frow px-2 my-2 tr">

@@ -36,7 +36,7 @@ Swal.fire({
 @endif
 <!-- find url of university logo -->
 @php
-$logo_url=url("/images/universities/".$university->logo);
+$logo_url=url("storage/images/logos/".$university->logo);
 @endphp
 
 <div class="container-60">

@@ -57,11 +57,10 @@ class CountryController extends Controller
             if ($request->hasFile('flag')) {
                 $destination_path = 'public/images/flags';
                 //save flag image into separate folder
-                $imageName = $country->id . '.' . $request->flag->extension();
-                $request->file('flag')->storeAs($destination_path, $imageName);
-                $country->flag = $imageName;
+                $file_name = $country->id . '.' . $request->flag->extension();
+                $request->file('flag')->storeAs($destination_path, $file_name);
+                $country->flag = $file_name;
             }
-
 
             $country->step1 = 1;
             if (!$request->visarequired)
@@ -119,15 +118,11 @@ class CountryController extends Controller
             'intro' => 'required',
         ]);
 
-        //unlink(storage_path('app/public/images/flags/' . $country->flag));
-
-        //$path = public_path() . "/images/flags/";
         DB::beginTransaction();
         try {
             //if flag updated
             if ($request->hasFile('flag')) {
                 //unlink old image
-                //$oldfile = $path . $country->flag;
                 $destination_path = 'public/images/flags/';
                 $file_path = $destination_path . $country->flag;
                 if (file_exists($file_path)) {
@@ -135,17 +130,8 @@ class CountryController extends Controller
                 }
 
                 //save new pic after renaming
-                //$file = $request->file('flag');
                 $file_name = $country->id . '.' . $request->flag->extension();
-
-                //$destination_path = 'public/images/flags';
-                //save flag image into separate folder
-                //$imageName = $country->id . '.' . $request->flag->extension();
                 $request->file('flag')->storeAs($destination_path, $file_name);
-                $country->flag = $file_name;
-
-                // $file->move($path, $filename);
-
                 $country->flag = $file_name;
             }
 

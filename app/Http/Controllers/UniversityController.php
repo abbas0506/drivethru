@@ -51,17 +51,17 @@ class UniversityController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $path = public_path() . "/images/universities/";
-
         try {
 
             $university = University::create($request->all());
-            //save flag image into separate folder
-            $filename = $university->id . '.' . $request->logo->extension();
-            $file = $request->file('logo');
-            $file->move($path, $filename);
+            //save file on storage
+            if ($request->hasFile('logo')) {
+                $destination_path = 'public/images/logos';
+                $file_name = $university->id . '.' . $request->logo->extension();
+                $request->file('logo')->storeAs($destination_path, $file_name);
+                $university->logo = $file_name;
+            }
 
-            $university->logo = $filename;
             $university->save();
             $university->step1 = 1;
             $university->save();
@@ -70,7 +70,7 @@ class UniversityController extends Controller
 
             return redirect()->route('universities.index')->with('success', 'Successfully created');;
         } catch (Exception $e) {
-            return redirect()->route('countries.index')
+            return redirect()->route('universities.index')
                 ->withErrors($e->getMessage());
             // something went wrong
         }
@@ -118,23 +118,20 @@ class UniversityController extends Controller
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $path = public_path() . "/images/universities/";
-
         try {
-            //if picture updated
-            if (isset($request->logo)) {
+            //if flag updated
+            if ($request->hasFile('logo')) {
                 //unlink old image
-                $oldfile = $path . $university->logo;
-                if (file_exists($oldfile)) {
-                    unlink($oldfile);
+                $destination_path = 'public/images/logos/';
+                $file_path = $destination_path . $university->logo;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
                 }
 
                 //save new pic after renaming
-                $file = $request->file('logo');
-                $filename = $university->id . '.' . $request->logo->extension();
-                $file->move($path, $filename);
-
-                $university->logo = $filename;
+                $file_name = $university->id . '.' . $request->logo->extension();
+                $request->file('logo')->storeAs($destination_path, $file_name);
+                $university->logo = $file_name;
             }
             //update field values
             $university->name = $request->name;
@@ -159,11 +156,19 @@ class UniversityController extends Controller
     {
         //
         try {
+            $destination_path = 'public/images/logos/';
+            $file_path = $destination_path . $university->logo;
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
             $university->delete();
-            return redirect()->back()->with('success', 'Successfully deleted');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-            // something went wrong
+            return redirect()
+                ->back()
+                ->with('success', 'University removed successfully');
+        } catch (Exception $ex) {
+            return redirect()
+                ->back()
+                ->withErrors($ex->getMessage());
         }
     }
     public function uni_courses()
