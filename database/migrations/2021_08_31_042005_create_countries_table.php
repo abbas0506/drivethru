@@ -17,7 +17,7 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->string('name', 70);
             $table->string('intro', 200);
-            $table->string('flag', 40)->default('default.jpg');
+            $table->string('flag', 100)->default('default.jpg');
             $table->string('currency', 10)->default('USD');
             $table->boolean('visarequired');
             $table->unsignedInteger('visaduration')->default(0);

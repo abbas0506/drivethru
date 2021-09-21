@@ -58,8 +58,7 @@ class CountryController extends Controller
                 $destination_path = 'public/images/flags';
                 //save flag image into separate folder
                 $imageName = $country->id . '.' . $request->flag->extension();
-                //$request->flag->move(public_path('images/flags'), $imageName);
-                $path = $request->file('flag')->storeAs($destination_path, $imageName);
+                $request->file('flag')->storeAs($destination_path, $imageName);
                 $country->flag = $imageName;
             }
 
@@ -185,10 +184,15 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         //
-        $country->delete();
 
-        return redirect()
-            ->back()
-            ->with('success', 'Country removed successfully');
+        try {
+            unlink(storage_path('app/public/images/flags/' . $country->flag));
+            $country->delete();
+            return redirect()
+                ->back()
+                ->with('success', 'Country removed successfully');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
