@@ -119,23 +119,34 @@ class CountryController extends Controller
             'intro' => 'required',
         ]);
 
-        $path = public_path() . "/images/flags/";
+        //unlink(storage_path('app/public/images/flags/' . $country->flag));
+
+        //$path = public_path() . "/images/flags/";
         DB::beginTransaction();
         try {
             //if flag updated
-            if (isset($request->flag)) {
+            if ($request->hasFile('flag')) {
                 //unlink old image
-                $oldfile = $path . $country->flag;
-                if (file_exists($oldfile)) {
-                    unlink($oldfile);
+                //$oldfile = $path . $country->flag;
+                $destination_path = 'public/images/flags/';
+                $file_path = $destination_path . $country->flag;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
                 }
 
                 //save new pic after renaming
-                $file = $request->file('flag');
-                $filename = $country->id . '.' . $request->flag->extension();
-                $file->move($path, $filename);
+                //$file = $request->file('flag');
+                $file_name = $country->id . '.' . $request->flag->extension();
 
-                $country->flag = $filename;
+                //$destination_path = 'public/images/flags';
+                //save flag image into separate folder
+                //$imageName = $country->id . '.' . $request->flag->extension();
+                $request->file('flag')->storeAs($destination_path, $file_name);
+                $country->flag = $file_name;
+
+                // $file->move($path, $filename);
+
+                $country->flag = $file_name;
             }
 
             //initially assign incoming visa duration as it is, may update on next line if required
@@ -184,15 +195,20 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         //
-
         try {
-            unlink(storage_path('app/public/images/flags/' . $country->flag));
+            $destination_path = 'public/images/flags/';
+            $file_path = $destination_path . $country->flag;
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
             $country->delete();
             return redirect()
                 ->back()
                 ->with('success', 'Country removed successfully');
         } catch (Exception $ex) {
-            echo $ex->getMessage();
+            return redirect()
+                ->back()
+                ->withErrors($ex->getMessage());
         }
     }
 }
