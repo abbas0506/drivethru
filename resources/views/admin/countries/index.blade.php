@@ -42,10 +42,10 @@
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+   <div class="frow px-2 py-1 mb-2 txt-b bg-info th">
       <div class="fcol mid-left w-10">Sr</div>
-      <div class="fcol mid-left w-60">Country</div>
-      <div class="fcol mid-left w-15">Data Feed</div>
+      <div class="fcol mid-left w-50">Country</div>
+      <div class="fcol mid-left w-25">Data Feed</div>
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
@@ -58,8 +58,8 @@
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
       <div class="fcol mid-left w-5"><img src={{$flag_url}} alt='flag' width=20 height=20 class='rounded-circle'> </div>
-      <div class="fcol mid-left w-60"> {{$country->name}} </div>
-      <div class="fcol centered w-15">
+      <div class="fcol mid-left w-50"> {{$country->name}} </div>
+      <div class="fcol mid-left w-25">
          <div class="frow w-100 mid-left">
             <div class="bar bar-1 bar-green" style="width:{{$country->progress()}}%"></div>
             <div class="bar-val">{{$country->progress()}}%</div>

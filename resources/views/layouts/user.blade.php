@@ -21,60 +21,129 @@
 </head>
 
 <body>
-
-   <!-- app header -->
-   <div class="flexrow auto-col content-mid-left border-bottom  app-header">
-      <div class="flexrow hw-60 content-mid-left space-around auto-resize">
-         <div><img src="/images/logo.svg" alt="" width=100 height=50></div>
-         <div class="text-primary txt-s"><a href="#">Home</a> </div>
-         <div class="text-primary txt-s"><a href="#">Serives</a></div>
-         <div class="text-primary txt-s"><a href="#">Contact Us</a></div>
-         <div class="text-primary txt-s"><a href="#">About Us</a></div>
+   <div class="frow w-100 user-header">
+      <div class="frow centered w-20">
+         <div class="fcol centered">
+            <img src="{{url('storage/images/logos/logo1.png')}}" alt="" class="app-logo">
+         </div>
       </div>
-      <div class="btn btn-primary hw-20 txt-s auto-resize mx-5">Swith to international</div>
 
-      <!-- diplay current user name -->
-      <div class="flexrow content-mid-right hw-20 txt-sm">
-         @guest
-         @if (Route::has('login'))
-         <a href="{{ route('login') }}" class="mx-4">{{ __('Login')}}</a>
-         @endif
+      <div class="frow w-80 stretched mid-left">
+         <div class=""><i data-feather='toggle-left' class="feather-small text-info mx-2" onclick=""></i>International Mode</div>
+         <div class="frow user-top-navbar centered hide-sm">
+            <div class="navitem active">About</div>
+            <div class="navitem">Home</div>
+            <div class="navitem">Blog</div>
+            <div class="navitem">Contact Us</div>
+         </div>
+         <div class="frow pr-3">
+            <div class="px-1"><i data-feather='bell' class="feather-small" onclick=""></i></div>
+            <div class="px-1"><i data-feather='log-out' class="feather-small" onclick=""></i></div>
+            <div class="my-auto mx-2 show-sm"><i data-feather='menu' class="feather-small" onclick="toggle_sidebar()"></i></div>
+         </div>
+      </div>
+   </div>
 
-         @else
-         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            welcome {{ Auth::user()->name }}
-         </a>
+   <!-- user sidebar -->
+   <div class="fcol user-sidebar top-mid">
+      <div><img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg"></div>
+      <div class="user-profile-id">ID:12345</div>
+      <div class="frow centered">
+         <div class="free-report-btn">Get Free Report</div>
+      </div>
+      <span class="w-75 hr mt-2"></span>
+      <div class="navbar-item mt-4">
+         <div class="navbar-ico"><i data-feather='edit-3' class="feather-small"></i></div>
+         <div class="navbar-link">Profile</div>
+      </div>
+      <div class="navbar-item active">
+         <div class="navbar-ico"><i data-feather='award' class="feather-small"></i></div>
+         <div class="navbar-link">Find University</div>
+      </div>
+      <div class="navbar-item">
+         <div class="navbar-ico"><i data-feather='download' class="feather-small"></i></div>
+         <div class="navbar-link">Past Papers</div>
+      </div>
+      <div class="navbar-item">
+         <div class="navbar-ico"><i data-feather='headphones' class="feather-small"></i></div>
+         <div class="navbar-link">Career Counselling</div>
+      </div>
+   </div>
+   <div class="frow">
+      <!-- 20% blank colum well behind sidebar in order to place page data section at right place-->
+      <div class="fcol w-20 hide-sm"></div>
+      <div class="fcol w-80 h-90 user-page-body">
+         <div class="frow stretched page-header">
+            <div class="page-title">Page title</div>
+            <div>Graph Section</div>
+         </div>
+         <!-- <div class="frow page-navbar">
+            <div class="page-navitem active">Active</div>
+            <div class="page-navitem">inactive</div>
+            <div class="page-navitem">inactive</div>
+         </div> -->
 
-         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-               @csrf
-            </form>
+         <div class="frow w-100 h-90 auto-col">
+
+            <div class="fcol w-80 h-90 page-data bg-light">
+
+               <div>hfdashfkhdkjaskhfkhdaskh</div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+
+            </div>
+            <div class="fcol w-20 page-social bg-info">dhsahdkhsa kashdkhsakdh</div>
+
          </div>
 
-         @endguest
-
       </div>
    </div>
-
-   <!-- content page -->
-   <div class="flexrow w-100 auto-col">
-      <div class="auto-resize bg-primary py-3 hw-15">
-         @yield('sidebar')
-      </div>
-      <div class="border-left hw-70">
-         @yield('page')
-         @yield('modal')
-      </div>
-      <div class="auto-resize py-3 hw-15">
-         @yield('socialbar')
-      </div>
-   </div>
-
-   @yield('script')
 
    <script>
    feather.replace()
+
+   function toggle_sidebar() {
+      $('.user-sidebar').toggleClass('disappear');
+   }
    </script>
 </body>
 

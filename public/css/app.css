@@ -28,6 +28,10 @@
   font-weight: bold;
 }
 
+.txt-j {
+  text-align: justify;
+}
+
 body {
   min-height: 100vh !important;
   padding: 0px;
@@ -58,7 +62,7 @@ body {
   background-color: silver;
 }
 .bg-orange {
-  background-color: #ee9a81;
+  background-color: #F4782B;
 }
 .bg-lightsky {
   background-color: #dde3e9;
@@ -83,7 +87,7 @@ body {
   color: yellow;
 }
 .txt-orange {
-  color: #ee9a81;
+  color: #F4782B;
 }
 
 .hide {
@@ -317,6 +321,15 @@ body {
 .mx-10 {
   margin-left: 100px;
   margin-right: 100px;
+}
+
+.rp-5 {
+  padding: 3rem;
+}
+
+.rpx-5 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-10 {
@@ -612,7 +625,7 @@ body {
   border-width: thin;
   border-color: silver;
   border-radius: 50px;
-  width: 25%;
+  width: 30%;
   line-height: 1.2rem;
   background-color: transparent;
   padding: 5px 15px 5px 15px;
@@ -689,7 +702,6 @@ body {
 
   .fcol {
     width: 100%;
-    margin-bottom: 20px;
   }
 
   .auto-col {
@@ -701,7 +713,7 @@ body {
     width: 100%;
   }
 
-  .r-px-5 {
+  .rpx-5 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
@@ -722,40 +734,144 @@ body {
   }
 
   .px-5 {
-    padding-left: 1rem;
-    padding-right: 20px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .rp-5 {
+    padding: 1rem !important;
+  }
+
+  .txt-xxl {
+    font-size: 1.5rem;
+  }
+
+  .txt-xl {
+    font-size: 1.3rem;
+  }
+
+  .txt-l {
+    font-size: 1.2rem;
+  }
+
+  .txt-m {
+    font-size: 1rem;
   }
 
   .txt-s {
-    font-size: 0.6rem;
-  }
-
-  .r-show {
-    visibility: visible !important;
-  }
-
-  .r-hide {
-    visibility: hidden !important;
-    display: none !important;
+    font-size: 0.75rem;
   }
 
   .navstep {
     width: 100%;
     margin-bottom: 10px;
   }
-}
-.r-show {
-  visibility: hidden;
-}
 
-.r-hide {
-  visibility: visible;
+  .slider {
+    width: 100% !important;
+  }
+
+  .w-5 {
+    width: 5% !important;
+  }
+
+  .w-10 {
+    width: 10% !important;
+  }
+
+  .w-15 {
+    width: 15% !important;
+  }
+
+  .w-20 {
+    width: 20%;
+  }
+
+  .hw-25 {
+    width: 25%;
+  }
+
+  .w-30 {
+    width: 30%;
+  }
+
+  .w-32 {
+    width: 32%;
+  }
+
+  .w-40 {
+    width: 40%;
+  }
+
+  .w-48 {
+    width: 48%;
+  }
+
+  .hw-50 {
+    width: 50%;
+  }
+
+  .w-55 {
+    width: 55% !important;
+  }
+
+  .w-60 {
+    width: 60% !important;
+  }
+
+  .w-70 {
+    width: 70% !important;
+  }
+
+  .hw-75 {
+    width: 75% !important;
+  }
+
+  .w-80 {
+    width: 80% !important;
+  }
+
+  .w-90 {
+    width: 90% !important;
+  }
+
+  .tr,
+.th {
+    font-size: 0.75rem;
+  }
+
+  .th {
+    font-weight: bold;
+  }
+
+  .feather-xsmall {
+    width: 10px;
+    height: 10px;
+  }
+
+  .user-sidebar {
+    width: 60% !important;
+    overflow-y: auto;
+  }
+
+  .hide-sm {
+    display: none !important;
+  }
+
+  .show-sm {
+    display: block !important;
+  }
+
+  .user-page-body {
+    width: 100% !important;
+  }
+}
+.hide-sm {
   display: block;
 }
 
-.r-px-5 {
-  padding-left: 2rem;
-  padding-right: 2rem;
+.show-sm {
+  display: none;
 }
 
 .navbar {
@@ -770,7 +886,7 @@ body {
   color: inherit;
 }
 .navbar .navlink a:hover {
-  color: #ee9a81;
+  color: #F4782B;
   text-decoration: none;
 }
 .navbar .navlink .chevron-up, .navbar .navlink .navsub {
@@ -800,7 +916,7 @@ body {
   padding: 10px;
   background-color: #fff;
   border-bottom: solid;
-  border-color: #ee9a81;
+  border-color: #F4782B;
   border-width: 5px;
   border-radius: 3px;
 }
@@ -811,12 +927,12 @@ body {
   color: #333;
 }
 .navbar .navlink.has-sub:hover .navsub .navlink a:hover {
-  color: #ee9a81;
+  color: #F4782B;
 }
 
 .notification-count {
   position: absolute;
-  background-color: #ee9a81;
+  background-color: #F4782B;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -927,7 +1043,7 @@ body {
 
 .slider {
   position: fixed;
-  width: 400px !important;
+  width: 30%;
   overflow: auto;
   top: 0px;
   bottom: 0px;
@@ -958,6 +1074,114 @@ body {
   color: blue;
 }
 
+.user-header {
+  height: 10vh;
+  background-color: white;
+  color: #2A538F;
+  font-size: 0.8rem;
+  position: sticky;
+  left: 0px;
+  top: 0px;
+}
+.user-header .app-logo {
+  height: 25px;
+  width: 80%;
+}
+.user-header .navitem {
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+  border-bottom: solid white 2px;
+  height: 10vh;
+}
+.user-header .navitem.active {
+  border-bottom: solid rgba(42, 83, 143, 0.8) 2px;
+}
+
+.user-sidebar {
+  height: calc(100vh-$user-header-height);
+  position: fixed;
+  left: 0px;
+  width: 20%;
+  top: 10vh;
+  bottom: 0px;
+  overflow: auto;
+  background-color: #2A538F;
+  z-index: 1;
+  transform: translateX(0%);
+  transition: transform 0.5s ease-in-out;
+}
+.user-sidebar.disappear {
+  transform: translateX(-100%);
+}
+.user-sidebar .user-avatar-lg {
+  width: 75px;
+  height: 75px;
+  margin-top: 10px;
+  border: solid;
+  border-color: #EAEEF1;
+  border-radius: 50%;
+}
+.user-sidebar .user-profile-id {
+  margin-top: 5px;
+  color: #F4782B;
+}
+.user-sidebar .free-report-btn {
+  background-color: #EAEEF1;
+  border-radius: 70px;
+  padding: 2px 5px;
+  margin-top: 5px;
+  text-align: center;
+}
+.user-sidebar .navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  width: 100%;
+}
+.user-sidebar .navbar-item .navbar-ico {
+  color: #EAEEF1;
+  margin-bottom: 5px;
+}
+.user-sidebar .navbar-item .navbar-link {
+  color: #EAEEF1;
+}
+.user-sidebar .navbar-item.active {
+  background-color: #F4782B;
+}
+.user-sidebar .navbar-item.active .navbar-ico {
+  color: white;
+}
+.user-sidebar .navbar-item.active .navbar-link {
+  color: white;
+}
+.user-sidebar .navbar-item:hover {
+  background-color: rgba(244, 120, 43, 0.3);
+  transition: background-color 0.5s ease;
+}
+
+.user-page-body {
+  width: 80%;
+  background-color: #EAEEF1;
+}
+.user-page-body .page-header {
+  min-height: 8vh;
+  align-items: center;
+  margin: 0px 10px;
+}
+.user-page-body .page-header .page-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+.user-page-body .page-data {
+  max-height: 80vh;
+  padding: 5px;
+  overflow-y: auto;
+}
+
 .container-50, .container-60, .container-70, .container-75 {
   margin-left: auto;
   margin-right: auto;
@@ -975,6 +1199,12 @@ body {
 }
 .container-75 {
   width: 75%;
+}
+
+.hr {
+  border-bottom: solid;
+  border-bottom-width: thin;
+  border-color: #EAEEF1;
 }
 
 /*!

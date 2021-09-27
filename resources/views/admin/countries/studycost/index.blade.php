@@ -46,7 +46,7 @@
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+   <div class="frow px-2 py-1 mb-2 txt-b bg-info th">
       <div class="fcol mid-left w-10">Sr </div>
       <div class="fcol mid-left w-50">Level </div>
       <div class="frow mid-left w-25">Cost <span class="txt-s ml-1"> / year</span></div>

@@ -71,3 +71,7 @@ Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('u
 Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
 Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
 Route::resource('unicourses', UnicourseController::class);
+
+//user api
+
+Route::resource('users', UserController::class);

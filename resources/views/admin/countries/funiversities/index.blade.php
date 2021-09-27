@@ -54,7 +54,7 @@
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+   <div class="frow px-2 py-1 mb-2 txt-b bg-info th">
       <div class="fcol mid-left w-10">Sr </div>
       <div class="fcol mid-left w-75">University Name </div>
       <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>

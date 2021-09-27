@@ -13,14 +13,14 @@
 @endsection
 @section('page-content')
 
-<div class="container-75 p-5">
+<div class="container-75 rp-5">
    <div class="frow border rounded relative">
-      <div class="fcol p-5">
+      <div class="fcol rp-5">
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('cities.index')}}">List of Cities</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('faculties.index')}}">List of Faculties</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('levels.index')}}">List of Study levels</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">List of Faculty Courses</a></div>
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">List of documents required for visa or admission</a></div>
+         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">List of documents</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>
 
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('councel_types.index')}}">Counselling request types</a></div>
