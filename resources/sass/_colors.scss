@@ -34,6 +34,9 @@ body {
     &-lightsky {
         background-color: rgb(221, 227, 233);
     }
+    &-custom-light {
+        background-color: $custom-light;
+    }
 }
 
 .txt {

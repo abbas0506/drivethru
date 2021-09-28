@@ -13,14 +13,10 @@
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <title>DriveThru</title>
-   <style>
-   .app-header {
-      background-color: #f7f2ff;
-   }
-   </style>
+
 </head>
 
-<body>
+<body class="bg-custom-light">
    <div class="frow w-100 user-header">
       <div class="frow centered w-20">
          <div class="fcol centered">
@@ -46,6 +42,11 @@
 
    <!-- user sidebar -->
    <div class="fcol user-sidebar top-mid">
+      <div class='frow w-100 mid-right p-1'>
+         <div class="box-25 text-center bg-orange text-white circular hoverable show-sm" onclick="toggle_sidebar()"><i data-feather='x' class="feather-small"></i></div>
+         <!-- <div class="frow relative centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_sidebar()" style='right: 0px; z-index:2'><i data-feather='x' class="feather-xsmall"></i></div> -->
+      </div>
+
       <div><img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg"></div>
       <div class="user-profile-id">ID:12345</div>
       <div class="frow centered">
@@ -69,82 +70,119 @@
          <div class="navbar-link">Career Counselling</div>
       </div>
    </div>
-   <div class="frow">
+   <div class="frow user-page px-4">
       <!-- 20% blank colum well behind sidebar in order to place page data section at right place-->
       <div class="fcol w-20 hide-sm"></div>
-      <div class="fcol w-80 h-90 user-page-body">
-         <div class="frow stretched page-header">
-            <div class="page-title">Page title</div>
-            <div>Graph Section</div>
-         </div>
-         <!-- <div class="frow page-navbar">
-            <div class="page-navitem active">Active</div>
-            <div class="page-navitem">inactive</div>
-            <div class="page-navitem">inactive</div>
-         </div> -->
-
-         <div class="frow w-100 h-90 auto-col">
-
-            <div class="fcol w-80 h-90 page-data bg-light">
-
-               <div>hfdashfkhdkjaskhfkhdaskh</div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
-               <div>hfdashfkhdkjaskhfkhdaskhfkhdskahfkhdka </div>
+      <div class="fcol w-80">
+         <div class="frow page-header">
+            <div class="fcol w-80">
+               <div class="page-title">Page title</div>
+               <div class="page-navbar">
+                  <div class="navitem active">Active</div>
+                  <div class="navitem">inactive</div>
+                  <div class="navitem">inactive</div>
+               </div>
 
             </div>
-            <div class="fcol w-20 page-social bg-info">dhsahdkhsa kashdkhsakdh</div>
-
+            <div class="fcol w-20 centered">Graph Section</div>
          </div>
 
+
+         <div class="frow w-100 page-body auto-col">
+            <div class="fcol w-80 page-data">
+               <div class="bg-light rounded p-4">
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+                  <div>Hello</div>
+
+               </div>
+            </div>
+            <div class="fcol w-20 page-social">
+               <div class="social-news">
+                  <div class="social-icon">
+                     <div class="fb"><i data-feather='facebook' class="feather-small" onclick=""></i></div>
+                  </div>
+                  <div class="social-text">Join us on facebook. we have a lot of fun for u</div>
+               </div>
+               <div class="social-news mt-3">
+                  <div class="social-icon">
+                     <div class="twitter"><i data-feather='twitter' class="feather-small" onclick=""></i></div>
+                  </div>
+                  <div class="social-text">Join us on twitter. we have a lot of fun for u</div>
+               </div>
+               <div class="social-news mt-3">
+                  <div class="social-icon">
+                     <div class="twitter"><i data-feather='tv' class="feather-small" onclick=""></i></div>
+                  </div>
+                  <div class="social-text">Join us on twitter. we have a lot of fun for u</div>
+               </div>
+
+
+            </div>
+
+         </div>
       </div>
-   </div>
 
-   <script>
-   feather.replace()
+      <script>
+      feather.replace()
 
-   function toggle_sidebar() {
-      $('.user-sidebar').toggleClass('disappear');
-   }
-   </script>
+      function toggle_sidebar() {
+         $('.user-sidebar').toggleClass('disappear');
+      }
+      </script>
 </body>
 
 </html>

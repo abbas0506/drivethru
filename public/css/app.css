@@ -67,6 +67,9 @@ body {
 .bg-lightsky {
   background-color: #dde3e9;
 }
+.bg-custom-light {
+  background-color: #EAEEF1;
+}
 
 .txt-white {
   color: white;
@@ -312,10 +315,6 @@ body {
 
 .h-90 {
   height: 90vh !important;
-}
-
-.hw-100 {
-  height: 100vh !important;
 }
 
 .mx-10 {
@@ -701,45 +700,12 @@ body {
   }
 
   .fcol {
-    width: 100%;
+    width: 100% !important;
   }
 
   .auto-col {
     flex-direction: column;
     flex-wrap: nowrap;
-  }
-
-  .auto-resize {
-    width: 100%;
-  }
-
-  .rpx-5 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  .mx-10 {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-
-  .px-10 {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  .mx-5 {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
-  }
-
-  .px-5 {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  .rp-5 {
-    padding: 1rem !important;
   }
 
   .txt-xxl {
@@ -775,66 +741,6 @@ body {
     width: 5% !important;
   }
 
-  .w-10 {
-    width: 10% !important;
-  }
-
-  .w-15 {
-    width: 15% !important;
-  }
-
-  .w-20 {
-    width: 20%;
-  }
-
-  .hw-25 {
-    width: 25%;
-  }
-
-  .w-30 {
-    width: 30%;
-  }
-
-  .w-32 {
-    width: 32%;
-  }
-
-  .w-40 {
-    width: 40%;
-  }
-
-  .w-48 {
-    width: 48%;
-  }
-
-  .hw-50 {
-    width: 50%;
-  }
-
-  .w-55 {
-    width: 55% !important;
-  }
-
-  .w-60 {
-    width: 60% !important;
-  }
-
-  .w-70 {
-    width: 70% !important;
-  }
-
-  .hw-75 {
-    width: 75% !important;
-  }
-
-  .w-80 {
-    width: 80% !important;
-  }
-
-  .w-90 {
-    width: 90% !important;
-  }
-
   .tr,
 .th {
     font-size: 0.75rem;
@@ -862,8 +768,11 @@ body {
     display: block !important;
   }
 
-  .user-page-body {
+  .user-page {
     width: 100% !important;
+  }
+  .user-page .page-body {
+    overflow-y: auto !important;
   }
 }
 .hide-sm {
@@ -1162,24 +1071,95 @@ body {
   transition: background-color 0.5s ease;
 }
 
-.user-page-body {
-  width: 80%;
-  background-color: #EAEEF1;
+.user-page {
+  width: 100%;
+  max-height: 86vh;
 }
-.user-page-body .page-header {
-  min-height: 8vh;
+.user-page .page-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 0px 10px;
+  height: 16vh;
 }
-.user-page-body .page-header .page-title {
+.user-page .page-header .page-title {
+  display: flex;
+  align-items: center;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-left: 5px;
+  height: 10vh;
 }
-.user-page-body .page-data {
-  max-height: 80vh;
-  padding: 5px;
+.user-page .page-navbar {
+  display: flex;
+  min-height: 6vh;
+  align-items: center;
+  font-size: 1rem;
+}
+.user-page .page-navbar .navitem {
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+  border-bottom: solid white 2px;
+  height: 6vh;
+}
+.user-page .page-navbar .navitem.active {
+  border-bottom: solid rgba(42, 83, 143, 0.8) 2px;
+}
+.user-page .page-body {
+  overflow-y: hidden;
+  height: 80vh;
+}
+.user-page .page-body .page-data {
+  min-height: 80vh;
   overflow-y: auto;
+}
+.user-page .page-body .page-social {
+  min-height: 80vh;
+  overflow-y: auto;
+  padding: 0px 0px 0px 10px;
+}
+.user-page .page-body .page-social .social-news {
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+}
+.user-page .page-body .page-social .social-news .social-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 25% !important;
+}
+.user-page .page-body .page-social .social-news .social-icon .fb {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(76, 28, 238, 0.72);
+  color: white;
+}
+.user-page .page-body .page-social .social-news .social-icon .twitter {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #1492E6;
+}
+.user-page .page-body .page-social .social-news .social-text {
+  display: flex;
+  width: 75%;
+  color: #333;
+  font-size: 0.8rem;
+}
+.user-page .page-body .page-social .social-news .news-txt {
+  display: flex;
+  width: 100%;
+  color: #333;
+  font-size: 0.5rem;
 }
 
 .container-50, .container-60, .container-70, .container-75 {

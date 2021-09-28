@@ -1,4 +1,9 @@
 $user-header-height:10vh;
+$page-height:86vh; //lower 4% will be as empty footer 
+$page-header-height:16vh;
+$page-title-height:10vh;
+$page-navbar-height:6vh;
+$page-body-height: 80vh;
 .user-header {
     height: $user-header-height;
     background-color: white;
@@ -87,22 +92,94 @@ $user-header-height:10vh;
     }
 }
 
-.user-page-body {
-    width: 80%;
-    background-color: $custom-light;
+.user-page {
+    width: 100%;
+    max-height: $page-height;
     & .page-header {
-        min-height: 8vh;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        margin: 0px 10px;
+        height: $page-header-height;
         & .page-title {
+            display: flex;
+            align-items: center;
             font-weight: bold;
             font-size: 1.2rem;
-            margin-left: 5px;
+            height: $page-title-height;
         }
     }
-    & .page-data {
-        max-height: 80vh;
-        padding: 5px;
-        overflow-y: auto;
+    & .page-navbar {
+        display: flex;
+        min-height: $page-navbar-height;
+        align-items: center;
+        font-size: 1.0rem;
+        & .navitem {
+            display: flex;
+            align-items: center;
+            padding: 0px 5px;
+            border-bottom: solid white 2px;
+            height: $page-navbar-height;
+            &.active {
+                border-bottom: solid rgb($custom-blue, 0.8) 2px;
+            }
+        }
+    }
+    & .page-body {
+        overflow-y: hidden;
+        height: $page-body-height;
+        & .page-data {
+            min-height: $page-body-height;
+            overflow-y: auto;
+        }
+        & .page-social {
+            min-height: $page-body-height;
+            overflow-y: auto;
+            padding: 0px 0px 0px 10px;
+            & .social-news {
+                display: flex;
+                background-color: white;
+                padding: 10px;
+                width: 100%;
+                & .social-icon {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 25% !important;
+                    & .fb {
+                        display: flex;
+                        width: 25px;
+                        height: 25px;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        background-color: rgb(#4C1CEE, 0.72);
+                        color: white;
+                    }
+                    & .twitter {
+                        display: flex;
+                        width: 25px;
+                        height: 25px;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        // border-color: #1492E6 !important; not working
+                        color: #1492E6;
+                    }
+                }
+                & .social-text {
+                    display: flex;
+                    width: 75%;
+                    color: #333;
+                    font-size: 0.8rem;
+                }
+                & .news-txt {
+                    display: flex;
+                    width: 100%;
+                    color: #333;
+                    font-size: 0.5rem;
+                }
+            }
+        }
     }
 }
