@@ -24,6 +24,7 @@ use App\Http\Controllers\FuniversityController;
 use App\Http\Controllers\StudycostController;
 use App\Http\Controllers\ExpensetypeController;
 use App\Http\Controllers\LivingcostController;
+use App\Http\Controllers\NationalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,8 +71,9 @@ Route::resource('universities', UniversityController::class);
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
 Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
+Route::post('fetchCoursesByLevelId', [UniversityController::class, 'fetchCoursesByLevelId'])->name('fetchCoursesByLevelId');
 Route::resource('unicourses', UnicourseController::class);
 
 //user api
 
-Route::resource('users', UserController::class);
+Route::resource('national', NationalController::class);

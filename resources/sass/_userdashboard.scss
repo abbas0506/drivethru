@@ -1,9 +1,11 @@
 $user-header-height:10vh;
+$user-sidebar-height:90vh;
 $page-height:86vh; //lower 4% will be as empty footer 
 $page-header-height:16vh;
 $page-title-height:10vh;
 $page-navbar-height:6vh;
 $page-body-height: 80vh;
+//national dashbo
 .user-header {
     height: $user-header-height;
     background-color: white;
@@ -29,7 +31,7 @@ $page-body-height: 80vh;
 }
 
 .user-sidebar {
-    height: calc(100vh-$user-header-height);
+    height: $user-sidebar-height;
     position: fixed;
     left: 0px;
     width: 20%;
@@ -62,26 +64,26 @@ $page-body-height: 80vh;
         margin-top: 5px;
         text-align: center;
     }
-    & .navbar-item {
+    & .navitem {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 10px 0px;
         width: 100%;
-        & .navbar-ico {
+        & .navitem-ico {
             color: $custom-light;
             margin-bottom: 5px;
         }
-        & .navbar-link {
+        & .navitem-link {
             color: $custom-light;
         }
         &.active {
             background-color: $custom-orange;
-            & .navbar-ico {
+            & .navitem-ico {
                 color: white;
             }
-            & .navbar-link {
+            & .navitem-link {
                 color: white;
             }
         }
@@ -117,10 +119,10 @@ $page-body-height: 80vh;
             display: flex;
             align-items: center;
             padding: 0px 5px;
-            border-bottom: solid white 2px;
+            border-bottom: 2px solid $custom-light;
             height: $page-navbar-height;
             &.active {
-                border-bottom: solid rgb($custom-blue, 0.8) 2px;
+                border-bottom: 2px solid rgb($custom-blue, 0.8);
             }
         }
     }
