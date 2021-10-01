@@ -6,6 +6,7 @@ use App\Http\Controllers\CouncelTypeController;
 use App\Http\Controllers\CourseController;
 use App\Models\Level;
 use App\Models\PaperType;
+use App\Models\Unicourse;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +30,8 @@ class DatabaseSeeder extends Seeder
             PaperTypeSeeder::class,
             CourseSeeder::class,
             ExpensetypeSeeder::class,
+            UniversitySeeder::class,
+            UnicourseSeeder::class,
         ]);
     }
 }

@@ -118,9 +118,13 @@ $page-body-height: 80vh;
         & .navitem {
             display: flex;
             align-items: center;
-            padding: 0px 5px;
+            padding: 0px 10px;
             border-bottom: 2px solid $custom-light;
             height: $page-navbar-height;
+            &:hover {
+                font-weight: bold;
+                cursor: pointer;
+            }
             &.active {
                 border-bottom: 2px solid rgb($custom-blue, 0.8);
             }

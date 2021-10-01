@@ -12,8 +12,8 @@ Find University
 @endsection
 
 @section('page-navbar')
-<div class="navitem txt-s active">Choose where to apply?</div>
-<div class="navitem txt-s">View list </div>
+<div class="navitem txt-s active">Select Universities</div>
+<div class="navitem txt-s">Preview </div>
 @endsection
 
 @section('graph')
@@ -25,7 +25,7 @@ Graph section
    @csrf
    <div class="frow mid-left">
       <input type="checkbox" name='isexpert'>
-      <div class="ml-2 txt-orange">Expert search <i data-feather='thumbs-up' class="feather-xsmall"></i></div>
+      <div class="ml-2 txt-orange">Show me expert recommended universities <i data-feather='thumbs-up' class="feather-xsmall"></i></div>
    </div>
    <div class="frow stretched mt-4">
       <div class="fancyselect w-48">
@@ -48,7 +48,7 @@ Graph section
    </div>
 </form>
 
-@if($universities)
+@if($universities->count()>0)
 <div class="frow stretched mt-3">
    <div class="fancyselect w-48">
       <select name="city_id" id="city" onchange="filter()">
@@ -114,6 +114,8 @@ Graph section
    <div class="rw-10 txt-s"><input type="checkbox" name='chk' value="{{$university->id}}" onclick="updateChkCount()"></div>
 </div>
 @endforeach
+@else
+<div class="frow centered mt-4 p-2 border-top">No university offers this course</div>
 @endif
 @endsection
 <!-- script goes here -->

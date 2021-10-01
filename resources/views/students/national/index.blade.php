@@ -12,8 +12,7 @@ Find University
 @endsection
 
 @section('page-navbar')
-<div class="navitem txt-s active">Choose where to apply?</div>
-<div class="navitem txt-s">View list </div>
+<div class="navitem txt-s active">Choose a course to see which universities offer the course?</div>
 @endsection
 
 @section('graph')
@@ -23,9 +22,10 @@ Graph section
 @section('data')
 <form id='form' action="{{route('fetchUniversitiesByCourseId')}}" method='get'>
    @csrf
-   <div class="frow mid-left">
-      <input type="checkbox" name='isexpert'>
-      <div class="ml-2 txt-orange">Expert search <i data-feather='thumbs-up' class="feather-xsmall"></i></div>
+   <div class="fcol mid-left">
+      <div class="">DrvieThru Expert knows which universities are the most suitable for you</div>
+      <div class="txt-orange"><input type="checkbox" name='isexpert'> Ok, show me expert recommended universities <i data-feather='thumbs-up' class="feather-xsmall"></i></div>
+
    </div>
    <div class="frow stretched mt-4">
       <div class="fancyselect w-48">

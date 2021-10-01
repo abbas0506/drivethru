@@ -19,6 +19,7 @@ class CreateUniversitiesTable extends Migration
             $table->unsignedBigInteger('city_id')->nullable(); //null if foreign country
             $table->string('type', 10)->default('public');
             $table->string('logo', 100)->nullable();
+            $table->unsignedInteger('rank')->unique();
             $table->boolean('step1')->default(0);
             $table->boolean('step2')->default(0);
             $table->timestamps();
