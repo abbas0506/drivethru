@@ -32,4 +32,13 @@ class University extends Model
 
         return $faculties;
     }
+
+    public function minfee()
+    {
+        return Unicourse::where('university_id', $this->id)->min('minfee');
+    }
+    public function maxfee()
+    {
+        return Unicourse::where('university_id', $this->id)->max('maxfee');
+    }
 }

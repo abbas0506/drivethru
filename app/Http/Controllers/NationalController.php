@@ -7,6 +7,8 @@ use App\Models\Level;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\City;
+use App\Models\Unicourse;
+use Exception;
 
 class NationalController extends Controller
 {
@@ -21,9 +23,7 @@ class NationalController extends Controller
         $cities = City::all()->sortBy('name');
         $level_ids = Course::distinct()->get('level_id');
         $levels = Level::whereIn('id', $level_ids)->get();
-        // $levels = Level::all();
-        $universities = University::all();
-        return view('students.national.index', compact('cities', 'levels', 'universities'));
+        return view('students.national.index', compact('cities', 'levels'));
     }
 
     /**
@@ -45,6 +45,7 @@ class NationalController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -90,5 +91,32 @@ class NationalController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function fetchUniversitiesByCourseId(Request $request)
+    {
+        $request->validate([
+            'course_id' => 'required',
+        ]);
+
+        try {
+            //selected course id
+            $selected_course_id = $request->course_id;
+            $university_ids = Unicourse::where('course_id', $selected_course_id)->pluck('university_id')->toArray();
+            $universities = University::whereIn('id', $university_ids)->get();
+
+            $cities = City::all()->sortBy('name');
+            $level_ids = Course::distinct()->get('level_id');
+            $levels = Level::whereIn('id', $level_ids)->get();
+
+            //find selected course and its level
+            $selected_course = Course::find($selected_course_id);
+            //prepare courses list for selected level
+            $courses = Course::where('level_id', $selected_course->level->id)->get();
+
+            return view('students.national.edit', compact('cities', 'levels', 'universities', 'courses', 'selected_course'));
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 }

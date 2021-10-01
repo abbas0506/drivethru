@@ -663,6 +663,45 @@ body {
   transition: 0.5s;
 }
 
+.fancyselect-underline {
+  position: relative;
+}
+.fancyselect-underline select {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(52, 144, 220, 0.2);
+  outline: 0;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 0px;
+  background-color: transparent;
+  transition: border-color 0.2s;
+}
+.fancyselect-underline select:focus {
+  background-color: rgba(52, 144, 220, 0.3);
+  border-color: rgba(52, 144, 220, 0.5);
+  transition: border-color 0.2s;
+}
+.fancyselect-underline select:focus ~ label {
+  background-color: transparent;
+}
+.fancyselect-underline select option {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333;
+}
+.fancyselect-underline label {
+  position: absolute;
+  color: #3490dc;
+  top: -5px;
+  left: 10px;
+  padding: 0px 2px;
+  font-size: 0.8rem;
+  visibility: visible;
+  background-color: white;
+  transition: 0.5s;
+}
+
 .fancy-search-grow input, .fancy-search-grow .fancyinput textarea, .fancyinput .fancy-search-grow textarea {
   border-style: solid;
   border-width: thin;
@@ -692,6 +731,38 @@ body {
 .fancy-search-grow input:not(:placeholder-shown), .fancy-search-grow .fancyinput textarea:not(:placeholder-shown), .fancyinput .fancy-search-grow textarea:not(:placeholder-shown) {
   outline: 0;
   width: 40%;
+  transition: 1s;
+}
+
+.fancy-search-grow-full input, .fancy-search-grow-full .fancyinput textarea, .fancyinput .fancy-search-grow-full textarea {
+  border-style: solid;
+  border-width: thin;
+  border-color: silver;
+  border-radius: 50px;
+  width: 80%;
+  line-height: 1.2rem;
+  background-color: transparent;
+  padding: 5px 15px 5px 15px;
+}
+.fancy-search-grow-full input:focus, .fancy-search-grow-full .fancyinput textarea:focus, .fancyinput .fancy-search-grow-full textarea:focus {
+  outline: 0;
+  transition: 1s;
+}
+.fancy-search-grow-full input:not(:-moz-placeholder-shown), .fancy-search-grow-full .fancyinput textarea:not(:-moz-placeholder-shown), .fancyinput .fancy-search-grow-full textarea:not(:-moz-placeholder-shown) {
+  outline: 0;
+  width: 90%;
+  -moz-transition: 1s;
+  transition: 1s;
+}
+.fancy-search-grow-full input:not(:-ms-input-placeholder), .fancy-search-grow-full .fancyinput textarea:not(:-ms-input-placeholder), .fancyinput .fancy-search-grow-full textarea:not(:-ms-input-placeholder) {
+  outline: 0;
+  width: 90%;
+  -ms-transition: 1s;
+  transition: 1s;
+}
+.fancy-search-grow-full input:not(:placeholder-shown), .fancy-search-grow-full .fancyinput textarea:not(:placeholder-shown), .fancyinput .fancy-search-grow-full textarea:not(:placeholder-shown) {
+  outline: 0;
+  width: 90%;
   transition: 1s;
 }
 
@@ -1199,6 +1270,7 @@ body {
 .user-page .page-body .page-data {
   min-height: 80vh;
   overflow-y: auto;
+  padding-bottom: 50px;
 }
 .user-page .page-body .page-social {
   min-height: 80vh;

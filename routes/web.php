@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Routing\RouteBinding;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CountryController;
@@ -77,3 +76,4 @@ Route::resource('unicourses', UnicourseController::class);
 //user api
 
 Route::resource('national', NationalController::class);
+Route::get('fetchUniversitiesByCourseId', [NationalController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');

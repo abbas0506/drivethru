@@ -35,11 +35,7 @@
          <div class="frow page-header">
             <div class="fcol rw-80">
                <div class="page-title">@yield('page-title')</div>
-               <div class="page-navbar">
-                  @yield('page-navbar')
-
-               </div>
-
+               <div class="page-navbar">@yield('page-navbar')</div>
             </div>
             <div class="fcol rw-20 centered">@yield('graph')</div>
          </div>

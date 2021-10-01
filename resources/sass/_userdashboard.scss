@@ -132,6 +132,7 @@ $page-body-height: 80vh;
         & .page-data {
             min-height: $page-body-height;
             overflow-y: auto;
+            padding-bottom: 50px;
         }
         & .page-social {
             min-height: $page-body-height;
