@@ -24,6 +24,7 @@ use App\Http\Controllers\StudycostController;
 use App\Http\Controllers\ExpensetypeController;
 use App\Http\Controllers\LivingcostController;
 use App\Http\Controllers\NationalController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,3 +79,4 @@ Route::resource('unicourses', UnicourseController::class);
 Route::resource('national', NationalController::class);
 Route::get('fetchUniversitiesByCourseId', [NationalController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
 Route::view('finalizeApplication', 'students.national.finalize');
+Route::resource('profiles', ProfileController::class);

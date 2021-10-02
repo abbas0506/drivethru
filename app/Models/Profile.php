@@ -9,16 +9,18 @@ class Profile extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'name',
         'fname',
         'mname',
-        'phone',
         'cnic',
         'passport',
         'address',
         'gender',
         'religion',
         'bloodgroup',
+        'email',
+        'pic',
     ];
     public $timestamps = false;
 }

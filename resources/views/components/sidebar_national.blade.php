@@ -11,7 +11,9 @@
    <span class="w-75 hr my-3"></span>
    <div @if($activeItem=='profile' ) class="navitem active" @else class="navitem" @endif>
       <div class="navitem-ico"><i data-feather='edit-3' class="feather-small"></i></div>
-      <div class="navitem-link">Profile</div>
+      <a href="{{route('profiles.index')}}">
+         <div class="navitem-link">Profile</div>
+      </a>
    </div>
    <div @if($activeItem=='findUni' ) class="navitem active" @else class="navitem" @endif>
       <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
