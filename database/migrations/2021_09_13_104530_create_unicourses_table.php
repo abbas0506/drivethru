@@ -23,6 +23,8 @@ class CreateUnicoursesTable extends Migration
             $table->string('requirement');
             $table->date('closing')->nullable();
             $table->unsignedInteger('lastmerit')->nullable();
+            //make composite key
+            $table->unique(['university_id', 'course_id']);
             $table->timestamps();
 
             $table->foreign('university_id')

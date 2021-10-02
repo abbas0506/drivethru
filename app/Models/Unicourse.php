@@ -19,6 +19,10 @@ class Unicourse extends Model
         'lastmerit',
     ];
 
+    public function university()
+    {
+        return $this->belongsTo(University::class, 'university_id');
+    }
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');

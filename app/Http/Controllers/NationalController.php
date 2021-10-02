@@ -103,7 +103,9 @@ class NationalController extends Controller
             $selected_course_id = $request->course_id;
             $university_ids = Unicourse::where('course_id', $selected_course_id)->pluck('university_id')->toArray();
             $universities = University::whereIn('id', $university_ids)->get();
-
+            //$unicourses = Unicourse::where('course_id', $selected_course_id)->get();
+            // $universities=University::join('unicourse','university_id','universities.id')
+            // ->where('course_id', $selected_course_id)->get('name','fee');
             $cities = City::all()->sortBy('name');
             $level_ids = Course::distinct()->get('level_id');
             $levels = Level::whereIn('id', $level_ids)->get();

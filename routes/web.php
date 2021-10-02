@@ -77,3 +77,4 @@ Route::resource('unicourses', UnicourseController::class);
 
 Route::resource('national', NationalController::class);
 Route::get('fetchUniversitiesByCourseId', [NationalController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
+Route::view('finalizeApplication', 'students.national.finalize');

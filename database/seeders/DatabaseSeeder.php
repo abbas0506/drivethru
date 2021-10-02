@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             ExpensetypeSeeder::class,
             UniversitySeeder::class,
-            UnicourseSeeder::class,
+            BoardSeeder::class,
+            //UnicourseSeeder::class,
         ]);
     }
 }

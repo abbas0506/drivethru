@@ -14,7 +14,7 @@
       <div class="navitem-link">Profile</div>
    </div>
    <div @if($activeItem=='findUni' ) class="navitem active" @else class="navitem" @endif>
-      <div class="navitem-ico"><i data-feather='award' class="feather-small"></i></div>
+      <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
       <div class="navitem-link">Find University</div>
    </div>
    <div @if($activeItem=='pastPapers' ) class="navitem active" @else class="navitem" @endif>

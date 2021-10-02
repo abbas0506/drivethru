@@ -13,7 +13,8 @@ Find University
 
 @section('page-navbar')
 <div class="navitem txt-s active">Select Universities</div>
-<div class="navitem txt-s">Preview </div>
+<div class="navitem txt-s"><a href="{{url('finalizeApplication')}}">Finalize Process</a></div>
+<div class="navitem txt-s">Download Report</div>
 @endsection
 
 @section('graph')
@@ -63,13 +64,13 @@ Graph section
       <select name="fee" id="fee" onchange="filter()">
          <option value="">Select fee range</option>
          <option value="0">upto 50 k</option>
-         <option value="1">50 k - 1 lac</option>
-         <option value="2">1 lac - 2 lac</option>
-         <option value="3">2 lac - 3 lac</option>
-         <option value="4">3 lac - 4 lac</option>
-         <option value="5">4 lac - 5 lac</option>
-         <option value="6">5 lac - 10 lac</option>
-         <option value="7">Above 10 lac</option>
+         <option value="1">50 k - 100 k</option>
+         <option value="2">101 k - 200 k</option>
+         <option value="3">201 k - 300 k</option>
+         <option value="4">301 k - 400 k</option>
+         <option value="5">401 k - 500 k</option>
+         <option value="6">501 k - 1000 k</option>
+         <option value="7">Above 1000 k</option>
       </select>
       <label for="">Estimated Fee (Rs)</label>
    </div>
@@ -107,9 +108,7 @@ Graph section
    <div class="rw-50 txt-s">{{$university->name}}</div>
    <div class="rw-10 txt-s hide">{{$university->type}}</div>
    <div class="rw-15 txt-s">{{$university->city->name}}</div>
-   <div class="rw-15 txt-s hide">{{$university->minfee()}}</div>
-   <div class="rw-15 txt-s hide">{{$university->maxfee()}}</div>
-   <div class="rw-15 txt-s">{{$university->minfee()}}-{{$university->maxfee()}}</div>
+   <div class="rw-15 txt-s">{{$university->crsfeeById($selected_course->id)}}</div>
 
    <div class="rw-10 txt-s"><input type="checkbox" name='chk' value="{{$university->id}}" onclick="updateChkCount()"></div>
 </div>
@@ -130,7 +129,8 @@ function filter() {
    var city = $('#city').val();
    if (city) city = $('#city option:selected').text().toLowerCase(); //if city not selected
    var fee = $('#fee').val();
-   var minfee, maxfee, highest = 100000; //highest to be 10 curore
+   var minfee, maxfee, course_fee, highest = 10000;
+
    if (fee) {
       if (fee == 0) {
          minfee = 0;
@@ -164,11 +164,13 @@ function filter() {
 
    if (city) {
       $('.tr').each(function() {
+         course_fee = Number($(this).children().eq(4).prop('outerText'));
          if (!(
                $(this).children().eq(1).prop('outerText').toLowerCase().includes(name) &&
                $(this).children().eq(2).prop('outerText').toLowerCase().includes(type) &&
                $(this).children().eq(3).prop('outerText').toLowerCase().includes(city) &&
-               Number($(this).children().eq(5).prop('outerText')) < maxfee
+               course_fee >= minfee &&
+               course_fee < maxfee
             )) {
             $(this).addClass('hide');
          } else {
@@ -177,10 +179,12 @@ function filter() {
       });
    } else {
       $('.tr').each(function() {
+         course_fee = Number($(this).children().eq(4).prop('outerText'));
          if (!(
                $(this).children().eq(1).prop('outerText').toLowerCase().includes(name) &&
                $(this).children().eq(2).prop('outerText').toLowerCase().includes(type) &&
-               Number($(this).children().eq(5).prop('outerText')) < maxfee
+               course_fee >= minfee &&
+               course_fee < maxfee
 
             )) {
             $(this).addClass('hide');

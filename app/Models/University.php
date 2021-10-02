@@ -41,4 +41,12 @@ class University extends Model
     {
         return Unicourse::where('university_id', $this->id)->max('fee');
     }
+    public function crsfeeById($course_id)
+    {
+        # code...
+        $crsfee = Unicourse::where('course_id', $course_id)
+            ->where('university_id', $this->id)->value('fee');
+        return $crsfee;
+        // return $course_id;
+    }
 }
