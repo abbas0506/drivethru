@@ -218,18 +218,4 @@ class UniversityController extends Controller
 
         return response()->json(['course_options' => $course_options]);
     }
-
-    public function fetchCoursesByLevelId(Request $request)
-    {
-        // select course for given faculty and level ids
-        $courses = Course::where('level_id', $request->level_id)->get();
-
-        //prepare courses list
-        $course_options = "<option value=''>Select a course</option>";
-        foreach ($courses as $course) {
-            $course_options .= "<option value='" . $course->id . "'>" . $course->name . "</option>";
-        }
-
-        return response()->json(['course_options' => $course_options]);
-    }
 }
