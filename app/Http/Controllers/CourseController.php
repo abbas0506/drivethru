@@ -129,4 +129,18 @@ class CourseController extends Controller
             // something went wrong
         }
     }
+
+    public function fetchCoursesByFacultyId(Request $request)
+    {
+        // select course for given faculty and level ids
+        $courses = Course::where('faculty_id', $request->faculty_id)->get();
+
+        //prepare courses list
+        $course_options = "<option value=''>Select a course</option>";
+        foreach ($courses as $course) {
+            $course_options .= "<option value='" . $course->id . "'>" . $course->name . "</option>";
+        }
+
+        return response()->json(['course_options' => $course_options]);
+    }
 }

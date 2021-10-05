@@ -41,9 +41,10 @@
          </div>
          <div class="frow w-100 page-body auto-col">
             <div class="fcol w-80 page-data">
-               <div class="bg-light rounded p-4">
-                  @yield('data')
-               </div>
+               @yield('input')
+               @yield('filters')
+               @yield('data')
+
             </div>
             <!-- 20 social panel on large screen -->
             <div class="fcol w-20 page-social">

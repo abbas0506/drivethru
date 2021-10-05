@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Level;
+use App\Models\Faculty;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\City;
@@ -21,9 +22,9 @@ class NationalController extends Controller
     {
         //
         $cities = City::all()->sortBy('name');
-        $level_ids = Course::distinct()->get('level_id');
-        $levels = Level::whereIn('id', $level_ids)->get();
-        return view('students.national.index', compact('cities', 'levels'));
+        $faculty_ids = Course::distinct()->get('faculty_id');
+        $faculties = Faculty::whereIn('id', $faculty_ids)->get();
+        return view('students.national.index', compact('cities', 'faculties'));
     }
 
     /**
@@ -107,13 +108,13 @@ class NationalController extends Controller
             // $universities=University::join('unicourse','university_id','universities.id')
             // ->where('course_id', $selected_course_id)->get('name','fee');
             $cities = City::all()->sortBy('name');
-            $level_ids = Course::distinct()->get('level_id');
-            $levels = Level::whereIn('id', $level_ids)->get();
+            $faculty_ids = Course::distinct()->get('faculty_id');
+            $levels = Level::whereIn('id', $faculty_ids)->get();
 
             //find selected course and its level
             $selected_course = Course::find($selected_course_id);
             //prepare courses list for selected level
-            $courses = Course::where('level_id', $selected_course->level->id)->get();
+            $courses = Course::where('faculty_id', $selected_course->level->id)->get();
 
             return view('students.national.edit', compact('cities', 'levels', 'universities', 'courses', 'selected_course'));
         } catch (Exception $e) {

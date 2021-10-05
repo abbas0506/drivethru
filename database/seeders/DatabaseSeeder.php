@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             ExpensetypeSeeder::class,
             UniversitySeeder::class,
             BoardSeeder::class,
-            //UnicourseSeeder::class,
+            UnicourseSeeder::class,
         ]);
     }
 }
