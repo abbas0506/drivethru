@@ -49,4 +49,8 @@ class University extends Model
         return $crsfee;
         // return $course_id;
     }
+    public function unicourses()
+    {
+        return $this->hasMany(Unicourse::class, 'university_id');
+    }
 }

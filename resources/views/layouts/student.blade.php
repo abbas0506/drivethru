@@ -40,14 +40,11 @@
             <div class="fcol rw-20 centered">@yield('graph')</div>
          </div>
          <div class="frow w-100 page-body auto-col">
-            <div class="fcol w-80 page-data">
-               @yield('input')
-               @yield('filters')
+            <div class="fcol w-80 rw-100 page-data">
                @yield('data')
-
             </div>
             <!-- 20 social panel on large screen -->
-            <div class="fcol w-20 page-social">
+            <div class="fcol w-20 rw-100 page-social">
                <div class="social-news">
                   <div class="social-icon">
                      <div class="fb"><i data-feather='facebook' class="feather-small" onclick=""></i></div>

@@ -241,6 +241,10 @@ body {
   width: 32%;
 }
 
+.w-38 {
+  width: 38%;
+}
+
 .w-40 {
   width: 40%;
 }
@@ -537,8 +541,8 @@ body {
 .fancyinput input, .fancyinput textarea {
   font-family: inherit;
   width: 100%;
-  font-size: 1rem;
-  padding: 10px;
+  font-size: 0.8rem;
+  padding: 8px;
   outline: none;
   border: 1px solid rgba(52, 144, 220, 0.4);
   border-radius: 0px;
@@ -633,8 +637,8 @@ body {
   width: 100%;
   border: 1px solid rgba(52, 144, 220, 0.2);
   outline: 0;
-  font-size: 1rem;
-  padding: 10px;
+  font-size: 0.8rem;
+  padding: 8px;
   border-radius: 0px;
   background-color: transparent;
   transition: border-color 0.2s;
@@ -650,6 +654,7 @@ body {
 .fancyselect select option {
   background-color: rgba(255, 255, 255, 0.5);
   color: #333;
+  font-size: inherit;
 }
 .fancyselect label {
   position: absolute;
@@ -657,7 +662,7 @@ body {
   top: -10px;
   left: 10px;
   padding: 0px 2px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   visibility: visible;
   background-color: white;
   transition: 0.5s;
@@ -900,6 +905,29 @@ body {
     width: 90% !important;
   }
 
+  .rw-100 {
+    width: 100% !important;
+  }
+
+  .rmy-1 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .rmy-2 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .rmy-3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .rmb-3 {
+    margin-bottom: 1rem;
+  }
+
   .tr,
 .th {
     font-size: 0.75rem;
@@ -929,9 +957,6 @@ body {
 
   .user-page {
     width: 100% !important;
-  }
-  .user-page .page-body {
-    overflow-y: auto !important;
   }
 }
 .hide-sm {
@@ -1256,7 +1281,7 @@ body {
 .user-page .page-navbar .navitem {
   display: flex;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px;
   border-bottom: 2px solid #EAEEF1;
   height: 6vh;
 }
@@ -1267,18 +1292,13 @@ body {
 .user-page .page-navbar .navitem.active {
   border-bottom: 2px solid rgba(42, 83, 143, 0.8);
 }
-.user-page .page-body {
-  overflow-y: hidden;
-  height: 80vh;
+.user-page .page-navbar .navitem:not(:first-child) {
+  margin-left: 10px;
 }
 .user-page .page-body .page-data {
-  min-height: 80vh;
-  overflow-y: auto;
   padding-bottom: 50px;
 }
 .user-page .page-body .page-social {
-  min-height: 80vh;
-  overflow-y: auto;
   padding: 0px 0px 0px 10px;
 }
 .user-page .page-body .page-social .social-news {

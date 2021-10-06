@@ -101,24 +101,38 @@ class NationalController extends Controller
 
         try {
             //selected course id
-            $selected_course_id = $request->course_id;
-            $university_ids = Unicourse::where('course_id', $selected_course_id)->pluck('university_id')->toArray();
-            $universities = University::whereIn('id', $university_ids)->get();
-            //$unicourses = Unicourse::where('course_id', $selected_course_id)->get();
-            // $universities=University::join('unicourse','university_id','universities.id')
-            // ->where('course_id', $selected_course_id)->get('name','fee');
-            $cities = City::all()->sortBy('name');
-            $faculty_ids = Course::distinct()->get('faculty_id');
-            $levels = Level::whereIn('id', $faculty_ids)->get();
+            //$selected_course_id = $request->course_id;
 
-            //find selected course and its level
-            $selected_course = Course::find($selected_course_id);
-            //prepare courses list for selected level
-            $courses = Course::where('faculty_id', $selected_course->level->id)->get();
+            $data = University::join('unicourses', 'unicourses.university_id', 'universities.id')
+                ->join('cities', 'cities.id', 'city_id');
 
-            return view('students.national.edit', compact('cities', 'levels', 'universities', 'courses', 'selected_course'));
+            if (isset($request->city_id)) $data = $data->where('city_id', $request->city_id);
+            if (isset($request->type)) $data = $data->where('type', $request->type);
+            if (isset($request->minfee)) $data = $data->where('fee', ">=", $request->minfee);
+            if (isset($request->maxfee)) $data = $data->where('fee', "<=", $request->maxfee);
+
+
+            $data = $data->get(['universities.id', 'universities.name as university', 'type', 'fee', 'cities.name as city', 'closing', 'lastmerit']);
+
+            // $university_ids = Unicourse::where('course_id', $selected_course_id)->pluck('university_id')->toArray();
+            // $universities = University::whereIn('id', $university_ids)->get();
+            // //$data = Unicourse::where('course_id', $selected_course_id)->get();
+            // // $universities=University::join('unicourse','university_id','universities.id')
+            // // ->where('course_id', $selected_course_id)->get('name','fee');
+            // $cities = City::all()->sortBy('name');
+            // $faculty_ids = Course::distinct()->get('faculty_id');
+            // $levels = Level::whereIn('id', $faculty_ids)->get();
+
+            // //find selected course and its level
+            // $selected_course = Course::find($selected_course_id);
+            // //prepare courses list for selected level
+            // $courses = Course::where('faculty_id', $selected_course->level->id)->get();
+
+            return view('students.national.edit', compact('data'));
         } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
+            //return redirect()->back()->withErrors($e->getMessage());
+            echo $e->getMessage();
+
             // something went wrong
         }
     }

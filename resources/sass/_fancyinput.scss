@@ -11,8 +11,8 @@
     input {
         font-family: inherit;
         width: 100%;
-        font-size: 1.0rem;
-        padding: 10px;
+        font-size: 0.8rem;
+        padding: 8px;
         outline: none;
         border: 1px solid rgba($primary, 0.4);
         border-radius: 0px;
@@ -69,8 +69,8 @@
         width: 100%;
         border: 1px solid rgba($primary, 0.2);
         outline: 0;
-        font-size: 1.0rem;
-        padding: 10px;
+        font-size: 0.8rem;
+        padding: 8px;
         border-radius: 0px;
         background-color: transparent;
         transition: border-color 0.2s;
@@ -85,6 +85,7 @@
         option {
             background-color: rgba(white, 0.5);
             color: #333;
+            font-size: inherit;
         }
     }
     label {
@@ -93,7 +94,7 @@
         top: -10px;
         left: 10px;
         padding: 0px 2px;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         visibility: visible;
         background-color: white;
         transition: 0.5s;

@@ -8,7 +8,7 @@
 @endsection
 
 @section('page-title')
-Find University
+Search Result
 @endsection
 
 @section('page-navbar')
@@ -22,95 +22,27 @@ Graph section
 @endsection
 
 @section('data')
-<form id='form' action="{{route('fetchUniversitiesByCourseId')}}" method='get'>
-   @csrf
-   <div class="frow mid-left">
-      <input type="checkbox" name='isexpert'>
-      <div class="ml-2 txt-orange">Show me expert recommended universities <i data-feather='thumbs-up' class="feather-xsmall"></i></div>
-   </div>
-   <div class="frow stretched mt-4">
-      <div class="fancyselect w-48">
-         <select id="level_id" onchange="loadCourses(event)" required>
-            <option value="-1">Select a level</option>
-            @foreach($levels as $level)
-            <option value="{{$level->id}}" @if($selected_course->level->id==$level->id)selected @endif>{{$level->name}}</option>
-            @endforeach
-         </select>
-         <label>Level</label>
-      </div>
-      <div class="fancyselect w-48">
-         <select name="course_id" id="course_id" onchange="loadUniversities()">
-            @foreach($courses as $course)
-            <option value="{{$course->id}}" @if($selected_course->id==$course->id)selected @endif>{{$course->name}}</option>
-            @endforeach
-         </select>
-         <label for="">Course</label>
-      </div>
-   </div>
-</form>
-
-@if($universities->count()>0)
-<div class="frow stretched mt-3">
-   <div class="fancyselect w-48">
-      <select name="city_id" id="city" onchange="filter()">
-         <option value="">Select a location</option>
-         @foreach($cities as $city)
-         <option value="{{$city->id}}">{{$city->name}}</option>
-         @endforeach
-      </select>
-      <label for="">Location</label>
-   </div>
-   <div class="fancyselect w-48">
-      <select name="fee" id="fee" onchange="filter()">
-         <option value="">Select fee range</option>
-         <option value="0">upto 50 k</option>
-         <option value="1">50 k - 100 k</option>
-         <option value="2">101 k - 200 k</option>
-         <option value="3">201 k - 300 k</option>
-         <option value="4">301 k - 400 k</option>
-         <option value="5">401 k - 500 k</option>
-         <option value="6">501 k - 1000 k</option>
-         <option value="7">Above 1000 k</option>
-      </select>
-      <label for="">Estimated Fee (Rs)</label>
-   </div>
-</div>
-<div class="w-100 hr my-4"></div>
-<div class="frow w-100 my-4 stretched">
-   <div class="fancy-search-grow-full">
-      <input type="text" id='name' placeholder="Search" autocomplete="off" oninput="filter()"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-   </div>
-   <div class="frow fancyselect-underline">
-      <i data-feather='filter' class="feather-xsmall"></i>
-      <select name="type" id="type" onchange="filter()">
-         <option value="">Show all</option>
-         <option value="public">Public only</option>
-         <option value="private">Private only</option>
-      </select>
-      <label></label>
-   </div>
-   <div class="frow centered rounded p-1 txt-xs bg-orange text-light hoverable"><i data-feather='upload' class="feather-small"></i> <span id='chkCount'></span> </div>
-</div>
-
-<div class="frow th border-bottom">
+@if($data->count()>0)
+<div class="frow th border-bottom mt-3">
    <div class="rw-10 txt-s txt-b">Sr</div>
    <div class="rw-50 txt-s txt-b">University</div>
-   <div class="rw-15 txt-s txt-b">Loc.</div>
-   <div class="rw-15 txt-s txt-b">Fee (k)</div>
+   <div class="rw-10 txt-s txt-b">Loc.</div>
+   <div class="rw-10 txt-s txt-b">Type</div>
+   <div class="rw-10 txt-s txt-b">Fee (k)</div>
    <div class="rw-10 txt-s txt-b"><i data-feather='check-square' class="feather-xsmall"></i></div>
 </div>
 @php $sr=1; @endphp
 
 
-@foreach($universities as $university)
+@foreach($data as $row)
 <div class="frow tr border-bottom">
    <div class="rw-10 txt-s">{{$sr++}}</div>
-   <div class="rw-50 txt-s">{{$university->name}}</div>
-   <div class="rw-10 txt-s hide">{{$university->type}}</div>
-   <div class="rw-15 txt-s">{{$university->city->name}}</div>
-   <div class="rw-15 txt-s">{{$university->crsfeeById($selected_course->id)}}</div>
+   <div class="rw-50 txt-s">{{$row->university}}</div>
+   <div class="rw-10 txt-s">{{$row->city}}</div>
+   <div class="rw-10 txt-s">{{$row->type}}</div>
+   <div class="rw-10 txt-s">{{$row->fee}}</div>
 
-   <div class="rw-10 txt-s"><input type="checkbox" name='chk' value="{{$university->id}}" onclick="updateChkCount()"></div>
+   <div class="rw-10 txt-s"><input type="checkbox" name='chk' value="{{$row->id}}" onclick="updateChkCount()"></div>
 </div>
 @endforeach
 @else
