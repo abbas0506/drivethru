@@ -96,12 +96,12 @@ $page-body-height: 80vh;
 
 .user-page {
     width: 100%;
-    max-height: $page-height;
     & .page-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: $page-header-height;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 1rem;
         & .page-title {
             display: flex;
             align-items: center;
@@ -112,15 +112,15 @@ $page-body-height: 80vh;
     }
     & .page-navbar {
         display: flex;
-        min-height: $page-navbar-height;
+        // min-height: $page-navbar-height;
         align-items: center;
         font-size: 1.0rem;
         & .navitem {
             display: flex;
             align-items: center;
-            padding: 0px;
+            padding: 0px 0px 5px 0px;
             border-bottom: 2px solid $custom-light;
-            height: $page-navbar-height;
+            // height: $page-navbar-height;
             &:hover {
                 font-weight: bold;
                 cursor: pointer;
@@ -130,6 +130,12 @@ $page-body-height: 80vh;
             }
             &:not(:first-child) {
                 margin-left: 10px;
+            }
+            & a {
+                color: #333;
+                &:hover {
+                    text-decoration: none;
+                }
             }
         }
     }

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Level;
 use App\Models\Faculty;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\City;
-use App\Models\Unicourse;
 use Exception;
 
-class NationalController extends Controller
+use Illuminate\Http\Request;
+
+class FindUniversityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +23,7 @@ class NationalController extends Controller
         $cities = City::all()->sortBy('name');
         $faculty_ids = Course::distinct()->get('faculty_id');
         $faculties = Faculty::whereIn('id', $faculty_ids)->get();
-        return view('students.national.index', compact('cities', 'faculties'));
+        return view('national.finduniversity.index', compact('cities', 'faculties'));
     }
 
     /**
@@ -46,7 +45,12 @@ class NationalController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'ids' => 'required',
+        ]);
 
+        echo $request->ids;
+        // return response()->json(['msg' => $request->ids]);
     }
 
     /**
@@ -96,43 +100,36 @@ class NationalController extends Controller
     public function fetchUniversitiesByCourseId(Request $request)
     {
         $request->validate([
-            'course_id' => 'required',
+            'course_id1' => 'required',
+            'mode' => 'required',
         ]);
 
+        $course_ids = collect();
+        if (isset($request->course_id1)) $course_ids->add($request->course_id1);
+        if (isset($request->course_id2)) $course_ids->add($request->course_id2);
+        if (isset($request->course_id3)) $course_ids->add($request->course_id3);
+
         try {
-            //selected course id
-            //$selected_course_id = $request->course_id;
-
+            //get universities for selected courses
             $data = University::join('unicourses', 'unicourses.university_id', 'universities.id')
-                ->join('cities', 'cities.id', 'city_id');
-
+                ->join('cities', 'cities.id', 'city_id')
+                ->join('courses', 'courses.id', 'course_id')
+                ->whereIn('course_id', $course_ids);
+            //apply optional filters
             if (isset($request->city_id)) $data = $data->where('city_id', $request->city_id);
             if (isset($request->type)) $data = $data->where('type', $request->type);
             if (isset($request->minfee)) $data = $data->where('fee', ">=", $request->minfee);
             if (isset($request->maxfee)) $data = $data->where('fee', "<=", $request->maxfee);
+            if ($request->mode == 'expert')
+                $data = $data->orderBy('rank')->limit(2);
+            //extract required columns only
+            $data = $data->get(['universities.id as university_id', 'universities.name as university', 'type', 'fee', 'cities.name as city', 'courses.id as course_id', 'closing', 'lastmerit']);
 
-
-            $data = $data->get(['universities.id', 'universities.name as university', 'type', 'fee', 'cities.name as city', 'closing', 'lastmerit']);
-
-            // $university_ids = Unicourse::where('course_id', $selected_course_id)->pluck('university_id')->toArray();
-            // $universities = University::whereIn('id', $university_ids)->get();
-            // //$data = Unicourse::where('course_id', $selected_course_id)->get();
-            // // $universities=University::join('unicourse','university_id','universities.id')
-            // // ->where('course_id', $selected_course_id)->get('name','fee');
-            // $cities = City::all()->sortBy('name');
-            // $faculty_ids = Course::distinct()->get('faculty_id');
-            // $levels = Level::whereIn('id', $faculty_ids)->get();
-
-            // //find selected course and its level
-            // $selected_course = Course::find($selected_course_id);
-            // //prepare courses list for selected level
-            // $courses = Course::where('faculty_id', $selected_course->level->id)->get();
-
-            return view('students.national.edit', compact('data'));
+            //send courses list as well for grouping purpose
+            $courses = Course::whereIn('id', $course_ids)->get();
+            return view('national.finduniversity.edit', compact('data', 'courses'));
         } catch (Exception $e) {
-            //return redirect()->back()->withErrors($e->getMessage());
-            echo $e->getMessage();
-
+            return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
     }

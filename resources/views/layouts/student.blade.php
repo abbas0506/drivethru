@@ -30,7 +30,7 @@
    @yield('sidebar')
    <div class="frow user-page px-4">
       <!-- 20% blank colum well behind sidebar in order to place page data section at right place-->
-      <div class="fcol w-20 hide-sm"></div>
+      <div class="fcol w-20 rhide"></div>
       <div class="fcol w-80">
          <div class="frow page-header">
             <div class="fcol rw-80">

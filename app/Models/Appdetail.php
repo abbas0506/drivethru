@@ -9,7 +9,7 @@ class Appdetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'profile_id',
+        'application_id',
         'university_id',
         'course_id',
     ];

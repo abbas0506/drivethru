@@ -13,5 +13,5 @@ class Application extends Model
         'step1',
         'step2',
     ];
-    public $timestamps = false;
+    // public $timestamps = false;
 }
