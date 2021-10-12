@@ -16,8 +16,8 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('profile_id');
-            $table->boolean('step1')->default(0);
-            $table->boolean('step2')->default(0);
+            $table->unsignedInteger('charges');
+            $table->boolean('ispaid')->nullable();
             $table->timestamps();
         });
     }

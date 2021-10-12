@@ -23,5 +23,8 @@
 }
 
 .hr {
-    border-bottom: 1px solid $custom-light;
+    border-bottom: 1px solid #777;
+    &.light {
+        border-bottom: 1px solid #aaa;
+    }
 }

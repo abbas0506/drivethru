@@ -23,4 +23,13 @@ class Profile extends Model
         'pic',
     ];
     public $timestamps = false;
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'profile_id')->get();
+    }
+    public function academics()
+    {
+        return $this->hasMany(Academic::class, 'profile_id')->get();
+    }
 }

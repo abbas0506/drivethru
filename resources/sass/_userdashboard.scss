@@ -31,7 +31,7 @@ $page-body-height: 80vh;
 }
 
 .user-sidebar {
-    height: $user-sidebar-height;
+    height: 90vh;
     position: fixed;
     left: 0px;
     width: 20%;
@@ -71,9 +71,13 @@ $page-body-height: 80vh;
         justify-content: center;
         padding: 10px 0px;
         width: 100%;
+        & a {
+            text-decoration: none;
+        }
         & .navitem-ico {
             color: $custom-light;
             margin-bottom: 5px;
+            text-align: center;
         }
         & .navitem-link {
             color: $custom-light;
@@ -87,9 +91,15 @@ $page-body-height: 80vh;
                 color: white;
             }
         }
-        &:hover {
-            background-color: rgb($custom-orange, 0.3);
-            transition: background-color 0.5s ease;
+        &:not(.active) {
+            &:hover {
+                & .navitem-ico {
+                    color: $custom-orange;
+                }
+                & .navitem-link {
+                    color: $custom-orange;
+                }
+            }
         }
     }
 }

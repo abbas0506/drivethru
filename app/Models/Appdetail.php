@@ -13,5 +13,18 @@ class Appdetail extends Model
         'university_id',
         'course_id',
     ];
+
+    public function application()
+    {
+        return $this->belongsTo(Application::class, 'application_id');
+    }
+    public function university()
+    {
+        return $this->belongsTo(University::class, 'university_id');
+    }
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id');
+    }
     public $timestamps = false;
 }

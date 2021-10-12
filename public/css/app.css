@@ -282,43 +282,43 @@ body {
 }
 
 .h-10 {
-  height: 10vh !important;
+  height: 10vh;
 }
 
 .h-15 {
-  height: 15vh !important;
+  height: 15vh;
 }
 
 .h-20 {
-  height: 20vh !important;
+  height: 20vh;
 }
 
 .h-30 {
-  height: 30vh !important;
+  height: 30vh;
 }
 
 .h-40 {
-  height: 40vh !important;
+  height: 40vh;
 }
 
 .h-50 {
-  height: 50vh !important;
+  height: 50vh;
 }
 
 .h-60 {
-  height: 60vh !important;
+  height: 60vh;
 }
 
 .h-70 {
-  height: 70vh !important;
+  height: 70vh;
 }
 
 .h-80 {
-  height: 80vh !important;
+  height: 80vh;
 }
 
 .h-90 {
-  height: 90vh !important;
+  height: 90vh;
 }
 
 .mx-10 {
@@ -391,6 +391,15 @@ body {
 }
 .input-rounded:focus {
   outline: 0;
+}
+
+.circular-20 {
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-radius: 50%;
 }
 
 .box-5 {
@@ -784,6 +793,15 @@ body {
     flex-wrap: nowrap;
   }
 
+  .circular-20 {
+    max-width: 20px;
+    max-height: 20px;
+    align-items: center;
+    justify-content: center;
+    border: solid;
+    border-radius: 50%;
+  }
+
   .txt-xxl {
     font-size: 1.5rem;
   }
@@ -865,6 +883,46 @@ body {
     width: 100% !important;
   }
 
+  .rh-10 {
+    height: 10vh !important;
+  }
+
+  .rh-20 {
+    height: 20vh !important;
+  }
+
+  .rh-30 {
+    height: 30vh !important;
+  }
+
+  .rh-40 {
+    height: 40vh !important;
+  }
+
+  .rh-50 {
+    height: 50vh !important;
+  }
+
+  .rh-60 {
+    height: 60vh !important;
+  }
+
+  .rh-70 {
+    height: 70vh !important;
+  }
+
+  .rh-80 {
+    height: 90vh !important;
+  }
+
+  .rh-100 {
+    height: 100vh !important;
+  }
+
+  .rh-auto {
+    height: auto !important;
+  }
+
   .rmy-1 {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -913,10 +971,6 @@ body {
 
   .rshow {
     display: block !important;
-  }
-
-  .user-page {
-    width: 100% !important;
   }
 }
 .rhide {
@@ -1194,9 +1248,13 @@ body {
   padding: 10px 0px;
   width: 100%;
 }
+.user-sidebar .navitem a {
+  text-decoration: none;
+}
 .user-sidebar .navitem .navitem-ico {
   color: #EAEEF1;
   margin-bottom: 5px;
+  text-align: center;
 }
 .user-sidebar .navitem .navitem-link {
   color: #EAEEF1;
@@ -1210,9 +1268,11 @@ body {
 .user-sidebar .navitem.active .navitem-link {
   color: white;
 }
-.user-sidebar .navitem:hover {
-  background-color: rgba(244, 120, 43, 0.3);
-  transition: background-color 0.5s ease;
+.user-sidebar .navitem:not(.active):hover .navitem-ico {
+  color: #F4782B;
+}
+.user-sidebar .navitem:not(.active):hover .navitem-link {
+  color: #F4782B;
 }
 
 .user-page {
@@ -1330,7 +1390,10 @@ body {
 }
 
 .hr {
-  border-bottom: 1px solid #EAEEF1;
+  border-bottom: 1px solid #777;
+}
+.hr.light {
+  border-bottom: 1px solid #aaa;
 }
 
 /*!

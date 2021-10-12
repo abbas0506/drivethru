@@ -12,23 +12,7 @@ Find University
 @endsection
 
 @section('page-navbar')
-<div class="navitem txt-s active">
-   <a href="{{route('finduniversity.index')}}">
-      <div class="frow top-mid">
-         <div class='badge badge-info p-1 mr-1'>1</div>
-         <div>Course Preference</div>
-      </div>
-   </a>
-</div>
-<div class="navitem txt-s">
-   <a href="{{route('finduniversity.index')}}">
-      <div class="frow top-mid">
-         <div class='badge badge-info p-1 mr-1'>2</div>
-         <div>Get Report / Apply</div>
-      </div>
-   </a>
-</div>
-
+<x-finduni_navbar activeItem='preference'></x-finduni_navbar>
 @endsection
 
 @section('graph')

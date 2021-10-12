@@ -26,6 +26,7 @@ use App\Http\Controllers\LivingcostController;
 use App\Http\Controllers\FindUniversityController;
 use App\Http\Controllers\ProfileController;
 use App\http\Controllers\ApplicationController;
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,7 +44,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::resource('user', UserController::class);
-
+Route::view('signin', 'users.signin');
+Route::view('signup', 'users.signup');
 Route::view('admin', 'admin.index');
 Route::view('primary', 'admin.primary');
 
@@ -82,3 +84,7 @@ Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fet
 Route::view('finalizeApplication', 'students.national.finalize');
 Route::resource('profiles', ProfileController::class);
 Route::resource('applications', ApplicationController::class);
+Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
+
+Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
+Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");

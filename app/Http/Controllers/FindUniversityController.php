@@ -6,6 +6,7 @@ use App\Models\Faculty;
 use App\Models\Course;
 use App\Models\University;
 use App\Models\City;
+use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 
 use Illuminate\Http\Request;
@@ -127,10 +128,22 @@ class FindUniversityController extends Controller
 
             //send courses list as well for grouping purpose
             $courses = Course::whereIn('id', $course_ids)->get();
+            session([
+                'data' => $data,
+                'courses' => $courses,
+            ]);
             return view('national.finduniversity.edit', compact('data', 'courses'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
+    }
+    public function download()
+    {
+        $data = session('data');
+        $courses = session('courses');
+        $pdf = PDF::loadView("national.finduniversity.download", compact('courses', 'data'));
+        $pdf->output();
+        return $pdf->setPaper('a4')->stream();
     }
 }

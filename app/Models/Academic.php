@@ -9,15 +9,23 @@ class Academic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'exam',
-        'year',
-        'board',
-        'institution',
+        'profile_id',
+        'level_id',
+        'passyear',
         'rollno',
         'regno',
+        'subjects',
+        'biseuni',
         'obtained',
         'total',
     ];
-
     public $timestamps = false;
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class, 'profile_id');
+    }
+    public function level()
+    {
+        return $this->belongsTo(Level::class, 'level_id');
+    }
 }
