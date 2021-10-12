@@ -3,8 +3,12 @@
 <x-topbar_national activeItem='home'></x-topbar_national>
 @endsection
 
+@php
+$user=session('user');
+@endphp
+
 @section('sidebar')
-<x-sidebar_national activeItem='findUni'></x-sidebar_national>
+<x-sidebar_national activeItem='findUni' :user="$user"></x-sidebar_national>
 @endsection
 
 @section('page-title')

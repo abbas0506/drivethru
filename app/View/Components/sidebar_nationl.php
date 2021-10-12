@@ -11,10 +11,11 @@ class sidebar_nationl extends Component
      *
      * @return void
      */
-    public $activeItem;
-    public function __construct($activeItem)
+    public $user, $activeItem;
+
+    public function __construct($user, $activeItem)
     {
-        //
+        $this->user = $user;
         $this->activeItem = $activeItem;
     }
 

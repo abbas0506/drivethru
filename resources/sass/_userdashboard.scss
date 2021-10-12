@@ -75,12 +75,12 @@ $page-body-height: 80vh;
             text-decoration: none;
         }
         & .navitem-ico {
-            color: $custom-light;
+            color: #B9BEC4; //smoke
             margin-bottom: 5px;
             text-align: center;
         }
         & .navitem-link {
-            color: $custom-light;
+            color: #B9BEC4; //smoke
         }
         &.active {
             background-color: $custom-orange;
@@ -94,10 +94,10 @@ $page-body-height: 80vh;
         &:not(.active) {
             &:hover {
                 & .navitem-ico {
-                    color: $custom-orange;
+                    color: $custom-light;
                 }
                 & .navitem-link {
-                    color: $custom-orange;
+                    color: $custom-light;
                 }
             }
         }

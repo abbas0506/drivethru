@@ -4,11 +4,23 @@
    </div>
 
    <div><img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg"></div>
-   <div class="user-profile-id">ID:12345</div>
-   <div class="frow centered">
-      <div class="txt-white">My Profile</div>
+   <div class="user-profile-id">{{$user->id}}</div>
+
+   <a href="{{route('profiles.index')}}">
+      <div class="frow centered txt-smoke relative">
+         <div class="txt-s">My Profile</div>
+         <div class="ml-2"><i data-feather='edit' class="feather-xsmall absolute" style="top:2px"></i></div>
+      </div>
+   </a>
+
+   <span class="w-75 hr my-1"></span>
+
+   <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
+      <a href="#">
+         <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
+         <div class="navitem-link">Dashboard</div>
+      </a>
    </div>
-   <span class="w-75 hr my-3"></span>
 
    <div @if($activeItem=='findUni' ) class="navitem active" @else class="navitem" @endif>
       <a href="{{route('finduniversity.index')}}">

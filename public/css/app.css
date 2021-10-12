@@ -92,6 +92,9 @@ body {
 .txt-orange {
   color: #F4782B;
 }
+.txt-smoke {
+  color: #B9BEC4;
+}
 
 .hide {
   display: none !important;
@@ -1252,12 +1255,12 @@ body {
   text-decoration: none;
 }
 .user-sidebar .navitem .navitem-ico {
-  color: #EAEEF1;
+  color: #B9BEC4;
   margin-bottom: 5px;
   text-align: center;
 }
 .user-sidebar .navitem .navitem-link {
-  color: #EAEEF1;
+  color: #B9BEC4;
 }
 .user-sidebar .navitem.active {
   background-color: #F4782B;
@@ -1269,10 +1272,10 @@ body {
   color: white;
 }
 .user-sidebar .navitem:not(.active):hover .navitem-ico {
-  color: #F4782B;
+  color: #EAEEF1;
 }
 .user-sidebar .navitem:not(.active):hover .navitem-link {
-  color: #F4782B;
+  color: #EAEEF1;
 }
 
 .user-page {

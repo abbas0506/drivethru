@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\models\User;
+use Exception;
 
 
 class UserController extends Controller
@@ -36,7 +39,38 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //signup  process
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'password' => 'required',
+
+        ]);
+
+        try {
+
+            $user = User::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'password' => Hash::make($request->password),
+
+            ]);
+            $user->save();
+
+            //mark 2nd step as completed
+            session([
+                'user' => $user,
+            ]);
+            if (isset($request->email))
+                $user->email = $request->email;
+
+            $user->save();
+            return redirect()->back()->with('success', 'Successfully created');;
+        } catch (Exception $e) {
+            return redirect()->route('unicourses.index')
+                ->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -82,5 +116,32 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function signin(Request $request)
+    {
+        //signin  process
+        $request->validate([
+            'phone' => 'required',
+            'password' => 'required',
+
+        ]);
+
+        $phone = $request->phone;
+        $password = $request->password;
+
+        $user = User::where('phone', $phone)->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                //authenticated, save into session
+                session([
+                    'user' => $user,
+                ]);
+                return redirect()->route('finduniversity.index');
+            } else {
+                return redirect()->back()->with('error', "User not found");
+            }
+        } else {
+            return redirect()->back()->with('error', "User not found");
+        }
     }
 }

@@ -111,37 +111,40 @@
 
       </div>
       <div class="fcol w-40 rw-100 centered">
-         <div class='fcol w-60 h-70 rw-100 p-5 bg-darkblue'>
-            <div class="fcol h-60 centered">
-               <div class="frow centered title">SIGN UP</div>
-               <div class="frow w-100 centered mt-4">
-                  <input type="text" placeholder="Name" class="w-100">
-               </div>
-               <div class="frow w-100 stretched mt-3">
-                  <div class="fcol w-30 rw-25">
-                     <select name="" id="">
-                        <option value="92">+92</option>
-                     </select>
+         <div class='fcol w-60 rw-100 p-5 bg-darkblue'>
+            <form action="{{route('users.store')}}" method='post'>
+               @csrf
+               <div class="fcol rw-100 centered">
+                  <div class="frow centered title">SIGN UP</div>
+                  <div class="frow w-100 rw-100 centered mt-4">
+                     <input type="text" name='name' placeholder="Name" class="w-100">
                   </div>
-                  <div class="fcol w-68 rw-70">
-                     <input type="text" placeholder="Phone">
+                  <div class="frow w-100 stretched mt-2">
+                     <div class="fcol w-30 rw-25">
+                        <select name="" id="">
+                           <option value="92">+92</option>
+                        </select>
+                     </div>
+                     <div class="fcol w-68 rw-70">
+                        <input type="text" name='phone' placeholder="Phone">
+                     </div>
                   </div>
-               </div>
-               <div class="frow w-100 centered mt-3">
-                  <input type="email" placeholder="Email" class="w-100">
-               </div>
-               <div class="frow w-100 centered mt-3">
-                  <input type="password" placeholder="Password" class="w-100">
-               </div>
-               <div class="frow w-100 centered mt-3">
-                  <input type="password" placeholder="Confirm Password" class="w-100">
-               </div>
-               <div class="frow w-100 stretched mt-3">
-                  <div class="fcol w-70 rw-70 centered" id='createnew'>I already own an account, sign in</div>
-                  <div class='fcol w-30 rw-30'><button type="submit" class="btn btn-sm btn-primary">Sign Up</button></div>
-               </div>
+                  <div class="frow w-100 centered mt-2">
+                     <input type="email" name='email' placeholder="Email" class="w-100">
+                  </div>
+                  <div class="frow w-100 centered mt-2">
+                     <input type="password" name='password' id='password' placeholder="Password" class="w-100">
+                  </div>
+                  <div class="frow w-100 centered mt-2">
+                     <input type="password" id='confirmpw' placeholder="Confirm Password" class="w-100">
+                  </div>
+                  <div class="frow w-100 stretched mt-3">
+                     <div class="fcol w-70 rw-70 centered" id='createnew'>I already own an account, sign in</div>
+                     <div class='fcol w-30 rw-30'><button type="submit" class="btn btn-sm btn-primary">Sign Up</button></div>
+                  </div>
 
-            </div>
+               </div>
+            </form>
             <div class="fcol h-10">
                <span class="w-100 hr my-3"></span>
                <div class="frow w-100 rw-100">

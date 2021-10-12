@@ -43,7 +43,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('user', UserController::class);
+Route::resource('users', UserController::class);
+Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::view('signin', 'users.signin');
 Route::view('signup', 'users.signup');
 Route::view('admin', 'admin.index');
