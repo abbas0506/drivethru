@@ -57,7 +57,7 @@ class UserController extends Controller
             ]);
             $user->save();
 
-            //mark 2nd step as completed
+            //initiate user session
             session([
                 'user' => $user,
             ]);
@@ -65,9 +65,9 @@ class UserController extends Controller
                 $user->email = $request->email;
 
             $user->save();
-            return redirect()->back()->with('success', 'Successfully created');;
+            return redirect('signup_success');
         } catch (Exception $e) {
-            return redirect()->route('unicourses.index')
+            return redirect()->back()
                 ->withErrors($e->getMessage());
             // something went wrong
         }
@@ -135,13 +135,24 @@ class UserController extends Controller
                 //authenticated, save into session
                 session([
                     'user' => $user,
+                    'usertype' => $user->usertype,
                 ]);
-                return redirect()->route('finduniversity.index');
+                if ($user->usertype == 'admin')
+                    return redirect('admin');
+                else if ($user->usertype == 'student')
+                    return redirect('national_dashboard');
             } else {
                 return redirect()->back()->with('error', "User not found");
             }
         } else {
-            return redirect()->back()->with('error', "User not found");
+            return redirect()->back()
+                ->withErrors('Either phone or password incorrect');
         }
+    }
+    public function signout()
+    {
+        //destroy session
+        session()->flush();
+        return redirect('/');
     }
 }

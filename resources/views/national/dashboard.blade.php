@@ -13,7 +13,7 @@ $user=session('user');
 
 <style>
 .bg-national-mini {
-   background-image: url('../storage/images/bg/international.jpg');
+   background-image: url('storage/images/bg/international.jpg');
    background-repeat: no-repeat;
    background-size: cover;
    background-size: 100% 100%;
@@ -21,51 +21,46 @@ $user=session('user');
 </style>
 
 @section('page-header')
-<div class="frow w-100 p-4 mt-3 txt-m txt-b txt-smoke bg-national-mini">Welcome, {{$user->name}}!</div>
+<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-national-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
 @endsection
 
 @section('data')
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
-      <div class="txt-grey txt-m">Application : {{$application->id}}</div>
-      <a href="{{url('national_dashboard')}}">
-         <div class="frow txt-s txt-grey centered">
-            <div class="fcol box-25 circular bg-orange centered"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
-            <div class="ml-2">Close</div>
-         </div>
-      </a>
-   </div>
+      <div class="txt-grey txt-m">My Applications</div>
+      <div class="frow txt-s txt-grey centered">
+         <div class="fcol box-25 circular bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
+         <div class="ml-2">Refresh this section</div>
 
-   <div class="w-100 rw-100 txt-grey txt-s">Created at {{$application->created_at}}</div>
+      </div>
+   </div>
    <!-- table header -->
    <div class="frow mid-left border-bottom mt-3">
-      <div class="w-10 txt-s txt-grey">Sr.</div>
-      <div class="w-40 txt-s txt-grey">University</div>
-      <div class="w-50 txt-s txt-grey">Courses</div>
+      <div class="w-15 txt-s txt-silver">ID</div>
+      <div class="w-50 txt-s txt-grey">Created At</div>
+      <div class="w-20 txt-s txt-grey">Charges</div>
+      <div class="w-15 txt-s text-center txt-grey">...</div>
    </div>
 
    <div class="fcol w-100 rw-100">
-      @php $sr=1; @endphp
-      @foreach($application->universities() as $university)
-      <div class="fcol border-bottom w-100 rw-100 py-2">
-         <div class="frow stretched  w-100 rw-100">
-            <div class="w-10">{{$sr++}}. </div>
-            <div class="w-40">{{$university->name}}</div>
-            <div class="fcol w-50">
-               @foreach($application->appdetails()->where('university_id',$university->id) as $appdetail)
-               <div class="frow txt-s">{{$appdetail->course->name}}</div>
-               @endforeach
-
-            </div>
+      @foreach($user->applications() as $application)
+      <div class="frow w-100 tr mid-left py-1 border-bottom">
+         <div class="w-15 txt-s">{{$application->id}}</div>
+         <div class="w-50 txt-s">{{$application->created_at}}</div>
+         <div class="w-20 txt-s">@if($application->ispaid) Paid @else {{$application->charges}} &nbsp<span class="badge badge-info">pay</span> @endif</div>
+         <div class="w-15 txt-s text-center">
+            <a href="{{route('applications.show',$application)}}">
+               <i data-feather='eye' class="feather-xsmall text-primary"></i>
+            </a>
+            &nbsp
+            <a href="{{route('application_download',['id'=>$application->id])}}" target="_blank">
+               <i data-feather='download' class="feather-xsmall txt-orange"></i>
+            </a>
          </div>
       </div>
       @endforeach
    </div>
-   <div class="frow mid-right txt-grey mt-2">Total Charges: {{$application->universities()->count()}}<i data-feather='dollar-sign' class="feather-xsmall"></i></div>
 </div>
-
-
-
 @endsection
 
 @section('profile')

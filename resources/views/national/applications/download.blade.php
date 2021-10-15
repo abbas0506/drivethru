@@ -66,7 +66,7 @@
          </tr>
       </thead>
       <tbody>
-         @foreach($application->profile->academics() as $academic)
+         @foreach($application->user->profile()->academics() as $academic)
          <tr>
             <td class="w-15 txt-xs">{{$academic->level->name}}</td>
             <td class="w-10 txt-xs">{{$academic->passyear}}</td>

@@ -33,7 +33,7 @@
             <div class="fcol">
                <div class="navlink txt-b "><a href="http://">Your Profile</a></div>
                <div class="navlink"><a href="http://">Change Password</a></div>
-               <div class="navlink"><a href="http://">Sign out</a></div>
+               <div class="navlink"><a href="{{url('signout')}}">Sign out</a></div>
 
             </div>
          </div>

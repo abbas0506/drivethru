@@ -51,9 +51,12 @@ class ApplicationController extends Controller
         ]);
 
         DB::beginTransaction();
+
         try {
-            if ($request->ids) {
-                $application = Application::create(['profile_id' => 1, 'charges' => 1000]);
+            $user = session('user');
+            if ($request->ids && $user) {
+
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
                 $ids = explode(',', $request->ids);
                 foreach ($ids as $id) {
                     $id_parts = explode('-', $id);
@@ -121,7 +124,7 @@ class ApplicationController extends Controller
     public function download(Request $request)
     {
         $application = Application::find($request->id);
-        $profile = $application->profile;
+        $profile = $application->user->profile();
 
         // echo "id" . $profile->id;
 

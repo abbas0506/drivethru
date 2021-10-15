@@ -1,4 +1,4 @@
-@extends('layouts.student')
+@extends('layouts.main')
 @section('topbar')
 <x-topbar_national activeItem='home'></x-topbar_national>
 @endsection
@@ -32,6 +32,6 @@ Graph section
    <!-- script goes here -->
    @section('script')
    <script lang="javascript">
-   // 
+      // 
    </script>
    @endsection

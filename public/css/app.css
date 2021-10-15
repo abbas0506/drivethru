@@ -95,6 +95,12 @@ body {
 .txt-smoke {
   color: #B9BEC4;
 }
+.txt-grey {
+  color: #777;
+}
+.txt-custom-blue {
+  color: #2A538F;
+}
 
 .hide {
   display: none !important;
@@ -413,6 +419,11 @@ body {
 .box-10 {
   width: 10px;
   height: 10px;
+}
+
+.box-15 {
+  width: 15px;
+  height: 15px;
 }
 
 .box-20 {
@@ -1397,6 +1408,11 @@ body {
 }
 .hr.light {
   border-bottom: 1px solid #aaa;
+}
+
+a:hover {
+  text-decoration: none !important;
+  cursor: pointer;
 }
 
 /*!

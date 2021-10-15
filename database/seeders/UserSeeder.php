@@ -16,7 +16,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        User::create(['phone' => '03000373004', 'password' => Hash::make('password')]);
-        User::create(['phone' => '03424930066', 'password' => Hash::make('password')]);
+        User::create([
+            'name' => 'admin',
+            'phone' => '3000373004',
+            'password' => Hash::make('password'),
+            'usertype' => 'admin',
+        ]);
     }
 }

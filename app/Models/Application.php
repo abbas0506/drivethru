@@ -9,13 +9,13 @@ class Application extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'profile_id',
+        'user_id',
         'charges',
         'ispaid',
     ];
-    public function profile()
+    public function user()
     {
-        return $this->belongsTo(Profile::class, 'profile_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function appdetails()

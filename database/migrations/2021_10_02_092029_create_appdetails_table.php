@@ -20,6 +20,24 @@ class CreateAppdetailsTable extends Migration
             $table->unsignedBigInteger('course_id');
             $table->unique(['application_id', 'university_id', 'course_id']);
             $table->timestamps();
+
+            $table->foreign('application_id')
+                ->references('id')
+                ->on('applications')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('university_id')
+                ->references('id')
+                ->on('universities')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('course_id')
+                ->references('id')
+                ->on('courses')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

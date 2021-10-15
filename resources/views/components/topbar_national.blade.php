@@ -8,7 +8,11 @@
    </div>
    <div class="frow pr-3">
       <div class="px-1"><i data-feather='bell' class="feather-small" onclick=""></i></div>
-      <div class="px-1"><i data-feather='log-out' class="feather-small" onclick=""></i></div>
+      <div class="px-1">
+         <a href="{{url('signout')}}">
+            <i data-feather='log-out' class="feather-small txt-custom-blue"></i>
+         </a>
+      </div>
       <div class="my-auto mx-2 rshow"><i data-feather='menu' class="feather-small" onclick="toggle_sidebar()"></i></div>
    </div>
 </div>

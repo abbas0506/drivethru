@@ -1,10 +1,14 @@
-@extends('layouts.student')
+@extends('layouts.main')
 @section('topbar')
 <x-topbar_national activeItem='home'></x-topbar_national>
 @endsection
 
+@php
+$user=session('user');
+@endphp
+
 @section('sidebar')
-<x-sidebar_national activeItem='profile'></x-sidebar_national>
+<x-sidebar_national activeItem='dashboard' :user="$user"></x-sidebar_national>
 @endsection
 
 @section('page-title')

@@ -1,4 +1,4 @@
-@extends('layouts.student')
+@extends('layouts.main')
 @section('topbar')
 <x-topbar_national activeItem='home'></x-topbar_national>
 @endsection
@@ -67,9 +67,18 @@ Search Result
 </div>
 @endforeach
 <div class="frow centered mt-5">
+   @if($user->hasFinishedProfile())
    <button class="btn btn-primary" id='applyThroughUs' onclick="toggleApply()">Apply Through Us</button>
+   @else
+   <button class="btn btn-primary" onclick="showProfileRequired()">Apply Through Us</button>
+   @endif
+
    <button class="btn btn-primary hide" id='cancelApply' onclick="toggleApply()">Cancel</button>
    <button class="btn btn-success hide ml-2" id='applyNow' onclick="postUnicourseIds()">Apply Now <sup><span id='chkCount'></span></sup></button>
+</div>
+
+<div class="frow bg-info centered hide mt-5 p-4" id='profileRequired'>
+   <div>Your profile has been found incomplete. We need your personal and academic details in order to process your application. So first <a href="{{route('profiles.index')}}" class="txt-orange mx-2">Complete Your Profile</a> </div>
 </div>
 @endsection
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>
@@ -91,8 +100,6 @@ function search(event) {
       }
    });
 }
-
-
 
 function loadCourses(event) {
 
@@ -154,26 +161,10 @@ function postUnicourseIds() {
 
    $('#_ids').val(ids);
    $('#applicationForm').submit();
-   // $.ajax({
-   //    type: 'POST',
-   //    url: "finduniversity",
-   //    data: {
-   //       "ids": ids,
-   //       "_token": token,
+}
 
-   //    },
-   //    success: function(response) {
-   //       //
-   //       alert(response.msg);
-
-   //    },
-   //    error: function(XMLHttpRequest, textStatus, errorThrown) {
-   //       Toast.fire({
-   //          icon: 'warning',
-   //          title: errorThrown
-   //       });
-   //    }
-   // }); //ajax end
+function showProfileRequired() {
+   $('#profileRequired').toggleClass('hide');
 }
 </script>
 @endsection

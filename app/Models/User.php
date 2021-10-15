@@ -21,6 +21,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
+        'usertype',
     ];
 
     /**
@@ -44,6 +45,14 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasMany(Profile::class, 'user_id')->get();
+        return $this->hasMany(Profile::class, 'user_id')->first();
+    }
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'user_id')->get();
+    }
+    public function hasFinishedProfile()
+    {
+        return false;
     }
 }

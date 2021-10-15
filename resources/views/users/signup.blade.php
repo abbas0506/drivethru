@@ -97,6 +97,17 @@
       border-style: dashed;
       border-color: #777;
    }
+
+   body {
+      background-image: url('storage/images/bg/auth.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+   }
+
+   .auth-container {
+      opacity: 0.7;
+   }
    </style>
 </head>
 
@@ -111,7 +122,7 @@
 
       </div>
       <div class="fcol w-40 rw-100 centered">
-         <div class='fcol w-60 rw-100 p-5 bg-darkblue'>
+         <div class='fcol w-60 rw-100 p-5 bg-darkblue auth-container'>
             <form action="{{route('users.store')}}" method='post'>
                @csrf
                <div class="fcol rw-100 centered">
@@ -138,17 +149,29 @@
                   <div class="frow w-100 centered mt-2">
                      <input type="password" id='confirmpw' placeholder="Confirm Password" class="w-100">
                   </div>
-                  <div class="frow w-100 stretched mt-3">
-                     <div class="fcol w-70 rw-70 centered" id='createnew'>I already own an account, sign in</div>
-                     <div class='fcol w-30 rw-30'><button type="submit" class="btn btn-sm btn-primary">Sign Up</button></div>
+                  <div class="frow w-100 rw-100 centered stretched mt-3">
+                     <a href="{{url('signin')}}" class="w-60 rw-60 mr-1">
+                        <div class="fcol centered" id='createnew'>I have an account, sign in</div>
+                     </a>
+                     <div class='fcol w-40 rw-40'><button type="submit" class="btn btn-sm btn-primary">Sign Up</button></div>
                   </div>
 
                </div>
             </form>
+
+            <!-- display authentication error if any -->
+            @if ($errors->any())
+            <div class="fcol w-100 rw-100 my-2 txt-orange">
+               @foreach ($errors->all() as $error)
+               <div class="txt-s">- {{ $error }}</div>
+               @endforeach
+            </div>
+            @endif
+
             <div class="fcol h-10">
                <span class="w-100 hr my-3"></span>
                <div class="frow w-100 rw-100">
-                  <div class="fcol w-70 rw-70 centered txt-lightsmoke txt-s">Alternate signin options</div>
+                  <div class="fcol w-70 rw-70 centered txt-lightsmoke txt-s">Other signin options</div>
                   <div class="fcol border-lightgrey circular-20 txt-smoke ml-2"><i data-feather='facebook' class="feather-xsmall"></i></div>
                   <div class="fcol border-lightgrey circular-20 txt-smoke ml-2 txt-s">G</div>
                </div>

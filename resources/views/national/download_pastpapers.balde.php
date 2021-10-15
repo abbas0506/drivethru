@@ -1,4 +1,4 @@
-@extends('layouts.student')
+@extends('layouts.main')
 @section('topbar')
 <x-topbar_national activeItem='blog'></x-topbar_national>
 @endsection
