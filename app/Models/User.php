@@ -47,12 +47,26 @@ class User extends Authenticatable
     {
         return $this->hasMany(Profile::class, 'user_id')->first();
     }
+    public function academics()
+    {
+        return $this->hasMany(Academic::class, 'user_id')->get();
+    }
     public function applications()
     {
         return $this->hasMany(Application::class, 'user_id')->get();
     }
+    public function hasProfile()
+    {
+        if ($this->profile()) return true;
+        else return false;
+    }
+    public function hasAcademics()
+    {
+        return count($this->academics());
+    }
     public function hasFinishedProfile()
     {
-        return false;
+        if ($this->hasProfile() && $this->hasAcademics()) return true;
+        else return false;
     }
 }

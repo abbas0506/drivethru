@@ -22,9 +22,49 @@
         flex-direction: column;
         flex-wrap: nowrap;
     }
+    .circular-10 {
+        max-width: 10px;
+        max-height: 10px;
+        align-items: center;
+        justify-content: center;
+        border: solid;
+        border-radius: 50%;
+    }
+    .circular-15 {
+        max-width: 15px;
+        max-height: 15px;
+        align-items: center;
+        justify-content: center;
+        border: solid;
+        border-radius: 50%;
+    }
     .circular-20 {
         max-width: 20px;
         max-height: 20px;
+        align-items: center;
+        justify-content: center;
+        border: solid;
+        border-radius: 50%;
+    }
+    .circular-25 {
+        max-width: 25px;
+        max-height: 25px;
+        align-items: center;
+        justify-content: center;
+        border: solid;
+        border-radius: 50%;
+    }
+    .circular-50 {
+        max-width: 50px;
+        max-height: 50px;
+        align-items: center;
+        justify-content: center;
+        border: solid;
+        border-radius: 50%;
+    }
+    .circular-75 {
+        max-width: 75px;
+        max-height: 75px;
         align-items: center;
         justify-content: center;
         border: solid;

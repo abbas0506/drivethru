@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Academic;
+use App\Models\Level;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
+use Exception;
 
 class AcademicController extends Controller
 {
@@ -15,6 +19,7 @@ class AcademicController extends Controller
     public function index()
     {
         //
+        return view('academics.index');
     }
 
     /**
@@ -25,6 +30,16 @@ class AcademicController extends Controller
     public function create()
     {
         //
+        $levels = Level::all();
+
+        $current_year = Carbon::now()->format('Y');
+        $years = collect();
+
+        for ($year = $current_year; $year > $current_year - 50; $year--) {
+            $years->add($year);
+        }
+
+        return view('academics.create', compact('levels', 'years'));
     }
 
     /**
@@ -36,6 +51,28 @@ class AcademicController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'user_id' => 'required',
+            'level_id' => 'required',
+            'passyear' => 'required',
+            'rollno' => 'required',
+            'regno' => 'required',
+            'major' => 'required',
+            'biseuni' => 'required',
+            'obtained' => 'required',
+            'total' => 'required',
+
+
+        ]);
+
+        try {
+            $academic = Academic::create($request->all());
+            $academic->save();
+            return redirect()->route('profiles.index');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
     }
 
     /**
@@ -58,6 +95,14 @@ class AcademicController extends Controller
     public function edit(Academic $academic)
     {
         //
+        $current_year = Carbon::now()->format('Y');
+        $years = collect();
+
+        for ($year = $current_year; $year > $current_year - 50; $year--) {
+            $years->add($year);
+        }
+
+        return view('academics.edit', compact('academic', 'years'));
     }
 
     /**
@@ -70,6 +115,25 @@ class AcademicController extends Controller
     public function update(Request $request, Academic $academic)
     {
         //
+        $request->validate([
+            'passyear' => 'required',
+            'rollno' => 'required',
+            'regno' => 'required',
+            'major' => 'required',
+            'biseuni' => 'required',
+            'obtained' => 'required',
+            'total' => 'required',
+
+
+        ]);
+
+        try {
+            $academic->update($request->all());
+            return redirect()->route('profiles.index');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
     }
 
     /**
@@ -81,5 +145,12 @@ class AcademicController extends Controller
     public function destroy(Academic $academic)
     {
         //
+        try {
+            $academic->delete();
+            return redirect()->back()->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 }

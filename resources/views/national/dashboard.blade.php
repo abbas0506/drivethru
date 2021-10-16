@@ -29,7 +29,7 @@ $user=session('user');
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">My Applications</div>
       <div class="frow txt-s txt-grey centered">
-         <div class="fcol box-25 circular bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
+         <div class="fcol circular-20 border-0 bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
          <div class="ml-2">Refresh this section</div>
 
       </div>
@@ -88,7 +88,7 @@ $user=session('user');
 <div class="fcol w-100 rw-100 bg-white p-4 mt-3">
    <div class="w-100 rw-100 mb-2 txt-grey txt-b ">PROFILE STRENGTH</div>
    <div class="frow w-100 rw-100 centered">
-      <div class="fcol box-50 border circular">
+      <div class="fcol border circular-50">
          <img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg" width='50' height='50'>
       </div>
    </div>
@@ -98,20 +98,31 @@ $user=session('user');
    </div>
    <div class="frow w-100 rw-100 stretched">
       <div class="txt-s">Profile Picture</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
+      <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
    </div>
    <div class="frow w-100 rw-100 mt-2 stretched">
       <div class="txt-s">Personal Information</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
+      @if($user->hasProfile())
+      <div class="fcol circular-15 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
+      @else
+      <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
+      @endif
+
    </div>
    <div class="frow w-100 rw-100 mt-2 stretched">
       <div class="txt-s">Academic Information</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
+      @if($user->hasAcademics())
+      <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
+      @else
+      <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
+      @endif
+
    </div>
+
    <div class="frow w-100 rw-100 py-2 mt-2 border-top stretched">
       <div class="txt-s"></div>
       <div class="frow">
-         <a href="{{route('profiles.edit', $user->id)}}">
+         <a href="{{route('profiles.index')}}">
             <div class="txt-green txt-b">Update Profile</div>
          </a>
          <div class="fcol centered"><i data-feather='chevron-right' class="feather-xsmall txt-green"></i> </div>

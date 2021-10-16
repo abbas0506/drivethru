@@ -30,6 +30,7 @@ use App\Http\Controllers\ExpensetypeController;
 use App\Http\Controllers\LivingcostController;
 use App\Http\Controllers\FindUniversityController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AcademicController;
 use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
 /*
@@ -97,10 +98,13 @@ Route::middleware([StudentLayer::class])->group(function () {
     Route::resource('finduniversity', FindUniversityController::class);
     Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
     Route::view('finalizeApplication', 'students.national.finalize');
-    Route::resource('profiles', ProfileController::class);
-    Route::resource('applications', ApplicationController::class);
-    Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
 
+    Route::resource('applications', ApplicationController::class);
+
+    Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
     Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
+    Route::resource('profiles', ProfileController::class);
+    Route::resource('academics', AcademicController::class);
+    Route::view('change_picture', 'profile.change_picture')->name('change_picture');
 });

@@ -16,18 +16,17 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
-            $table->string('name', 100);
             $table->string('fname', 100);
             $table->string('mname', 100);
             $table->string('cnic', 20)->unique();
             $table->string('passport', 100)->unique();
-            $table->string('address', 150);
-            $table->boolean('gender');
+            $table->string('gender', 1);
+            $table->date('dob');
             $table->string('religion', 50);
             $table->string('bloodgroup', 3);
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('pic', 100);
+            $table->string('address', 150);
+
+            $table->string('pic', 100)->nullable();
 
             $table->boolean('step1')->default(0);
             $table->boolean('step2')->default(0);

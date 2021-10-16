@@ -9,20 +9,20 @@ class Academic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'profile_id',
+        'user_id',
         'level_id',
         'passyear',
         'rollno',
         'regno',
-        'subjects',
+        'major',
         'biseuni',
         'obtained',
         'total',
     ];
     public $timestamps = false;
-    public function profile()
+    public function user()
     {
-        return $this->belongsTo(Profile::class, 'profile_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function level()
     {

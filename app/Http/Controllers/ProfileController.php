@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\models\User;
+use Exception;
 
 class ProfileController extends Controller
 {
@@ -16,8 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
-        $user = session('user');
-        return view('profile.index', compact('user'));
+        return view('profile.index');
     }
 
     /**
@@ -39,6 +39,24 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'fname' => 'required',
+            'mname' => 'required',
+            'cnic' => 'required',
+            'gender' => 'required',
+            'religion' => 'required',
+            'address' => 'required',
+
+        ]);
+
+        try {
+            $profile = Profile::create($request->all());
+            $profile->save();
+            return redirect()->route('profiles.index')->with('success', 'Successfully saved');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
     }
 
     /**
@@ -74,6 +92,23 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         //
+        $request->validate([
+            'fname' => 'required',
+            'mname' => 'required',
+            'cnic' => 'required',
+            'gender' => 'required',
+            'religion' => 'required',
+            'address' => 'required',
+
+        ]);
+
+        try {
+            $profile = $profile->update($request->all());
+            return redirect('profiles');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
     }
 
     /**

@@ -15,19 +15,19 @@ class CreateAcademicsTable extends Migration
     {
         Schema::create('academics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('level_id');
             $table->unsignedInteger('passyear');
-            $table->unsignedInteger('rollno');
-            $table->unsignedInteger('regno');
+            $table->string('rollno', 20);
+            $table->string('regno', 20);
             $table->string('biseuni', 100);
-            $table->string('subjects', 100);
+            $table->string('major', 100);
             $table->unsignedInteger('obtained');
             $table->unsignedInteger('total');
 
-            $table->foreign('profile_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('profiles')
+                ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 

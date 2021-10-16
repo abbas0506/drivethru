@@ -10,19 +10,20 @@ class Profile extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'name',
+        'gender',
+        'dob',
         'fname',
         'mname',
         'cnic',
         'passport',
         'address',
-        'gender',
         'religion',
         'bloodgroup',
-        'email',
         'pic',
     ];
     public $timestamps = false;
+    protected $dateFormat = 'Y-m-d';
+    protected $dates = ['dob'];
 
     public function academics()
     {
