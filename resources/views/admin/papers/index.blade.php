@@ -43,23 +43,25 @@
    <!-- page content -->
    <div class="frow px-2 py-1 mb-2 txt-b bg-info">
       <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-60">Past Paper </div>
-      <div class="fcol centered w-20">Image </div>
-      <div class="fcol mid-right pr-3 w-10"><i data-feather='settings' class="feather-xsmall"></i></div>
+      <div class="fcol mid-left w-50">Past Paper </div>
+      <div class="fcol centered w-20">Download </div>
+      <div class="fcol mid-right pr-3 w-20"><i data-feather='settings' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
    @foreach($data as $paper)
 
    <div class="frow p-2 my-2 border rounded tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-60"> {{$paper->papertype->name}} - {{$paper->year}} </div>
-
-      @php
+      <div class="fcol mid-left w-50"> {{$paper->papertype->name}} - {{$paper->year}} </div>
+      <div class="fcol centered w-20">
+         <a href="{{$paper->url}}" target="_blank"><i data-feather='download' class="feather-xsmall mx-1 txt-orange"></i></a>
+      </div>
+      <!-- @php
       $pic_url=url("storage/images/papers/".$paper->pic);
       @endphp
 
-      <div class="fcol centered w-20"> <img src={{$pic_url}} alt='flag' width=50 height=60> </div>
-      <div class="fcol mid-right w-10">
+      <div class="fcol centered w-20"> <img src={{$pic_url}} alt='flag' width=50 height=60> </div> -->
+      <div class="fcol mid-right w-20">
          <div class="frow stretched">
             <div><a href="{{route('papers.edit',$paper)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
             <div>
@@ -107,6 +109,10 @@
       <div class="fancyinput w-100">
          <input type="file" id='pic' name='pic' placeholder="past paper" class='w-100 m-0 p-2' onchange='preview_pastpaper()' required>
          <label for="Name">Image</label>
+      </div>
+      <div class="fancyinput w-100">
+         <input type="txt" name='url' placeholder="Paste Url" class='w-100 m-0 p-2' required>
+         <label for="Name">Drive URL</label>
       </div>
 
       <div class="frow mid-right my-4">

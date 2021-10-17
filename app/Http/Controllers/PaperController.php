@@ -163,4 +163,10 @@ class PaperController extends Controller
             // something went wrong
         }
     }
+
+    public function download()
+    {
+        $papers = Paper::all();
+        return view('national.papers.download', compact('papers'));
+    }
 }

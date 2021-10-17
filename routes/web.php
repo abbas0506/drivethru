@@ -33,6 +33,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AcademicController;
 use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\CounsellingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,4 +109,6 @@ Route::middleware([StudentLayer::class])->group(function () {
     Route::resource('academics', AcademicController::class);
     Route::view('change_pic', 'profile.change_pic')->name('change_pic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
+    Route::get('papers_download', [PaperController::class, 'download'])->name('papers_download');
+    Route::resource('counselling', CounsellingController::class);
 });

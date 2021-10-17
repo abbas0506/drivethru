@@ -44,14 +44,14 @@
    </div>
 
    <div @if($activeItem=='pastPapers' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('applications.index')}}">
+      <a href="{{url('papers_download')}}">
          <div class="navitem-ico"><i data-feather='download' class="feather-small"></i></div>
          <div class="navitem-link">Past Papers</div>
       </a>
    </div>
 
-   <div @if($activeItem=='careerCounselling' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('applications.index')}}">
+   <div @if($activeItem=='counselling' ) class="navitem active" @else class="navitem" @endif>
+      <a href="{{route('counselling.index')}}">
          <div class="navitem-ico"><i data-feather='headphones' class="feather-small"></i></div>
          <div class="navitem-link">Career Counselling</div>
       </a>

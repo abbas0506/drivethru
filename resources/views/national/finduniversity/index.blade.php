@@ -34,7 +34,7 @@ Graph section
       </div>
       <!-- course 1 -->
       <div class="frow mid-left mt-4 auto-col">
-         <div class="w-20 rw-100 text-center txt-s txt-b rmb-3">1<sup>st</sup> priority</div>
+         <div class="w-20 rw-100 text-center txt-s txt-grey rmb-3">1<sup>st</sup> priority</div>
          <div class="frow w-80 rw-100 auto-col stretched">
             <div class="fancyselect w-48 rw-100 rmb-2">
                <select onchange="loadCourses(event,1)" required>
@@ -57,7 +57,7 @@ Graph section
 
       <!-- course 2 -->
       <div class="frow mid-left mt-3 auto-col">
-         <div class="w-20 rw-100 text-center txt-s txt-b rmb-3">2<sup>nd</sup> priority</div>
+         <div class="w-20 rw-100 text-center txt-s txt-grey rmb-3">2<sup>nd</sup> priority</div>
          <div class="frow w-80 rw-100 stretched auto-col">
             <div class="fancyselect w-48 rw-100 rmb-2">
                <select onchange="loadCourses(event,2)" required>
@@ -78,7 +78,7 @@ Graph section
       </div>
       <!-- course 3 -->
       <div class="frow mid-left mt-3 auto-col">
-         <div class="w-20 rw-100 text-center txt-s txt-b rmb-3">3<sup>rd</sup> priority</div>
+         <div class="w-20 rw-100 text-center txt-s txt-grey rmb-3">3<sup>rd</sup> priority</div>
          <div class="frow w-80 rw-100 stretched auto-col">
             <div class="fancyselect w-48 rw-100 rmb-2">
                <select onchange="loadCourses(event,3)" required>
@@ -101,7 +101,7 @@ Graph section
    <div class="bg-light mt-3 p-4 rounded">
 
       <div class="frow w-100 centered stretched auto-col">
-         <div class="fcol centered w-15 rw-100 txt-s txt-b rmb-3">
+         <div class="fcol centered w-15 rw-100 txt-s txt-grey rmb-3">
             <div><i data-feather='filter' class="feather-xsmall"></i></div>
             <div class="text-center">Optional Parameters</div>
          </div>
@@ -149,36 +149,36 @@ Graph section
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function loadCourses(event, priority) {
-      var token = $("meta[name='csrf-token']").attr("content");
-      var faculty_id = event.target.value;
-      $.ajax({
-         type: 'POST',
-         url: "fetchCoursesByFacultyId",
-         data: {
-            "faculty_id": faculty_id,
-            "_token": token,
+function loadCourses(event, priority) {
+   var token = $("meta[name='csrf-token']").attr("content");
+   var faculty_id = event.target.value;
+   $.ajax({
+      type: 'POST',
+      url: "fetchCoursesByFacultyId",
+      data: {
+         "faculty_id": faculty_id,
+         "_token": token,
 
-         },
-         success: function(response) {
-            //
+      },
+      success: function(response) {
+         //
 
-            if (priority == 1) $('#course_id1').html(response.course_options);
-            if (priority == 2) $('#course_id2').html(response.course_options);
-            if (priority == 3) $('#course_id3').html(response.course_options);
+         if (priority == 1) $('#course_id1').html(response.course_options);
+         if (priority == 2) $('#course_id2').html(response.course_options);
+         if (priority == 3) $('#course_id3').html(response.course_options);
 
-         },
-         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            Toast.fire({
-               icon: 'warning',
-               title: errorThrown
-            });
-         }
-      }); //ajax end
-   }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+         Toast.fire({
+            icon: 'warning',
+            title: errorThrown
+         });
+      }
+   }); //ajax end
+}
 
-   $('[name=mode]').change(function() {
-      $('[name=mode]').not(this).prop('checked', false);
-   });
+$('[name=mode]').change(function() {
+   $('[name=mode]').not(this).prop('checked', false);
+});
 </script>
 @endsection
