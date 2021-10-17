@@ -17,7 +17,8 @@ class CreatePapersTable extends Migration
             $table->id();
             $table->unsignedInteger('year')->default('2021');
             $table->unsignedBigInteger('papertype_id');
-            $table->string('pic', 50)->default('default.jpg');
+            $table->string('pic', 50)->nullable();
+            $table->string('url', 200);
             $table->timestamps();
             $table->foreign('papertype_id')
                 ->references('id')
