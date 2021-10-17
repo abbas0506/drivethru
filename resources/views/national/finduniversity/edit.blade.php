@@ -78,7 +78,7 @@ Search Result
 </div>
 
 <div class="frow bg-info centered hide mt-5 p-4" id='profileRequired'>
-   <div>Your profile has been found incomplete. We need your personal and academic details in order to process your application. So first <a href="{{route('profiles.index')}}" class="txt-orange mx-2">Complete Your Profile</a> </div>
+   <div>Your profile has been found incomplete. We need your personal and academic details in order to process your application. So, first complete your profile and then visit this page again. <a href="{{route('profiles.index')}}" class="txt-white mx-2">Click here</a> to complete your profile.</div>
 </div>
 @endsection
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>

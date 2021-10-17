@@ -26,8 +26,6 @@ class CreateProfilesTable extends Migration
             $table->string('bloodgroup', 3);
             $table->string('address', 150);
 
-            $table->string('pic', 100)->nullable();
-
             $table->boolean('step1')->default(0);
             $table->boolean('step2')->default(0);
 

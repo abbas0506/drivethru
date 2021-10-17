@@ -106,5 +106,6 @@ Route::middleware([StudentLayer::class])->group(function () {
     Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
     Route::resource('academics', AcademicController::class);
-    Route::view('change_picture', 'profile.change_picture')->name('change_picture');
+    Route::view('change_pic', 'profile.change_pic')->name('change_pic');
+    Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 });

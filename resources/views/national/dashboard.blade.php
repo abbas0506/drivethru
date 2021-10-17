@@ -5,6 +5,7 @@
 
 @php
 $user=session('user');
+$pic_url=url("storage/images/users/".$user->pic);
 @endphp
 
 @section('sidebar')
@@ -89,7 +90,7 @@ $user=session('user');
    <div class="w-100 rw-100 mb-2 txt-grey txt-b ">PROFILE STRENGTH</div>
    <div class="frow w-100 rw-100 centered">
       <div class="fcol border circular-50">
-         <img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg" width='50' height='50'>
+         <img src="{{$pic_url}}" alt="" class="user-avatar-lg rounded-circle" width='50' height='50'>
       </div>
    </div>
 

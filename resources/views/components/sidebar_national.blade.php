@@ -2,8 +2,23 @@
    <div class='frow w-100 mid-right p-1'>
       <div class="box-25 text-center bg-orange text-white circular hoverable rshow" onclick="toggle_sidebar()"><i data-feather='x' class="feather-small"></i></div>
    </div>
+   <div class="frow w-100 rw-100 my-2 centered relative">
 
-   <div><img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg"></div>
+      @php
+      $user=session('user');
+      $pic_url=url("storage/images/users/".$user->pic);
+      @endphp
+      <div class="fcol border-1 circular-75">
+         <img src="{{$pic_url}}" alt="" class="rounded-circle" width='75' height='75'>
+      </div>
+      <div>
+         <a href="{{route('change_pic')}}">
+            <i data-feather='camera' class="feather-xsmall absolute" style='bottom:5px'></i>
+         </a>
+      </div>
+   </div>
+
+
    <div class="user-profile-id">{{$user->id}}</div>
 
    <a href="{{route('profiles.index')}}">

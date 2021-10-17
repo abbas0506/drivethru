@@ -19,7 +19,6 @@ class Profile extends Model
         'address',
         'religion',
         'bloodgroup',
-        'pic',
     ];
     public $timestamps = false;
     protected $dateFormat = 'Y-m-d';

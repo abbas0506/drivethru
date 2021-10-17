@@ -121,4 +121,39 @@ class ProfileController extends Controller
     {
         //
     }
+    public function change_pic(Request $request)
+    {
+        $request->validate([
+            'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user = session('user');
+        if ($request->hasFile('pic')) {
+            //unlink old image
+            $destination_path = 'public/images/users/';
+            //unlink(storage_path('app/public/images/profile/' . $profile->pic));
+
+            //never destroy default.png as it is used as default image for every new user
+            if (!$user->pic == 'default.png') {
+                $file_path = $destination_path . $user->pic;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+
+
+            //save new pic after renaming
+            $file_name = $user->id . '.' . $request->pic->extension();
+            $request->file('pic')->storeAs($destination_path, $file_name);
+            $user->pic = $file_name;
+        }
+
+        try {
+            $user->update();
+            return redirect()->route('profiles.index')->with('success', 'Image uploaded successfully');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
+    }
 }

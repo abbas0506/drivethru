@@ -12,6 +12,7 @@ class Paper extends Model
         'year',
         'papertype_id',
         'pic',
+        'url',
     ];
     public $timestamps = false;
     public function papertype()

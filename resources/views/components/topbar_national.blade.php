@@ -1,5 +1,8 @@
 <div class="frow w-80 stretched mid-left">
-   <div class=""><i data-feather='toggle-left' class="feather-small text-info mx-2" onclick=""></i>International Mode</div>
+   <div class="frow mid-left">
+      <a href=""><i data-feather='toggle-left' class="feather-medium txt-custom-blue mx-2" onclick=""></i><span class="txt-custom-blue">Switch to International Mode</span>
+      </a>
+   </div>
    <div class="frow user-top-navbar centered rhide">
       <div @if($activeItem=='about' ) class="navitem active" @else class="navitem" @endif>About</div>
       <div @if($activeItem=='home' ) class="navitem active" @else class="navitem" @endif>Home</div>
