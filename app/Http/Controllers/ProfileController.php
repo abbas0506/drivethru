@@ -17,7 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
-        return view('profile.index');
+        return view('user.profile.index');
     }
 
     /**
@@ -79,7 +79,7 @@ class ProfileController extends Controller
     public function edit(Profile $profile)
     {
         //
-        return view('profile.edit', compact('profile'));
+        return view('user.profile.edit', compact('profile'));
     }
 
     /**

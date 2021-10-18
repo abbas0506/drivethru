@@ -1423,9 +1423,6 @@ body {
 .user-page .page-navbar .navitem a:hover {
   text-decoration: none;
 }
-.user-page .page-body .page-data {
-  padding-bottom: 50px;
-}
 .user-page .page-body .page-social {
   padding: 0px 0px 0px 10px;
 }

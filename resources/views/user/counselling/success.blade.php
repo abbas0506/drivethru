@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar activeItem='counselling' :user="$user"></x-sidebar>
+<x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-header')

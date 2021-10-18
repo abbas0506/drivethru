@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar activeItem='findUni' :user="$user"></x-sidebar>
+<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
@@ -16,7 +16,7 @@ Success
 @endsection
 
 @section('page-navbar')
-<x-finduni_navbar activeItem='apply'></x-finduni_navbar>
+<x-finduni__navbar activeItem='apply'></x-finduni__navbar>
 @endsection
 
 

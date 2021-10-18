@@ -1,0 +1,23 @@
+admin:
+   -crud update
+   -country model edit
+
+representative:
+   -dashboard
+   -notifications
+   -change counselling status
+   -update closing date
+   -update advertisement banner
+   -update news section
+
+
+user:
+   -findcountry
+   -change password
+   -social bar
+   -notifications
+   -social signup
+   -phone or email verification
+   -update phone or email
+   
+

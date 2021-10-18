@@ -91,7 +91,7 @@ Route::middleware([AdminLayer::class])->group(function () {
 });
 
 Route::middleware([StudentLayer::class])->group(function () {
-    Route::view('user_dashboard', 'national.dashboard');
+    Route::view('user_dashboard', 'user.dashboard');
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
     Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
@@ -110,10 +110,10 @@ Route::middleware([StudentLayer::class])->group(function () {
     Route::resource('academics', AcademicController::class);
     Route::view('change_pic', 'profile.change_pic')->name('change_pic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
-    Route::get('papers_download', [PaperController::class, 'download'])->name('papers_download');
+    Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
     Route::resource('counselling', CounsellingController::class);
 
-    Route::resource('findcountries', FindCountryController::class);
+    Route::resource('findcountry', FindCountryController::class);
     Route::get('switch/{mode}', function ($mode) {
         session([
             'mode' => $mode,

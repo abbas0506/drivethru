@@ -167,6 +167,6 @@ class PaperController extends Controller
     public function download()
     {
         $papers = Paper::all();
-        return view('national.papers.download', compact('papers'));
+        return view('user.papers.download', compact('papers'));
     }
 }

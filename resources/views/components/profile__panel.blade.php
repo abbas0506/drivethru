@@ -22,3 +22,10 @@
    </div>
 
 </div>
+
+<div class="frow w-100 rw-100 bg-white p-4 mt-3">
+   <div class="fcol w-20 centered">
+      <i data-feather='key' class="feather-xsmall txt-orange"></i>
+   </div>
+   <div class="fcol w-80 centered">Change Password</div>
+</div>

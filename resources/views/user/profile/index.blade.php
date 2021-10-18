@@ -8,20 +8,13 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar activeItem='dashboard' :user="$user"></x-sidebar>
+<x-user__sidebar activeItem='dashboard' :user="$user"></x-user__sidebar>
 @endsection
-
-<style>
-   .bg-national-mini {
-      background-image: url('storage/images/bg/international.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-size: 100% 100%;
-   }
-</style>
-
 @section('page-header')
-<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-national-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
+<div class="fcol">
+   <div class="frow w-100 py-2 mt-1 txt-m txt-b txt-custom-blue">Update Profile</div>
+   <div class="frow txt-s txt-grey">Here you can change your profile info as well as password </div>
+</div>
 @endsection
 
 @section('data')
@@ -38,12 +31,12 @@ $user=session('user');
 <br />
 @elseif(session('success'))
 <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
 </script>
 @endif
 
@@ -57,7 +50,7 @@ $user=session('user');
       </a>
    </div>
 
-   <div class="frow my-2 txt-m txt-grey">Personal Info</div>
+   <div class="frow my-2 txt-m txt-orange">Personal Info</div>
    <div class="frow w-100 rw-100 stretched auto-col">
       <div class="fcol w-48 mt-3">
          <div class="txt-s txt-smoke">Father</div>
@@ -107,7 +100,7 @@ $user=session('user');
 <!-- profile exists, show academic details as well-->
 
 <div class="bg-white p-4 mt-3 relative">
-   <div class="frow my-2 txt-m txt-grey">
+   <div class="frow my-2 txt-m txt-orange">
       <div class="w-80 rw-60">Academic Detail</div>
       <!-- <div class="badge badge-success circular p-1">+ Create New</div> -->
 

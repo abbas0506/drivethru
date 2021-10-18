@@ -9,20 +9,27 @@ $pic_url=url("storage/images/users/".$user->pic);
 @endphp
 
 @section('sidebar')
-<x-sidebar activeItem='dashboard' :user="$user"></x-sidebar>
+<x-user__sidebar activeItem='dashboard' :user="$user"></x-user__sidebar>
 @endsection
 
 <style>
-   .bg-national-mini {
-      background-image: url('storage/images/bg/international.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-size: 100% 100%;
-   }
+.bg-national-mini {
+   background-image: url('storage/images/bg/national.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-size: 100% 100%;
+}
+
+.bg-international-mini {
+   background-image: url('storage/images/bg/international.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-size: 100% 100%;
+}
 </style>
 
 @section('page-header')
-<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-national-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
+<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke @if(session('mode')==0) bg-national-mini @else bg-international-mini @endif" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
 @endsection
 
 @section('data')

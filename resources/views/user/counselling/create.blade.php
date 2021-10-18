@@ -8,12 +8,12 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar activeItem='counselling' :user="$user"></x-sidebar>
+<x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-header')
-<div class="fcol mt-3">
-   <div class="frow w-100 pt-2 txt-m txt-b txt-custom-blue">Career Counselling</div>
+<div class="fcol">
+   <div class="frow w-100 py-2 mt-1 txt-m txt-b txt-custom-blue">Career Counselling</div>
    <div class="frow txt-s txt-grey">Book a free counseling session if u have any query about</div>
 </div>
 
@@ -32,12 +32,12 @@ $user=session('user');
 <br />
 @elseif(session('success'))
 <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
 </script>
 @endif
 
@@ -95,18 +95,18 @@ $user=session('user');
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      var str = 0;
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hide');
-         } else {
-            $(this).removeClass('hide');
-         }
-      });
-   }
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
+}
 </script>
 @endsection

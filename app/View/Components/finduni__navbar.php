@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class finduni_navbar extends Component
+class finduni__navbar extends Component
 {
     /**
      * Create a new component instance.
@@ -25,6 +25,6 @@ class finduni_navbar extends Component
      */
     public function render()
     {
-        return view('components.finduni_navbar');
+        return view('components.finduni__navbar');
     }
 }

@@ -28,7 +28,7 @@ class CounsellingController extends Controller
     public function create()
     {
         //
-        return view('counselling.create');
+        return view('user.counselling.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class CounsellingController extends Controller
     {
         //
         $counselling = Counselling::find($id);
-        return view('counselling.success', compact('counselling'));
+        return view('user.counselling.success', compact('counselling'));
     }
 
     /**

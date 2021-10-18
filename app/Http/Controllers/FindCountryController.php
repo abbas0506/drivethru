@@ -14,7 +14,7 @@ class FindCountryController extends Controller
     public function index()
     {
         //
-        return view('countries.find');
+        return view('user.findcountry.index');
     }
 
     /**
