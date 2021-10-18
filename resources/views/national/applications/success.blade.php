@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='findUni' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='findUni' :user="$user"></x-sidebar>
 @endsection
 
 @section('page-title')
@@ -26,7 +26,7 @@ Success
       <div class="txt-blue txt-m">Congratulations</div>
       <div class="mt-1 text-justify">You have successfully applied for the selected courses. Your application ID is {{$application->id}}.
          For further processing, you need to pay {{$application->charges}} as processing charges. Feel free to choose any payment option like Jazzcash, Easypaisa, Online banking, manual etc. </div>
-      <div class="mt-2"><a class='btn btn-primary' href="{{url('national_dashboard')}}">Ok</a></div>
+      <div class="mt-2"><a class='btn btn-primary' href="{{url('user_dashboard')}}">Ok</a></div>
    </div>
 </div>
 

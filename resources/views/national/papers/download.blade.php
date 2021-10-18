@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='papers' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='papers' :user="$user"></x-sidebar>
 @endsection
 
 @section('page-header')
@@ -51,18 +51,18 @@ $user=session('user');
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
 </script>
 @endsection

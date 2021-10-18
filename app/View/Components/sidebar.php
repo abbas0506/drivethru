@@ -11,9 +11,12 @@ class sidebar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $user, $activeItem;
+
+    public function __construct($user, $activeItem)
     {
-        //
+        $this->user = $user;
+        $this->activeItem = $activeItem;
     }
 
     /**

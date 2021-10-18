@@ -1,7 +1,16 @@
 <div class="frow w-80 stretched mid-left">
    <div class="frow mid-left">
-      <a href=""><i data-feather='toggle-left' class="feather-medium txt-custom-blue mx-2" onclick=""></i><span class="txt-custom-blue">Switch to International Mode</span>
+      @if(session('mode')==0)
+      <a href="{{url('switch/1')}}">
+         <i data-feather='toggle-left' class="feather-medium txt-custom-blue mx-2" onclick=""></i>
+         <span class="txt-custom-blue">Switch to International Mode</span>
       </a>
+      @else
+      <a href="{{url('switch/0')}}">
+         <i data-feather='toggle-right' class="feather-medium txt-custom-blue mx-2" onclick=""></i>
+         <span class="txt-custom-blue">Switch to National Mode</span>
+      </a>
+      @endif
    </div>
    <div class="frow user-top-navbar centered rhide">
       <div @if($activeItem=='about' ) class="navitem active" @else class="navitem" @endif>About</div>

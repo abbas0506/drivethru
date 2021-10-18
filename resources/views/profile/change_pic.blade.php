@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -9,7 +9,7 @@ $pic_url=url("storage/images/users/".$user->pic);
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='dashboard' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='dashboard' :user="$user"></x-sidebar>
 @endsection
 
 @section('page-header')

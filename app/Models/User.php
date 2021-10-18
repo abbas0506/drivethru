@@ -52,10 +52,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Academic::class, 'user_id')->get();
     }
+
+
     public function applications()
     {
         return $this->hasMany(Application::class, 'user_id')->get();
     }
+
+    public function counsellings()
+    {
+        return $this->hasMany(Counselling::class, 'user_id')->get();
+    }
+
     public function hasProfile()
     {
         if ($this->profile()) return true;

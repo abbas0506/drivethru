@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -9,16 +9,16 @@ $pic_url=url("storage/images/users/".$user->pic);
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='dashboard' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='dashboard' :user="$user"></x-sidebar>
 @endsection
 
 <style>
-.bg-national-mini {
-   background-image: url('storage/images/bg/international.jpg');
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-size: 100% 100%;
-}
+   .bg-national-mini {
+      background-image: url('storage/images/bg/international.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+   }
 </style>
 
 @section('page-header')
@@ -62,31 +62,45 @@ $pic_url=url("storage/images/users/".$user->pic);
       @endforeach
    </div>
 </div>
+
+<div class="fcol w-100 rw-100 bg-white p-4 mt-3">
+   <div class="frow w-100 rw-100 mid-left stretched">
+      <div class="txt-grey txt-m">My Counselling Requests</div>
+      <div class="frow txt-s txt-grey centered">
+         <div class="fcol circular-20 border-0 bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
+         <div class="ml-2">Refresh this section</div>
+
+      </div>
+   </div>
+   <!-- table header -->
+   <div class="frow mid-left border-bottom mt-3">
+      <div class="w-15 txt-s txt-silver">ID</div>
+      <div class="w-50 txt-s txt-grey">Created At</div>
+      <div class="w-20 txt-s txt-grey">Status</div>
+      <div class="w-15 txt-s txt-grey text-center">View</div>
+   </div>
+
+   <div class="fcol w-100 rw-100">
+      @foreach($user->counsellings() as $counselling)
+      <div class="frow w-100 tr mid-left py-1 border-bottom">
+         <div class="w-15 txt-s">{{$counselling->id}}</div>
+         <div class="w-50 txt-s">{{$counselling->created_at}}</div>
+         <div class="w-20 txt-s">@if($counselling->status==0) Pending @else Finished @endif </div>
+         <div class="w-15 txt-s text-center">
+            <a href="{{route('counselling.show',$counselling)}}">
+               <i data-feather='eye' class="feather-xsmall text-primary"></i>
+            </a>
+            &nbsp
+         </div>
+      </div>
+      @endforeach
+   </div>
+</div>
 @endsection
 
 @section('profile')
-<!-- suggestions for user -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="w-100 rw-100 mb-2 txt-grey txt-b ">SUGGESTED TO YOU</div>
-
-   <div class="frow w-100 rw-100 stretched">
-      <div class="frow">
-         <div class="box-20 mr-2 bg-light-grey"></div>
-         <div class="txt-s">Apply for International University</div>
-      </div>
-      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
-   </div>
-   <div class="frow w-100 rw-100 stretched my-2">
-      <div class="frow">
-         <div class="box-20 mr-2 bg-light-grey"></div>
-         <div class="txt-s">Top Universities Report - Free</div>
-      </div>
-      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
-   </div>
-</div>
-
 <!-- profile -->
-<div class="fcol w-100 rw-100 bg-white p-4 mt-3">
+<div class="fcol w-100 rw-100 bg-white p-4">
    <div class="w-100 rw-100 mb-2 txt-grey txt-b ">PROFILE STRENGTH</div>
    <div class="frow w-100 rw-100 centered">
       <div class="fcol border circular-50">
@@ -120,7 +134,7 @@ $pic_url=url("storage/images/users/".$user->pic);
 
    </div>
 
-   <div class="frow w-100 rw-100 py-2 mt-2 border-top stretched">
+   <div class="frow w-100 rw-100 pt-2 mt-2 border-top stretched">
       <div class="txt-s"></div>
       <div class="frow">
          <a href="{{route('profiles.index')}}">
@@ -130,6 +144,25 @@ $pic_url=url("storage/images/users/".$user->pic);
       </div>
 
    </div>
-
 </div>
+
+<!-- suggestions for user -->
+<div class="fcol w-100 rw-100 bg-white mt-3 p-4">
+   <div class="w-100 rw-100 mb-2 txt-grey txt-b ">SUGGESTED TO YOU</div>
+   <div class="frow w-100 rw-100 stretched">
+      <div class="frow">
+         <div class="box-20 mr-2 bg-light-grey"></div>
+         <div class="txt-s">Apply Through Us</div>
+      </div>
+      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
+   </div>
+   <div class="frow w-100 rw-100 stretched my-2">
+      <div class="frow">
+         <div class="box-20 mr-2 bg-light-grey"></div>
+         <div class="txt-s">Get Top Universities Report - Free</div>
+      </div>
+      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
+   </div>
+</div>
+
 @endsection

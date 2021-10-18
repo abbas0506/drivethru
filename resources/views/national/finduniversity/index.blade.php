@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='findUni' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='findUni' :user="$user"></x-sidebar>
 @endsection
 
 @section('page-title')
@@ -149,36 +149,36 @@ Graph section
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function loadCourses(event, priority) {
-   var token = $("meta[name='csrf-token']").attr("content");
-   var faculty_id = event.target.value;
-   $.ajax({
-      type: 'POST',
-      url: "fetchCoursesByFacultyId",
-      data: {
-         "faculty_id": faculty_id,
-         "_token": token,
+   function loadCourses(event, priority) {
+      var token = $("meta[name='csrf-token']").attr("content");
+      var faculty_id = event.target.value;
+      $.ajax({
+         type: 'POST',
+         url: "fetchCoursesByFacultyId",
+         data: {
+            "faculty_id": faculty_id,
+            "_token": token,
 
-      },
-      success: function(response) {
-         //
+         },
+         success: function(response) {
+            //
 
-         if (priority == 1) $('#course_id1').html(response.course_options);
-         if (priority == 2) $('#course_id2').html(response.course_options);
-         if (priority == 3) $('#course_id3').html(response.course_options);
+            if (priority == 1) $('#course_id1').html(response.course_options);
+            if (priority == 2) $('#course_id2').html(response.course_options);
+            if (priority == 3) $('#course_id3').html(response.course_options);
 
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         Toast.fire({
-            icon: 'warning',
-            title: errorThrown
-         });
-      }
-   }); //ajax end
-}
+         },
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+            Toast.fire({
+               icon: 'warning',
+               title: errorThrown
+            });
+         }
+      }); //ajax end
+   }
 
-$('[name=mode]').change(function() {
-   $('[name=mode]').not(this).prop('checked', false);
-});
+   $('[name=mode]').change(function() {
+      $('[name=mode]').not(this).prop('checked', false);
+   });
 </script>
 @endsection

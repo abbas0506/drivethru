@@ -30,20 +30,27 @@
    <span class="w-75 hr my-3"></span>
 
    <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{url('national_dashboard')}}">
+      <a href="{{url('user_dashboard')}}">
          <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
          <div class="navitem-link">Dashboard</div>
       </a>
    </div>
-
+   @if(session('mode')==0)
    <div @if($activeItem=='findUni' ) class="navitem active" @else class="navitem" @endif>
       <a href="{{route('finduniversity.index')}}">
          <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
          <div class="navitem-link">Find University</div>
       </a>
    </div>
-
-   <div @if($activeItem=='pastPapers' ) class="navitem active" @else class="navitem" @endif>
+   @else
+   <div @if($activeItem=='findcountry' ) class="navitem active" @else class="navitem" @endif>
+      <a href="{{route('findcountries.index')}}">
+         <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
+         <div class="navitem-link">Find Country</div>
+      </a>
+   </div>
+   @endif
+   <div @if($activeItem=='papers' ) class="navitem active" @else class="navitem" @endif>
       <a href="{{url('papers_download')}}">
          <div class="navitem-ico"><i data-feather='download' class="feather-small"></i></div>
          <div class="navitem-link">Past Papers</div>
@@ -51,7 +58,7 @@
    </div>
 
    <div @if($activeItem=='counselling' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('counselling.index')}}">
+      <a href="{{route('counselling.create')}}">
          <div class="navitem-ico"><i data-feather='headphones' class="feather-small"></i></div>
          <div class="navitem-link">Career Counselling</div>
       </a>

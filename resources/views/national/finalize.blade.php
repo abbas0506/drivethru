@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @section('sidebar')
-<x-sidebar_national activeItem='findUni'></x-sidebar_national>
+<x-sidebar activeItem='findUni'></x-sidebar>
 @endsection
 
 @section('page-title')

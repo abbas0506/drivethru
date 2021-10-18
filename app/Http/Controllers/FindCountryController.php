@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Exception;
 
-use App\Models\Counselling;
-
-class CounsellingController extends Controller
+class FindCountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class CounsellingController extends Controller
     public function index()
     {
         //
-
+        return view('countries.find');
     }
 
     /**
@@ -28,7 +25,6 @@ class CounsellingController extends Controller
     public function create()
     {
         //
-        return view('counselling.create');
     }
 
     /**
@@ -40,14 +36,7 @@ class CounsellingController extends Controller
     public function store(Request $request)
     {
         //
-        try {
-            $counselling = Counselling::create($request->all());
-            $counselling->save();
-            return redirect()->route('counselling.show', $counselling->id)->with('success', 'Successfully created');
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-            // something went wrong
-        }
+        echo "post method called";
     }
 
     /**
@@ -59,8 +48,6 @@ class CounsellingController extends Controller
     public function show($id)
     {
         //
-        $counselling = Counselling::find($id);
-        return view('counselling.success', compact('counselling'));
     }
 
     /**

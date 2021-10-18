@@ -34,6 +34,7 @@ use App\Http\Controllers\AcademicController;
 use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
+use App\Http\Controllers\FindCountryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,7 +91,7 @@ Route::middleware([AdminLayer::class])->group(function () {
 });
 
 Route::middleware([StudentLayer::class])->group(function () {
-    Route::view('national_dashboard', 'national.dashboard');
+    Route::view('user_dashboard', 'national.dashboard');
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
     Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
@@ -111,4 +112,14 @@ Route::middleware([StudentLayer::class])->group(function () {
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
     Route::get('papers_download', [PaperController::class, 'download'])->name('papers_download');
     Route::resource('counselling', CounsellingController::class);
+
+    Route::resource('findcountries', FindCountryController::class);
+    Route::get('switch/{mode}', function ($mode) {
+        session([
+            'mode' => $mode,
+        ]);
+        return redirect('user_dashboard');
+    });
+    // // Route::get('countries_find', [CountryController::class, 'view'])->name("countries_find");
+    // Route::post('countries_find', [CountryController::class, 'find'])->name("countries_find");
 });

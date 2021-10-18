@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('topbar')
-<x-topbar_national activeItem='home'></x-topbar_national>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -8,16 +8,16 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-sidebar_national activeItem='dashboard' :user="$user"></x-sidebar_national>
+<x-sidebar activeItem='dashboard' :user="$user"></x-sidebar>
 @endsection
 
 <style>
-.bg-national-mini {
-   background-image: url('../storage/images/bg/international.jpg');
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-size: 100% 100%;
-}
+   .bg-national-mini {
+      background-image: url('../storage/images/bg/international.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+   }
 </style>
 
 @section('page-header')
@@ -28,7 +28,7 @@ $user=session('user');
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">Application : {{$application->id}}</div>
-      <a href="{{url('national_dashboard')}}">
+      <a href="{{url('user_dashboard')}}">
          <div class="frow txt-s txt-grey centered">
             <div class="fcol box-25 circular bg-orange centered"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
             <div class="ml-2">Close</div>

@@ -2,11 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Http\Controllers\CouncelTypeController;
-use App\Http\Controllers\CourseController;
-use App\Models\Level;
-use App\Models\PaperType;
-use App\Models\Unicourse;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,7 +21,6 @@ class DatabaseSeeder extends Seeder
             ScholarshipSeeder::class,
             LevelSeeder::class,
             FacultySeeder::class,
-            CouncelTypeSeeder::class,
             CitySeeder::class,
             PaperTypeSeeder::class,
             CourseSeeder::class,
