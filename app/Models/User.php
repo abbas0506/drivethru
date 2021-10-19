@@ -45,7 +45,6 @@ class User extends Model
         return $this->hasMany(Academic::class, 'user_id')->get();
     }
 
-
     public function applications()
     {
         return $this->hasMany(Application::class, 'user_id')->get();
