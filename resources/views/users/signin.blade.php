@@ -99,7 +99,7 @@
    }
 
    body {
-      background-image: url("{{assest('images/bg/auth.jpg')}}");
+      background-image: url("{{asset('images/bg/auth.jpg')}}");
       /* background-image: url('storage/images/bg/auth.jpg'); */
       background-repeat: no-repeat;
       background-size: cover;
