@@ -17,6 +17,7 @@ class Country extends Model
         'visaduration',
         'lifethere',
         'jobdesc',
+        'livingcostdesc', //new addition
 
         'step1',
         'step2',

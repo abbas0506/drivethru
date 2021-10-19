@@ -11,8 +11,7 @@ class Studycost extends Model
     protected $fillable = [
         'country_id',
         'level_id',
-        'minfee',
-        'maxfee',
+        'cost'
     ];
 
     public $timestamps = false;

@@ -102,10 +102,6 @@ body {
   color: #2A538F;
 }
 
-.hide {
-  display: none !important;
-}
-
 .frow {
   display: flex !important;
   flex-direction: row;

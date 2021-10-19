@@ -23,6 +23,8 @@ class CreateCountriesTable extends Migration
             $table->unsignedInteger('visaduration')->default(0);
             $table->string('lifethere', 300)->nullable();
             $table->string('jobdesc', 400)->nullable();
+            $table->string('livingcostdesc', 400)->nullable();
+
             $table->boolean('step1')->default(0);
             $table->boolean('step2')->default(0);
             $table->boolean('step3')->default(0);

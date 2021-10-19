@@ -11,8 +11,7 @@ class Livingcost extends Model
     protected $fillable = [
         'country_id',
         'expensetype_id',
-        'minexp',
-        'maxexp',
+        'cost',
     ];
 
     public $timestamps = false;

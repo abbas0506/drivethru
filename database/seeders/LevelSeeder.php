@@ -15,7 +15,8 @@ class LevelSeeder extends Seeder
     public function run()
     {
         //
-        Level::create(['name' => 'Under-graduation']);
+        Level::create(['name' => 'Matric']);
+        Level::create(['name' => 'Intermediate']);
         Level::create(['name' => 'Graduation']);
         Level::create(['name' => 'Post-graduation']);
         Level::create(['name' => 'Doctorate']);
