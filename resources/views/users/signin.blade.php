@@ -119,7 +119,7 @@
    <div class="frow h-10 w-100 rhide"></div>
    <div class="frow h-80 w-100 rh-auto rw-100 auto-col">
       <div class="fcol w-60 rw-100 p-4 centered ">
-         <img src="{{url('storage/images/logos/logo1.png')}}" alt="" class="logo">
+         <img src="{{url(asset('images/logos/logo_1.png'))}}" alt="" class="logo">
          <div class="w-80 rw-90 txt-smoke txt-m text-justify">DriveThru.pk is a simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process.</div>
 
       </div>
