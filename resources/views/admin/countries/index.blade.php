@@ -25,12 +25,12 @@
    <br />
    @elseif(session('success'))
    <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+      Swal.fire({
+         icon: 'success',
+         title: "Successful",
+         showConfirmButton: false,
+         timer: 1500
+      });
    </script>
    @endif
 
@@ -116,7 +116,7 @@
 
          <div class="frow my-2 stretched">
             <div class="fancyselect w-48">
-               <select name='visarequired' onchange="showOrHideDuration(event)">
+               <select name='visafree' onchange="showOrHideDuration(event)">
                   <option value='1'>Yes</option>
                   <option value='0'>No</option>
                </select>
@@ -154,56 +154,56 @@
 
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(2).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(2).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
+
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#deleteform' + formid).submit();
+         }
+      });
+   }
+
+   function toggle_addslider() {
+      $("#addslider").toggleClass('slide-left');
+   }
+
+   function preview_flag() {
+      const [file] = flag.files
+      if (file) {
+         preview_img.src = URL.createObjectURL(file)
+         $('#image_frame').addClass('has-image');
+      }
+   }
+
+   function showOrHideDuration(event) {
+      if (event.target.value == 0) {
+         $('#visaduration').hide()
       } else {
-         $(this).removeClass('hide');
+         $('#visaduration').show()
       }
-   });
-}
-
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#deleteform' + formid).submit();
-      }
-   });
-}
-
-function toggle_addslider() {
-   $("#addslider").toggleClass('slide-left');
-}
-
-function preview_flag() {
-   const [file] = flag.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
    }
-}
-
-function showOrHideDuration(event) {
-   if (event.target.value == 0) {
-      $('#visaduration').hide()
-   } else {
-      $('#visaduration').show()
-   }
-}
 </script>
 @endsection

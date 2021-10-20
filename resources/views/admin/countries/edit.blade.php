@@ -26,12 +26,12 @@
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 
 @endif
@@ -100,9 +100,9 @@ $flag_url=url("storage/images/flags/".$country->flag);
             </div>
             <div class="frow my-2">
                <div class="fcol w-25">Visa Required: </div>
-               <div class="fcol w-70">@if($country->visarequired==1) Yes @else No @endif</div>
+               <div class="fcol w-70">@if($country->visafree==1) Yes @else No @endif</div>
             </div>
-            <div class="frow my-2 @if($country->visarequired==0) hide @endif">
+            <div class="frow my-2 @if($country->visafree==0) hide @endif">
                <div class="fcol w-25">Visa Duration: </div>
                <div class="fcol w-75">{{$country->visaduration}}</div>
             </div>
@@ -128,12 +128,12 @@ $flag_url=url("storage/images/flags/".$country->flag);
          <div class="frow border-bottom stretched border-thin my-4"></div>
          <!-- edit icon on top right corner -->
          <div class='absolute' style='top:5px; right:5px'>
-            @if($country->visarequired)
+            @if($country->visafree)
             <i data-feather='edit-2' class="feather-small txt-blue mr-2 hoverable" onclick="toggleVisaDocSlider()"></i>
             @endif
          </div>
 
-         @if(!$country->visarequired)
+         @if(!$country->visafree)
          <div class="frow centered txt-orange my-4">Visa not required</div>
          @else
          <div class="container px-5">
@@ -318,9 +318,9 @@ $flag_url=url("storage/images/flags/".$country->flag);
 
                <div class="frow my-2 stretched">
                   <div class="fancyselect w-48">
-                     <select name='visarequired' onchange="showOrHideDuration(event)">
-                        <option value='1' @if($country->visarequired==1) selected @endif>Yes</option>
-                        <option value='0' @if($country->visarequired==0) selected @endif>No</option>
+                     <select name='visafree' onchange="showOrHideDuration(event)">
+                        <option value='1' @if($country->visafree==1) selected @endif>Yes</option>
+                        <option value='0' @if($country->visafree==0) selected @endif>No</option>
                      </select>
                      <label>Visa Required</label>
                   </div>
@@ -476,189 +476,189 @@ $flag_url=url("storage/images/flags/".$country->flag);
 
 @section('script')
 <script lang="javascript">
-function preview_flag() {
-   const [file] = flag.files
-   if (file) {
-      flag_img.src = URL.createObjectURL(file)
+   function preview_flag() {
+      const [file] = flag.files
+      if (file) {
+         flag_img.src = URL.createObjectURL(file)
+      }
    }
-}
 
-function slideleft() {
-   $("#slider").toggleClass('slide-left');
-}
-
-function toggleVisaDocSlider() {
-   $("#visaDocSlider").toggleClass('slide-left');
-}
-
-function toggleAdmDocSlider() {
-   $("#admDocSlider").toggleClass('slide-left');
-}
-
-function toggleScholarshipSlider() {
-   $("#scholarshipSlider").toggleClass('slide-left');
-}
-
-function toggleFavcourseSlider() {
-   $("#favcourseSlider").toggleClass('slide-left');
-}
-
-function showOrHideDuration(event) {
-   if (event.target.value == 0) {
-      $('#visaduration').hide()
-   } else {
-      $('#visaduration').show()
-      $('[name=visaduration]').val(1)
+   function slideleft() {
+      $("#slider").toggleClass('slide-left');
    }
-}
 
-
-// Cache selectors
-var lastId,
-   topMenu = $("#spy_menu"),
-   topMenuHeight = topMenu.outerHeight() - 60,
-   // All list items
-   menuItems = topMenu.find("a"),
-   // Anchors corresponding to menu items
-   scrollItems = menuItems.map(function() {
-      var item = $($(this).attr("href"));
-      if (item.length) {
-         return item;
-      }
-   });
-
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function(e) {
-   var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
-   $('html, body').stop().animate({
-      scrollTop: offsetTop
-   }, 300);
-   e.preventDefault();
-});
-
-// Bind to scroll
-$(window).scroll(function() {
-   // Get container scroll position
-   var fromTop = $(this).scrollTop() + topMenuHeight;
-
-   // Get id of current scroll item
-   var cur = scrollItems.map(function() {
-      if ($(this).offset().top < fromTop)
-         return this;
-   });
-   // Get the id of the current element
-   cur = cur[cur.length - 1];
-   var id = cur && cur.length ? cur[0].id : "";
-
-   if (lastId !== id) {
-      lastId = id;
-      // Set/remove active class
-      menuItems
-         .parent().removeClass("active")
-         .end().filter("[href='#" + id + "']").parent().addClass("active");
+   function toggleVisaDocSlider() {
+      $("#visaDocSlider").toggleClass('slide-left');
    }
-});
+
+   function toggleAdmDocSlider() {
+      $("#admDocSlider").toggleClass('slide-left');
+   }
+
+   function toggleScholarshipSlider() {
+      $("#scholarshipSlider").toggleClass('slide-left');
+   }
+
+   function toggleFavcourseSlider() {
+      $("#favcourseSlider").toggleClass('slide-left');
+   }
+
+   function showOrHideDuration(event) {
+      if (event.target.value == 0) {
+         $('#visaduration').hide()
+      } else {
+         $('#visaduration').show()
+         $('[name=visaduration]').val(1)
+      }
+   }
 
 
-function postVisaDoc() {
-   //event.preventDefault();
-   var ids = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) ids.push(chk.value);
-   })
+   // Cache selectors
+   var lastId,
+      topMenu = $("#spy_menu"),
+      topMenuHeight = topMenu.outerHeight() - 60,
+      // All list items
+      menuItems = topMenu.find("a"),
+      // Anchors corresponding to menu items
+      scrollItems = menuItems.map(function() {
+         var item = $($(this).attr("href"));
+         if (item.length) {
+            return item;
+         }
+      });
 
-   $("#visadoc_ids").val(ids);
-}
+   // Bind click handler to menu items
+   // so we can get a fancy scroll animation
+   menuItems.click(function(e) {
+      var href = $(this).attr("href"),
+         offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+      $('html, body').stop().animate({
+         scrollTop: offsetTop
+      }, 300);
+      e.preventDefault();
+   });
 
-function postAdmDoc() {
-   //event.preventDefault();
-   var ids = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) ids.push(chk.value);
-   })
+   // Bind to scroll
+   $(window).scroll(function() {
+      // Get container scroll position
+      var fromTop = $(this).scrollTop() + topMenuHeight;
 
-   $("#admdoc_ids").val(ids);
-}
+      // Get id of current scroll item
+      var cur = scrollItems.map(function() {
+         if ($(this).offset().top < fromTop)
+            return this;
+      });
+      // Get the id of the current element
+      cur = cur[cur.length - 1];
+      var id = cur && cur.length ? cur[0].id : "";
 
-function postScholarship() {
-   //event.preventDefault();
-   var ids = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) ids.push(chk.value);
-   })
-
-   $("#scholarship_ids").val(ids);
-}
-
-function postFavcourse() {
-   //event.preventDefault();
-   var ids = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) ids.push(chk.value);
-   })
-
-   $("#favcourse_ids").val(ids);
-}
-
-
-function delvisadoc(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#delvisadoc' + formid).submit();
+      if (lastId !== id) {
+         lastId = id;
+         // Set/remove active class
+         menuItems
+            .parent().removeClass("active")
+            .end().filter("[href='#" + id + "']").parent().addClass("active");
       }
    });
-}
 
-function deladmdoc(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#deladmdoc' + formid).submit();
-      }
-   });
-}
 
-function delfavcourse(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#delfavcourse' + formid).submit();
-      }
-   });
-}
+   function postVisaDoc() {
+      //event.preventDefault();
+      var ids = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) ids.push(chk.value);
+      })
+
+      $("#visadoc_ids").val(ids);
+   }
+
+   function postAdmDoc() {
+      //event.preventDefault();
+      var ids = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) ids.push(chk.value);
+      })
+
+      $("#admdoc_ids").val(ids);
+   }
+
+   function postScholarship() {
+      //event.preventDefault();
+      var ids = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) ids.push(chk.value);
+      })
+
+      $("#scholarship_ids").val(ids);
+   }
+
+   function postFavcourse() {
+      //event.preventDefault();
+      var ids = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) ids.push(chk.value);
+      })
+
+      $("#favcourse_ids").val(ids);
+   }
+
+
+   function delvisadoc(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#delvisadoc' + formid).submit();
+         }
+      });
+   }
+
+   function deladmdoc(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#deladmdoc' + formid).submit();
+         }
+      });
+   }
+
+   function delfavcourse(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#delfavcourse' + formid).submit();
+         }
+      });
+   }
 </script>
 @endsection

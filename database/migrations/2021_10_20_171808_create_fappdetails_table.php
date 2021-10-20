@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLivingcostsTable extends Migration
+class CreateFappdetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,19 @@ class CreateLivingcostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('livingcosts', function (Blueprint $table) {
+        Schema::create('fappdetails', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('application_id');
             $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('expensetype_id');
-            $table->unsignedInteger('minexp')->default(0);
-            $table->unsignedInteger('maxexp')->default(0);
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unique(['application_id', 'country_id']);
+            $table->timestamps();
+
+            $table->foreign('application_id')
+                ->references('id')
+                ->on('applications')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreign('country_id')
                 ->references('id')
@@ -26,13 +33,11 @@ class CreateLivingcostsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('expensetype_id')
+            $table->foreign('course_id')
                 ->references('id')
-                ->on('expensetypes')
+                ->on('courses')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 
@@ -43,6 +48,6 @@ class CreateLivingcostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livingcosts');
+        Schema::dropIfExists('fappdetail');
     }
 }

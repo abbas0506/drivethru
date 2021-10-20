@@ -47,7 +47,7 @@ class CountryController extends Controller
             'name' => 'required',
             'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'currency' => 'required',
-            'visarequired' => 'required',
+            'visafree' => 'required',
             'lifethere' => 'required',
             'jobdesc' => 'required',
         ]);
@@ -63,7 +63,7 @@ class CountryController extends Controller
             }
 
             $country->step1 = 1;
-            if (!$request->visarequired)
+            if (!$request->visafree)
                 $country->step2 = 1; //if visa not requird, auto complete 2nd step
             $country->save();
             return redirect()->back()->with('success', 'Successfully created');
@@ -112,7 +112,7 @@ class CountryController extends Controller
             'name' => 'required',
             'flag' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'currency' => 'required',
-            'visarequired' => 'required',
+            'visafree' => 'required',
             'lifethere' => 'required',
             'jobdesc' => 'required',
             'intro' => 'required',
@@ -139,7 +139,7 @@ class CountryController extends Controller
             //initially assign incoming visa duration as it is, may update on next line if required
             $country->visaduration = $request->visaduration;
             //if visa requirement changes from yes to no
-            if ($country->visarequired && !$request->visarequired) {
+            if ($country->visafree && !$request->visafree) {
                 $country->step2 = 1;            //auto complete step 2
 
                 foreach ($country->countryvisadocs()->get() as $countryvisadoc) {
@@ -148,7 +148,7 @@ class CountryController extends Controller
                 $country->visaduration = 0;     //reset visa duration
             }
             //else if visa requiremtn changes from no to yes
-            else if (!$country->visarequired && $request->visarequired) {
+            else if (!$country->visafree && $request->visafree) {
                 $country->step2 = 0;            //revert step 2
 
             } //else if no change, do nothing
@@ -156,7 +156,7 @@ class CountryController extends Controller
             //set remainging fields
             $country->name = $request->name;
             $country->currency = $request->currency;
-            $country->visarequired = $request->visarequired;
+            $country->visafree = $request->visafree;
             $country->lifethere = $request->lifethere;
             $country->jobdesc = $request->jobdesc;
             $country->intro = $request->intro;

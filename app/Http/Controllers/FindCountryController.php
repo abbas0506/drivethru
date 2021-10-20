@@ -47,8 +47,8 @@ class FindCountryController extends Controller
         if (isset($request->manual)) {
             //manual search request
             $country = $request->country;
-            $countries = Country::where('name', 'like', $country . '%')->get();
-            return view('user.findcountry.manual_search_result', compact('countries', 'country'));
+            $countries = Country::where('name', 'like', '%' . $country . '%')->get();
+            return view('user.findcountry.search_result', compact('countries'));
         } else {
             // auto search request
             $request->validate([
@@ -58,42 +58,58 @@ class FindCountryController extends Controller
             $course_id = $request->course_id;
             try {
 
-                $livingcosts = Livingcost::selectRaw('country_id, avg((minexp+maxexp)/2) as livingcost')->groupBy('country_id');
-                $studycosts = Studycost::selectRaw('country_id, avg((minfee+maxfee)/2) as studycost')->groupBy('country_id');
+                $livingcosts = Livingcost::selectRaw('country_id, (min(minexp)+max(maxexp))/2 as livingcost')->groupBy('country_id');
+                $studycosts = Studycost::selectRaw('country_id, (min(minfee)+max(maxfee))/2 as studycost')->groupBy('country_id');
+
                 //get universities for selected courses
-                $data = Country::join('favcourses', 'country_id', 'countries.id')
-                    ->joinSub($livingcosts, 'livingcosts', function ($join) {
-                        $join->on('countries.id', 'livingcosts.country_id');
-                    })
-                    ->joinSub($studycosts, 'studycosts', function ($join) {
+                $data = Country::join('favcourses', 'country_id', 'countries.id');
+
+                //filter data on the basis of study cost range
+                if (isset($request->minstudycost) && isset($request->maxstudycost)) {
+                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
                         $join->on('countries.id', 'studycosts.country_id');
-                    })
-                    // ->join('cities', 'cities.id', 'city_id')
-                    // ->join('courses', 'courses.id', 'course_id')
-                    ->where('course_id', $course_id)
-                    ->get('*');
-                //apply optional filters
-                //if (isset($request->visarequired)) $data = $data->where('visarequired', $request->visarequired);
-
-                // if (isset($request->visarequired)) echo "visa required";
-                // if (isset($request->type)) $data = $data->where('type', $request->type);
-                // if (isset($request->minfee)) $data = $data->where('fee', ">=", $request->minfee);
-                // if (isset($request->maxfee)) $data = $data->where('fee', "<=", $request->maxfee);
-
-                //extract required columns only
-                //$data = $data->get(['countries.id as country_id', 'countries.name as country, livingcosts.cost']);
-
-                foreach ($data as $row) {
-                    echo "country" . $row->country_id . "livingcost" . $row->livingcost .  "studycost" . $row->studycost . "<br>";
+                    })->whereBetween('livingcosts.livingcost', [$request->minstudycost, $request->maxstudycost]);;
+                } else if (isset($request->minstudycost)) {
+                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
+                        $join->on('countries.id', 'studycosts.country_id');
+                    })->where('livingcosts.livingcost', ">=", $request->minstudycost);;
+                } else if (isset($request->maxstudycost)) {
+                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
+                        $join->on('countries.id', 'studycosts.country_id');
+                    })->where('livingcosts.livingcost', "<=", $request->maxstudycost);;
                 }
+
+                //filter data on the basis of living cost range
+                if (isset($request->minlivingcost) && isset($request->maxlivingcost)) {
+                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                        $join->on('countries.id', 'livingcosts.country_id');
+                    })->whereBetween('livingcosts.livingcost', [$request->minlivingcost, $request->maxlivingcost]);
+                } else if (isset($request->minlivingcost)) {
+                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                        $join->on('countries.id', 'livingcosts.country_id');
+                    })->where('livingcosts.livingcost', ">=", $request->minlivingcost);
+                } else if (isset($request->maxlivingcost)) {
+                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                        $join->on('countries.id', 'livingcosts.country_id');
+                    })->where('livingcosts.livingcost', "<=", $request->maxlivingcost);
+                }
+
+                //filter on visa required
+                if (isset($request->visafree)) $data = $data->where('visafree', 1);
+                if (isset($request->edufree)) $data = $data->where('edufree', 1);
+
+                //finally pluck country ids fulfilling all parameters
+                $country_ids = $data->where('course_id', $course_id)->distinct()->pluck("country_id")->toArray();
+
+                $countries = Country::whereIn('id', $country_ids)->get();
 
                 //send courses list as well for grouping purpose
                 //$courses = Course::whereIn('id', $course_ids)->get();
                 session([
-                    'data' => $data,
+                    'data' => $countries,
                     // 'countries' => $courses,
                 ]);
-                //return view('user.findcountry.auto_search_result', compact('data'));
+                return view('user.findcountry.search_result', compact('countries'));
             } catch (Exception $e) {
                 return redirect()->back()->withErrors($e->getMessage());
                 // something went wrong

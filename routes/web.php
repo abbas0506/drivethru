@@ -120,6 +120,4 @@ Route::middleware([StudentLayer::class])->group(function () {
         ]);
         return redirect('user_dashboard');
     });
-    // // Route::get('countries_find', [CountryController::class, 'view'])->name("countries_find");
-    // Route::post('countries_find', [CountryController::class, 'find'])->name("countries_find");
 });

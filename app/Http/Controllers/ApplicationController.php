@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Appdetail;
 use App\Models\Application;
+use App\Models\Appdetail;
+use App\Models\Fappdetail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -58,9 +60,17 @@ class ApplicationController extends Controller
 
                 $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
                 $ids = explode(',', $request->ids);
-                foreach ($ids as $id) {
-                    $id_parts = explode('-', $id);
-                    Appdetail::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
+                if (session('mode') == 0) { //national mode
+                    foreach ($ids as $id) {
+                        $id_parts = explode('-', $id);
+                        Appdetail::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
+                    }
+                }
+                if (session('mode') == 1) { //international mode
+                    foreach ($ids as $id) {
+                        $id_parts = explode('-', $id);
+                        Fappdetail::create(['application_id' => $application->id, 'country_id' => $id_parts[0]]);
+                    }
                 }
             }
             DB::commit();

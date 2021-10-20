@@ -19,7 +19,8 @@ class CreateCountriesTable extends Migration
             $table->string('intro', 200);
             $table->string('flag', 100)->default('default.jpg');
             $table->string('currency', 10)->default('USD');
-            $table->boolean('visarequired');
+            $table->boolean('visafree');
+            $table->boolean('edufree');
             $table->unsignedInteger('visaduration')->default(0);
             $table->string('lifethere', 300)->nullable();
             $table->string('jobdesc', 400)->nullable();

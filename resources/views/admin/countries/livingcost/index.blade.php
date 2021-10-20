@@ -29,12 +29,12 @@
    <br />
    @elseif(session('success'))
    <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+      Swal.fire({
+         icon: 'success',
+         title: "Successful",
+         showConfirmButton: false,
+         timer: 1500
+      });
    </script>
    @endif
 
@@ -115,40 +115,40 @@
 
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
 
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#del_form' + formid).submit();
-      }
-   });
-}
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#del_form' + formid).submit();
+         }
+      });
+   }
 
-function toggle_addslider() {
-   $("#addslider").toggleClass('slide-left');
-}
+   function toggle_addslider() {
+      $("#addslider").toggleClass('slide-left');
+   }
 </script>
 @endsection

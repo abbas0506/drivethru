@@ -4,7 +4,7 @@
    <div class="frow w-100 rw-100 my-3 centered">
 
       @php
-      $pic_url=url("storage/images/users/".$user->pic);
+      $pic_url=url(asset("images/users/".$user->pic));
       @endphp
       <div class="fcol border-0 circular-75">
          <img src="{{$pic_url}}" alt="" class="rounded-circle" width='75' height='75'>

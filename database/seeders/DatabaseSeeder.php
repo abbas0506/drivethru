@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Favcourse;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,6 +28,10 @@ class DatabaseSeeder extends Seeder
             ExpensetypeSeeder::class,
             UniversitySeeder::class,
             BoardSeeder::class,
+            CountrySeeder::class,
+            FavcourseSeeder::class,
+            LivingcostSeeder::class,
+            StudycostSeeder::class,
             UnicourseSeeder::class,
         ]);
     }

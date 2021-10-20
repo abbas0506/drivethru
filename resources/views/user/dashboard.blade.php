@@ -5,7 +5,7 @@
 
 @php
 $user=session('user');
-$pic_url=url("storage/images/users/".$user->pic);
+$pic_url=url(asset("images/users/".$user->pic));
 @endphp
 
 @section('sidebar')
@@ -14,14 +14,14 @@ $pic_url=url("storage/images/users/".$user->pic);
 
 <style>
 .bg-national-mini {
-   background-image: url('storage/images/bg/national.jpg');
+   background-image: url("{{asset('images/bg/national.jpg')}}");
    background-repeat: no-repeat;
    background-size: cover;
    background-size: 100% 100%;
 }
 
 .bg-international-mini {
-   background-image: url('storage/images/bg/international.jpg');
+   background-image: url("{{asset('images/bg/international.jpg')}}");
    background-repeat: no-repeat;
    background-size: cover;
    background-size: 100% 100%;
