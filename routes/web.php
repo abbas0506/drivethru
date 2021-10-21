@@ -59,7 +59,7 @@ Route::view('signup_success', 'users.signup_success');
 Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::get('signout', [UserController::class, 'signout']);
 
-//student and admin middleware have been registered in app/http/kernel.php
+//**student and admin middleware have been registered in app/http/kernel.php
 
 //admin middleware
 Route::group(['middleware' => 'admin'], function () {
@@ -73,7 +73,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('papertypes', PaperTypeController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('papers', PaperController::class);
-
     Route::resource('universities', UniversityController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('favcourses', FavcourseController::class);
@@ -97,9 +96,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::resource('finduniversity', FindUniversityController::class);
     Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
     Route::view('finalizeApplication', 'students.national.finalize');
-
     Route::resource('applications', ApplicationController::class);
-
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
     Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
@@ -109,7 +106,6 @@ Route::group(['middleware' => 'student'], function () {
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
     Route::resource('counselling', CounsellingController::class);
-
     Route::resource('findcountry', FindCountryController::class);
     Route::get('switch/{mode}', function ($mode) {
         session([

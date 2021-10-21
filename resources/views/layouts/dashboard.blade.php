@@ -19,7 +19,7 @@
    <div class="frow w-100 user-header">
       <div class="frow centered w-20">
          <div class="fcol centered">
-            <img src="{{url('storage/images/logos/logo1.png')}}" alt="" class="app-logo">
+            <img src="{{url(asset('images/logos/app/dark.png'))}}" alt="" class="app-logo">
          </div>
       </div>
       @yield('topbar')
