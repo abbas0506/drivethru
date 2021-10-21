@@ -22,8 +22,6 @@
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('courses.index')}}">List of Faculty Courses</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('documents.index')}}">List of documents</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('scholarships.index')}}">Scholarship titles</a></div>
-
-         <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('councel_types.index')}}">Counselling request types</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('expensetypes.index')}}">Living Expense Types</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="{{route('papertypes.index')}}">Paper types - past papers</a></div>
          <div class='primary-option'><span class="lnr lnr-pointer-right"></span><a href="http://">Applicaiton statuses</a></div>

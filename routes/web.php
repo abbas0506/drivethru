@@ -13,7 +13,6 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ScholarshipController;
-use App\Http\Controllers\CouncelTypeController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PaperTypeController;
 use App\Http\Controllers\CourseController;
@@ -72,7 +71,6 @@ Route::middleware([AdminLayer::class])->group(function () {
     Route::resource('levels', LevelController::class);
     Route::resource('documents', DocumentController::class);
     Route::resource('scholarships', ScholarshipController::class);
-    Route::resource('councel_types', CouncelTypeController::class);
     Route::resource('cities', CityController::class);
     Route::resource('papertypes', PaperTypeController::class);
     Route::resource('courses', CourseController::class);
@@ -90,34 +88,35 @@ Route::middleware([AdminLayer::class])->group(function () {
     Route::resource('livingcosts', LivingcostController::class);
 });
 
-//Route::middleware([StudentLayer::class])->group(function () {
-Route::view('user_dashboard', 'user.dashboard');
-Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
-Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
-Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
-Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
-Route::resource('unicourses', UnicourseController::class);
-Route::resource('finduniversity', FindUniversityController::class);
-Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
-Route::view('finalizeApplication', 'students.national.finalize');
+Route::group(['middleware' => 'StudentLayer'], function () {
+    //Route::middleware([StudentLayer::class])->group(function () {
+    Route::view('user_dashboard', 'user.dashboard');
+    Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
+    Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
+    Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
+    Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
+    Route::resource('unicourses', UnicourseController::class);
+    Route::resource('finduniversity', FindUniversityController::class);
+    Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
+    Route::view('finalizeApplication', 'students.national.finalize');
 
-Route::resource('applications', ApplicationController::class);
+    Route::resource('applications', ApplicationController::class);
 
-Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
-Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
-Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
-Route::resource('profiles', ProfileController::class);
-Route::resource('academics', AcademicController::class);
-Route::view('change_pic', 'profile.change_pic')->name('change_pic');
-Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
-Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
-Route::resource('counselling', CounsellingController::class);
+    Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
+    Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
+    Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
+    Route::resource('profiles', ProfileController::class);
+    Route::resource('academics', AcademicController::class);
+    Route::view('change_pic', 'profile.change_pic')->name('change_pic');
+    Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
+    Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
+    Route::resource('counselling', CounsellingController::class);
 
-Route::resource('findcountry', FindCountryController::class);
-Route::get('switch/{mode}', function ($mode) {
-    session([
-        'mode' => $mode,
-    ]);
-    return redirect('user_dashboard');
+    Route::resource('findcountry', FindCountryController::class);
+    Route::get('switch/{mode}', function ($mode) {
+        session([
+            'mode' => $mode,
+        ]);
+        return redirect('user_dashboard');
+    });
 });
-//});
