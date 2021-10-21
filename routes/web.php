@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 //middleware classes
-use App\http\Middleware\AdminLayer;
-use App\http\Middleware\StudentLayer;
+use App\http\Middleware\Admin;
+use App\http\Middleware\Student;
 
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
@@ -64,7 +64,7 @@ Route::get('signout', [UserController::class, 'signout']);
 //user api
 
 
-Route::middleware([AdminLayer::class])->group(function () {
+Route::middleware([Admin::class])->group(function () {
     Route::view('admin', 'admin.index');
     Route::view('primary', 'admin.primary');
     Route::resource('faculties', FacultyController::class);
@@ -88,7 +88,7 @@ Route::middleware([AdminLayer::class])->group(function () {
     Route::resource('livingcosts', LivingcostController::class);
 });
 
-Route::group(['middleware' => 'StudentLayer'], function () {
+Route::group(['middleware' => 'student'], function () {
     //Route::middleware([StudentLayer::class])->group(function () {
     Route::view('user_dashboard', 'user.dashboard');
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
