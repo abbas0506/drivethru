@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.simple')
 @section('topbar')
 <x-user__header activeItem='home'></x-user__header>
 @endsection
@@ -11,49 +11,20 @@ $user=session('user');
 <x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
 @endsection
 
-@section('page-header')
-<div class="fcol mt-3">
-   <div class="frow w-100 pt-2 txt-m txt-b txt-custom-blue">Career Counselling</div>
-   <div class="frow txt-s txt-grey">Book a free counseling session if u have any query about</div>
-</div>
-
-@endsection
-
 @section('data')
 <!-- create new acadmeic -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow w-20 my-2 mid-left txt-b txt-m txt-green"><span style="border-bottom:3px darkgreen solid">Free Session</span></div>
-   <div class="frow my-1 txt-grey">
-      Your request for free counselling session has been successfully submitted. Our representative will soon contact with you on call.
+<div class="fcol w-70 rw-80 h-90 centered text-justify">
+   <div class="txt-custom-blue mb-2"><i data-feather='smile' class="feather-large mx-1 txt-custom-blue"></i></div>
+   <div class="txt-custom-blue txt-l txt-b mb-4">Hi!</div>
+   <div class="mb-2 txt-m text-justify">
+      Thanks for reaching out!.
+      Our support represetatives will soon check your message and will respond to you as soon as possible.
+      We shall get back to you within few hours.
    </div>
-   <div class="frow mid-right">
-      <a href="{{url('user_dashboard')}}" class="btn btn-sm btn-info">OK</a>
-   </div>
+   <div class="txt-b txt-m mt-3">Regards</div>
+   <div class="txt-b txt-m mt-1">Team DriveThru</div>
 
+   <div class="border-top mt-3 pt-2 "><a class='btn btn-primary' href="{{url('user_dashboard')}}">Ok, I Got</a></div>
 </div>
 
-
-@endsection
-
-@section('profile')
-<x-profile__panel :user="$user"></x-profile__panel>
-@endsection
-
-<!-- script goes here -->
-@section('script')
-<script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      var str = 0;
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hide');
-         } else {
-            $(this).removeClass('hide');
-         }
-      });
-   }
-</script>
 @endsection

@@ -7,11 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="/css/app.css" rel="stylesheet">
    <script src="/js/app.js"></script>
-   <script src="/js/autoformat.js"></script>
    <script src="/js/feather.min.js"></script>
-   <script src="{{ asset('js/echarts.min.js')}}" type="text/javascript"></script>
-   <meta name="csrf-token" content="{{ csrf_token() }}" />
-
    <title>DriveThru</title>
 
 </head>
@@ -28,29 +24,14 @@
    </div>
 
    @yield('sidebar')
-   <div class="frow user-page px-4">
+   <div class="frow w-100 rw-100">
       <!-- 20% blank colum well behind sidebar in order to place page data section at right place-->
       <div class="fcol w-20 rhide"></div>
-      <div class="fcol w-80">
-         <div class="frow page-header">
-            <div class="fcol rw-80">
-               <div class="page-title">@yield('page-title')</div>
-               <div class="page-navbar">@yield('page-navbar')</div>
-            </div>
-            <div class="fcol rw-20 centered">@yield('graph')</div>
-         </div>
-         <div class="frow w-100 page-body auto-col">
-            <div class="fcol w-70 rw-100 mr-3">
-               @yield('data')
-            </div>
-            <!-- social panel on large screen -->
-            <div class="fcol w-30 rw-100 page-social">
-               @yield('social')
-            </div>
-
+      <div class="fcol w-80 rw-100">
+         <div class="frow w-100 rw-100 px-4 centered">
+            @yield('data')
          </div>
       </div>
-
       <script>
       feather.replace();
 

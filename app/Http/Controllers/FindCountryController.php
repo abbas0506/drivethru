@@ -109,6 +109,7 @@ class FindCountryController extends Controller
                     'data' => $countries,
                     // 'countries' => $courses,
                 ]);
+
                 return view('user.findcountry.search_result', compact('countries'));
             } catch (Exception $e) {
                 return redirect()->back()->withErrors($e->getMessage());

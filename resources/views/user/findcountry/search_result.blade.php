@@ -27,22 +27,22 @@ Find Country
 @section('data')
 <!-- create new acadmeic -->
 
-<div class="fcol w-100 rw-100 p-4 rounded">
-   <div class="frow w-100 rw-100 stretched">
+<div class="fcol w-100 rw-100 p-4 bg-white rounded">
+   <div class="frow w-100 rw-100">
       <div>
          <span class="txt-custom-blue txt-b border-bottom border-2">Search result</span>
       </div>
+   </div>
+
+   @if($countries->count()>0)
+   <div class="frow w-100 rw-100 mid-right">
       <a href="http://">
          <div class="frow mid-left txt-orange">
             <div>Download Free Report </div>
             <div><i data-feather='download' class="feather-small mx-2"></i></div>
-
          </div>
       </a>
-
    </div>
-
-   @if($countries->count()>0)
    <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
       <div class="w-60"> Country </div>
@@ -71,7 +71,7 @@ Find Country
       @endif
 
       <button class="btn btn-primary hide" id='cancelApply' onclick="toggleApply()">Cancel</button>
-      <button class="btn btn-success hide ml-2" id='applyNow' onclick="postUnicourseIds()">Apply Now <sup><span id='chkCount'></span></sup></button>
+      <button class="btn btn-success hide ml-2" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
    </div>
 
    <div class="frow bg-info centered hide mt-5 p-4" id='profileRequired'>
@@ -80,9 +80,6 @@ Find Country
 
    @else
    <!-- no country found -->
-   <div class="frow w-100 rw-100">
-      <span class="txt-custom-blue border-bottom border-2">Search result</span>
-   </div>
    <div class="frow w-100 rw-100 mt-2 txt-orange centered">
       No such country found in database
    </div>
@@ -106,9 +103,7 @@ function toggleApply() {
    $('.chk-apply').each(function() {
       $(this).toggleClass('hide');
    });
-   // $('.view_ico').each(function() {
-   //    $(this).toggleClass('hide');
-   // });
+
 }
 
 function updateChkCount() {
@@ -125,7 +120,7 @@ function updateChkCount() {
 }
 
 
-function postUnicourseIds() {
+function postData() {
    var token = $("meta[name='csrf-token']").attr("content");
 
    var ids = [];

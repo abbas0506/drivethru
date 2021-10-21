@@ -50,14 +50,16 @@ Swal.fire({
 
 <!-- manual search section -->
 <div id='manual_search_section' class="hide">
+
+   <div class="frow w-100 rw-100 txt-m my-3 rounded">
+      <div class="fcol w-50 p-3 bg-info txt-grey centered hoverable" onclick="toggleMe()">Auto Search</div>
+      <div class="fcol w-50 p-3 bg-primary txt-white centered">Manual Search</div>
+   </div>
+
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
       @csrf
       <input type="checkbox" name='manual' checked hidden>
       <div class="bg-light p-4 rounded mb-3">
-         <div class="frow mid-left w-100 rw-100 mt-2 hoverable" onclick="toggleMe()">
-            <i data-feather='check-square' class="feather-small mr-2"></i>
-            Manual Search &nbsp<span class="txt-orange txt-s">(Tell us country name)</span>
-         </div>
          <div class="fcol txt-grey w-100 rw-100 mt-3">
             <ul class="">
                <li>Part of country name is also acceptable</li>
@@ -65,11 +67,11 @@ Swal.fire({
             </ul>
          </div>
          <div class="frow w-100 rw-100 mid-left mt-3 fancy-search-grow" id='searchinput'>
-            <input type="text" name='country' placeholder="Type country name" oninput="search(event)">
+            <input type="text" name='country' placeholder="Type country name" oninput="search(event)" class="w-100 ml-4">
             <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
          </div>
          <div class="frow mid-right mt-3">
-            <button type='submit' class="btn btn-primary">Next</button>
+            <button type='submit' class="btn btn-primary">Search</button>
          </div>
       </div>
    </form>
@@ -78,13 +80,14 @@ Swal.fire({
 <!-- auto search section -->
 
 <div id='auto_search_section'>
+   <div class="frow w-100 rw-100 txt-m my-3 rounded">
+      <div class="fcol w-50 p-3 bg-primary txt-white centered">Auto Search</div>
+      <div class="fcol w-50 p-3 bg-info txt-grey centered hoverable" onclick="toggleMe()">Manual Search</div>
+   </div>
+
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
       @csrf
       <div class="bg-light p-4 rounded">
-         <div class="frow mid-left w-100 rw-100 mt-2 hoverable" onclick="toggleMe()">
-            <i data-feather='square' class="feather-small mr-2"></i>
-            Manual Search &nbsp<span class="txt-orange txt-s">(Only if you know country name)</span>
-         </div>
          <!-- filed of interest -->
          <div class="frow mid-left mt-4 mb-2 auto-col">
             <div class="fancyselect w-100 rw-100" id='fieldofinterest'>
@@ -135,7 +138,7 @@ Swal.fire({
             </div>
          </div>
          <div class="frow mid-right mt-3">
-            <button type='submit' class="btn btn-primary">Next</button>
+            <button type='submit' class="btn btn-primary">Search</button>
          </div>
       </div>
    </form>
