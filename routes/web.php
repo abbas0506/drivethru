@@ -59,12 +59,10 @@ Route::view('signup_success', 'users.signup_success');
 Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::get('signout', [UserController::class, 'signout']);
 
+//student and admin middleware have been registered in app/http/kernel.php
 
-
-//user api
-
-
-Route::middleware([Admin::class])->group(function () {
+//admin middleware
+Route::group(['middleware' => 'admin'], function () {
     Route::view('admin', 'admin.index');
     Route::view('primary', 'admin.primary');
     Route::resource('faculties', FacultyController::class);
@@ -88,8 +86,8 @@ Route::middleware([Admin::class])->group(function () {
     Route::resource('livingcosts', LivingcostController::class);
 });
 
+//student middleware
 Route::group(['middleware' => 'student'], function () {
-    //Route::middleware([StudentLayer::class])->group(function () {
     Route::view('user_dashboard', 'user.dashboard');
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
