@@ -33,11 +33,11 @@
       <div class="fcol w-20 rhide"></div>
       <div class="fcol w-80">
          <div class="frow page-header">
-            <div class="fcol rw-80">
-               <div class="page-title">@yield('page-title')</div>
-               <div class="page-navbar">@yield('page-navbar')</div>
+            <div class="fcol w-100 rw-100">
+               @yield('page-title')
+               @yield('page-subtitle')
+               @yield('page-navbar')
             </div>
-            <div class="fcol rw-20 centered">@yield('graph')</div>
          </div>
          <div class="frow w-100 page-body auto-col">
             <div class="fcol w-70 rw-100 mr-3">

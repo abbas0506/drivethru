@@ -8,6 +8,8 @@ use App\Models\Favcourse;
 use App\Models\Livingcost;
 use App\Models\Studycost;
 use Illuminate\Http\Request;
+
+use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 
 class FindCountryController extends Controller
@@ -48,6 +50,13 @@ class FindCountryController extends Controller
             //manual search request
             $country = $request->country;
             $countries = Country::where('name', 'like', '%' . $country . '%')->get();
+
+            session([
+                'findcountry_countries' => $countries,
+                'findcountry_mode' => 'manual',
+                // 'countries' => $courses,
+            ]);
+
             return view('user.findcountry.search_result', compact('countries'));
         } else {
             // auto search request
@@ -56,6 +65,7 @@ class FindCountryController extends Controller
             ]);
 
             $course_id = $request->course_id;
+            $course = Course::find($course_id);
             try {
 
                 $livingcosts = Livingcost::selectRaw('country_id, (min(minexp)+max(maxexp))/2 as livingcost')->groupBy('country_id');
@@ -106,7 +116,8 @@ class FindCountryController extends Controller
                 //send courses list as well for grouping purpose
                 //$courses = Course::whereIn('id', $course_ids)->get();
                 session([
-                    'data' => $countries,
+                    'findcountry_countries' => $countries,
+                    'findcountry_course' => $course,
                     // 'countries' => $courses,
                 ]);
 
@@ -127,6 +138,8 @@ class FindCountryController extends Controller
     public function show($id)
     {
         //
+        $country = Country::find($id);
+        return view('user.findcountry.show', compact('country'));
     }
 
     /**
@@ -161,5 +174,21 @@ class FindCountryController extends Controller
     public function destroy($id)
     {
         //
+
+    }
+    public function autosearch()
+    {
+        $countries = session('findcountry_countries');
+        $course = session('findcountry_course');
+        $pdf = PDF::loadView("user.findcountry.reports.listofcountries", compact('course', 'countries'));
+        $pdf->output();
+        return $pdf->setPaper('a4')->stream();
+    }
+    public function countrydetail($id)
+    {
+        $country = Country::find($id);
+        $pdf = PDF::loadView("user.findcountry.reports.countrydetail", compact('country'));
+        $pdf->output();
+        return $pdf->setPaper('a4')->stream();
     }
 }

@@ -36,11 +36,7 @@ $pic_url=url(asset("images/users/".$user->pic));
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">My Applications</div>
-      <div class="frow txt-s txt-grey centered">
-         <div class="fcol circular-20 border-0 bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
-         <div class="ml-2">Refresh this section</div>
 
-      </div>
    </div>
    <!-- table header -->
    <div class="frow mid-left border-bottom mt-3">
@@ -73,11 +69,6 @@ $pic_url=url(asset("images/users/".$user->pic));
 <div class="fcol w-100 rw-100 bg-white p-4 mt-3">
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">My Counselling Requests</div>
-      <div class="frow txt-s txt-grey centered">
-         <div class="fcol circular-20 border-0 bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
-         <div class="ml-2">Refresh this section</div>
-
-      </div>
    </div>
    <!-- table header -->
    <div class="frow mid-left border-bottom mt-3">

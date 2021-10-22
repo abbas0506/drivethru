@@ -12,12 +12,14 @@ $user=session('user');
 @endsection
 
 @section('page-title')
-Find Country
+<div class="page-title">Find Country</div>
 @endsection
 
 @section('page-navbar')
 
-<x-findcountry__navbar activeItem='apply'></x-findcountry__navbar>
+<div class="page-navbar">
+   <x-findcountry__navbar activeItem='apply'></x-findcountry__navbar>
+</div>
 
 @endsection
 
@@ -36,10 +38,10 @@ Find Country
 
    @if($countries->count()>0)
    <div class="frow w-100 rw-100 mid-right">
-      <a href="http://">
-         <div class="frow mid-left txt-orange">
-            <div>Download Free Report </div>
-            <div><i data-feather='download' class="feather-small mx-2"></i></div>
+      <a href="{{route('findcountry_autosearch')}}" target="_blank">
+         <div class="frow mid-left txt-s btn-outline-orange">
+            <div class="">Get Free Report</div>
+            <div><i data-feather='download' class="feather-small ml-2"></i></div>
          </div>
       </a>
    </div>
@@ -57,7 +59,7 @@ Find Country
       <div class="w-10">{{$sr++}} </div>
       <div class="w-60"> {{$country->name}}</div>
       <div class="w-20 text-right view_ico">
-         <a href="#" target="_blank"><i data-feather='eye' class="feather-xsmall mx-1 txt-custom-blue"></i></a>
+         <a href="{{route('findcountry.show', $country->id)}}"><i data-feather='eye' class="feather-xsmall mx-1 txt-custom-blue"></i></a>
       </div>
       <div class="w-10 rw-10 text-center chk-apply hide"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
    </div>

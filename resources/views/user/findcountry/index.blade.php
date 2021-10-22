@@ -12,13 +12,13 @@ $user=session('user');
 @endsection
 
 @section('page-title')
-Find Country
+<div class="page-title">Find Country</div>
 @endsection
 
 @section('page-navbar')
-
-<x-findcountry__navbar activeItem='preference'></x-findcountry__navbar>
-
+<div class="page-navbar">
+   <x-findcountry__navbar activeItem='preference'></x-findcountry__navbar>
+</div>
 @endsection
 
 @section('graph')
@@ -51,27 +51,26 @@ Swal.fire({
 <!-- manual search section -->
 <div id='manual_search_section' class="hide">
 
-   <div class="frow w-100 rw-100 txt-m my-3 rounded">
-      <div class="fcol w-50 p-3 bg-info txt-grey centered hoverable" onclick="toggleMe()">Auto Search</div>
-      <div class="fcol w-50 p-3 bg-primary txt-white centered">Manual Search</div>
+   <div class="frow txt-m mt-3 rounded">
+      <div class="frow w-50 p-1 bg-info txt-grey centered hoverable" onclick="toggleMe()">Auto Search</div>
+      <div class="frow w-50 p-1 bg-primary txt-white centered">Manual Search <i data-feather='check' class="feather-small ml-2"></i></div>
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
       @csrf
       <input type="checkbox" name='manual' checked hidden>
       <div class="bg-light p-4 rounded mb-3">
-         <div class="fcol txt-grey w-100 rw-100 mt-3">
+         <div class="fcol txt-grey w-100 rw-100 mt-2">
             <ul class="">
                <li>Part of country name is also acceptable</li>
-               <li>Blank search will fetch all countries</li>
             </ul>
          </div>
-         <div class="frow w-100 rw-100 mid-left mt-3 fancy-search-grow" id='searchinput'>
-            <input type="text" name='country' placeholder="Type country name" oninput="search(event)" class="w-100 ml-4">
-            <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-         </div>
-         <div class="frow mid-right mt-3">
-            <button type='submit' class="btn btn-primary">Search</button>
+         <div class="frow w-100 rw-100 stretched">
+            <div class="frow w-100 mid-left fancy-search-grow" id='searchinput'>
+               <input type="text" name='country' placeholder="Type country name" oninput="search(event)" style='width:80%!important; margin-left:20px' required>
+               <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
+            </div>
+            <div class=""><button type='submit' class="btn btn-sm btn-primary">Search</button></div>
          </div>
       </div>
    </form>
@@ -80,9 +79,9 @@ Swal.fire({
 <!-- auto search section -->
 
 <div id='auto_search_section'>
-   <div class="frow w-100 rw-100 txt-m my-3 rounded">
-      <div class="fcol w-50 p-3 bg-primary txt-white centered">Auto Search</div>
-      <div class="fcol w-50 p-3 bg-info txt-grey centered hoverable" onclick="toggleMe()">Manual Search</div>
+   <div class="frow txt-m mt-3 rounded">
+      <div class="frow w-50 p-1 bg-primary txt-white centered">Auto Search <i data-feather='check' class="feather-small ml-2"></i></div>
+      <div class="frow w-50 p-1 bg-info txt-grey centered hoverable" onclick="toggleMe()">Manual Search</div>
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>

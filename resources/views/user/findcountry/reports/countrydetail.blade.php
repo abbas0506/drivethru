@@ -1,0 +1,150 @@
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="{{public_path('css/pdf.css')}}" rel="stylesheet">
+   <style>
+   @page {
+      margin: 75px 25px;
+   }
+   </style>
+
+</head>
+
+<body>
+   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Country Report</div>
+   <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">100% Free</div>
+   <div class="w-100 txt-center txt-s py-2 mx-5">This report is for better decision making. It has nothing to do with anything else. This report is based on your country preference. Below are the complete detail of the country.</div>
+   <div class='w-100 txt-l txt-center border-bottom border-1 txt-b mt-2 py-2 mx-5'>
+      {{$country->name}}
+   </div>
+   <table class="w-100 mx-5 mt-3">
+      <tbody class="">
+         <tr>
+            <td class="w-30 txt-s txt-b">Currency: </td>
+            <td class="w-70 txt-s">{{$country->currency}}</td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Visa Required: </td>
+            <td class="w-70 txt-s mt-2">@if($country->visafree) No @else Yes @endif</td>
+         </tr>
+         @if(!$country->visafree)
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Visa Duration: </td>
+            <td class="w-70 txt-s mt-2">{{$country->visaduration}} years</td>
+         </tr>
+         @endif
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Education: </td>
+            <td class="w-70 txt-s mt-2">@if($country->edufree) Free @else Not Free @endif</td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Job Desc: </td>
+            <td class="w-70 txt-s mt-2">{{$country->jobdesc}}</td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Life there: </td>
+            <td class="w-70 txt-s mt-2">{{$country->lifethere}}</td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Visa Docs: </td>
+            <td class="w-70 txt-s mt-2">
+               @if($country->visadocs()->count()>0)
+               <ul>
+                  @foreach($country->visadocs() as $visadoc)
+
+                  <li>{{$visadoc->doc->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of documents not available
+               @endif
+
+            </td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Admission Docs:: </td>
+            <td class="w-70 txt-s mt-2">
+               @if($country->admdocs()->count()>0)
+               <ul>
+                  @foreach($country->admdocs() as $admdoc)
+                  <li>{{$admdoc->doc->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of documents not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Scholarships Offered: </td>
+            <td class="w-70 txt-s mt-2">
+               @if($country->scholarships()->count()>0)
+               <ul>
+                  @foreach($country->scholarships() as $scholarshipoffer)
+                  <li>{{$scholarshipoffer->scholarship->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of scholarships not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Favourite Courses: </td>
+            <td class="w-70 txt-s mt-2">@if($country->favcourses()->count()>0)
+               <ul>
+                  @foreach($country->favcourses() as $favcourse)
+                  <li>{{$favcourse->course->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of favourite courses not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Study Cost: </td>
+            <td class="w-70 txt-s mt-2">
+               @if($country->studycosts()->count()>0)
+               <ul>
+                  @foreach($country->studycosts() as $studycost)
+                  <li>{{$studycost->level->name}}: {{$studycost->minfee}}- {{$studycost->maxfee}} k$</li>
+                  @endforeach
+               </ul>
+               @else
+               List of study costs not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Living Cost: </td>
+            <td class="w-70 txt-s mt-2">
+               @if($country->livingcosts()->count()>0)
+               <ul>
+                  @foreach($country->livingcosts() as $livingcost)
+                  <li>{{$livingcost->expensetype->name}}: {{$livingcost->minexp}}- {{$livingcost->maxexp}} k$</li>
+                  @endforeach
+               </ul>
+               @else
+               List of study costs not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
+            <td class="w-30 txt-s txt-b mt-2">Living Cost Desc: </td>
+            <td class="w-70 txt-s mt-2">{{$country->livingcostdesc}}</td>
+         </tr>
+
+      </tbody>
+   </table>
+</body>
+
+</html>

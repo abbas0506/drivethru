@@ -90,4 +90,10 @@ class Country extends Model
     {
         return $this->hasMany(Livingcost::class, 'country_id')->get();
     }
+    public function studylevels()
+    {
+        $studylevel_ids = Studycost::where('country_id', $this->id)->distinct()->pluck('level_id')->toArray();
+        $studylevels = Level::whereIn('id', $studylevel_ids)->get();
+        return $studylevels;
+    }
 }

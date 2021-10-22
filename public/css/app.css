@@ -398,6 +398,29 @@ body {
   outline: 0;
 }
 
+.btn-orange {
+  background-color: rgba(244, 120, 43, 0.8);
+  color: #EAEEF1;
+  border-radius: 5px;
+  padding: 0.2rem 0.375rem;
+}
+.btn-orange:hover {
+  background-color: #F4782B;
+  color: white;
+}
+
+.btn-outline-orange {
+  background-color: transparent;
+  border: 1px solid #F4782B;
+  color: #F4782B;
+  border-radius: 5px;
+  padding: 0.2rem 0.375rem;
+}
+.btn-outline-orange:hover {
+  background-color: #F4782B;
+  color: white;
+}
+
 .circular-10 {
   width: 10px;
   height: 10px;

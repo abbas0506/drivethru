@@ -107,6 +107,8 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
     Route::resource('counselling', CounsellingController::class);
     Route::resource('findcountry', FindCountryController::class);
+    Route::get("findcountry_autosearch", [FindCountryController::class, 'autosearch'])->name("findcountry_autosearch");
+    Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
     Route::get('switch/{mode}', function ($mode) {
         session([
             'mode' => $mode,
