@@ -29,9 +29,9 @@ $user=session('user');
    </div>
 
    <!-- personal data fields -->
-   <form action="{{route('profiles.update', $profile)}}" method="post" id='form' onsubmit="return validate()">
+   <form action="{{route('profiles.store')}}" method="post" id='form' onsubmit="return validate()">
       @csrf
-      @method('PATCH')
+
       <!-- display authentication error if any -->
       @if ($errors->any())
       <div class="fcol w-100 rw-100 my-2 txt-orange">
@@ -40,76 +40,76 @@ $user=session('user');
          @endforeach
       </div>
       @endif
+      <input type="text" name='user_id' value="{{$user->id}}" hidden>
       <div class="frow w-100 rw-100 stretched auto-col">
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='fname' placeholder="Father" value="{{$profile->fname}}">
+            <input type="text" name='fname' placeholder="Father">
             <label for="">Father</label>
          </div>
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='mname' placeholder="Mother" value="{{$profile->mname}}">
+            <input type="text" name='mname' placeholder="Mother">
             <label for="">Mother</label>
          </div>
       </div>
       <div class="frow w-100 rw-100 stretched auto-col">
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='cnic' id='cnic' placeholder="CNIC" oninput='formatAsCnic(event)' value="{{$profile->cnic}}" required>
+            <input type="text" name='cnic' id='cnic' placeholder="CNIC" oninput='formatAsCnic(event)' required>
             <label for="">CNIC</label>
          </div>
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='passport' placeholder="Passport" value="{{$profile->passport}}">
+            <input type="text" name='passport' placeholder="Passport">
             <label for="">Passport</label>
          </div>
       </div>
       <div class="frow w-100 rw-100 stretched auto-col">
          <div class="fcol w-48 mt-3 fancyselect">
             <select name="gender">
-               <option value="M" @if($profile->gender=='M') selected @endif>Male</option>
-               <option value="F" @if($profile->gender=='F') selected @endif>Female</option>
+               <option value="M">Male</option>
+               <option value="F">Female</option>
             </select>
             <label for="">Gender</label>
          </div>
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='dob' id='dob' placeholder="Date of birth (dd-mm-yyyy)" value="{{date_format($profile->dob,'d-m-Y')}}" oninput="formatAsDate(event)" required>
+            <input type="text" name='dob' id='dob' placeholder="Date of birth (dd-mm-yyyy)" oninput="formatAsDate(event)" required>
             <label for="">Date of Birth (dd-mm-yyyy)</label>
          </div>
       </div>
       <div class="frow w-100 rw-100 mt-3 stretched auto-col">
          <div class="fcol w-48 mt-3 fancyselect">
             <select name="religion">
-               <option value="Islam" @if($profile->religion=='Islam') selected @endif>Islam</option>
-               <option value="Christianity" @if($profile->religion=='Christianity') selected @endif>Christianity</option>
-               <option value="Judaism" @if($profile->religion=='Judaism') selected @endif>Judaism</option>
-               <option value="Hinduism" @if($profile->religion=='Hinduism') selected @endif>Hinduism</option>
-               <option value="Other" @if($profile->religion=='Other') selected @endif>Other</option>
+               <option value="Islam">Islam</option>
+               <option value="Christianity">Christianity</option>
+               <option value="Judaism">Judaism</option>
+               <option value="Hinduism">Hinduism</option>
+               <option value="Other">Other</option>
             </select>
             <label for="">Religion</label>
          </div>
          <div class="fcol w-48 mt-3 fancyselect">
             <select name="bloodgroup">
-               <option value="A+" @if($profile->bloodgroup=='A+') selected @endif>A+</option>
-               <option value="B+" @if($profile->bloodgroup=='B+') selected @endif>B+</option>
-               <option value="AB+" @if($profile->bloodgroup=='AB+') selected @endif>AB+</option>
-               <option value="O+" @if($profile->bloodgroup=='O+') selected @endif>O+</option>
-               <option value="O-" @if($profile->bloodgroup=='O-') selected @endif>O-</option>
-               <option value="A-" @if($profile->bloodgroup=='A-') selected @endif>A-</option>
-               <option value="B-" @if($profile->bloodgroup=='B-') selected @endif>B-</option>
-               <option value="AB-" @if($profile->bloodgroup=='AB-') selected @endif>AB-</option>
+               <option value="A+">A+</option>
+               <option value="B+">B+</option>
+               <option value="AB+">AB+</option>
+               <option value="O+">O+</option>
+               <option value="O-">O-</option>
+               <option value="A-">A-</option>
+               <option value="B-">B-</option>
+               <option value="AB-">AB-</option>
             </select>
             <label for="">Blood Group</label>
          </div>
       </div>
 
       <div class="frow w-100 mt-3 fancyinput">
-         <input type="text" name='address' placeholder="Address" value="{{$profile->address}}">
+         <input type="text" name='address' placeholder="Address">
          <label for="">Address</label>
       </div>
 
       <frow class="frow mid-right w-100 rw-100 mt-3">
-         <button type='submit' class="btn btn-sm btn-success">Update</button>
+         <button type='submit' class="btn btn-sm btn-success">Save</button>
       </frow>
    </form>
 </div>
-
 @endsection
 
 @section('profile')

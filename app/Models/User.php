@@ -69,4 +69,16 @@ class User extends Model
         if ($this->hasProfile() && $this->hasAcademics()) return true;
         else return false;
     }
+    public function hasPic()
+    {
+        if ($this->pic == 'default.png' || $this->pic == '') return false;
+        else return true;
+    }
+    public function numOfStepsFinished()
+    {
+        $numOfStepsFinished = 0;
+        if ($this->hasProfile()) $numOfStepsFinished += 1;
+        if ($this->hasAcademics()) $numOfStepsFinished += 1;
+        return $numOfStepsFinished;
+    }
 }

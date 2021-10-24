@@ -20,3 +20,13 @@
         color: white;
     }
 }
+
+.btn-rounded-custom-blue {
+    background-color: rgb($custom-blue, 0.8);
+    color: white;
+    border-radius: 50px;
+    &:hover {
+        background-color: $custom-blue;
+        cursor: pointer;
+    }
+}

@@ -48,8 +48,8 @@
    }
 
    #createnew {
-      color: #0180D7;
-      font-size: 0.6rem;
+      color: white;
+      font-size: 0.8rem;
    }
 
    .w-68 {
@@ -118,13 +118,13 @@
    <div class="frow h-10 w-100 rhide"></div>
    <div class="frow h-80 w-100 rh-auto rw-100 auto-col">
       <div class="fcol w-60 rw-100 p-4 centered ">
-         <img src="{{url(asset('images/logos/logo_1.png'))}}" alt="" class="logo">
+         <img src="{{url(asset('images/logos/app/colorful_1.png'))}}" alt="" class="logo">
          <div class="w-80 rw-90 txt-smoke txt-m text-justify">DriveThru.pk is a simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process.</div>
 
       </div>
       <div class="fcol w-40 rw-100 centered">
          <div class='fcol w-60 h-70 rw-100 p-5 bg-darkblue centered auth-container'>
-            <form action="{{route('signin')}}" method="post">
+            <form action="{{route('signin')}}" method="post" onsubmit="return validate()">
                @csrf
                <div class="fcol centered">
                   <div class="frow centered title">SIGN IN</div>
@@ -135,15 +135,15 @@
                         </select>
                      </div>
                      <div class="fcol w-68 rw-70">
-                        <input type="text" name='phone' placeholder="Phone">
+                        <input type="text" id='phone' name='phone' placeholder="Phone">
                      </div>
                   </div>
                   <div class="frow w-100 centered mt-2">
-                     <input type="password" name='password' placeholder="Password" class="w-100">
+                     <input type="password" id='password' name='password' placeholder="Password" class="w-100">
                   </div>
                   <div class="frow w-100 centered stretched mt-2">
                      <a href="{{url('signup')}}" class="w-70 rw-70 mr-1">
-                        <div class="fcol centered" id='createnew'>Create new account, click here</div>
+                        <div class="fcol centered" id='createnew'>or, Sign Up</div>
                      </a>
                      <div class='fcol w-30 rw-30'><button type="submit" class="btn btn-sm btn-primary">Sign In</button></div>
                   </div>
@@ -172,8 +172,33 @@
       </div>
    </div>
    <div class="frow copyright-footer h-10 txt-smoke txt-xs centered w-60 rw-100">ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-lightsky">PRIVACY POLICY </span></div>
+
+
+
    <script>
    feather.replace();
+
+   function validate() {
+      var regex = /^\d{7}$/;
+      var msg = '';
+      var phone = $('#phone').val();
+      var password = $('#password').val();
+      //validare phone no.
+      if (phone == '' || phone == null) msg = 'Phone required!';
+      else if (phone.length < 7) msg = 'Too short phone no!';
+      else if (phone.length > 7) msg = 'Too long phone no!';
+      else if (regex.test(phone) == false) msg = 'invalid phone';
+      //validate password
+      else if (password == '' || password == null) msg = 'Password required!';
+
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+   }
    </script>
 </body>
 

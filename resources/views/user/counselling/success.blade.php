@@ -12,7 +12,7 @@ $user=session('user');
 @endsection
 
 @section('data')
-<!-- create new acadmeic -->
+<!-- counselling success -->
 <div class="fcol w-70 rw-80 h-90 centered text-justify">
    <div class="txt-custom-blue mb-2"><i data-feather='smile' class="feather-large mx-1 txt-custom-blue"></i></div>
    <div class="txt-custom-blue txt-l txt-b mb-4">Hi!</div>

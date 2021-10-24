@@ -48,8 +48,8 @@
    }
 
    #createnew {
-      color: #0180D7;
-      font-size: 0.6rem;
+      color: white;
+      font-size: 0.8rem;
    }
 
    .w-68 {
@@ -117,18 +117,18 @@
    <div class="frow h-10 w-100 rhide"></div>
    <div class="frow h-80 w-100 rh-auto rw-100 auto-col">
       <div class="fcol w-60 rw-100 p-4 centered ">
-         <img src="{{url(asset('images/logos/logo_1.png'))}}" alt="" class="logo">
+         <img src="{{url(asset('images/logos/app/colorful_1.png'))}}" alt="" class="logo">
          <div class="w-80 rw-90 txt-smoke txt-m text-justify">DriveThru.pk is a simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process.</div>
 
       </div>
       <div class="fcol w-40 rw-100 centered">
          <div class='fcol w-60 rw-100 p-5 bg-darkblue auth-container'>
-            <form action="{{route('users.store')}}" method='post'>
+            <form action="{{route('users.store')}}" method='post' onsubmit="return validate()">
                @csrf
                <div class="fcol rw-100 centered">
                   <div class="frow centered title">SIGN UP</div>
                   <div class="frow w-100 rw-100 centered mt-4">
-                     <input type="text" name='name' placeholder="Name" class="w-100">
+                     <input type="text" name='name' id='name' placeholder="Name" class="w-100">
                   </div>
                   <div class="frow w-100 stretched mt-2">
                      <div class="fcol w-30 rw-25">
@@ -137,7 +137,7 @@
                         </select>
                      </div>
                      <div class="fcol w-68 rw-70">
-                        <input type="text" name='phone' placeholder="Phone">
+                        <input type="text" name='phone' id='phone' placeholder="Phone">
                      </div>
                   </div>
                   <div class="frow w-100 centered mt-2">
@@ -151,7 +151,7 @@
                   </div>
                   <div class="frow w-100 rw-100 centered stretched mt-3">
                      <a href="{{url('signin')}}" class="w-60 rw-60 mr-1">
-                        <div class="fcol centered" id='createnew'>I have an account, sign in</div>
+                        <div class="fcol centered" id='createnew'>or, Sign In</div>
                      </a>
                      <div class='fcol w-40 rw-40'><button type="submit" class="btn btn-sm btn-primary">Sign Up</button></div>
                   </div>
@@ -184,6 +184,35 @@
    <div class="frow copyright-footer h-10 txt-smoke txt-xs centered w-60 rw-100">ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-lightsky">PRIVACY POLICY </span></div>
    <script>
    feather.replace();
+
+   function validate() {
+      var regex = /^\d{7}$/;
+      var msg = '';
+      var name = $('#name').val()
+      var phone = $('#phone').val();
+      var password = $('#password').val();
+      var confirmpw = $('#confirmpw').val();
+
+      //validate name
+      if (name == '' || name == null) msg = 'Name required!';
+      //validare phone no.
+      else if (phone == '' || phone == null) msg = 'Phone required!';
+      else if (phone.length < 7) msg = 'Too short phone no!';
+      else if (phone.length > 7) msg = 'Too long phone no!';
+      else if (regex.test(phone) == false) msg = 'invalid phone';
+      //validate password
+      else if (password == '' || password == null) msg = 'Password required!';
+      else if (confirmpw == '' || confirmpw == null) msg = 'Confirm password required!';
+      else if (password != confirmpw) msg = "Confirm password not matched"
+      //show validation error, if any
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+   }
    </script>
 </body>
 

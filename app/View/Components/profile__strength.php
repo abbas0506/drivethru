@@ -4,14 +4,13 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class profile__panel extends Component
+class profile__strength extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
     public $user;
 
     public function __construct($user)
@@ -26,6 +25,6 @@ class profile__panel extends Component
      */
     public function render()
     {
-        return view('components.profile__panel');
+        return view('components.profile__strength');
     }
 }

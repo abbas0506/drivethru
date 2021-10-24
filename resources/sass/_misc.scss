@@ -33,3 +33,7 @@ a:hover {
     text-decoration: none !important;
     cursor: pointer;
 }
+
+div>a {
+    color: inherit;
+}

@@ -45,7 +45,7 @@ $user=session('user');
 @endsection
 
 @section('profile')
-<x-profile__panel :user="$user"></x-profile__panel>
+<x-profile__strength :user="$user"></x-profile__strength>
 @endsection
 
 <!-- script goes here -->

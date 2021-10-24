@@ -46,3 +46,13 @@ function formatAsDate(event) {
         event.target.value = formattedtxt;
     }
 }
+
+function validateCnic(cnic) {
+    var regex = /^\d{5}-\d{7}-\d{1}$/;
+    return regex.test(cnic);
+}
+
+function validateDate(date) {
+    var regex = /^\d{2}-\d{2}-\d{4}$/;
+    return regex.test(date);
+}

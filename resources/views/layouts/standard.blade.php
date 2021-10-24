@@ -20,7 +20,7 @@
    <div class="frow w-100 user-header">
       <div class="frow centered w-20">
          <div class="fcol centered">
-            <img src="{{url(asset('images/logos/app/dark.png'))}}" alt="" class="app-logo">
+            <img src="{{url(asset('images/logos/app/colorful_0.png'))}}" alt="" class="app-logo">
          </div>
       </div>
       @yield('topbar')
@@ -52,11 +52,11 @@
       </div>
 
       <script>
-      feather.replace();
+         feather.replace();
 
-      function toggle_sidebar() {
-         $('.user-sidebar').toggleClass('disappear');
-      }
+         function toggle_sidebar() {
+            $('.user-sidebar').toggleClass('disappear');
+         }
       </script>
       @yield('script')
 </body>

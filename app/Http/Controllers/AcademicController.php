@@ -68,7 +68,7 @@ class AcademicController extends Controller
         try {
             $academic = Academic::create($request->all());
             $academic->save();
-            return redirect()->route('profiles.index');
+            return redirect()->route('academics.index');
         } catch (Exception $ex) {
             return redirect()->back()
                 ->withErrors($ex->getMessage()());

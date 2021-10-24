@@ -421,6 +421,16 @@ body {
   color: white;
 }
 
+.btn-rounded-custom-blue {
+  background-color: rgba(42, 83, 143, 0.8);
+  color: white;
+  border-radius: 50px;
+}
+.btn-rounded-custom-blue:hover {
+  background-color: #2A538F;
+  cursor: pointer;
+}
+
 .circular-10 {
   width: 10px;
   height: 10px;
@@ -1519,6 +1529,10 @@ body {
 a:hover {
   text-decoration: none !important;
   cursor: pointer;
+}
+
+div > a {
+  color: inherit;
 }
 
 /*!

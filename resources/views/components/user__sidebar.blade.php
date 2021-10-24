@@ -6,14 +6,13 @@
 
       @php
       $user=session('user');
-      $pic_url=url(asset("images/users/".$user->pic));
       @endphp
       <div class="fcol border-1 circular-75">
-         <img src="{{$pic_url}}" alt="" class="rounded-circle" width='75' height='75'>
+         <img src="{{url(asset('images/users/'.$user->pic))}}" alt="" class="rounded-circle" width='75' height='75'>
       </div>
       <div>
          <a href="{{route('change_pic')}}">
-            <i data-feather='camera' class="feather-xsmall absolute" style='bottom:5px'></i>
+            <i data-feather='camera' class="feather-xsmall absolute txt-smoke" style='bottom:5px'></i>
          </a>
       </div>
    </div>

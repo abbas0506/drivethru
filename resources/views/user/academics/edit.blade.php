@@ -11,17 +11,8 @@ $user=session('user');
 <x-user__sidebar activeItem='dashboard' :user="$user"></x-user__sidebar>
 @endsection
 
-<style>
-   .bg-national-mini {
-      background-image: url('storage/images/bg/international.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-size: 100% 100%;
-   }
-</style>
-
 @section('page-header')
-<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-national-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
+<div class="frow w-100 p-4 txt-m txt-b txt-custom-blue" style='border-radius:5px'>{{$user->name}}!</div>
 @endsection
 
 @section('data')
@@ -29,15 +20,16 @@ $user=session('user');
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">Acadmeic Detail</div>
-      <div class="frow txt-s txt-grey centered">
-         <div class="fcol circular-25 border-0 bg-green centered"><i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i></div>
-         <div class="ml-2">Refresh this section</div>
-
+      <div class="frow txt-s centered hoverable">
+         <div class="fcol circular-25 border-0 bg-green centered" onclick="reset()">
+            <i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i>
+         </div>
+         <div class="ml-2 txt-grey">Reset</div>
       </div>
    </div>
 
    <!-- personal data fields -->
-   <form action="{{route('academics.update', $academic)}}" method="post">
+   <form action="{{route('academics.update', $academic)}}" method="post" id='form'>
       @csrf
       @method('PATCH')
       <!-- display authentication error if any -->
@@ -97,7 +89,6 @@ $user=session('user');
       </div>
 
       <frow class="frow mid-right w-100 rw-100 mt-3">
-         <a class='btn btn-sm btn-info mr-2' href="{{route('profiles.index')}}">Cancel</a>
          <button type='submit' class="btn btn-sm btn-success">Update</button>
       </frow>
    </form>
@@ -107,12 +98,14 @@ $user=session('user');
 @endsection
 
 @section('profile')
-<x-profile__panel :user="$user"></x-profile__panel>
+<x-profile__strength :user="$user"></x-profile__strength>
 @endsection
 
 <!-- script goes here -->
 @section('script')
-<script lang="javascript">
-
+<script>
+function reset() {
+   $('#form')[0].reset();
+}
 </script>
 @endsection

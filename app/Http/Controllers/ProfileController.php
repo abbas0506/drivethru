@@ -28,6 +28,7 @@ class ProfileController extends Controller
     public function create()
     {
         //
+        return view('user.profile.create');
     }
 
     /**
@@ -130,7 +131,7 @@ class ProfileController extends Controller
         $user = session('user');
         if ($request->hasFile('pic')) {
             //unlink old image
-            $destination_path = 'public/images/users/';
+            $destination_path = public_path('images/users/');
             //unlink(storage_path('app/public/images/profile/' . $profile->pic));
 
             //never destroy default.png as it is used as default image for every new user
@@ -144,7 +145,9 @@ class ProfileController extends Controller
 
             //save new pic after renaming
             $file_name = $user->id . '.' . $request->pic->extension();
-            $request->file('pic')->storeAs($destination_path, $file_name);
+            //->move(public_path('images'), $imageName);
+            $request->file('pic')->move(public_path('images/users'), $file_name);
+            //->storeAs($destination_path, $file_name);
             $user->pic = $file_name;
         }
 

@@ -102,17 +102,20 @@ Route::group(['middleware' => 'student'], function () {
     Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
     Route::resource('academics', AcademicController::class);
-    Route::view('change_pic', 'profile.change_pic')->name('change_pic');
+    Route::view('change_pic', 'user.profile.change_pic')->name('change_pic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
     Route::resource('counselling', CounsellingController::class);
     Route::resource('findcountry', FindCountryController::class);
     Route::get("findcountry_autosearch", [FindCountryController::class, 'autosearch'])->name("findcountry_autosearch");
     Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
+
     Route::get('switch/{mode}', function ($mode) {
         session([
             'mode' => $mode,
         ]);
         return redirect('user_dashboard');
     });
+
+    Route::view('changepw', 'user.profile.changepw');
 });
