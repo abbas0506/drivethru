@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
             UniversitySeeder::class,
             BoardSeeder::class,
             CountrySeeder::class,
-            FavcourseSeeder::class,
-            LivingcostSeeder::class,
-            StudycostSeeder::class,
-            UnicourseSeeder::class,
+            //FavcourseSeeder::class,
+            //LivingcostSeeder::class,
+            //StudycostSeeder::class,
+            //UnicourseSeeder::class,
         ]);
     }
 }
