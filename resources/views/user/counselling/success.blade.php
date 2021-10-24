@@ -24,7 +24,7 @@ $user=session('user');
    <div class="txt-b txt-m mt-3">Regards</div>
    <div class="txt-b txt-m mt-1">Team DriveThru</div>
 
-   <div class="border-top mt-3 pt-2 "><a class='btn btn-primary' href="{{url('user_dashboard')}}">Ok, I Got</a></div>
+   <div class="border-top mt-3 pt-2 "><a class='btn btn-primary' href="{{route('counselling.show',$counselling)}}">Ok, I Got</a></div>
 </div>
 
 @endsection

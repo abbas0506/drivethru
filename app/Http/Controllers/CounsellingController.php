@@ -60,7 +60,7 @@ class CounsellingController extends Controller
     {
         //
         $counselling = Counselling::find($id);
-        return view('user.counselling.success', compact('counselling'));
+        return view('user.counselling.show', compact('counselling'));
     }
 
     /**
