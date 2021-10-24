@@ -186,7 +186,7 @@
    feather.replace();
 
    function validate() {
-      var regex = /^\d{7}$/;
+      var regex = /^\d{10}$/;
       var msg = '';
       var name = $('#name').val()
       var phone = $('#phone').val();
@@ -197,8 +197,8 @@
       if (name == '' || name == null) msg = 'Name required!';
       //validare phone no.
       else if (phone == '' || phone == null) msg = 'Phone required!';
-      else if (phone.length < 7) msg = 'Too short phone no!';
-      else if (phone.length > 7) msg = 'Too long phone no!';
+      else if (phone.length < 10) msg = 'Too short phone no!';
+      else if (phone.length > 10) msg = 'Too long phone no!';
       else if (regex.test(phone) == false) msg = 'invalid phone';
       //validate password
       else if (password == '' || password == null) msg = 'Password required!';
