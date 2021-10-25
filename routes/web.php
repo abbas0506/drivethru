@@ -64,7 +64,7 @@ Route::get('signout', [UserController::class, 'signout']);
 //admin middleware
 Route::group(['middleware' => 'admin'], function () {
     Route::view('admin', 'admin.index');
-    Route::view('primary', 'admin.primary');
+    Route::view('primary', 'admin.primary.index');
     Route::resource('faculties', FacultyController::class);
     Route::resource('levels', LevelController::class);
     Route::resource('documents', DocumentController::class);

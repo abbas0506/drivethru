@@ -37,3 +37,69 @@ a:hover {
 div>a {
     color: inherit;
 }
+
+.primary {
+    border: 0.5px #aaa solid;
+    border-radius: 5px;
+    & .label {
+        font-size: 1.3rem;
+        color: $custom-blue;
+    }
+    & .icon {
+        display: none;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        & .feather-large {
+            color: white;
+        }
+    }
+    & .order {
+        position: absolute;
+        font-weight: bold;
+        top: 15px;
+        right: 15px;
+        & .circular-50 {
+            border: 0.5px #aaa solid;
+            color: #aaa;
+        }
+    }
+    & .animated-order {
+        position: absolute;
+        opacity: 0;
+        border-color: #aaa;
+        font-weight: bold;
+        top: 15px;
+        left: 15px;
+        transform: translateY(-50px);
+    }
+    &:hover {
+        background-color: $custom-orange;
+        border: transparent;
+        transition: all 0.5s;
+        & .label {
+            font-weight: bold;
+            transform: translateX(20%);
+            transition: all 0.25s ease-out;
+        }
+        & .icon {
+            color: white;
+            display: flex;
+            transition: all 1s ease-in-out;
+        }
+        & .order {
+            display: none;
+        }
+        & .animated-order {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.25s ease-out;
+            & .circular-50 {
+                border: none;
+                background-color: white;
+                color: $custom-blue;
+                font-weight: bold;
+            }
+        }
+    }
+}

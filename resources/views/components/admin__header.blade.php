@@ -1,5 +1,5 @@
 <div class='frow navbar w-100 bg-transparent txt-white stretched rpx-5'>
-   <div class='mr-auto'><img src="/images/logo/dark_logo.png" style="height:25px"></div>
+   <div class='mr-auto'><img src="{{url(asset('images/logos/app/colorful_0.png'))}}" style="height:25px"></div>
    <div class="frow">
       <div class="fcol centered navlink r-hide"><a href="{{url('primary')}}"> Primary Data</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Countries</a></div>

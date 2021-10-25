@@ -20,7 +20,7 @@ class CourseController extends Controller
         //
         $courses = Course::orderBy('faculty_id', 'asc')->orderBy('level_id', 'asc')->get();
         $faculties = Faculty::all();
-        $levels = Level::all();
+        $levels = Level::where('id', '>', 2)->get();
         return view('admin.primary.courses.index', compact('courses', 'faculties', 'levels'));
     }
 

@@ -1066,17 +1066,25 @@ body {
     margin-bottom: 0.75rem;
   }
 
-  .rmb-2 {
-    margin-bottom: 0.75rem;
-  }
-
   .rmy-3 {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
+  .rmb-2 {
+    margin-bottom: 0.75rem;
+  }
+
   .rmb-3 {
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .rmt-2 {
+    margin-top: 0.75rem;
+  }
+
+  .rmt-3 {
+    margin-top: 1rem;
   }
 
   .tr,
@@ -1298,22 +1306,6 @@ body {
   transform: translateX(0);
 }
 
-.primary-option span {
-  margin-right: 20px;
-  color: blue;
-  opacity: 0;
-}
-.primary-option a {
-  text-decoration: none !important;
-  color: #333;
-}
-.primary-option:hover span {
-  opacity: 1;
-}
-.primary-option:hover a {
-  color: blue;
-}
-
 .user-header {
   height: 10vh;
   background-color: white;
@@ -1533,6 +1525,72 @@ a:hover {
 
 div > a {
   color: inherit;
+}
+
+.primary {
+  border: 0.5px #aaa solid;
+  border-radius: 5px;
+}
+.primary .label {
+  font-size: 1.3rem;
+  color: #2A538F;
+}
+.primary .icon {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.primary .icon .feather-large {
+  color: white;
+}
+.primary .order {
+  position: absolute;
+  font-weight: bold;
+  top: 15px;
+  right: 15px;
+}
+.primary .order .circular-50 {
+  border: 0.5px #aaa solid;
+  color: #aaa;
+}
+.primary .animated-order {
+  position: absolute;
+  opacity: 0;
+  border-color: #aaa;
+  font-weight: bold;
+  top: 15px;
+  left: 15px;
+  transform: translateY(-50px);
+}
+.primary:hover {
+  background-color: #F4782B;
+  border: transparent;
+  transition: all 0.5s;
+}
+.primary:hover .label {
+  font-weight: bold;
+  transform: translateX(20%);
+  transition: all 0.25s ease-out;
+}
+.primary:hover .icon {
+  color: white;
+  display: flex;
+  transition: all 1s ease-in-out;
+}
+.primary:hover .order {
+  display: none;
+}
+.primary:hover .animated-order {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.25s ease-out;
+}
+.primary:hover .animated-order .circular-50 {
+  border: none;
+  background-color: white;
+  color: #2A538F;
+  font-weight: bold;
 }
 
 /*!
