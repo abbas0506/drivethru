@@ -30,3 +30,13 @@
         cursor: pointer;
     }
 }
+
+.btn-rounded-custom-orange {
+    background-color: rgb($custom-orange, 0.8);
+    color: white;
+    border-radius: 50px;
+    &:hover {
+        background-color: $custom-orange;
+        cursor: pointer;
+    }
+}

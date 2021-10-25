@@ -234,6 +234,10 @@ body {
   width: 20%;
 }
 
+.w-24 {
+  width: 24%;
+}
+
 .hw-25 {
   width: 25%;
 }
@@ -428,6 +432,16 @@ body {
 }
 .btn-rounded-custom-blue:hover {
   background-color: #2A538F;
+  cursor: pointer;
+}
+
+.btn-rounded-custom-orange {
+  background-color: rgba(244, 120, 43, 0.8);
+  color: white;
+  border-radius: 50px;
+}
+.btn-rounded-custom-orange:hover {
+  background-color: #F4782B;
   cursor: pointer;
 }
 
