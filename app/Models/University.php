@@ -10,9 +10,11 @@ class University extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'logo',
         'city_id',
         'type',
-        'logo'
+        'rank',
+
     ];
     public $timestamps = false;
 

@@ -48,6 +48,7 @@ class UniversityController extends Controller
             'name' => 'required',
             'city_id' => 'required',
             'type' => 'required',
+            'rank' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -55,10 +56,15 @@ class UniversityController extends Controller
 
             $university = University::create($request->all());
             //save file on storage
-            if ($request->hasFile('logo')) {
-                $destination_path = 'public/images/logos';
+            if ($request->hasFile('flag')) {
+                if (!$university->logo == 'default.png') {
+                    $file_path = public_path('images/universities/') . $university->logo;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
                 $file_name = $university->id . '.' . $request->logo->extension();
-                $request->file('logo')->storeAs($destination_path, $file_name);
+                $request->file('logo')->move(public_path('images/universities/'), $file_name);
                 $university->logo = $file_name;
             }
 

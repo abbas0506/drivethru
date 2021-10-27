@@ -53,23 +53,9 @@ class CountryController extends Controller
         ]);
         try {
 
-            // //unlink old image
-            // $destination_path = public_path('images/users/');
-            // //unlink(storage_path('app/public/images/profile/' . $profile->pic));
-
-            // //never destroy default.png as it is used as default image for every new user
-            // if (!$user->pic == 'default.png') {
-            //     $file_path = $destination_path . $user->pic;
-            //     if (file_exists($file_path)) {
-            //         unlink($file_path);
-            //     }
-            // }
-
-
-
             $country = Country::create($request->all());
             if ($request->hasFile('flag')) {
-
+                //dont remove default.png
                 if (!$country->flag == 'default.png') {
                     $file_path = public_path('images/countries/') . $country->flag;
                     if (file_exists($file_path)) {
@@ -99,7 +85,8 @@ class CountryController extends Controller
     public function show(Country $country)
     {
         //
-        //return view('admin.countries.show', compact('country'));
+        session(['country' => $country]);
+        return view('admin.countries.show', compact('country'));
     }
 
     /**
@@ -128,64 +115,46 @@ class CountryController extends Controller
         $request->validate([
             'name' => 'required',
             'flag' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'currency' => 'required',
-            'visafree' => 'required',
+            'intro' => 'required',
+            'edufree' => 'required',
+            'essential' => 'required',
             'lifethere' => 'required',
             'jobdesc' => 'required',
-            'intro' => 'required',
         ]);
 
         DB::beginTransaction();
         try {
             //if flag updated
             if ($request->hasFile('flag')) {
-                //unlink old image
-                $destination_path = 'public/images/flags/';
-                unlink(storage_path('app/public/images/flags/' . $country->flag));
-                // $file_path = $destination_path . $country->flag;
-                // if (file_exists($file_path)) {
-                //     unlink($file_path);
-                // }
+                //dont remove default.png
+                if (!$country->flag == 'default.png') {
+                    $file_path = public_path('images/countries/') . $country->flag;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
 
-                //save new pic after renaming
+                //save logo
                 $file_name = $country->id . '.' . $request->flag->extension();
-                $request->file('flag')->storeAs($destination_path, $file_name);
+                $request->file('flag')->move(public_path('images/countries/'), $file_name);
                 $country->flag = $file_name;
             }
 
-            //initially assign incoming visa duration as it is, may update on next line if required
-            $country->visaduration = $request->visaduration;
-            //if visa requirement changes from yes to no
-            if ($country->visafree && !$request->visafree) {
-                $country->step2 = 1;            //auto complete step 2
-
-                foreach ($country->countryvisadocs()->get() as $countryvisadoc) {
-                    $countryvisadoc->delete();  //remove visa doc entries if any
-                }
-                $country->visaduration = 0;     //reset visa duration
-            }
-            //else if visa requiremtn changes from no to yes
-            else if (!$country->visafree && $request->visafree) {
-                $country->step2 = 0;            //revert step 2
-
-            } //else if no change, do nothing
-
             //set remainging fields
             $country->name = $request->name;
-            $country->currency = $request->currency;
-            $country->visafree = $request->visafree;
+            $country->intro = $request->intro;
+            $country->essential = $request->essential;
+            $country->edufree = $request->edufree;
             $country->lifethere = $request->lifethere;
             $country->jobdesc = $request->jobdesc;
-            $country->intro = $request->intro;
+            $country->livingcostdesc = $request->livingcostdesc;
 
             $country->save();   //update the record
             DB::commit();
-            return redirect()->back()
-                ->with('success', 'Basic info updated successfully.');
+            return redirect()->back()->with('success', 'Basic info updated successfully.');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect()->back()
-                ->withErrors($e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
     }
@@ -200,20 +169,16 @@ class CountryController extends Controller
     {
         //
         try {
-            unlink(storage_path('app/public/images/flags/' . $country->flag));
-            // $destination_path = 'public/images/flags/';
-            // $file_path = $destination_path . $country->flag;
-            // if (file_exists($file_path)) {
-            //     unlink($file_path);
-            // }
+            if (!$country->flag == 'default.png') {
+                $file_path = public_path('images/countries/') . $country->flag;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
             $country->delete();
-            return redirect()
-                ->back()
-                ->with('success', 'Country removed successfully');
+            return redirect()->back()->with('success', 'Country removed successfully');
         } catch (Exception $ex) {
-            return redirect()
-                ->back()
-                ->withErrors($ex->getMessage());
+            return redirect()->back()->withErrors($ex->getMessage());
         }
     }
 }

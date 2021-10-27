@@ -52,10 +52,6 @@
    @php $sr=1; @endphp
    @foreach($countries as $country)
 
-   @php
-   $flag_url=url("storage/images/flags/".$country->flag);
-   @endphp
-
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
       <div class="fcol mid-left w-5"><img src="{{url(asset('images/countries/'.$country->flag))}}" alt='flag' width=20 height=20 class='rounded-circle'> </div>
@@ -68,7 +64,8 @@
       </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div><a href="{{route('countries.edit',$country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
+            <div><a href="{{route('countries.show', $country)}}"><i data-feather='eye' class="feather-xsmall mx-1 txt-green"></i></a></div>
+            <div><a href="{{route('countries.edit', $country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
             <div>
                <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>
                   @csrf

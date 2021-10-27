@@ -119,6 +119,10 @@ Swal.fire({
             </select>
             <label>Type</label>
          </div>
+         <div class="fancyinput my-2 w-100">
+            <input type="number" name='rank' min=1 placeholder='Rank' required>
+            <label>Rank</label>
+         </div>
       </div>
       <div class="frow mid-right my-4">
          <button type="submit" class="btn btn-success">Create</button>
