@@ -1,7 +1,3 @@
-admin:
-   -crud update
-   -country model edit
-
 representative:
    -dashboard
    -notifications
@@ -12,12 +8,22 @@ representative:
 
 
 user:
-   -findcountry
-   -change password
+   
+   
    -social bar
    -notifications
    -social signup
    -phone or email verification
    -update phone or email
+
+   dashboard
+   password length: 10-11
+   address compulsory
+   VISa requirement only ---- visa required, visa dur cancelled
+   add brief description of general requirememtns to countries as well as coutnry report
+   
+
+
+
    
 

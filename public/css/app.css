@@ -436,12 +436,12 @@ body {
 }
 
 .btn-rounded-custom-orange {
-  background-color: rgba(244, 120, 43, 0.8);
+  background-color: #F4782B;
   color: white;
   border-radius: 50px;
 }
 .btn-rounded-custom-orange:hover {
-  background-color: #F4782B;
+  background-color: rgba(244, 120, 43, 0.8);
   cursor: pointer;
 }
 

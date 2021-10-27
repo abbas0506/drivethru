@@ -23,7 +23,7 @@ class StudycostFactory extends Factory
     {
         return [
             //
-            'country_id' => $this->faker->numberBetween($min = 1, $max = 5),
+            'country_id' => $this->faker->numberBetween($min = 1, $max = 4),
             'level_id' => $this->faker->numberBetween($min = 3, $max = 6),
             'minfee' => $this->faker->numberBetween($min = 100, $max = 400),
             'maxfee' => $this->faker->numberBetween($min = 100, $max = 300),

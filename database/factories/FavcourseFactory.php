@@ -23,7 +23,7 @@ class FavcourseFactory extends Factory
     {
         return [
             //
-            'country_id' => $this->faker->numberBetween($min = 1, $max = 5),
+            'country_id' => $this->faker->numberBetween($min = 1, $max = 4),
             'course_id' => $this->faker->numberBetween($min = 1, $max = 5),
         ];
     }

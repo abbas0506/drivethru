@@ -43,7 +43,7 @@
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info th">
+   <div class="frow px-2 py-1 mb-2 txt-b th">
       <div class="fcol mid-left w-10">Sr</div>
       <div class="fcol mid-left w-50">Country</div>
       <div class="fcol mid-left w-25">Data Feed</div>
@@ -58,7 +58,7 @@
 
    <div class="frow px-2 my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-5"><img src={{$flag_url}} alt='flag' width=20 height=20 class='rounded-circle'> </div>
+      <div class="fcol mid-left w-5"><img src="{{url(asset('images/countries/'.$country->flag))}}" alt='flag' width=20 height=20 class='rounded-circle'> </div>
       <div class="fcol mid-left w-50"> {{$country->name}} </div>
       <div class="fcol mid-left w-25">
          <div class="frow w-100 mid-left">
@@ -73,7 +73,7 @@
                <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$country->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$country->id}}')"><i data-feather='trash-2' class="feather-xsmall mx-1 txt-red"></i></button>
                </form>
             </div>
          </div>

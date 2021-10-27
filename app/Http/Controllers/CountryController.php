@@ -42,30 +42,44 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
             'name' => 'required',
             'flag' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'currency' => 'required',
-            'visafree' => 'required',
+            'intro' => 'required',
+            'edufree' => 'required',
+            'essential' => 'required',
             'lifethere' => 'required',
             'jobdesc' => 'required',
         ]);
         try {
 
+            // //unlink old image
+            // $destination_path = public_path('images/users/');
+            // //unlink(storage_path('app/public/images/profile/' . $profile->pic));
+
+            // //never destroy default.png as it is used as default image for every new user
+            // if (!$user->pic == 'default.png') {
+            //     $file_path = $destination_path . $user->pic;
+            //     if (file_exists($file_path)) {
+            //         unlink($file_path);
+            //     }
+            // }
+
+
+
             $country = Country::create($request->all());
             if ($request->hasFile('flag')) {
-                $destination_path = 'public/images/flags';
+                //$destination_path = 'public/images/flags';
+
+                //****$destination_path = public_path('images/countries/');
                 //save flag image into separate folder
                 $file_name = $country->id . '.' . $request->flag->extension();
-                $request->file('flag')->storeAs($destination_path, $file_name);
+                //$request->file('flag')->storeAs($destination_path, $file_name);
+
+                $request->file('flag')->move(public_path('images/countries/'), $file_name);
                 $country->flag = $file_name;
             }
 
-            $country->step1 = 1;
-            if (!$request->visafree)
-                $country->step2 = 1; //if visa not requird, auto complete 2nd step
             $country->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {

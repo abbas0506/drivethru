@@ -23,7 +23,7 @@ class LivingcostFactory extends Factory
     {
         return [
             //
-            'country_id' => $this->faker->numberBetween($min = 1, $max = 5),
+            'country_id' => $this->faker->numberBetween($min = 1, $max = 4),
             'expensetype_id' => $this->faker->numberBetween($min = 1, $max = 4),
             'minexp' => $this->faker->numberBetween($min = 100, $max = 400),
             'maxexp' => $this->faker->numberBetween($min = 100, $max = 300),

@@ -10,24 +10,13 @@ class Country extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'intro',
         'flag',
-        'currency',
-        'visafree',
+        'intro',
         'edufree',
-        'visaduration',
+        'essential',
         'lifethere',
         'jobdesc',
-        'livingcostdesc', //new addition
-
-        'step1',
-        'step2',
-        'step3',
-        'step4',
-        'step5',
-        'step6',
-        'step7',
-        'step8',
+        'livingcostdesc',
     ];
 
     public $timestamps = false;

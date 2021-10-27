@@ -6,7 +6,10 @@
       <x-admin__header></x-admin__header>
    </div>
    <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'><a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>Countries </div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>
+      <a href="{{route('countries.index')}}">Countries </a> <span class="mx-1"> / </span> Create New
+   </div>
 </div>
 @endsection
 @section('page-content')
@@ -62,25 +65,11 @@
             <label>Introduction</label>
          </div>
          <div class="frow w-100 rw-100 mt-3 stretched auto-col">
-
-            <div class="fancyinput w-24 rw-100 rmt-3">
-               <input type="text" name='currency' placeholder="Currency e.g USD" required>
-               <label for="Name" class='bg-transparent'>Currency</label>
+            <div class="fancyinput w-70 rw-100">
+               <input name='essential' placeholder="Essesntials" required>
+               <label>Essential Requiremnts</label>
             </div>
-
-            <div class="fancyselect w-24 rw-100 rmt-3">
-               <select name='visafree' onchange="showOrHideDuration(event)">
-                  <option value='1'>Yes</option>
-                  <option value='0'>No</option>
-               </select>
-               <label>Is Visa Required?</label>
-            </div>
-
-            <div class="fancyinput w-24 rw-100 rmt-3">
-               <input type="number" name='visaduration' id='visaduration' placeholder="Visa duration" min='0' max='100' value='1' required>
-               <label for="Name" class='bg-transparent'>Visa Duration (Year)</label>
-            </div>
-            <div class="fancyselect w-24 rw-100 rmt-3">
+            <div class="fancyselect hw-25 rw-100 rmt-3">
                <select name='edufree'>
                   <option value='1'>Yes</option>
                   <option value='0' selected>No</option>
@@ -88,17 +77,18 @@
                <label>Is Education Free?</label>
             </div>
          </div>
+
          <div class="fancyinput mt-3 w-100">
             <textarea rows="2" name='lifethere' placeholder="Life there" required></textarea>
             <label>Life there</label>
          </div>
          <div class="fancyinput mt-3 w-100">
-            <textarea rows="2" name='jobdesc' placeholder="Job desc" required></textarea>
-            <label>Job Desc.</label>
+            <textarea rows="2" name='jobdesc' placeholder="Job description" required></textarea>
+            <label>Job Description</label>
          </div>
          <div class="fancyinput mt-3 w-100">
-            <textarea rows="2" name='livingcostdesc' placeholder="Living cost desc" required></textarea>
-            <label>Living Cost Desc.</label>
+            <textarea rows="2" name='livingcostdesc' placeholder="Living cost description" required></textarea>
+            <label>Living Cost Description</label>
          </div>
          <div class="frow mid-right my-4">
             <button type="submit" class="btn btn-success">Create</button>

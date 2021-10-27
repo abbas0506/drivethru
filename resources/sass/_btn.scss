@@ -32,11 +32,11 @@
 }
 
 .btn-rounded-custom-orange {
-    background-color: rgb($custom-orange, 0.8);
+    background-color: $custom-orange;
     color: white;
     border-radius: 50px;
     &:hover {
-        background-color: $custom-orange;
+        background-color: rgb($custom-orange, 0.8);
         cursor: pointer;
     }
 }
