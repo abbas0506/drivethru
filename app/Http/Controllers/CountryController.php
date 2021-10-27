@@ -69,13 +69,15 @@ class CountryController extends Controller
 
             $country = Country::create($request->all());
             if ($request->hasFile('flag')) {
-                //$destination_path = 'public/images/flags';
 
-                //****$destination_path = public_path('images/countries/');
-                //save flag image into separate folder
+                if (!$country->flag == 'default.png') {
+                    $file_path = public_path('images/countries/') . $country->flag;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
+                //construct image name
                 $file_name = $country->id . '.' . $request->flag->extension();
-                //$request->file('flag')->storeAs($destination_path, $file_name);
-
                 $request->file('flag')->move(public_path('images/countries/'), $file_name);
                 $country->flag = $file_name;
             }
