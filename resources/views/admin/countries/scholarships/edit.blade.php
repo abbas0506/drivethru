@@ -41,23 +41,23 @@ Swal.fire({
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
       <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Make Visa Requirements List </div>
+         <div class="txt-b txt-m">Make Scholarships List </div>
       </div>
 
       <div class="fcol w-100 rw-100 centered">
-         @if($country->xvisadocs()->count()>0)
+         @if($country->xscholarships()->count()>0)
          <div class="frow w-100 txt-grey mid-left mt-2">Check the relevant documents and press add button </div>
-         <form action="{{route('visadocs.store')}}" class='w-80 mt-3' method='post' id='form'>
+         <form action="{{route('scholarship_offers.store')}}" class='w-80 mt-3' method='post' id='form'>
             @csrf
-            @foreach($country->xvisadocs() as $doc)
+            @foreach($country->xscholarships() as $scholarship)
             <div class="frow w-100 rw-100 my-1 stretched">
-               <div>{{$doc->name}}</div>
-               <div><input type="checkbox" value='{{$doc->id}}' name='chk'></div>
+               <div>{{$scholarship->name}}</div>
+               <div><input type="checkbox" value='{{$scholarship->id}}' name='chk'></div>
             </div>
             @endforeach
-            <input type="hidden" id='visadoc_ids' name='doc_ids'>
+            <input type="hidden" id='scholarship_ids' name='scholarship_ids'>
             <div class="frow mid-right mt-4">
-               <div class="btn-rounded-custom-orange px-3" onclick="postVisaDocs()">Add Now</div>
+               <div class="btn-rounded-custom-orange px-3" onclick="postScholarships()">Add Now</div>
             </div>
          </form>
          @else
@@ -85,7 +85,7 @@ Swal.fire({
 
 @section('script')
 <script lang="javascript">
-function postVisaDocs() {
+function postScholarships() {
    //event.preventDefault();
    var ids = [];
    var chks = document.getElementsByName('chk');
@@ -94,7 +94,7 @@ function postVisaDocs() {
    })
 
    if (ids.length > 0) {
-      $("#visadoc_ids").val(ids);
+      $("#scholarship_ids").val(ids);
       $('#form').submit();
 
    } else {

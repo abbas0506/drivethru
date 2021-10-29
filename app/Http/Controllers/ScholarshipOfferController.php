@@ -17,6 +17,8 @@ class ScholarshipOfferController extends Controller
     public function index()
     {
         //
+        $country = session('country');
+        return view('admin.countries.scholarships.index', compact('country'));
     }
 
     /**
@@ -39,6 +41,9 @@ class ScholarshipOfferController extends Controller
     {
         //
         $country = session('country');
+        $request->validate([
+            'scholarship_ids' => 'required',
+        ]);
         DB::beginTransaction();
         try {
             if ($request->scholarship_ids) {
@@ -46,8 +51,6 @@ class ScholarshipOfferController extends Controller
                 foreach ($scholarship_ids as $scholarship_id) {
                     ScholarshipOffer::create(['country_id' => $country->id, 'scholarship_id' => $scholarship_id]);
                 }
-                $country->step4 = 1;
-                $country->update();
             }
             DB::commit();
             //all good
@@ -75,9 +78,11 @@ class ScholarshipOfferController extends Controller
      * @param  \App\Models\ScholarshipOffer  $scholarshipOffer
      * @return \Illuminate\Http\Response
      */
-    public function edit(ScholarshipOffer $scholarshipOffer)
+    public function edit($id)
     {
         //
+        $country = session('country');
+        return view('admin.countries.scholarships.edit', compact('country'));
     }
 
     /**
@@ -102,8 +107,6 @@ class ScholarshipOfferController extends Controller
     {
         //
         $scholarshipOffer->delete();
-        return redirect()
-            ->back()
-            ->with('success', 'Successfully removed');
+        return redirect()->back()->with('success', 'Successfully removed');
     }
 }

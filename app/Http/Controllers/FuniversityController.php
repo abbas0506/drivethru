@@ -17,8 +17,8 @@ class FuniversityController extends Controller
     {
         //
         $country = session('country');
-        $funiversities = Funiversity::where('country_id', $country->id)->get();
-        return view('admin.countries.funiversities.index', compact('funiversities', 'country'));
+        // $funiversities = Funiversity::where('country_id', $country->id)->get();
+        return view('admin.countries.universities.index', compact('country'));
     }
 
     /**
@@ -51,10 +51,8 @@ class FuniversityController extends Controller
                 'country_id' => $country->id,
 
             ]);
-            $favuniversity->save();
 
-            $country->step6 = 1;
-            $country->save();
+            $favuniversity->save();
 
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -84,7 +82,7 @@ class FuniversityController extends Controller
     {
         //
         $country = session('country');
-        return view('admin.countries.funiversities.edit', compact('funiversity', 'country'));
+        return view('admin.countries.universities.edit', compact('funiversity', 'country'));
     }
 
     /**

@@ -41,25 +41,25 @@ Swal.fire({
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
       <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Visa Requirements </div>
+         <div class="txt-b txt-m">Scholarships </div>
          <div class="frow">
-            <a href="{{route('visadocs.edit', $country)}}">
+            <a href="{{route('scholarship_offers.edit', $country)}}">
                <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='plus' class="feather-xsmall txt-white"></i></div>
             </a>
          </div>
 
       </div>
       <div class="fcol w-100 rw-100 centered">
-         @if($country->visadocs()->count()>0)
+         @if($country->scholarships()->count()>0)
          <div class="frow w-100 txt-grey mid-left my-2">Click on <span class="txt-red mx-1">x</span> button to remove from list. Press + button to add more options </div>
-         @foreach($country->visadocs() as $visadoc)
+         @foreach($country->scholarships() as $scholarship)
          <div class="frow my-1 w-80 stretched">
-            <div class="fcol">{{$visadoc->doc->name}}</div>
+            <div class="fcol">{{$scholarship->scholarship->name}}</div>
             <div class="fcol mid-right">
-               <form action="{{route('visadocs.destroy',$visadoc)}}" method="POST" id='delVisaDoc{{$visadoc->id}}'>
+               <form action="{{route('scholarship_offers.destroy',$scholarship)}}" method="POST" id='delscholarship{{$scholarship->id}}'>
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delVisaDoc('{{$visadoc->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delscholarship('{{$scholarship->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
                </form>
             </div>
          </div>
@@ -68,7 +68,7 @@ Swal.fire({
          <div class="fcol">
             <div class="txt-grey text-center mt-5"><i data-feather='frown' class="feather-xlarge txt-grey"></i></div>
             <div class="txt-grey text-center mt-3">
-               Possibly you have removed all documents from visa requirements list. You may add new docs by pressing on + button
+               Possibly you have removed all scholarships. You may add new scholarship by pressing on + button
             </div>
          </div>
          @endif
@@ -88,7 +88,7 @@ Swal.fire({
 
 @section('script')
 <script lang="javascript">
-function delVisaDoc(formid) {
+function delscholarship(formid) {
    event.preventDefault();
    Swal.fire({
       title: 'Are you sure?',
@@ -101,7 +101,7 @@ function delVisaDoc(formid) {
    }).then((result) => {
       if (result.value) {
          //submit corresponding form
-         $('#delVisaDoc' + formid).submit();
+         $('#delscholarship' + formid).submit();
       }
    });
 }

@@ -17,10 +17,15 @@ class StudycostController extends Controller
     public function index()
     {
         //
-        $levels = Level::all();
         $country = session('country');
+        $levels = Level::where('id', '>', 2)->get();
+        $level_ids = Studycost::where('country_id', $country->id)->distinct()->get('level_id')->toArray();
+        $levels = Level::whereNotIn('id', $level_ids)
+            ->where('id', '>', 2)->get();
+
+
         $studycosts = Studycost::all();
-        return view('admin.countries.studycost.index', compact('levels', 'country', 'studycosts'));
+        return view('admin.countries.studycosts.index', compact('levels', 'country', 'studycosts'));
     }
 
     /**
@@ -58,9 +63,6 @@ class StudycostController extends Controller
 
             ]);
             $studycost->save();
-
-            $country->step7 = 1;
-            $country->save();
 
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
