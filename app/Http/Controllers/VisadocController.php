@@ -18,6 +18,8 @@ class VisadocController extends Controller
     public function index()
     {
         //
+        $country = session('country');
+        return view('admin.countries.visadocs.index', compact('country'));
     }
 
     /**
@@ -47,8 +49,6 @@ class VisadocController extends Controller
                 foreach ($doc_ids as $doc_id) {
                     Visadoc::create(['country_id' => $country->id, 'doc_id' => $doc_id]);
                 }
-                $country->step2 = 1;
-                $country->update();
             }
             DB::commit();
             //all good
@@ -76,9 +76,11 @@ class VisadocController extends Controller
      * @param  \App\Models\Visadoc  $visadoc
      * @return \Illuminate\Http\Response
      */
-    public function edit(Visadoc $visadoc)
+    public function edit($id)
     {
         //
+        $country = session('country');
+        return view('admin.countries.visadocs.edit', compact('country'));
     }
 
     /**
@@ -103,8 +105,6 @@ class VisadocController extends Controller
     {
         //
         $visadoc->delete();
-        return redirect()
-            ->back()
-            ->with('success', 'Successfully removed');
+        return redirect()->back()->with('success', 'Successfully removed');
     }
 }

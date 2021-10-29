@@ -34,6 +34,7 @@ use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

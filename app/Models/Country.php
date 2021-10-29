@@ -47,6 +47,11 @@ class Country extends Model
     {
         return $this->hasMany(ScholarshipOffer::class, 'country_id')->get();
     }
+
+    public function scholarship_offers()
+    {
+        return $this->hasMany(ScholarshipOffer::class, 'country_id')->get();
+    }
     public function xscholarships()
     {
         $xscholarships_ids = ScholarshipOffer::where('country_id', $this->id)->pluck('scholarship_id')->toArray();

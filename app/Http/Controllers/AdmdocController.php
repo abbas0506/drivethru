@@ -17,6 +17,8 @@ class AdmdocController extends Controller
     public function index()
     {
         //
+        $country = session('country');
+        return view('admin.countries.admdocs.index', compact('country'));
     }
 
     /**
@@ -46,8 +48,6 @@ class AdmdocController extends Controller
                 foreach ($doc_ids as $doc_id) {
                     Admdoc::create(['country_id' => $country->id, 'doc_id' => $doc_id]);
                 }
-                $country->step3 = 1;
-                $country->update();
             }
             DB::commit();
             //all good
@@ -75,9 +75,11 @@ class AdmdocController extends Controller
      * @param  \App\Models\Admdoc  $admdoc
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admdoc $admdoc)
+    public function edit($id)
     {
         //
+        $country = session('country');
+        return view('admin.countries.admdocs.edit', compact('country'));
     }
 
     /**
