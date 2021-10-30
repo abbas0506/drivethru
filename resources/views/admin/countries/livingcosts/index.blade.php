@@ -41,30 +41,31 @@ Swal.fire({
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
       <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Universities </div>
+         <div class="txt-b txt-m">Living Cost </div>
       </div>
       <div class="fcol w-100 rw-100 centered">
 
-         @if($levels->count()>0)
+         @if($expensetypes->count()>0)
          <div class="frow my-2 w-80 stretched">
-            <form action="{{route('studycosts.store')}}" class='w-100' method='post' onsubmit="return validate()">
+            <form action="{{route('livingcosts.store')}}" class='w-100' method='post' onsubmit="return validate()">
                @csrf
                <div class="frow my-4 stretched">
                   <div class="fancyselect w-32">
-                     <select name="level_id">
-                        @foreach($levels as $level)
-                        <option value="{{$level->id}}">{{$level->name}}</option>
+                     <select name="expensetype_id">
+                        @foreach($expensetypes as $expensetype)
+                        <option value="{{$expensetype->id}}">{{$expensetype->name}}</option>
                         @endforeach
                      </select>
                   </div>
                   <div class="fancyinput hw-25">
-                     <input type="number" name='minfee' id='minfee' placeholder="min cost">
+                     <input type="number" name='minexp' id='minexp' placeholder="min cost">
                      <label>Min Cost</label>
                   </div>
                   <div class="fancyinput hw-25">
-                     <input type="number" name='maxfee' id='maxfee' placeholder="max cost">
+                     <input type="number" name='maxexp' id='maxexp' placeholder="max cost">
                      <label>Max Cost</label>
                   </div>
+                  <input type="text" name="country_id" value="{{$country->id}}" hidden>
                   <button type='submit' class="btn btn-transparent">
                      <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='plus' class="feather-xsmall txt-white"></i></div>
                   </button>
@@ -76,24 +77,24 @@ Swal.fire({
          @endif
          <div class="w-80 my-1 border-bottom" style="border-style:dashed; border-color:orange"></div>
 
-         @if($studycosts->count()>0)
+         @if($livingcosts->count()>0)
          <div class="frow w-80 my-1 txt-grey th">
             <div class="fcol mid-top w-10">Sr</div>
-            <div class="fcol mid-left w-50">Level</div>
+            <div class="fcol mid-left w-50">Expense Type</div>
             <div class="frow mid-left w-25">Cost<span class="txt-s ml-1"> / year</span></div>
             <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
          </div>
          @php $sr=1; @endphp
-         @foreach($studycosts as $studycost)
+         @foreach($livingcosts as $livingcost)
          <div class="frow w-80 my-1 tr">
             <div class="fcol mid-left w-10">{{$sr++}} </div>
-            <div class="fcol mid-left w-50"> {{$studycost->level->name}} </div>
-            <div class="fcol mid-left w-25"> {{$studycost->minfee}} - {{$studycost->maxfee}} {{$country->currency}}</div>
+            <div class="fcol mid-left w-50"> {{$livingcost->expensetype->name}} </div>
+            <div class="fcol mid-left w-25"> {{$livingcost->minexp}} - {{$livingcost->maxexp}} $</div>
             <div class="fcol mid-right w-15">
                <div class="frow stretched">
-                  <a href="{{route('studycosts.edit',$studycost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+                  <a href="{{route('livingcosts.edit',$livingcost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
                   <div>
-                     <form action="{{route('studycosts.destroy',$studycost)}}" method="POST" id='del_form{{$sr}}'>
+                     <form action="{{route('livingcosts.destroy',$livingcost)}}" method="POST" id='del_form{{$sr}}'>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
@@ -107,7 +108,7 @@ Swal.fire({
          <div class="fcol">
             <div class="txt-grey text-center mt-5"><i data-feather='meh' class="feather-xlarge txt-grey"></i></div>
             <div class="txt-grey text-center mt-3">
-               Study Costs list has been found empty. You may use press + button to add new study cost</div>
+               Living Costs list has been found empty. You may use press + button to add new living cost</div>
          </div>
          @endif
 
@@ -127,13 +128,13 @@ Swal.fire({
 @section('script')
 <script lang="javascript">
 function validate() {
-   var minfee = $('#minfee').val();
-   var maxfee = $('#maxfee').val();
+   var minexp = $('#minexp').val();
+   var maxexp = $('#maxexp').val();
    var msg = '';
-   if (minfee == '') msg = 'Minimum cost is required';
-   else if (maxfee == '') msg = 'Maximum cost is required';
-   else if (minfee < 0 || maxfee < 0) msg = 'Cost values cant be negative';
-   else if (minfee > maxfee) msg = 'Min cost cant be greater than max';
+   if (minexp == '') msg = 'Minimum cost is required';
+   else if (maxexp == '') msg = 'Maximum cost is required';
+   else if (minexp < 0 || maxexp < 0) msg = 'Cost values cant be negative';
+   else if (minexp > maxexp) msg = 'Min cost cant be greater than max';
    if (msg != '') {
       Toast.fire({
          icon: 'warning',

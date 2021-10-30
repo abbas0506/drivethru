@@ -20,7 +20,7 @@ class LivingcostController extends Controller
         $expensetypes = Expensetype::all();
         $country = session('country');
         $livingcosts = Livingcost::where('country_id', $country->id)->get();
-        return view('admin.countries.livingcost.index', compact('livingcosts', 'expensetypes', 'country'));
+        return view('admin.countries.livingcosts.index', compact('livingcosts', 'expensetypes', 'country'));
     }
 
     /**
@@ -50,12 +50,8 @@ class LivingcostController extends Controller
         ]);
 
         try {
-            $country = session('country');
             $livingcost = Livingcost::create($request->all());
             $livingcost->save();
-
-            $country->step8 = 1;
-            $country->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -84,7 +80,7 @@ class LivingcostController extends Controller
     {
         //
         $country = session('country');
-        return view('admin.countries.livingcost.edit', compact('livingcost', 'country'));
+        return view('admin.countries.livingcosts.edit', compact('livingcost', 'country'));
     }
 
     /**

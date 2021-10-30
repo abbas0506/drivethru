@@ -90,9 +90,8 @@ class StudycostController extends Controller
      */
     public function edit(Studycost $studycost)
     {
-        //
         $country = session('country');
-        return view('admin.countries.studycost.edit', compact('studycost', 'country'));
+        return view('admin.countries.studycosts.edit', compact('studycost', 'country'));
     }
 
     /**

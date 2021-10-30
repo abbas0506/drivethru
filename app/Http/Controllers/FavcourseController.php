@@ -17,6 +17,8 @@ class FavcourseController extends Controller
     public function index()
     {
         //
+        $country = session('country');
+        return view('admin.countries.favcourses.index', compact('country'));
     }
 
     /**
@@ -46,11 +48,8 @@ class FavcourseController extends Controller
                 foreach ($course_ids as $course_id) {
                     Favcourse::create(['country_id' => $country->id, 'course_id' => $course_id]);
                 }
-                $country->step5 = 1;
-                $country->update();
             }
             DB::commit();
-            //all good
             return redirect()->back()->with('success', 'Scuccesful');
         } catch (Exception $ex) {
             return redirect()->back()->withErrors('error', $ex->getMessage());
@@ -75,9 +74,11 @@ class FavcourseController extends Controller
      * @param  \App\Models\Favcourse  $favcourse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Favcourse $favcourse)
+    public function edit($id)
     {
         //
+        $country = session('country');
+        return view('admin.countries.favcourses.edit', compact('country'));
     }
 
     /**

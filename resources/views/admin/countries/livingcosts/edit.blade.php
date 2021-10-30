@@ -41,7 +41,7 @@ Swal.fire({
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
       <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Edit Study Cost </div>
+         <div class="txt-b txt-m">Edit Living Cost </div>
          <div class="frow">
             <a href="#">
 
@@ -52,22 +52,22 @@ Swal.fire({
 
       <div class="fcol w-100 rw-100 centered">
          <div class="frow my-2 w-80 stretched">
-            <form action="{{route('studycosts.update', $studycost)}}" method="post" class='w-100' onsubmit="return validate()">
+            <form action="{{route('livingcosts.update', $livingcost)}}" method="post" class='w-100' onsubmit="return validate()">
                @csrf
                @method('PATCH')
                <div class="frow my-4 stretched">
                   <div class="fancyselect w-32">
                      <select>
-                        <option>{{$studycost->level->name}}</option>
+                        <option>{{$livingcost->expensetype->name}}</option>
                      </select>
-                     <label>Study Level</label>
+                     <label>Expense Type</label>
                   </div>
                   <div class="fancyinput hw-25">
-                     <input type="number" name='minfee' id='minfee' placeholder="min cost" value="{{$studycost->minfee}}" required>
+                     <input type="number" name='minexp' id='minexp' placeholder="min cost" value="{{$livingcost->minexp}}" required>
                      <label>Min Cost</label>
                   </div>
                   <div class="fancyinput hw-25">
-                     <input type="number" name='maxfee' id='maxfee' placeholder="max cost" value="{{$studycost->maxfee}}" required>
+                     <input type="number" name='maxexp' id='maxexp' placeholder="max cost" value="{{$livingcost->maxexp}}" required>
                      <label>Max Cost</label>
                   </div>
                   <button type='submit' class="btn btn-transparent">
@@ -89,13 +89,13 @@ Swal.fire({
 @section('script')
 <script lang="javascript">
 function validate() {
-   var minfee = $('#minfee').val();
-   var maxfee = $('#maxfee').val();
+   var minexp = $('#minexp').val();
+   var maxexp = $('#maxexp').val();
    var msg = '';
-   if (minfee == '') msg = 'Minimum cost is required';
-   else if (maxfee == '') msg = 'Maximum cost is required';
-   else if (minfee < 0 || maxfee < 0) msg = 'Cost values cant be negative';
-   else if (minfee > maxfee) msg = 'Min cost cant be greater than max';
+   if (minexp == '') msg = 'Minimum cost is required';
+   else if (maxexp == '') msg = 'Maximum cost is required';
+   else if (minexp < 0 || maxexp < 0) msg = 'Cost values cant be negative';
+   else if (minexp > maxexp) msg = 'Min cost cant be greater than max';
    if (msg != '') {
       Toast.fire({
          icon: 'warning',
