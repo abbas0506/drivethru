@@ -58,13 +58,32 @@
       <div class="fcol mid-left w-50"> {{$country->name}} </div>
       <div class="fcol mid-left w-25">
          <div class="frow w-100 mid-left">
-            <div class="bar bar-1 bar-green" style="width:{{$country->progress()}}%"></div>
-            <div class="bar-val">{{$country->progress()}}%</div>
+            @php
+            $progress=$country->progress();
+            @endphp
+            @if($progress==30)
+            <div class="bar bar-1 bar-green" style="width:30%"></div>
+            @elseif($progress==40)
+            <div class="bar bar-1 bar-green" style="width:40%"></div>
+            @elseif($progress==50)
+            <div class="bar bar-1 bar-green" style="width:50%"></div>
+            @elseif($progress==60)
+            <div class="bar bar-1 bar-green" style="width:60%"></div>
+            @elseif($progress==70)
+            <div class="bar bar-1 bar-green" style="width:70%"></div>
+            @elseif($progress==80)
+            <div class="bar bar-1 bar-green" style="width:80%"></div>
+            @elseif($progress==90)
+            <div class="bar bar-1 bar-green" style="width:90%"></div>
+            @elseif($progress==100)
+            <div class="bar bar-1 bar-green" style="width:100%"></div>
+            @endif
+
+            <div class="bar-val">{{$progress}}%</div>
          </div>
       </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div><a href="{{route('countries.show', $country)}}"><i data-feather='eye' class="feather-xsmall mx-1 txt-green"></i></a></div>
             <div><a href="{{route('countries.edit', $country)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
             <div>
                <form action="{{route('countries.destroy',$country)}}" method="POST" id='deleteform{{$country->id}}'>

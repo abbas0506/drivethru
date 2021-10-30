@@ -82,7 +82,16 @@ class Country extends Model
 
     public function progress()
     {
-        return ($this->step1 + $this->step2 + $this->step3 + $this->step4 + $this->step5 + $this->step6 + $this->step7 + $this->step8) * 100 / 8;
+        $progress = 30;
+        if ($this->visadocs()->count() > 0) $progress += 10;
+        if ($this->admdocs()->count() > 0) $progress += 10;
+        if ($this->scholarships()->count() > 0) $progress += 10;
+        if ($this->funiversities()->count() > 0) $progress += 10;
+        if ($this->favcourses()->count() > 0) $progress += 10;
+        if ($this->studycosts()->count() > 0) $progress += 10;
+        if ($this->livingcosts()->count() > 0) $progress += 10;
+
+        return $progress;
     }
     public function studycosts()
     {

@@ -4,14 +4,7 @@
 <div class='frow txt-l centered mb-2'>{{$country->name}}</div>
 <div class='progress mb-4' style='height:5px'>
    @php
-   $progress=30;
-   if($country->visadocs()->count()>0) $progress+=10;
-   if($country->admdocs()->count()>0) $progress+=10;
-   if($country->scholarships()->count()>0) $progress+=10;
-   if($country->funiversities()->count()>0) $progress+=10;
-   if($country->favcourses()->count()>0) $progress+=10;
-   if($country->studycosts()->count()>0) $progress+=10;
-   if($country->livingcosts()->count()>0) $progress+=10;
+   $progress=$country->progress();
    @endphp
 
    @if($progress==30)
