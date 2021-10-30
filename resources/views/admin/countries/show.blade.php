@@ -72,14 +72,6 @@ Swal.fire({
             <div class="fcol w-80 rw-100 mid-left">{{$country->jobdesc}}</div>
          </div>
          <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Study Cost (avg):</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->studycost}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Living Cost (avg):</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->livingcost}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
             <div class="fcol w-20 rw-100 txt-b top-right pr-3">Living Cost Desc:</div>
             <div class="fcol w-80 rw-100 mid-left">{{$country->livingcostdesc}}</div>
          </div>
