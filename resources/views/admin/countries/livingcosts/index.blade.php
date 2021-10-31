@@ -89,7 +89,7 @@ Swal.fire({
          <div class="frow w-80 my-1 tr">
             <div class="fcol mid-left w-10">{{$sr++}} </div>
             <div class="fcol mid-left w-50"> {{$livingcost->expensetype->name}} </div>
-            <div class="fcol mid-left w-25"> {{$livingcost->minexp}} - {{$livingcost->maxexp}} $</div>
+            <div class="fcol mid-left w-25"> {{$livingcost->minexp}} - {{$livingcost->maxexp}}</div>
             <div class="fcol mid-right w-15">
                <div class="frow stretched">
                   <a href="{{route('livingcosts.edit',$livingcost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
@@ -144,7 +144,7 @@ function validate() {
    }
 }
 
-function deluniversity(formid) {
+function delme(formid) {
    event.preventDefault();
    Swal.fire({
       title: 'Are you sure?',
@@ -157,7 +157,7 @@ function deluniversity(formid) {
    }).then((result) => {
       if (result.value) {
          //submit corresponding form
-         $('#deluniversity' + formid).submit();
+         $('#del_form' + formid).submit();
       }
    });
 }

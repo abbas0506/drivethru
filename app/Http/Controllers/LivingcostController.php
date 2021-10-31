@@ -17,9 +17,12 @@ class LivingcostController extends Controller
     public function index()
     {
         //
-        $expensetypes = Expensetype::all();
+
         $country = session('country');
-        $livingcosts = Livingcost::where('country_id', $country->id)->get();
+        $expensetype_ids = Livingcost::where('country_id', $country->id)->distinct()->get('expensetype_id')->toArray();
+        $expensetypes = Expensetype::whereNotIn('id', $expensetype_ids)->get();
+
+        $livingcosts = $country->livingcosts();
         return view('admin.countries.livingcosts.index', compact('livingcosts', 'expensetypes', 'country'));
     }
 

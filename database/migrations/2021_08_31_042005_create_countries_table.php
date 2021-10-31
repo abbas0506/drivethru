@@ -15,14 +15,14 @@ class CreateCountriesTable extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 70);
-            $table->string('flag', 100)->default('default.jpg');
-            $table->string('intro', 200);
+            $table->string('name', 100);
+            $table->string('flag', 50)->default('default.jpg');
+            $table->string('intro', 500);
             $table->boolean('edufree');
             $table->string('essential', 200)->nullable();
-            $table->string('lifethere', 300)->nullable();
-            $table->string('jobdesc', 300)->nullable();
-            $table->string('livingcostdesc', 300)->nullable();
+            $table->string('lifethere', 500)->nullable();
+            $table->string('jobdesc', 500)->nullable();
+            $table->string('livingcostdesc', 500)->nullable();
             $table->timestamps();
         });
     }

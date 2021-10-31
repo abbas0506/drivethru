@@ -24,7 +24,7 @@ class StudycostController extends Controller
             ->where('id', '>', 2)->get();
 
 
-        $studycosts = Studycost::all();
+        $studycosts = $country->studycosts();
         return view('admin.countries.studycosts.index', compact('levels', 'country', 'studycosts'));
     }
 

@@ -52,12 +52,12 @@ Swal.fire({
       <div class="fcol mt-4 rw-100">
 
          <!--data input -->
-         <form action="{{route('countries.update', $country)}}" method='post' enctype="multipart/form-data">
+         <form action="{{route('countries.update', $country)}}" method='post' enctype="multipart/form-data" onsubmit="return validate()">
             @csrf
             @method('PATCH')
             <div class="frow w-100 rw-100 mt-4 stretched auto-col">
                <div class="fancyinput w-48 rw-100">
-                  <input type="text" name='name' placeholder="Country name" value='{{$country->name}}' required>
+                  <input type="text" name='name' id='name' placeholder="Country name" value='{{$country->name}}'>
                   <label for="Name" class='bg-transparent'>Country</label>
                </div>
 
@@ -74,8 +74,8 @@ Swal.fire({
                </div>
             </div>
             <div class="fancyinput mt-3 w-100">
-               <textarea rows="2" name='intro' placeholder="Brief introduction" required>{{$country->intro}}</textarea>
-               <label>Introduction</label>
+               <textarea rows="2" name='intro' id='intro' placeholder="Brief introduction" required oninput='countIntroLimit(event)'>{{$country->intro}}</textarea>
+               <label>Introduction <span class="txt-s ml-4 txt-grey" id='limit-intro'></label>
             </div>
             <div class="frow w-100 rw-100 mt-3 stretched auto-col">
                <div class="fancyinput w-70 rw-100">
@@ -92,16 +92,16 @@ Swal.fire({
             </div>
 
             <div class="fancyinput mt-3 w-100">
-               <textarea rows="2" name='lifethere' placeholder="Life there" required>{{$country->lifethere}}</textarea>
-               <label>Life there</label>
+               <textarea rows="2" name='lifethere' id='lifethere' placeholder="Life there" required oninput='countLifethereLimit(event)'>{{$country->lifethere}}</textarea>
+               <label>Life there <span class="txt-s ml-4 txt-grey" id='limit-lifethere'></label>
             </div>
             <div class="fancyinput mt-3 w-100">
-               <textarea rows="2" name='jobdesc' placeholder="Job description" required>{{$country->jobdesc}}</textarea>
-               <label>Job Description</label>
+               <textarea rows="2" name='jobdesc' id='jobdesc' placeholder="Job description" required oninput='countJobdescLimit(event)'>{{$country->jobdesc}}</textarea>
+               <label>Job Description <span class="txt-s ml-4 txt-grey" id='limit-jobdesc'></label>
             </div>
             <div class="fancyinput mt-3 w-100">
-               <textarea rows="2" name='livingcostdesc' placeholder="Living cost description" required>{{$country->livingcostdesc}}</textarea>
-               <label>Living Cost Description</label>
+               <textarea rows="2" name='livingcostdesc' id='costdesc' placeholder="Living cost description" required oninput='countCostdescLimit(event)'>{{$country->livingcostdesc}}</textarea>
+               <label>Living Cost Description <span class="txt-s ml-4 txt-grey" id='limit-costdesc'></label>
             </div>
             <div class="frow mid-right my-4">
                <button type="submit" class="btn btn-success">Update</button>
@@ -123,6 +123,54 @@ function preview_flag() {
    const [file] = flag.files
    if (file) {
       flag_img.src = URL.createObjectURL(file)
+   }
+}
+
+function countIntroLimit(event) {
+   var txt = event.target.value
+   $('#limit-intro').text(txt.length + "/500");
+
+}
+
+function countLifethereLimit(event) {
+   var txt = event.target.value
+   $('#limit-lifethere').text(txt.length + "/500");
+
+}
+
+function countJobdescLimit(event) {
+   var txt = event.target.value
+   $('#limit-jobdesc').text(txt.length + "/500");
+
+}
+
+function countCostdescLimit(event) {
+   var txt = event.target.value
+   $('#limit-costdesc').text(txt.length + "/500");
+
+}
+
+function validate() {
+   var name = $('#name').val()
+   var intro = $('#intro').val()
+   var lifethere = $('#lifethere').val()
+   var jobdesc = $('#jobdesc').val()
+   var costdesc = $('#costdesc').val()
+
+   var msg = '';
+
+   if (name == '') msg = 'Country name is required';
+   else if (intro.length > 500) msg = "Introduction size exceeded over limit!";
+   else if (lifethere.length > 500) msg = "Life There size exceeded over limit!";
+   else if (jobdesc.length > 500) msg = "Job description size exceeded over limit!";
+   else if (costdesc.length > 500) msg = "Cost description size exceeded over limit!";
+
+   if (msg != '') {
+      Toast.fire({
+         icon: 'warning',
+         title: msg
+      });
+      return false;
    }
 }
 </script>

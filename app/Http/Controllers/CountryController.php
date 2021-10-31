@@ -31,7 +31,8 @@ class CountryController extends Controller
     public function create()
     {
         //
-        return view('admin.countries.create');
+        $countries = Country::orderBy('id', 'desc')->get();
+        return view('admin.countries.create', compact('countries'));
     }
 
     /**

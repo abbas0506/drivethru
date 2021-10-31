@@ -40,42 +40,40 @@ Swal.fire({
 
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
+      <div class="frow w-100 rw-100 stretched">
+         <div class="txt-b txt-m">Basic Profile </div>
+         <div class="frow">
+            <a href="{{route('countries.edit', $country)}}">
+               <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
+            </a>
+         </div>
 
-      <div class="profile-segment" id='basic'>
-         <div class="frow w-100 rw-100 stretched">
-            <div class="txt-b txt-m">Basic Profile </div>
-            <div class="frow">
-               <a href="{{route('countries.edit', $country)}}">
-                  <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
-               </a>
-            </div>
-
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Introduction:</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->intro}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Essestials:</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->essential}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Is Education Free?</div>
-            <div class="fcol w-80 rw-100 mid-left">@if($country->edufree==1) Yes @else No @endif</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Life There:</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->lifethere}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Job Description:</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->jobdesc}}</div>
-         </div>
-         <div class="frow w-100 rw-100 mt-3 auto-col">
-            <div class="fcol w-20 rw-100 txt-b top-right pr-3">Living Cost Desc:</div>
-            <div class="fcol w-80 rw-100 mid-left">{{$country->livingcostdesc}}</div>
-         </div>
       </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Introduction:</div>
+         <div class="fcol w-80 rw-100 mid-left">{{$country->intro}}</div>
+      </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Essestials:</div>
+         <div class="fcol w-80 rw-100 mid-left">{{$country->essential}}</div>
+      </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Is Education Free?</div>
+         <div class="fcol w-80 rw-100 mid-left">@if($country->edufree==1) Yes @else No @endif</div>
+      </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Life There:</div>
+         <div class="fcol w-80 rw-100 mid-left">{{$country->lifethere}}</div>
+      </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Job Description:</div>
+         <div class="fcol w-80 rw-100 mid-left">{{$country->jobdesc}}</div>
+      </div>
+      <div class="frow w-100 rw-100 mt-3 auto-col">
+         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Living Cost Desc:</div>
+         <div class="fcol w-80 rw-100 mid-left">{{$country->livingcostdesc}}</div>
+      </div>
+
 
    </div>
    <!-- right hand profile bar -->
