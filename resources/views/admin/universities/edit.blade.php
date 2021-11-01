@@ -8,13 +8,12 @@
    <div class='txt-l txt-white'>Universities</div>
    <div class='frow txt-s txt-white'>
       <a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>
-      <a href="{{route('universities.index')}}">universities </a> <span class="mx-1"> / </span>
-      {{$university->name}}
+      <a href="{{route('universities.index')}}">Universities </a> <span class="mx-1"> / </span> Create New
    </div>
 </div>
 @endsection
 @section('page-content')
-<!-- display record save, del, update message if any -->
+
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
    <ul>
@@ -34,144 +33,125 @@ Swal.fire({
 });
 </script>
 @endif
-<!-- find url of university logo -->
-@php
-$logo_url=url("storage/images/logos/".$university->logo);
-@endphp
 
-<div class="container-60">
-   <!-- basic info box -->
-   <div class="p-4 my-5 border shadow relative">
-
-      <div class="frow mid-left">
-         <div class="txt-m mr-4">{{$university->name}}</div><img src={{$logo_url}} alt='logo' width=30 height=30 class='rounded-circle'>
-      </div>
-      <div class="frow border-bottom stretched border-thin my-4">
-      </div>
-      <div class="frow centered">
-         <div class="fcol w-25">City </div>
-         <div class="fcol w-50">{{$university->city->name}}</div>
-      </div>
-      <div class="frow centered">
-         <div class="fcol w-25">Type </div>
-         <div class="fcol w-50">{{$university->type}}</div>
-      </div>
-      <!-- edit icon on top right corner -->
-      <div class='absolute' style='top:5px; right:5px' onclick="slideleft()">
-         <i data-feather='edit-2' class="feather-small txt-blue"></i>
-      </div>
-   </div>
-
-   <!-- courses box -->
-   <div class="p-4 mt-5 border shadow relative">
-      <div class="frow mid-left txt-m">Courses</div>
-      <div class="frow border-bottom stretched border-thin my-4"></div>
-
-      <!-- edit icon on top right corner -->
-      <div class='absolute' style='top:5px; right:5px'>
-         <a href="{{route('unicourses.index')}}"><i data-feather='edit-2' class="feather-small txt-blue"></i></a>
-      </div>
-
-      @if($university->faculties()->count()>0)
-      @foreach($university->faculties() as $faculty)
-      <div class="frow card my-2">
-         <div class="card-header txt-b">
-            {{$faculty->name}}
-         </div>
-         <div class="card-body px-5">
-            @foreach($faculty->unicourses() as $unicourse)
-            <div class="frow">
-               <div class="fcol mid-left w-70">{{$unicourse->course->name}}</div>
-               <div class="fcol mid-left w-20">{{$unicourse->minfee}}-{{$unicourse->maxfee}} k</div>
-               <div class="fcol mid-right w-10">
-                  <div class="frow stretched">
-                     <div><a href="{{route('unicourses.edit',$unicourse)}}"> <i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
-                     <div>
-                        <form action="{{route('unicourses.destroy', $unicourse)}}" method="POST" id='deleteform{{$unicourse->id}}'>
-                           @csrf
-                           @method('DELETE')
-                           <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$unicourse->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-                        </form>
-                     </div>
-                  </div>
-               </div>
+<div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
+   <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
+      <div class="frow stretched">
+         <div class="frow txt-b txt-m txt-orange">Edit University</div>
+         <a href="{{route('universities.index')}}">
+            <div class="frow centered box-30 bg-orange circular txt-white hoverable">
+               <i data-feather='x' class="feather-xsmall"></i>
             </div>
-            @endforeach
-         </div>
+         </a>
       </div>
-      @endforeach
-      @else
-      <div class="frow centered txt-orange my-4">No courses found</div>
-      @endif
 
-   </div>
-
-   <!-- slider that holds data to be updated -->
-   <div class="slider" id='slider'>
-      <!-- close button -->
-      <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="slideleft()"><i data-feather='x' class="feather-xsmall"></i></div>
-      <form action="{{route('universities.update',$university)}}" method='post' enctype="multipart/form-data">
+      <!-- data form -->
+      <form action="{{route('universities.update', $university)}}" method='post' enctype="multipart/form-data">
          @csrf
          @method('PATCH')
-         <div class="fcol centered">
-            <img src="{{$logo_url}}" alt='logo' id='logo_img' width=40 height=40 class='rounded-circle'>
+         <div class="frow w-100 rw-100 mt-5 stretched auto-col">
+            <div class="fancyinput w-48 rw-100">
+               <input type="text" name='name' id='name' placeholder="University name" value='{{$university->name}}' oninput="search(event)">
+               <label for=" Name" class='bg-transparent'>Name</label>
+            </div>
+
+            <div class="frow w-48 rw-100 stretched">
+               <div class="fcol fancyinput">
+                  <input type="file" id='logo' name='logo' placeholder="logo" class='w-90 m-0 mr-1 p-2' onchange='preview_logo()'>
+                  <label for="Name" class='bg-transparent'>Logo</label>
+               </div>
+               <!-- flag image preview -->
+               <div class="fcol centered image-frame" id='image_frame'>
+                  <img src="#" alt='flag' id='preview_img' width=50 height=49>
+                  <div class="no-image-caption txt-xs" style='width:50px; height:49px'>Logo</div>
+               </div>
+
+            </div>
          </div>
-
-         <div class="fcol my-4">
-
-            <div class="fancyinput my-2 w-100">
-               <input type="text" name='name' placeholder="University name *" value='{{$university->name}}' required>
-               <label>Name *</label>
-            </div>
-            <div class="fancyinput my-2 w-100">
-               <input type="file" id='logo' name='logo' placeholder="uni logo" class='w-100 m-0 p-2' onchange='preview_logo()'>
-               <label>Logo</label>
-            </div>
-
-            <div class="fancyselect my-2 w-100">
+         <div class="frow w-100 rw-100 mt-3 stretched auto-col">
+            <div class="fancyselect w-32 rw-100" id='city_id'>
                <select name="city_id">
                   @foreach($cities as $city)
-                  <option value="{{$city->id}}" @if($city->id==$university->city_id)selected @endif>{{$city->name}}</option>
+                  <option value="{{$city->id}}">{{$city->name}}</option>
                   @endforeach
                </select>
                <label>City *</label>
             </div>
-            <div class="fancyselect my-2 w-100">
+
+            <div class="fancyselect w-32 rw-100">
                <select name="type">
-                  <option value="public" @if($university->type=='public')selected @endif>Public</option>
-                  <option value="private" @if($university->type=='private')selected @endif>Private</option>
+                  <option value="public">Public</option>
+                  <option value="private">Private</option>
                </select>
                <label>Type</label>
             </div>
+            <div class="fancyinput w-32 rw-100">
+               <input type="number" name='rank' min=1 placeholder='Rank' value='{{$university->rank}}'>
+               <label>Rank</label>
+            </div>
          </div>
-         <div class="frow mid-right my-4">
+
+         <div class="fcol my-4">
+
+         </div>
+         <div class="frow mid-right mt-4">
             <button type="submit" class="btn btn-success">Update</button>
          </div>
       </form>
-   </div> <!-- slider ends -->
-
+   </div>
+   <!-- right hand profile bar -->
+   <div class="fcol hw-25 bg-white p-4 rw-100">
+      <div class="txt-b txt-m txt-orange">Universities List</div>
+      @foreach($universities as $university)
+      <div class="txt-s tr">{{$university->name}}</div>
+      @endforeach
+   </div>
 </div>
+
 @endsection
 
 @section('script')
 <script lang="javascript">
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
+}
+
 function preview_logo() {
    const [file] = logo.files
    if (file) {
-      logo_img.src = URL.createObjectURL(file)
+      preview_img.src = URL.createObjectURL(file)
+      $('#image_frame').addClass('has-image');
    }
 }
 
-function slideleft() {
-   $("#slider").toggleClass('slide-left');
-}
 
-function showOrHideCity(event) {
-   //if foreign country, hide city
-   if (event.target.value != 1) {
-      $('#city_id').hide();
-   } else
-      $('#city_id').show();
+function validate() {
+   var name = $('#name').val()
+   var rank = $('#rank').val()
+
+   var msg = '';
+
+   if (name == '') msg = 'Country name is required';
+   else if (rank == '') msg = "Rank is required";
+   else if (rank <= 0) msg = "Rank value invalid";
+
+   if (msg != '') {
+      Toast.fire({
+         icon: 'warning',
+         title: msg
+      });
+      return false;
+   }
 }
 </script>
 @endsection
