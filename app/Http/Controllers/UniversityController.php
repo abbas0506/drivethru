@@ -19,9 +19,8 @@ class UniversityController extends Controller
     public function index()
     {
         //
-        $universities = University::all()->sortBy('name');
-        $cities = City::all()->sortBy('name');
-        return view('admin.universities.index', compact('universities', 'cities'));
+        $universities = University::orderBy('id', 'desc')->get();
+        return view('admin.universities.index', compact('universities'));
     }
 
     /**
@@ -32,6 +31,9 @@ class UniversityController extends Controller
     public function create()
     {
         //
+        $universities = University::all();
+        $cities = City::all()->sortBy('name');
+        return view('admin.universities.create', compact('universities', 'cities'));
     }
 
     /**
@@ -56,7 +58,7 @@ class UniversityController extends Controller
 
             $university = University::create($request->all());
             //save file on storage
-            if ($request->hasFile('flag')) {
+            if ($request->hasFile('logo')) {
                 if (!$university->logo == 'default.png') {
                     $file_path = public_path('images/universities/') . $university->logo;
                     if (file_exists($file_path)) {
@@ -69,12 +71,9 @@ class UniversityController extends Controller
             }
 
             $university->save();
-            $university->step1 = 1;
-            $university->save();
-
             session(['university' => $university]);
 
-            return redirect()->route('universities.index')->with('success', 'Successfully created');;
+            return redirect()->back()->with('success', 'Successfully created');;
         } catch (Exception $e) {
             return redirect()->route('universities.index')
                 ->withErrors($e->getMessage());
@@ -91,6 +90,9 @@ class UniversityController extends Controller
     public function show(University $university)
     {
         //
+        session(['university' => $university]);
+        $cities = City::all()->sortBy('name');
+        return view('admin.universities.show', compact('university', 'cities'));
     }
 
     /**
@@ -103,8 +105,9 @@ class UniversityController extends Controller
     {
         //
         session(['university' => $university]);
+        $universities = University::all();
         $cities = City::all()->sortBy('name');
-        return view('admin.universities.edit', compact('university', 'cities'));
+        return view('admin.universities.edit', compact('university', 'cities', 'universities'));
     }
 
     /**
@@ -121,30 +124,31 @@ class UniversityController extends Controller
             'name' => 'required',
             'city_id' => 'required',
             'type' => 'required',
+            'rank' => 'required',
             'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         try {
-            //if flag updated
+
             if ($request->hasFile('logo')) {
-                //unlink old image
-                $destination_path = 'public/images/logos/';
-                // $file_path = $destination_path . $university->logo;
-                // if (file_exists($file_path)) {
-                //     unlink($file_path);
-                // }
+                //dont remove default.png
+                if (!$university->logo == 'default.png') {
+                    $file_path = public_path('images/universities/') . $university->logo;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
 
-                unlink(storage_path('app/public/images/logos/' . $university->logo));
-
-                //save new pic after renaming
-                $file_name = $university->id . '.' . $request->logo->extension();
-                $request->file('logo')->storeAs($destination_path, $file_name);
+                //save logo
+                $file_name = $university->id . '.' . $request->flag->extension();
+                $request->file('logo')->move(public_path('images/universities/'), $file_name);
                 $university->logo = $file_name;
             }
             //update field values
             $university->name = $request->name;
             $university->city_id = $request->city_id;
             $university->type = $request->type;
+            $university->rank = $request->rank;
             $university->update();
 
             return redirect()->back()->with('success', 'Successfully updated');
@@ -164,20 +168,16 @@ class UniversityController extends Controller
     {
         //
         try {
-            unlink(storage_path('app/public/images/logos/' . $university->logo));
-            // $destination_path = 'public/images/logos/';
-            // $file_path = $destination_path . $university->logo;
-            // if (file_exists($file_path)) {
-            //     unlink($file_path);
-            // }
+            if (!$university->logo == 'default.png') {
+                $file_path = public_path('images/universities/') . $university->logo;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
             $university->delete();
-            return redirect()
-                ->back()
-                ->with('success', 'University removed successfully');
+            return redirect()->back()->with('success', 'University removed successfully');
         } catch (Exception $ex) {
-            return redirect()
-                ->back()
-                ->withErrors($ex->getMessage());
+            return redirect()->back()->withErrors($ex->getMessage());
         }
     }
     public function uni_courses()

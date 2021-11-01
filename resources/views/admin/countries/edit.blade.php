@@ -103,7 +103,7 @@ Swal.fire({
                <textarea rows="2" name='livingcostdesc' id='costdesc' placeholder="Living cost description" required oninput='countCostdescLimit(event)'>{{$country->livingcostdesc}}</textarea>
                <label>Living Cost Description <span class="txt-s ml-4 txt-grey" id='limit-costdesc'></label>
             </div>
-            <div class="frow mid-right my-4">
+            <div class="frow mid-right mt-4">
                <button type="submit" class="btn btn-success">Update</button>
             </div>
          </form>

@@ -36,10 +36,19 @@ Swal.fire({
 
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
+      <div class="frow stretched">
+         <div class="frow txt-b txt-m txt-orange">New Country</div>
+         <a href="{{route('countries.index')}}">
+            <div class="frow centered box-30 bg-orange circular txt-white hoverable">
+
+               <i data-feather='x' class="feather-xsmall"></i>
+
+            </div>
+         </a>
+      </div>
       <form action="{{route('countries.store')}}" method='post' enctype="multipart/form-data" onsubmit="return validate()">
          @csrf
-         <div class="frow txt-m txt-b txt-orange">Create New Country</div>
-         <div class="frow w-100 rw-100 mt-4 stretched auto-col">
+         <div class="frow w-100 rw-100 mt-5 stretched auto-col">
             <div class="fancyinput w-48 rw-100">
                <input type="text" name='name' id='name' placeholder="Country name" oninput="search(event)">
                <label for=" Name" class='bg-transparent'>Name</label>
@@ -89,7 +98,7 @@ Swal.fire({
             <textarea rows="2" name='livingcostdesc' id='costdesc' placeholder="Living cost description" required oninput='countCostdescLimit(event)'></textarea>
             <label>Living Cost Description <span class="txt-s ml-4 txt-grey" id='limit-costdesc'></span></label>
          </div>
-         <div class="frow mid-right my-4">
+         <div class="frow mid-right mt-4">
             <button type="submit" class="btn btn-success">Create</button>
          </div>
       </form>

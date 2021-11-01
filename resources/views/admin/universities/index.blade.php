@@ -35,12 +35,16 @@ Swal.fire({
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable" onclick="toggle_addslider()">+</div>
-      Create New
+      <div class="frow">
+         <a href="{{route('universities.create')}}">
+            <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable">+</div>
+         </a>
+         Create New
+      </div>
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
+   <div class="frow py-1 mb-2 txt-b txt-grey">
       <div class="fcol mid-left w-10">Sr </div>
       <div class="fcol mid-left w-60">Name </div>
       <div class="fcol mid-left w-15">Data Feed</div>
@@ -48,25 +52,23 @@ Swal.fire({
    </div>
    @php $sr=1; @endphp
    @foreach($universities as $university)
-
-   @php
-   $logo_url=url("storage/images/logos/".$university->logo);
-   @endphp
-
-   <div class="frow px-2 my-2 tr">
+   <div class="frow my-2 tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-5"><img src={{$logo_url}} alt='flag' width=20 height=20 class='rounded-circle'> </div>
+      <div class="fcol mid-left w-5"><img src="{{url(asset('images/universities/'.$university->logo))}}" alt='flag' width=20 height=20 class='rounded-circle'> </div>
       <div class="fcol mid-left w-55"> {{$university->name}} </div>
       <div class="fcol centered w-15">
          <div class="frow w-100 mid-left">
-            @php $numofsteps_completed=$university->step1+$university->step2; @endphp
-            <div class="bar bar-1 bar-green" style="width:{{$numofsteps_completed*40}}%"></div>
-            <div class="bar-val">{{$numofsteps_completed*50}}%</div>
+            @if($university->progress()==50)
+            <div class="bar bar-1 bar-green" style="width:50%"></div>
+            @elseif($university->progress()==100)
+            <div class="bar bar-1 bar-green" style="width:100%"></div>
+            @endif
+            <div class="bar-val">{{$university->progress()}}%</div>
          </div>
       </div>
       <div class="fcol mid-right w-15">
          <div class="frow stretched">
-            <div><a href="{{route('universities.edit',$university)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
+            <div><a href="{{route('universities.show',$university)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
             <div>
                <form action="{{route('universities.destroy',$university)}}" method="POST" id='deleteform{{$university->id}}'>
                   @csrf
@@ -80,60 +82,6 @@ Swal.fire({
    @endforeach
 </div>
 @endsection
-
-@section('slider')
-<!-- ADD SLIDER -->
-<div class="slider" id='addslider'>
-   <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">New University</div>
-   <div class="frow centered image-frame" id='image_frame'>
-      <img src="#" alt='logo' id='preview_img' width=75 height=75>
-      <div class="no-image-caption" style='width:75px; height:75px'>Logo</div>
-   </div>
-   <!-- data form -->
-   <form action="{{route('universities.store')}}" method='post' enctype="multipart/form-data">
-      @csrf
-      <div class="fcol my-4">
-
-         <div class="fancyinput my-2 w-100">
-            <input type="text" name='name' placeholder="University name *" required>
-            <label>Name *</label>
-         </div>
-         <div class="fancyinput my-2 w-100">
-            <input type="file" id='logo' name='logo' placeholder="uni logo" class='w-100 m-0 p-2' onchange='preview_logo()' required>
-            <label>Logo</label>
-         </div>
-         <div class="fancyselect my-2 w-100" id='city_id'>
-            <select name="city_id">
-               @foreach($cities as $city)
-               <option value="{{$city->id}}">{{$city->name}}</option>
-               @endforeach
-            </select>
-            <label>City *</label>
-         </div>
-
-         <div class="fancyselect my-2 w-100">
-            <select name="type">
-               <option value="public">Public</option>
-               <option value="private">Private</option>
-            </select>
-            <label>Type</label>
-         </div>
-         <div class="fancyinput my-2 w-100">
-            <input type="number" name='rank' min=1 placeholder='Rank' required>
-            <label>Rank</label>
-         </div>
-      </div>
-      <div class="frow mid-right my-4">
-         <button type="submit" class="btn btn-success">Create</button>
-      </div>
-   </form>
-
-</div>
-<!--add slider ends -->
-
-@endsection
-
 
 @section('script')
 <script lang="javascript">
@@ -167,18 +115,6 @@ function delme(formid) {
          $('#deleteform' + formid).submit();
       }
    });
-}
-
-function toggle_addslider() {
-   $("#addslider").toggleClass('slide-left');
-}
-
-function preview_logo() {
-   const [file] = logo.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
-   }
 }
 </script>
 @endsection

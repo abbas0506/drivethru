@@ -37,13 +37,16 @@
    <!-- search option -->
    <div class="frow my-4 mid-left fancy-search-grow">
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <a href="{{route('countries.create')}}" class="frow">
-         <div class="btn-rounded-custom-orange px-2">+ Create New</div>
-      </a>
+      <div class="frow">
+         <a href="{{route('countries.create')}}">
+            <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable">+</div>
+         </a>
+         Create New
+      </div>
    </div>
 
    <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b th">
+   <div class="frow px-2 py-1 mb-2 txt-b txt-grey th">
       <div class="fcol mid-left w-10">Sr</div>
       <div class="fcol mid-left w-50">Country</div>
       <div class="fcol mid-left w-25">Data Feed</div>

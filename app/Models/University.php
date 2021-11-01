@@ -55,4 +55,10 @@ class University extends Model
     {
         return $this->hasMany(Unicourse::class, 'university_id');
     }
+    public function progress()
+    {
+        $progress = 50;
+        if ($this->unicourses()->count() > 0) $progress = 100;
+        return $progress;
+    }
 }
