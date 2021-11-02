@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Models\Unicourse;
+use App\Models\Course;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -33,6 +34,9 @@ class UnicourseController extends Controller
     public function create()
     {
         //
+        $university = session('university');
+        $faculties = Faculty::all();
+        return view('admin.universities.courses.create', compact('university', 'faculties'));
     }
 
     /**
@@ -48,8 +52,9 @@ class UnicourseController extends Controller
             'university_id' => 'required',
             'course_id' => 'required',
             'duration' => 'required',
-            'minfee' => 'required',
-            'maxfee' => 'required',
+            'fee' => 'required',
+            'criteria' => 'required',
+            'requirement' => 'required',
 
         ]);
 
@@ -57,14 +62,10 @@ class UnicourseController extends Controller
 
             $unicourse = Unicourse::create($request->all());
             $unicourse->save();
-            //mark 2nd step as completed
-            $university = session('university');
-            $university->step2 = 1;
-            $university->save();
-            return redirect()->back()->with('success', 'Successfully created');;
+
+            return redirect()->route('unicourses.index')->with('success', 'Successfully created');;
         } catch (Exception $e) {
-            return redirect()->route('unicourses.index')
-                ->withErrors($e->getMessage());
+            return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
     }
@@ -105,9 +106,9 @@ class UnicourseController extends Controller
         //
         $request->validate([
             'duration' => 'required',
-            'minfee' => 'required',
-            'maxfee' => 'required',
-
+            'fee' => 'required',
+            'criteria' => 'required',
+            'requirement' => 'required',
         ]);
 
         try {
@@ -137,5 +138,24 @@ class UnicourseController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
         }
+    }
+
+    public function fetchXUnicoursesByFacultyId(Request $request)
+    {
+        $unicourse_ids = Unicourse::where('university_id', $request->university_id)->distinct()->pluck('course_id')->toArray();
+
+        $courses = Course::where('faculty_id', $request->faculty_id)
+            ->whereNotIn('id', $unicourse_ids)->get();
+
+        $course_options = '';
+
+        if ($courses->count() > 0) {
+            foreach ($courses as $course) {
+                $course_options .= "<option value='" . $course->id . "'>" . $course->name . "</option>";
+            }
+        } else {
+            $course_options .= "<option value=''> No course exists </option>";
+        }
+        return response()->json(['course_options' => $course_options]);
     }
 }

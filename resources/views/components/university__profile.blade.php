@@ -23,7 +23,7 @@
    <div class="txt-s"><a href="{{route('unicourses.index')}}">Courses</a></div>
    <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
    @else
-   <div class="txt-s"><a href="{{route('unicourses.edit', $university)}}">Courses</a></div>
+   <div class="txt-s"><a href="{{route('unicourses.create')}}">Courses</a></div>
    <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
    @endif
 </div>

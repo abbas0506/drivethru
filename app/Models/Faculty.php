@@ -17,6 +17,7 @@ class Faculty extends Model
     {
         return Course::where('faculty_id', $this->id)->get();
     }
+
     public function unicourses()
     {
         $university = session('university');

@@ -37,9 +37,7 @@ Swal.fire({
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
    <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
       <div class="frow stretched">
-         <div class="frow mid-left">
-            <div class="txt-l mr-4">{{$university->name}}</div><img src="{{url(asset('images/universities/'.$university->logo))}}" alt='flag' id='flag_img' width=30 height=30 class='rounded-circle'>
-         </div>
+         <div class="frow txt-b txt-m txt-orange">Add New Course</div>
          <a href="{{route('unicourses.index')}}">
             <div class="frow centered box-30 bg-orange circular txt-white hoverable">
                <i data-feather='x' class="feather-xsmall"></i>
@@ -48,38 +46,47 @@ Swal.fire({
       </div>
 
       <!-- data form -->
-
-
-      <form action="{{route('unicourses.update',$unicourse)}}" method="POST">
+      <form action="{{route('unicourses.store')}}" method="POST">
          @csrf
-         @method('PATCH')
-         <div class="frow h5 my-4 border-left border-info pl-2" style='border-width:5px !important'>{{$unicourse->course->name}}</div>
-         <div class="frow my-3 stretched">
-            <div class="fcol w-15">
-               <div class="fancyinput w-100">
-                  <input type="number" name='duration' min=0 max=20 placeholder="Duration" value='{{$unicourse->duration}}' required>
-                  <label>Duration</label>
-               </div>
+         <input type="text" name='university_id' id='university_id' value='{{$university->id}}' hidden>
+         <div class="frow w-100 rw-100 mt-5 stretched auto-col">
+            <div class="fancyselect w-48 rw-100">
+               <select id="faculty_id" onchange="fetchXUnicoursesByFacultyId(event)">
+                  <option value="-1">Select faculty</option>
+                  @foreach($faculties as $faculty)
+                  <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+                  @endforeach
+               </select>
+               <label>Faculty</label>
             </div>
-            <div class="fcol w-20">
-               <div class="fancyinput w-100">
-                  <input type="number" name='fee' min=0 max='10000' placeholder="Fee" value='{{$unicourse->fee}}' required>
-                  <label>Fee (k$)</label>
-               </div>
+            <div class="fancyselect w-48 rw-100">
+               <select id="course_id" name="course_id" required>
+                  <!-- will be loaded on runtime after level selection -->
+               </select>
+               <label>Course</label>
+            </div>
+         </div>
+
+         <div class="frow w-100 rw-100 mt-3 stretched auto-col">
+            <div class="fancyinput w-15 rw-100">
+               <input type="number" name='duration' min=0 max=10 placeholder="Duration" value='4' required>
+               <label>Duration (yr)</label>
+            </div>
+            <div class="fancyinput w-20 rw-100">
+               <input type="number" name='fee' min=0 max=10000 placeholder="Fee (k)" value='1' required>
+               <label>Fee (k)</label>
             </div>
             <div class="fancyinput w-60 rw-100">
-               <input type="text" name='criteria' placeholder="Criteria" value='{{$unicourse->criteria}}' required>
+               <input type="text" name='criteria' placeholder="Criteria" value='60% Fsc' required>
                <label>Criteria</label>
             </div>
          </div>
-
-
          <div class="fancyinput my-3 w-100">
-            <input type="text" name='requirement' placeholder="Requirment" value='{{$unicourse->requirement}}' required>
+            <input type="text" name='requirement' placeholder="Requirment" value='CNIC, domicile, academics, 4 pics' required>
             <label>Requirements</label>
          </div>
-         <div class="frow mid-right my-4">
-            <button type="submit" class="btn btn-success">Update</button>
+         <div class="frow mid-right mt-4">
+            <button type="submit" class="btn btn-success">Add</button>
          </div>
       </form>
    </div>

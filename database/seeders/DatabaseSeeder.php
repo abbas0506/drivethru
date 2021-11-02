@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             FavcourseSeeder::class,
             LivingcostSeeder::class,
             StudycostSeeder::class,
-            // UnicourseSeeder::class,
+            UnicourseSeeder::class,
         ]);
     }
 }

@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 @section('header')
-<div class="fcol w-100 bg-fullpage-banner top-mid">
+
+<style>
+.bg-page-banner {
+   background-image: url("{{asset('images/banner/1.jpg')}}");
+   background-size: 100% 100%;
+   /* background-repeat: no-repeat; */
+}
+</style>
+
+
+<div class="fcol w-100 bg-page-banner top-mid">
    <div class="w-100">
       <x-admin__header></x-admin__header>
    </div>
