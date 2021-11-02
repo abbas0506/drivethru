@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
             PaperTypeSeeder::class,
             CourseSeeder::class,
             ExpensetypeSeeder::class,
-            UniversitySeeder::class,
-            BoardSeeder::class,
-            CountrySeeder::class,
-            FavcourseSeeder::class,
-            LivingcostSeeder::class,
-            StudycostSeeder::class,
-            UnicourseSeeder::class,
+            //UniversitySeeder::class,
+            //BoardSeeder::class,
+            //CountrySeeder::class,
+            //FavcourseSeeder::class,
+            //LivingcostSeeder::class,
+            //StudycostSeeder::class,
+            //UnicourseSeeder::class,
         ]);
     }
 }
