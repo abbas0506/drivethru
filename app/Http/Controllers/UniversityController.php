@@ -140,7 +140,7 @@ class UniversityController extends Controller
                 }
 
                 //save logo
-                $file_name = $university->id . '.' . $request->flag->extension();
+                $file_name = $university->id . '.' . $request->logo->extension();
                 $request->file('logo')->move(public_path('images/universities/'), $file_name);
                 $university->logo = $file_name;
             }
@@ -180,6 +180,9 @@ class UniversityController extends Controller
             return redirect()->back()->withErrors($ex->getMessage());
         }
     }
+
+
+
     public function uni_courses()
     {
         $university = session('university');
@@ -187,18 +190,23 @@ class UniversityController extends Controller
         $faculties = Faculty::all();
         return view('admin.universities.courses', compact('university', 'faculties', 'courses'));
     }
+
+
+
+
+
     public function fetchLevelsAndCoursesByFacultyId(Request $request)
     {
-        $distict_course_levels = Course::where('faculty_id', $request->faculty_id)->distinct()->get('level_id');
+        $course_ids = Course::where('faculty_id', $request->faculty_id)->distinct()->get('level_id');
 
         $level_options = "";
-        foreach ($distict_course_levels as $course) {
+        foreach ($course_ids as $course) {
             $level_options .= "<option value='" . $course->level_id . "'>" . $course->level->name . "</option>";
         }
 
         $course_options = "";
-        if ($distict_course_levels->count() > 0) {
-            $first_course_level_id = $distict_course_levels->first()->level_id;
+        if ($course_ids->count() > 0) {
+            $first_course_level_id = $course_ids->first()->level_id;
             $courses = Course::where('faculty_id', $request->faculty_id)
                 ->where('level_id', $first_course_level_id) //select first level and load corresponding courses
                 ->get();
