@@ -39,13 +39,10 @@ Swal.fire({
       <div class="frow stretched mb-4">
          <div class="frow mid-left">
             <div class="txt-b txt-m txt-orange">List of Courses</div>
-            <a href="{{route('unicourses.create')}}">
-               <div class="fcol btn-rounded-custom-blue px-2 ml-4 centered">Add New</div>
-            </a>
          </div>
-         <a href="{{route('universities.index')}}">
+         <a href="{{route('unicourses.create')}}">
             <div class="frow centered box-30 bg-orange circular txt-white hoverable">
-               <i data-feather='x' class="feather-xsmall"></i>
+               <i data-feather='plus' class="feather-xsmall"></i>
             </div>
          </a>
       </div>
@@ -88,50 +85,4 @@ Swal.fire({
    </div>
 </div>
 
-@endsection
-
-@section('script')
-<script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
-
-function preview_logo() {
-   const [file] = logo.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
-   }
-}
-
-
-function validate() {
-   var name = $('#name').val()
-   var rank = $('#rank').val()
-
-   var msg = '';
-
-   if (name == '') msg = 'Country name is required';
-   else if (rank == '') msg = "Rank is required";
-   else if (rank <= 0) msg = "Rank value invalid";
-
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
-   }
-}
-</script>
 @endsection

@@ -112,20 +112,6 @@ Swal.fire({
 
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
-
 function preview_logo() {
    const [file] = logo.files
    if (file) {
@@ -133,7 +119,6 @@ function preview_logo() {
       $('#image_frame').addClass('has-image');
    }
 }
-
 
 function validate() {
    var name = $('#name').val()

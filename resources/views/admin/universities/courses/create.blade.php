@@ -23,15 +23,6 @@
    </ul>
 </div>
 <br />
-@elseif(session('success'))
-<script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
-</script>
 @endif
 
 <div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
@@ -100,32 +91,10 @@ Swal.fire({
 
 @section('script')
 <script lang="javascript">
-function validate() {
-   var name = $('#name').val()
-   var rank = $('#rank').val()
-
-   var msg = '';
-
-   if (name == '') msg = 'Country name is required';
-   else if (rank == '') msg = "Rank is required";
-   else if (rank <= 0) msg = "Rank value invalid";
-
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
-   }
-}
-
 function fetchXUnicoursesByFacultyId(event) {
    var token = $("meta[name='csrf-token']").attr("content");
    var faculty_id = $('#faculty_id').val();
    var university_id = $('#university_id').val();
-
-
-
    $.ajax({
       type: 'POST',
       url: "{{route('fetchXUnicoursesByFacultyId')}}",
@@ -137,60 +106,6 @@ function fetchXUnicoursesByFacultyId(event) {
       },
       success: function(response) {
 
-         $('#course_id').html(response.course_options);
-
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         Toast.fire({
-            icon: 'warning',
-            title: errorThrown
-         });
-      }
-   }); //ajax end
-}
-
-
-function loadLevelsAndCourses(event) {
-   var token = $("meta[name='csrf-token']").attr("content");
-   var faculty_id = $('#faculty_id').val();
-   $.ajax({
-      type: 'POST',
-      url: "{{route('fetchLevelsAndCoursesByFacultyId')}}",
-      data: {
-         "faculty_id": faculty_id,
-         "_token": token,
-
-      },
-      success: function(response) {
-
-         $('#level_id').html(response.level_options);
-         $('#course_id').html(response.course_options);
-
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         Toast.fire({
-            icon: 'warning',
-            title: errorThrown
-         });
-      }
-   }); //ajax end
-}
-
-function loadCoursesOnly(event) {
-   var token = $("meta[name='csrf-token']").attr("content");
-   var faculty_id = $('#faculty_id').val();
-   var level_id = $('#level_id').val();
-   $.ajax({
-      type: 'POST',
-      url: "fetchCoursesByFacultyAndLevelId",
-      data: {
-         "faculty_id": faculty_id,
-         "level_id": level_id,
-         "_token": token,
-
-      },
-      success: function(response) {
-         //
          $('#course_id').html(response.course_options);
 
       },

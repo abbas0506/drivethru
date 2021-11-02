@@ -122,7 +122,8 @@ Swal.fire({
 function preview_flag() {
    const [file] = flag.files
    if (file) {
-      flag_img.src = URL.createObjectURL(file)
+      preview_img.src = URL.createObjectURL(file)
+      $('#image_frame').addClass('has-image');
    }
 }
 
