@@ -94,8 +94,12 @@ function validate() {
    var msg = '';
    if (minfee == '') msg = 'Minimum cost is required';
    else if (maxfee == '') msg = 'Maximum cost is required';
-   else if (minfee < 0 || maxfee < 0) msg = 'Cost values cant be negative';
-   else if (minfee > maxfee) msg = 'Min cost cant be greater than max';
+   else {
+      minfee = parseInt(minfee)
+      maxfee = parseInt(maxfee)
+      if (minfee < 0 || maxfee < 0) msg = 'Cost values cant be negative';
+      else if (minfee > maxfee) msg = 'Min cost cant be greater than max';
+   }
    if (msg != '') {
       Toast.fire({
          icon: 'warning',
