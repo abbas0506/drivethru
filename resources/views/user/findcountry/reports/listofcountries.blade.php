@@ -39,9 +39,9 @@
          <tr>
             <td class="w-5"></td>
             <td class='w-25 txt-s'>{{$sr++}}. {{$country->name}} </td>
-            <td class='w-40 txt-s pr-2'>{{$country->essential}} </td>
-            <td class='w-15 txt-s'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('minfee')}} k$ </td>
-            <td class='w-15 txt-s'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('minexp')}} k$ </td>
+            <td class='w-40 txt-xs pr-2'>{{$country->essential}} </td>
+            <td class='w-15 txt-xs'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('minfee')}} k$ </td>
+            <td class='w-15 txt-xs'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('minexp')}} k$ </td>
          </tr>
          @endforeach
       </tbody>
