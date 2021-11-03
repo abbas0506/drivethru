@@ -23,19 +23,9 @@
    <table class="w-100 mx-5 mt-3">
       <tbody class="">
          <tr>
-            <td class="w-30 txt-s txt-b">Currency: </td>
-            <td class="w-70 txt-s">{{$country->currency}}</td>
+            <td class="w-30 txt-s txt-b mt-2">Introduction: </td>
+            <td class="w-70 txt-s mt-2">{{$country->intro}}</td>
          </tr>
-         <tr>
-            <td class="w-30 txt-s txt-b mt-2">Visa Required: </td>
-            <td class="w-70 txt-s mt-2">@if($country->visafree) No @else Yes @endif</td>
-         </tr>
-         @if(!$country->visafree)
-         <tr>
-            <td class="w-30 txt-s txt-b mt-2">Visa Duration: </td>
-            <td class="w-70 txt-s mt-2">{{$country->visaduration}} years</td>
-         </tr>
-         @endif
          <tr>
             <td class="w-30 txt-s txt-b mt-2">Education: </td>
             <td class="w-70 txt-s mt-2">@if($country->edufree) Free @else Not Free @endif</td>
