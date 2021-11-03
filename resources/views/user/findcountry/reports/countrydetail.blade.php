@@ -42,8 +42,8 @@
             <td class="w-70 txt-s mt-2">{{$country->lifethere}}</td>
          </tr>
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Visa Docs: </td>
-            <td class="w-70 txt-s mt-2">
+            <td class="w-30 txt-s txt-b mt-1">Visa Docs: </td>
+            <td class="w-70 txt-s mt-1">
                @if($country->visadocs()->count()>0)
                <ul>
                   @foreach($country->visadocs() as $visadoc)
@@ -58,8 +58,8 @@
             </td>
          </tr>
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Admission Docs:: </td>
-            <td class="w-70 txt-s mt-2">
+            <td class="w-30 txt-s txt-b mt-1">Admission Docs:: </td>
+            <td class="w-70 txt-s mt-1">
                @if($country->admdocs()->count()>0)
                <ul>
                   @foreach($country->admdocs() as $admdoc)
@@ -73,8 +73,8 @@
          </tr>
 
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Scholarships Offered: </td>
-            <td class="w-70 txt-s mt-2">
+            <td class="w-30 txt-s txt-b mt-1">Scholarships Offered: </td>
+            <td class="w-70 txt-s mt-1">
                @if($country->scholarships()->count()>0)
                <ul>
                   @foreach($country->scholarships() as $scholarshipoffer)
@@ -88,8 +88,8 @@
          </tr>
 
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Favourite Courses: </td>
-            <td class="w-70 txt-s mt-2">@if($country->favcourses()->count()>0)
+            <td class="w-30 txt-s txt-b mt-1">Favourite Courses: </td>
+            <td class="w-70 txt-s mt-1">@if($country->favcourses()->count()>0)
                <ul>
                   @foreach($country->favcourses() as $favcourse)
                   <li>{{$favcourse->course->name}}</li>
@@ -102,8 +102,8 @@
          </tr>
 
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Study Cost: </td>
-            <td class="w-70 txt-s mt-2">
+            <td class="w-30 txt-s txt-b mt-1">Study Cost: </td>
+            <td class="w-70 txt-s mt-1">
                @if($country->studycosts()->count()>0)
                <ul>
                   @foreach($country->studycosts() as $studycost)
@@ -117,8 +117,8 @@
          </tr>
 
          <tr>
-            <td class="w-30 txt-s txt-b mt-2">Living Cost: </td>
-            <td class="w-70 txt-s mt-2">
+            <td class="w-30 txt-s txt-b mt-1">Living Cost: </td>
+            <td class="w-70 txt-s mt-1">
                @if($country->livingcosts()->count()>0)
                <ul>
                   @foreach($country->livingcosts() as $livingcost)
