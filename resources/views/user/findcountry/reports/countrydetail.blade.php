@@ -16,7 +16,7 @@
 <body>
    <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Country Report</div>
    <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">100% Free</div>
-   <div class="w-100 txt-center txt-s py-2 mx-5">This report is for better decision making. It has nothing to do with anything else. This report is based on your country preference. Below are the complete detail of the country.</div>
+   <div class="w-100 txt-center txt-s py-2 mx-5">This report is based on your country preference. It is just for better decision making. It has nothing to do with anything else. Following is the complete detail of your selected country.</div>
    <div class='w-100 txt-l txt-center border-bottom border-1 txt-b mt-2 py-2 mx-5'>
       {{$country->name}}
    </div>
