@@ -31,25 +31,13 @@ $user=session('user');
          </div>
       </a>
    </div>
-   <div class="frow w-100 rw-100">
-      <div class="w-30 rw-50 txt-b">Currency: </div>
-      <div class="w-70 rw-50">{{$country->currency}}</div>
-   </div>
-
-   <div class="frow w-100 rw-100 mt-2">
-      <div class="w-30 rw-50 txt-b">Visa Required: </div>
-      <div class="w-70 rw-50">@if($country->visafree) No @else Yes @endif</div>
-   </div>
-   @if(!$country->visafree)
-   <div class="frow w-100 rw-100 mt-2">
-      <div class="w-30 rw-50 txt-b">Visa Duration: </div>
-      <div class="w-70 rw-50">{{$country->visaduration}} years</div>
-   </div>
-   @endif
-
    <div class="frow w-100 rw-100 mt-2">
       <div class="w-30 rw-50 txt-b">Education: </div>
       <div class="w-70 rw-50">@if($country->edufree) Free @else Not Free @endif</div>
+   </div>
+   <div class="frow w-100 rw-100">
+      <div class="w-30 rw-50 txt-b">Essential: </div>
+      <div class="w-70 rw-50">{{$country->essential}}</div>
    </div>
    <div class="frow w-100 rw-100 mt-2 auto-col">
       <div class="w-30 rw-100 txt-b">Job Description: </div>
@@ -88,6 +76,7 @@ $user=session('user');
          @endif
       </div>
    </div>
+
    <div class="frow w-100 rw-100 mt-2 auto-col">
       <div class="w-30 rw-100 txt-b">Scholarships Offered: </div>
       <div class="fcol w-70 rw-100">

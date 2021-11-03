@@ -30,6 +30,10 @@
             <td class="w-70 txt-s mt-2">@if($country->edufree) Free @else Not Free @endif</td>
          </tr>
          <tr>
+            <td class="w-30 txt-s txt-b mt-2">Essential: </td>
+            <td class="w-70 txt-s mt-2">{{$country->essential}}</td>
+         </tr>
+         <tr>
             <td class="w-30 txt-s txt-b mt-2">Job Desc: </td>
             <td class="w-70 txt-s mt-2">{{$country->jobdesc}}</td>
          </tr>
