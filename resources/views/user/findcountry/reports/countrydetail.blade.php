@@ -17,15 +17,14 @@
    <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Country Report</div>
    <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">100% Free</div>
    <div class="w-100 txt-center txt-s py-2 mx-5">This report is based on your country preference. It is just for better decision making. It has nothing to do with anything else. Following is the complete detail of your selected country.</div>
-   <div class='w-100 txt-l txt-center border-bottom border-1 txt-b mt-2 py-2 mx-5'>
+   <div class='w-100 txt-l txt-center txt-b my-2 py-2 mx-5'>
       {{$country->name}}
+   </div>
+   <div class='w-100 txt-s border-bottom border-top border-1 py-2 mx-5'>
+      {{$country->intro}}
    </div>
    <table class="w-100 mx-5 mt-3">
       <tbody class="">
-         <tr>
-            <td class="w-30 txt-s txt-b mt-2">Introduction: </td>
-            <td class="w-70 txt-s mt-2">{{$country->intro}}</td>
-         </tr>
          <tr>
             <td class="w-30 txt-s txt-b mt-2">Education: </td>
             <td class="w-70 txt-s mt-2">@if($country->edufree) Free @else Not Free @endif</td>
