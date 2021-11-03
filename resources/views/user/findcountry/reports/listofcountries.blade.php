@@ -26,7 +26,7 @@
    <table class="w-100 mx-5">
       <thead>
          <tr>
-            <td class='w-20 txt-s txt-b mt-2 ml-5'>Country</td>
+            <td class='w-30 txt-s txt-b mt-2'>Country</td>
             <td class='w-40 txt-s txt-b mt-2'>Essential</td>
             <td class='w-15 txt-s txt-b mt-2'>Study Cost </td>
             <td class='w-15 txt-s txt-b mt-2'>Living Cost</td>
@@ -36,10 +36,10 @@
          @php $sr=1; @endphp
          @foreach($countries as $country)
          <tr>
-            <td class='w-20 txt-s ml-5'>{{$sr++}}. {{$country->name}} </td>
-            <td class='w-40 txt-s'>{{$country->essential}} </td>
-            <td class='w-15 txt-s'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('minfee')}} k$ </td>
-            <td class='w-15 txt-s'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('minexp')}} k$ </td>
+            <td class='w-30 txt-s'>{{$sr++}}. {{$country->name}} </td>
+            <td class='w-40 txt-xs'>{{$country->essential}} </td>
+            <td class='w-15 txt-xs'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('minfee')}} k$ </td>
+            <td class='w-15 txt-xs'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('minexp')}} k$ </td>
          </tr>
          @endforeach
       </tbody>
