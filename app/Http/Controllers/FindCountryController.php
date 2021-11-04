@@ -92,7 +92,7 @@ class FindCountryController extends Controller
                     $studycosts = $studycosts->havingRaw("studycost < " . $request->maxstudycost);
                 }
 
-                $countries = Country::select('countries.id', 'countries.name', 'studycosts.studycost', 'livingcosts.livingcost')
+                $countries = Country::select('countries.id', 'name', 'essential', 'studycosts.studycost', 'livingcosts.livingcost')
                     ->joinSub($studycosts, 'studycosts', function ($join) {
                         $join->on('studycosts.country_id', '=', 'countries.id');
                     })->joinSub($livingcosts, 'livingcosts', function ($join) {
