@@ -40,8 +40,8 @@
             <td class="w-5 txt-xs txt-center">{{$sr++}}</td>
             <td class='w-25 txt-xs'> {{$country->name}} </td>
             <td class='w-40 txt-xs pr-2'>{{$country->essential}} </td>
-            <td class='w-15 txt-xs txt-right'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('minfee')}} </td>
-            <td class='w-15 txt-xs txt-right'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('minexp')}} </td>
+            <td class='w-15 txt-xs txt-right'>{{$country->studycosts()->min('minfee')}}-{{$country->studycosts()->max('maxfee')}} </td>
+            <td class='w-15 txt-xs txt-right'>{{$country->livingcosts()->min('minexp')}}-{{$country->livingcosts()->max('maxexp')}} </td>
          </tr>
          @endforeach
       </tbody>
