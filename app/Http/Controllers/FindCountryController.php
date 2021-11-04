@@ -68,57 +68,45 @@ class FindCountryController extends Controller
             $course = Course::find($course_id);
             try {
 
-                $livingcosts = Livingcost::selectRaw('country_id, (min(minexp)+max(maxexp))/2 as livingcost')->groupBy('country_id');
-                $studycosts = Studycost::selectRaw('country_id, (min(minfee)+max(maxfee))/2 as studycost')->groupBy('country_id');
+                //compute living costs of each country
+                $livingcosts = Livingcost::selectRaw('country_id, (min(minexp)+max(maxexp))/2 as livingcost')
+                    ->groupBy('country_id');
 
-                //get universities for selected courses
-                $data = Country::join('favcourses', 'country_id', 'countries.id');
-
-                //filter data on the basis of study cost range
-                if (isset($request->minstudycost) && isset($request->maxstudycost)) {
-                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
-                        $join->on('countries.id', 'studycosts.country_id');
-                    })->whereBetween('livingcosts.livingcost', [$request->minstudycost, $request->maxstudycost]);;
-                } else if (isset($request->minstudycost)) {
-                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
-                        $join->on('countries.id', 'studycosts.country_id');
-                    })->where('livingcosts.livingcost', ">=", $request->minstudycost);;
-                } else if (isset($request->maxstudycost)) {
-                    $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
-                        $join->on('countries.id', 'studycosts.country_id');
-                    })->where('livingcosts.livingcost', "<=", $request->maxstudycost);;
-                }
-
-                //filter data on the basis of living cost range
                 if (isset($request->minlivingcost) && isset($request->maxlivingcost)) {
-                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
-                        $join->on('countries.id', 'livingcosts.country_id');
-                    })->whereBetween('livingcosts.livingcost', [$request->minlivingcost, $request->maxlivingcost]);
+                    $livingcosts = $livingcosts->havingRaw("livingcost between " . $request->minlivingcost . " and " . $request->maxlivingcost);
                 } else if (isset($request->minlivingcost)) {
-                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
-                        $join->on('countries.id', 'livingcosts.country_id');
-                    })->where('livingcosts.livingcost', ">=", $request->minlivingcost);
+                    $livingcosts = $livingcosts->havingRaw("livingcost > " . $request->minlivingcost);
                 } else if (isset($request->maxlivingcost)) {
-                    $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
-                        $join->on('countries.id', 'livingcosts.country_id');
-                    })->where('livingcosts.livingcost', "<=", $request->maxlivingcost);
+                    $livingcosts = $livingcosts->havingRaw("livingcost < " . $request->maxlivingcost);
                 }
 
-                //filter on visa required
-                if (isset($request->visafree)) $data = $data->where('visafree', 1);
-                if (isset($request->edufree)) $data = $data->where('edufree', 1);
+                //compute study costs of each country
+                $studycosts = Studycost::selectRaw('country_id, (min(minfee)+max(maxfee))/2 as studycost')
+                    ->groupBy('country_id');
 
-                //finally pluck country ids fulfilling all parameters
-                $country_ids = $data->where('course_id', $course_id)->distinct()->pluck("country_id")->toArray();
+                if (isset($request->minstudycost) && isset($request->maxstudycost)) {
+                    $studycosts = $studycosts->havingRaw("studycost between " . $request->minstudycost . " and " . $request->maxstudycost);
+                } else if (isset($request->minstudycost)) {
+                    $studycosts = $studycosts->havingRaw("studycost > " . $request->minstudycost);
+                } else if (isset($request->maxstudycost)) {
+                    $studycosts = $studycosts->havingRaw("studycost < " . $request->maxstudycost);
+                }
 
-                $countries = Country::whereIn('id', $country_ids)->get();
+                $countries = Country::select('countries.id', 'countries.name', 'studycosts.studycost', 'livingcosts.livingcost')
+                    ->joinSub($studycosts, 'studycosts', function ($join) {
+                        $join->on('studycosts.country_id', '=', 'countries.id');
+                    })->joinSub($livingcosts, 'livingcosts', function ($join) {
+                        $join->on('livingcosts.country_id', '=', 'countries.id');
+                    })
+                    ->get();
 
-                //send courses list as well for grouping purpose
-                //$courses = Course::whereIn('id', $course_ids)->get();
+                //apply filter if free education option is selected
+                if (isset($request->edufree)) $countries = $countries->where('edufree', 1);
+
                 session([
                     'findcountry_countries' => $countries,
                     'findcountry_course' => $course,
-                    // 'countries' => $courses,
+                    'countries' => $countries,
                 ]);
 
                 return view('user.findcountry.search_result', compact('countries'));
@@ -190,5 +178,56 @@ class FindCountryController extends Controller
         $pdf = PDF::loadView("user.findcountry.reports.countrydetail", compact('country'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
+    }
+
+    public function bkup(Request $request)
+    {
+
+        $course_id = $request->course_id;
+        $course = Course::find($course_id);
+        $livingcosts = Livingcost::selectRaw('country_id, (min(minexp)+max(maxexp))/2 as livingcost')->groupBy('country_id');
+        $studycosts = Studycost::selectRaw('country_id, (min(minfee)+max(maxfee))/2 as studycost')->groupBy('country_id');
+
+        //get universities for selected courses
+        $data = Country::join('favcourses', 'country_id', 'countries.id');
+
+        //filter data on the basis of study cost range
+        if (isset($request->minstudycost) && isset($request->maxstudycost)) {
+            $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
+                $join->on('countries.id', 'studycosts.country_id');
+            })->whereBetween('livingcosts.livingcost', [$request->minstudycost, $request->maxstudycost]);;
+        } else if (isset($request->minstudycost)) {
+            $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
+                $join->on('countries.id', 'studycosts.country_id');
+            })->where('livingcosts.livingcost', ">=", $request->minstudycost);;
+        } else if (isset($request->maxstudycost)) {
+            $data = $data->joinSub($studycosts, 'studycosts', function ($join) {
+                $join->on('countries.id', 'studycosts.country_id');
+            })->where('livingcosts.livingcost', "<=", $request->maxstudycost);;
+        }
+
+        //filter data on the basis of living cost range
+        if (isset($request->minlivingcost) && isset($request->maxlivingcost)) {
+            $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                $join->on('countries.id', 'livingcosts.country_id');
+            })->whereBetween('livingcosts.livingcost', [$request->minlivingcost, $request->maxlivingcost]);
+        } else if (isset($request->minlivingcost)) {
+            $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                $join->on('countries.id', 'livingcosts.country_id');
+            })->where('livingcosts.livingcost', ">=", $request->minlivingcost);
+        } else if (isset($request->maxlivingcost)) {
+            $data = $data->joinSub($livingcosts, 'livingcosts', function ($join) {
+                $join->on('countries.id', 'livingcosts.country_id');
+            })->where('livingcosts.livingcost', "<=", $request->maxlivingcost);
+        }
+
+        //filter on visa required
+        if (isset($request->visafree)) $data = $data->where('visafree', 1);
+        if (isset($request->edufree)) $data = $data->where('edufree', 1);
+
+        //finally pluck country ids fulfilling all parameters
+        $country_ids = $data->where('course_id', $course_id)->distinct()->pluck("country_id")->toArray();
+
+        $countries = Country::whereIn('id', $country_ids)->get();
     }
 }
