@@ -117,6 +117,7 @@ Route::resource('counselling', CounsellingController::class);
 Route::resource('findcountry', FindCountryController::class);
 Route::get("findcountry_autosearch", [FindCountryController::class, 'autosearch'])->name("findcountry_autosearch");
 Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
+Route::get("apply", [FindCountryController::class, 'apply'])->name("apply");
 
 Route::get('switch/{mode}', function ($mode) {
     session([

@@ -107,7 +107,7 @@
                @if($country->studycosts()->count()>0)
                <ul>
                   @foreach($country->studycosts() as $studycost)
-                  <li>{{$studycost->level->name}}: {{$studycost->minfee}}- {{$studycost->maxfee}} k$</li>
+                  <li>{{$studycost->level->name}}: {{$studycost->minfee}}- {{$studycost->maxfee}}$</li>
                   @endforeach
                </ul>
                @else
@@ -122,7 +122,7 @@
                @if($country->livingcosts()->count()>0)
                <ul>
                   @foreach($country->livingcosts() as $livingcost)
-                  <li>{{$livingcost->expensetype->name}}: {{$livingcost->minexp}}- {{$livingcost->maxexp}} k$</li>
+                  <li>{{$livingcost->expensetype->name}}: {{$livingcost->minexp}}- {{$livingcost->maxexp}} $</li>
                   @endforeach
                </ul>
                @else

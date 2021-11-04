@@ -107,4 +107,17 @@ class Country extends Model
         $studylevels = Level::whereIn('id', $studylevel_ids)->get();
         return $studylevels;
     }
+    //cost range computation
+    public function studycost()
+    {
+        $min = $this->studycosts()->min('minfee');
+        $max = $this->studycosts()->max('maxfee');
+        return $min . "-" . $max;
+    }
+    public function livingcost()
+    {
+        $min = $this->livingcosts()->min('minexp');
+        $max = $this->livingcosts()->max('maxexp');
+        return $min . "-" . $max;
+    }
 }

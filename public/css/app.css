@@ -485,6 +485,15 @@ body {
   border-radius: 50%;
 }
 
+.circular-30 {
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: solid;
+  border-radius: 50%;
+}
+
 .circular-50 {
   width: 50px;
   height: 50px;
@@ -1215,11 +1224,6 @@ body {
   background-size: 100% 100%;
 }
 
-.bg-fullpage-banner {
-  background-image: url("/images/banner/1.jpg");
-  background-size: 100% 100%;
-}
-
 .navstep {
   display: flex;
   flex-direction: row;
@@ -1451,14 +1455,15 @@ body {
   border-bottom: 2px solid #EAEEF1;
 }
 .user-page .page-navbar .navitem:hover {
-  font-weight: bold;
   cursor: pointer;
 }
 .user-page .page-navbar .navitem.active {
+  font-weight: bold;
+  color: #2A538F;
   border-bottom: 2px solid rgba(42, 83, 143, 0.8);
 }
 .user-page .page-navbar .navitem:not(:first-child) {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .user-page .page-navbar .navitem a {
   color: #333;

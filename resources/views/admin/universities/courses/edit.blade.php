@@ -55,7 +55,7 @@
             <div class="fcol w-20">
                <div class="fancyinput w-100">
                   <input type="number" name='fee' min=0 max='10000' placeholder="Fee" value='{{$unicourse->fee}}' required>
-                  <label>Fee (k$)</label>
+                  <label>Fee ($)</label>
                </div>
             </div>
             <div class="fancyinput w-60 rw-100">

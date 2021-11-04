@@ -23,15 +23,15 @@ $user=session('user');
 
 @section('data')
 <div class="w-100 rw-100 bg-light p-4">
-   <div class="frow w-100 rw-100 mid-right">
-      <a href="{{route('findcountry_countrydetail',$country->id)}}" target="_blank">
-         <div class="frow mid-left txt-s btn-orange">
-            <div class="">Download</div>
-            <div><i data-feather='download' class="feather-small ml-2"></i></div>
-         </div>
+   <div class="frow mid-right">
+      <div class="mr-2 txt-grey">Download</div>
+      <a href="{{route('findcountry_countrydetail',$country->id)}}">
+         <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
       </a>
+
    </div>
-   <div class="frow w-100 rw-100 mt-2">
+   <!-- report content goes here -->
+   <div class="frow w-100 rw-100 mt-4">
       <div class="w-30 rw-50 txt-b">Education: </div>
       <div class="w-70 rw-50">@if($country->edufree) Free @else Not Free @endif</div>
    </div>
@@ -112,7 +112,7 @@ $user=session('user');
          @if($country->studycosts()->count()>0)
          <ul>
             @foreach($country->studycosts() as $studycost)
-            <li>{{$studycost->level->name}}: &nbsp {{$studycost->minfee}}- {{$studycost->maxfee}} k$</li>
+            <li>{{$studycost->level->name}}: &nbsp {{$studycost->minfee}}- {{$studycost->maxfee}} $</li>
             @endforeach
          </ul>
          @else
@@ -126,7 +126,7 @@ $user=session('user');
          @if($country->livingcosts()->count()>0)
          <ul>
             @foreach($country->livingcosts() as $livingcost)
-            <li>{{$livingcost->expensetype->name}}: &nbsp {{$livingcost->minexp}}- {{$livingcost->maxexp}} k$</li>
+            <li>{{$livingcost->expensetype->name}}: &nbsp {{$livingcost->minexp}}- {{$livingcost->maxexp}} $</li>
             @endforeach
          </ul>
          @else
