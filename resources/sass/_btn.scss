@@ -21,6 +21,17 @@
     }
 }
 
+.btn-rounded-outline-orange {
+    background-color: transparent;
+    border: 1px solid $custom-orange;
+    color: $custom-orange;
+    border-radius: 50px;
+    &:hover {
+        background-color: $custom-orange;
+        color: white;
+    }
+}
+
 .btn-rounded-custom-blue {
     background-color: rgb($custom-blue, 0.8);
     color: white;

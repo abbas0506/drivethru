@@ -37,7 +37,9 @@ $user=session('user');
    <div class="frow w-100 rw-100 p-5 centered">
       <div class="mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
       <div class="text-justify">
-         Your profile has been found incomplete. We need your personal as well as academic details for the processing of your applicaiton. So, first complete your profile and then visit this page again. <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
+         Your profile has been found incomplete. We need your personal as well as academic details
+         for the processing of your applicaiton. So, first complete your profile and then visit this page again.
+         <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
       </div>
    </div>
    @elseif($countries->count()>0)

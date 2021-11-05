@@ -51,9 +51,9 @@ Swal.fire({
 <!-- manual search section -->
 <div id='manual_search_section' class="hide">
 
-   <div class="frow txt-m mt-3 rounded">
-      <div class="frow w-50 p-1 bg-info txt-grey centered hoverable" onclick="toggleMe()">Auto Search</div>
-      <div class="frow w-50 p-1 bg-primary txt-white centered">Manual Search <i data-feather='check' class="feather-small ml-2"></i></div>
+   <div class="frow my-2">
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">Auto Search</div>
+      <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>Manual Search </div>
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
@@ -79,9 +79,9 @@ Swal.fire({
 <!-- auto search section -->
 
 <div id='auto_search_section'>
-   <div class="frow txt-m mt-3 rounded">
-      <div class="frow w-50 p-1 bg-primary txt-white centered">Auto Search <i data-feather='check' class="feather-small ml-2"></i></div>
-      <div class="frow w-50 p-1 bg-info txt-grey centered hoverable" onclick="toggleMe()">Manual Search</div>
+   <div class="frow txt-m my-2 rounded">
+      <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3">Auto Search <i data-feather='check' class="feather-small ml-2"></i></div>
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">Manual Search</div>
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>

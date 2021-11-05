@@ -429,6 +429,17 @@ body {
   color: white;
 }
 
+.btn-rounded-outline-orange {
+  background-color: transparent;
+  border: 1px solid #F4782B;
+  color: #F4782B;
+  border-radius: 50px;
+}
+.btn-rounded-outline-orange:hover {
+  background-color: #F4782B;
+  color: white;
+}
+
 .btn-rounded-custom-blue {
   background-color: rgba(42, 83, 143, 0.8);
   color: white;
