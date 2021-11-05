@@ -48,6 +48,8 @@ class FindUniversityByNameController extends Controller
     public function show($id)
     {
         //
+        $university = University::findOrFail($id);
+        return view('user.finduniversities.byname.show', compact('university'));
     }
 
     /**
@@ -88,14 +90,7 @@ class FindUniversityByNameController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        $name = $request->name;
-        $universities = University::where('name', 'like', '%' . $name . '%')->get();
-
-        session([
-            'universities' => $universities,
-            'finduniversity_mode' => 'manual',
-            // 'universities' => $courses,
-        ]);
+        $universities = University::where('name', 'like', '%' . $request->name . '%')->get();
 
         return view('user.finduniversities.byname.searchlist', compact('universities'));
     }

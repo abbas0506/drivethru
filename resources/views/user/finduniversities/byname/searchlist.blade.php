@@ -64,7 +64,7 @@ Swal.fire({
 
    <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
-      <div class="w-40"> Unviersity </div>
+      <div class="w-40"><a href="{{route('finduniversitiesbyname.show', $university->id)}}" class="text-primary"> Unviersity </div>
       <div class="w-20 text-right">Location</div>
       <div class="w-15 text-center">Type</div>
       <div class="w-15 text-right">Fee</div>

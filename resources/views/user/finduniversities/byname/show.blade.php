@@ -12,66 +12,44 @@ $user=session('user');
 @endsection
 
 @section('page-title')
-<div class="page-title">Find University</div>
+<div class="page-title">{{$university->name}}</div>
 @endsection
 
+@section('page-subtitle')
+<div class="frow text-justify txt-s">{{$university->city->name}}</div>
+@endsection
 @section('page-navbar')
-<div class="page-navbar">
-   <x-finduni__navbar activeItem='find'></x-finduni__navbar>
-</div>
 @endsection
-
-@section('graph')
-
-@endsection
-
 
 @section('data')
+<div class="w-100 rw-100 bg-light p-4">
+   <div class="frow mid-right">
+      <div class="mr-2 txt-grey">Download</div>
+      <a href="#">
+         <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
+      </a>
 
-@if ($errors->any())
-<div class="alert alert-danger mt-5">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-<br />
-@elseif(session('success'))
-<script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
-</script>
-@endif
-
-<div class="frow my-2">
-   <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
-   <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable ">By Course</div>
-</div>
-
-<form id='form' action="{{route('fetchuniversitiesbyname')}}" method='get'>
-   @csrf
-   <div class="bg-light p-4 rounded mb-3">
-      <div class="fcol txt-grey w-100 rw-100 mt-2">
-         <ul class="">
-            <li>Part of university name is also acceptable</li>
-         </ul>
-      </div>
-      <div class="frow w-100 rw-100 stretched">
-         <div class="frow w-100 mid-left fancy-search-grow" id='searchinput'>
-            <input type="text" name='name' placeholder="Type university name" oninput="search(event)" style='width:80%!important; margin-left:20px' required>
-            <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-         </div>
-         <div class=""><button type='submit' class="btn btn-sm btn-primary">Search</button></div>
+   </div>
+   <!-- report content goes here -->
+   <div class="frow w-100 rw-100 mt-4">
+      <div class="w-30 rw-50 txt-b">Type: </div>
+      <div class="w-70 rw-50">{{$university->type}}</div>
+   </div>
+   <div class="frow w-100 rw-100">
+      <div class="w-30 rw-50 txt-b">Ranking: </div>
+      <div class="w-70 rw-50">{{$country->rank}}</div>
+   </div>
+   <div class="frow w-100 rw-100 mt-2 auto-col">
+      <div class="w-30 rw-100 txt-b">Courses: </div>
+      <div class="w-70 rw-100">
+         @foreach($university->unicourses() as $unicourse)
+         <li>$unicourse->course->name</li>
+         @endforeach
       </div>
    </div>
-</form>
-@endsection
 
+</div>
+@endsection
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
