@@ -102,7 +102,7 @@ Route::view('user_dashboard', 'user.dashboard');
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 //Route::resource('unicourses', UnicourseController::class);
 Route::resource('finduniversity', FindUniversityController::class);
-Route::get('fetchUniversitiesByCourseId', [FindUniversityController::class, 'fetchUniversitiesByCourseId'])->name('fetchUniversitiesByCourseId');
+Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversities'])->name('fetchUniversities');
 Route::view('finalizeApplication', 'students.national.finalize');
 Route::resource('applications', ApplicationController::class);
 Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.standard')
 @section('topbar')
 <x-user__header activeItem='home'></x-user__header>
 @endsection
@@ -16,7 +16,7 @@ Search Result
 @endsection
 
 @section('page-navbar')
-<x-finduni__navbar activeItem='apply'></x-finduni__navbar>
+<x-finduni__navbar activeItem='report'></x-finduni__navbar>
 @endsection
 
 @section('graph')
@@ -88,83 +88,83 @@ Search Result
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(0).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hide');
-         } else {
-            $(this).removeClass('hide');
-         }
-      });
-   }
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(0).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
+}
 
-   function loadCourses(event) {
+function loadCourses(event) {
 
-      var token = $("meta[name='csrf-token']").attr("content");
-      var level_id = $('#level_id').val();
-      $.ajax({
-         type: 'POST',
-         url: "fetchCoursesByLevelId",
-         data: {
-            "level_id": level_id,
-            "_token": token,
+   var token = $("meta[name='csrf-token']").attr("content");
+   var level_id = $('#level_id').val();
+   $.ajax({
+      type: 'POST',
+      url: "fetchCoursesByLevelId",
+      data: {
+         "level_id": level_id,
+         "_token": token,
 
-         },
-         success: function(response) {
-            //
+      },
+      success: function(response) {
+         //
 
-            $('#course_id').html(response.course_options);
+         $('#course_id').html(response.course_options);
 
-         },
-         error: function(XMLHttpRequest, textStatus, errorThrown) {
-            Toast.fire({
-               icon: 'warning',
-               title: errorThrown
-            });
-         }
-      }); //ajax end
-   }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+         Toast.fire({
+            icon: 'warning',
+            title: errorThrown
+         });
+      }
+   }); //ajax end
+}
 
-   function updateChkCount() {
-      var chkArray = [];
-      var chks = document.getElementsByName('chk');
-      chks.forEach((chk) => {
-         if (chk.checked) chkArray.push(chk.value);
-      })
+function updateChkCount() {
+   var chkArray = [];
+   var chks = document.getElementsByName('chk');
+   chks.forEach((chk) => {
+      if (chk.checked) chkArray.push(chk.value);
+   })
 
-      if (chkArray.length > 0)
-         document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
-      else
-         document.getElementById("chkCount").innerHTML = "";
-   }
+   if (chkArray.length > 0)
+      document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
+   else
+      document.getElementById("chkCount").innerHTML = "";
+}
 
-   function toggleApply() {
-      $('#applyThroughUs').toggleClass('hide');
-      $('#cancelApply').toggleClass('hide');
-      $('#applyNow').toggleClass('hide');
-      $('.chk-apply').each(function() {
-         $(this).toggleClass('hide');
-      });
-   }
+function toggleApply() {
+   $('#applyThroughUs').toggleClass('hide');
+   $('#cancelApply').toggleClass('hide');
+   $('#applyNow').toggleClass('hide');
+   $('.chk-apply').each(function() {
+      $(this).toggleClass('hide');
+   });
+}
 
-   function postUnicourseIds() {
-      var token = $("meta[name='csrf-token']").attr("content");
+function postUnicourseIds() {
+   var token = $("meta[name='csrf-token']").attr("content");
 
-      var ids = [];
-      var chks = document.getElementsByName('chk');
-      chks.forEach((chk) => {
-         if (chk.checked) ids.push(chk.value);
-      })
+   var ids = [];
+   var chks = document.getElementsByName('chk');
+   chks.forEach((chk) => {
+      if (chk.checked) ids.push(chk.value);
+   })
 
-      $('#_ids').val(ids);
-      $('#applicationForm').submit();
-   }
+   $('#_ids').val(ids);
+   $('#applicationForm').submit();
+}
 
-   function showProfileRequired() {
-      $('#profileRequired').toggleClass('hide');
-   }
+function showProfileRequired() {
+   $('#profileRequired').toggleClass('hide');
+}
 </script>
 @endsection

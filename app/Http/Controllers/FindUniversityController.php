@@ -46,11 +46,7 @@ class FindUniversityController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'ids' => 'required',
-        ]);
-
-        echo $request->ids;
+        //
         // return response()->json(['msg' => $request->ids]);
     }
 
@@ -98,44 +94,60 @@ class FindUniversityController extends Controller
     {
         //
     }
-    public function fetchUniversitiesByCourseId(Request $request)
+    public function fetchUniversities(Request $request)
     {
-        $request->validate([
-            'course_id1' => 'required',
-            'mode' => 'required',
-        ]);
+        if (isset($request->manual)) {
+            //manual search request
+            $university = $request->university;
+            $universities = University::where('name', 'like', '%' . $university . '%')->get();
 
-        $course_ids = collect();
-        if (isset($request->course_id1)) $course_ids->add($request->course_id1);
-        if (isset($request->course_id2)) $course_ids->add($request->course_id2);
-        if (isset($request->course_id3)) $course_ids->add($request->course_id3);
-
-        try {
-            //get universities for selected courses
-            $data = University::join('unicourses', 'unicourses.university_id', 'universities.id')
-                ->join('cities', 'cities.id', 'city_id')
-                ->join('courses', 'courses.id', 'course_id')
-                ->whereIn('course_id', $course_ids);
-            //apply optional filters
-            if (isset($request->city_id)) $data = $data->where('city_id', $request->city_id);
-            if (isset($request->type)) $data = $data->where('type', $request->type);
-            if (isset($request->minfee)) $data = $data->where('fee', ">=", $request->minfee);
-            if (isset($request->maxfee)) $data = $data->where('fee', "<=", $request->maxfee);
-            if ($request->mode == 'expert')
-                $data = $data->orderBy('rank')->limit(2);
-            //extract required columns only
-            $data = $data->get(['universities.id as university_id', 'universities.name as university', 'type', 'fee', 'cities.name as city', 'courses.id as course_id', 'closing', 'lastmerit']);
-
-            //send courses list as well for grouping purpose
-            $courses = Course::whereIn('id', $course_ids)->get();
             session([
-                'data' => $data,
-                'courses' => $courses,
+                'universities' => $universities,
+                'finduniversity_mode' => 'manual',
+                // 'universities' => $courses,
             ]);
-            return view('user.finduniversity.edit', compact('data', 'courses'));
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage());
-            // something went wrong
+
+            return view('user.finduniversity.listofuniversities', compact('universities'));
+        } else {
+            // auto search request
+            $request->validate([
+                'course_id1' => 'required',
+            ]);
+
+            $course_ids = collect();
+            if (isset($request->course_id1)) $course_ids->add($request->course_id1);
+            if (isset($request->course_id2)) $course_ids->add($request->course_id2);
+            if (isset($request->course_id3)) $course_ids->add($request->course_id3);
+
+            try {
+                //get universities for selected courses
+                $data = University::join('unicourses', 'unicourses.university_id', 'universities.id')
+                    ->join('cities', 'cities.id', 'city_id')
+                    ->join('courses', 'courses.id', 'course_id')
+                    ->whereIn('course_id', $course_ids);
+                //apply optional filters
+                if (isset($request->city_id)) $data = $data->where('city_id', $request->city_id);
+                if (isset($request->type)) $data = $data->where('type', $request->type);
+                if (isset($request->minfee)) $data = $data->where('fee', ">=", $request->minfee);
+                if (isset($request->maxfee)) $data = $data->where('fee', "<=", $request->maxfee);
+
+
+                if ($request->mode == 'expert')
+                    $data = $data->orderBy('rank')->limit(2);
+                //extract required columns only
+                $data = $data->get(['universities.id as university_id', 'universities.name as university', 'type', 'fee', 'cities.name as city', 'courses.id as course_id', 'closing', 'lastmerit']);
+
+                //send courses list as well for grouping purpose
+                $courses = Course::whereIn('id', $course_ids)->get();
+                session([
+                    'data' => $data,
+                    'courses' => $courses,
+                ]);
+                return view('user.finduniversity.listofuniversities', compact('data', 'courses'));
+            } catch (Exception $e) {
+                return redirect()->back()->withErrors($e->getMessage());
+                // something went wrong
+            }
         }
     }
     public function download()
