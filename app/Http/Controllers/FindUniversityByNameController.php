@@ -97,6 +97,6 @@ class FindUniversityByNameController extends Controller
             // 'universities' => $courses,
         ]);
 
-        return view('user.finduniversities.byname.listofuniversities', compact('universities'));
+        return view('user.finduniversities.byname.searchlist', compact('universities'));
     }
 }
