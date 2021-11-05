@@ -44,7 +44,7 @@
    </div>
    @if(session('mode')==0)
    <div @if($activeItem=='findUni' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('finduniversity.index')}}">
+      <a href="{{route('finduniversitiesbyname.index')}}">
          <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
          <div class="navitem-link">Find University</div>
       </a>

@@ -34,6 +34,7 @@ use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountryController;
+use App\Http\Controllers\FindUniversityByNameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,4 +128,7 @@ Route::get('switch/{mode}', function ($mode) {
 });
 
 Route::view('changepw', 'user.profile.changepw');
+
+Route::resource('finduniversitiesbyname', FindUniversityByNameController::class);
+Route::get('fetchuniversitiesbyname', [FindUniversityByNameController::class, 'fetch'])->name("fetchuniversitiesbyname");
 //});
