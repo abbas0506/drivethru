@@ -130,13 +130,17 @@ $page-body-height: 80vh;
             align-items: center;
             padding: 0px 0px 5px 0px;
             border-bottom: 2px solid $custom-light;
-            &:hover {
-                cursor: pointer;
-            }
             &.active {
                 font-weight: bold;
                 color: $custom-blue;
                 border-bottom: 2px solid rgb($custom-blue, 0.8);
+            }
+            &:first-child {
+                & a {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
             }
             &:not(:first-child) {
                 margin-left: 15px;

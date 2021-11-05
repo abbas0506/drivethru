@@ -1465,13 +1465,13 @@ body {
   padding: 0px 0px 5px 0px;
   border-bottom: 2px solid #EAEEF1;
 }
-.user-page .page-navbar .navitem:hover {
-  cursor: pointer;
-}
 .user-page .page-navbar .navitem.active {
   font-weight: bold;
   color: #2A538F;
   border-bottom: 2px solid rgba(42, 83, 143, 0.8);
+}
+.user-page .page-navbar .navitem:first-child a:hover {
+  cursor: pointer;
 }
 .user-page .page-navbar .navitem:not(:first-child) {
   margin-left: 15px;

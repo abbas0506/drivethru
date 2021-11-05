@@ -20,11 +20,19 @@
 
    <div class="user-profile-id">{{$user->id}}</div>
 
-   <a href="{{route('profiles.index')}}">
+   @if(session('mode')==1)
+   <a href="{{route('findcountry.index')}}">
       <div class="frow centered txt-smoke relative">
          <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Report</div>
       </div>
    </a>
+   @else
+   <a href="{{route('finduniversity.index')}}">
+      <div class="frow centered txt-smoke relative">
+         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Report</div>
+      </div>
+   </a>
+   @endif
 
    <span class="w-75 hr my-3"></span>
 

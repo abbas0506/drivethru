@@ -107,9 +107,9 @@ Swal.fire({
          </div>
 
          <div class="frow stretched mt-3 auto-col">
-            <div class="frow mid-left w-48 rw-100 rmb-2">
+            <div class="frow mid-left w-100 rw-100 rmb-2">
                <input type='checkbox' name='edufree' class="mr-2">
-               Show free education countries only
+               Filter only those countries where education is free
             </div>
          </div>
          <div class="frow stretched mt-3 auto-col">
