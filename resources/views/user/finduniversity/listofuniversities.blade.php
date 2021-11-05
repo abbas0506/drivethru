@@ -67,8 +67,8 @@ $user=session('user');
       <div class="w-10">{{$sr++}} </div>
       <div class="w-40"><a href="#" class="text-primary"> {{$university->name}}</a></div>
       <div class="w-20 text-right"> {{$university->city->name}}</div>
-      <div class="w-20 text-center">{{$university->type}}</div>
-      <div class="w-20 text-right">fee</div>
+      <div class="w-15 text-center">{{$university->type}}</div>
+      <div class="w-15 text-right">fee</div>
    </div>
    @endforeach
    @else
