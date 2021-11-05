@@ -17,7 +17,7 @@ $user=session('user');
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-finduni__navbar activeItem='preference'></x-finduni__navbar>
+   <x-finduni__navbar activeItem='find'></x-finduni__navbar>
 </div>
 @endsection
 

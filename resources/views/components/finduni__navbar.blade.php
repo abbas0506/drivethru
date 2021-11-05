@@ -1,7 +1,7 @@
 <div @if($activeItem=='preference' ) class="navitem txt-s active" @else class="navitem txt-s" @endif>
    <a href="{{route('finduniversity.index')}}">
       <div class="frow top-mid">
-         <div>Set Preference</div>
+         <div>Find</div>
       </div>
    </a>
 </div>
