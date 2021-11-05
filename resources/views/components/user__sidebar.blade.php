@@ -22,7 +22,7 @@
 
    <a href="{{route('profiles.index')}}">
       <div class="frow centered txt-smoke relative">
-         <div class="badge badge-info txt-s p-2">Get Report</div>
+         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Report</div>
       </div>
    </a>
 
