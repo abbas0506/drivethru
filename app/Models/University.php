@@ -53,7 +53,7 @@ class University extends Model
     }
     public function unicourses()
     {
-        return $this->hasMany(Unicourse::class, 'university_id');
+        return $this->hasMany(Unicourse::class, 'university_id')->get();
     }
     public function progress()
     {

@@ -37,14 +37,18 @@ $user=session('user');
    </div>
    <div class="frow w-100 rw-100">
       <div class="w-30 rw-50 txt-b">Ranking: </div>
-      <div class="w-70 rw-50">{{$country->rank}}</div>
+      <div class="w-70 rw-50">{{$university->rank}}</div>
    </div>
    <div class="frow w-100 rw-100 mt-2 auto-col">
       <div class="w-30 rw-100 txt-b">Courses: </div>
       <div class="w-70 rw-100">
+         @if($university->unicourses()->count()>0)
          @foreach($university->unicourses() as $unicourse)
-         <li>$unicourse->course->name</li>
+         <li>{{$unicourse->course->name}}</li>
          @endforeach
+         @else
+         <div class="txt-s txt-orange">List of courses not available</div>
+         @endif
       </div>
    </div>
 
