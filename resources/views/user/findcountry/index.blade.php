@@ -103,7 +103,7 @@ Swal.fire({
       <div class="bg-light mt-3 p-4 rounded" id='optional'>
          <div class="frow txt-s txt-orange mb-2">
             <div><i data-feather='filter' class="feather-xsmall mr-2"></i></div>
-            <div class="text-center">Optional Parameters</div>
+            <div class="text-center">Advance search options (optional)</div>
          </div>
 
          <div class="frow stretched mt-3 auto-col">
