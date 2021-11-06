@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\University;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class FindUniversityByNameController extends Controller
 {
@@ -49,6 +50,9 @@ class FindUniversityByNameController extends Controller
     {
         //
         $university = University::findOrFail($id);
+        session([
+            'university' => $university,
+        ]);
         return view('user.finduniversities.byname.show', compact('university'));
     }
 
@@ -93,5 +97,12 @@ class FindUniversityByNameController extends Controller
         $universities = University::where('name', 'like', '%' . $request->name . '%')->get();
 
         return view('user.finduniversities.byname.searchlist', compact('universities'));
+    }
+    public function report()
+    {
+        $university = session('university');
+        $pdf = PDF::loadView('user.finduniversities.byname.report', compact('university'));
+        $pdf->output();
+        return $pdf->setPaper('a4')->stream();
     }
 }

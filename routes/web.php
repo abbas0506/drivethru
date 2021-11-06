@@ -131,4 +131,6 @@ Route::view('changepw', 'user.profile.changepw');
 
 Route::resource('finduniversitiesbyname', FindUniversityByNameController::class);
 Route::get('fetchuniversitiesbyname', [FindUniversityByNameController::class, 'fetch'])->name("fetchuniversitiesbyname");
+Route::get('downloaduniversityreport', [FindUniversityByNameController::class, 'report'])->name("downloaduniversityreport");
+
 //});
