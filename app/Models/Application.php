@@ -28,15 +28,15 @@ class Application extends Model
         $universities = University::whereIn('id', $university_ids)->get();
         return $universities;
     }
-    public function courses()
-    {
-        $course_ids = NationalApplication::where('application_id', $this->id)->distinct()->pluck('course_id')->toArray();
-        $courses = Course::whereIn('id', $course_ids)->get();
-        return $courses;
-    }
+    // public function courses()
+    // {
+    //     $course_ids = NationalApplication::where('application_id', $this->id)->distinct()->pluck('course_id')->toArray();
+    //     $courses = Course::whereIn('id', $course_ids)->get();
+    //     return $courses;
+    // }
     public function international_applications()
     {
-        return $this->hasMany(NationalApplication::class, 'application_id')->get();
+        return $this->hasMany(InternationalApplication::class, 'application_id')->get();
     }
     public function countries()
     {

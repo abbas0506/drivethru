@@ -97,7 +97,7 @@ Route::resource('livingcosts', LivingcostController::class);
 
 //student middleware
 //Route::group(['middleware' => 'student'], function () {
-Route::view('user_dashboard', 'user.dashboard');
+Route::view('user_dashboard', 'user.national.dashboard');
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 //Route::resource('unicourses', UnicourseController::class);
 Route::resource('finduniversity', FindUniversityController::class);
@@ -122,7 +122,8 @@ Route::get('switch/{mode}', function ($mode) {
     session([
         'mode' => $mode,
     ]);
-    return redirect('user_dashboard');
+    if ($mode == 0) return view('user.national.dashboard');
+    if ($mode == 1) return view('user.international.dashboard');
 });
 
 Route::view('changepw', 'user.profile.personal.changepw');

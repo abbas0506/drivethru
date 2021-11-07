@@ -5,7 +5,6 @@
 
 @php
 $user=session('user');
-$pic_url=url(asset("images/users/".$user->pic));
 @endphp
 
 @section('sidebar')
@@ -13,23 +12,16 @@ $pic_url=url(asset("images/users/".$user->pic));
 @endsection
 
 <style>
-   .bg-national-mini {
-      background-image: url("{{asset('images/bg/national.jpg')}}");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-size: 100% 100%;
-   }
-
-   .bg-international-mini {
-      background-image: url("{{asset('images/bg/international.jpg')}}");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-size: 100% 100%;
-   }
+.bg-international-mini {
+   background-image: url("{{asset('images/bg/international.jpg')}}");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-size: 100% 100%;
+}
 </style>
 
 @section('page-header')
-<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke @if(session('mode')==0) bg-national-mini @else bg-international-mini @endif" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
+<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-international-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
 @endsection
 
 @section('data')
