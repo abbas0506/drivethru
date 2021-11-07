@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InternationalApplication;
+use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class InternationalApplicationController extends Controller
 {
@@ -36,6 +39,30 @@ class InternationalApplicationController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'ids' => 'required',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $user = session('user');
+            if ($request->ids && $user) {
+
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
+                $ids = explode(',', $request->ids);
+
+                foreach ($ids as $id) {
+                    //$id_parts = explode('-', $id);
+                    InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $request->course_id]);
+                }
+            }
+            DB::commit();
+            return redirect()->route("international_applications_success", ['id' => $application->id]);
+        } catch (Exception $ex) {
+            return redirect()->back()->withErrors('error', $ex->getMessage());
+            DB::rollBack();
+        }
     }
 
     /**

@@ -97,8 +97,22 @@ Route::resource('livingcosts', LivingcostController::class);
 
 //student middleware
 //Route::group(['middleware' => 'student'], function () {
-Route::view('national_dashboard', 'user.national.dashboard');
-Route::view('international_dashboard', 'user.international.dashboard');
+Route::get('user_dashboard', function () {
+    $mode = session('mode');
+    if ($mode == 0) return view('user.dashboard');
+    if ($mode == 1) return view('user.dashboard');
+});
+Route::get('switch/{mode}', function ($mode) {
+    session([
+        'mode' => $mode,
+    ]);
+    if ($mode == 0) return view('user.dashboard');
+    if ($mode == 1) return view('user.dashboard');
+});
+
+
+
+Route::view('international_dashboard', 'user.dashboard');
 
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 //Route::resource('unicourses', UnicourseController::class);
@@ -120,18 +134,13 @@ Route::get("findcountry_autosearch", [FindCountryController::class, 'autosearch'
 Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
 Route::get("apply", [FindCountryController::class, 'apply'])->name("apply");
 
-Route::get('switch/{mode}', function ($mode) {
-    session([
-        'mode' => $mode,
-    ]);
-    if ($mode == 0) return redirect('national_dashboard');
-    if ($mode == 1) return redirect('international_dashboard');
-});
-
 Route::view('changepw', 'user.profile.personal.changepw');
 
 Route::resource('finduniversitiesbyname', FindUniversityByNameController::class);
 Route::get('finduniversitiesbyname_fetch', [FindUniversityByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");
 Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController::class, 'report'])->name("finduniversitiesbyname_report");
 Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_apply");
+Route::resource('international_applications', InternationalApplicationController::class);
+Route::get('international_applications_success', [InternationalApplicationController::class, 'success'])->name('international_applications_success');
+
 //});

@@ -68,7 +68,7 @@ $user=session('user');
 
 @endsection
 
-<form action="{{route('applications.store')}}" method="post" id='applicationForm'>
+<form action="{{route('international_applications.store')}}" method="post" id='applicationForm'>
    @csrf
    <input type="hidden" name='course_id' value="{{$course->id}}">
    <input type="hidden" name='ids' id='_ids'>
