@@ -181,55 +181,11 @@ class UniversityController extends Controller
         }
     }
 
-
-
-    public function uni_courses()
-    {
-        $university = session('university');
-        $courses = Course::all();
-        $faculties = Faculty::all();
-        return view('admin.universities.courses', compact('university', 'faculties', 'courses'));
-    }
-
-
-
-
-
-    public function fetchLevelsAndCoursesByFacultyId(Request $request)
-    {
-        $course_ids = Course::where('faculty_id', $request->faculty_id)->distinct()->get('level_id');
-
-        $level_options = "";
-        foreach ($course_ids as $course) {
-            $level_options .= "<option value='" . $course->level_id . "'>" . $course->level->name . "</option>";
-        }
-
-        $course_options = "";
-        if ($course_ids->count() > 0) {
-            $first_course_level_id = $course_ids->first()->level_id;
-            $courses = Course::where('faculty_id', $request->faculty_id)
-                ->where('level_id', $first_course_level_id) //select first level and load corresponding courses
-                ->get();
-            foreach ($courses as $course) {
-                $course_options .= "<option value='" . $course->id . "'>" . $course->name . "</option>";
-            }
-        }
-        //$msg = "faculty" . $request->faculty_id;
-        return response()->json(['level_options' => $level_options, 'course_options' => $course_options]);
-    }
-
-    public function fetchCoursesByFacultyAndLevelId(Request $request)
-    {
-        //select course for given faculty and level ids
-        $courses = Course::where('faculty_id', $request->faculty_id)
-            ->where('level_id', $request->level_id)->get();
-
-        //prepare courses list
-        $course_options = "";
-        foreach ($courses as $course) {
-            $course_options .= "<option value='" . $course->id . "'>" . $course->name . "</option>";
-        }
-
-        return response()->json(['course_options' => $course_options]);
-    }
+    // public function uni_courses()
+    // {
+    //     $university = session('university');
+    //     $courses = Course::all();
+    //     $faculties = Faculty::all();
+    //     return view('admin.universities.courses', compact('university', 'faculties', 'courses'));
+    // }
 }

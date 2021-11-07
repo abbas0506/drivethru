@@ -18,21 +18,30 @@ class Application extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function appdetails()
+    public function national_applications()
     {
-        return $this->hasMany(Appdetail::class, 'application_id')->get();
+        return $this->hasMany(NationalApplication::class, 'application_id')->get();
     }
     public function universities()
     {
-        $university_ids = Appdetail::where('application_id', $this->id)->distinct()->pluck('university_id')->toArray();
+        $university_ids = NationalApplication::where('application_id', $this->id)->distinct()->pluck('university_id')->toArray();
         $universities = University::whereIn('id', $university_ids)->get();
         return $universities;
     }
     public function courses()
     {
-        $course_ids = Appdetail::where('application_id', $this->id)->distinct()->pluck('course_id')->toArray();
+        $course_ids = NationalApplication::where('application_id', $this->id)->distinct()->pluck('course_id')->toArray();
         $courses = Course::whereIn('id', $course_ids)->get();
         return $courses;
     }
-    // public $timestamps = false;
+    public function international_applications()
+    {
+        return $this->hasMany(NationalApplication::class, 'application_id')->get();
+    }
+    public function countries()
+    {
+        $country_ids = InternationalApplication::where('application_id', $this->id)->distinct()->pluck('country_id')->toArray();
+        $countries = Country::whereIn('id', $country_ids)->get();
+        return $countries;
+    }
 }

@@ -19,7 +19,7 @@ class AcademicController extends Controller
     public function index()
     {
         //
-        return view('user.academics.index');
+        return view('user.profile.academics.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class AcademicController extends Controller
             $years->add($year);
         }
 
-        return view('user.academics.create', compact('levels', 'years'));
+        return view('user.profile.academics.create', compact('levels', 'years'));
     }
 
     /**
@@ -102,7 +102,7 @@ class AcademicController extends Controller
             $years->add($year);
         }
 
-        return view('user.academics.edit', compact('academic', 'years'));
+        return view('user.profile.academics.edit', compact('academic', 'years'));
     }
 
     /**

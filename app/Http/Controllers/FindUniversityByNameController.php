@@ -48,7 +48,7 @@ class FindUniversityByNameController extends Controller
      */
     public function show($id)
     {
-        //
+        //show specific university data
         $university = University::findOrFail($id);
         session([
             'university' => $university,
@@ -91,6 +91,7 @@ class FindUniversityByNameController extends Controller
     }
     public function fetch(Request $request)
     {
+        //fetch list of matching universities 
         $request->validate([
             'name' => 'required',
         ]);
@@ -98,11 +99,18 @@ class FindUniversityByNameController extends Controller
 
         return view('user.finduniversities.byname.searchlist', compact('universities'));
     }
-    public function report()
+    public function report($id)
     {
-        $university = session('university');
+        //preview report
+        $university = University::findOrFail($id);
         $pdf = PDF::loadView('user.finduniversities.byname.report', compact('university'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
+    }
+    public function apply($id)
+    {
+        //return apply page
+        $university = University::findOrFail($id);
+        return view('user.finduniversities.byname.apply', compact('university'));
     }
 }

@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
@@ -17,7 +17,7 @@ $user=session('user');
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-finduni__navbar activeItem='preference'></x-finduni__navbar>
+   <x-finduniversity__navbar activeItem='preference'></x-finduniversity__navbar>
 </div>
 @endsection
 
@@ -39,12 +39,12 @@ $user=session('user');
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -207,37 +207,37 @@ Swal.fire({
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function toggleMe() {
-   $('#manual_search_section').toggleClass('hide');
-   $('#auto_search_section').toggleClass('hide');
-}
+   function toggleMe() {
+      $('#manual_search_section').toggleClass('hide');
+      $('#auto_search_section').toggleClass('hide');
+   }
 
-function loadCourses(event, priority) {
-   var token = $("meta[name='csrf-token']").attr("content");
-   var faculty_id = event.target.value;
-   $.ajax({
-      type: 'POST',
-      url: "fetchCoursesByFacultyId",
-      data: {
-         "faculty_id": faculty_id,
-         "_token": token,
+   function loadCourses(event, priority) {
+      var token = $("meta[name='csrf-token']").attr("content");
+      var faculty_id = event.target.value;
+      $.ajax({
+         type: 'POST',
+         url: "fetchCoursesByFacultyId",
+         data: {
+            "faculty_id": faculty_id,
+            "_token": token,
 
-      },
-      success: function(response) {
-         //
+         },
+         success: function(response) {
+            //
 
-         if (priority == 1) $('#course_id1').html(response.course_options);
-         if (priority == 2) $('#course_id2').html(response.course_options);
-         if (priority == 3) $('#course_id3').html(response.course_options);
+            if (priority == 1) $('#course_id1').html(response.course_options);
+            if (priority == 2) $('#course_id2').html(response.course_options);
+            if (priority == 3) $('#course_id3').html(response.course_options);
 
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         Toast.fire({
-            icon: 'warning',
-            title: errorThrown
-         });
-      }
-   }); //ajax end
-}
+         },
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+            Toast.fire({
+               icon: 'warning',
+               title: errorThrown
+            });
+         }
+      }); //ajax end
+   }
 </script>
 @endsection

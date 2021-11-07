@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppdetailsTable extends Migration
+class CreateInternationalApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAppdetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('appdetails', function (Blueprint $table) {
+        Schema::create('international_applications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('application_id');
-            $table->unsignedBigInteger('university_id');
+            $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('course_id');
-            $table->unique(['application_id', 'university_id', 'course_id']);
+            //$table->unique(['application_id', 'country_id', 'course_id']);
             $table->timestamps();
 
             $table->foreign('application_id')
@@ -27,15 +27,15 @@ class CreateAppdetailsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('university_id')
+            $table->foreign('country_id')
                 ->references('id')
-                ->on('universities')
+                ->on('countries')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->foreign('course_id')
                 ->references('id')
-                ->on('courses')
+                ->on('countries')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -48,6 +48,6 @@ class CreateAppdetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appdetails');
+        Schema::dropIfExists('international_applications');
     }
 }

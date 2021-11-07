@@ -9,7 +9,7 @@ $user=session('user');
 
 @section('sidebar')
 @if(session('mode')==0)
-<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @else
 <x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
 @endif

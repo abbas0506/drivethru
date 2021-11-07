@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
@@ -16,7 +16,7 @@ Find University
 @endsection
 
 @section('page-navbar')
-<x-finduni__navbar activeItem='preference'></x-finduni__navbar>
+<x-finduniversity__navbar activeItem='preference'></x-finduniversity__navbar>
 @endsection
 
 @section('graph')

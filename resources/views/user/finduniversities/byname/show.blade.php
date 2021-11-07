@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
@@ -25,7 +25,7 @@ $user=session('user');
 <div class="w-100 rw-100 bg-light px-4">
    <div class="frow w-100 rw-100 p-3 border-bottom mid-right">
       <div class="frow">
-         <a href="{{route('downloaduniversityreport')}}" target="_blank">
+         <a href="{{route('finduniversitiesbyname_report',$university)}}" target="_blank">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-2">Download Free Report</div>
@@ -33,7 +33,7 @@ $user=session('user');
       <div class="mx-4">|</div>
 
       <div class="frow">
-         <a href="{{route('apply')}}" target="_blank">
+         <a href="{{route('finduniversitiesbyname_apply',$university)}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-2">Apply Through Us</div>

@@ -23,14 +23,14 @@
    <div class='w-100 txt-s border-bottom border-top border-1 py-2 mx-5'>
       This is a {{$university->type}} university, situated at {{$university->city->name}}. Its international ranking is {{$university->rank}}. Following is the detail of its faculties and courses.
    </div>
-   <table class="w-100 mx-5 mt-3">
+   <table class="w-100 mx-5">
       <tbody class="">
          @foreach($university->faculties() as $faculty)
          <tr>
-            <td class="w-100">{{$faculty->name}}</td>
+            <td class="w-100 mt-3">{{$faculty->name}}</td>
          </tr>
          <tr class="mt-2 mx-4">
-            <td class="w-30 txt-s txt-grey ml-3">Course</td>
+            <td class="w-30 txt-s txt-grey">Course</td>
             <td class="w-30 txt-s txt-grey">Criteria</td>
             <td class="w-10 txt-s txt-grey">Fee</td>
             <td class="w-20 txt-s txt-grey">Last Merit</td>
@@ -38,7 +38,7 @@
          </tr>
          @foreach($faculty->unicourses() as $unicourse)
          <tr>
-            <td class="w-30 txt-s ml-3">{{$unicourse->course->name}}</td>
+            <td class="w-30 txt-s">{{$unicourse->course->name}}</td>
             <td class="w-30 txt-s">{{$unicourse->criteria}}</td>
             <td class="w-10 txt-s">{{$unicourse->fee}}</td>
             <td class="w-20 txt-s">{{$unicourse->lastmerit}}</td>

@@ -79,8 +79,6 @@ Route::resource('papers', PaperController::class);
 
 Route::resource('universities', UniversityController::class);
 Route::resource('unicourses', UnicourseController::class);
-Route::post('fetchLevelsAndCoursesByFacultyId', [UniversityController::class, 'fetchLevelsAndCoursesByFacultyId'])->name('fetchLevelsAndCoursesByFacultyId');
-Route::post('fetchCoursesByFacultyAndLevelId', [UniversityController::class, 'fetchCoursesByFacultyAndLevelId'])->name('fetchCoursesByFacultyAndLevelId');
 Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
 
 //Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
@@ -111,7 +109,7 @@ Route::get("application_download", [ApplicationController::class, 'download'])->
 Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
 Route::resource('profiles', ProfileController::class);
 Route::resource('academics', AcademicController::class);
-Route::view('change_pic', 'user.profile.change_pic')->name('change_pic');
+Route::view('change_pic', 'user.profile.personal.change_pic')->name('change_pic');
 Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
 Route::resource('counselling', CounsellingController::class);
@@ -127,10 +125,10 @@ Route::get('switch/{mode}', function ($mode) {
     return redirect('user_dashboard');
 });
 
-Route::view('changepw', 'user.profile.changepw');
+Route::view('changepw', 'user.profile.personal.changepw');
 
 Route::resource('finduniversitiesbyname', FindUniversityByNameController::class);
-Route::get('fetchuniversitiesbyname', [FindUniversityByNameController::class, 'fetch'])->name("fetchuniversitiesbyname");
-Route::get('downloaduniversityreport', [FindUniversityByNameController::class, 'report'])->name("downloaduniversityreport");
-
+Route::get('finduniversitiesbyname_fetch', [FindUniversityByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");
+Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController::class, 'report'])->name("finduniversitiesbyname_report");
+Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_apply");
 //});

@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Application;
-use App\Models\Appdetail;
-use App\Models\Fappdetail;
-
+use App\Models\InternationalApplication;
+use App\Models\NationalApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
-//use Barryvdh\DomPDF\PDF as DomPDFPDF;
-//use Barryvdh\DomPDF\PDF as PDF;
-//use PDF;
 use Exception;
 
 class ApplicationController extends Controller
@@ -62,14 +57,13 @@ class ApplicationController extends Controller
                 $ids = explode(',', $request->ids);
                 if (session('mode') == 0) { //national mode
                     foreach ($ids as $id) {
-                        $id_parts = explode('-', $id);
-                        Appdetail::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
+                        //NationalApplication::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
                     }
                 }
                 if (session('mode') == 1) { //international mode
                     foreach ($ids as $id) {
-                        $id_parts = explode('-', $id);
-                        Fappdetail::create(['application_id' => $application->id, 'country_id' => $id_parts[0]]);
+                        //$id_parts = explode('-', $id);
+                        InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $request->course_id]);
                     }
                 }
             }

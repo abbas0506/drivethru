@@ -49,11 +49,11 @@ Swal.fire({
 @endif
 
 <!-- manual search section -->
-<div id='manual_search_section' class="hide">
+<div id='by_name_section'>
 
    <div class="frow my-2">
-      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">Auto Search</div>
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>Manual Search </div>
+      <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
@@ -78,10 +78,11 @@ Swal.fire({
 
 <!-- auto search section -->
 
-<div id='auto_search_section'>
+<div id='by_course_section' class="hide">
    <div class="frow txt-m my-2 rounded">
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3">Auto Search <i data-feather='check' class="feather-small ml-2"></i></div>
-      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">Manual Search</div>
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">By Name</div>
+      <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>By Course</div>
+
    </div>
 
    <form id='form' action="{{route('findcountry.store')}}" method='post'>
@@ -146,8 +147,8 @@ Swal.fire({
 @section('script')
 <script lang="javascript">
 function toggleMe() {
-   $('#manual_search_section').toggleClass('hide');
-   $('#auto_search_section').toggleClass('hide');
+   $('#by_name_section').toggleClass('hide');
+   $('#by_course_section').toggleClass('hide');
 }
 </script>
 @endsection

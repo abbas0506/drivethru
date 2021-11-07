@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findUni' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
@@ -17,7 +17,7 @@ $user=session('user');
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-finduni__navbar activeItem='find'></x-finduni__navbar>
+   <x-finduniversity__navbar activeItem='find'></x-finduniversity__navbar>
 </div>
 @endsection
 
@@ -39,12 +39,12 @@ $user=session('user');
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -53,7 +53,7 @@ Swal.fire({
    <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable ">By Course</div>
 </div>
 
-<form id='form' action="{{route('fetchuniversitiesbyname')}}" method='get'>
+<form id='form' action="{{route('finduniversitiesbyname_fetch')}}" method='get'>
    @csrf
    <div class="bg-light p-4 rounded mb-3">
       <div class="fcol txt-grey w-100 rw-100 mt-2">

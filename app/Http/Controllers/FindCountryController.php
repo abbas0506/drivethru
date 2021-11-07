@@ -57,7 +57,7 @@ class FindCountryController extends Controller
                 // 'countries' => $courses,
             ]);
 
-            return view('user.findcountry.listofcountries', compact('countries'));
+            return view('user.findcountry.searchlist', compact('countries'));
         } else {
             // auto search request
             $request->validate([
@@ -109,7 +109,7 @@ class FindCountryController extends Controller
                     'countries' => $countries,
                 ]);
 
-                return view('user.findcountry.listofcountries', compact('countries'));
+                return view('user.findcountry.searchlist', compact('countries'));
             } catch (Exception $e) {
                 return redirect()->back()->withErrors($e->getMessage());
                 // something went wrong
@@ -168,7 +168,7 @@ class FindCountryController extends Controller
     {
         $countries = session('countries');
         $course = session('selected_course');
-        $pdf = PDF::loadView("user.findcountry.reports.listofcountries", compact('course', 'countries'));
+        $pdf = PDF::loadView("user.findcountry.reports.searchlist", compact('course', 'countries'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -183,7 +183,8 @@ class FindCountryController extends Controller
     public function apply()
     {
         //return apply page
+        $course = session('selected_course');
         $countries = session('countries');
-        return view('user.findcountry.apply', compact('countries'));
+        return view('user.findcountry.apply', compact('course', 'countries'));
     }
 }

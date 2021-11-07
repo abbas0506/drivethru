@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFappdetailsTable extends Migration
+class CreateNationalApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateFappdetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fappdetails', function (Blueprint $table) {
+        Schema::create('national_applications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('application_id');
-            $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('course_id')->nullable();
-            $table->unique(['application_id', 'country_id']);
+            $table->unsignedBigInteger('university_id');
+            $table->unsignedBigInteger('course_id');
+            //$table->unique(['application_id', 'university_id', 'course_id']);
             $table->timestamps();
 
             $table->foreign('application_id')
@@ -27,9 +27,9 @@ class CreateFappdetailsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('country_id')
+            $table->foreign('university_id')
                 ->references('id')
-                ->on('countries')
+                ->on('universities')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
@@ -48,6 +48,6 @@ class CreateFappdetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fappdetail');
+        Schema::dropIfExists('national_applications');
     }
 }

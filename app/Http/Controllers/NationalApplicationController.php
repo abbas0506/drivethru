@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appdetail;
+use App\Models\NationalApplication;
 use Illuminate\Http\Request;
 
-class AppdetailController extends Controller
+class NationalApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AppdetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Appdetail  $appdetail
+     * @param  \App\Models\NationalApplication  $nationalApplication
      * @return \Illuminate\Http\Response
      */
-    public function show(Appdetail $appdetail)
+    public function show(NationalApplication $nationalApplication)
     {
         //
     }
@@ -52,10 +52,10 @@ class AppdetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Appdetail  $appdetail
+     * @param  \App\Models\NationalApplication  $nationalApplication
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appdetail $appdetail)
+    public function edit(NationalApplication $nationalApplication)
     {
         //
     }
@@ -64,10 +64,10 @@ class AppdetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appdetail  $appdetail
+     * @param  \App\Models\NationalApplication  $nationalApplication
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appdetail $appdetail)
+    public function update(Request $request, NationalApplication $nationalApplication)
     {
         //
     }
@@ -75,10 +75,10 @@ class AppdetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Appdetail  $appdetail
+     * @param  \App\Models\NationalApplication  $nationalApplication
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appdetail $appdetail)
+    public function destroy(NationalApplication $nationalApplication)
     {
         //
     }
