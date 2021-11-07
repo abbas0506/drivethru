@@ -50,7 +50,9 @@ Swal.fire({
 
 <div class="frow my-2">
    <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
-   <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
+   <a href="{{route('findcountriesbycourse.index')}}">
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
+   </a>
 </div>
 <div class="fcol my-2 p-4 mid-left bg-light">
    <ul>

@@ -36,10 +36,9 @@ $user=session('user');
 
    @if($countries->count()>0)
 
-   @if($course)
    <div class="frow w-100 rw-100 my-3 centered">
       <div class="frow">
-         <a href="{{route('preview_country_searchlist')}}" target="_blank">
+         <a href="{{route('findcountriesbycourse_report')}}" target="_blank">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-3">Get Free Report</div>
@@ -47,13 +46,13 @@ $user=session('user');
       <div class="mx-5">|</div>
 
       <div class="frow">
-         <a href="{{route('apply')}}" target="_blank">
+         <a href="{{route('findcountriesbycourse_apply')}}" target="_blank">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-3">Apply Through Us</div>
       </div>
    </div>
-   @endif
+
    <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
       <div class="w-50"> Country </div>
@@ -66,7 +65,7 @@ $user=session('user');
 
    <div class="frow p-1 border-bottom tr">
       <div class="w-10">{{$sr++}} </div>
-      <div class="w-50"><a href="{{route('findcountry.show', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
+      <div class="w-50"><a href="{{route('findcountriesbycourse_country_preview', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
       <div class="w-20 text-right"> {{$country->studycost()}}</div>
       <div class="w-20 text-right">{{$country->livingcost()}}</div>
    </div>

@@ -48,44 +48,15 @@ Swal.fire({
 </script>
 @endif
 
-<!-- manual search section -->
-<div id='by_name_section'>
-
-   <div class="frow my-2">
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
-      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
-   </div>
-
-   <form id='form' action="{{route('findcountry.store')}}" method='post'>
-      @csrf
-      <input type="checkbox" name='manual' checked hidden>
-      <div class="bg-light p-4 rounded mb-3">
-         <div class="fcol txt-grey w-100 rw-100 mt-2">
-            <ul class="">
-               <li>Part of country name is also acceptable</li>
-            </ul>
-         </div>
-         <div class="frow w-100 rw-100 stretched">
-            <div class="frow w-100 mid-left fancy-search-grow" id='searchinput'>
-               <input type="text" name='country' placeholder="Type country name" oninput="search(event)" style='width:80%!important; margin-left:20px' required>
-               <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-            </div>
-            <div class=""><button type='submit' class="btn btn-sm btn-primary">Search</button></div>
-         </div>
-      </div>
-   </form>
-</div>
-
-<!-- auto search section -->
-
-<div id='by_course_section' class="hide">
-   <div class="frow txt-m my-2 rounded">
+<div class="frow txt-m my-2 rounded">
+   <a href="{{route('findcountriesbyname.index')}}">
       <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">By Name</div>
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>By Course</div>
+   </a>
+   <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>By Course</div>
 
-   </div>
-
-   <form id='form' action="{{route('findcountry.store')}}" method='post'>
+</div>
+<div>
+   <form id='form' action="{{route('findcountriesbycourse_search')}}" method='get'>
       @csrf
       <div class="bg-light p-4 rounded">
          <!-- filed of interest -->
@@ -139,16 +110,4 @@ Swal.fire({
       </div>
    </form>
 </div>
-
-
-@endsection
-
-<!-- script goes here -->
-@section('script')
-<script lang="javascript">
-function toggleMe() {
-   $('#by_name_section').toggleClass('hide');
-   $('#by_course_section').toggleClass('hide');
-}
-</script>
 @endsection

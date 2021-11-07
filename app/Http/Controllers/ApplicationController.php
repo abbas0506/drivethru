@@ -67,7 +67,7 @@ class ApplicationController extends Controller
 
             DB::beginTransaction();
             try {
-                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 'national']);
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 'international']);
                 foreach ($ids as $id) { //course ids
                     InternationalApplication::create(['application_id' => $application->id, 'country_id' => $country_id, 'course_id' => $id]);
                 }
@@ -79,6 +79,29 @@ class ApplicationController extends Controller
                 DB::rollBack();
             }
         }
+
+
+        //find country by course
+        if ($user_mode == 1 && $search_mode == 'bycourse') {
+
+            $course_id = $request->course_id;
+
+            DB::beginTransaction();
+            try {
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 'national']);
+                foreach ($ids as $id) { //course ids
+                    InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
+                    //echo "country" . $id . ", course" . $course_id . "app" . $application->id . "<br>";
+                }
+
+                DB::commit();
+                return redirect()->route("applications_success", ['id' => $application->id]);
+            } catch (Exception $ex) {
+                return redirect()->back()->withErrors('error', $ex->getMessage());
+                DB::rollBack();
+            }
+        }
+
 
 
 

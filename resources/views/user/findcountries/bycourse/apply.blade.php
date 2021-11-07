@@ -70,6 +70,7 @@ $user=session('user');
 
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>
    @csrf
+   <input type="hidden" name='search_mode' value="bycourse">
    <input type="hidden" name='course_id' value="{{$course->id}}">
    <input type="hidden" name='ids' id='_ids'>
 </form>
@@ -91,7 +92,6 @@ function updateChkCount() {
 }
 
 function postData() {
-   var token = $("meta[name='csrf-token']").attr("content");
 
    var ids = [];
    var chks = document.getElementsByName('chk');

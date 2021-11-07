@@ -36,6 +36,7 @@ use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountriesByNameController;
 use App\Http\Controllers\FindCountryController;
 use App\Http\Controllers\FindUniversityByNameController;
+use App\Http\Controllers\FindCountriesByCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,10 +148,10 @@ Route::resource('findcountriesbyname', FindCountriesByNameController::class);
 Route::get('findcountriesbyname_search', [FindCountriesByNameController::class, 'search'])->name("findcountriesbyname_search");
 Route::get('findcountriesbyname_report/{id}', [FindCountriesByNameController::class, 'report'])->name("findcountriesbyname_report");
 Route::get('findcountriesbyname_apply/{id}', [FindCountriesByNameController::class, 'apply'])->name("findcountriesbyname_apply");
-// Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController::class, 'report'])->name("finduniversitiesbyname_report");
-// Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_app
 
-// Route::resource('international_applications', InternationalApplicationController::class);
-// Route::get('international_applications_success', [InternationalApplicationController::class, 'success'])->name('international_applications_success');
-
+Route::resource('findcountriesbycourse', FindCountriesByCourseController::class);
+Route::get('findcountriesbycourse_search', [FindCountriesByCourseController::class, 'search'])->name("findcountriesbycourse_search");
+Route::get('findcountriesbycourse_country_preview/{id}', [FindCountriesByCourseController::class, 'countrypreview'])->name("findcountriesbycourse_country_preview");
+Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::class, 'report'])->name("findcountriesbycourse_report");
+Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
 //});
