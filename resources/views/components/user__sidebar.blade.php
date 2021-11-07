@@ -37,7 +37,7 @@
    <span class="w-75 hr my-3"></span>
    @if(session('mode')==0)
    <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{url('national_dashboard')}}">
+      <a href="{{url('user_dashboard')}}">
          <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
          <div class="navitem-link">Dashboard</div>
       </a>
@@ -51,13 +51,13 @@
    </div>
    @else
    <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{url('international_dashboard')}}">
+      <a href="{{url('user_dashboard')}}">
          <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
          <div class="navitem-link">Dashboard</div>
       </a>
    </div>
    <div @if($activeItem=='findcountry' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('findcountry.index')}}">
+      <a href="{{route('findcountriesbyname.index')}}">
          <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
          <div class="navitem-link">Find Country</div>
       </a>

@@ -18,10 +18,17 @@ $user=session('user');
    background-size: cover;
    background-size: 100% 100%;
 }
+
+.bg-international-mini {
+   background-image: url("{{asset('images/bg/international.jpg')}}");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-size: 100% 100%;
+}
 </style>
 
 @section('page-header')
-<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke bg-national-mini" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
+<div class="frow w-100 p-4 my-3 txt-m txt-b txt-smoke @if(session('mode')==0)bg-national-mini @else bg-international-mini @endif" style='border-radius:5px'>Welcome, {{$user->name}}!</div>
 @endsection
 
 @section('data')

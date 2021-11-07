@@ -164,7 +164,7 @@ class FindCountryController extends Controller
         //
 
     }
-    public function autosearch()
+    public function preview_searchlist()
     {
         $countries = session('countries');
         $course = session('selected_course');

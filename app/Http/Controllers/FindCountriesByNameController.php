@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\University;
-use Barryvdh\DomPDF\Facade as PDF;
 
-class FindUniversityByNameController extends Controller
+class FindCountriesByNameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class FindUniversityByNameController extends Controller
     public function index()
     {
         //
-        return view('user.finduniversities.byname.index');
+        return view('user.findcountries.byname.index');
     }
 
     /**
@@ -48,12 +46,7 @@ class FindUniversityByNameController extends Controller
      */
     public function show($id)
     {
-        //show specific university data
-        $university = University::findOrFail($id);
-        session([
-            'university' => $university,
-        ]);
-        return view('user.finduniversities.byname.show', compact('university'));
+        //
     }
 
     /**
@@ -88,29 +81,5 @@ class FindUniversityByNameController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function fetch(Request $request)
-    {
-        //fetch list of matching universities 
-        $request->validate([
-            'name' => 'required',
-        ]);
-        $universities = University::where('name', 'like', '%' . $request->name . '%')->get();
-
-        return view('user.finduniversities.byname.searchlist', compact('universities'));
-    }
-    public function report($id)
-    {
-        //preview report
-        $university = University::findOrFail($id);
-        $pdf = PDF::loadView('user.finduniversities.byname.report', compact('university'));
-        $pdf->output();
-        return $pdf->setPaper('a4')->stream();
-    }
-    public function apply($id)
-    {
-        //return apply page
-        $university = University::findOrFail($id);
-        return view('user.finduniversities.byname.apply', compact('university'));
     }
 }
