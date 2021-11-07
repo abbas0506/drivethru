@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Exception;
 
 class FindCountriesByNameController extends Controller
 {
@@ -14,7 +17,8 @@ class FindCountriesByNameController extends Controller
     public function index()
     {
         //
-        return view('user.findcountries.byname.index');
+        $countries = Country::all();
+        return view('user.findcountries.byname.index', compact('countries'));
     }
 
     /**
@@ -36,6 +40,8 @@ class FindCountriesByNameController extends Controller
     public function store(Request $request)
     {
         //
+
+
     }
 
     /**
@@ -47,6 +53,8 @@ class FindCountriesByNameController extends Controller
     public function show($id)
     {
         //
+        $country = Country::find($id);
+        return view('user.findcountries.byname.show', compact('country'));
     }
 
     /**
@@ -81,5 +89,24 @@ class FindCountriesByNameController extends Controller
     public function destroy($id)
     {
         //
+    }
+    // public function search(Request $request)
+    // {
+    //     $country = $request->country;
+    //     $countries = Country::where('name', 'like', '%' . $country . '%')->get();
+    //     return view('user.findcountries.byname.searchlist', compact('countries'));
+    // }
+    public function report($id)
+    {
+        $country = Country::find($id);
+        $pdf = PDF::loadView("user.findcountries.byname.report", compact('country'));
+        $pdf->output();
+        return $pdf->setPaper('a4')->stream();
+    }
+    public function apply($id)
+    {
+        //return apply page
+        $country = Country::find($id);
+        return view('user.findcountries.byname.apply', compact('country'));
     }
 }

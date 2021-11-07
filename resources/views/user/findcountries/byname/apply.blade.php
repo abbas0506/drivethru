@@ -26,6 +26,25 @@ $user=session('user');
 @endsection
 @section('data')
 <!-- create new acadmeic -->
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
+</div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
+</script>
+@endif
 
 <div class="fcol w-100 rw-100 p-4 bg-white rounded">
    <div class="frow w-100 rw-100">
@@ -42,24 +61,20 @@ $user=session('user');
          <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
       </div>
    </div>
-   @elseif($countries->count()>0)
+   @elseif($country->favcourses()->count()>0)
    <div class="frow p-1 mt-4 border-bottom tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
-      <div class="w-40 rw-50"> Country </div>
-      <div class="w-15 rw-20 text-right">Study Cost($)</div>
-      <div class="w-15 text-right rhide">Living Cost($)</div>
+      <div class="w-70 rw-70"> Course </div>
       <div class="w-20 rw-20 text-center">Apply</div>
    </div>
 
    @php $sr=1; @endphp
-   @foreach($countries as $country)
+   @foreach($country->favcourses() as $favcourse)
 
    <div class="frow p-1 border-bottom tr">
       <div class="w-10">{{$sr++}} </div>
-      <div class="w-40 rw-50">{{$country->name}}</div>
-      <div class="w-15 rw-20 text-right "> {{$country->studycost()}}</div>
-      <div class="w-15 text-right rhide">{{$country->livingcost()}}</div>
-      <div class="w-20 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
+      <div class="w-70 rw-70">{{$favcourse->course->name}}</div>
+      <div class="w-20 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$favcourse->course->id}}" onclick="updateChkCount()"></div>
    </div>
    @endforeach
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
@@ -70,7 +85,8 @@ $user=session('user');
 
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>
    @csrf
-   <input type="hidden" name='course_id' value="{{$course->id}}">
+   <input type="hidden" name='search_mode' value="byname">
+   <input type="hidden" name='country_id' value="{{$country->id}}">
    <input type="hidden" name='ids' id='_ids'>
 </form>
 

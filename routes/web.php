@@ -144,7 +144,9 @@ Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController
 Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_apply");
 
 Route::resource('findcountriesbyname', FindCountriesByNameController::class);
-// Route::get('finduniversitiesbyname_fetch', [FindUniversityByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");
+Route::get('findcountriesbyname_search', [FindCountriesByNameController::class, 'search'])->name("findcountriesbyname_search");
+Route::get('findcountriesbyname_report/{id}', [FindCountriesByNameController::class, 'report'])->name("findcountriesbyname_report");
+Route::get('findcountriesbyname_apply/{id}', [FindCountriesByNameController::class, 'apply'])->name("findcountriesbyname_apply");
 // Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController::class, 'report'])->name("finduniversitiesbyname_report");
 // Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_app
 

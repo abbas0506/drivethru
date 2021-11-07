@@ -48,107 +48,67 @@ Swal.fire({
 </script>
 @endif
 
-<!-- manual search section -->
-<div id='by_name_section'>
-
-   <div class="frow my-2">
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
-      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
+<div class="frow my-2">
+   <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
+   <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
+</div>
+<div class="fcol my-2 p-4 mid-left bg-light">
+   <ul>
+      <li>Part of country name is also acceptable</li>
+      <li>Capital or small letters will not affect search result</li>
+   </ul>
+   <div class="frow w-100 fancy-search-grow bg-light ml-4">
+      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; top:7px;right:24px"></i>
    </div>
-
-   <form id='form' action="{{route('findcountry.store')}}" method='post'>
-      @csrf
-      <input type="checkbox" name='manual' checked hidden>
-      <div class="bg-light p-4 rounded mb-3">
-         <div class="fcol txt-grey w-100 rw-100 mt-2">
-            <ul class="">
-               <li>Part of country name is also acceptable</li>
-            </ul>
-         </div>
-         <div class="frow w-100 rw-100 stretched">
-            <div class="frow w-100 mid-left fancy-search-grow" id='searchinput'>
-               <input type="text" name='country' placeholder="Type country name" oninput="search(event)" style='width:80%!important; margin-left:20px' required>
-               <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-            </div>
-            <div class=""><button type='submit' class="btn btn-sm btn-primary">Search</button></div>
-         </div>
-      </div>
-   </form>
 </div>
 
-<!-- auto search section -->
 
-<div id='by_course_section' class="hide">
-   <div class="frow txt-m my-2 rounded">
-      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">By Name</div>
-      <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>By Course</div>
 
+<div class="my-2 w-100 rw-100 bg-light p-4">
+   @if($countries->count()>0)
+   <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
+      <div class="w-10">Sr. </div>
+      <div class="w-50"> Country </div>
+      <div class="w-20 text-right">Study Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
+      <div class="w-20 text-right">Living Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
    </div>
 
-   <form id='form' action="{{route('findcountry.store')}}" method='post'>
-      @csrf
-      <div class="bg-light p-4 rounded">
-         <!-- filed of interest -->
-         <div class="frow mid-left mt-4 mb-2 auto-col">
-            <div class="fancyselect w-100 rw-100" id='fieldofinterest'>
-               <select name='course_id' required>
-                  <option value="">Select a field</option>
-                  @foreach($courses as $course)
-                  <option value="{{$course->id}}">{{$course->name}}</option>
-                  @endforeach
-               </select>
-               <label>Field of Interest</label>
-            </div>
-         </div>
-      </div>
-      <div class="bg-light mt-3 p-4 rounded" id='optional'>
-         <div class="frow txt-s txt-orange mb-2">
-            <div><i data-feather='filter' class="feather-xsmall mr-2"></i></div>
-            <div class="text-center">Advanced Search (optional)</div>
-         </div>
+   @php $sr=1; @endphp
+   @foreach($countries as $country)
 
-         <div class="frow stretched mt-3 auto-col">
-            <div class="frow mid-left w-100 rw-100 rmb-2">
-               <input type='checkbox' name='edufree' class="mr-2">
-               Filter only those countries where education is free
-            </div>
-         </div>
-         <div class="frow stretched mt-3 auto-col">
-            <div class="fancyinput w-48 rw-100 rmb-2">
-               <input type="number" name='minstudycost' placeholder="Min Study Cost">
-               <label for="">Min Study Cost ($)</label>
-            </div>
-            <div class="fancyinput w-48 rw-100 rmb-2">
-               <input type="number" name='maxstudycost' placeholder="Max Study Cost">
-               <label for="">Max Study Cost ($)</label>
-            </div>
-         </div>
-         <div class="frow stretched mt-3 auto-col">
-            <div class="fancyinput w-48 rw-100 rmb-2">
-               <input type="number" name='minlivingcost' placeholder="Min Living Cost">
-               <label for="">Minimum Living Cost ($)</label>
-            </div>
-            <div class="fancyinput w-48 rw-100">
-               <input type="number" name='maxlivingcost' placeholder="Max Living Cost Fee">
-               <label for="">Maximum Living Cost ($)</label>
-            </div>
-         </div>
-         <div class="frow mid-right mt-3">
-            <button type='submit' class="btn btn-primary">Search</button>
-         </div>
-      </div>
-   </form>
+   <div class="frow p-1 border-bottom tr">
+      <div class="w-10">{{$sr++}} </div>
+      <div class="w-50"><a href="{{route('findcountriesbyname.show', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
+      <div class="w-20 text-right txt-s"> {{$country->studycost()}} </div>
+      <div class="w-20 text-right txt-s">{{$country->livingcost()}}</div>
+   </div>
+   @endforeach
+   @else
+   <!-- no country found -->
+   <div class="frow w-100 rw-100 mt-2 txt-orange centered">
+      Database has no matching record
+   </div>
+   @endif
 </div>
-
+</div>
 
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function toggleMe() {
-   $('#by_name_section').toggleClass('hide');
-   $('#by_course_section').toggleClass('hide');
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
 }
 </script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Country;
 use App\Models\InternationalApplication;
 use App\Models\NationalApplication;
 use Illuminate\Http\Request;
@@ -20,8 +21,8 @@ class ApplicationController extends Controller
     public function index()
     {
         //
-        $applications = Application::all();
-        return view('user.applications.index', compact('applications'));
+        // $applications = Application::all();
+        // return view('user.applications.index', compact('applications'));
     }
 
     /**
@@ -45,34 +46,68 @@ class ApplicationController extends Controller
         //
         $request->validate([
             'ids' => 'required',
+            'search_mode' => 'required',
         ]);
 
-        DB::beginTransaction();
 
-        try {
-            $user = session('user');
-            if ($request->ids && $user) {
 
-                $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
-                $ids = explode(',', $request->ids);
-                if (session('mode') == 0) { //national mode
-                    foreach ($ids as $id) {
-                        //NationalApplication::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
-                    }
-                }
-                if (session('mode') == 1) { //international mode
-                    foreach ($ids as $id) {
-                        //$id_parts = explode('-', $id);
-                        InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $request->course_id]);
-                    }
-                }
-            }
-            DB::commit();
-            return redirect()->route("applications_success", ['id' => $application->id]);
-        } catch (Exception $ex) {
-            return redirect()->back()->withErrors('error', $ex->getMessage());
-            DB::rollBack();
+        $search_mode = $request->search_mode;
+        $ids = explode(',', $request->ids);
+        $user = session('user');
+        $user_mode = session('mode');
+
+        if ($user_mode == 0 && $search_mode == 'byname') { //find university by name
+
         }
+
+        //find country by name
+        if ($user_mode == 1 && $search_mode == 'byname') {
+
+            $country_id = $request->country_id;
+
+            DB::beginTransaction();
+            try {
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 'national']);
+                foreach ($ids as $id) { //course ids
+                    InternationalApplication::create(['application_id' => $application->id, 'country_id' => $country_id, 'course_id' => $id]);
+                }
+
+                DB::commit();
+                return redirect()->route("applications_success", ['id' => $application->id]);
+            } catch (Exception $ex) {
+                return redirect()->back()->withErrors('error', $ex->getMessage());
+                DB::rollBack();
+            }
+        }
+
+
+
+
+
+        // try {
+        //     $user = session('user');
+        //     if ($request->ids && $user) {
+
+        //         $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
+        //         $ids = explode(',', $request->ids);
+        //         if (session('mode') == 0) { //national mode
+        //             foreach ($ids as $id) {
+        //                 //NationalApplication::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
+        //             }
+        //         }
+        //         if (session('mode') == 1) { //international mode
+        //             foreach ($ids as $id) {
+        //                 //$id_parts = explode('-', $id);
+        //                 InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $request->course_id]);
+        //             }
+        //         }
+        //     }
+        //     DB::commit();
+        //     return redirect()->route("applications_success", ['id' => $application->id]);
+        // } catch (Exception $ex) {
+        //     return redirect()->back()->withErrors('error', $ex->getMessage());
+        //     DB::rollBack();
+        // }
     }
 
     /**

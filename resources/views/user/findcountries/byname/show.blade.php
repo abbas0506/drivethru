@@ -22,14 +22,25 @@ $user=session('user');
 @endsection
 
 @section('data')
-<div class="w-100 rw-100 bg-light p-4">
-   <div class="frow mid-right">
-      <div class="mr-2 txt-grey">Download</div>
-      <a href="{{route('findcountry_countrydetail',$country->id)}}">
-         <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
-      </a>
 
+<div class="w-100 rw-100 bg-light px-4">
+   <div class="frow w-100 rw-100 py-4 border-bottom centered">
+      <div class="frow">
+         <a href="{{route('findcountriesbyname_report',$country)}}" target="_blank">
+            <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
+         </a>
+         <div class="ml-3">Get Free Report</div>
+      </div>
+      <div class="mx-5">|</div>
+
+      <div class="frow">
+         <a href="{{route('findcountriesbyname_apply', $country)}}" target="_blank">
+            <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
+         </a>
+         <div class="ml-3">Apply Through Us</div>
+      </div>
    </div>
+
    <!-- report content goes here -->
    <div class="frow w-100 rw-100 mt-4">
       <div class="w-30 rw-50 txt-b">Education: </div>
