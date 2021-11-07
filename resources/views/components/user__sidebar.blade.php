@@ -23,26 +23,26 @@
    @if(session('mode')==1)
    <a href="{{route('findcountry.index')}}">
       <div class="frow centered txt-smoke relative">
-         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Report</div>
+         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Top Countries Report</div>
       </div>
    </a>
    @else
    <a href="{{route('finduniversity.index')}}">
       <div class="frow centered txt-smoke relative">
-         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Report</div>
+         <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Top Universities Report</div>
       </div>
    </a>
    @endif
 
    <span class="w-75 hr my-3"></span>
-
+   @if(session('mode')==0)
    <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{url('user_dashboard')}}">
+      <a href="{{url('national_dashboard')}}">
          <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
          <div class="navitem-link">Dashboard</div>
       </a>
    </div>
-   @if(session('mode')==0)
+
    <div @if($activeItem=='finduniversity' ) class="navitem active" @else class="navitem" @endif>
       <a href="{{route('finduniversitiesbyname.index')}}">
          <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>
@@ -50,6 +50,12 @@
       </a>
    </div>
    @else
+   <div @if($activeItem=='dashboard' ) class="navitem active" @else class="navitem" @endif>
+      <a href="{{url('international_dashboard')}}">
+         <div class="navitem-ico"><i data-feather='grid' class="feather-small"></i></div>
+         <div class="navitem-link">Dashboard</div>
+      </a>
+   </div>
    <div @if($activeItem=='findcountry' ) class="navitem active" @else class="navitem" @endif>
       <a href="{{route('findcountry.index')}}">
          <div class="navitem-ico"><i data-feather='search' class="feather-small"></i></div>

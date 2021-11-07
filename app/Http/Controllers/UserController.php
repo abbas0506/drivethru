@@ -164,7 +164,7 @@ class UserController extends Controller
                 if ($user->usertype == 'admin')
                     return redirect('admin');
                 else if ($user->usertype == 'student')
-                    return redirect('user_dashboard');
+                    return redirect('national_dashboard');
             } else {
                 return redirect()->back()->with('error', "User not found");
             }
