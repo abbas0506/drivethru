@@ -48,9 +48,6 @@ class ApplicationController extends Controller
             'ids' => 'required',
             'search_mode' => 'required',
         ]);
-
-
-
         $search_mode = $request->search_mode;
         $ids = explode(',', $request->ids);
         $user = session('user');
@@ -100,36 +97,6 @@ class ApplicationController extends Controller
                 DB::rollBack();
             }
         }
-
-
-
-
-
-
-        // try {
-        //     $user = session('user');
-        //     if ($request->ids && $user) {
-
-        //         $application = Application::create(['user_id' => $user->id, 'charges' => 1000]);
-        //         $ids = explode(',', $request->ids);
-        //         if (session('mode') == 0) { //national mode
-        //             foreach ($ids as $id) {
-        //                 //NationalApplication::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
-        //             }
-        //         }
-        //         if (session('mode') == 1) { //international mode
-        //             foreach ($ids as $id) {
-        //                 //$id_parts = explode('-', $id);
-        //                 InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $request->course_id]);
-        //             }
-        //         }
-        //     }
-        //     DB::commit();
-        //     return redirect()->route("applications_success", ['id' => $application->id]);
-        // } catch (Exception $ex) {
-        //     return redirect()->back()->withErrors('error', $ex->getMessage());
-        //     DB::rollBack();
-        // }
     }
 
     /**
