@@ -35,7 +35,7 @@ class CreateInternationalApplicationsTable extends Migration
 
             $table->foreign('course_id')
                 ->references('id')
-                ->on('countries')
+                ->on('courses')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
