@@ -18,6 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('charges');
             $table->boolean('ispaid')->nullable();
+            $table->boolean('mode')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')
