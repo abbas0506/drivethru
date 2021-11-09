@@ -67,7 +67,7 @@ class ApplicationController extends Controller
 
             DB::beginTransaction();
             try {
-                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 'international']);
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 1]);
                 foreach ($ids as $id) { //course ids
                     InternationalApplication::create(['application_id' => $application->id, 'country_id' => $country_id, 'course_id' => $id]);
                 }
@@ -91,14 +91,12 @@ class ApplicationController extends Controller
                 $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 1]);
                 foreach ($ids as $id) { //course ids
                     InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
-                    echo "country" . $id . ", course" . $course_id . "app" . $application->id . "<br>";
                 }
 
                 DB::commit();
-                //return redirect()->route("applications_success", ['id' => $application->id]);
+                return redirect()->route("applications_success", ['id' => $application->id]);
             } catch (Exception $ex) {
-                //return redirect()->back()->withErrors('error', $ex->getMessage());
-                echo $ex->getMessage();
+                return redirect()->back()->withErrors('error', $ex->getMessage());
                 DB::rollBack();
             }
         }
