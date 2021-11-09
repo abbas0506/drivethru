@@ -123,7 +123,7 @@ Route::get("finduni_download", [FindUniversityController::class, 'download'])->n
 Route::resource('profiles', ProfileController::class);
 Route::resource('academics', AcademicController::class);
 Route::view('change_pic', 'user.profile.personal.change_pic')->name('change_pic');
-//Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
+Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
 Route::resource('counselling', CounsellingController::class);
 // Route::resource('findcountry', FindCountryController::class);
