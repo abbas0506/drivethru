@@ -30,13 +30,14 @@ use App\Http\Controllers\LivingcostController;
 use App\Http\Controllers\FindUniversityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AcademicController;
-use App\http\Controllers\ApplicationController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountriesByNameController;
-use App\Http\Controllers\FindCountryController;
-use App\Http\Controllers\FindUniversityByNameController;
 use App\Http\Controllers\FindCountriesByCourseController;
+//use App\Http\Controllers\FindCountryController;
+use App\Http\Controllers\FindUniversityByNameController;
+
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +115,7 @@ Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('u
 //Route::resource('unicourses', UnicourseController::class);
 Route::resource('finduniversity', FindUniversityController::class);
 Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversities'])->name('fetchUniversities');
-Route::view('finalizeApplication', 'students.national.finalize');
+// Route::view('finalizeApplication', 'students.national.finalize');
 Route::resource('applications', ApplicationController::class);
 Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
 Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
@@ -122,13 +123,13 @@ Route::get("finduni_download", [FindUniversityController::class, 'download'])->n
 Route::resource('profiles', ProfileController::class);
 Route::resource('academics', AcademicController::class);
 Route::view('change_pic', 'user.profile.personal.change_pic')->name('change_pic');
-Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
+//Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
 Route::resource('counselling', CounsellingController::class);
-Route::resource('findcountry', FindCountryController::class);
-Route::get("preview_country_searchlist", [FindCountryController::class, 'preview_searchlist'])->name("preview_country_searchlist");
-Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
-Route::get("apply", [FindCountryController::class, 'apply'])->name("apply");
+// Route::resource('findcountry', FindCountryController::class);
+// Route::get("preview_country_searchlist", [FindCountryController::class, 'preview_searchlist'])->name("preview_country_searchlist");
+// Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
+// Route::get("apply", [FindCountryController::class, 'apply'])->name("apply");
 
 Route::view('changepw', 'user.profile.personal.changepw');
 

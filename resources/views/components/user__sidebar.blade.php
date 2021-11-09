@@ -21,7 +21,7 @@
    <div class="user-profile-id">{{$user->id}}</div>
 
    @if(session('mode')==1)
-   <a href="{{route('findcountry.index')}}">
+   <a href="{{route('findcountriesbyname.index')}}">
       <div class="frow centered txt-smoke relative">
          <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Top Countries Report</div>
       </div>
