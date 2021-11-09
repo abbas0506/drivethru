@@ -8,16 +8,16 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">Find University</div>
+<div class="page-title">Find Country</div>
 @endsection
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-finduniversity__navbar activeItem='apply'></x-finduniversity__navbar>
+   <x-findcountry__navbar activeItem='apply'></x-findcountry__navbar>
 </div>
 @endsection
 
@@ -42,22 +42,24 @@ $user=session('user');
          <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
       </div>
    </div>
-   <!-- if univeristy data exists -->
-   @elseif($university->unicourses()->count()>0)
+   @elseif($countries->count()>0)
    <div class="frow p-1 mt-4 border-bottom tr txt-s txt-grey">
-      <div class="w-40">Course </div>
-      <div class="w-15 rw-20 text-right rhide">Fee</div>
-      <div class="w-15 text-right rhide">Last Merit</div>
-      <div class="w-20 rw-20 text-center">Closing</div>
-      <div class="w-10 rw-20 text-center">Apply</div>
+      <div class="w-10">Sr. </div>
+      <div class="w-40 rw-50"> Country </div>
+      <div class="w-15 rw-20 text-right">Study Cost($)</div>
+      <div class="w-15 text-right rhide">Living Cost($)</div>
+      <div class="w-20 rw-20 text-center">Apply</div>
    </div>
-   @foreach($university->unicourses() as $unicourse)
+
+   @php $sr=1; @endphp
+   @foreach($countries as $country)
+
    <div class="frow p-1 border-bottom tr">
-      <div class="w-40 rw-50">{{$unicourse->course->name}}</div>
-      <div class="w-15 rw-20 text-right rhide "> {{$unicourse->fee}}</div>
-      <div class="w-15 text-right rhide">{{$unicourse->lastmerit}}</div>
-      <div class="w-20 text-right">{{$unicourse->closing}}</div>
-      <div class="w-10 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$unicourse->id}}" onclick="updateChkCount()"></div>
+      <div class="w-10">{{$sr++}} </div>
+      <div class="w-40 rw-50">{{$country->name}}</div>
+      <div class="w-15 rw-20 text-right "> {{$country->studycost()}}</div>
+      <div class="w-15 text-right rhide">{{$country->livingcost()}}</div>
+      <div class="w-20 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
    </div>
    @endforeach
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
@@ -68,8 +70,8 @@ $user=session('user');
 
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>
    @csrf
-   <input type="hidden" name='search_mode' value="byname">
-   <input type="hidden" name="university_id" value='{{$university->id}}'>
+   <input type="hidden" name='search_mode' value="bycourse">
+   <input type="hidden" name='course_id' value="{{$course->id}}">
    <input type="hidden" name='ids' id='_ids'>
 </form>
 
@@ -90,6 +92,7 @@ function updateChkCount() {
 }
 
 function postData() {
+
    var ids = [];
    var chks = document.getElementsByName('chk');
    chks.forEach((chk) => {

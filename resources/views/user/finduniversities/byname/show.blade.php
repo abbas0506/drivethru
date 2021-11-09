@@ -16,9 +16,11 @@ $user=session('user');
 @endsection
 
 @section('page-subtitle')
-<div class="frow text-justify txt-s">{{$university->city->name}}</div>
 @endsection
 @section('page-navbar')
+<div class="page-navbar">
+   <x-finduniversity__navbar activeItem='report'></x-finduniversity__navbar>
+</div>
 @endsection
 
 @section('data')
@@ -41,10 +43,14 @@ $user=session('user');
    </div>
    <!-- report content goes here -->
    <div class="frow w-100 rw-100 mt-4">
+      <div class="w-20 rw-40 txt-b">Location: </div>
+      <div class="w-80 rw-60">{{$university->city->name}}</div>
+   </div>
+   <div class="frow w-100 rw-100">
       <div class="w-20 rw-40 txt-b">Type: </div>
       <div class="w-80 rw-60">{{$university->type}}</div>
    </div>
-   <div class="frow w-100 rw-100">
+   <div class="frow w-100 rw-100 border-bottom">
       <div class="w-20 rw-40 txt-b">Ranking: </div>
       <div class="w-80 rw-60">{{$university->rank}}</div>
    </div>

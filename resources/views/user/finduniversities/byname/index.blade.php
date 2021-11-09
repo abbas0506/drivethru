@@ -50,31 +50,67 @@ Swal.fire({
 
 <div class="frow my-2">
    <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
-   <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable ">By Course</div>
+   <a href="{{route('finduniversitiesbycourse.index')}}">
+      <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable" onclick="toggleMe()">By Course</div>
+   </a>
+</div>
+<div class="fcol my-2 p-4 mid-left bg-light">
+   <ul>
+      <li>Part of university name is also acceptable</li>
+      <li>Capital or small letters will not affect search result</li>
+   </ul>
+   <div class="frow w-100 fancy-search-grow bg-light ml-4">
+      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; top:7px;right:24px"></i>
+   </div>
 </div>
 
-<form id='form' action="{{route('finduniversitiesbyname_fetch')}}" method='get'>
-   @csrf
-   <div class="bg-light p-4 rounded mb-3">
-      <div class="fcol txt-grey w-100 rw-100 mt-2">
-         <ul class="">
-            <li>Part of university name is also acceptable</li>
-         </ul>
-      </div>
-      <div class="frow w-100 rw-100 stretched">
-         <div class="frow w-100 mid-left fancy-search-grow" id='searchinput'>
-            <input type="text" name='name' placeholder="Type university name" oninput="search(event)" style='width:80%!important; margin-left:20px' required>
-            <i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-         </div>
-         <div class=""><button type='submit' class="btn btn-sm btn-primary">Search</button></div>
-      </div>
+
+
+<div class="my-2 w-100 rw-100 bg-light p-4">
+   @if($universities->count()>0)
+   <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
+      <div class="w-10">Sr. </div>
+      <div class="w-50"> University </div>
+      <div class="w-20 text-right">Location </div>
+      <div class="w-20 text-right">Type</div>
    </div>
-</form>
+
+   @php $sr=1; @endphp
+   @foreach($universities as $university)
+
+   <div class="frow p-1 border-bottom tr">
+      <div class="w-10">{{$sr++}} </div>
+      <div class="w-50"><a href="{{route('finduniversitiesbyname.show', $university->id)}}" class="text-primary"> {{$university->name}}</a></div>
+      <div class="w-20 text-right txt-s"> {{$university->city->name}} </div>
+      <div class="w-20 text-right txt-s">{{$university->type}}</div>
+   </div>
+   @endforeach
+   @else
+   <!-- no university found -->
+   <div class="frow w-100 rw-100 mt-2 txt-orange centered">
+      Database has no matching record
+   </div>
+   @endif
+</div>
+</div>
+
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
+}
 </script>
 @endsection

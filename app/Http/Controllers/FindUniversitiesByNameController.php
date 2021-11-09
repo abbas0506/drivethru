@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\University;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Http\Request;
 
-class FindUniversityByNameController extends Controller
+class FindUniversitiesByNameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
-        return view('user.finduniversities.byname.index');
+        $universities = University::all();
+        return view('user.finduniversities.byname.index', compact('universities'));
     }
 
     /**

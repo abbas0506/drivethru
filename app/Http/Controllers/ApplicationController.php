@@ -53,8 +53,24 @@ class ApplicationController extends Controller
         $user = session('user');
         $user_mode = session('mode');
 
-        if ($user_mode == 0 && $search_mode == 'byname') { //find university by name
+        //find university by name
+        if ($user_mode == 0 && $search_mode == 'byname') {
+            $university_id = $request->university_id;
 
+            DB::beginTransaction();
+            try {
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 0]);
+                foreach ($ids as $id) { //course ids
+                    NationalApplication::create(['application_id' => $application->id, 'university_id' => $university_id, 'course_id' => $id]);
+                }
+
+                DB::commit();
+                return redirect()->route("applications_success", ['id' => $application->id]);
+            } catch (Exception $ex) {
+                //return redirect()->back()->withErrors('error', $ex->getMessage());
+                echo $ex->getMessage();
+                DB::rollBack();
+            }
         }
 
         //find country by name
@@ -86,7 +102,7 @@ class ApplicationController extends Controller
 
             DB::beginTransaction();
             try {
-                $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 1]);
+                $application = Application::create(['user_id' => $user->id, 'charges' => count($ids), 'mode' => 1]);
                 foreach ($ids as $id) { //course ids
                     InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
                 }

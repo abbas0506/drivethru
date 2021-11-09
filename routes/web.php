@@ -34,8 +34,8 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountriesByNameController;
 use App\Http\Controllers\FindCountriesByCourseController;
-//use App\Http\Controllers\FindCountryController;
-use App\Http\Controllers\FindUniversityByNameController;
+use App\Http\Controllers\FindUniversitiesByNameController;
+use App\Http\Controllers\FindUniversitiesByCourseController;
 
 use App\Http\Controllers\ApplicationController;
 
@@ -126,17 +126,17 @@ Route::view('change_pic', 'user.profile.personal.change_pic')->name('change_pic'
 Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
 Route::resource('counselling', CounsellingController::class);
-// Route::resource('findcountry', FindCountryController::class);
-// Route::get("preview_country_searchlist", [FindCountryController::class, 'preview_searchlist'])->name("preview_country_searchlist");
-// Route::get("findcountry_countrydetail/{id}", [FindCountryController::class, 'countrydetail'])->name("findcountry_countrydetail");
-// Route::get("apply", [FindCountryController::class, 'apply'])->name("apply");
-
 Route::view('changepw', 'user.profile.personal.changepw');
 
-Route::resource('finduniversitiesbyname', FindUniversityByNameController::class);
-Route::get('finduniversitiesbyname_fetch', [FindUniversityByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");
-Route::get('finduniversitiesbyname_report/{id}', [FindUniversityByNameController::class, 'report'])->name("finduniversitiesbyname_report");
-Route::get('finduniversitiesbyname_apply/{id}', [FindUniversityByNameController::class, 'apply'])->name("finduniversitiesbyname_apply");
+Route::resource('finduniversitiesbyname', FindUniversitiesByNameController::class);
+Route::get('finduniversitiesbyname_fetch', [FindUniversitiesByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");
+Route::get('finduniversitiesbyname_report/{id}', [FindUniversitiesByNameController::class, 'report'])->name("finduniversitiesbyname_report");
+Route::get('finduniversitiesbyname_apply/{id}', [FindUniversitiesByNameController::class, 'apply'])->name("finduniversitiesbyname_apply");
+
+Route::resource('finduniversitiesbycourse', FindUniversitiesByCourseController::class);
+Route::get('finduniversitiesbycourse_search', [FindUniversitiesByCourseController::class, 'search'])->name("finduniversitiesbycourse_search");
+Route::get('finduniversitiesbycourse_report', [FindUniversitiesByCourseController::class, 'report'])->name("finduniversitiesbycourse_report");
+Route::get('finduniversitiesbycourse_apply', [FindUniversitiesByCourseController::class, 'apply'])->name("finduniversitiesbycourse_apply");
 
 Route::resource('findcountriesbyname', FindCountriesByNameController::class);
 Route::get('findcountriesbyname_search', [FindCountriesByNameController::class, 'search'])->name("findcountriesbyname_search");
