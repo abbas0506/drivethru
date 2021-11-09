@@ -88,10 +88,10 @@ class ApplicationController extends Controller
 
             DB::beginTransaction();
             try {
-                // $application = Application::create(['user_id' => $user->id, 'charges' => 1]);
+                $application = Application::create(['user_id' => $user->id, 'charges' => 1]);
                 foreach ($ids as $id) { //course ids
-                    //InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
-                    echo "country" . $id . ", course" . $course_id . "app" . 1 . "<br>";
+                    InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
+                    echo "country" . $id . ", course" . $course_id . "app" . $application->id . "<br>";
                 }
 
                 DB::commit();
