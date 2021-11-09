@@ -90,7 +90,7 @@ class ApplicationController extends Controller
             try {
                 $application = Application::create(['user_id' => $user->id, 'charges' => 1, 'mode' => 1]);
                 foreach ($ids as $id) { //course ids
-                    //InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
+                    InternationalApplication::create(['application_id' => $application->id, 'country_id' => $id, 'course_id' => $course_id]);
                     echo "country" . $id . ", course" . $course_id . "app" . $application->id . "<br>";
                 }
 
