@@ -46,7 +46,7 @@ $user=session('user');
       <div class="mx-5">|</div>
 
       <div class="frow">
-         <a href="{{route('findcountriesbycourse_apply')}}" target="_blank">
+         <a href="{{route('findcountriesbycourse_apply')}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-3">Apply Through Us</div>
