@@ -175,7 +175,7 @@ class FindCountryController extends Controller
     public function countrydetail($id)
     {
         $country = Country::find($id);
-        $pdf = PDF::loadView("user.findcountries.bycourse.reports.country_preview", compact('country'));
+        $pdf = PDF::loadView("user.findcountries.bycourse.reports.countrypreview", compact('country'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }

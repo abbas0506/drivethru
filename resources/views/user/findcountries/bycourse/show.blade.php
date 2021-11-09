@@ -25,7 +25,7 @@ $user=session('user');
 <div class="w-100 rw-100 bg-light p-4">
    <div class="frow mid-right">
       <div class="mr-2 txt-grey">Download</div>
-      <a href="{{route('findcountriesbycourse_country_preview',$country->id)}}">
+      <a href="{{route('findcountriesbycourse_countrypreview',$country->id)}}">
          <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
       </a>
 

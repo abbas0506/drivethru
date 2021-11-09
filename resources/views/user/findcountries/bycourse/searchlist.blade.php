@@ -65,7 +65,7 @@ $user=session('user');
 
    <div class="frow p-1 border-bottom tr">
       <div class="w-10">{{$sr++}} </div>
-      <div class="w-50"><a href="{{route('findcountriesbycourse_country_preview', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
+      <div class="w-50"><a href="{{route('findcountriesbycourse_countrypreview', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
       <div class="w-20 text-right"> {{$country->studycost()}}</div>
       <div class="w-20 text-right">{{$country->livingcost()}}</div>
    </div>

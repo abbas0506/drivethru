@@ -72,7 +72,8 @@ class ApplicationController extends Controller
                 DB::commit();
                 return redirect()->route("applications_success", ['id' => $application->id]);
             } catch (Exception $ex) {
-                return redirect()->back()->withErrors('error', $ex->getMessage());
+                //return redirect()->back()->withErrors('error', $ex->getMessage());
+                echo $ex->getMessage();
                 DB::rollBack();
             }
         }
@@ -93,7 +94,8 @@ class ApplicationController extends Controller
                 DB::commit();
                 return redirect()->route("applications_success", ['id' => $application->id]);
             } catch (Exception $ex) {
-                return redirect()->back()->withErrors('error', $ex->getMessage());
+                //return redirect()->back()->withErrors('error', $ex->getMessage());
+                echo $ex->getMessage();
                 DB::rollBack();
             }
         }

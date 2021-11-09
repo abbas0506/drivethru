@@ -145,7 +145,7 @@ Route::get('findcountriesbyname_apply/{id}', [FindCountriesByNameController::cla
 
 Route::resource('findcountriesbycourse', FindCountriesByCourseController::class);
 Route::get('findcountriesbycourse_search', [FindCountriesByCourseController::class, 'search'])->name("findcountriesbycourse_search");
-Route::get('findcountriesbycourse_country_preview/{id}', [FindCountriesByCourseController::class, 'countrypreview'])->name("findcountriesbycourse_country_preview");
+Route::get('findcountriesbycourse_countrypreview/{id}', [FindCountriesByCourseController::class, 'countrypreview'])->name("findcountriesbycourse_countrypreview");
 Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::class, 'report'])->name("findcountriesbycourse_report");
 Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
 //});
