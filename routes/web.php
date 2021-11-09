@@ -100,22 +100,15 @@ Route::resource('livingcosts', LivingcostController::class);
 
 //student middleware
 //Route::group(['middleware' => 'student'], function () {
-Route::get('user_dashboard', function () {
-    $mode = session('mode');
-    if ($mode == 0) return view('user.dashboard');
-    if ($mode == 1) return view('user.dashboard');
-});
+Route::view('user_dashboard', 'user.dashboard');
 Route::get('switch/{mode}', function ($mode) {
     session([
         'mode' => $mode,
     ]);
-    if ($mode == 0) return view('user.dashboard');
-    if ($mode == 1) return view('user.dashboard');
+    return redirect('user_dashboard');
 });
 
 
-
-//Route::view('user_dashboard', 'user.dashboard');
 
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 //Route::resource('unicourses', UnicourseController::class);
