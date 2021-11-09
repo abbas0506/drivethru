@@ -115,7 +115,7 @@ Route::get('switch/{mode}', function ($mode) {
 
 
 
-Route::view('user_dashboard', 'user.dashboard');
+//Route::view('user_dashboard', 'user.dashboard');
 
 Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
 //Route::resource('unicourses', UnicourseController::class);
