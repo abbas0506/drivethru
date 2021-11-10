@@ -8,11 +8,11 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
+<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">Find Country</div>
+<div class="page-title">Find University</div>
 @endsection
 
 @section('page-navbar')
