@@ -16,7 +16,7 @@ $user=session('user');
 
 @section('data')
 
-@if(session('mode')==0)
+@if($application->mode==0)
 
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
@@ -45,8 +45,8 @@ $user=session('user');
             <div class="w-10">{{$sr++}}. </div>
             <div class="w-40">{{$university->name}}</div>
             <div class="fcol w-50">
-               @foreach($application->appdetails()->where('university_id',$university->id) as $appdetail)
-               <div class="frow txt-s">{{$appdetail->course->name}}</div>
+               @foreach($application->national_applications()->where('university_id',$university->id) as $national)
+               <div class="frow txt-s">{{$national->course->name}}</div>
                @endforeach
 
             </div>
@@ -56,9 +56,7 @@ $user=session('user');
    </div>
    <div class="frow mid-right txt-grey mt-2">Total Charges: {{$application->universities()->count()}}<i data-feather='dollar-sign' class="feather-xsmall"></i></div>
 </div>
-@elseif(session('mode')==1)
-
-@endif
+@elseif($application->mode==1)
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-100 rw-100 mid-left stretched">
       <div class="txt-grey txt-m">International Application : {{$application->id}}</div>
@@ -98,64 +96,11 @@ $user=session('user');
    <div class="frow mid-right txt-grey mt-2">Total Charges: {{$application->countries()->count()}}<i data-feather='dollar-sign' class="feather-xsmall"></i></div>
 </div>
 
+@endif
+
 
 @endsection
 
 @section('profile')
-<!-- suggestions for user -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="w-100 rw-100 mb-2 txt-grey txt-b ">SUGGESTED TO YOU</div>
-
-   <div class="frow w-100 rw-100 stretched">
-      <div class="frow">
-         <div class="box-20 mr-2 bg-light-grey"></div>
-         <div class="txt-s">Apply for International University</div>
-      </div>
-      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
-   </div>
-   <div class="frow w-100 rw-100 stretched my-2">
-      <div class="frow">
-         <div class="box-20 mr-2 bg-light-grey"></div>
-         <div class="txt-s">Top Universities Report - Free</div>
-      </div>
-      <div class="txt-s"><i data-feather='chevron-right' class="feather-small txt-orange"></i> </div>
-   </div>
-</div>
-
-<!-- profile -->
-<div class="fcol w-100 rw-100 bg-white p-4 mt-3">
-   <div class="w-100 rw-100 mb-2 txt-grey txt-b ">PROFILE STRENGTH</div>
-   <div class="frow w-100 rw-100 centered">
-      <div class="fcol box-50 border circular">
-         <img src="{{url('storage/images/logos/logo2.png')}}" alt="" class="user-avatar-lg" width='50' height='50'>
-      </div>
-   </div>
-
-   <div class='progress my-3' style='height:5px'>
-      <div class='progress-bar' style='width:50%'> </div>
-   </div>
-   <div class="frow w-100 rw-100 stretched">
-      <div class="txt-s">Profile Picture</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
-   </div>
-   <div class="frow w-100 rw-100 mt-2 stretched">
-      <div class="txt-s">Personal Information</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
-   </div>
-   <div class="frow w-100 rw-100 mt-2 stretched">
-      <div class="txt-s">Academic Information</div>
-      <div class="fcol box-15 circular centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i> </div>
-   </div>
-   <div class="frow w-100 rw-100 py-2 mt-2 border-top stretched">
-      <div class="txt-s"></div>
-      <div class="frow">
-         <a href="{{route('profiles.edit', $user->id)}}">
-            <div class="txt-green txt-b">Update Profile</div>
-         </a>
-         <div class="fcol centered"><i data-feather='chevron-right' class="feather-xsmall txt-green"></i> </div>
-      </div>
-
-   </div>
-
-</div>
+<x-profile__strength :user="$user"></x-profile__strength>
 @endsection

@@ -41,24 +41,26 @@ $user=session('user');
    </div>
    <!-- table header -->
    <div class="frow mid-left border-bottom mt-3">
-      <div class="w-15 txt-s txt-silver">ID</div>
-      <div class="w-50 txt-s txt-grey">Created At</div>
-      <div class="w-20 txt-s txt-grey">Charges</div>
+      <div class="w-10 txt-s txt-silver">ID</div>
+      <div class="w-40 txt-s txt-grey">Created At</div>
+      <div class="w-20 txt-s txt-grey">Type</div>
+      <div class="w-15 txt-s txt-grey">Charges</div>
       <div class="w-15 txt-s text-center txt-grey">...</div>
    </div>
 
    <div class="fcol w-100 rw-100">
-      @foreach($user->applications() as $application)
+      @foreach($user->applications()->sortByDesc('id') as $application)
       <div class="frow w-100 tr mid-left py-1 border-bottom">
-         <div class="w-15 txt-s">{{$application->id}}</div>
-         <div class="w-50 txt-s">{{$application->created_at}}</div>
-         <div class="w-20 txt-s">@if($application->ispaid) Paid @else {{$application->charges}} &nbsp<span class="badge badge-info">pay</span> @endif</div>
+         <div class="w-10 txt-s">{{$application->id}}</div>
+         <div class="w-40 txt-s">{{$application->created_at}}</div>
+         <div class="w-20 txt-s">@if($application->mode==0) National @else International @endif</div>
+         <div class="w-15 txt-s">@if($application->ispaid) Paid @else {{$application->charges}} &nbsp<span class="badge badge-info">pay</span> @endif</div>
          <div class="w-15 txt-s text-center">
             <a href="{{route('applications.show',$application)}}">
                <i data-feather='eye' class="feather-xsmall text-primary"></i>
             </a>
             &nbsp
-            <a href="{{route('application_download',['id'=>$application->id])}}" target="_blank">
+            <a href="{{route('application_download',$application)}}" target="_blank">
                <i data-feather='download' class="feather-xsmall txt-orange"></i>
             </a>
          </div>
@@ -74,8 +76,9 @@ $user=session('user');
    <!-- table header -->
    <div class="frow mid-left border-bottom mt-3">
       <div class="w-15 txt-s txt-silver">ID</div>
-      <div class="w-50 txt-s txt-grey">Created At</div>
-      <div class="w-20 txt-s txt-grey">Status</div>
+      <div class="w-40 txt-s txt-grey">Created At</div>
+      <div class="w-15 txt-s txt-grey">Type</div>
+      <div class="w-15 txt-s txt-grey">Status</div>
       <div class="w-15 txt-s txt-grey text-center">View</div>
    </div>
 
@@ -83,8 +86,8 @@ $user=session('user');
       @foreach($user->counsellings() as $counselling)
       <div class="frow w-100 tr mid-left py-1 border-bottom">
          <div class="w-15 txt-s">{{$counselling->id}}</div>
-         <div class="w-50 txt-s">{{$counselling->created_at}}</div>
-         <div class="w-20 txt-s">@if($counselling->status==0) Pending @else Finished @endif </div>
+         <div class="w-40 txt-s">{{$counselling->created_at}}</div>
+         <div class="w-15 txt-s">@if($counselling->status==0) Pending @else Finished @endif </div>
          <div class="w-15 txt-s text-center">
             <a href="{{route('counselling.show',$counselling)}}">
                <i data-feather='eye' class="feather-xsmall text-primary"></i>

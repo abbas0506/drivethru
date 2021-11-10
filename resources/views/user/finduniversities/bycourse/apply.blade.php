@@ -42,24 +42,40 @@ $user=session('user');
          <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
       </div>
    </div>
-   @elseif($countries->count()>0)
-   <div class="frow p-1 mt-4 border-bottom tr txt-s txt-grey">
-      <div class="w-10">Sr. </div>
-      <div class="w-40 rw-50"> Country </div>
-      <div class="w-15 rw-20 text-right">Study Cost($)</div>
-      <div class="w-15 text-right rhide">Living Cost($)</div>
-      <div class="w-20 rw-20 text-center">Apply</div>
+   @elseif($courses->count()>0)
+   <div class="frow w-100 rw-100 py-2 txt-grey th border-bottom">
+      <div class="fcol w-20 rw-30 txt-s txt-b">Course</div>
+      <div class="fcol w-80 rw-70">
+         <div class="frow">
+            <div class="hw-50 rw-80 txt-s txt-b">University</div>
+            <div class="w-15 txt-s txt-b rhide">Loc.</div>
+            <div class="w-15 txt-s txt-b rhide">Type</div>
+            <div class="w-10 txt-s txt-b rhide">Fee</div>
+            <div class="w-10 rw-20 txt-s text-center txt-b">Apply</div>
+         </div>
+      </div>
    </div>
-
    @php $sr=1; @endphp
-   @foreach($countries as $country)
+   @foreach($courses as $course)
+   <div class="frow w-100 py-2">
+      <div class="fcol w-20 rw-30 txt-s txt-b ">{{$course->name}}</div>
+      <div class="fcol w-80 rw-70">
 
-   <div class="frow p-1 border-bottom tr">
-      <div class="w-10">{{$sr++}} </div>
-      <div class="w-40 rw-50">{{$country->name}}</div>
-      <div class="w-15 rw-20 text-right "> {{$country->studycost()}}</div>
-      <div class="w-15 text-right rhide">{{$country->livingcost()}}</div>
-      <div class="w-20 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
+         @if($universities->where('course_id',$course->id)->count()>0)
+
+         @foreach($universities->where('course_id',$course->id) as $row)
+         <div class="frow rw-100 tr border-bottom py-1">
+            <div class="hw-50 rw-80 txt-s">{{$row->university}}</div>
+            <div class="w-15 txt-s rhide">{{$row->city}}</div>
+            <div class="w-15 txt-s rhide">{{$row->type}}</div>
+            <div class="w-10 txt-s rhide">{{$row->fee}}</div>
+            <div class="w-10 rw-20 txt-s text-center chk-apply"><input type="checkbox" name='chk' value="{{$row->university_id}}-{{$row->course_id}}" onclick="updateChkCount()"></div>
+         </div>
+         @endforeach
+         @else
+         <div class="frow rw-100 txt-s border-bottom py-1">No university offers this course</div>
+         @endif
+      </div>
    </div>
    @endforeach
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>

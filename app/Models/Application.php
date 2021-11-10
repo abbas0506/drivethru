@@ -12,6 +12,7 @@ class Application extends Model
         'user_id',
         'charges',
         'ispaid',
+        'mode',
     ];
     public function user()
     {

@@ -118,7 +118,7 @@ Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversi
 // Route::view('finalizeApplication', 'students.national.finalize');
 Route::resource('applications', ApplicationController::class);
 Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
-Route::get("application_download", [ApplicationController::class, 'download'])->name("application_download");
+Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
 Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
 Route::resource('profiles', ProfileController::class);
 Route::resource('academics', AcademicController::class);

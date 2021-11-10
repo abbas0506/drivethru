@@ -37,7 +37,7 @@
          @foreach($courses as $course)
 
          @php $sr=1; @endphp
-         @foreach($data->where('course_id',$course->id) as $row)
+         @foreach($universities->where('course_id',$course->id) as $row)
          <tr>
             <td class='w-25 txt-s'><u>@if($sr==1) {{$course->name}}@endif </u></td>
             <td class='w-30 txt-s'>{{$sr++}}. {{$row->university}} </td>

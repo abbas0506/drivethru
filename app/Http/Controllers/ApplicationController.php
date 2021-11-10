@@ -73,6 +73,27 @@ class ApplicationController extends Controller
             }
         }
 
+        //find university by course
+        if ($user_mode == 0 && $search_mode == 'bycourse') {
+
+            $university_id = $request->university_id;
+
+            DB::beginTransaction();
+            try {
+                $application = Application::create(['user_id' => $user->id, 'charges' => count($ids), 'mode' => $user_mode]);
+                foreach ($ids as $id) { //compostiet ids
+                    $id_parts = explode('-', $id);
+                    NationalApplication::create(['application_id' => $application->id, 'university_id' => $id_parts[0], 'course_id' => $id_parts[1]]);
+                }
+
+                DB::commit();
+                return redirect()->route("applications_success", ['id' => $application->id]);
+            } catch (Exception $ex) {
+                //return redirect()->back()->withErrors('error', $ex->getMessage());
+                echo $ex->getMessage();
+                DB::rollBack();
+            }
+        }
         //find country by name
         if ($user_mode == 1 && $search_mode == 'byname') {
 

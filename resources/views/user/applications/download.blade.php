@@ -14,16 +14,26 @@
 </head>
 
 <body>
+   @php
+   $user=session('user')
+   @endphp
+   @if($application->mode==0)
    <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Application for Local Admission</div>
+
+   @elseif($application->mode==1)
+   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Application for International Admission</div>
+
+   @endif
    <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">Application Track ID {{$application->id}}</div>
    <div class="w-100 txt-center txt-s py-2 mx-5">This is a system generated application form for admission into your selected courses/programs at the most suitable national universities of Pakistan</div>
+
    <!-- personal info -->
    <div class="w-40 mt-4 ml-5 border-bottom thin">Personal Info</div>
    <table class="w-100 mx-5">
       <tbody>
          <tr>
             <td class='w-10 txt-b txt-s mt-2 ml-5'>Name: </td>
-            <td class="w-50 txt-s mt-2">{{$profile->name}}</td>
+            <td class="w-50 txt-s mt-2">{{$user->name}}</td>
          </tr>
          <tr>
             <td class='w-10 txt-b txt-s mt-2 ml-5'>Father: </td>
@@ -66,7 +76,7 @@
          </tr>
       </thead>
       <tbody>
-         @foreach($application->user->profile()->academics() as $academic)
+         @foreach($application->user->academics() as $academic)
          <tr>
             <td class="w-15 txt-xs">{{$academic->level->name}}</td>
             <td class="w-10 txt-xs">{{$academic->passyear}}</td>
@@ -84,31 +94,35 @@
    <div class="w-40 mt-4 ml-5 border-bottom thin">Courses / Programs - Applied for</div>
    <table class="w-100 mx-5">
       <tbody>
+         @php $sr=1; @endphp
 
-         @foreach($application->courses() as $course)
+         @if($application->mode==0)
+         @foreach($application->universities() as $university)
          <tr>
-            <td class='w-50 txt-b txt-s mt-2'>{{$course->name}} </td>
+            <td class="w-100 txt-s txt-b mt-2">{{$sr}}. {{$university->name}}</td>
          </tr>
-         @foreach($application->appdetails()->where('course_id',$course->id) as $appdetail)
+         @foreach($application->national_applications()->where('university_id',$university->id) as $national)
          <tr>
-            <td class='w-50 txt-s ml-5'>- {{$appdetail->university->name}} </td>
+            <td class="w-100 txt-s ml-5">{{$national->course->name}}</td>
          </tr>
          @endforeach
          @endforeach
+         @elseif($application->mode==1)
+         @foreach($application->countries() as $country)
+         <tr>
+            <td class="w-100 txt-s txt-b mt-2">{{$sr++}}. {{$country->name}}</td>
+         </tr>
+         @foreach($application->international_applications()->where('country_id',$country->id) as $international)
+         <tr>
+            <td class="w-100 txt-s ml-5">{{$international->course->name}}</td>
+         </tr>
+         @endforeach
+         @endforeach
+         @endif
+
       </tbody>
    </table>
    <!-- universities applied for -->
-   <div class="w-40 mt-4 mb-2 ml-5 border-bottom thin">Universities - Where Applied</div>
-   <table class="w-100 mx-5">
-      <tbody>
-         @php $sr=1;@endphp
-         @foreach($application->universities() as $university)
-         <tr>
-            <td class='w-100 txt-s'>{{$sr++}}. {{$university->name}} </td>
-         </tr>
-         @endforeach
-      </tbody>
-   </table>
 </body>
 
 </html>

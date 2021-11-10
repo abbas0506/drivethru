@@ -147,8 +147,8 @@ class FindUniversitiesByCourseController extends Controller
     public function apply()
     {
         //return apply page
-        $course = session('selected_course');
+        $courses = session('courses');
         $universities = session('universities');
-        return view('user.finduniversities.bycourse.apply', compact('universities', 'course'));
+        return view('user.finduniversities.bycourse.apply', compact('universities', 'courses'));
     }
 }
