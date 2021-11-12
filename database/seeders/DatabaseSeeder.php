@@ -14,9 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //seed basic data
         $this->call([
-            //CountrySeeder::class,
             UserSeeder::class,
             DocumentSeeder::class,
             ScholarshipSeeder::class,
@@ -26,13 +25,6 @@ class DatabaseSeeder extends Seeder
             PaperTypeSeeder::class,
             CourseSeeder::class,
             ExpensetypeSeeder::class,
-            //UniversitySeeder::class,
-            //BoardSeeder::class,
-            //CountrySeeder::class,
-            //FavcourseSeeder::class,
-            //LivingcostSeeder::class,
-            //StudycostSeeder::class,
-            //UnicourseSeeder::class,
         ]);
     }
 }

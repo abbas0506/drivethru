@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Faculty;
 use Illuminate\Http\Request;
 use Exception;
@@ -16,8 +17,8 @@ class FacultyController extends Controller
     public function index()
     {
         //
-        $data = Faculty::all();
-        return view('admin.primary.faculties.index', compact('data'));
+        $faculties = Faculty::orderBy('id', 'desc')->get();
+        return view('admin.primary.faculties.index', compact('faculties'));
     }
 
     /**
@@ -64,6 +65,7 @@ class FacultyController extends Controller
     public function show(Faculty $faculty)
     {
         //
+        return view('admin.primary.faculties.show', compact('faculty'));
     }
 
     /**

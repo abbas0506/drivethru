@@ -17,18 +17,11 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->unsignedBigInteger('faculty_id');
-            $table->unsignedBigInteger('level_id');
             $table->timestamps();
 
             $table->foreign('faculty_id')
                 ->references('id')
                 ->on('faculties')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->foreign('level_id')
-                ->references('id')
-                ->on('levels')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

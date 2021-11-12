@@ -36,62 +36,55 @@ Swal.fire({
 @endif
 
 <div class="container-60">
-   <!-- search option -->
-   <div class="frow my-4 mid-left fancy-search-grow">
-      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable" onclick="toggle_addslider()">+</div>
-      Create New
-   </div>
 
-   <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
-      <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-75">Name </div>
-      <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+   <div class="w-100 bg-light px-4 pb-2 my-4 border-left border-2 border-success">
+      <div class="txt-b txt-orange">Create New Faculty</div>
+      <form action="{{route('faculties.store')}}" method='post'>
+         @csrf
+         <div class="frow stretched mt-3">
+            <div class="fancyinput w-80">
+               <input type="text" name='name' placeholder="Enter name" required>
+               <label for="Name">Name</label>
+            </div>
+            <div class="w-15">
+               <button type="submit" class="btn btn-success">Create</button>
+            </div>
+         </div>
+      </form>
+
    </div>
-   @php $sr=1; @endphp
-   @foreach($data as $faculty)
-   <div class="frow px-2 my-2 tr">
-      <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$faculty->name}} </div>
-      <div class="fcol mid-right w-15">
-         <div class="frow stretched">
-            <a href="{{route('faculties.edit',$faculty)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
-            <div>
-               <form action="{{route('faculties.destroy',$faculty)}}" method="POST" id='del_form{{$sr}}'>
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-               </form>
+   <!-- page content -->
+   <div class="bg-custom-light p-4">
+      <div class="fancy-search-grow">
+         <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
+      </div>
+
+      <div class="frow px-2 py-1 my-3 border-bottom txt-b">
+         <div class="fcol mid-left w-80">Faculty </div>
+         <div class="fcol mid-right pr-3 w-20"><i data-feather='settings' class="feather-xsmall"></i></div>
+      </div>
+
+      @foreach($faculties as $faculty)
+      <div class="frow px-2 my-2 tr">
+         <div class="fcol mid-left w-80"><a href="{{route('faculties.show',$faculty)}}"> {{$faculty->name}} </a></div>
+         <div class="fcol mid-right w-20">
+            <div class="frow stretched">
+               <a href="{{route('faculties.edit',$faculty)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+               <div>
+                  <form action="{{route('faculties.destroy',$faculty)}}" method="POST" id='del_form{{$faculty->id}}'>
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$faculty->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  </form>
+               </div>
             </div>
          </div>
       </div>
+      @endforeach
    </div>
-   @endforeach
-</div>
-
-@endsection
-
-@section('slider')
-<div class="slider" id='addslider'>
-   <div class="frow centered box-30 bg-orange circular txt-white hoverable" onclick="toggle_addslider()"><i data-feather='x' class="feather-xsmall"></i></div>
-   <div class="frow centered my-4 txt-b">NEW</div>
-
-   <!-- data form -->
-   <form action="{{route('faculties.store')}}" method='post'>
-      @csrf
-      <div class="frow stretched my-4 auto-col">
-         <div class="fancyinput w-100">
-            <input type="text" name='name' placeholder="Enter name" required>
-            <label for="Name">Name</label>
-         </div>
-      </div>
-      <div class="frow mid-right my-5">
-         <button type="submit" class="btn btn-success">Create</button>
-      </div>
-   </form>
 
 </div>
+
 @endsection
 
 @section('script')
@@ -101,7 +94,7 @@ function search(event) {
    var str = 0;
    $('.tr').each(function() {
       if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            $(this).children().eq(0).prop('outerText').toLowerCase().includes(searchtext)
          )) {
          $(this).addClass('hide');
       } else {
@@ -126,10 +119,6 @@ function delme(formid) {
          $('#del_form' + formid).submit();
       }
    });
-}
-
-function toggle_addslider() {
-   $("#addslider").toggleClass('slide-left');
 }
 </script>
 @endsection

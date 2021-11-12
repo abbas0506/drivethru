@@ -11,16 +11,11 @@ class Course extends Model
     protected $fillable = [
         'name',
         'faculty_id',
-        'level_id',
     ];
 
     public $timestamps = false;
     public function faculty()
     {
         return $this->belongsTo(Faculty::class, 'faculty_id');
-    }
-    public function level()
-    {
-        return $this->belongsTo(Level::class, 'level_id');
     }
 }

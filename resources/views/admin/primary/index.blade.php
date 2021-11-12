@@ -49,7 +49,7 @@
       <div class="fcol w-48 rw-100 relative">
          <a href="{{route('faculties.index')}}">
             <div class="fcol p-4 primary hoverable">
-               <div class="label">Basic Faculties</div>
+               <div class="label">Faculties & Courses</div>
                <div class="icon"><i data-feather='settings' class="feather-large"></i></div>
                <div class="order rw-100">
                   <div class="fcol centered circular-50">3</div>
@@ -60,23 +60,6 @@
             </div>
          </a>
       </div>
-      <div class="fcol w-48 rw-100 rmt-3 relative">
-         <a href="{{route('courses.index')}}">
-            <div class="fcol p-4 primary hoverable">
-               <div class="label">Faculty Courses</div>
-               <div class="icon"><i data-feather='settings' class="feather-large"></i></div>
-               <div class="order rw-100">
-                  <div class="fcol centered circular-50">4</div>
-               </div>
-               <div class="animated-order rw-100">
-                  <div class="fcol centered circular-50">4</div>
-               </div>
-            </div>
-         </a>
-      </div>
-   </div>
-
-   <div class="frow w-100 rw-100 stretched mt-3 auto-col">
       <div class="fcol w-48 rw-100 relative">
          <a href="{{route('scholarships.index')}}">
             <div class="fcol p-4 primary hoverable">
@@ -91,6 +74,10 @@
             </div>
          </a>
       </div>
+
+   </div>
+
+   <div class="frow w-100 rw-100 stretched mt-3 auto-col">
       <div class="fcol w-48 rw-100 rmt-3 relative">
          <a href="{{route('expensetypes.index')}}">
             <div class="fcol p-4 primary hoverable">
@@ -105,8 +92,6 @@
             </div>
          </a>
       </div>
-   </div>
-   <div class="frow w-100 rw-100 stretched mt-3 auto-col">
       <div class="fcol w-48 rw-100 relative">
          <a href="{{route('documents.index')}}">
             <div class="fcol p-4 primary hoverable">
@@ -121,6 +106,9 @@
             </div>
          </a>
       </div>
+
+   </div>
+   <div class="frow w-100 rw-100 stretched mt-3 auto-col">
       <div class="fcol w-48 rw-100 rmt-3 relative">
          <a href="{{route('papertypes.index')}}">
             <div class="fcol p-4 primary hoverable">

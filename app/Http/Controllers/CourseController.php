@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Faculty;
-use App\Models\Level;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -18,10 +17,6 @@ class CourseController extends Controller
     public function index()
     {
         //
-        $courses = Course::orderBy('faculty_id', 'asc')->orderBy('level_id', 'asc')->get();
-        $faculties = Faculty::all();
-        $levels = Level::where('id', '>', 2)->get();
-        return view('admin.primary.courses.index', compact('courses', 'faculties', 'levels'));
     }
 
     /**
@@ -47,14 +42,19 @@ class CourseController extends Controller
         $request->validate([
             'name' => 'required',
             'faculty_id' => 'required',
-            'level_id' => 'required',
         ]);
 
         try {
 
             $new = Course::create($request->all());
             $new->save();
-            return redirect()->back()->with('success', 'Successfully created');
+            $faculty = Faculty::find($request->faculty_id);
+            return redirect()->back()->with(
+                [
+                    'success' => 'Successfully created',
+                    'faculty' => $faculty,
+                ]
+            );
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -81,9 +81,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         //
-        $faculties = Faculty::all();
-        $levels = Level::all();
-        return view('admin.primary.courses.edit', compact('course', 'faculties', 'levels'));
+        return view('admin.primary.courses.edit', compact('course'));
     }
 
     /**
@@ -97,14 +95,12 @@ class CourseController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'faculty_id' => 'required',
-            'level_id' => 'required',
         ]);
 
         try {
 
             $course->update($request->all());
-            return redirect()->route('courses.index')->with('success', 'Successfully created');
+            return redirect()->route('faculties.show', $course->faculty_id)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->route('courses.index')->withErrors($e->getMessage());
             // something went wrong
@@ -132,7 +128,7 @@ class CourseController extends Controller
 
     public function fetchCoursesByFacultyId(Request $request)
     {
-        // select course for given faculty and level ids
+        // select course for given faculty
         $courses = Course::where('faculty_id', $request->faculty_id)->get();
 
         //prepare courses list
