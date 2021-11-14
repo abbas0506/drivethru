@@ -84,6 +84,10 @@ $user=session('user');
 
 @endsection
 
+@section('social')
+<x-sidebar__news></x-sidebar__news>
+@endsection
+
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>
    @csrf
    <input type="hidden" name='search_mode' value="bycourse">

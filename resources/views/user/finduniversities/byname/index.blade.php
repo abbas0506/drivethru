@@ -48,7 +48,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="frow my-2">
+<div class="frow px-4 py-3 mb-2 border border-info">
    <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
    <a href="{{route('finduniversitiesbycourse.index')}}">
       <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable">By Course</div>
@@ -63,9 +63,6 @@ Swal.fire({
       <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; top:7px;right:24px"></i>
    </div>
 </div>
-
-
-
 <div class="my-2 w-100 rw-100 bg-light p-4">
    @if($universities->count()>0)
    <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
@@ -92,8 +89,10 @@ Swal.fire({
    </div>
    @endif
 </div>
-</div>
+@endsection
 
+@section('social')
+<x-sidebar__news></x-sidebar__news>
 @endsection
 
 <!-- script goes here -->

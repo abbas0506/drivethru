@@ -97,5 +97,5 @@ $user=session('user');
 @endsection
 
 @section('profile')
-<x-profile__strength :user="$user"></x-profile__strength>
+<x-sidebar__news></x-sidebar__news>
 @endsection

@@ -149,6 +149,9 @@ $user=session('user');
       <div class="w-30 rw-100 txt-b">Living Cost Desc: </div>
       <div class="w-70 rw-100">{{$country->livingcostdesc}}</div>
    </div>
-
 </div>
+@endsection
+
+@section('social')
+<x-sidebar__news></x-sidebar__news>
 @endsection

@@ -48,12 +48,11 @@ Swal.fire({
 </script>
 @endif
 
-<div class="frow txt-m my-2 rounded">
+<div class="frow txt-m py-3 px-4 mb-2 border border-info">
    <a href="{{route('findcountriesbyname.index')}}">
       <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">By Name</div>
    </a>
    <div class="frow btn-rounded-custom-orange centered px-3 txt-s"><i data-feather='check' class="feather-small mr-2"></i>By Course</div>
-
 </div>
 <div>
    <form id='form' action="{{route('findcountriesbycourse_search')}}" method='get'>
@@ -110,4 +109,8 @@ Swal.fire({
       </div>
    </form>
 </div>
+@endsection
+
+@section('social')
+<x-sidebar__news></x-sidebar__news>
 @endsection

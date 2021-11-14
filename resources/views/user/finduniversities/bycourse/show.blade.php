@@ -141,3 +141,7 @@ $user=session('user');
 
 </div>
 @endsection
+
+@section('social')
+<x-sidebar__news></x-sidebar__news>
+@endsection

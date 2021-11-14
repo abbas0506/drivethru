@@ -1530,6 +1530,38 @@ body {
   font-size: 0.5rem;
 }
 
+#scroll-container {
+  height: 140px;
+  overflow: hidden;
+}
+
+#scroll-text {
+  height: 100%;
+  text-align: justify;
+  /* animation properties */
+  transform: translateY(100%);
+  -webkit-animation: my-animation 10s linear infinite;
+  animation: my-animation 10s linear infinite;
+}
+
+/* for Firefox */
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+@keyframes my-animation {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
 .container-50, .container-60, .container-70, .container-75 {
   margin-left: auto;
   margin-right: auto;
