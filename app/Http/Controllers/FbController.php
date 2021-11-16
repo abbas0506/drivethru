@@ -21,21 +21,21 @@ class FbController extends Controller
 
             $user = Socialite::driver('facebook')->user();
             $facebookId = User::where('facebook_id', $user->id)->first();
-
-            if ($facebookId) {
-                // Auth::login($facebookId);
-                return redirect('/');
-            } else {
-                $newuser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'facebook_id' => $user->id,
-                    'password' => encrypt('000')
-                ]);
-                $newuser->save();
-                // Auth::login($createUser);
-                return redirect('user_dashboard');
-            }
+            echo "you have successfully loggedin";
+            // if ($facebookId) {
+            //     // Auth::login($facebookId);
+            //     return redirect('/');
+            // } else {
+            //     $newuser = User::create([
+            //         'name' => $user->name,
+            //         'email' => $user->email,
+            //         'facebook_id' => $user->id,
+            //         'password' => encrypt('000')
+            //     ]);
+            //     $newuser->save();
+            //     // Auth::login($createUser);
+            //     return redirect('user_dashboard');
+            // }
         } catch (Exception $exception) {
             echo $exception->getMessage();
         }
