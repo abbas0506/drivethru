@@ -151,6 +151,6 @@ Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::cl
 Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
 //});
 
-Route::get('auth/facebook', [FbController::class, 'redirectToFacebook']);
+Route::get('signin/fb', [FbController::class, 'redirectToFacebook']);
 
-Route::get('auth/facebook/callback', [FbController::class, 'facebookSignin']);
+Route::get('signin/fb/callback', [FbController::class, 'facebookSignin']);

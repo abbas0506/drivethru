@@ -26,18 +26,18 @@ class FbController extends Controller
                 // Auth::login($facebookId);
                 return redirect('/');
             } else {
-                $createUser = User::create([
+                $newuser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'facebook_id' => $user->id,
                     'password' => encrypt('000')
                 ]);
-
+                $newuser->save();
                 // Auth::login($createUser);
                 return redirect('user_dashboard');
             }
         } catch (Exception $exception) {
-            dd($exception->getMessage());
+            echo $exception->getMessage();
         }
     }
 }

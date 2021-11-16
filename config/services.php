@@ -33,7 +33,7 @@ return [
     'facebook' => [
         'client_id' => '448346699986643',
         'client_secret' => '107af12d8db00540956113e7b8149236',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback',
+        'redirect' => 'http://52.204.174.223/signin/fb/callback',
     ],
 
 ];

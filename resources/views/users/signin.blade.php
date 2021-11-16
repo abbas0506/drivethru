@@ -163,7 +163,7 @@
                   <span class="w-100 hr my-3"></span>
                   <div class="frow w-100 rw-100">
                      <div class="fcol w-70 rw-70 centered txt-lightsmoke txt-s">Other signin options</div>
-                     <a href="{{ url('auth/facebook') }}">
+                     <a href="{{ url('signin/fb') }}">
                         <div class="fcol border-lightgrey circular-20 txt-smoke ml-2"><i data-feather='facebook' class="feather-xsmall"></i></div>
                      </a>
 
