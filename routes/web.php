@@ -38,6 +38,7 @@ use App\Http\Controllers\FindUniversitiesByNameController;
 use App\Http\Controllers\FindUniversitiesByCourseController;
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\FbController;
 
 /*
 |--------------------------------------------------------------------------
