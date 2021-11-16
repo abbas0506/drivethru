@@ -10,7 +10,6 @@ representative:
 user:
    
    
-   -social bar
    -notifications
    -social signup
    -phone or email verification

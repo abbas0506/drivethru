@@ -13,101 +13,101 @@
    <title>DriveThru</title>
 
    <style>
-      body {
-         background-color: #1F618D;
-      }
+   body {
+      background-color: #1F618D;
+   }
 
-      .bg-darkblue {
-         background-color: #001C31;
-      }
+   .bg-darkblue {
+      background-color: #001C31;
+   }
 
-      .title {
-         color: #0098FE;
-         font-size: 1.2rem;
-         font-weight: bolder;
-         letter-spacing: 0.1rem;
-      }
+   .title {
+      color: #0098FE;
+      font-size: 1.2rem;
+      font-weight: bolder;
+      letter-spacing: 0.1rem;
+   }
 
-      .txt-lightsky {
-         color: #0098FE;
-      }
+   .txt-lightsky {
+      color: #0098FE;
+   }
 
-      input,
-      select {
-         background-color: #3B515F;
-         outline: none;
-         border: none;
-         color: whitesmoke;
-         border-radius: 2px;
-         padding: 5px;
-         font-size: 0.75rem;
-      }
+   input,
+   select {
+      background-color: #3B515F;
+      outline: none;
+      border: none;
+      color: whitesmoke;
+      border-radius: 2px;
+      padding: 5px;
+      font-size: 0.75rem;
+   }
 
-      input::placeholder {
-         color: #B9BEC4;
-      }
+   input::placeholder {
+      color: #B9BEC4;
+   }
 
-      #createnew {
-         color: white;
-         font-size: 0.8rem;
-      }
+   #createnew {
+      color: white;
+      font-size: 0.8rem;
+   }
 
-      .w-68 {
-         width: 68%
-      }
+   .w-68 {
+      width: 68%
+   }
 
-      .border-lightgrey {
-         border-color: #777;
-         border-width: 1px;
-      }
+   .border-lightgrey {
+      border-color: #777;
+      border-width: 1px;
+   }
 
-      .border-lightgrey:hover {
-         background-color: #0098FE;
-         border-color: #0098FE;
-         cursor: pointer;
-         color: white;
-      }
+   .border-lightgrey:hover {
+      background-color: #0098FE;
+      border-color: #0098FE;
+      cursor: pointer;
+      color: white;
+   }
 
 
-      .txt-smoke {
-         color: #B9BEC4;
-         /* font-size: 0.75rem; */
-      }
+   .txt-smoke {
+      color: #B9BEC4;
+      /* font-size: 0.75rem; */
+   }
 
-      .txt-lightsmoke {
-         color: #777;
-      }
+   .txt-lightsmoke {
+      color: #777;
+   }
 
-      .txt-s {
-         font-size: 0.75rem;
-      }
+   .txt-s {
+      font-size: 0.75rem;
+   }
 
-      .copyright-footer {
-         letter-spacing: 1px;
-      }
+   .copyright-footer {
+      letter-spacing: 1px;
+   }
 
-      .logo {
-         width: 100px;
-         width: 200px;
-         margin-bottom: 50px;
-      }
+   .logo {
+      width: 100px;
+      width: 200px;
+      margin-bottom: 50px;
+   }
 
-      .hr {
-         border-width: 0.5px;
-         border-style: dashed;
-         border-color: #777;
-      }
+   .hr {
+      border-width: 0.5px;
+      border-style: dashed;
+      border-color: #777;
+   }
 
-      body {
-         background-image: url("{{asset('images/bg/auth.jpg')}}");
-         background-repeat: no-repeat;
-         background-size: cover;
-         background-size: 100% 100%;
-      }
+   body {
+      background-image: url("{{asset('images/bg/auth.jpg')}}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100% 100%;
+   }
 
-      .auth-container {
-         opacity: 0.7;
-      }
+   .auth-container {
+      opacity: 0.7;
+   }
    </style>
 </head>
 
@@ -163,7 +163,11 @@
                   <span class="w-100 hr my-3"></span>
                   <div class="frow w-100 rw-100">
                      <div class="fcol w-70 rw-70 centered txt-lightsmoke txt-s">Other signin options</div>
-                     <div class="fcol border-lightgrey circular-20 txt-smoke ml-2"><i data-feather='facebook' class="feather-xsmall"></i></div>
+                     <a href="{{ url('auth/facebook') }}">
+                        <div class="fcol border-lightgrey circular-20 txt-smoke ml-2"><i data-feather='facebook' class="feather-xsmall"></i></div>
+                     </a>
+
+
                      <div class="fcol border-lightgrey circular-20 txt-smoke ml-2 txt-s">G</div>
                   </div>
                </div>
@@ -176,29 +180,29 @@
 
 
    <script>
-      feather.replace();
+   feather.replace();
 
-      function validate() {
-         var regex = /^\d{10}$/;
-         var msg = '';
-         var phone = $('#phone').val();
-         var password = $('#password').val();
-         //validare phone no.
-         if (phone == '' || phone == null) msg = 'Phone required!';
-         else if (phone.length < 10) msg = 'Too short phone no!';
-         else if (phone.length > 10) msg = 'Too long phone no!';
-         else if (regex.test(phone) == false) msg = 'invalid phone';
-         //validate password
-         else if (password == '' || password == null) msg = 'Password required!';
+   function validate() {
+      var regex = /^\d{10}$/;
+      var msg = '';
+      var phone = $('#phone').val();
+      var password = $('#password').val();
+      //validare phone no.
+      if (phone == '' || phone == null) msg = 'Phone required!';
+      else if (phone.length < 10) msg = 'Too short phone no!';
+      else if (phone.length > 10) msg = 'Too long phone no!';
+      else if (regex.test(phone) == false) msg = 'invalid phone';
+      //validate password
+      else if (password == '' || password == null) msg = 'Password required!';
 
-         if (msg != '') {
-            Toast.fire({
-               icon: 'warning',
-               title: msg
-            });
-            return false;
-         }
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
       }
+   }
    </script>
 </body>
 

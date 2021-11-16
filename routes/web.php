@@ -122,7 +122,7 @@ Route::get("application_download/{id}", [ApplicationController::class, 'download
 Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
 Route::resource('profiles', ProfileController::class);
 Route::resource('academics', AcademicController::class);
-Route::view('change_pic', 'user.profile.personal.change_pic')->name('change_pic');
+Route::view('change_pic', 'user.profile.personal.change_pic');
 Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
 Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
 Route::resource('counselling', CounsellingController::class);
@@ -149,3 +149,7 @@ Route::get('findcountriesbycourse_countrypreview/{id}', [FindCountriesByCourseCo
 Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::class, 'report'])->name("findcountriesbycourse_report");
 Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
 //});
+
+Route::get('auth/facebook', [FbController::class, 'redirectToFacebook']);
+
+Route::get('auth/facebook/callback', [FbController::class, 'facebookSignin']);
