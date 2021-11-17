@@ -21,7 +21,7 @@ class FbController extends Controller
 
             $user = Socialite::driver('facebook')->user();
             $facebookId = User::where('facebook_id', $user->id)->first();
-            echo "you have successfully loggedin";
+            return 'done';
             // if ($facebookId) {
             //     // Auth::login($facebookId);
             //     return redirect('/');
