@@ -19,6 +19,12 @@ class CreateNotificationsTable extends Migration
             $table->string('text', 200); //notification text
             $table->boolean('status')->default(0);  //read or not read
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

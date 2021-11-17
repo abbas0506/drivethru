@@ -8,7 +8,7 @@ use App\http\Middleware\Admin;
 use App\http\Middleware\Student;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\RepresentativeController;
+
 
 use App\Http\Controllers\CountryController;
 
@@ -43,6 +43,9 @@ use App\Http\Controllers\FindUniversitiesByCourseController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FbController;
 
+
+use App\Http\Controllers\RepresentativeController;
+use App\Http\Controllers\NewsController;
 
 
 /*
@@ -108,6 +111,7 @@ Route::group(['middleware' => 'admin'], function () {
 //representative middleware
 Route::group(['middleware' => 'representative'], function () {
     Route::resource('representative', RepresentativeController::class);
+    Route::resource('news', NewsController::class);
 });
 
 
