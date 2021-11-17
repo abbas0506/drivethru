@@ -163,6 +163,8 @@ class UserController extends Controller
                 ]);
                 if ($user->usertype == 'admin')
                     return redirect('admin');
+                else if ($user->usertype == 'representative')
+                    return redirect('representative');
                 else if ($user->usertype == 'student')
                     return redirect('user_dashboard');
             } else {

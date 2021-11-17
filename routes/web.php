@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use App\http\Middleware\Admin;
 use App\http\Middleware\Student;
 
-use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RepresentativeController;
+
+use App\Http\Controllers\CountryController;
+
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\DocumentController;
@@ -39,6 +42,8 @@ use App\Http\Controllers\FindUniversitiesByCourseController;
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\FbController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +104,12 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('expensetypes', ExpensetypeController::class);
     Route::resource('livingcosts', LivingcostController::class);
 });
+
+//representative middleware
+Route::group(['middleware' => 'representative'], function () {
+    Route::resource('representative', RepresentativeController::class);
+});
+
 
 //student middleware
 Route::group(['middleware' => 'student'], function () {

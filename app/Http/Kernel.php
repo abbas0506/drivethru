@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         //my middle ware
         'admin' => \App\Http\Middleware\Admin::class,
         'student' => \App\Http\Middleware\Student::class,
+        'representative' => \App\Http\Middleware\Representative::class,
     ];
 }

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('usertype')->default('student');
             $table->string('pic', 100)->default('default.png');
-
+            $table->string('facebook_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
