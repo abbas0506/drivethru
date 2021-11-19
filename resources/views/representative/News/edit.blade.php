@@ -35,7 +35,6 @@ Swal.fire({
 @endif
 
 <div class="container-60">
-
    <form action="{{route('news.update',$news)}}" method='post'>
       @csrf
       @method('PATCH')

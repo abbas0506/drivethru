@@ -32,9 +32,9 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Test User',
-            'phone' => '0001112223',
+            'phone' => '0001112222',
             'password' => Hash::make('password'),
-            'usertype' => 'user',
+            'usertype' => 'student',
         ]);
     }
 }

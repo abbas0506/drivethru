@@ -48,7 +48,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="frow txt-m px-4 py-3 border border-info mb-2">
+<div class="frow txt-m px-4 py-3 border mb-2">
    <a href="{{route('finduniversitiesbyname.index')}}">
       <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable mr-3" onclick="toggleMe()">By Name</div>
    </a>

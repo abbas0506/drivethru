@@ -33,6 +33,7 @@ use App\Http\Controllers\LivingcostController;
 use App\Http\Controllers\FindUniversityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AcademicController;
+
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\FindCountriesByNameController;
@@ -46,7 +47,7 @@ use App\Http\Controllers\FbController;
 
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\AdvertisementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +113,7 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'representative'], function () {
     Route::resource('representative', RepresentativeController::class);
     Route::resource('news', NewsController::class);
+    Route::resource('advertisements', AdvertisementController::class);
 });
 
 
