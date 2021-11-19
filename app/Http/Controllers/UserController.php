@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\news;
+use App\Models\Advertisement;
 use Exception;
 
 
@@ -156,11 +158,23 @@ class UserController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 //authenticated, save into session
+
+                $news = News::offset(0)->limit(2)->get();
+                $advertisement = Advertisement::first();
+                if ($advertisement) $banner = $advertisement->banner;
+                else $banner = '';
+
                 session([
                     'user' => $user,
                     'usertype' => $user->usertype,
                     'mode' => 0,
+                    'news' => $news,
+                    'banner' => $banner,
                 ]);
+
+
+
+
                 if ($user->usertype == 'admin')
                     return redirect('admin');
                 else if ($user->usertype == 'representative')

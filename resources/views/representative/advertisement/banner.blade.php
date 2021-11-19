@@ -34,16 +34,15 @@ Swal.fire({
 </script>
 @endif
 
-@section('data')
 <div class="fcol w-100 rw-100 centered bg-white p-4">
    <div class="my-5">
       <img src="" id='preview_img' alt="Pic" width="100" height="100">
    </div>
-   <form action="#" method="post" enctype="multipart/form-data">
+   <form action="{{route('advertisements.store')}}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="frow w-100 rw-100">
          <div class="fcol fancyinput mr-3">
-            <input type="file" id='pic' name='pic' placeholder="Picture" class='w-90 m-0 mr-1 p-2' onchange='preview_pic()' required>
+            <input type="file" id='pic' name='banner' placeholder="Picture" class='w-90 m-0 mr-1 p-2' onchange='preview_pic()' required>
             <label for="Name">Upload Banner</label>
          </div>
          <button type='submit' class="btn btn-sm btn-success">Upload</button>

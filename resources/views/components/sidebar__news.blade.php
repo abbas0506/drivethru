@@ -6,12 +6,9 @@
    <div class="frow w-100 rw-100 centered">
       <div id="scroll-container">
          <div id="scroll-text">
-            <div>
-               We are pleased to inform u that we are going to arrange a career counselling seminar at our campus. You may have free online session right on p 2:pm
-            </div>
-            <div class="mt-4">
-               We are pleased to inform u that we are going to arrange a career counselling seminar at our campus. You may have free online session right on p 2:pm
-            </div>
+            @foreach(session('news') as $newsitem)
+            <div class="my-2">{{$newsitem->text}}</div>
+            @endforeach
          </div>
       </div>
    </div>
@@ -19,5 +16,5 @@
 <!-- Change password -->
 
 <div class="frow w-100 rw-100">
-   <img src="{{url(asset('images/banner/banner_1.gif'))}}" alt="" class="" width='100%' height='200'>
+   <img src="{{url(asset('images/advertisement/'.session('banner')))}}" alt="" class="" width='100%' height='200'>
 </div>

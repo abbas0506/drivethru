@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
 use Illuminate\Http\Request;
+use Exception;
 
 class AdvertisementController extends Controller
 {
@@ -37,6 +38,39 @@ class AdvertisementController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $advertisement = Advertisement::first();
+
+        try {
+            if ($request->hasFile('banner')) {
+
+                //save new pic after renaming
+                $file_name = "banner" . '.' . $request->banner->extension();
+                $destination_path = public_path('images/advertisemnet/');
+                if ($advertisement) {
+                    //unlink existing banner
+                    $file_path = $destination_path . $advertisement->banner;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                    $advertisement->banner = $file_name;
+                    $advertisement->update();
+                } else {
+                    $advertisement = Advertisement::create();   //create new instance
+                    $advertisement->banner = $file_name;
+                    $advertisement->save();
+                }
+                $request->file('banner')->move(public_path('images/advertisement'), $file_name);
+            }
+
+            return redirect()->route('advertisements.index')->with('success', 'Image uploaded successfully');
+        } catch (Exception $ex) {
+            return redirect()->back()
+                ->withErrors($ex->getMessage()());
+        }
     }
 
     /**
