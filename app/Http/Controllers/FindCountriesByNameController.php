@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
-
-use App\Models\news;
-use App\Models\Advertisement;
 use Exception;
 
 class FindCountriesByNameController extends Controller
@@ -23,7 +20,7 @@ class FindCountriesByNameController extends Controller
 
 
         $countries = Country::all();
-        return view('user.findcountries.byname.index', compact('countries', 'news', 'banner'));
+        return view('user.findcountries.byname.index', compact('countries'));
     }
 
     /**
