@@ -19,5 +19,5 @@
 <!-- Change password -->
 
 <div class="frow w-100 rw-100">
-   <img src="{{url(asset('images/bg/1.jpg'))}}" alt="" class="" width='100%' height='200'>
+   <img src="{{url(asset('images/banner/banner_1.gif'))}}" alt="" class="" width='100%' height='200'>
 </div>

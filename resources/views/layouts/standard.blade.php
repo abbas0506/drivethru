@@ -52,11 +52,11 @@
       </div>
 
       <script>
-         feather.replace();
+      feather.replace();
 
-         function toggle_sidebar() {
-            $('.user-sidebar').toggleClass('disappear');
-         }
+      function toggle_sidebar() {
+         $('.user-sidebar').toggleClass('disappear');
+      }
       </script>
       @yield('script')
 </body>
