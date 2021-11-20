@@ -12,6 +12,5 @@ class Advertisement extends Model
         'banner',
     ];
 
-    //public $timestamps = true;
-
+    public $timestamps = false;
 }
