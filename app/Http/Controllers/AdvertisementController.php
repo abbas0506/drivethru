@@ -67,7 +67,7 @@ class AdvertisementController extends Controller
             return redirect()->back()->with('success', 'Image uploaded successfully');
         } catch (Exception $ex) {
             return redirect()->back()
-                ->withErrors($ex->getMessage()());
+                ->withErrors($ex->getMessage());
         }
     }
 
