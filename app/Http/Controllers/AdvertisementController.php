@@ -42,14 +42,12 @@ class AdvertisementController extends Controller
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $advertisement = Advertisement::first();
-
         try {
             if ($request->hasFile('banner')) {
-
                 //save new pic after renaming
                 $file_name = "banner" . '.' . $request->banner->extension();
                 $destination_path = public_path('images/advertisemnet/');
+                $advertisement = Advertisement::first();
                 if ($advertisement) {
                     //unlink existing banner
                     $file_path = $destination_path . $advertisement->banner;
@@ -66,7 +64,7 @@ class AdvertisementController extends Controller
                 $request->file('banner')->move(public_path('images/advertisement'), $file_name);
             }
 
-            return redirect()->route('advertisements.index')->with('success', 'Image uploaded successfully');
+            return redirect()->back()->with('success', 'Image uploaded successfully');
         } catch (Exception $ex) {
             return redirect()->back()
                 ->withErrors($ex->getMessage()());
