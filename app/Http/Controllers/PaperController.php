@@ -18,8 +18,7 @@ class PaperController extends Controller
     {
         ////
         $data = Paper::all()->sortByDesc('id');
-        $papertypes = PaperType::all();
-        return view('admin.papers.index', compact('data', 'papertypes'));
+        return view('representative.papers.index', compact('data'));
     }
 
     /**
@@ -30,7 +29,8 @@ class PaperController extends Controller
     public function create()
     {
         //
-
+        $papertypes = PaperType::all();
+        return view('representative.papers.create', compact('papertypes'));
     }
 
     /**
@@ -89,7 +89,7 @@ class PaperController extends Controller
     {
         //
         $papertypes = PaperType::all();
-        return view('admin.papers.edit', compact('paper', 'papertypes'));
+        return view('representative.papers.edit', compact('paper', 'papertypes'));
     }
 
     /**

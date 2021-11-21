@@ -3,27 +3,38 @@
 
 <div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
    <div class="w-100">
-      <x-admin__header></x-admin__header>
+      <x-representative__header></x-representative__header>
    </div>
-   <div class='txt-l txt-white'>Past Papers</div>
-   <div class='frow txt-s txt-white'><a href="{{url('primary')}}">Primary </a> <span class="mx-1"> / </span> <a href="{{route('papers.index')}}">Papers </a> <span class="mx-1">/ edit </span> </div>
+   <div class='txt-l txt-white mt-3'>Edit Past Paper</div>
+   <div class='frow txt-s txt-white'>
+      <a href="{{url('representative')}}">Home</a> <span class="mx-1"> / </span>
+      <a href="{{route('papers.index')}}">Past Papers</a> <span class="mx-1"> / </span>
+      Edit
+   </div>
 </div>
 @endsection
 @section('page-content')
-
-<div class="container" style="width:60%">
-   <!-- display record save, del, update message if any -->
-   @if ($errors->any())
-   <div class="alert alert-danger mt-5">
-      <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-      </ul>
-   </div>
-   <br />
-   @endif
+<!-- display record save, del, update message if any -->
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
 </div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
+</script>
+@endif
+
 <div class="container-60">
 
    <!-- data form -->

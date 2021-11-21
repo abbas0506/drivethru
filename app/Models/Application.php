@@ -13,6 +13,7 @@ class Application extends Model
         'charges',
         'ispaid',
         'mode',
+        'status',
     ];
     public function user()
     {

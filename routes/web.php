@@ -49,6 +49,7 @@ use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
+use App\Http\Controllers\CounsellingRequestController;
 
 
 /*
@@ -91,7 +92,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('cities', CityController::class);
     Route::resource('papertypes', PaperTypeController::class);
     Route::resource('courses', CourseController::class);
-    Route::resource('papers', PaperController::class);
+
 
     Route::resource('universities', UniversityController::class);
     Route::resource('unicourses', UnicourseController::class);
@@ -118,6 +119,8 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('advertisements', AdvertisementController::class);
     Route::resource('closing', ClosingController::class);
     Route::get('closing/courselist/{id}', [ClosingController::class, 'courselist']);
+    Route::resource('papers', PaperController::class);
+    Route::resource('counselling/requests', CounsellingRequestController::class);
 });
 
 
