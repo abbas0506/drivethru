@@ -17,7 +17,7 @@ class NewsController extends Controller
     {
         //
         $news = News::orderBy('id', 'desc')->get();
-        return view('representative.news.index', compact('news'));
+        return view('representative.new.index', compact('news'));
     }
 
     /**
