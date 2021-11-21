@@ -42,7 +42,7 @@ Swal.fire({
       <div class="fcol mt-5">
 
          <div class="fancyinput mt-3 w-100">
-            <textarea rows="2" name='text' placeholder="News Text" required oninput='countTextLimit(event)'>value='{{$news->text}}'</textarea>
+            <textarea rows="2" name='text' placeholder="News Text" required oninput='countTextLimit(event)'>{{$news->text}}</textarea>
             <label>News Text <span class="txt-s ml-4 txt-grey" id='text_count'></span></label>
          </div>
 
