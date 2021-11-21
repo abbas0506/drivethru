@@ -71,7 +71,7 @@
    </div>
 
    <div @if($activeItem=='counselling' ) class="navitem active" @else class="navitem" @endif>
-      <a href="{{route('counselling.create')}}">
+      <a href="{{route('counselling.index')}}">
          <div class="navitem-ico"><i data-feather='headphones' class="feather-small"></i></div>
          <div class="navitem-link">Career Counselling</div>
       </a>

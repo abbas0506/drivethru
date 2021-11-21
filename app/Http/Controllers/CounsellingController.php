@@ -17,7 +17,7 @@ class CounsellingController extends Controller
     public function index()
     {
         //
-
+        return view('user.counselling.index');
     }
 
     /**

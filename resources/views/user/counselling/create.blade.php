@@ -45,41 +45,42 @@ Swal.fire({
 <div class="fcol w-100 rw-100 bg-white p-4">
    <div class="frow w-20 my-2 mid-left txt-b txt-m txt-orange"><span style="border-bottom:3px #F68656 solid">Free Session</span></div>
    <div class="frow my-1 txt-grey">
-      We are here to provide your free support services. Feel free to choose one or more options from the following.
+      We provide free supposrt services to all. Let us know what kind of issue is being faced by you.
    </div>
 
    <form action="{{route('counselling.store')}}" method="post">
       @csrf
 
       <input type="text" name="user_id" value="{{$user->id}}" hidden>
+      <input type="text" name="mode" value="{{session('mode')}}" hidden>
       <div class="frow p-1 mid-left">
          <div class="fcol w-15 rw-15 centered"><input type="checkbox" name='option1' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">I want to enquire about international admission</div>
+         <div class="fcol w-85 rw-90 mid-left">I want to enquire about international admission</div>
       </div>
       <div class="frow p-1 mid-left">
          <div class="fcol w-15 rw-15 centered"><input type="checkbox" name='option2' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">I want to enquire about national univeristy</div>
+         <div class="fcol w-85 rw-90 mid-left">I want to enquire about national univeristy</div>
       </div>
       <div class="frow p-1 mid-left">
          <div class="fcol w-15 rw-15 centered"><input type="checkbox" name='option3' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">I am facing website usage issue</div>
+         <div class="fcol w-85 rw-90 mid-left">I am facing website usage issue</div>
       </div>
       <div class="frow p-1 mid-left">
          <div class="fcol w-15 rw-15 centered"><input type="checkbox" name='option4' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">I am facing fee payment issue</div>
+         <div class="fcol w-85 rw-90 mid-left">I am facing fee payment issue</div>
       </div>
       <div class="frow p-1 mid-left">
          <div class="fcol w-15 rw-15 centered"><input type="checkbox" name='option5' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">I want to seek general information</div>
+         <div class="fcol w-85 rw-90 mid-left">I want to seek general information</div>
       </div>
       <div class="frow p-1 mid-left">
-         <div class="fcol w-15 rw-15 centered"><input type="checkbox" id='qrydetail' value="1"></div>
-         <div class="fcol w-90 rw-90 mid-left">
-            <textarea name="qrydetail" id="" rows="3" class="w-80" placeholder="I would like to express my query in words (upto 300 characters)"></textarea>
+         <div class="fcol w-15 rw-15 centered"><i data-feather='edit-3' class="feather-small"></i></div>
+         <div class="fcol w-85 rw-100 mid-left">
+            <textarea name="querydetail" id="" rows="3" class="w-100" placeholder="I would like to express my query in words (upto 300 characters)"></textarea>
          </div>
       </div>
       <div class="frow mt-2 mid-right">
-         <button type="submit" class="btn btn-info btn-sm">Submit</button>
+         <button type="submit" class="btn btn-primary">Submit Request</button>
       </div>
    </form>
 

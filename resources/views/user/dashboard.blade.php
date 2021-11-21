@@ -69,35 +69,6 @@ $user=session('user');
    </div>
 </div>
 
-<div class="fcol w-100 rw-100 bg-white p-4 mt-3">
-   <div class="frow w-100 rw-100 mid-left stretched">
-      <div class="txt-custom-blue txt-m">My Counselling Requests</div>
-   </div>
-   <!-- table header -->
-   <div class="frow mid-left border-bottom mt-3">
-      <div class="w-15 txt-s txt-silver">ID</div>
-      <div class="w-40 txt-s txt-grey">Created At</div>
-      <div class="w-15 txt-s txt-grey">Type</div>
-      <div class="w-15 txt-s txt-grey">Status</div>
-      <div class="w-15 txt-s txt-grey text-center">View</div>
-   </div>
-
-   <div class="fcol w-100 rw-100">
-      @foreach($user->counsellings() as $counselling)
-      <div class="frow w-100 tr mid-left py-1 border-bottom">
-         <div class="w-15 txt-s">{{$counselling->id}}</div>
-         <div class="w-40 txt-s">{{$counselling->created_at}}</div>
-         <div class="w-15 txt-s">@if($counselling->status==0) Pending @else Finished @endif </div>
-         <div class="w-15 txt-s text-center">
-            <a href="{{route('counselling.show',$counselling)}}">
-               <i data-feather='eye' class="feather-xsmall text-primary"></i>
-            </a>
-            &nbsp
-         </div>
-      </div>
-      @endforeach
-   </div>
-</div>
 @endsection
 
 @section('profile')

@@ -15,8 +15,9 @@ class Counselling extends Model
         'option3',
         'option4',
         'option5',
-        'qrydetail',
+        'querydetail',
         'status',
+        'mode', //national or international
     ];
     // public $timestamps = false;
 }

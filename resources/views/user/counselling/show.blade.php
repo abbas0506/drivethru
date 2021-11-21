@@ -62,6 +62,9 @@ $user=session('user');
          @endif
       </ul>
    </div>
+   <div class="frow mt-2 mid-right">
+      <a href="{{route('counselling.index')}}" class="btn btn-primary">OK</a>
+   </div>
 
    <!-- 
 

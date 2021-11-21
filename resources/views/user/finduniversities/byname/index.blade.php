@@ -85,7 +85,7 @@ Swal.fire({
    @else
    <!-- no university found -->
    <div class="frow w-100 rw-100 mt-2 txt-orange centered">
-      Database has no matching record
+      Database is empty
    </div>
    @endif
 </div>
