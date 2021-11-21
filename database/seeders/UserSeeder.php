@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
+            'id' => 15330,
             'name' => 'Test User',
             'phone' => '0001112222',
             'password' => Hash::make('password'),

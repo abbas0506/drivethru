@@ -159,7 +159,7 @@ class UserController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 //authenticated, save into session
 
-                $news = News::offset(0)->limit(2)->get();
+                $news = News::orderBy('id', 'desc')->limit(2)->get();
                 $advertisement = Advertisement::first();
                 if ($advertisement) $banner = $advertisement->banner;
                 else $banner = '';

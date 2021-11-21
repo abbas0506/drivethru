@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PaperTypeSeeder::class,
             CourseSeeder::class,
             ExpensetypeSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }
