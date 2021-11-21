@@ -16,5 +16,5 @@
 <!-- Change password -->
 
 <div class="frow w-100 rw-100">
-   <img src="{{url(asset('images/advertisement/'.session('banner')))}}" alt="" class="" width='100%' height='200'>
+   <img src="{{url(asset('images/advertisement/banner.gif'))}}" alt="" class="" width='100%' height='200'>
 </div>

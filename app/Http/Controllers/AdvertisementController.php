@@ -39,7 +39,7 @@ class AdvertisementController extends Controller
     {
         //
         $request->validate([
-            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
 
         try {
@@ -55,7 +55,7 @@ class AdvertisementController extends Controller
                         unlink($file_path);
                     }
                     $advertisement->banner = $file_name;
-                    $advertisement->update();
+                    $advertisement->save();
                 } else {
                     $advertisement = Advertisement::create();   //create new instance
                     $advertisement->banner = $file_name;
