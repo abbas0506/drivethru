@@ -5,7 +5,7 @@
       <div class="fcol centered navlink r-hide"><a href="{{route('advertisements.index')}}">Advertisement Banner</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Mail To</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Notify</a></div>
-      <div class="fcol centered navlink r-hide"><a href="{{route('universities.index')}}">Set Closing Date</a></div>
+      <div class="fcol centered navlink r-hide"><a href="{{route('closing.index')}}">Set Closing Date</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('papers.index')}}">Feed Past Papers</a></div>
 
       <div class="fcol centered navlink has-sub">

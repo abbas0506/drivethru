@@ -48,6 +48,8 @@ use App\Http\Controllers\FbController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\ClosingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +116,8 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('representative', RepresentativeController::class);
     Route::resource('news', NewsController::class);
     Route::resource('advertisements', AdvertisementController::class);
+    Route::resource('closing', ClosingController::class);
+    Route::get('closing/courselist/{id}', [ClosingController::class, 'courselist']);
 });
 
 
