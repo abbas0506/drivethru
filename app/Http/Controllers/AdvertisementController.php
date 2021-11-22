@@ -39,7 +39,7 @@ class AdvertisementController extends Controller
     {
         //
         $request->validate([
-            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
         try {
