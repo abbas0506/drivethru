@@ -13,8 +13,7 @@ user:
    -download report : national/internationa margin setting
    -faculty course fetching in uni by course page
    -application should be visible only on respective panel
-   -fincountry by couse index page disturbed
-   -findcountry by course apply page column width not set
+   
 
 
 

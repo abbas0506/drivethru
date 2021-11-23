@@ -159,6 +159,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('finduniversitiesbycourse_search', [FindUniversitiesByCourseController::class, 'search'])->name("finduniversitiesbycourse_search");
     Route::get('finduniversitiesbycourse_report', [FindUniversitiesByCourseController::class, 'report'])->name("finduniversitiesbycourse_report");
     Route::get('finduniversitiesbycourse_apply', [FindUniversitiesByCourseController::class, 'apply'])->name("finduniversitiesbycourse_apply");
+    Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
 
     Route::resource('findcountriesbyname', FindCountriesByNameController::class);
     Route::get('findcountriesbyname_search', [FindCountriesByNameController::class, 'search'])->name("findcountriesbyname_search");
