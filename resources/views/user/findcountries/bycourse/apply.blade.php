@@ -46,9 +46,9 @@ $user=session('user');
    <div class="frow p-1 mt-4 border-bottom tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
       <div class="w-40 rw-50"> Country </div>
-      <div class="w-15 rw-20 text-right">Study Cost($)</div>
-      <div class="w-15 text-right rhide">Living Cost($)</div>
-      <div class="w-20 rw-20 text-center">Apply</div>
+      <div class="w-20 rw-20 text-right">Study Cost($)</div>
+      <div class="w-20 text-right rhide">Living Cost($)</div>
+      <div class="w-10 rw-20 text-center">Apply</div>
    </div>
 
    @php $sr=1; @endphp
@@ -57,9 +57,9 @@ $user=session('user');
    <div class="frow p-1 border-bottom tr">
       <div class="w-10">{{$sr++}} </div>
       <div class="w-40 rw-50">{{$country->name}}</div>
-      <div class="w-15 rw-20 text-right "> {{$country->studycost()}}</div>
-      <div class="w-15 text-right rhide">{{$country->livingcost()}}</div>
-      <div class="w-20 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
+      <div class="w-20 rw-20 text-right "> {{$country->studycost()}}</div>
+      <div class="w-20 text-right rhide">{{$country->livingcost()}}</div>
+      <div class="w-10 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$country->id}}" onclick="updateChkCount()"></div>
    </div>
    @endforeach
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
