@@ -45,21 +45,12 @@ class PaperController extends Controller
         $request->validate([
             'year' => 'required',
             'papertype_id' => 'required',
-            'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'url' => 'required',
         ]);
 
         try {
 
             $paper = Paper::create($request->all());
-
-            if ($request->hasFile('pic')) {
-                $destination_path = 'public/images/papers';
-                //save paper image into separate folder
-                $file_name = $paper->id . '.' . $request->pic->extension();
-                $request->file('pic')->storeAs($destination_path, $file_name);
-                $paper->pic = $file_name;
-            }
-
             $paper->save();
             return redirect()->back()->with('success', 'Successfully created');
         } catch (Exception $e) {
@@ -105,31 +96,12 @@ class PaperController extends Controller
         $request->validate([
             'year' => 'required',
             'papertype_id' => 'required',
-            'pic' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'url' => 'required',
         ]);
 
 
         try {
-            //if picture updated
-            if ($request->hasFile('pic')) {
-                //unlink old image
-                $destination_path = 'public/images/papers/';
-                $file_path = $destination_path . $paper->pic;
-                if (file_exists($file_path)) {
-                    unlink($file_path);
-                }
-
-                //save new pic after renaming
-                $file_name = $paper->id . '.' . $request->pic->extension();
-                $request->file('pic')->storeAs($destination_path, $file_name);
-                $paper->pic = $file_name;
-            }
-            //update field values
-            $paper->papertype_id = $request->papertype_id;
-            $paper->year = $request->year;
-
-            $paper->update();
-
+            $paper->update($request->all());
             return redirect()->route('papers.index')->with('success', 'Successfully updated');
         } catch (Exception $e) {
             return redirect()->route('papers.index')->withErrors($e->getMessage());
@@ -147,15 +119,6 @@ class PaperController extends Controller
     {
         //
         try {
-
-            unlink(storage_path('app/public/images/papers/' . $paper->pic));
-
-            //$destination_path = 'public/images/papers/';
-            // $file_path = $destination_path . $paper->pic;
-            // if (file_exists($file_path)) {
-            //     unlink(storage_path('app/folder/' . $file));
-            //     unlink($file_path);
-            // }
             $paper->delete();
             return redirect()->back()->with('success', 'Successfully deleted');
         } catch (Exception $e) {

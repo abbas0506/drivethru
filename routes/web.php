@@ -50,7 +50,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
 use App\Http\Controllers\CounsellingRequestController;
-
+use App\Http\Controllers\AdmissionRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +121,7 @@ Route::group(['middleware' => 'representative'], function () {
     Route::get('closing/courselist/{id}', [ClosingController::class, 'courselist']);
     Route::resource('papers', PaperController::class);
     Route::resource('counselling/requests', CounsellingRequestController::class);
+    Route::resource('admission/requests', AdmissionRequestController::class);
 });
 
 

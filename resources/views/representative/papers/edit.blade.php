@@ -36,65 +36,34 @@ Swal.fire({
 @endif
 
 <div class="container-60">
-
+   <div class="frow border-left border-danger pl-4 my-5 txt-b">Edit Past Paper</div>
    <!-- data form -->
-   <form action="{{route('papers.update', $paper)}}" method='post' enctype="multipart/form-data">
+   <form action="{{route('papers.update', $paper)}}" method='post'>
       @csrf
       @method('PATCH')
-
-      <div class="frow border shadow mt-5">
-         <div class="fcol w-60 stretched p-5">
-            <div class="fancyselect w-100">
-               <select name="papertype_id">
-                  @foreach($papertypes as $papertype)
-                  <option value="{{$papertype->id}}" @if($papertype->id==$paper->papertype->id) selected @endif>{{$papertype->name}}</option>
-                  @endforeach
-               </select>
-               <label for="Name">Paper Type</label>
-            </div>
-            <div class="fancyinput w-100">
-               <input type="number" name='year' placeholder="Enter year" value="{{$paper->year}}" required>
-               <label>Year</label>
-            </div>
-            <div class="fancyinput w-100">
-               <input type="file" id='pic' name='pic' placeholder="past paper" class='w-100 m-0 p-2' onchange='preview_pastpaper()'>
-               <label for="Name">Image</label>
-            </div>
-
+      <div class="frow my-4 stretched">
+         <div class="fancyselect w-48">
+            <select name="papertype_id">
+               @foreach($papertypes as $papertype)
+               <option value="{{$papertype->id}}" @if($papertype->id==$paper->papertype->id) selected @endif>{{$papertype->name}}</option>
+               @endforeach
+            </select>
+            <label for="Name">Paper Type</label>
          </div>
-
-         <!-- left column ends -->
-
-         @php
-         $pic_url=url("storage/images/papers/".$paper->pic);
-         @endphp
-
-         <div class="fcol w-40 p-5">
-            <div class="frow centered image-frame" id='image_frame'>
-               <img src="{{$pic_url}}" alt='past paper' id='preview_img' width=150 height=180>
-            </div>
+         <div class="fancyinput w-48">
+            <input type="number" name='year' placeholder="Enter year" value='{{$paper->year}}' required>
+            <label for="Name">Year</label>
          </div>
-
+      </div>
+      <div class="fancyinput w-100">
+         <input type="txt" name='url' placeholder="Paste Url" class='w-100 m-0 p-2' value='{{$paper->url}}' required>
+         <label for="Name">Drive URL</label>
       </div>
 
       <div class="frow mid-right my-4">
          <button type="submit" class="btn btn-success">Update</button>
       </div>
-
-
    </form>
 
 </div>
-@endsection
-
-@section('script')
-<script lang="javascript">
-function preview_pastpaper() {
-   const [file] = pic.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
-   }
-}
-</script>
 @endsection

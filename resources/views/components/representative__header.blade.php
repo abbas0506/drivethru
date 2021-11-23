@@ -7,7 +7,7 @@
       <div class="fcol centered navlink r-hide"><a href="{{route('countries.index')}}"> Notify</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('closing.index')}}">Closing</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{route('papers.index')}}">Past Papers</a></div>
-      <div class="fcol centered navlink r-hide"><a href="{{route('papers.index')}}">Admission</a></div>
+      <div class="fcol centered navlink r-hide"><a href="{{url('admission/requests')}}">Admission</a></div>
       <div class="fcol centered navlink r-hide"><a href="{{url('counselling/requests')}}">Counselling</a></div>
 
       <div class="fcol centered navlink has-sub">

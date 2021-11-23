@@ -5,10 +5,10 @@
    <div class="w-100">
       <x-representative__header></x-representative__header>
    </div>
-   <div class='txt-l txt-white mt-3'>Counselling Requests</div>
+   <div class='txt-l txt-white mt-3'>Admission Requests</div>
    <div class='frow txt-s txt-white'>
       <a href="{{url('representative')}}">Home</a> <span class="mx-1"> / </span>
-      Counselling Requests
+      Admission Requests
    </div>
 </div>
 @endsection
@@ -48,17 +48,17 @@ Swal.fire({
       <div class="fcol centered w-10"><i data-feather='clock' class="feather-xsmall"></i></div>
    </div>
    @php $sr=1; @endphp
-   @foreach($counselling_requests as $counselling)
+   @foreach($admission_requests as $application)
 
    <div class="frow py-2 my-1 border-bottom tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="frow mid-left w-60 text-primary hoverable" onclick="showModal('{{$counselling->user->name}}', '{{$counselling->created_at}}', '{{$counselling->option1}}','{{$counselling->option2}}','{{$counselling->option3}}','{{$counselling->option4}}','{{$counselling->option5}}','{{$counselling->querydetail}}')">
-         {{$counselling->created_at}}
+      <div class="frow mid-left w-60 text-primary hoverable" onclick="showModal('{{$application->user->name}}', '{{$application->created_at}}', '{{$application->mode}}')">
+         {{$application->created_at}}
       </div>
-      @if($counselling->status==0)
+      @if($application->status==0)
       <div class="fcol mid-left w-20"> Pending </div>
       <div class="fcol centered w-10">
-         <a href="{{url('counselling/requests/'.$counselling->id.'/edit')}}">
+         <a href="{{url('application/requests/'.$application->id.'/edit')}}">
             <div class="badge badge-danger">Finish</div>
          </a>
       </div>
@@ -76,13 +76,13 @@ Swal.fire({
 
 <div class="container">
    <!-- Modal -->
-   <div class="modal fade" id="viewCounsellingDetailModal" role="dialog">
+   <div class="modal fade" id="viewapplicationDetailModal" role="dialog">
       <div class="modal-dialog">
 
          <!-- Modal content-->
          <div class="modal-content">
             <div class="modal-header">
-               <div class="h4">Counselling Request</div>
+               <div class="h4">application Request</div>
                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -160,7 +160,7 @@ function showModal(user, created_at, option1, option2, option3, option4, option5
    }
 
 
-   $('#viewCounsellingDetailModal').modal('show');
+   $('#viewapplicationDetailModal').modal('show');
 }
 </script>
 @endsection

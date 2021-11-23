@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Counselling;
+use App\Models\Application;
 use Exception;
 use Illuminate\Http\Request;
 
-class CounsellingRequestController extends Controller
+class AdmissionRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CounsellingRequestController extends Controller
     public function index()
     {
         //
-        $counselling_requests = Counselling::where('status', 0)->orderBy('id', 'desc')->get();
-        return view('representative.counselling_requests.index', compact('counselling_requests'));
+        $admission_requests = Application::where('status', 0)->orderBy('id', 'desc')->get();
+        return view('representative.admission_requests.index', compact('admission_requests'));
     }
 
     /**
@@ -39,6 +39,7 @@ class CounsellingRequestController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -61,11 +62,10 @@ class CounsellingRequestController extends Controller
     public function edit($id)
     {
         //
-
-        $counselling = Counselling::find($id);
+        $application = Application::find($id);
         try {
-            $counselling->status = 1;
-            $counselling->save();
+            $application->status = 1;
+            $application->save();
             //send notification to user 
             return redirect()->back()->with('success', "Successfully updated");
         } catch (Exception $ex) {

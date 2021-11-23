@@ -20,4 +20,9 @@ class Counselling extends Model
         'mode', //national or international
     ];
     // public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
