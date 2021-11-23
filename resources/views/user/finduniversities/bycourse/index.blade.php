@@ -17,7 +17,7 @@ $user=session('user');
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-findcountry__navbar activeItem='preference'></x-findcountry__navbar>
+   <x-finduniversitybycourse__navbar activeItem='find'></x-finduniversitybycourse__navbar>
 </div>
 @endsection
 
@@ -80,7 +80,7 @@ Swal.fire({
                   <label>Faculty</label>
                </div>
                <div class="fancyselect w-48 rw-100">
-                  <select name="course_id1" id="course_id1">
+                  <select name="course_id1" id="course_id1" required>
                      <option value=""></option>
                   </select>
                   <label for="">Course 1 *</label>

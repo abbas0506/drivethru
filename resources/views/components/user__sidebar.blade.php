@@ -27,7 +27,7 @@
       </div>
    </a>
    @else
-   <a href="{{route('finduniversity.index')}}">
+   <a href="{{route('finduniversitiesbyname.index')}}">
       <div class="frow centered txt-smoke relative">
          <div class="btn-rounded-custom-blue txt-s px-2 mt-2">Get Top Universities Report</div>
       </div>

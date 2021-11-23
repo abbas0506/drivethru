@@ -19,7 +19,7 @@ $user=session('user');
 @endsection
 @section('page-navbar')
 <div class="page-navbar">
-   <x-finduniversity__navbar activeItem='report'></x-finduniversity__navbar>
+   <x-finduniversitybyname__navbar activeItem='report'></x-finduniversitybyname__navbar>
 </div>
 @endsection
 

@@ -129,28 +129,26 @@ Route::group(['middleware' => 'representative'], function () {
 Route::group(['middleware' => 'student'], function () {
     Route::view('user_dashboard', 'user.dashboard');
     Route::get('switch/{mode}', function ($mode) {
-        session([
-            'mode' => $mode,
-        ]);
+        session(['mode' => $mode,]);
         return redirect('user_dashboard');
     });
-
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     //Route::resource('unicourses', UnicourseController::class);
-    Route::resource('finduniversity', FindUniversityController::class);
-    Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversities'])->name('fetchUniversities');
+    //Route::resource('finduniversity', FindUniversityController::class);
+    //Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversities'])->name('fetchUniversities');
     // Route::view('finalizeApplication', 'students.national.finalize');
     Route::resource('applications', ApplicationController::class);
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
-    Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
+
+    //Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
-    Route::resource('academics', AcademicController::class);
+    Route::view('changepw', 'user.profile.personal.changepw');
     Route::view('change_pic', 'user.profile.personal.change_pic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
+    Route::resource('academics', AcademicController::class);
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
     Route::resource('counselling', CounsellingController::class);
-    Route::view('changepw', 'user.profile.personal.changepw');
 
     Route::resource('finduniversitiesbyname', FindUniversitiesByNameController::class);
     Route::get('finduniversitiesbyname_fetch', [FindUniversitiesByNameController::class, 'fetch'])->name("finduniversitiesbyname_fetch");

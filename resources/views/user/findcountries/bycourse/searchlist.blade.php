@@ -17,7 +17,7 @@ $user=session('user');
 
 @section('page-navbar')
 <div class="page-navbar">
-   <x-findcountry__navbar activeItem='report'></x-findcountry__navbar>
+   <x-findcountrybycourse__navbar activeItem='report'></x-findcountrybycourse__navbar>
 </div>
 @endsection
 

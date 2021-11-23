@@ -17,8 +17,6 @@ class FindCountriesByNameController extends Controller
     public function index()
     {
         //
-
-
         $countries = Country::all();
         return view('user.findcountries.byname.index', compact('countries'));
     }
