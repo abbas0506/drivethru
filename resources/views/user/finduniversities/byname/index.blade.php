@@ -48,7 +48,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="frow px-4 py-3 mb-2 border">
+<div class="frow px-4 py-3 mb-2 bg-light">
    <div class="frow btn-rounded-custom-orange centered px-3 txt-s mr-3"><i data-feather='check' class="feather-small mr-2"></i>By Name </div>
    <a href="{{route('finduniversitiesbycourse.index')}}">
       <div class="frow centered btn-rounded-outline-orange px-3 txt-s hoverable">By Course</div>
