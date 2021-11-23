@@ -62,7 +62,7 @@ Swal.fire({
    </div>
 
    <div class="fcol w-100 rw-100">
-      @foreach($user->counsellings()->where('mode','=',session('mode')) as $counselling)
+      @foreach($user->counsellings()->where('mode','=', session('mode')) as $counselling)
       <div class="frow w-100 tr mid-left py-1 border-bottom">
          <div class="w-15 txt-s">{{$counselling->id}}</div>
          <div class="w-60 txt-s">{{$counselling->created_at}}</div>

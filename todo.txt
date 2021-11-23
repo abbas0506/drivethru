@@ -1,12 +1,7 @@
 representative:
    -dashboard
    -notifications
-   -change counselling status
-   -update closing date
-   -update advertisement banner
-   -update news section
-
-
+   
 user:
    
    
@@ -15,12 +10,11 @@ user:
    -phone or email verification
    -update phone or email
 
-   dashboard
-   password length: 10-11
-   address compulsory
-   VISa requirement only ---- visa required, visa dur cancelled
-   add brief description of general requirememtns to countries as well as coutnry report
-   
+   -download report : national/internationa margin setting
+   -faculty course fetching in uni by course page
+   -application should be visible only on respective panel
+   -fincountry by couse index page disturbed
+   -findcountry by course apply page column width not set
 
 
 
