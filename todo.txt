@@ -11,7 +11,6 @@ user:
    -update phone or email
 
    -download report : national/internationa margin setting
-   -faculty course fetching in uni by course page
    -application should be visible only on respective panel
    
 

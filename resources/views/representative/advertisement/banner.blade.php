@@ -36,7 +36,7 @@ Swal.fire({
 
 <div class="fcol w-100 rw-100 centered bg-white p-4">
    <div class="my-5">
-      <img src="" id='preview_img' alt="Pic" width="100" height="100">
+      <img src="" id='preview_img' alt="Banner" width="100" height="100">
    </div>
    <form action="{{route('advertisements.store')}}" method="post" enctype="multipart/form-data">
       @csrf

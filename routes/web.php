@@ -122,6 +122,7 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('papers', PaperController::class);
     Route::resource('counselling/requests', CounsellingRequestController::class);
     Route::resource('admission/requests', AdmissionRequestController::class);
+    Route::get('representative/changepw', [RepresentativeController::class, 'changepw'])->name('representative/changepw');
 });
 
 

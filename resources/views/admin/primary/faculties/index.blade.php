@@ -59,8 +59,8 @@ Swal.fire({
          <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
       </div>
 
-      <div class="frow px-2 py-1 my-3 border-bottom txt-b">
-         <div class="fcol mid-left w-80">Faculty </div>
+      <div class="frow px-2 py-1 my-3 border-bottom">
+         <div class="frow mid-left w-80"><span class='txt-b'> Faculty Name </span><span class="txt-s txt-grey ml-4">(Click on any faculty name to add courses)</span> </div>
          <div class="fcol mid-right pr-3 w-20"><i data-feather='settings' class="feather-xsmall"></i></div>
       </div>
 

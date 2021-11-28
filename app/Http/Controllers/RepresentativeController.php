@@ -82,4 +82,9 @@ class RepresentativeController extends Controller
     {
         //
     }
+    public function changepw()
+    {
+        //
+        echo 'changepw';
+    }
 }
