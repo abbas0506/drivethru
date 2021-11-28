@@ -8,10 +8,13 @@
    <div class='txt-l txt-white mt-3'>Change Password</div>
    <div class='frow txt-s txt-white'>
       <a href="{{url('representative')}}">Home</a> <span class="mx-1"> / </span>
-      Past Papers
+      Change password
    </div>
 </div>
 @endsection
+@php
+$user=session('user');
+@endphp
 @section('page-content')
 <!-- display record save, del, update message if any -->
 @if ($errors->any())
@@ -34,51 +37,47 @@ Swal.fire({
 </script>
 @endif
 <!-- change password -->
+<div class="container-60 mt-4">
+   <div class="fcol w-100 rw-100 centered text-justify">
+      <div class="txt-custom-blue"><i data-feather='key' class="feather-large mx-1 txt-orange"></i></div>
 
-<div class="fcol w-60 rw-100 h-90 centered text-justify">
-   <div class="txt-custom-blue mb-2"><i data-feather='key' class="feather-large mx-1 txt-orange"></i></div>
+      <div class="fcol w-100 rw-100 bg-white rounded p-2 relative">
 
-   <div class="fcol w-100 rw-100 bg-white rounded p-5 relative">
-      <a href="#">
-         <div class="fcol circular-25 border-0 centered bg-orange hoverable" style="position: absolute; top:10px; right:10px">
-            <i data-feather='x' class="feather-xsmall txt-white"></i>
-         </div>
-      </a>
-      <form action="#" method="post" id='form' onsubmit="return validate()">
-         @csrf
-         @method('PATCH')
-         <!-- display authentication error if any -->
-         @if ($errors->any())
-         <div class="fcol w-100 rw-100 my-2 txt-orange">
-            @foreach ($errors->all() as $error)
-            <div class="txt-s">- {{ $error }}</div>
-            @endforeach
-         </div>
-         @elseif(session('success'))
-         <div class="frow bg-primary txt-white p-2 rounded">Password successfully changed.</div>
-         @endif
+         <form action="{{route('representative.update', $user)}}" method="post" id='form' onsubmit="return validate()">
+            @csrf
+            @method('PATCH')
+            <!-- display authentication error if any -->
+            @if ($errors->any())
+            <div class="fcol w-100 rw-100 my-2 txt-orange">
+               @foreach ($errors->all() as $error)
+               <div class="txt-s">- {{ $error }}</div>
+               @endforeach
+            </div>
+            @elseif(session('success'))
+            <div class="frow bg-primary txt-white p-2 rounded">Password successfully changed.</div>
+            @endif
 
-         <div class="fancyinput w-100 mt-3 ">
-            <input type="text" name='current' id='current' placeholder="Current password">
-            <label class="bg-transparent">Current Password</label>
-         </div>
-         <div class="fancyinput w-100 mt-3 ">
-            <input type="password" name='new' id='new' placeholder="New password">
-            <label class="bg-transparent">New Password</label>
-         </div>
-         <div class="fancyinput w-100 mt-3 ">
-            <input type="password" id='confirm' placeholder="Confirm password">
-            <label class="bg-transparent">Confirm Password</label>
-         </div>
+            <div class="fancyinput w-100 mt-3 ">
+               <input type="text" name='current' id='current' placeholder="Current password">
+               <label class="bg-transparent">Current Password</label>
+            </div>
+            <div class="fancyinput w-100 mt-3 ">
+               <input type="password" name='new' id='new' placeholder="New password">
+               <label class="bg-transparent">New Password</label>
+            </div>
+            <div class="fancyinput w-100 mt-3 ">
+               <input type="password" id='confirm' placeholder="Confirm password">
+               <label class="bg-transparent">Confirm Password</label>
+            </div>
 
-         <div class="frow mid-right w-100 rw-100 mt-3">
-            <button type='submit' class="btn btn-primary">Change</button>
-         </div>
+            <div class="frow mid-right w-100 rw-100 mt-3">
+               <button type='submit' class="btn btn-primary">Change</button>
+            </div>
 
-      </form>
+         </form>
+      </div>
    </div>
 </div>
-
 @endsection
 
 @section('script')

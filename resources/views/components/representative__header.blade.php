@@ -36,7 +36,7 @@
          <div class='frow navsub'>
             <div class="fcol">
                <div class="navlink txt-b text-primary">{{session('user')->name}}</div>
-               <div class="navlink"><a href="{{route('representative/changepw')}}">Change Password</a></div>
+               <div class="navlink"><a href="{{route('representative.create')}}">Change Password</a></div>
                <div class="navlink"><a href="{{url('signout')}}">Sign out</a></div>
 
             </div>

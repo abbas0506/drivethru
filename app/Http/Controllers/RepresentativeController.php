@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Exception;
 
 class RepresentativeController extends Controller
 {
@@ -25,6 +28,7 @@ class RepresentativeController extends Controller
     public function create()
     {
         //
+        return view('representative.changepw');
     }
 
     /**
@@ -58,6 +62,7 @@ class RepresentativeController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -70,6 +75,29 @@ class RepresentativeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+        //signup  process
+        $request->validate([
+            'current' => 'required',
+            'new' => 'required',
+        ]);
+
+        //echo 'current:' . $request->current . "new" . $request->new . "existing" . $user->password;
+        try {
+
+            if (Hash::check($request->current, $user->password)) {
+                $user->password = Hash::make($request->new);
+                $user->save();
+                return redirect()->back()->with('success', 'successfuly changed');
+            } else {
+                //password not found
+                return redirect()->back()->withErrors("Password not found");;
+            }
+        } catch (Exception $e) {
+            return redirect()->back()
+                ->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -81,10 +109,5 @@ class RepresentativeController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function changepw()
-    {
-        //
-        echo 'changepw';
     }
 }
