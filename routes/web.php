@@ -64,7 +64,7 @@ use App\Http\Controllers\AdmissionRequestController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('index_encavo');
 });
 
 Auth::routes();
