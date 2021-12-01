@@ -107,6 +107,11 @@
                      <div class="col-lg-2 text-end">
                         <div class="expand-btn-inner">
                            <ul>
+                              <li><a href="{{url('signin')}}"><span class="text-light h6"> Login</span></a></li>
+                              <li><a href="{{url('signup')}}"><span class="text-light h6">Sign Up</span></a></li>
+                           </ul>
+
+                           <!-- <ul>
 
                               <li>
                                  <a class="hidden-xs rs-search" data-bs-toggle="modal" data-bs-target="#searchModal" href="#">
@@ -157,10 +162,10 @@
                                  </div>
                               </li>
                               <li class="user-icon last-icon">
-                                 <a href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                 <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
                               </li>
 
-                           </ul>
+                           </ul> -->
                            <span>
                               <a id="nav-expander" class="nav-expander">
                                  <span class="dot1"></span>
