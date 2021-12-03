@@ -243,7 +243,7 @@
                      <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">175+ National Universities AND Universities From 18+ countries</div>
                      <h1 class="sl-title wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Pakistan’s only One-Click Application Form.</h1>
                      <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
-                        <a class="readon orange-btn main-home" href="#">Apply Now</a>
+                        <a class="readon orange-btn main-home" href="{{url('signin)}}">Apply Now</a>
                      </div>
                   </div>
                </div>
@@ -254,7 +254,7 @@
                      <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">Pakistan one of its kind Ed-Tech Tribune</div>
                      <h1 class="sl-title wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Integrative Platform for National & international Universities</h1>
                      <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
-                        <a class="readon orange-btn main-home" href="#">Sign up</a>
+                        <a class="readon orange-btn main-home" href="{{url('signup')}}">Sign up</a>
                      </div>
                   </div>
                </div>
