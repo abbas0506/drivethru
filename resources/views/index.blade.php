@@ -184,7 +184,7 @@
                   <div class="desc white-color pr-100 md-pr-0">Drivethru.pk is a multi-dimensional solution of higher education requirements for students. From providing vast, authentic Information of 175+ HEC Recognized Universities to Admissions in 18+ International Countries, to applying on their behalf, Drivethru is proving to be rigmarole saver in case of both National and International admissions.</div>
                </div>
                <div class="btn-part">
-                  <a class="readon orange-btn transparent" href="#">MR HASSAAN TARIQ</a>
+                  <span class="readon orange-btn transparent">MR HASSAAN TARIQ</span>
                </div>
             </div>
          </div>
