@@ -64,7 +64,7 @@ use App\Http\Controllers\AdmissionRequestController;
 */
 
 Route::get('/', function () {
-    return view('index_encavo');
+    return view('index');
 });
 
 Auth::routes();
@@ -132,6 +132,7 @@ Route::group(['middleware' => 'student'], function () {
         session(['mode' => $mode,]);
         return redirect('user_dashboard');
     });
+
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     //Route::resource('unicourses', UnicourseController::class);
     //Route::resource('finduniversity', FindUniversityController::class);
@@ -176,3 +177,6 @@ Route::group(['middleware' => 'student'], function () {
 Route::get('signin/fb', [FbController::class, 'redirectToFacebook']);
 
 Route::get('signin/fb/callback', [FbController::class, 'facebookSignin']);
+Route::view('about', 'pages.about');
+Route::view('blog', 'pages.blog');
+Route::view('contact', 'pages.contact');
