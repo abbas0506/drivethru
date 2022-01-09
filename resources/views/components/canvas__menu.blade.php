@@ -7,7 +7,7 @@
       </div>
    </div>
    <div class="canvas-logo">
-      <a href="index.html"><img src="assets/images/dark-logo.png" alt="logo"></a>
+      <img src="assets/images/dark-logo.png" alt="logo">
    </div>
    <div class="offcanvas-text">
       <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo by the charms of pleasure of the moment data com so blinded by desire.</p>
