@@ -178,7 +178,7 @@
    <div class="partition-bg-wrap">
       <div class="container">
          <div class="row">
-            <div class="offset-lg-6 col-lg-6 pl-70 md-pl-15">
+            <div class="offset-lg-6 col-lg-6 pl-70 md-pl-15 pl-5">
                <div class="sec-title3 mb-40">
                   <h2 class="title white-color mb-16">Mentor</h2>
                   <div class="desc white-color pr-100 md-pr-0">Drivethru.pk is a multi-dimensional solution of higher education requirements for students. From providing vast, authentic Information of 175+ HEC Recognized Universities to Admissions in 18+ International Countries, to applying on their behalf, Drivethru is proving to be rigmarole saver in case of both National and International admissions.</div>
