@@ -88,11 +88,10 @@
 <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
    <div class="container">
       <div class="row y-middle">
-         <div class="col-lg-4 col-md-6 mb-30">
+         <div class="col-lg-4 col-md-6 mb-30 text-center">
             <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-               <div class="sub-title primary">DRIVETHRU</div>
-               <h2 class="title mb-0"> WHO WE</h2>
-               <h1 class="title mb-0"> ARE?</h1>
+               <div class="text-info txt-m">DRIVETHRU</div>
+               <h2 class="title mb-0"> WHO WE ARE?</h2>
             </div>
          </div>
          <div class="col-lg-4 col-md-6 mb-30">
