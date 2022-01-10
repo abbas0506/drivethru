@@ -51,6 +51,7 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
 use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
+use App\Http\Controllers\BankpaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -172,11 +173,13 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('findcountriesbycourse_countrypreview/{id}', [FindCountriesByCourseController::class, 'countrypreview'])->name("findcountriesbycourse_countrypreview");
     Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::class, 'report'])->name("findcountriesbycourse_report");
     Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
+    //payments
+    Route::resource('bankpayments', BankpaymentController::class);
 });
 
 Route::get('signin/fb', [FbController::class, 'redirectToFacebook']);
-
 Route::get('signin/fb/callback', [FbController::class, 'facebookSignin']);
+
 Route::view('about', 'pages.about');
 Route::view('blog', 'pages.blog');
 Route::view('contact', 'pages.contact');
