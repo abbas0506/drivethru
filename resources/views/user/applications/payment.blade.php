@@ -39,12 +39,12 @@ $user=session('user');
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -93,7 +93,7 @@ Swal.fire({
             <label>Challan No.</label>
          </div>
          <div class="fancyinput w-20">
-            <input type="text" id='amount' value='' placeholder="Amount" class="text-center">
+            <input type="text" id='charges' value='{{$application->charges*150}}' placeholder="charges" class="text-center" readonly>
             <label>Amount</label>
          </div>
       </div>
@@ -123,14 +123,14 @@ Swal.fire({
 @section('script')
 
 <script>
-document.getElementById('dateon').valueAsDate = new Date();
+   document.getElementById('dateon').valueAsDate = new Date();
 
-function preview_pic() {
-   const [file] = scancopy.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
+   function preview_pic() {
+      const [file] = scancopy.files
+      if (file) {
+         preview_img.src = URL.createObjectURL(file)
+         $('#image_frame').addClass('has-image');
+      }
    }
-}
 </script>
 @endsection
