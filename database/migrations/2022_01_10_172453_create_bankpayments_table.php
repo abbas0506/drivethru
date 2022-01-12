@@ -15,7 +15,18 @@ class CreateBankpaymentsTable extends Migration
     {
         Schema::create('bankpayments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('application_id');
+            $table->date('dateon');
+            $table->string('bank', 50);
+            $table->string('branch', 100);
+            $table->string('challan', 50);
+            $table->string('scancopy', 50)->default('default.png');
             $table->timestamps();
+            $table->foreign('application_id')
+                ->references('id')
+                ->on('applications')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

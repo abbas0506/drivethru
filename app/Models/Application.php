@@ -10,10 +10,11 @@ class Application extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'charges',
-        'ispaid',
-        'mode',
+        'mode', //nationa /international
         'status',
+        'charges',
+        'method',   //bank/jazz cash / ez paisa
+        'isverified',
     ];
     public function user()
     {

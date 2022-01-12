@@ -16,10 +16,11 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedInteger('charges');
-            $table->boolean('ispaid')->nullable();
             $table->boolean('mode')->default(0);
             $table->boolean('status')->default(0); //in progress
+            $table->unsignedInteger('charges');
+            $table->boolean('method')->nullable();
+            $table->boolean('isverified')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

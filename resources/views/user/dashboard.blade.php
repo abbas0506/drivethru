@@ -54,7 +54,7 @@ $user=session('user');
          <div class="w-10 txt-s">{{$application->id}}</div>
          <div class="w-40 txt-s">{{$application->created_at}}</div>
          <div class="w-20 txt-s">@if($application->mode==0) National @else International @endif</div>
-         <div class="w-15 txt-s">@if($application->ispaid) Paid @else {{$application->charges}} &nbsp<a href="{{route('bankpayments.create')}}"> <span class="badge badge-info">pay</span></a> @endif</div>
+         <div class="w-15 txt-s">@if($application->ispaid) Paid @else {{$application->charges}} &nbsp<a href="{{url('payments/create',$application)}}"> <span class="badge badge-info">pay</span></a> @endif</div>
          <div class="w-15 txt-s text-center">
             <a href="{{route('applications.show',$application)}}">
                <i data-feather='eye' class="feather-xsmall text-primary"></i>

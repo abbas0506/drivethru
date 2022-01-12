@@ -9,12 +9,17 @@ class Bankpayment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
         'application_id',
-        'amount',
         'dateon',
         'bank',
+        'branch',
         'challan',
+        //'amount',
         'scancopy',
     ];
+
+    public function application()
+    {
+        return $this->belongsTo(Application::class, 'application_id');
+    }
 }
