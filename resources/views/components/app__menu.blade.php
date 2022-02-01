@@ -42,8 +42,8 @@
          <div class="col-lg-2 text-end">
             <div class="expand-btn-inner">
                <ul class="mb-0">
-                  <li class=""><a href="{{url('signin')}}"><span class="text-light h6"> Login</span></a></li>
-                  <li><a href="{{url('signup')}}"><span class="text-light h6">Sign Up</span></a></li>
+                  <li class=""><a href="{{url('signin')}}"><span class="text-light"> Login</span></a></li>
+                  <li><a href="{{url('signup')}}"><span class="text-light">Sign Up</span></a></li>
                </ul>
 
                <span>

@@ -1,5 +1,5 @@
 <div class="frow w-80 stretched mid-left">
-   <div class="frow mid-left">
+   <div class="frow mid-left pl-5">
       @if(session('mode')==0)
       <a href="{{url('switch/1')}}">
          <i data-feather='toggle-left' class="feather-medium txt-custom-blue mx-2" onclick=""></i>
@@ -19,8 +19,8 @@
       <div @if($activeItem=='contactus' ) class="navitem active" @else class="navitem" @endif>Contact Us</div>
    </div>
    <div class="frow pr-3">
-      <div class="px-1"><i data-feather='bell' class="feather-small" onclick=""></i></div>
-      <div class="px-1">
+      <div class="px-2"><i data-feather='bell' class="feather-small" onclick=""></i></div>
+      <div class="px-2">
          <a href="{{url('signout')}}">
             <i data-feather='log-out' class="feather-small txt-custom-blue"></i>
          </a>

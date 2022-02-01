@@ -10,7 +10,7 @@ $page-body-height: 80vh;
     height: $user-header-height;
     background-color: white;
     color: $custom-blue;
-    font-size: 0.8rem;
+    font-size: 1rem;
     position: sticky;
     left: 0px;
     top: 0px;
@@ -21,11 +21,15 @@ $page-body-height: 80vh;
     & .navitem {
         display: flex;
         align-items: center;
-        padding: 0px 5px;
+        padding: 0px 15px;
         border-bottom: solid white 2px;
         height: $user-header-height;
         &.active {
             border-bottom: solid rgb($custom-blue, 0.8) 2px;
+        }
+        &:hover {
+            border-bottom: solid rgb($custom-blue, 0.6) 2px;
+            transition: all 1s;
         }
     }
 }
