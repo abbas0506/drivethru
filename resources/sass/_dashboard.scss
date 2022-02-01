@@ -28,8 +28,9 @@ $page-body-height: 80vh;
             border-bottom: solid rgb($custom-blue, 0.8) 2px;
         }
         &:hover {
-            border-bottom: solid rgb($custom-blue, 0.6) 2px;
-            transition: all 1s;
+            cursor: pointer;
+            color: rgb($custom-blue, 0.5);
+            transition: all 0.5s;
         }
     }
 }

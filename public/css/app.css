@@ -1375,8 +1375,9 @@ body {
   border-bottom: solid rgba(42, 83, 143, 0.8) 2px;
 }
 .user-header .navitem:hover {
-  border-bottom: solid rgba(42, 83, 143, 0.6) 2px;
-  transition: all 1s;
+  cursor: pointer;
+  color: rgba(42, 83, 143, 0.5);
+  transition: all 0.5s;
 }
 
 .user-sidebar {
