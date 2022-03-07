@@ -1,0 +1,405 @@
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Nunito', sans-serif;
+    }
+    
+    body {
+        background-color: #f3f8f9;
+    }
+    
+    .header {
+        /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('./images/capture1.png'); */
+        background-image: url('/images/bg/1.jpg');
+        background-size: cover;
+        background-position: center;
+        /* Center the image */
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+    }
+    
+    .app-header-logo {
+        padding: 2% 5%;
+        width: 180px;
+        height: 50px;
+    }
+    
+    nav {
+        display: flex;
+    }
+    
+    .nav-links {
+        flex: 1;
+        text-align: right;
+        padding: 2% 6%;
+    }
+    
+    .nav-links ul li {
+        /* font-family: 'Syncopate'; */
+        font-family: 'Quicksand', sans-serif;
+        /* font-weight: bold; */
+        list-style: none;
+        display: inline-block;
+        padding: 8px 12px;
+        color: #fff;
+    }
+    
+    .nav-links ul li::after {
+        content: '';
+        width: 0%;
+        background: #ff5421;
+        display: block;
+        height: 2px;
+        margin: auto;
+        transition: 0.5s;
+    }
+    
+    .nav-links ul li:hover {
+        cursor: pointer;
+    }
+    
+    .nav-links ul li:hover::after {
+        width: 100%;
+    }
+    
+    .nunito {
+        font-family: 'Nunito', sans-serif;
+    }
+    
+    .syncopate {
+        font-family: 'Syncopate', sans-serif;
+    }
+    
+    .quicksand {
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    @font-face {
+        font-family: 'Nunito';
+        src: url('/fonts/Nunito/Nunito-VariableFont_wght.ttf');
+        /* src: url('/public/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf'); */
+    }
+    
+    @font-face {
+        font-family: 'Syncopate';
+        src: url('/fonts/Syncopate/Syncopate-Regular.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Quicksand';
+        src: url('/fonts/Quicksand/Quicksand-VariableFont_wght.ttf');
+    }
+    
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        /* src: url('./icons/material-4.0/font/MaterialIconsTwoTone-Regular.otf'); */
+        src: url('/fonts/material/MaterialIconsOutlined-Regular.otf') format("opentype");
+        /* For IE6-8 */
+    }
+    
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+    }
+    
+    .app-msg {
+        /* font-family: 'Courier New', Courier, monospace; */
+        font-family: 'Quicksand', sans-serif;
+        width: 90%;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+    }
+    
+    .app-msg h1 {
+        font-size: 48px;
+    }
+    
+    .app-msg p {
+        margin-top: 20px;
+        font-size: 25px;
+        color: #ff5421;
+    }
+    
+    .app-msg button {
+        margin-top: 20px;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #ff5421;
+        border-color: #ff5421;
+        color: white;
+    }
+    
+    .app-msg button:hover {
+        background-color: transparent;
+        border-color: transparent;
+        background-color: rgb(36, 36, 41);
+        color: #fff;
+    }
+    
+    .btns {
+        display: flex;
+        /* width: 100%; */
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    .btns span,
+    .btns div {
+        display: flex;
+        height: 100px;
+        width: 100px;
+        align-items: center;
+        justify-content: center;
+        background: #f44336;
+    }
+    
+    .btns button {
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+    }
+    /* Offer section */
+    
+    .offer,
+    .who {
+        width: 80%;
+        margin: auto;
+        padding: 5%;
+        text-align: center;
+    }
+    
+    .offer>h1,
+    .who>h1 {
+        font-size: 32px;
+    }
+    
+    .offer .row {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 0px;
+    }
+    
+    .offer-col {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 31%;
+        background: #171f32;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 20px 10px;
+        text-align: left;
+        align-items: center;
+        /* border: 1 solid #f44336; */
+        transition: 0.5s;
+    }
+    
+    .offer-col:hover {
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
+    }
+    
+    .offer-col h1 {
+        font-weight: 400;
+        color: #fff;
+    }
+    
+    .offer-col p {
+        font-size: 14px;
+        line-height: 30px;
+        color: #fff;
+        /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    }
+    
+    .offer-col .ico {
+        margin-right: 20px;
+    }
+    
+    .offer-col img {
+        width: 50px;
+        height: 50px;
+    }
+    /* Services */
+    
+    .services {
+        width: 80%;
+        padding: 50px 0px;
+        margin: auto;
+        text-align: center;
+    }
+    
+    .services .row {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+    
+    .services .col {
+        flex-basis: 31%;
+        height: 200px;
+        /* background: coral; */
+        box-sizing: border-box;
+        position: relative;
+        transition: 0.5s;
+        /* background-image: url('/assets/images/degrees/3.jpg'); */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    .services>h1 {
+        font-size: 32px;
+    }
+    
+    .services .col:nth-of-type(1) {
+        background-image: url('/images/banner/services/1.jpg');
+    }
+    
+    .services .col:nth-of-type(2) {
+        background-image: url('/images/banner/services/2.jpg');
+    }
+    
+    .services .col:nth-of-type(3) {
+        background-image: url('/images/banner/services/3.jpg');
+        /* background-image: url('/images/mentor/mentor.png'); */
+    }
+    
+    .services .col .content {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotateY(90deg);
+        align-items: center;
+        justify-content: center;
+        background: rgba(17, 41, 88, 0.9);
+        border-radius: 3px;
+        padding: 20px;
+        color: #ffffff;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .services .col:hover .content {
+        transform: translate(-50%, -50%) rotateY(0);
+        opacity: 1;
+    }
+    
+    .services .col .content h1 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    .services .col .content p {
+        font-family: 'Quicksand', Verdana;
+        font-size: 14px;
+        margin-top: 16px;
+    }
+    
+    .services .col .title {
+        position: absolute;
+        bottom: 10%;
+        left: 10%;
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+        opacity: 1;
+        transition: all 0.3s ease;
+    }
+    
+    .services .col:hover .title {
+        opacity: 0;
+        bottom: -20%;
+    }
+    /* Mentor */
+    
+    .mentor,
+    .faq {
+        width: 80%;
+        padding: 50px 0px;
+        margin: auto;
+        text-align: center;
+    }
+    
+    .mentor>h1 {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    
+    .mentor .row {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        border: dotted 5px #fff;
+        background-color: #171f32;
+    }
+    
+    .mentor .col {
+        display: flex;
+        flex-basis: 50%;
+        box-sizing: border-box;
+        position: relative;
+        transition: 0.5s;
+        justify-content: center;
+        align-items: center;
+        text-align: justify;
+        padding: 20px;
+    }
+    
+    .mentor img {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    .mentor .col h1 {
+        font-size: 24px;
+        color: #ff5421;
+    }
+    
+    .mentor .col p {
+        font-size: 16px;
+        color: #fff;
+        margin-right: 20px;
+    }
+    /* FAQ */
+    
+    .faq .row {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+    
+    .faq .question {
+        background-color: #fff;
+    }
+    
+    .faq .ans {
+        visibility: collapse;
+    }

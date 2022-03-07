@@ -9374,6 +9374,7 @@ body .modal-backdrop {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) rotateY(90deg);
+    align-content: center;
     text-align: center;
     background: rgba(17, 41, 88, 0.9);
     border-radius: 3px;
