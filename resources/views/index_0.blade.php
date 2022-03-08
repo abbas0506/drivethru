@@ -7,6 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
    <link href="/css/index.css" rel="stylesheet">
+   <script src="/js/feather.min.js"></script>
    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 </head>
@@ -125,16 +126,16 @@
       <div class="row">
          <div class="col">
             <h1>Frequently Asked Questions</h1>
-            <div class="question"> <i class="material-icons">notifications</i> What service do you offer/provide? </div>
+            <div class="question"> <i data-feather="bell" class="fs-16"></i> What service do you offer/provide? </div>
             <div class="ans">Drivethru provides information about 175+ National and International Universities from 17+ countries, for FREE. Admission applying services, Career counselling, Visa services.</div>
 
-            <div class="question"><i class="material-icons">notifications</i> How much do you charge? </div>
+            <div class="question"><i data-feather="bell-off" class="fs-16"></i> How much do you charge? </div>
             <div class="ans">We provide complete information about National and International admissions, FREE OF COST. If you proceed for admission we will apply on your behalf in these Universities, then we charge $1/ University ($1=150 pkr).</div>
 
-            <div class="question"><i class="material-icons">notifications</i>How can I book an appointment?</div>
+            <div class="question"><i data-feather="bell" class="fs-16"></i> How can I book an appointment?</div>
             <div class="ans">User can book an appointment with us through website You can reach us via WhatsApp in office timing 9:00-5:00 at following Contact Number. +92 316 4515249, +92 345 7515152.</div>
 
-            <div class="question"><i class="material-icons">notifications</i>Where can I get this Information? </div>
+            <div class="question"><i data-feather="bell" class="fs-16"></i> Where can I get this Information? </div>
             <div class="ans">By creating a free login user can extract every information they want. User can also leave a message on social media profiles or user can contact our Student Advisor on mentioned WhatsApp in office timings to get complete Information.</div>
 
 
@@ -149,5 +150,8 @@
 
    </section>
 </body>
+<script>
+   feather.replace();
+</script>
 
 </html>

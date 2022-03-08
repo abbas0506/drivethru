@@ -124,6 +124,15 @@ nav {
     font-feature-settings: 'liga';
 }
 
+
+/* font sizes */
+
+.fs-16 {
+    width: 16px;
+    height: 16px;
+    color: red;
+}
+
 .app-msg {
     /* font-family: 'Courier New', Courier, monospace; */
     font-family: 'Quicksand', sans-serif;
