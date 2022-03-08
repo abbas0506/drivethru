@@ -15,7 +15,7 @@
 <body>
    <section class="header">
       <nav>
-         <img src="images/logo/dark.png" alt="" href="" class='app-header-logo'>
+         <img src="/public/images/logo/dark.png" alt="" href="" class='app-header-logo'>
          <div class="nav-links">
             <ul>
                <li>HOME</li>
@@ -50,7 +50,7 @@
       <div class="row">
          <div class="offer-col">
             <div class="ico">
-               <img src="/images/icon/3.png" alt="">
+               <img src="/public/images/icon/3.png" alt="">
             </div>
             <div class="content">
                <h1>Oppertunities</h1>
@@ -60,7 +60,7 @@
 
          <div class="offer-col">
             <div class="ico">
-               <img src="/images/icon/2.png" alt="">
+               <img src="/public/images/icon/2.png" alt="">
             </div>
             <div class="content">
                <h1>Admissions</h1>
@@ -70,7 +70,7 @@
 
          <div class="offer-col">
             <div class="ico">
-               <img src="/images/icon/1.png" alt="">
+               <img src="/public/images/icon/1.png" alt="">
             </div>
             <div class="content">
                <h1>Consultation</h1>
@@ -111,7 +111,7 @@
       <h1>Our Mentor</h1>
       <div class="row">
          <div class="col">
-            <img src="/images/mentor/mentor2-01.png" alt="" width=300>
+            <img src="/public/images/mentor/mentor2-01.png" alt="" width=300>
          </div>
          <div class="col">
             <div class="content">
@@ -142,7 +142,7 @@
          </div>
          <div class="col">
             <video width="400" controls autoplay muted>
-               <source src="/videos/github.mp4" type="video/mp4">
+               <source src="/public/videos/github.mp4" type="video/mp4">
                <source src="movie.ogg" type="video/ogg">
                Your browser does not support the video tag.
             </video>
