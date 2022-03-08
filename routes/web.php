@@ -69,7 +69,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('index1', 'index1');
+Route::view('index_0', 'index_0');
 Auth::routes();
 
 Route::view('main', '');
