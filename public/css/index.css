@@ -433,5 +433,6 @@ nav {
     }
     .section .col {
         margin-top: 10px;
+        padding: 0px;
     }
 }
