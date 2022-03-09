@@ -25,13 +25,13 @@
                <li>BLOG</li>
                <li>CONTACT US</li>
                <li></li>
-               <li>Login</li>
-               <li>Signup</li>
+               <li>LOGIN</li>
+               <li>SIGNUP</li>
             </ul>
          </div>
       </nav>
       <div class="app-msg">
-         <p>175+ Universities from Pakistan and other 18+ Countries</p>
+         <p>175+ Universities from Pakistan and 18+ other Countries</p>
          <h1>Single-Click Application Form</h1>
          <button>Apply Now</button>
 
@@ -41,7 +41,7 @@
       <h1>Who we are?</h1>
       <p>We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
          We provide sufficient information and services that empower you to take a lead in your academic career. <br>
-         We believe in <i>right candidate to right university</i>
+         We believe in <b>right candidate to right university</b>
       </p>
    </section>
 
@@ -153,7 +153,7 @@
    </section>
 </body>
 <script>
-   feather.replace();
+feather.replace();
 </script>
 
 </html>
