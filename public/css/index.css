@@ -391,6 +391,7 @@ nav {
 
 .faq .ans {
     display: none;
+    font-size: larger;
 }
 
 @media only screen and (max-width: 768px) {
