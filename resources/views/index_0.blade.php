@@ -33,7 +33,7 @@
       <div class="app-msg">
          <p>175+ Universities from Pakistan and 18+ other Countries</p>
          <h1>Single-Click Application Form</h1>
-         <button>Apply Now</button>
+         <button class="btn-red">Apply Now</button>
 
       </div>
    </section>
@@ -150,13 +150,13 @@
    </section>
    <section class="section footer">
       <div class="newsletter">
-         <div class="row">
-
+         <div class="left">
             <img src="/images/icon/newsletter.png" alt="" width="60">
             <h1>Subscribe to Newsletter</h1>
-
+         </div>
+         <div class="right">
             <input type="text">
-            <button>Submit</button>
+            <button class="btn-red">Submit</button>
          </div>
       </div>
       </div>
@@ -173,7 +173,7 @@
          </div>
          <div class="col">
             <h2>CONTACT US</h2>
-            <form action="" class="form">
+            <form action="" class="contactus">
                <div class="row">
                   <input type="text" placeholder="name">
                   <input type="text" placeholder="email">
@@ -186,7 +186,7 @@
                   <textarea name="" id="" rows="5" placeholder="message"></textarea>
                </div>
                <div class="row">
-                  <button>Submit Now</button>
+                  <button class="btn-red">Submit Now</button>
                </div>
             </form>
          </div>
