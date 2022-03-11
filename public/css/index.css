@@ -157,34 +157,11 @@
         background-color: rgb(36, 36, 41);
         color: #fff;
     }
-    /* .btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.btns span,
-.btns div {
-    display: flex;
-    height: 100px;
-    width: 100px;
-    align-items: center;
-    justify-content: center;
-    background: #f44336;
-}
-
-.btns button {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-} */
     
     .section {
-        /* width: 100%; */
-        padding: 2% 0%;
-        margin-top: 50px;
         text-align: center;
     }
+    /* section title */
     
     .section>h1 {
         font-size: 32px;
@@ -193,14 +170,7 @@
     .section .row {
         display: flex;
         justify-content: space-between;
-        /* margin: 50px 0px; */
     }
-    
-    .who p {
-        font-size: 20px;
-        font-family: 'Quicksand';
-    }
-    /* Offer section */
     
     .who,
     .offer,
@@ -208,7 +178,14 @@
     .faq {
         width: 80%;
         margin: auto;
+        padding-top: 50px;
     }
+    
+    .who p {
+        font-size: 20px;
+        font-family: 'Quicksand';
+    }
+    /* Offer section */
     
     .offer .col {
         display: flex;
@@ -327,8 +304,10 @@
     /* Mentor */
     
     .mentor {
-        width: 100% !important;
+        width: 100%;
         padding: 0px;
+        text-align: center;
+        margin-top: 50px;
     }
     
     .mentor .row {
@@ -389,6 +368,7 @@
     /* Footer */
     
     .footer {
+        margin-top: 100px;
         background-color: #000;
         padding: 6% 12% 0% 12%;
         text-align: left;
