@@ -204,7 +204,8 @@
     
     .who,
     .offer,
-    .services {
+    .services,
+    .faq {
         width: 80%;
         margin: auto;
     }
@@ -399,11 +400,11 @@
         /* background-color: #7bbecc !important; */
         /* padding: 50px; */
         /* margin: 30px; */
-        width: 76%;
+        width: 80%;
         margin: auto;
         position: absolute;
         top: -50px;
-        left: 12%;
+        left: 10%;
         display: block;
     }
     
@@ -414,10 +415,10 @@
         justify-content: space-between;
         /* position: absolute;
         top: -50px; */
-        width: 76%;
+        width: 80%;
         position: absolute;
         top: -50px;
-        left: 12%;
+        left: 10%;
         /* left: 20%; */
     }
     

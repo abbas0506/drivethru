@@ -151,15 +151,14 @@
    <section class="section footer">
       <div class="newsletter">
          <div class="row">
-            <div>
-               <img src="/images/icon/newsletter.png" alt="" width="60">
-               <h1>Subscribe to Newsletter</h1>
-            </div>
-            <div>
-               <input type="text">
-               <button>Submit</button>
-            </div>
+
+            <img src="/images/icon/newsletter.png" alt="" width="60">
+            <h1>Subscribe to Newsletter</h1>
+
+            <input type="text">
+            <button>Submit</button>
          </div>
+      </div>
       </div>
       <div class="content">
          <div class="col">
@@ -191,15 +190,10 @@
                </div>
             </form>
          </div>
-
-
       </div>
       <div class='copyright'>
          @2022 All rights reserved. Developed by Drivethru.pk
       </div>
-
-
-
    </section>
 </body>
 <script>
