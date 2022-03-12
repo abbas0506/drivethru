@@ -7,8 +7,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>DriveThru</title>
    <link href="/css/index.css" rel="stylesheet">
+
    <script src="/js/feather.min.js"></script>
    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -16,19 +18,23 @@
    <section class="header">
       <nav>
          <img src="/images/logo/dark.png" alt="" href="" class='app-header-logo'>
-         <div class="nav-links">
+         <div class="nav-links" id='nav-links'>
+            <!-- <i data-feather="x" class="feather-small close" onclick="hidemenu()"></i> -->
+            <i class="fa fa-close" onclick="hidemenu()"></i>
             <ul>
                <li>HOME</li>
                <li>ADMISSION</li>
                <li>SERVICES</li>
-               <li>ABOUT US</li>
+               <li>ABOUT</li>
                <li>BLOG</li>
-               <li>CONTACT US</li>
+               <li>CONTACT</li>
                <li></li>
                <li>LOGIN</li>
                <li>SIGNUP</li>
             </ul>
          </div>
+         <!-- <i data-feather="menu" class="feather-small menu" onclick="showmenu()"></i> -->
+         <i class="fa fa-bars" onclick="showmenu()"></i>
       </nav>
       <div class="app-msg">
          <p>175+ Universities from Pakistan and 18+ other Countries</p>
@@ -37,7 +43,7 @@
 
       </div>
    </section>
-   <section class="section who">
+   <section class="who">
       <h1>Who we are?</h1>
       <p>We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
          We provide sufficient information and services that empower you to take a lead in your academic career. <br>
@@ -45,7 +51,7 @@
       </p>
    </section>
 
-   <section class="section offer">
+   <section class="offer">
       <h1>What we offer?</h1>
       <div class="row">
          <div class="col">
@@ -80,7 +86,7 @@
       </div>
    </section>
 
-   <section class="section services">
+   <section class="services">
       <h1>Our Services</h1>
       <div class="row">
          <div class="col">
@@ -102,12 +108,12 @@
                <h1>Personalized Reports</h1>
                <p>We generate a free of cost user specific report on the basis of user's own preferences.</p>
             </div>
-            <div class="title">Personalized Reports/div>
-            </div>
+            <div class="title">Personalized Reports</div>
          </div>
+      </div>
    </section>
 
-   <section class="section mentor">
+   <!-- <section class="mentor">
       <h1 class="title">Our Mentor</h1>
       <div class="row">
          <div class="col">
@@ -119,10 +125,9 @@
                <p>Drivethru.pk is a multi-dimensional solution of higher education requirements for students. From providing vast, authentic Information of 175+ HEC Recognized Universities to Admissions in 18+ International Countries, to applying on their behalf, Drivethru is proving to be rigmarole saver in case of both National and International admissions.</p>
             </div>
          </div>
-
-   </section>
+   </section> -->
    <!-- FAQ -->
-   <section class="section faq">
+   <section class="faq">
       <div class="row">
          <div class="col">
             <h1>Frequently Asked Questions</h1>
@@ -148,7 +153,7 @@
             </video>
          </div>
    </section>
-   <section class="section footer">
+   <section class="footer">
       <div class="newsletter">
          <div class="left">
             <img src="/images/icon/newsletter.png" alt="" width="60">
@@ -198,6 +203,15 @@
 </body>
 <script>
 feather.replace();
+var navlinks = document.getElementById('nav-links');
+
+function hidemenu() {
+   navlinks.style.right = "-300px";
+}
+
+function showmenu() {
+   navlinks.style.right = "0";
+}
 </script>
 
 </html>

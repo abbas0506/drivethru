@@ -76,25 +76,28 @@
     }
     
     .app-header-logo {
-        padding: 2% 5%;
+        /* padding: 2% 5%; */
         width: 180px;
         height: 50px;
     }
     
     nav {
         display: flex;
+        padding: 2% 5%;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .nav-links {
         flex: 1;
         text-align: right;
-        padding: 2% 6%;
     }
     
     .nav-links ul li {
         /* font-family: 'Syncopate'; */
         font-family: 'Quicksand', sans-serif;
         /* font-weight: bold; */
+        font-size: 12px;
         list-style: none;
         display: inline-block;
         padding: 8px 12px;
@@ -117,6 +120,10 @@
     
     .nav-links ul li:hover::after {
         width: 100%;
+    }
+    
+    nav .fa {
+        display: none;
     }
     
     .app-msg {
@@ -161,16 +168,16 @@
         color: #fff;
     }
     
-    .section {
+    section {
         text-align: center;
     }
     /* section title */
     
-    .section>h1 {
-        font-size: 32px;
+    section>h1 {
+        font-size: 28px;
     }
     
-    .section .row {
+    section .row {
         display: flex;
         justify-content: space-between;
     }
@@ -185,7 +192,7 @@
     }
     
     .who p {
-        font-size: 20px;
+        font-size: 18px;
         font-family: 'Quicksand';
     }
     /* Offer section */
@@ -209,7 +216,7 @@
     }
     
     .offer .col h1 {
-        font-weight: 400;
+        font-weight: 200;
         color: #fff;
     }
     
@@ -233,11 +240,9 @@
     .services .col {
         flex-basis: 31%;
         height: 200px;
-        /* background: coral; */
         box-sizing: border-box;
         position: relative;
         transition: 0.5s;
-        /* background-image: url('/assets/images/degrees/3.jpg'); */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -280,7 +285,7 @@
     
     .services .col .content h1 {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .services .col .content p {
@@ -294,8 +299,8 @@
         bottom: 10%;
         left: 10%;
         font-weight: bold;
-        font-size: 20px;
-        color: white;
+        font-size: 18px;
+        color: #171f32;
         opacity: 1;
         transition: all 0.3s ease;
     }
@@ -347,11 +352,10 @@
         margin-right: 20px;
     }
     /* FAQ */
-    
-    .faq .row {
+    /* .faq .row {
         display: flex;
         justify-content: space-between;
-    }
+    } */
     
     .faq .col:nth-of-type(1) {
         text-align: left;
@@ -373,7 +377,7 @@
     .footer {
         margin-top: 100px;
         background-color: #000;
-        padding: 10% 12% 0% 12%;
+        padding: 6% 12% 0% 12%;
         text-align: left;
         display: block;
         position: relative;
@@ -385,9 +389,9 @@
         background-color: #171f32;
         justify-content: space-between;
         position: absolute;
-        width: 80%;
+        width: 76%;
         top: -50px;
-        left: 10%;
+        left: 12%;
         /* left: 20%; */
     }
     
@@ -493,7 +497,13 @@
         padding: 20px 0px;
         /* text-align: center; */
     }
-    /* @media only screen and (max-width: 768px) {
+    /* .nav-links .close,
+    .nav-links .menu {
+        display: none;
+    }
+     */
+    
+    @media only screen and (max-width: 800px) {
         .app-header-logo {
             padding: 2% 5%;
             width: 120px;
@@ -517,21 +527,49 @@
             font-size: 12px;
             color: #ff5421;
         }
-        .section {
+        section {
             width: 100%;
             padding: 5%;
             margin: auto;
             text-align: center;
         }
-        .section>h1 {
+        .nav-links {
+            position: absolute;
+            background-color: #171f32;
+            width: 300px;
+            height: 100vh;
+            top: 0px;
+            right: -300px;
+            text-align: left;
+            padding: 2% 0%;
+            z-index: 2;
+            transition: 1s;
+        }
+        .nav-links ul li {
+            display: block;
+            margin: 8px;
+        }
+        nav .fa {
+            display: block;
+            color: #fff;
+            font-size: 20px;
+        }
+        section>h1 {
             font-size: 24px;
         }
-        .section .row {
+        /* .offer .row,
+        .services .row,
+        .faq .row {
+            display: block;
+            justify-content: space-between;
+            margin: 20px 0px;
+        } */
+        section .row {
             display: block;
             justify-content: space-between;
             margin: 20px 0px;
         }
-        .section .col {
+        section .col {
             margin-top: 10px;
         }
-    } */
+    }
