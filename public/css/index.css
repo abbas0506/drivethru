@@ -64,8 +64,8 @@
     }
     
     .header {
-        /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('./images/capture1.png'); */
-        background-image: url('../images/bg/1.jpg');
+        /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('./public/images/capture1.png'); */
+        background-image: url('../public/images/bg/1.jpg');
         background-size: cover;
         background-position: center;
         /* Center the image */
@@ -162,7 +162,6 @@
     }
     
     .btn-red:hover {
-        background-color: transparent;
         border-color: transparent;
         background-color: rgb(36, 36, 41);
         color: #fff;
@@ -249,16 +248,16 @@
     }
     
     .services .col:nth-of-type(1) {
-        background-image: url('../images/banner/services/1.jpg');
+        background-image: url('../public/images/banner/services/1.jpg');
     }
     
     .services .col:nth-of-type(2) {
-        background-image: url('../images/banner/services/2.jpg');
+        background-image: url('../public/images/banner/services/2.jpg');
     }
     
     .services .col:nth-of-type(3) {
-        background-image: url('../images/banner/services/3.jpg');
-        /* background-image: url('/images/mentor/mentor.png'); */
+        background-image: url('../public/images/banner/services/3.jpg');
+        /* background-image: url('/public/images/mentor/mentor.png'); */
     }
     
     .services .col .content {
