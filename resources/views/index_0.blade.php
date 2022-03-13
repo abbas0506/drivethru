@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,10 +6,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>DriveThru</title>
    <link href="/css/index.css" rel="stylesheet">
-
-   <script src="/js/feather.min.js"></script>
+   <link href="/css/index_responsive.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="/js/feather.min.js"></script>
 
 </head>
 
@@ -19,8 +18,7 @@
       <nav>
          <img src="/images/logo/dark.png" alt="" href="" class='app-header-logo'>
          <div class="nav-links" id='nav-links'>
-            <!-- <i data-feather="x" class="feather-small close" onclick="hidemenu()"></i> -->
-            <i class="fa fa-close" onclick="hidemenu()"></i>
+            <i data-feather="x" class="feather-small feather-red" onclick="hidemenu()"></i>
             <ul>
                <li>HOME</li>
                <li>ADMISSION</li>
@@ -33,8 +31,8 @@
                <li>SIGNUP</li>
             </ul>
          </div>
-         <!-- <i data-feather="menu" class="feather-small menu" onclick="showmenu()"></i> -->
-         <i class="fa fa-bars" onclick="showmenu()"></i>
+         <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>
+         <!-- <i class="fa fa-bars" onclick="showmenu()"></i> -->
       </nav>
       <div class="app-msg">
          <p>175+ Universities from Pakistan and 18+ other Countries</p>
@@ -44,15 +42,15 @@
       </div>
    </section>
    <section class="who">
-      <h1>Who we are?</h1>
-      <p>We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
+      <div class="title">Who we are?</div>
+      <div class="content">We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
          We provide sufficient information and services that empower you to take a lead in your academic career. <br>
          We believe in <b>right candidate to right university</b>
-      </p>
+      </div>
    </section>
 
    <section class="offer">
-      <h1>What we offer?</h1>
+      <div class="title">What we offer?</div>
       <div class="row">
          <div class="col">
             <div class="ico">
@@ -87,7 +85,7 @@
    </section>
 
    <section class="services">
-      <h1>Our Services</h1>
+      <div class="title">Our Services</div>
       <div class="row">
          <div class="col">
             <div class="content">
@@ -157,7 +155,7 @@
       <div class="newsletter">
          <div class="left">
             <img src="/images/icon/newsletter.png" alt="" width="60">
-            <h1>Subscribe to Newsletter</h1>
+            <div class="title txt-light">Subscribe to Newsletter</div>
          </div>
          <div class="right">
             <input type="text">
@@ -166,17 +164,17 @@
       </div>
       </div>
       <div class="content">
-         <div class="col">
+         <div class="col about">
             <img src="/images/logo/light.png" alt="">
             <p>Drivethu.pk is a simple one stop shop for all your higher education(nationa and international) universities requirements from education counselling to vetted admission process</p>
          </div>
-         <div class="col">
+         <div class="col address">
             <h2>ADDRESS</h2>
             <p><i data-feather="map-pin" class="feather-small feather-red"></i>Lahore Pakistan</p>
             <p><i data-feather="phone-call" class="feather-small feather-red"></i>+92 354 75 15 152</p>
             <p><i data-feather="mail" class="feather-small feather-red"></i>support@drivethru.pk</p>
          </div>
-         <div class="col">
+         <div class="col contact">
             <h2>CONTACT US</h2>
             <form action="" class="contactus">
                <div class="row">
@@ -203,14 +201,17 @@
 </body>
 <script>
 feather.replace();
-var navlinks = document.getElementById('nav-links');
+var navlinks = $('#nav-links')
 
 function hidemenu() {
-   navlinks.style.right = "-300px";
+   // navlinks.style.right = "-300px";
+   // navlinks.style.translateX = "100%";
+   $('#nav-links').toggleClass('slide-left');
 }
 
 function showmenu() {
-   navlinks.style.right = "0";
+   // navlinks.style.right = "0";
+   $('#nav-links').toggleClass('slide-left');
 }
 </script>
 
