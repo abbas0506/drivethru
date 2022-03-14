@@ -278,7 +278,6 @@ section .row {
 
 .services .col:nth-of-type(3) {
     background-image: url('../images/banner/services/3.jpg');
-    /* background-image: url('/images/mentor/mentor.png'); */
 }
 
 .services .col .content {
@@ -377,41 +376,59 @@ section .row {
 
 /* FAQ */
 
-
-/* .faq .row {
-        display: flex;
-        justify-content: space-between;
-    } */
+.faq {
+    font-size: 16px;
+}
 
 .faq .col:nth-of-type(1) {
+    flex-basis: 50%;
     text-align: left;
 }
 
-.faq .question {
+.faq .question .q {
     align-items: center;
     background-color: #fff;
     margin-top: 10px;
-    font-size: 20px;
-    /* hs */
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.faq .ans {
+.faq .question .ans {
+    align-items: center;
+    background-color: transparent;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.question.show .q {
+    background-color: #ff5421;
+    color: #fff;
+    font-size: 18px;
+}
+
+.question.show .feather-small {
+    color: #fff;
+}
+
+.faq .question:not(.show) .q:hover {
+    cursor: pointer;
+}
+
+.question:not(.show) .ans {
     display: none;
+    transition: all 0.5s ease;
 }
 
 
 /* Footer */
 
 .footer {
-    margin-top: 100px;
+    margin-top: 100px !important;
     background-color: #000;
-    /* padding: 6% 12% 0% 12%; */
-    padding: 20px;
+    padding: 50px;
     text-align: left;
-    /* position: relative; */
     position: relative;
     width: auto;
-    /* bottom: 0px; */
 }
 
 .footer .newsletter {
@@ -423,7 +440,6 @@ section .row {
     width: 76%;
     top: -50px;
     left: 12%;
-    /* left: 20%; */
 }
 
 .footer .newsletter .left,
@@ -529,17 +545,6 @@ section .row {
     color: #6e6d6d;
     padding: 20px 0px;
     /* text-align: center; */
-}
-
-.frow {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-}
-
-.fcol {
-    display: flex !important;
-    flex-direction: column;
 }
 
 .txt-light {
