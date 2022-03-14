@@ -26,7 +26,6 @@
                <li>ABOUT</li>
                <li>BLOG</li>
                <li>CONTACT</li>
-               <li></li>
                <li>LOGIN</li>
                <li>SIGNUP</li>
             </ul>
