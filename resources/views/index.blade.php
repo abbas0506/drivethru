@@ -148,20 +148,13 @@ feather.replace();
 var navlinks = $('#nav-links')
 
 function hidemenu() {
-   // navlinks.style.right = "-300px";
-   // navlinks.style.translateX = "100%";
    $('#nav-links').toggleClass('slide-left');
 }
 
 function showmenu() {
-   // navlinks.style.right = "0";
    $('#nav-links').toggleClass('slide-left');
 }
 
-// function showOrhide(event) {
-//    event.target.toggleClass('show');
-//    event.target.toggleClass
-// }
 $('.question').click(function() {
    $active = $(this);
    $('.question').each(function() {
