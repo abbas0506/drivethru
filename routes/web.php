@@ -69,7 +69,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('index_0', 'index_0');
+// Route::view('index_0', 'index_0');
+Route::view('admission', 'admission');
+Route::view('services', 'services');
+Route::view('about', 'about');
+Route::view('blog', 'blog');
+Route::view('contact', 'contact');
+
 Auth::routes();
 
 Route::view('main', '');
@@ -183,6 +189,6 @@ Route::group(['middleware' => 'student'], function () {
 Route::get('signin/fb', [FbController::class, 'redirectToFacebook']);
 Route::get('signin/fb/callback', [FbController::class, 'facebookSignin']);
 
-Route::view('about', 'pages.about');
-Route::view('blog', 'pages.blog');
-Route::view('contact', 'pages.contact');
+Route::view('about1', 'pages.about');
+Route::view('blog1', 'pages.blog');
+Route::view('contact1', 'pages.contact');
