@@ -71,7 +71,7 @@
       <div class="row">
          <div class="col">
             <div class="content">
-               <h1>Universities Information</h1>
+               <h1>Universities Info</h1>
                <p>Free of cost information about fee structures, offered degree programs, eligibility criteria, entrance exams and scholarships.</p>
             </div>
             <div class="title">Universities Info</div>
