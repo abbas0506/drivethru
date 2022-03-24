@@ -3,7 +3,6 @@
       <div class="box-25 text-center bg-orange text-white circular hoverable rshow" onclick="toggle_sidebar()"><i data-feather='x' class="feather-small"></i></div>
    </div>
    <div class="frow w-100 rw-100 my-2 centered relative">
-
       @php
       $user=session('user');
       @endphp

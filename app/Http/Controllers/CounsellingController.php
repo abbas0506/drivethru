@@ -17,7 +17,7 @@ class CounsellingController extends Controller
     public function index()
     {
         //
-        return view('user.counselling.index');
+        return view('student.counselling.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class CounsellingController extends Controller
     public function create()
     {
         //
-        return view('user.counselling.create');
+        return view('student.counselling.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class CounsellingController extends Controller
     {
         //
         $counselling = Counselling::find($id);
-        return view('user.counselling.show', compact('counselling'));
+        return view('student.counselling.show', compact('counselling'));
     }
 
     /**

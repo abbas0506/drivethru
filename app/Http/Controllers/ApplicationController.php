@@ -22,7 +22,7 @@ class ApplicationController extends Controller
     {
         //
         // $applications = Application::all();
-        // return view('user.applications.index', compact('applications'));
+        // return view('student.applications.index', compact('applications'));
     }
 
     /**
@@ -147,7 +147,7 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         //
-        return view("user.applications.show", compact('application'));
+        return view("student.applications.show", compact('application'));
     }
 
     /**
@@ -186,7 +186,7 @@ class ApplicationController extends Controller
     public function success(Request $request)
     {
         $application = Application::find($request->id);
-        return view("user.applications.success", compact('application'));
+        return view("student.applications.success", compact('application'));
     }
     public function download(Request $request)
     {
@@ -195,7 +195,7 @@ class ApplicationController extends Controller
 
         // echo "id" . $profile->id;
 
-        $pdf = PDF::loadView("user.applications.download", compact('application', 'profile'));
+        $pdf = PDF::loadView("student.applications.download", compact('application', 'profile'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }

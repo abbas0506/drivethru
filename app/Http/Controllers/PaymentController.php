@@ -26,7 +26,7 @@ class PaymentController extends Controller
     {
         //
         $application = Application::find($id);
-        return view('user.applications.payment', compact('application'));
+        return view('student.applications.payment', compact('application'));
     }
 
     /**

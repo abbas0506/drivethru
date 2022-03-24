@@ -15,4 +15,7 @@
    </div>
    <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>
 </nav>
-<a href="https://wa.me/+923457515152"><img src="/images/icon/whatsapp.png" alt="" class="whatsapp"></a>
+<div class="social-group-vertical">
+   <a href="https://web.facebook.com/Test-109052301748992"><img src="/images/icons/fb.png" alt="" class="social-icon facebook"></a>
+   <a href="https://wa.me/+923457515152"><img src="/images/icons/whatsapp.png" alt="" class=" social-icon whatsapp"></a>
+</div>

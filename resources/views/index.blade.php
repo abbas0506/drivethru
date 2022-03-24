@@ -5,11 +5,11 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>DriveThru</title>
-   <link href="/css/index.css" rel="stylesheet">
-   <link href="/css/index_responsive.css" rel="stylesheet">
+   <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
+   <link href="{{ asset('/css/index_responsive.css') }}" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-   <script src="/js/feather.min.js"></script>
+   <script src="{{ asset('/js/feather.min.js') }}"></script>
 
 </head>
 
@@ -36,7 +36,7 @@
       <div class="row">
          <div class="col">
             <div class="ico">
-               <img src="/images/icon/3.png" alt="">
+               <img src="/images/icons/3.png" alt="">
             </div>
             <div class="content">
                <h1>Oppertunities</h1>
@@ -46,7 +46,7 @@
 
          <div class="col">
             <div class="ico">
-               <img src="/images/icon/2.png" alt="">
+               <img src="/images/icons/2.png" alt="">
             </div>
             <div class="content">
                <h1>Admissions</h1>
@@ -56,7 +56,7 @@
 
          <div class="col">
             <div class="ico">
-               <img src="/images/icon/1.png" alt="">
+               <img src="/images/icons/1.png" alt="">
             </div>
             <div class="content">
                <h1>Consultation</h1>

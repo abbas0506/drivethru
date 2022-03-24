@@ -18,7 +18,7 @@ class FindCountriesByNameController extends Controller
     {
         //
         $countries = Country::all();
-        return view('user.findcountries.byname.index', compact('countries'));
+        return view('student.findcountries.byname.index', compact('countries'));
     }
 
     /**
@@ -54,7 +54,7 @@ class FindCountriesByNameController extends Controller
     {
         //
         $country = Country::find($id);
-        return view('user.findcountries.byname.show', compact('country'));
+        return view('student.findcountries.byname.show', compact('country'));
     }
 
     /**
@@ -94,12 +94,12 @@ class FindCountriesByNameController extends Controller
     // {
     //     $country = $request->country;
     //     $countries = Country::where('name', 'like', '%' . $country . '%')->get();
-    //     return view('user.findcountries.byname.searchlist', compact('countries'));
+    //     return view('student.findcountries.byname.searchlist', compact('countries'));
     // }
     public function report($id)
     {
         $country = Country::find($id);
-        $pdf = PDF::loadView("user.findcountries.byname.report", compact('country'));
+        $pdf = PDF::loadView("student.findcountries.byname.report", compact('country'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -107,6 +107,6 @@ class FindCountriesByNameController extends Controller
     {
         //return apply page
         $country = Country::find($id);
-        return view('user.findcountries.byname.apply', compact('country'));
+        return view('student.findcountries.byname.apply', compact('country'));
     }
 }

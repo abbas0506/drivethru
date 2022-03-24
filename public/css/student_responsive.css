@@ -1,0 +1,22 @@
+@media only screen and (max-width: 800px) {
+    .page-section {
+        display: block;
+        position: absolute;
+        top: 48px;
+    }
+    .sidebar {
+        flex-basis: auto;
+        position: fixed;
+        transform: translate(-100%);
+        transition: all 0.5s ease;
+    }
+    .sidebar.show {
+        transform: translate(0);
+    }
+    .hide-sm {
+        display: none;
+    }
+    .invisible-lg {
+        display: flex;
+    }
+}

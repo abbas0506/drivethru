@@ -1,6 +1,6 @@
 <div class="newsletter">
    <div class="left">
-      <img src="/images/icon/newsletter.png" alt="" width="60">
+      <img src="/images/icons/newsletter.png" alt="" width="60">
       <div class="title txt-light">Subscribe to Newsletter</div>
    </div>
    <div class="right">

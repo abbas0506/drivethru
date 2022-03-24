@@ -12,7 +12,7 @@ class FindUniversitiesByNameController extends Controller
     {
         //
         $universities = University::all();
-        return view('user.finduniversities.byname.index', compact('universities'));
+        return view('student.finduniversities.byname.index', compact('universities'));
     }
 
     /**
@@ -49,7 +49,7 @@ class FindUniversitiesByNameController extends Controller
         session([
             'university' => $university,
         ]);
-        return view('user.finduniversities.byname.show', compact('university'));
+        return view('student.finduniversities.byname.show', compact('university'));
     }
 
     /**
@@ -93,13 +93,13 @@ class FindUniversitiesByNameController extends Controller
         ]);
         $universities = University::where('name', 'like', '%' . $request->name . '%')->get();
 
-        return view('user.finduniversities.byname.searchlist', compact('universities'));
+        return view('student.finduniversities.byname.searchlist', compact('universities'));
     }
     public function report($id)
     {
         //preview report
         $university = University::findOrFail($id);
-        $pdf = PDF::loadView('user.finduniversities.byname.report', compact('university'));
+        $pdf = PDF::loadView('student.finduniversities.byname.report', compact('university'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -107,6 +107,6 @@ class FindUniversitiesByNameController extends Controller
     {
         //return apply page
         $university = University::findOrFail($id);
-        return view('user.finduniversities.byname.apply', compact('university'));
+        return view('student.finduniversities.byname.apply', compact('university'));
     }
 }

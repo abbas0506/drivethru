@@ -24,7 +24,7 @@ class FindUniversityController extends Controller
         $cities = City::all()->sortBy('name');
         $faculty_ids = Course::distinct()->get('faculty_id');
         $faculties = Faculty::whereIn('id', $faculty_ids)->get();
-        return view('user.finduniversities.index.index', compact('cities', 'faculties'));
+        return view('student.finduniversities.index.index', compact('cities', 'faculties'));
     }
 
     /**
@@ -107,7 +107,7 @@ class FindUniversityController extends Controller
                 // 'universities' => $courses,
             ]);
 
-            return view('user.finduniversities.index.listofuniversities', compact('universities'));
+            return view('student.finduniversities.index.listofuniversities', compact('universities'));
         } else {
             // auto search request
             $request->validate([
@@ -143,7 +143,7 @@ class FindUniversityController extends Controller
                     'data' => $data,
                     'courses' => $courses,
                 ]);
-                return view('user.finduniversities.index.listofuniversities', compact('data', 'courses'));
+                return view('student.finduniversities.index.listofuniversities', compact('data', 'courses'));
             } catch (Exception $e) {
                 return redirect()->back()->withErrors($e->getMessage());
                 // something went wrong
@@ -154,7 +154,7 @@ class FindUniversityController extends Controller
     {
         $data = session('data');
         $courses = session('courses');
-        $pdf = PDF::loadView("user.finduniversities.index.download", compact('courses', 'data'));
+        $pdf = PDF::loadView("student.finduniversities.index.download", compact('courses', 'data'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }

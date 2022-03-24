@@ -23,7 +23,7 @@ class FindCountriesByCourseController extends Controller
         //
         $favcourse_ids = Favcourse::distinct()->get('course_id');
         $courses = Course::whereIn('id', $favcourse_ids)->get();
-        return view('user.findcountries.bycourse.index', compact('courses'));
+        return view('student.findcountries.bycourse.index', compact('courses'));
     }
 
     /**
@@ -59,7 +59,7 @@ class FindCountriesByCourseController extends Controller
     {
         //
         $country = Country::find($id);
-        return view('user.findcountries.bycourse.show', compact('country'));
+        return view('student.findcountries.bycourse.show', compact('country'));
     }
 
     /**
@@ -144,7 +144,7 @@ class FindCountriesByCourseController extends Controller
                 'selected_course' => $course,
                 'countries' => $countries,
             ]);
-            return view('user.findcountries.bycourse.searchlist', compact('countries'));
+            return view('student.findcountries.bycourse.searchlist', compact('countries'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -153,7 +153,7 @@ class FindCountriesByCourseController extends Controller
     public function countrypreview($id)
     {
         $country = Country::find($id);
-        $pdf = PDF::loadView("user.findcountries.bycourse.reports.country_preview", compact('country'));
+        $pdf = PDF::loadView("student.findcountries.bycourse.reports.country_preview", compact('country'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -161,7 +161,7 @@ class FindCountriesByCourseController extends Controller
     {
         $countries = session('countries');
         $course = session('selected_course');
-        $pdf = PDF::loadView("user.findcountries.bycourse.reports.searchlist", compact('countries', 'course'));
+        $pdf = PDF::loadView("student.findcountries.bycourse.reports.searchlist", compact('countries', 'course'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -170,6 +170,6 @@ class FindCountriesByCourseController extends Controller
         //return apply page
         $course = session('selected_course');
         $countries = session('countries');
-        return view('user.findcountries.bycourse.apply', compact('countries', 'course'));
+        return view('student.findcountries.bycourse.apply', compact('countries', 'course'));
     }
 }

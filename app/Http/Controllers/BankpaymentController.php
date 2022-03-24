@@ -30,7 +30,7 @@ class BankpaymentController extends Controller
     {
         //
         $user = session('user');
-        return view('user.payments.bank.create');
+        return view('student.payments.bank.create');
     }
 
     /**

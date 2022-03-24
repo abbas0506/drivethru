@@ -16,6 +16,7 @@
 </head>
 
 <body class="bg-custom-light">
+
    <div class="frow w-100 user-header">
       <div class="frow centered w-20">
          <div class="fcol centered">
@@ -46,11 +47,11 @@
       </div>
 
       <script>
-         feather.replace();
+      feather.replace();
 
-         function toggle_sidebar() {
-            $('.user-sidebar').toggleClass('disappear');
-         }
+      function toggle_sidebar() {
+         $('.user-sidebar').toggleClass('disappear');
+      }
       </script>
       @yield('script')
 </body>

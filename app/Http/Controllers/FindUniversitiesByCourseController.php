@@ -23,7 +23,7 @@ class FindUniversitiesByCourseController extends Controller
         $cities = City::all()->sortBy('name');
         $faculty_ids = Course::distinct()->get('faculty_id');
         $faculties = Faculty::whereIn('id', $faculty_ids)->get();
-        return view('user.finduniversities.bycourse.index', compact('cities', 'faculties'));
+        return view('student.finduniversities.bycourse.index', compact('cities', 'faculties'));
     }
 
     /**
@@ -123,7 +123,7 @@ class FindUniversitiesByCourseController extends Controller
                 'universities' => $universities,
                 'courses' => $courses,
             ]);
-            return view('user.finduniversities.bycourse.searchlist', compact('universities', 'courses'));
+            return view('student.finduniversities.bycourse.searchlist', compact('universities', 'courses'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -132,7 +132,7 @@ class FindUniversitiesByCourseController extends Controller
     public function universitypreview($id)
     {
         $university = University::find($id);
-        $pdf = PDF::loadView("user.finduniversities.bycourse.reports.universitypreview", compact('university'));
+        $pdf = PDF::loadView("student.finduniversities.bycourse.reports.universitypreview", compact('university'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -140,7 +140,7 @@ class FindUniversitiesByCourseController extends Controller
     {
         $universities = session('universities');
         $courses = session('courses');
-        $pdf = PDF::loadView("user.finduniversities.bycourse.report", compact('courses', 'universities'));
+        $pdf = PDF::loadView("student.finduniversities.bycourse.report", compact('courses', 'universities'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
     }
@@ -149,6 +149,6 @@ class FindUniversitiesByCourseController extends Controller
         //return apply page
         $courses = session('courses');
         $universities = session('universities');
-        return view('user.finduniversities.bycourse.apply', compact('universities', 'courses'));
+        return view('student.finduniversities.bycourse.apply', compact('universities', 'courses'));
     }
 }

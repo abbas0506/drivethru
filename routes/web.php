@@ -68,7 +68,7 @@ use App\Http\Controllers\PaymentController;
 Route::get('/', function () {
     return view('index');
 });
-
+Route::view('test', 'test_final');
 // Route::view('index_0', 'index_0');
 Route::view('admission', 'admission');
 Route::view('services', 'services');
@@ -136,7 +136,8 @@ Route::group(['middleware' => 'representative'], function () {
 
 //student middleware
 Route::group(['middleware' => 'student'], function () {
-    Route::view('user_dashboard', 'user.dashboard');
+    Route::view('user_dashboard_old', 'student.dashboard_old');
+    Route::view('user_dashboard', 'student.dashboard');
     Route::get('switch/{mode}', function ($mode) {
         session(['mode' => $mode,]);
         return redirect('user_dashboard');
@@ -153,8 +154,8 @@ Route::group(['middleware' => 'student'], function () {
 
     //Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
-    Route::view('changepw', 'user.profile.personal.changepw');
-    Route::view('change_pic', 'user.profile.personal.change_pic');
+    Route::view('changepw', 'student.profile.personal.changepw');
+    Route::view('change_pic', 'student.profile.personal.change_pic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
     Route::resource('academics', AcademicController::class);
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');
