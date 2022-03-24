@@ -15,7 +15,7 @@
 
 <body>
    <section class="header">
-      <x-index.navbar></x-index.navbar>
+      <x-navbar></x-navbar>
       <div class="app-msg">
          <p>175+ Universities from Pakistan and 18+ other Countries</p>
          <h1>Single-Click Application Form</h1>
