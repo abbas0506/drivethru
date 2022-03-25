@@ -10,7 +10,7 @@
 
    <div class="row">
       <div class="col">
-         <img src="/images/services/1.jpg" alt="" width="300" height="250">
+         <img src="{{asset('/images/services/1.jpg')}}" alt="" width="300" height="250">
       </div>
 
       <div class="col w-45 txt-j">
@@ -28,7 +28,7 @@
    <div class="row">
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>
@@ -36,7 +36,7 @@
       </div>
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>
@@ -44,7 +44,7 @@
       </div>
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>
@@ -54,7 +54,7 @@
    <div class="row mt-4">
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="col w-30 block">
          <div class="content">
-            <img src="/images/services/logo.jpg" alt="" width="100" hight="100">
+            <img src="{{asset('/images/services/logo.jpg')}}" alt="" width="100" hight="100">
             <h4 class="mt-3">One Stop Patform</h4>
             <p class="txt-12 txt-j mt-4">Drivethru.pk provides complete resource packages for students applying in both National and International universities. </p>
          </div>

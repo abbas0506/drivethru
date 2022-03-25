@@ -11,7 +11,7 @@
    <div class="row">
       <!-- 1st blog -->
       <div class="col w-45 txt-j mt-4">
-         <img src="/images/blog/1.jpg" alt="" width="400" height="250">
+         <img src="{{asset('/images/blog/1.jpg')}}" alt="" width="400" height="250">
          <h2 class="mt-3">Services DriveThru Offers</h2>
          <div class="flex mt-1">
             <i data-feather="calendar" class="feather-small feather-red"></i>
@@ -28,7 +28,7 @@
       </div>
       <!-- 2nd blog -->
       <div class="col w-45 txt-j mt-4">
-         <img src="/images/blog/2.jpg" alt="" width="400" height="250">
+         <img src="{{asset('/images/blog/2.jpg')}}" alt="" width="400" height="250">
          <h2 class="mt-3">National Admissions</h2>
          <div class="flex mt-1">
             <i data-feather="calendar" class="feather-small feather-red"></i>
@@ -47,7 +47,7 @@
    <div class="row mt-5">
       <!-- 3rd blog -->
       <div class="col w-45 txt-j mt-4">
-         <img src="/images/blog/3.jpg" alt="" width="400" height="250">
+         <img src="{{asset('/images/blog/3.jpg')}}" alt="" width="400" height="250">
          <h2 class="mt-3">International Admissions</h2>
          <div class="flex mt-1">
             <i data-feather="calendar" class="feather-small feather-red"></i>
@@ -64,7 +64,7 @@
       </div>
       <!-- 4th blog -->
       <div class="col w-45 txt-j mt-4">
-         <img src="/images/blog/4.jpg" alt="" width="400" height="250">
+         <img src="{{asset('/images/blog/4.jpg')}}" alt="" width="400" height="250">
          <h2 class="mt-3">While the lovely valley team work</h2>
          <div class="flex mt-1">
             <i data-feather="calendar" class="feather-small feather-red"></i>

@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <section class="section-80">
-   <img src="/images/contact/1.png" alt="" width="400">
+   <img src="{{asset('/images/contact/1.png')}}" alt="" width="400">
    <div class="row mt-5">
       <!-- 1st col -->
       <div class="col txt-j mt-4">

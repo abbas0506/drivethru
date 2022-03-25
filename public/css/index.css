@@ -853,15 +853,15 @@ section .row.txt-l {
 }
 
 .mini_header.admission {
-    background-image: url('/images/bg/mini/admission.jpg');
+    background-image: url('../images/bg/mini/admission.jpg');
 }
 
 .mini_header.services {
-    background-image: url('/images/bg/mini/services.jpg');
+    background-image: url('../images/bg/mini/services.jpg');
 }
 
 .mini_header.about {
-    background-image: url('/images/bg/mini/about.jpg');
+    background-image: url('../images/bg/mini/about.jpg');
 }
 
 .mini_header.blog {

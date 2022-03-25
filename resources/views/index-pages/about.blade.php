@@ -18,14 +18,14 @@
          </p>
       </div>
       <div class="col">
-         <img src="/images/about/1.jpg" alt="" width="300" height="250">
+         <img src="{{asset('/images/about/1.jpg')}}" alt="" width="300" height="250">
       </div>
 
    </div>
    <!-- 2nd row -->
    <div class="row">
       <div class="col">
-         <img src="/images/about/2.jpg" alt="" width="350" height="250">
+         <img src="{{asset('/images/about/2.jpg')}}" alt="" width="350" height="250">
       </div>
       <div class="col w-45 txt-j mt-4">
          <h2>Vision</h2>
