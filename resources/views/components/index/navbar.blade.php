@@ -1,5 +1,5 @@
 <nav>
-   <img src="/images/logo/dark.png" alt="" href="" class='app-header-logo'>
+   <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" class='app-header-logo'>
    <div class="nav-links" id='nav-links'>
       <i data-feather="x" class="feather-small feather-red" onclick="hidemenu()"></i>
       <ul>

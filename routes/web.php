@@ -70,11 +70,11 @@ Route::get('/', function () {
 });
 Route::view('test', 'test_final');
 // Route::view('index_0', 'index_0');
-Route::view('admission', 'admission');
-Route::view('services', 'services');
-Route::view('about', 'about');
-Route::view('blog', 'blog');
-Route::view('contact', 'contact');
+Route::view('admission', 'index-pages.admission');
+Route::view('services', 'index-pages.services');
+Route::view('about', 'index-pages.about');
+Route::view('blog', 'index-pages.blog');
+Route::view('contact', 'index-pages.contact');
 
 Auth::routes();
 
@@ -189,7 +189,3 @@ Route::group(['middleware' => 'student'], function () {
 
 Route::get('signin/fb', [FbController::class, 'redirectToFacebook']);
 Route::get('signin/fb/callback', [FbController::class, 'facebookSignin']);
-
-Route::view('about1', 'pages.about');
-Route::view('blog1', 'pages.blog');
-Route::view('contact1', 'pages.contact');
