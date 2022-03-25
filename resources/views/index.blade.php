@@ -24,7 +24,7 @@
    <div class="row">
       <div class="col">
          <div class="ico">
-            <img src="/images/icons/3.png" alt="">
+            <img src="{{asset('/images/icons/3.png')}}" alt="">
          </div>
          <div class="content">
             <h1>Oppertunities</h1>
@@ -34,7 +34,7 @@
 
       <div class="col">
          <div class="ico">
-            <img src="/images/icons/2.png" alt="">
+            <img src="{{asset('/images/icons/2.png')}}" alt="">
          </div>
          <div class="content">
             <h1>Admissions</h1>
@@ -44,7 +44,7 @@
 
       <div class="col">
          <div class="ico">
-            <img src="/images/icons/1.png" alt="">
+            <img src="{{asset('/images/icons/1.png')}}" alt="">
          </div>
          <div class="content">
             <h1>Consultation</h1>
@@ -121,7 +121,7 @@
       </div>
       <div class="col">
          <video width="400" controls autoplay muted>
-            <source src="/videos/github.mp4" type="video/mp4">
+            <source src="{{asset('/videos/github.mp4')}}" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
          </video>

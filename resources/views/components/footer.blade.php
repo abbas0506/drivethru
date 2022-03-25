@@ -1,6 +1,6 @@
 <div class="newsletter">
    <div class="left">
-      <img src="/images/icons/newsletter.png" alt="" width="60">
+      <img src="{{asset('/images/icons/newsletter.png')}}" alt="" width="60">
       <div class="title txt-light">Subscribe to Newsletter</div>
    </div>
    <div class="right">
@@ -11,7 +11,7 @@
 </div>
 <div class="content">
    <div class="col about">
-      <img src="/images/logo/light.png" alt="">
+      <img src="{{asset('/images/logo/light.png')}}" alt="">
       <p>Drivethu.pk is a simple one stop shop for all your higher education(nationa and international) universities requirements from education counselling to vetted admission process</p>
    </div>
    <div class="col address">
