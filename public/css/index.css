@@ -865,11 +865,11 @@ section .row.txt-l {
 }
 
 .mini_header.blog {
-    background-image: url('/images/bg/mini/blog.jpg');
+    background-image: url('../images/bg/mini/blog.jpg');
 }
 
 .mini_header.contact {
-    background-image: url('/images/bg/mini/contact.jpg');
+    background-image: url('../images/bg/mini/contact.jpg');
 }
 
 .block {
