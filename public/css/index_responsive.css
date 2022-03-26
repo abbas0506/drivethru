@@ -29,22 +29,12 @@
             text-align: center;
         }
         .nav-links {
-            /* position: absolute;
-            background-color: #171f32;
-            width: 300px;
-            height: 100vh;
-            top: 0px;
-            right: -300px;
-            text-align: left;
-            
-            z-index: 2;
-            transition: 1s; */
-            line-height: 20px;
             position: fixed;
             width: 60%;
             overflow: auto;
             top: 0px;
             height: 100vh;
+            line-height: 20px;
             right: 0px;
             background-color: #171f32;
             z-index: 2;
@@ -118,10 +108,8 @@
             max-width: 100%;
         }
         .auth-section .site-slogan {
-            /* display: block; */
             width: 90%;
             height: 60vh;
-            /* margin: auto; */
         }
         .site-slogan img {
             width: 80%;
