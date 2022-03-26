@@ -82,3 +82,8 @@
    </div>
 </section>
 @endsection
+@section('footer')
+<section class="footer">
+   <x-footer></x-footer>
+</section>
+@endsection

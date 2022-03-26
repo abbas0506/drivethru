@@ -41,5 +41,5 @@
    </div>
 </div>
 <div class='copyright'>
-   @2022 All rights reserved. Developed by Drivethru.pk
+   ALL RIGHTS RESERVED © COPY RIGHTS 2021 PRIVACY POLICY
 </div>

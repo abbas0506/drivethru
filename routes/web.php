@@ -81,9 +81,9 @@ Auth::routes();
 Route::view('main', '');
 //public routes
 Route::resource('users', UserController::class);
-Route::view('signin', 'users.signin');
-Route::view('signup', 'users.signup');
-Route::view('signup_success', 'users.signup_success');
+Route::view('signin', 'index-pages.signin');
+Route::view('signup', 'index-pages.signup');
+Route::view('signup_success', 'index-pages.signup_success');
 Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::get('signout', [UserController::class, 'signout']);
 

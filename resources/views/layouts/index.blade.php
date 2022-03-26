@@ -15,12 +15,7 @@
 <body>
    @yield('header')
    @yield('content')
-
-   <!-- same footer all pages -->
-   <section class="footer">
-      <x-footer></x-footer>
-   </section>
-
+   @yield('footer')
 </body>
 <script>
 feather.replace();

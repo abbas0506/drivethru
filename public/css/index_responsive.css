@@ -39,6 +39,7 @@
             
             z-index: 2;
             transition: 1s; */
+            line-height: 20px;
             position: fixed;
             width: 60%;
             overflow: auto;
@@ -112,7 +113,28 @@
             font-size: 12px;
             padding: 20px 0px;
         }
-        /* .col {
-            min-width: 100%;
-        } */
+        .auth-section {
+            display: block;
+            max-width: 100%;
+        }
+        .auth-section .site-slogan {
+            /* display: block; */
+            width: 90%;
+            height: 60vh;
+            /* margin: auto; */
+        }
+        .site-slogan img {
+            width: 80%;
+        }
+        .site-slogan p {
+            color: #e6e6e6b2;
+            font-size: 1.0rem;
+            margin-top: 25px;
+            text-align: justify;
+        }
+        .auth-section .auth-form {
+            display: block;
+            min-width: 70%;
+            margin-top: 30px;
+        }
     }
