@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-//use Validator;
 use Laravel\Socialite\Facades\Socialite; // as Socialite;
 use Exception;
 
