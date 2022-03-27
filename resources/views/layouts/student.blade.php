@@ -36,11 +36,11 @@
    </section>
 
    <script>
-   feather.replace();
+      feather.replace();
 
-   function toggle_sidebar() {
-      $('.sidebar').toggleClass('show');
-   }
+      function toggle_sidebar() {
+         $('.sidebar').toggleClass('show');
+      }
    </script>
    @yield('script')
 </body>
