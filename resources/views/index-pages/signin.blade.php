@@ -63,9 +63,9 @@
 
    </div>
 
-   <div class="copyright">
-      ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-lightsky">PRIVACY POLICY </span>
-   </div>
+   <!-- <div class="copyright">
+      ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-skyblue">PRIVACY POLICY </span>
+   </div> -->
 </section>
 
 
