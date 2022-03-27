@@ -436,6 +436,7 @@ nav .feather-small {
 }
 
 .btn-red:hover {
+    cursor: pointer;
     border-color: transparent;
     background-color: rgb(36, 36, 41);
     color: #fff;
@@ -847,7 +848,7 @@ section .row.txt-l {
 }
 
 .social-icon.facebook {
-    width: 20px;
+    width: 16px;
     height: 30px;
 }
 
@@ -965,8 +966,8 @@ section .row.txt-l {
 .site-slogan p {
     color: #e6e6e6b2;
     font-size: 1.0rem;
-    margin-top: 25px;
     text-align: left;
+    margin-top: 60px;
 }
 
 .auth-section .auth-form {

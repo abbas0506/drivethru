@@ -15,6 +15,6 @@
    <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>
 </nav>
 <div class="social-group-vertical">
-   <a href="https://web.facebook.com/Test-109052301748992"><img src="{{asset('/images/icons/fb.png')}}" alt="" class="social-icon facebook"></a>
-   <a href="https://wa.me/+923457515152"><img src="{{asset('/images/icons/whatsapp.png')}}" alt="" class=" social-icon whatsapp"></a>
+   <a href="https://www.facebook.com/drivethruupk" target="_blank"><img src="{{asset('/images/icons/fb.png')}}" alt="" class="social-icon facebook"></a>
+   <a href="https://wa.me/+923457515152" target="_blank"><img src=" {{asset('/images/icons/whatsapp.png')}}" alt="" class=" social-icon whatsapp"></a>
 </div>
