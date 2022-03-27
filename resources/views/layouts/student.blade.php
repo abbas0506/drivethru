@@ -8,7 +8,6 @@
    <!-- <link href="/css/my.css" rel="stylesheet"> -->
    <link href="/css/student.css" rel="stylesheet">
    <link href="/css/student_responsive.css" rel="stylesheet">
-   <link href="/css/misc.css" rel="stylesheet">
    <script src="/js/app.js"></script>
    <script src="/js/autoformat.js"></script>
    <script src="/js/feather.min.js"></script>

@@ -33,8 +33,9 @@ return [
     //drive thru credentials
     'facebook' => [
         'client_id' => '448346699986643',
-        'client_secret' => '107af12d8db00540956113e7b8149236',
-        'redirect' => 'http://localhost:8000/signin/fb/callback',
+        'client_secret' => '1d71037b984783b1b93396be65c0b46d',
+        'redirect' => 'https://drivethru/public/signin/fb/callback',
+        // 'redirect' => 'http://localhost:8000/signin/fb/callback',
     ],
 
     // //drivethru-test app
