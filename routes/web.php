@@ -187,5 +187,5 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
 });
 
-Route::get('facebook.signin', [FbController::class, 'redirect']);
+Route::get('facebook.redirect', [FbController::class, 'redirect']);
 Route::get('facebook.callback', [FbController::class, 'callback']);

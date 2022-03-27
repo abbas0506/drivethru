@@ -43,10 +43,10 @@
          <div class="w-100 hr mt-5"></div>
          <div class="frow justify-center align-center mt-2">
             <p class="txt-light txt-10">Sign up with</p>
-            <a href="{{url('signin/fb')}}">
+            <a href="{{url('facebook.redirect')}}">
                <div class="border-lightgrey circular-20 txt-light ml-2">f</div>
             </a>
-            <a href="{{url('signin/fb')}}">
+            <a href="#">
                <div class="border-lightgrey circular-20 txt-light ml-2">g</div>
             </a>
          </div>
