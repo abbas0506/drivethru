@@ -34,7 +34,7 @@ return [
     'facebook' => [
         'client_id' => '448346699986643',
         'client_secret' => '1d71037b984783b1b93396be65c0b46d',
-        'redirect' => 'https://drivethru/public/signin/fb/callback',
+        'redirect' => 'https://drivethru.pk/public/facebook.callback',
         // 'redirect' => 'http://localhost:8000/signin/fb/callback',
     ],
 

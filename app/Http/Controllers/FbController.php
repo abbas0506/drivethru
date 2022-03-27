@@ -10,12 +10,12 @@ use Exception;
 
 class FbController extends Controller
 {
-    public function redirectToFacebook()
+    public function redirect()
     {
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function facebookSignin()
+    public function callback()
     {
         try {
 
