@@ -2,7 +2,7 @@
 
 @section('header')
 <section class="header">
-   <x-navbar></x-navbar>
+   <x-index.header></x-index.header>
    <div class="app-msg">
       <p>175+ Universities from Pakistan and 18+ other Countries</p>
       <h1>Single-Click Application Form</h1>
@@ -130,6 +130,6 @@
 @endsection
 @section('footer')
 <section class="footer">
-   <x-footer></x-footer>
+   <x-index.footer></x-index.footer>
 </section>
 @endsection

@@ -2,7 +2,7 @@
 
 @section('header')
 <section class="header">
-   <x-navbar></x-navbar>
+   <x-index.header></x-index.header>
 </section>
 @endsection
 @section('content')

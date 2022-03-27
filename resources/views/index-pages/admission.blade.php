@@ -2,7 +2,7 @@
 
 @section('header')
 <section class="admission mini_header">
-   <x-navbar></x-navbar>
+   <x-index.header></x-index.header>
 </section>
 @endsection
 @section('content')
@@ -57,6 +57,6 @@
 @endsection
 @section('footer')
 <section class="footer">
-   <x-footer></x-footer>
+   <x-index.footer></x-index.footer>
 </section>
 @endsection
