@@ -54,7 +54,7 @@ Welcome, {{$user->name}}
 
 @section('promotion')
 <!-- profile strength-->
-<x-profile__strength :user="$user"></x-profile__strength>
+<x-student.profile :user="$user"></x-student.profile>
 <!-- suggestions for user -->
 <div class="fcol w-100 rw-100 bg-white mt-3 p-4">
    <div class="w-100 rw-100 mb-2 txt-grey txt-b ">SUGGESTED TO YOU</div>

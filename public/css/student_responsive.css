@@ -1,11 +1,35 @@
 @media only screen and (max-width: 800px) {
-    .page-section {
+    /* data section */
+    .global-header-section {
+        width: 98%;
+    }
+    .data-section {
         display: block;
         position: absolute;
+        width: 100%;
         top: 48px;
+        left: 0;
+        background-color: #eaeef1;
+    }
+    .data-container {
+        display: block;
+    }
+    .content-panel,
+    .promotion-panel {
+        background-color: #fff;
+    }
+    .title-bar,
+    .content-panel,
+    .promotion-panel {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .title-bar {
+        line-height: 50px;
     }
     .sidebar {
-        flex-basis: auto;
+        width: 30%;
         position: fixed;
         transform: translate(-100%);
         transition: all 0.5s ease;

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('topbar')
-<x-student.header activeItem='home'></x-student.header>
+<x-user__header activeItem='home'></x-user__header>
 @endsection
 
 @php
@@ -8,7 +8,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar activeItem='dashboard' :user="$user"></x-student.sidebar>
+<x-user__sidebar activeItem='dashboard' :user="$user"></x-user__sidebar>
 @endsection
 
 <style>

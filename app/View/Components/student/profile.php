@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\student;
 
 use Illuminate\View\Component;
 
-class profile__strength extends Component
+class profile extends Component
 {
     /**
      * Create a new component instance.
@@ -25,6 +25,6 @@ class profile__strength extends Component
      */
     public function render()
     {
-        return view('components.profile__strength');
+        return view('components.student.profile');
     }
 }

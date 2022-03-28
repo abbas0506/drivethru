@@ -5,11 +5,13 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="/css/app.css" rel="stylesheet">
-   <script src="/js/app.js"></script>
-   <script src="/js/autoformat.js"></script>
-   <script src="/js/feather.min.js"></script>
-   <script src="{{ asset('js/echarts.min.js')}}" type="text/javascript"></script>
+   <link href="{{asset('/css/app.css')}}" rel="stylesheet">
+   <link href="{{asset('/css/student.css')}}" rel="stylesheet">
+   <link href="{{asset('/css/student_responsive.css')}}" rel="stylesheet">
+   <script src="{{asset('/js/app.js')}}"></script>
+   <script src="{{asset('/js/autoformat.js')}}"></script>
+   <script src="{{asset('/js/feather.min.js')}}"></script>
+
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <title>DriveThru</title>
@@ -17,15 +19,9 @@
 
 <body class="bg-custom-light">
 
-   <div class="frow w-100 user-header">
-      <div class="frow centered w-20">
-         <div class="fcol centered">
-            <img src="{{url(asset('images/app/colorlogo_0.png'))}}" alt="" class="app-logo">
-         </div>
-      </div>
-      @yield('topbar')
-
-   </div>
+   <section class="global-header-section">
+      <x-student.header></x-student.header>
+   </section>
 
    @yield('sidebar')
    <div class="frow user-page px-4">
@@ -50,7 +46,7 @@
       feather.replace();
 
       function toggle_sidebar() {
-         $('.user-sidebar').toggleClass('disappear');
+         $('.sidebar').toggleClass('show');
       }
       </script>
       @yield('script')

@@ -1,4 +1,5 @@
 <nav class="global-header">
+   <i data-feather="menu" class="feather-small hide-lg px-3" onclick="toggle_sidebar()"></i>
    <div class="logo">
       <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" width="150">
    </div>
@@ -29,9 +30,10 @@
             </ul>
          </li>
          <li><a href=""><i data-feather='bell' class="feather-small" onclick=""></i></a></li>
-         <li><img src="{{asset('/images/icons/user-avatar.png')}}" alt="" width="22"></li>
+         <li><a href="http://">Main Website</a></li>
+
 
       </ul>
+
    </div>
-   <i data-feather="menu" class="feather-small hide-lg" onclick="toggle_sidebar()"></i>
 </nav>

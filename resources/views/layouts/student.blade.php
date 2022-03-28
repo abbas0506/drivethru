@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <link href="{{asset('/css/app.css')}}" rel="stylesheet"> -->
    <link href="{{asset('/css/student.css')}}" rel="stylesheet">
    <link href="{{asset('/css/student_responsive.css')}}" rel="stylesheet">
    <script src="{{asset('/js/app.js')}}"></script>
@@ -21,16 +22,15 @@
       <x-student.header></x-student.header>
    </section>
    @yield('sidebar')
-   <section class="page-section">
-
-      <div class="page-title">
+   <section class="data-section">
+      <div class="title-bar">
          @yield('page-title')
       </div>
-      <div class="frow space-between w-100">
-         <div class='content w-60'>
+      <div class="data-container">
+         <div class='content-panel'>
             @yield('content')
          </div>
-         <div class='promotion w-30'>
+         <div class='promotion-panel'>
             @yield('promotion')
          </div>
       </div>
