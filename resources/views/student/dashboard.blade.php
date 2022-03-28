@@ -8,17 +8,20 @@ $user=session('user');
 <x-student.sidebar></x-student.sidebar>
 @endsection
 
+@section('page-title')
+Welcome, {{$user->name}}
+@endsection
 @section('content')
-<div class="page-title px-4">Welcome, {{$user->name}}</div>
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow w-100 rw-100 mid-left stretched">
+
+<div class="block rw-100 bg-white p-4">
+   <div class="frow w-100 rw-100  ">
       <div class="txt-custom-blue txt-m">
          My Applications
       </div>
 
    </div>
    <!-- table header -->
-   <div class="frow mid-left border-bottom mt-3">
+   <div class="frow align-center border-bottom border-silver lh-40 mt-3">
       <div class="w-10 txt-s txt-silver">ID</div>
       <div class="w-40 txt-s txt-grey">Created At</div>
       <div class="w-20 txt-s txt-grey">Type</div>
@@ -26,9 +29,9 @@ $user=session('user');
       <div class="w-15 txt-s text-center txt-grey">...</div>
    </div>
 
-   <div class="fcol w-100 rw-100">
+   <div class="block w-100 rw-100">
       @foreach($user->applications()->sortByDesc('id') as $application)
-      <div class="frow w-100 tr mid-left py-1 border-bottom">
+      <div class="frow w-100 tr align-center py-1 border-bottom border-silver lh-30">
          <div class="w-10 txt-s">{{$application->id}}</div>
          <div class="w-40 txt-s">{{$application->created_at}}</div>
          <div class="w-20 txt-s">@if($application->mode==0) National @else International @endif</div>

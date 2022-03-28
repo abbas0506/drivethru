@@ -16,7 +16,7 @@
     .hide-sm {
         display: none;
     }
-    .invisible-lg {
+    .hide-lg {
         display: flex;
     }
 }

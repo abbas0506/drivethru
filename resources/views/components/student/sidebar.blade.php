@@ -4,7 +4,12 @@ $user=session('user');
 <nav class="sidebar">
    <div class="user-avatar">
       <div><img src="{{url(asset('images/users/'.$user->pic))}}" alt="" width="50" height="50" class="rounded"></div>
-      <div class="mt-2 txt-10">{{$user->id}}</div>
+      <div class="mt-2 txt-10 txt-silver">{{$user->id}}</div>
+      <div class="mt-2 txt-10 txt-silver">
+         <a href="http://" class="pr-2"><i data-feather='settings' class="feather-xsmall"></i></a>
+         <a href="http://"><i data-feather='power' class="feather-xsmall"></i></a>
+      </div>
+
       <div class="mt-2 txt-10 free-report"><a href="http://">Get Free Report</a></div>
    </div>
    <ul>

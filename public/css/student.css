@@ -84,6 +84,10 @@ body {
     color: #ff5421;
 }
 
+.txt-silver {
+    color: #aaa;
+}
+
 .txt-blue {
     color: #171f32;
 }
@@ -322,33 +326,133 @@ body {
     padding-left: 3rem;
 }
 
-.social-group-vertical {
-    position: fixed;
-    bottom: 30px;
-    right: 0px;
+.w-10 {
+    width: 10%;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-45 {
+    flex-basis: 45%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.lh-30 {
+    line-height: 30px;
+}
+
+.lh-40 {
+    line-height: 40px;
+}
+
+.lh-50 {
+    line-height: 50px;
+}
+
+.frow {
+    display: flex;
+}
+
+.fcol {
+    display: flex;
+    flex-direction: column;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.frow.space-between {
+    justify-content: space-between;
+}
+
+.frow.align-center {
+    align-items: center;
+}
+
+.frow.justify-center {
+    justify-content: center;
+}
+
+.rotate-90 {
     transform: rotate(90deg);
-    z-index: 5;
 }
 
-.social-icon {
-    width: 30px;
-    height: 30px;
-    transform: rotate(-90deg);
+.rounded {
+    border-radius: 50%;
 }
 
-.social-icon.whatsapp {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-}
-
-.social-icon.facebook {
+.circular-20 {
     width: 20px;
-    height: 30px;
+    height: 20px;
+    border: solid;
+    border-radius: 50%;
 }
 
-.social-icon:hover {
+.circular-25 {
+    width: 25px;
+    height: 25px;
+    border: solid;
+    border-radius: 50%;
+}
+
+.border-bottom {
+    border-bottom: solid 1px;
+}
+
+.border-silver {
+    border-color: silver;
+}
+
+a {
     cursor: pointer;
+    color: inherit;
+    text-decoration: none;
 }
 
 
@@ -361,15 +465,17 @@ section {
 .global-header-section {
     position: fixed;
     top: 0;
-    z-index: 10;
+    z-index: 6;
 }
 
 .global-header {
     display: flex;
     background-color: #eee;
     align-items: center;
-    padding: 10px;
+    line-height: 50px;
+    align-items: center;
     border-bottom: solid 1px #ddd;
+    max-width: 100%;
 }
 
 .nav-links {
@@ -424,11 +530,6 @@ section {
     color: #ff5421;
 }
 
-.submenu ul li a {
-    text-decoration: none;
-    color: inherit;
-}
-
 ul li img {
     padding: 0px 5px;
 }
@@ -469,12 +570,15 @@ ul li img {
     content: '';
 }
 
-.invisible {
-    opacity: 0;
-    width: 0;
+.hidden {
+    /* opacity: 0;
+    width: 0; */
+    display: none;
 }
 
-.invisible-lg {
+.hide-lg,
+.show-sm-flex,
+.show-sm-inline-block {
     display: none;
 }
 
@@ -487,7 +591,7 @@ ul li img {
     color: rgba(255, 255, 255, 0.781);
     min-height: 88vh;
     position: fixed;
-    top: 48px;
+    top: 50px;
     width: 10%;
     font-size: 14px;
     text-align: center;
@@ -499,8 +603,6 @@ ul li img {
 }
 
 .sidebar .user-avatar a {
-    color: inherit;
-    text-decoration: none;
     font-family: 'Quicksand';
     letter-spacing: 1px;
 }
@@ -508,7 +610,6 @@ ul li img {
 .sidebar ul {
     display: block;
     list-style: none;
-    /* text-align: center; */
 }
 
 .sidebar>ul>li {
@@ -526,8 +627,6 @@ ul li img {
 }
 
 .sidebar>ul>li>a {
-    color: inherit;
-    text-decoration: none;
     font-family: 'Quicksand';
     letter-spacing: 1px;
 }
@@ -538,10 +637,11 @@ ul li img {
 .page-section {
     display: block;
     position: absolute;
-    min-width: 90%;
+    width: 90%;
     top: 48px;
     left: 10%;
     background-color: #eee;
+    overflow-x: hidden;
 }
 
 .page-section .content,
@@ -549,17 +649,45 @@ ul li img {
     background-color: #fff;
 }
 
-.page-section .content {
-    /* flex-basis: 70%; */
-}
-
-.content .page-title {
+.page-title {
+    display: flex;
     color: #171f32;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 50px;
+    padding-left: 25px;
+    align-items: center;
+    background-color: #eef;
 }
 
-.page-section .promotion {
-    /* flex-grow: 1; */
-    /* width: 20% */
+
+/* .social-group-vertical {
+    position: fixed;
+    bottom: 30px;
+    right: 0px;
+    transform: rotate(90deg);
+    z-index: 5;
+} */
+
+
+/* .social-icon {
+    width: 30px;
+    height: 30px;
+    transform: rotate(-90deg);
 }
+
+.social-icon.whatsapp {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+} */
+
+
+/* .social-icon.facebook {
+    width: 20px;
+    height: 30px;
+}
+
+.social-icon:hover {
+    cursor: pointer;
+} */

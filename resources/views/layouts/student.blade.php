@@ -26,21 +26,22 @@
       <div class="page-title">
          @yield('page-title')
       </div>
-      <div class='content'>
-         @yield('content')
-      </div>
-
-      <div class='promotion'>
-         @yield('promotion')
+      <div class="frow space-between w-100">
+         <div class='content w-60'>
+            @yield('content')
+         </div>
+         <div class='promotion w-30'>
+            @yield('promotion')
+         </div>
       </div>
    </section>
 
    <script>
-      feather.replace();
+   feather.replace();
 
-      function toggle_sidebar() {
-         $('.sidebar').toggleClass('show');
-      }
+   function toggle_sidebar() {
+      $('.sidebar').toggleClass('show');
+   }
    </script>
    @yield('script')
 </body>
