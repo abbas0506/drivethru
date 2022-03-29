@@ -65,13 +65,11 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-Route::permanentRedirect('/', '/public');
+Route::permanentRedirect('/', 'public');
 Route::get('public', function () {
     return view('index');
 });
 
-Route::view('test', 'test_final');
-// Route::view('index_0', 'index_0');
 Route::view('admission', 'index-pages.admission');
 Route::view('services', 'index-pages.services');
 Route::view('about', 'index-pages.about');
