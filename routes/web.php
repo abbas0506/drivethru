@@ -65,7 +65,12 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-Route::permanentRedirect('/', 'public');
+// Route::permanentRedirect('/', 'public');
+
+Route::get('/', function () {
+    return redirect('public');
+});
+
 Route::get('public', function () {
     return view('index');
 });
