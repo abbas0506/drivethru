@@ -728,11 +728,6 @@ ul li img {
     justify-content: space-around;
 }
 
-.content-panel,
-.promotion-panel {
-    /* background-color: #fff; */
-}
-
 .content-panel {
     width: 65%;
 }

@@ -65,9 +65,10 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/public', function () {
     return view('index');
 });
+Route::redirect('/', '/public');
 Route::view('test', 'test_final');
 // Route::view('index_0', 'index_0');
 Route::view('admission', 'index-pages.admission');
