@@ -102,8 +102,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('cities', CityController::class);
     Route::resource('papertypes', PaperTypeController::class);
     Route::resource('courses', CourseController::class);
-
-
     Route::resource('universities', UniversityController::class);
     Route::resource('unicourses', UnicourseController::class);
     Route::post('fetchCoursesByFacultyId', [CourseController::class, 'fetchCoursesByFacultyId'])->name('fetchCoursesByFacultyId');
