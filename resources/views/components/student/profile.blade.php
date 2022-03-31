@@ -1,6 +1,9 @@
 <div class="block bg-white p-4">
 
-   <a href="{{route('profiles.index')}}" class="txt-grey txt-16 txt-b my-2">MY PROFILE</a>
+   <div class="txt-grey txt-14 txt-b mb-3 txt-center">
+      <a href="{{route('profiles.index')}}">MY PROFILE</a>
+   </div>
+
 
    <div class="frow justify-center">
       <img src="{{url(asset('images/users/'.$user->pic))}}" alt="" class="rounded" width='50' height='50'>
@@ -58,16 +61,6 @@
 
    </div>
 
-   <div class="frow w-100 rw-100 pt-2 mt-2 border-top stretched">
-      <div class="txt-s"></div>
-      <div class="frow">
-         <a href="{{route('profiles.index')}}">
-            <div class="txt-green">View Profile</div>
-         </a>
-         <div class="fcol centered"><i data-feather='chevron-right' class="feather-xsmall txt-green"></i> </div>
-      </div>
-
-   </div>
 </div>
 
 <!-- Change password -->

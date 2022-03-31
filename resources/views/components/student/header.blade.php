@@ -13,8 +13,8 @@
                <li>
                   <label for="country-toggle">
                      <img src="{{asset('/images/icons/pakistan-flag.png')}}" alt="" width="25">
-                     <span class="hide-sm">National Mode</span>
-                     <i data-feather="chevron-down" class="feather-small" onclick="showmenu()"></i>
+                     <span class="hide-sm txt-14">National Mode</span>
+                     <i data-feather="chevron-down" class="feather-xsmall" onclick="showmenu()"></i>
                      <!-- <span class="caret"></span> -->
                   </label>
                </li>

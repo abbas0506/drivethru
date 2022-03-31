@@ -17,7 +17,7 @@
    <title>DriveThru</title>
 </head>
 
-<body class="bg-custom-light">
+<body>
    <section class="global-header-section">
       <x-student.header></x-student.header>
    </section>

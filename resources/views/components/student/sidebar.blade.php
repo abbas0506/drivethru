@@ -15,7 +15,7 @@ $user=session('user');
    <ul>
       <span class="hr"></span>
       <li class="active mt-2">
-         <a href="http://">
+         <a href="{{url('student-dashboard')}}">
             <ul>
                <li><i data-feather='grid' class="feather-small"></i></li>
                <li>Dashboard</li>

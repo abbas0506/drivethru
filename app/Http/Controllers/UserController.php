@@ -180,7 +180,7 @@ class UserController extends Controller
                 else if ($user->usertype == 'representative')
                     return redirect('representative');
                 else if ($user->usertype == 'student')
-                    return redirect('user_dashboard');
+                    return redirect('student-dashboard');
             } else {
                 return redirect()->back()->with('error', "User not found");
             }

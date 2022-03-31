@@ -136,7 +136,7 @@ Route::group(['middleware' => 'representative'], function () {
 //student middleware
 Route::group(['middleware' => 'student'], function () {
     Route::view('user_dashboard_old', 'student.dashboard_old');
-    Route::view('user_dashboard', 'student.dashboard');
+    Route::view('student-dashboard', 'student.dashboard');
     Route::get('switch/{mode}', function ($mode) {
         session(['mode' => $mode,]);
         return redirect('user_dashboard');
