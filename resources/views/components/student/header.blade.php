@@ -30,7 +30,7 @@
             </ul>
          </li>
          <li><a href=""><i data-feather='bell' class="feather-small" onclick=""></i></a></li>
-         <li><a href="http://">Main Website</a></li>
+         <li><a href="/">Main Website</a></li>
 
 
       </ul>

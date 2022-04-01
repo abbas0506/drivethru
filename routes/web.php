@@ -153,8 +153,8 @@ Route::group(['middleware' => 'student'], function () {
 
     //Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
-    Route::view('changepw', 'student.profile.personal.changepw');
-    Route::view('change_pic', 'student.profile.personal.change_pic');
+    Route::view('change-pw', 'student.profile.personal.changepw');
+    Route::view('change-pic', 'student.profile.personal.changepic');
     Route::post('change_pic', [ProfileController::class, 'change_pic'])->name("change_pic");
     Route::resource('academics', AcademicController::class);
     Route::get('download_past_papers', [PaperController::class, 'download'])->name('download_past_papers');

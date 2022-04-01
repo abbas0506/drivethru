@@ -1,25 +1,26 @@
-@extends('layouts.dashboard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='dashboard' :user="$user"></x-user__sidebar>
+<x-student.sidebar></x-student.sidebar>
 @endsection
 
-@section('page-header')
-<div class="frow w-100 p-4 txt-m txt-b txt-custom-blue">{{$user->name}}!</div>
+@section('page-title')
+Profile - <span class="txt-12 px-2">edit</span>
 @endsection
 
-@section('data')
-<!-- create new profile -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow w-100 rw-100 mid-left stretched">
-      <div class="txt-grey txt-m">Personal Info</div>
+@section('content')
+<div class="page-centered w-50 bg-white p-4">
+   <div class="frow stretched">
+      <div class="txt-grey txt-m lh-40">Personal Info</div>
+      <a href="{{route('profiles.index')}}">
+         <div class="top-right-icon circular-20">
+            <i data-feather='x' class="feather-xsmall"></i>
+         </div>
+      </a>
       <div class="frow txt-s centered hoverable">
          <div class="fcol circular-25 border-0 bg-green centered" onclick="reset()">
             <i data-feather='refresh-ccw' class="feather-xsmall txt-white"></i>
@@ -34,13 +35,16 @@ $user=session('user');
       @method('PATCH')
       <!-- display authentication error if any -->
       @if ($errors->any())
-      <div class="fcol w-100 rw-100 my-2 txt-orange">
+      <div class="fcol mt-2 txt-orange">
          @foreach ($errors->all() as $error)
          <div class="txt-s">- {{ $error }}</div>
          @endforeach
       </div>
       @endif
-      <div class="frow w-100 rw-100 stretched auto-col">
+
+
+
+      <div class="frow stretched auto-col">
          <div class="fcol w-48 mt-3 fancyinput">
             <input type="text" name='fname' placeholder="Father" value="{{$profile->fname}}">
             <label for="">Father</label>
@@ -50,7 +54,7 @@ $user=session('user');
             <label for="">Mother</label>
          </div>
       </div>
-      <div class="frow w-100 rw-100 stretched auto-col">
+      <div class="frow stretched auto-col">
          <div class="fcol w-48 mt-3 fancyinput">
             <input type="text" name='cnic' id='cnic' placeholder="CNIC" oninput='formatAsCnic(event)' value="{{$profile->cnic}}" required>
             <label for="">CNIC</label>
@@ -60,7 +64,7 @@ $user=session('user');
             <label for="">Passport</label>
          </div>
       </div>
-      <div class="frow w-100 rw-100 stretched auto-col">
+      <div class="frow stretched auto-col">
          <div class="fcol w-48 mt-3 fancyselect">
             <select name="gender">
                <option value="M" @if($profile->gender=='M') selected @endif>Male</option>
@@ -73,7 +77,7 @@ $user=session('user');
             <label for="">Date of Birth (dd-mm-yyyy)</label>
          </div>
       </div>
-      <div class="frow w-100 rw-100 mt-3 stretched auto-col">
+      <div class="frow mt-3 stretched auto-col">
          <div class="fcol w-48 mt-3 fancyselect">
             <select name="religion">
                <option value="Islam" @if($profile->religion=='Islam') selected @endif>Islam</option>
@@ -99,21 +103,15 @@ $user=session('user');
          </div>
       </div>
 
-      <div class="frow w-100 mt-3 fancyinput">
+      <div class="frow mt-3 fancyinput">
          <input type="text" name='address' placeholder="Address" value="{{$profile->address}}">
          <label for="">Address</label>
       </div>
-
-      <frow class="frow mid-right w-100 rw-100 mt-3">
-         <button type='submit' class="btn btn-sm btn-success">Update</button>
-      </frow>
+      <button type='submit' class="btn-red float-right mt-3">Update</button>
    </form>
+   <!-- </div> -->
 </div>
 
-@endsection
-
-@section('profile')
-<x-profile__strength :user="$user"></x-profile__strength>
 @endsection
 
 @section('script')

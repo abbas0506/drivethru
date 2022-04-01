@@ -1,7 +1,7 @@
 <div class="block bg-white p-4">
 
    <div class="txt-grey txt-14 txt-b mb-3 txt-center">
-      <a href="{{route('profiles.index')}}">MY PROFILE</a>
+      <a href="{{route('profiles.index')}}">My Profile</a>
    </div>
 
 
@@ -30,7 +30,7 @@
    </div>
    <div class="frow space-between mt-2">
 
-      <div class="txt-s"><a href="{{route('change_pic')}}">Profile Picture</a></div>
+      <div class="txt-s"><a href="{{url('change-pic')}}">Profile Picture</a></div>
 
       @if($user->hasPic())
       <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
@@ -67,5 +67,5 @@
 
 <div class="frow centered bg-white p-4 mt-3">
    <i data-feather='key' class="feather-xsmall feather-red pr-4"></i>
-   <a href="{{url('changepw')}}">Change Password</a>
+   <a href="{{url('change-pw')}}">Change Password</a>
 </div>

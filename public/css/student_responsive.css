@@ -1,7 +1,17 @@
 @media only screen and (max-width: 800px) {
     /* data section */
+    .frow.auto-col {
+        display: block;
+    }
+    .frow.auto-col>div {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .rw-100 {
+        width: 100%;
+    }
     .global-header-section {
-        width: 98%;
+        width: 100%;
     }
     .data-section {
         display: block;
@@ -9,14 +19,13 @@
         width: 100%;
         top: 48px;
         left: 0;
-        background-color: #eaeef1;
     }
     .data-container {
         display: block;
     }
     .content-panel,
     .promotion-panel {
-        background-color: #fff;
+        margin-top: 10px;
     }
     .title-bar,
     .content-panel,
