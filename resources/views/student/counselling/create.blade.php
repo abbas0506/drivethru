@@ -70,7 +70,7 @@ Swal.fire({
          <div class="">I want to seek general information</div>
       </div>
       <div class="frow mb-1">
-         <div class="fcol w-10 centered"><i data-feather='message-circle' class="feather-small rotate-270 txt-red"></i></div>
+         <div class="w-10 txt-center"><i data-feather='message-circle' class="feather-small rotate-270 txt-blue"></i></div>
          <div class="fancyinput w-90">
             <textarea name="querydetail" id="" rows="3" placeholder="I would like to express my query in words (upto 300 characters)"></textarea>
          </div>

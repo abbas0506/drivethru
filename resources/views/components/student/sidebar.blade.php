@@ -20,14 +20,25 @@ $user=session('user');
             </ul>
          </a>
       </li>
+      @if(session('mode')==0)
       <li @if($activeItem=='finduniversity' ) class="active" @endif>
-         <a href="http://">
+         <a href="{{route('finduniversitiesbyname.index')}}">
             <ul>
                <li><i data-feather='search' class="feather-small"></i></li>
                <li>Find Uni</li>
             </ul>
          </a>
       </li>
+      @else
+      <li @if($activeItem=='findcountry' ) class="active" @endif>
+         <a href="{{route('findcountriesbyname.index')}}">
+            <ul>
+               <li><i data-feather='search' class="feather-small"></i></li>
+               <li>Find Country</li>
+            </ul>
+         </a>
+      </li>
+      @endif
       <li @if($activeItem=='pastpapers' ) class="active" @endif>
          <a href="{{url('past-papers')}}">
             <ul>

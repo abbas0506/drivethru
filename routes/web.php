@@ -139,7 +139,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::view('student-dashboard', 'student.dashboard');
     Route::get('switch/{mode}', function ($mode) {
         session(['mode' => $mode,]);
-        return redirect('user_dashboard');
+        return redirect('student-dashboard');
     });
 
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
