@@ -5,7 +5,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')

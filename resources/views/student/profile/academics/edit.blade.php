@@ -5,7 +5,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')
@@ -89,7 +89,7 @@ Profile - <span class="txt-12 px-2">edit academic detail</span>
          </div>
       </div>
 
-      <button type='submit' class="btn-red float-right mt-3">Update</button>
+      <button type='submit' class="btn btn-red float-right mt-3">Update</button>
    </form>
 </div>
 
@@ -99,8 +99,8 @@ Profile - <span class="txt-12 px-2">edit academic detail</span>
 <!-- script goes here -->
 @section('script')
 <script>
-function reset() {
-   $('#form')[0].reset();
-}
+   function reset() {
+      $('#form')[0].reset();
+   }
 </script>
 @endsection

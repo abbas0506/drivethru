@@ -50,7 +50,7 @@
          <div class="frow space-between align-center mt-2">
             <div class="w-10"></div>
             <div class="w-80">
-               <button class="btn-red w-100 txt-12">Create New Account</button>
+               <button class="btn btn-red w-100 txt-12">Create New Account</button>
             </div>
          </div>
 

@@ -5,7 +5,7 @@
    </div>
    <div class="right">
       <input type="text">
-      <button class="btn-red">Submit</button>
+      <button class="btn btn-red">Submit</button>
    </div>
 </div>
 </div>
@@ -35,7 +35,7 @@
             <textarea name="" id="" rows="5" placeholder="message"></textarea>
          </div>
          <div class="row">
-            <button class="btn-red">Submit Now</button>
+            <button class="btn btn-red">Submit Now</button>
          </div>
       </form>
    </div>

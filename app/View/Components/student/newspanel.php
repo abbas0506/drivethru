@@ -4,20 +4,17 @@ namespace App\View\Components\student;
 
 use Illuminate\View\Component;
 
-class sidebar extends Component
+class newspanel extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $activeItem;
-
-    public function __construct($activeItem)
+    public function __construct()
     {
-        $this->activeItem = $activeItem;
+        //
     }
-
 
     /**
      * Get the view / contents that represent the component.
@@ -26,6 +23,6 @@ class sidebar extends Component
      */
     public function render()
     {
-        return view('components.student.sidebar');
+        return view('components.student.newspanel');
     }
 }

@@ -1,51 +1,46 @@
-@extends('layouts.dashboard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='papers' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='pastpapers'></x-student.sidebar>
 @endsection
 
-@section('page-header')
-<div class="frow w-100 p-2 my-3 txt-m txt-b txt-custom-blue">Past Papers</div>
+@section('page-title')
+Past Papers - <span class="txt-12 px-2">download</span>
 @endsection
-
-@section('data')
+@section('content')
 <!-- create new acadmeic -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow my-4 mid-left fancy-search-grow">
-      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
+<div class="bg-white p-4">
+   <div class="frow my-3 fancy-search-grow">
+      <input type="text" placeholder="Search" oninput="search(event)">
+      <i data-feather='search' class="feather-small" style="position:relative; right:24; top:8px"></i>
    </div>
 
-   <div class="frow p-2 mt-2 border-bottom tr txt-grey">
-      <div class="fcol mid-left w-10">Sr. </div>
-      <div class="fcol mid-left w-70"> Paper </div>
-      <div class="fcol centered w-20">Download</div>
+   <div class="frow p-2 mt-2 border-bottom border-silver tr txt-grey">
+      <div class="w-10">Sr. </div>
+      <div class="w-70"> Paper </div>
+      <div class="w-20 txt-center">Download</div>
    </div>
 
    @php $sr=1; @endphp
    @foreach($papers as $paper)
 
-   <div class="frow p-2 border-bottom tr">
-      <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-70"> {{$paper->papertype->name}} - {{$paper->year}} </div>
-      <div class="fcol centered w-20">
+   <div class="frow p-2 border-bottom border-silver tr">
+      <div class="w-10">{{$sr++}} </div>
+      <div class="w-70"> {{$paper->papertype->name}} - {{$paper->year}} </div>
+      <div class="w-20 txt-center">
          <a href="{{$paper->url}}" target="_blank"><i data-feather='download' class="feather-xsmall mx-1 txt-orange"></i></a>
       </div>
    </div>
    @endforeach
 </div>
-
-
 @endsection
 
-@section('profile')
-<x-sidebar__news></x-sidebar__news>
+@section('promotion')
+<x-student.newspanel></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->

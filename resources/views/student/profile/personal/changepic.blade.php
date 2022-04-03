@@ -5,21 +5,20 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')
 Profile - <span class="txt-12 px-2">change picture</span>
 @endsection
 @section('content')
-<div class="w-50 bg-white page-centered p-4">
+<div class="page-centered w-50 bg-white  p-4">
    <!-- close icon -->
    <a href="{{route('profiles.index')}}">
       <div class="top-right-icon circular-20">
          <i data-feather='x' class="feather-xsmall"></i>
       </div>
    </a>
-
    <div class="mb-3">
       <img src="{{url(asset('images/users/'.$user->pic))}}" id='preview_img' alt="Pic" width="100" height="100" class="rounded-circle">
    </div>
@@ -30,7 +29,7 @@ Profile - <span class="txt-12 px-2">change picture</span>
             <input type="file" id='pic' name='pic' placeholder="Picture" class='w-90 m-0 mr-1 p-2' onchange='preview_pic()' required>
             <label for="Name">Upload Your Picure</label>
          </div>
-         <button type='submit' class="btn-red">Upload</button>
+         <button type='submit' class="btn btn-red">Upload</button>
       </div>
    </form>
    @if ($errors->any())

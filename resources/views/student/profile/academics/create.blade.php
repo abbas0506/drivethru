@@ -5,7 +5,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')
@@ -107,25 +107,25 @@ Profile - <span class="txt-12 px-2">create academic detail</span>
 <!-- script goes here -->
 @section('script')
 <script>
-function reset() {
-   $('#form')[0].reset();
-}
-
-function validate() {
-   var obtained = $('#obtained').val()
-   var total = $('#total').val()
-
-   var msg = '';
-   if (obtained < 0) msg = 'Obtained marks too low';
-   else if (obtained > total) msg = 'Obtained greater than total?';
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
+   function reset() {
+      $('#form')[0].reset();
    }
 
-}
+   function validate() {
+      var obtained = $('#obtained').val()
+      var total = $('#total').val()
+
+      var msg = '';
+      if (obtained < 0) msg = 'Obtained marks too low';
+      else if (obtained > total) msg = 'Obtained greater than total?';
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+
+   }
 </script>
 @endsection

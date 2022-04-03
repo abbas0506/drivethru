@@ -37,7 +37,7 @@
          <div class="frow space-between align-center mt-2">
             <div class="w-10"></div>
             <div class="w-80">
-               <button class="btn-red w-100">Login</button>
+               <button class="btn btn-red w-100">Login</button>
             </div>
          </div>
          <!-- <div class="w-100 hr mt-5"></div>

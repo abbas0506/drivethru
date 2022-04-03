@@ -1,19 +1,21 @@
-@extends('layouts.simple')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='counselling'></x-student.sidebar>
 @endsection
 
-@section('data')
+@section('page-title')
+Career Counselling - <span class="txt-12 px-2">recent activity</span>
+@endsection
+
+@section('content')
+
 <!-- counselling success -->
-<div class="fcol w-70 rw-80 h-90 centered text-justify">
+<div class="page-centered w-70 txt-j">
    <div class="txt-custom-blue mb-2"><i data-feather='smile' class="feather-large mx-1 txt-custom-blue"></i></div>
    <div class="txt-custom-blue txt-l txt-b mb-4">Hi!</div>
    <div class="mb-2 txt-m text-justify">

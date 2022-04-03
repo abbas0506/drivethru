@@ -6,15 +6,13 @@ $user=session('user');
       <div><img src="{{url(asset('images/users/'.$user->pic))}}" alt="" width="50" height="50" class="rounded"></div>
       <div class="mt-2 txt-10 txt-silver">{{$user->id}}</div>
       <div class="mt-2 txt-10 txt-silver">
-         <a href="http://" class="pr-2"><i data-feather='settings' class="feather-xsmall"></i></a>
          <a href="http://"><i data-feather='power' class="feather-xsmall"></i></a>
       </div>
-
       <div class="mt-2 txt-10 free-report"><a href="http://">Get Free Report</a></div>
    </div>
+   <span class="border-bottom border-light-silver px-4"></span>
    <ul>
-      <span class="hr"></span>
-      <li class="active mt-2">
+      <li @if($activeItem=='dashboard' ) class="active" @endif>
          <a href="{{url('student-dashboard')}}">
             <ul>
                <li><i data-feather='grid' class="feather-small"></i></li>
@@ -22,7 +20,7 @@ $user=session('user');
             </ul>
          </a>
       </li>
-      <li>
+      <li @if($activeItem=='finduniversity' ) class="active" @endif>
          <a href="http://">
             <ul>
                <li><i data-feather='search' class="feather-small"></i></li>
@@ -30,16 +28,16 @@ $user=session('user');
             </ul>
          </a>
       </li>
-      <li>
-         <a href="http://">
+      <li @if($activeItem=='pastpapers' ) class="active" @endif>
+         <a href="{{url('past-papers')}}">
             <ul>
                <li><i data-feather='download-cloud' class="feather-small"></i></li>
                <li>Past Papers</li>
             </ul>
          </a>
       </li>
-      <li>
-         <a href="http://">
+      <li @if($activeItem=='counselling' ) class="active" @endif>
+         <a href="{{route('counselling.index')}}">
             <ul>
                <li><i data-feather='headphones' class="feather-small"></i></li>
                <li>Counselling</li>

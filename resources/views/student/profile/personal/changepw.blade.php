@@ -5,7 +5,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')
@@ -47,7 +47,7 @@ Profile - <span class="txt-12 px-2">change password</span>
             <input type="password" id='confirm' placeholder="Confirm password">
             <label class="bg-transparent">Confirm Password</label>
          </div>
-         <button type='submit' class="btn-red float-right mt-3">Change</button>
+         <button type='submit' class="btn btn-red float-right mt-3">Change</button>
       </form>
    </div>
 
@@ -57,29 +57,29 @@ Profile - <span class="txt-12 px-2">change password</span>
 
 @section('script')
 <script>
-function reset() {
-   $('#form')[0].reset();
-}
-
-function validate() {
-   var current = $('#current').val();
-   var new_password = $('#new').val()
-   var confirm = $('#confirm').val()
-   var msg = '';
-
-   if (current == '' || current == null) msg = 'Current password required';
-   else if (new_password == '' || new_password == null) msg = 'New password required';
-   else if (confirm == '' || confirm == null) msg = 'Confirm password required';
-   else if (confirm != new_password) msg = 'Confirm password not mathed';
-
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
+   function reset() {
+      $('#form')[0].reset();
    }
 
-}
+   function validate() {
+      var current = $('#current').val();
+      var new_password = $('#new').val()
+      var confirm = $('#confirm').val()
+      var msg = '';
+
+      if (current == '' || current == null) msg = 'Current password required';
+      else if (new_password == '' || new_password == null) msg = 'New password required';
+      else if (confirm == '' || confirm == null) msg = 'Confirm password required';
+      else if (confirm != new_password) msg = 'Confirm password not mathed';
+
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+
+   }
 </script>
 @endsection

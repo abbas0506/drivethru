@@ -5,7 +5,7 @@ $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-student.sidebar></x-student.sidebar>
+<x-student.sidebar activeItem='dashboard'></x-student.sidebar>
 @endsection
 
 @section('page-title')
@@ -105,7 +105,7 @@ Profile - <span class="txt-12 px-2">create</span>
          <input type="text" name='address' placeholder="Address">
          <label for="">Address</label>
       </div>
-      <button type='submit' class="btn-red float-right mt-3">Save</button>
+      <button type='submit' class="btn btn-red float-right mt-3">Save</button>
 
    </form>
 </div>
@@ -113,59 +113,59 @@ Profile - <span class="txt-12 px-2">create</span>
 
 @section('script')
 <script>
-function reset() {
-   $('#form')[0].reset();
-}
+   function reset() {
+      $('#form')[0].reset();
+   }
 
-function validate() {
-   var cnic = $('#cnic').val()
-   var dob = $('#dob').val()
-   var msg = '';
+   function validate() {
+      var cnic = $('#cnic').val()
+      var dob = $('#dob').val()
+      var msg = '';
 
-   if (!validateCnic(cnic)) msg = 'CNIC invalid';
-   else if (!validateDate(dob)) msg = 'Date of birth invalid';
-   else {
-      dateparts = dob.split('-');
-      dd = parseInt(dateparts[0]);
-      mm = parseInt(dateparts[1]);
-      yyyy = parseInt(dateparts[2]);
+      if (!validateCnic(cnic)) msg = 'CNIC invalid';
+      else if (!validateDate(dob)) msg = 'Date of birth invalid';
+      else {
+         dateparts = dob.split('-');
+         dd = parseInt(dateparts[0]);
+         mm = parseInt(dateparts[1]);
+         yyyy = parseInt(dateparts[2]);
 
-      const months_31 = [1, 3, 5, 7, 8, 10, 12];
-      const months_30 = [4, 6, 9, 11];
+         const months_31 = [1, 3, 5, 7, 8, 10, 12];
+         const months_30 = [4, 6, 9, 11];
 
-      var currentYear = new Date().getFullYear();
+         var currentYear = new Date().getFullYear();
 
-      if (months_31.includes(mm)) {
-         if (dd <= 0 || dd > 31) msg = 'Day part incorrect, max: 31';
-      } else if (months_30.includes(mm)) {
-         if (dd <= 0 || dd > 30) msg = 'Day part incorrect, max: 30';
-      } else if (mm == 2) { //leap year
-         if (yyyy % 4 == 0) {
-            if (dd <= 0 || dd > 29) msg = 'Day part incorrect, max: 29';
-         } else {
-            if (dd <= 0 || dd > 28) msg = 'Day part incorrect, max: 28';
+         if (months_31.includes(mm)) {
+            if (dd <= 0 || dd > 31) msg = 'Day part incorrect, max: 31';
+         } else if (months_30.includes(mm)) {
+            if (dd <= 0 || dd > 30) msg = 'Day part incorrect, max: 30';
+         } else if (mm == 2) { //leap year
+            if (yyyy % 4 == 0) {
+               if (dd <= 0 || dd > 29) msg = 'Day part incorrect, max: 29';
+            } else {
+               if (dd <= 0 || dd > 28) msg = 'Day part incorrect, max: 28';
+            }
          }
+
+         if (mm <= 0 || mm > 12) {
+            msg = 'Month invalid, max: 12';
+         }
+         if (yyyy <= currentYear - 60) {
+            msg = 'Too old person??';
+         } else if (yyyy > currentYear) {
+            msg = 'Future birth??';
+         }
+
       }
 
-      if (mm <= 0 || mm > 12) {
-         msg = 'Month invalid, max: 12';
-      }
-      if (yyyy <= currentYear - 60) {
-         msg = 'Too old person??';
-      } else if (yyyy > currentYear) {
-         msg = 'Future birth??';
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
       }
 
    }
-
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
-   }
-
-}
 </script>
 @endsection

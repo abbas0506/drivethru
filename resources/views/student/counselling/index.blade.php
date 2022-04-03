@@ -1,25 +1,19 @@
-@extends('layouts.dashboard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='counselling'></x-student.sidebar>
 @endsection
 
-@section('page-header')
-<div class="fcol">
-   <div class="frow w-100 py-2 mt-1 txt-m txt-b txt-custom-blue">Career Counselling</div>
-   <div class="frow txt-s txt-grey">Book a free counseling session if u have any query about</div>
-</div>
-
+@section('page-title')
+Career Counselling - <span class="txt-12 px-2">100% free</span>
 @endsection
 
-@section('data')
+
+@section('content')
 
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
@@ -42,32 +36,32 @@ Swal.fire({
 @endif
 
 <!-- create new acadmeic -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow w-100 rw-100 mid-left stretched">
-      <div class="txt-custom-blue txt-m">My Counselling Requests</div>
+<div class="bg-white p-4">
+   <div class="frow stretched">
+      <div class="txt-red txt-m">My Counselling Requests</div>
 
       <div class="frow">
          <a href="{{route('counselling.create')}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='plus' class="feather-xsmall txt-white"></i></div>
          </a>
-         <div class="ml-3">Create New</div>
+         <div class="ml-3 hide-sm">Create New</div>
       </div>
    </div>
    <!-- table header -->
-   <div class="frow mid-left border-bottom mt-3">
-      <div class="w-15 txt-s txt-silver">ID</div>
-      <div class="w-60 txt-s txt-grey">Created At</div>
+   <div class="frow lh-40 txt-s txt-silver border-bottom border-light-silver mt-3">
+      <div class="w-15">ID</div>
+      <div class="w-60 ">Created At</div>
       <div class="w-15 txt-s txt-grey">Status</div>
-      <div class="w-10 txt-s txt-grey text-center">View</div>
+      <div class="w-10 txt-s txt-grey txt-center">View</div>
    </div>
 
-   <div class="fcol w-100 rw-100">
+   <div class="lh-30">
       @foreach($user->counsellings()->where('mode','=', session('mode')) as $counselling)
-      <div class="frow w-100 tr mid-left py-1 border-bottom">
-         <div class="w-15 txt-s">{{$counselling->id}}</div>
-         <div class="w-60 txt-s">{{$counselling->created_at}}</div>
-         <div class="w-15 txt-s">@if($counselling->status==0) Pending @else Finished @endif </div>
-         <div class="w-10 txt-s text-center">
+      <div class="frow tr txt-s py-1 border-bottom border-light-silver">
+         <div class="w-15">{{$counselling->id}}</div>
+         <div class="w-60">{{$counselling->created_at}}</div>
+         <div class="w-15">@if($counselling->status==0) Pending @else Finished @endif </div>
+         <div class="w-10 txt-center">
             <a href="{{route('counselling.show',$counselling)}}">
                <i data-feather='eye' class="feather-xsmall text-primary"></i>
             </a>
@@ -77,13 +71,10 @@ Swal.fire({
       @endforeach
    </div>
 </div>
-
-
-
 @endsection
 
-@section('profile')
-<x-sidebar__news></x-sidebar__news>
+@section('promotion')
+<x-student.newspanel></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->

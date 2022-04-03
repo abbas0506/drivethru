@@ -1,33 +1,26 @@
-@extends('layouts.dashboard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='counselling' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='counselling'></x-student.sidebar>
 @endsection
 
-@section('page-header')
-<div class="fcol">
-   <div class="frow w-100 py-2 mt-1 txt-m txt-b txt-custom-blue">Career Counselling</div>
-   <div class="frow txt-s txt-grey">We provide free counselling service to all</div>
-</div>
-
+@section('page-title')
+Career Counselling - <span class="txt-12 px-2">recent successful activity</span>
 @endsection
-
-@section('data')
+@section('content')
 
 <!-- create new acadmeic -->
-<div class="fcol w-100 rw-100 bg-white p-4">
-   <div class="frow my-2 mid-left txt-b txt-m txt-orange">
+<div class="page-centered w-70 bg-white p-4">
+   <div class="frow lh-30 mb-3 space-between">
       <span style="border-bottom:3px #F68656 solid">Free Counselling Session</span>
-      <div class="btn-rounded-custom-blue txt-s ml-5 px-4">
-         @if($counselling->status==0) Pending
-         @else Finished
+      <div class="">
+         @if($counselling->status==0) <i data-feather='clock' class="feather-medium txt-red"></i>
+         @else <i data-feather='check' class="feather-medium mx-1 txt-success"></i>
+
          @endif
       </div>
    </div>
@@ -40,7 +33,7 @@ $user=session('user');
    <div class="frow my-3 txt-grey">
       Following query items have been posted for the session
    </div>
-   <div>
+   <div class="p-4">
       <ul>
          @if($counselling->option1==1)
          <li>I want to enquire about international admission</li>
@@ -62,7 +55,7 @@ $user=session('user');
          @endif
       </ul>
    </div>
-   <div class="frow mt-2 mid-right">
+   <div class="mt-2 float-right">
       <a href="{{route('counselling.index')}}" class="btn btn-primary">OK</a>
    </div>
 

@@ -10,7 +10,7 @@
    <div class="msg-body">
       <div class="title">Congratulation</div>
       <div class="desc">You have successfully created an account with DriveThru family where you'll find simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process. </div>
-      <div class="btn-red w-20"><a href="{{url('signin')}}">Sign In Now</a></div>
+      <div class="btn btn-red w-20"><a href="{{url('signin')}}">Sign In Now</a></div>
 
    </div>
 
