@@ -819,8 +819,6 @@ ul li img {
 }
 
 .hidden {
-    /* opacity: 0;
-    width: 0; */
     display: none;
 }
 
