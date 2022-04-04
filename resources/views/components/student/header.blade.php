@@ -1,7 +1,7 @@
 <nav class="global-header">
    <i data-feather="menu" class="feather-small hide-lg px-3" onclick="toggle_sidebar()"></i>
    <div class="logo">
-      <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" width="150">
+      <img src="{{asset('/images/logo/dark.png')}}" alt="" href="">
    </div>
 
    <div class="nav-links" id='nav-links'>
@@ -39,7 +39,7 @@
                <!-- submenu -->
                <li class="submenu">
                   <ul>
-                     <li><a href="{{url('switch/0')}}"><img src="{{asset('/images/icons/pakistan-flag.png')}}" alt="" width="22"> International Mode</a></li>
+                     <li><a href="{{url('switch/0')}}"><img src="{{asset('/images/icons/pakistan-flag.png')}}" alt="" width="22"> National Mode</a></li>
                   </ul>
                </li>
                @endif
@@ -47,9 +47,7 @@
             </ul>
          </li>
          <li><a href=""><i data-feather='bell' class="feather-small" onclick=""></i></a></li>
-         <li><a href="/">Main Website</a></li>
-
-
+         <li><a href="/">Main</a></li>
       </ul>
 
    </div>

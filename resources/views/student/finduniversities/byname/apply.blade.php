@@ -1,40 +1,29 @@
-@extends('layouts.standard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='finduniversity' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='finduniversity'></x-student.sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">Find University</div>
+Find University - <span class="txt-12 px-2">{{$university->name}} - apply</span>
 @endsection
 
-@section('page-navbar')
-<div class="page-navbar">
-   <x-finduniversitybyname__navbar activeItem='apply'></x-finduniversitybyname__navbar>
-</div>
-@endsection
+@section('content')
 
-@section('graph')
-
-@endsection
-@section('data')
-<!-- create new acadmeic -->
-
-<div class="fcol w-100 rw-100 p-4 bg-white rounded">
-   <div class="frow w-100 rw-100">
-      <div>
-         <span class="txt-custom-blue txt-b border-bottom border-2">Apply Through Us</span>
+<div class="page-centered w-70 bg-light p-4">
+   <!-- close icon -->
+   <a href="{{route('finduniversitiesbyname.index')}}">
+      <div class="top-right-icon circular-20">
+         <i data-feather='x' class="feather-xsmall"></i>
       </div>
-   </div>
+   </a>
+   <div class="frow txt-custom-blue txt-b"><span class="border-bottom">Apply Through Us</span></div>
    @if(!$user->hasFinishedProfile())
-   <div class="frow w-100 rw-100 p-5 centered">
+   <div class="frow p-5 centered">
       <div class="mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
       <div class="text-justify">
          Your profile has been found incomplete. We need your personal as well as academic details
@@ -44,30 +33,26 @@ $user=session('user');
    </div>
    <!-- if univeristy data exists -->
    @elseif($university->unicourses()->count()>0)
-   <div class="frow p-1 mt-4 border-bottom tr txt-s txt-grey">
-      <div class="w-40">Course </div>
+   <div class="frow p-1 mt-4 border-bottom border-silver txt-s txt-grey">
+      <div class="w-40 rw-50">Course </div>
       <div class="w-15 rw-20 text-right rhide">Fee</div>
       <div class="w-15 text-right rhide">Last Merit</div>
-      <div class="w-20 rw-20 text-center">Closing</div>
-      <div class="w-10 rw-20 text-center">Apply</div>
+      <div class="w-20 rw-30">Closing</div>
+      <div class="flex-grow txt-c">Apply</div>
    </div>
    @foreach($university->unicourses() as $unicourse)
-   <div class="frow p-1 border-bottom tr">
+   <div class="frow p-1 border-bottom border-silver txt-s tr">
       <div class="w-40 rw-50">{{$unicourse->course->name}}</div>
-      <div class="w-15 rw-20 text-right rhide "> {{$unicourse->fee}}</div>
-      <div class="w-15 text-right rhide">{{$unicourse->lastmerit}}</div>
-      <div class="w-20 text-right">{{$unicourse->closing}}</div>
-      <div class="w-10 rw-20 text-center chk-apply"><input type="checkbox" name='chk' value="{{$unicourse->id}}" onclick="updateChkCount()"></div>
+      <div class="w-15 text-right hide-sm"> {{$unicourse->fee}}</div>
+      <div class="w-15 text-right hide-sm">{{$unicourse->lastmerit}}</div>
+      <div class="w-20 rw-30">{{$unicourse->closing}}</div>
+      <div class="flex-grow txt-c chk-apply"><input type="checkbox" name='chk' value="{{$unicourse->id}}" onclick="updateChkCount()"></div>
    </div>
    @endforeach
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
    @endif
 </div>
 
-@endsection
-
-@section('social')
-<x-sidebar__news></x-sidebar__news>
 @endsection
 
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>

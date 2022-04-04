@@ -1,5 +1,8 @@
 @media only screen and (max-width: 800px) {
     /* data section */
+    .logo img {
+        margin-left: 0px;
+    }
     .frow.auto-col {
         display: block;
     }
@@ -46,10 +49,32 @@
     .sidebar.show {
         transform: translate(0);
     }
-    .hide-sm {
+    .hide-sm,
+    .rhide {
         display: none;
     }
     .hide-lg {
         display: flex;
+    }
+    .rw-30 {
+        width: 30%;
+    }
+    .rw-40 {
+        width: 40%;
+    }
+    .rw-50 {
+        width: 50%;
+    }
+    .page-centered.w-50,
+    .page-centered.w-70 {
+        width: 75%;
+        left: 8%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .logo img {
+        width: 120px;
+        margin-left: 0px;
     }
 }
