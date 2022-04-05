@@ -1,40 +1,32 @@
-@extends('layouts.standard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='finduniversity'></x-student.sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">Find Country</div>
+Find University - <span class="txt-12 px-2">by course - search result</span>
 @endsection
 
-@section('page-navbar')
-<div class="page-navbar">
-   <x-finduniversitybycourse__navbar activeItem='apply'></x-finduniversitybycourse__navbar>
-</div>
-@endsection
+@section('content')
 
-@section('graph')
-
-@endsection
-@section('data')
-<!-- create new acadmeic -->
-
-<div class="fcol w-100 rw-100 p-4 bg-white rounded">
-   <div class="frow w-100 rw-100">
-      <div>
-         <span class="txt-custom-blue txt-b border-bottom border-2">Apply Through Us</span>
+<div class="page-centered w-70 bg-light p-4">
+   <!-- close icon -->
+   <a href="{{route('finduniversitiesbyname.index')}}">
+      <div class="top-right-icon circular-20">
+         <i data-feather='x' class="feather-xsmall"></i>
       </div>
+   </a>
+   <div>
+      <span class="txt-custom-blue txt-b border-bottom border-silver lh-30">Apply Through Us</span>
    </div>
+
    @if(!$user->hasFinishedProfile())
-   <div class="frow w-100 rw-100 p-5 centered">
+   <div class="frow p-5 centered">
       <div class="mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
       <div class="text-justify">
          Your profile has been found incomplete. We need your personal as well as academic details
@@ -43,37 +35,37 @@ $user=session('user');
       </div>
    </div>
    @elseif($courses->count()>0)
-   <div class="frow w-100 rw-100 py-2 txt-grey th border-bottom">
-      <div class="fcol w-20 rw-30 txt-s txt-b">Course</div>
-      <div class="fcol w-80 rw-70">
+   <div class="frow lh-30 mt-4 txt-grey th border-bottom border-silver">
+      <div class="w-20 rw-30 txt-s txt-b">Course</div>
+      <div class="flex-grow">
          <div class="frow">
-            <div class="hw-50 rw-80 txt-s txt-b">University</div>
+            <div class="w-50 txt-s txt-b">University</div>
             <div class="w-15 txt-s txt-b rhide">Loc.</div>
             <div class="w-15 txt-s txt-b rhide">Type</div>
             <div class="w-10 txt-s txt-b rhide">Fee</div>
-            <div class="w-10 rw-20 txt-s text-center txt-b">Apply</div>
+            <div class="w-10 rw-20 txt-s txt-center txt-b">Apply</div>
          </div>
       </div>
    </div>
    @php $sr=1; @endphp
    @foreach($courses as $course)
-   <div class="frow w-100 py-2">
-      <div class="fcol w-20 rw-30 txt-s txt-b ">{{$course->name}}</div>
-      <div class="fcol w-80 rw-70">
+   <div class="frow lh-30">
+      <div class="w-20 rw-30 txt-s txt-b ">{{$course->name}}</div>
+      <div class="flex-grow">
 
          @if($universities->where('course_id',$course->id)->count()>0)
 
          @foreach($universities->where('course_id',$course->id) as $row)
-         <div class="frow rw-100 tr border-bottom py-1">
-            <div class="hw-50 rw-80 txt-s">{{$row->university}}</div>
+         <div class="frow align-center tr border-bottom border-silver">
+            <div class="w-50 txt-s">{{$row->university}}</div>
             <div class="w-15 txt-s rhide">{{$row->city}}</div>
             <div class="w-15 txt-s rhide">{{$row->type}}</div>
             <div class="w-10 txt-s rhide">{{$row->fee}}</div>
-            <div class="w-10 rw-20 txt-s text-center chk-apply"><input type="checkbox" name='chk' value="{{$row->university_id}}-{{$row->course_id}}" onclick="updateChkCount()"></div>
+            <div class="w-10 rw-20 txt-s txt-center chk-apply"><input type="checkbox" name='chk' value="{{$row->university_id}}-{{$row->course_id}}" onclick="updateChkCount()"></div>
          </div>
          @endforeach
          @else
-         <div class="frow rw-100 txt-s border-bottom py-1">No university offers this course</div>
+         <div class="frow rw-100 txt-s border-bottom border-silver py-1">No university offers this course</div>
          @endif
       </div>
    </div>
@@ -81,11 +73,7 @@ $user=session('user');
    <button class="btn btn-primary mt-3" id='applyNow' onclick="postData()">Apply Now <sup><span id='chkCount'></span></sup></button>
    @endif
 </div>
-
-@endsection
-
-@section('social')
-<x-sidebar__news></x-sidebar__news>
+</div>
 @endsection
 
 <form action="{{route('applications.store')}}" method="post" id='applicationForm'>

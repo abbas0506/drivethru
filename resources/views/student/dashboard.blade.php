@@ -34,7 +34,7 @@ Welcome, {{$user->name}}
          <div class="w-30">{{$application->created_at}}</div>
          <div class="w-20">@if($application->mode==0) <img src="{{asset('/images/icons/pakistan-flag.png')}}" width="22"> @else <img src="{{asset('/images/icons/globe.png')}}" width="20"> @endif</div>
          <div class="w-15">{{$application->charges}} <i data-feather='dollar-sign' class="feather-xsmall"></i></div>
-         <div class="flex-grow">@if($application->ispaid) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-primary txt-s"> PAY</a> @endif</div>
+         <div class="flex-grow">@if($application->ispaid) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-success txt-s"> pay</a> @endif</div>
          <div class="w-10 txt-c">
             <a href="{{route('applications.show',$application)}}">
                <i data-feather='eye' class="feather-xsmall text-primary"></i>
