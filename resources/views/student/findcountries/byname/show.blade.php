@@ -1,70 +1,67 @@
-@extends('layouts.standard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='findcountry'></x-student.sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">{{$country->name}}</div>
+Find Country - <span class="txt-12 px-2">search result - {{$country->name}}</span>
 @endsection
 
-@section('page-subtitle')
-<div class="frow text-justify txt-s">{{$country->intro}}</div>
-@endsection
-@section('page-navbar')
-@endsection
+@section('content')
 
-@section('data')
+<div class="page-centered w-70 bg-light p-4">
+   <!-- close icon -->
+   <a href="{{route('findcountriesbyname.index')}}">
+      <div class="top-right-icon circular-20">
+         <i data-feather='x' class="feather-xsmall"></i>
+      </div>
+   </a>
 
-<div class="w-100 rw-100 bg-light px-4">
-   <div class="frow w-100 rw-100 py-4 border-bottom centered">
+   <div class="frow centered border-bottom border-silver pb-3">
       <div class="frow">
          <a href="{{route('findcountriesbyname_report',$country)}}" target="_blank">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
          </a>
-         <div class="ml-3">Get Free Report</div>
+         <div class="ml-2">Download</div>
       </div>
-      <div class="mx-5">|</div>
+      <div class="mx-3">|</div>
 
       <div class="frow">
          <a href="{{route('findcountriesbyname_apply', $country)}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
-         <div class="ml-3">Apply Through Us</div>
+         <div class="ml-2">Apply</div>
       </div>
    </div>
 
    <!-- report content goes here -->
-   <div class="frow w-100 rw-100 mt-4">
-      <div class="w-30 rw-50 txt-b">Education: </div>
-      <div class="w-70 rw-50">@if($country->edufree) Free @else Not Free @endif</div>
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Education: </div>
+      <div class="pl-4">@if($country->edufree) Free @else Not Free @endif</div>
    </div>
-   <div class="frow w-100 rw-100">
-      <div class="w-30 rw-50 txt-b">Essential: </div>
-      <div class="w-70 rw-50">{{$country->essential}}</div>
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Essential: </div>
+      <div class="pl-4">{{$country->essential}}</div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Job Description: </div>
-      <div class="w-70 rw-100">{{$country->jobdesc}}</div>
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Job Description: </div>
+      <div class="pl-4">{{$country->jobdesc}}</div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Life There: </div>
-      <div class="w-70 rw-100">{{$country->lifethere}}</div>
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Life There: </div>
+      <div class="pl-4">{{$country->lifethere}}</div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Visa Docs: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Visa Docs: </div>
+      <div class="pl-4">
          @if($country->visadocs()->count()>0)
          <ul>
             @foreach($country->visadocs() as $visadoc)
-
             <li>{{$visadoc->doc->name}}</li>
             @endforeach
          </ul>
@@ -73,9 +70,9 @@ $user=session('user');
          @endif
       </div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Admission Docs: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Admission Docs: </div>
+      <div class="pl-4">
          @if($country->admdocs()->count()>0)
          <ul>
             @foreach($country->admdocs() as $admdoc)
@@ -88,9 +85,9 @@ $user=session('user');
       </div>
    </div>
 
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Scholarships Offered: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Scholarships Offered: </div>
+      <div class="pl-4">
          @if($country->scholarships()->count()>0)
          <ul>
             @foreach($country->scholarships() as $scholarshipoffer)
@@ -103,9 +100,9 @@ $user=session('user');
       </div>
    </div>
 
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Favourite Courses: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Favourite Courses: </div>
+      <div class="pl-4">
          @if($country->favcourses()->count()>0)
          <ul>
             @foreach($country->favcourses() as $favcourse)
@@ -117,9 +114,9 @@ $user=session('user');
          @endif
       </div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Study Cost: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Study Cost: </div>
+      <div class="pl-4">
          @if($country->studycosts()->count()>0)
          <ul>
             @foreach($country->studycosts() as $studycost)
@@ -131,9 +128,9 @@ $user=session('user');
          @endif
       </div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Living Cost: </div>
-      <div class="fcol w-70 rw-100">
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Living Cost: </div>
+      <div class="pl-4">
          @if($country->livingcosts()->count()>0)
          <ul>
             @foreach($country->livingcosts() as $livingcost)
@@ -145,13 +142,10 @@ $user=session('user');
          @endif
       </div>
    </div>
-   <div class="frow w-100 rw-100 mt-2 auto-col">
-      <div class="w-30 rw-100 txt-b">Living Cost Desc: </div>
-      <div class="w-70 rw-100">{{$country->livingcostdesc}}</div>
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Living Cost Desc: </div>
+      <div class="pl-4">{{$country->livingcostdesc}}</div>
    </div>
 </div>
-@endsection
-
-@section('social')
-<x-sidebar__news></x-sidebar__news>
+</div>
 @endsection

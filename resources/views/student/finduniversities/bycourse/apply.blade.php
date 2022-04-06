@@ -9,7 +9,7 @@ $user=session('user');
 @endsection
 
 @section('page-title')
-Find University - <span class="txt-12 px-2">by course - search result</span>
+Find University - <span class="txt-12 px-2">by course - apply</span>
 @endsection
 
 @section('content')
@@ -25,6 +25,7 @@ Find University - <span class="txt-12 px-2">by course - search result</span>
       <span class="txt-custom-blue txt-b border-bottom border-silver lh-30">Apply Through Us</span>
    </div>
 
+   <div class="frow txt-custom-blue txt-b"><span class="border-bottom">Apply Through Us</span></div>
    @if(!$user->hasFinishedProfile())
    <div class="frow p-5 centered">
       <div class="mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
@@ -34,6 +35,7 @@ Find University - <span class="txt-12 px-2">by course - search result</span>
          <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
       </div>
    </div>
+
    @elseif($courses->count()>0)
    <div class="frow lh-30 mt-4 txt-grey th border-bottom border-silver">
       <div class="w-20 rw-30 txt-s txt-b">Course</div>
@@ -65,7 +67,7 @@ Find University - <span class="txt-12 px-2">by course - search result</span>
          </div>
          @endforeach
          @else
-         <div class="frow rw-100 txt-s border-bottom border-silver py-1">No university offers this course</div>
+         <div class="frow txt-s border-bottom border-silver lh-30">No university offers this course</div>
          @endif
       </div>
    </div>
