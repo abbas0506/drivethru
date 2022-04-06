@@ -1,73 +1,69 @@
-@extends('layouts.standard')
-@section('topbar')
-<x-user__header activeItem='home'></x-user__header>
-@endsection
+@extends('layouts.student')
 
 @php
 $user=session('user');
 @endphp
 
 @section('sidebar')
-<x-user__sidebar activeItem='findcountry' :user="$user"></x-user__sidebar>
+<x-student.sidebar activeItem='findcountry'></x-student.sidebar>
 @endsection
 
 @section('page-title')
-<div class="page-title">Find Country</div>
+Find Country - <span class="txt-12 px-2">by course - search result</span>
 @endsection
 
-@section('page-navbar')
-<div class="page-navbar">
-   <x-findcountrybycourse__navbar activeItem='report'></x-findcountrybycourse__navbar>
-</div>
-@endsection
+@section('content')
 
-@section('graph')
-
-@endsection
-@section('data')
-<!-- create new acadmeic -->
-
-<div class="fcol w-100 rw-100 p-4 bg-white rounded">
-   <div class="frow w-100 rw-100">
-      <div>
-         <span class="txt-custom-blue txt-b border-bottom border-2">Search result</span>
+<div class="page-centered w-70 bg-light p-4">
+   <!-- close icon -->
+   <a href="{{route('findcountriesbyname.index')}}">
+      <div class="top-right-icon circular-20">
+         <i data-feather='x' class="feather-xsmall"></i>
       </div>
-   </div>
+   </a>
 
-   @if($countries->count()>0)
-
-   <div class="frow w-100 rw-100 my-3 centered">
+   <!-- search result -->
+   <div class="frow centered border-bottom border-silver border-silver pb-3">
       <div class="frow">
          <a href="{{route('findcountriesbycourse_report')}}" target="_blank">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='download' class="feather-xsmall txt-white"></i></div>
          </a>
-         <div class="ml-3">Get Free Report</div>
+         <div class="ml-2">Download</div>
       </div>
-      <div class="mx-5">|</div>
+      <div class="mx-3">|</div>
 
       <div class="frow">
          <a href="{{route('findcountriesbycourse_apply')}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
-         <div class="ml-3">Apply Through Us</div>
+         <div class="ml-2">Apply</div>
       </div>
    </div>
 
-   <div class="frow p-1 mt-2 border-bottom tr txt-s txt-grey">
+
+   <div class="mt-3">
+      <span class="txt-custom-blue txt-b border-bottom border-silver border-2">Search result</span>
+   </div>
+
+
+   @if($countries->count()>0)
+
+
+   <div class="frow lh-30 mt-2 border-bottom border-silver tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
       <div class="w-50"> Country </div>
-      <div class="w-20 text-right">Study Cost</div>
-      <div class="w-20 text-right">Living Cost</div>
+      <div class="w-20 text-right flex-grow ">Study Cost</div>
+      <div class="w-20 text-right rhide">Living Cost</div>
    </div>
 
    @php $sr=1; @endphp
    @foreach($countries as $country)
 
-   <div class="frow p-1 border-bottom tr">
+   <div class="frow lh-30 border-bottom border-silver tr">
       <div class="w-10">{{$sr++}} </div>
       <div class="w-50"><a href="{{route('findcountriesbycourse_countrypreview', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
-      <div class="w-20 text-right"> {{$country->studycost()}}</div>
-      <div class="w-20 text-right">{{$country->livingcost()}}</div>
+      <div class="w-20 text-right flex-grow"> {{$country->studycost()}}</div>
+      <div class="w-20 text-right rhide">{{$country->livingcost()}}</div>
    </div>
    @endforeach
    @else

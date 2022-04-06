@@ -39,12 +39,12 @@ Find Country - <span class="txt-12 px-2">search by name</span>
    <br />
    @elseif(session('success'))
    <script>
-      Swal.fire({
-         icon: 'success',
-         title: "Successful",
-         showConfirmButton: false,
-         timer: 1500
-      });
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
    </script>
    @endif
 
@@ -53,8 +53,8 @@ Find Country - <span class="txt-12 px-2">search by name</span>
       <div class="frow lh-30 mt-2 border-bottom border-silver tr txt-s txt-grey">
          <div class="w-10">Sr. </div>
          <div class="w-50"> Country </div>
-         <div class="w-20 text-right">Study Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
-         <div class="w-20 text-right">Living Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
+         <div class="w-20 text-right flex-grow">Study Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
+         <div class="w-20 text-right rhide">Living Cost (<i data-feather='dollar-sign' class="feather-xsmall"></i>)</div>
       </div>
 
       @php $sr=1; @endphp
@@ -63,8 +63,8 @@ Find Country - <span class="txt-12 px-2">search by name</span>
       <div class="frow lh-30 border-bottom border-silver tr">
          <div class="w-10 txt-s">{{$sr++}} </div>
          <div class="w-50 txt-red"><a href="{{route('findcountriesbyname.show', $country->id)}}"> {{$country->name}}</a></div>
-         <div class="w-20 text-right txt-s"> {{$country->studycost()}} </div>
-         <div class="w-20 text-right txt-s">{{$country->livingcost()}}</div>
+         <div class="w-20 text-right txt-s flex-grow"> {{$country->studycost()}} </div>
+         <div class="w-20 text-right txt-s rhide">{{$country->livingcost()}}</div>
       </div>
       @endforeach
       @else
@@ -84,18 +84,18 @@ Find Country - <span class="txt-12 px-2">search by name</span>
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      var str = 0;
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hidden');
-         } else {
-            $(this).removeClass('hidden');
-         }
-      });
-   }
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hidden');
+      } else {
+         $(this).removeClass('hidden');
+      }
+   });
+}
 </script>
 @endsection

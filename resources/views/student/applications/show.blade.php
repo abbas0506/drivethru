@@ -24,7 +24,12 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
    <!-- if national mode -->
    @if($application->mode==0)
    <div><img src="{{asset('/images/icons/pakistan-flag.png')}}" width='22' class="mr-2"></div>
-   <div class="txt-grey txt-m"> Application : {{$application->id}}</div>
+   <div class="txt-grey txt-m">
+      Application : {{$application->id}}
+      <a href="{{route('application_download',$application)}}" target="_blank" class="ml-3">
+         <i data-feather='download' class="feather-small txt-orange"></i>
+      </a>
+   </div>
    <div class="txt-grey txt-s">Created at {{$application->created_at}}</div>
    <!-- table header -->
    <div class="frow mid-left border-bottom border-silver txt-s txt-grey mt-3">
@@ -52,7 +57,12 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
    @elseif($application->mode==1)
    <div><img src="{{asset('/images/icons/globe.png')}}" width='20' class="mr-2"></div>
-   <div class="txt-grey txt-m"> Application : {{$application->id}}</div>
+   <div class="txt-grey txt-m">
+      Application : {{$application->id}}
+      <a href="{{route('application_download',$application)}}" target="_blank" class="ml-3">
+         <i data-feather='download' class="feather-small txt-orange"></i>
+      </a>
+   </div>
    <div class="txt-grey txt-s">Created at {{$application->created_at}}</div>
    <!-- table header -->
    <div class="frow mid-left border-bottom border-silver txt-s txt-grey mt-3">
@@ -60,10 +70,11 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
       <div class="w-40">Country</div>
       <div class="w-50">Courses</div>
    </div>
+   @php $sr=1; @endphp
    @foreach($application->countries() as $country)
    <div class="border-bottom border-silver lh-30">
       <div class="frow stretched">
-         <div class="w-10">{{$sr++}}. </div>
+         <div class="w-10 txt-s">{{$sr++}}. </div>
          <div class="w-40">{{$country->name}}</div>
          <div class="fcol w-50">
             @foreach($application->international_applications()->where('country_id',$country->id) as $international_application)

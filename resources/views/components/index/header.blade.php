@@ -9,7 +9,14 @@
          <li><a href="about">ABOUT</a></li>
          <li><a href="blog">BLOG</a></li>
          <li><a href="contact">CONTACT</a></li>
-         <li><a href="signin">APPLY NOW</a></li>
+         <li>
+            @if(session('user'))
+            <a href="student-dashboard">DASHBOARD</a>
+            @else
+            <a href="signin">LOGIN</a>
+            @endif
+
+         </li>
       </ul>
    </div>
    <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>

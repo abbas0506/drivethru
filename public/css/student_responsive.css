@@ -70,11 +70,17 @@
         width: 75%;
         left: 8%;
     }
+    .rmb-2 {
+        margin-bottom: 0.6rem;
+    }
 }
 
 @media only screen and (max-width: 400px) {
     .logo img {
         width: 120px;
         margin-left: 0px;
+    }
+    .nav-links>ul>li {
+        padding: 0px 5px;
     }
 }

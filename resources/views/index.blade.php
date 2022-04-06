@@ -6,7 +6,14 @@
    <div class="app-msg">
       <p>175+ Universities from Pakistan and 18+ other Countries</p>
       <h1>Single-Click Application Form</h1>
-      <button class="btn btn-red">Apply Now</button>
+      <button class="btn btn-red">
+         @if(session('user'))
+         <a href="{{url('student-dashboard')}}">Apply Now</a>
+         @else
+         <a href="{{url('signin')}}">Apply Now</a>
+         @endif
+
+      </button>
    </div>
 </section>
 @endsection
@@ -121,7 +128,7 @@
       </div>
       <div class="col">
          <video width="400" controls autoplay muted>
-            <source src="{{asset('/videos/github.mp4')}}" type="video/mp4">
+            <source src="{{asset('/videos/drivethru.mp4')}}" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
          </video>
