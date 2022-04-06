@@ -866,7 +866,7 @@ ul li img {
     min-height: calc(100vh - 50px);
     position: fixed;
     top: 50px;
-    width: 10%;
+    width: 15%;
     font-size: 14px;
     text-align: center;
     z-index: 10;
@@ -916,9 +916,9 @@ ul li img {
 .data-section {
     display: block;
     position: absolute;
-    width: 90%;
+    width: 85%;
     top: 50px;
-    left: 10%;
+    left: 15%;
 }
 
 .data-container {
