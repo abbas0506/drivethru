@@ -800,11 +800,13 @@ section .row.txt-l {
 /* top margin of each row */
 
 .footer .contactus .row {
+    display: flex;
+    justify-content: space-between;
     margin: 5px 0px;
 }
 
 .footer .contactus .row input {
-    width: 46%;
+    width: 48%;
     padding: 4px;
 }
 
@@ -820,12 +822,16 @@ section .row.txt-l {
     width: 100%;
 }
 
-
-/* .footer .copyright {
+.copyright {
+    position: absolute;
+    color: silver;
+    bottom: 20px;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
     color: #6e6d6d;
-    padding: 20px 0px;
-   
-} */
+    font-size: 0.8rem;
+}
 
 .social-group-vertical {
     position: fixed;
@@ -1007,16 +1013,6 @@ section .row.txt-l {
     border-width: 0.5px;
     border-style: dashed;
     border-color: #777;
-}
-
-.copyright {
-    position: absolute;
-    /* text-align: center; */
-    font-size: 10px;
-    color: silver;
-    bottom: 10px;
-    left: 40%;
-    z-index: 5;
 }
 
 

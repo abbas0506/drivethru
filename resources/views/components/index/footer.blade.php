@@ -39,7 +39,7 @@
          </div>
       </form>
    </div>
-</div>
-<div class='copyright'>
-   ALL RIGHTS RESERVED © COPY RIGHTS 2021 PRIVACY POLICY
+   <div class='copyright'>
+      ALL RIGHTS RESERVED © COPY RIGHTS 2021 PRIVACY POLICY
+   </div>
 </div>
