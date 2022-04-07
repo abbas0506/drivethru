@@ -48,7 +48,7 @@ Swal.fire({
       </div>
    </div>
    <!-- table header -->
-   <div class="frow lh-40 txt-s txt-silver border-bottom border-light-silver mt-3">
+   <div class="frow lh-40 txt-s txt-silver border-bottom border-silver mt-3">
       <div class="w-15">ID</div>
       <div class="w-60 ">Created At</div>
       <div class="w-15 txt-s txt-grey">Status</div>
@@ -57,7 +57,7 @@ Swal.fire({
 
    <div class="lh-30">
       @foreach($user->counsellings()->where('mode','=', session('mode')) as $counselling)
-      <div class="frow tr txt-s py-1 border-bottom border-light-silver">
+      <div class="frow tr txt-s py-1 border-bottom border-silver">
          <div class="w-15">{{$counselling->id}}</div>
          <div class="w-60">{{$counselling->created_at}}</div>
          <div class="w-15">@if($counselling->status==0) Pending @else Finished @endif </div>

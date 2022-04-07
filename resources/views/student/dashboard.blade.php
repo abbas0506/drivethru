@@ -33,15 +33,6 @@ Welcome, {{$user->name}}
          <div class="w-50">{{$application->created_at}}</div>
          <div class="w-20 txt-r">{{$application->charges}} $ </div>
          <div class="flex-grow txt-r">@if($application->ispaid) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-success txt-s"> pay</a> @endif</div>
-         <!-- <div class="w-10 txt-c">
-            <a href="{{route('applications.show',$application)}}">
-               <i data-feather='eye' class="feather-xsmall text-primary"></i>
-            </a>
-            &nbsp
-            <a href="{{route('application_download',$application)}}" target="_blank">
-               <i data-feather='download' class="feather-xsmall txt-orange"></i>
-            </a>
-         </div> -->
       </div>
       @endforeach
    </div>

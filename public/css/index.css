@@ -343,9 +343,7 @@ a {
 }
 
 .app-header-logo {
-    /* padding: 2% 5%; */
     width: 180px;
-    /* height: 50px; */
 }
 
 nav {
@@ -364,7 +362,6 @@ nav {
 .nav-links ul li {
     /* font-family: 'Syncopate'; */
     font-family: 'Quicksand', sans-serif;
-    /* font-weight: bold; */
     font-size: 12px;
     list-style: none;
     display: inline-block;
@@ -401,9 +398,8 @@ nav .feather-small {
 }
 
 .app-msg {
-    /* font-family: 'Courier New', Courier, monospace; */
     font-family: 'Quicksand', sans-serif;
-    width: 90%;
+    width: 100%;
     position: absolute;
     top: 60%;
     left: 50%;
@@ -462,9 +458,13 @@ section:not(:first-of-type) {
 /* section title */
 
 section .title {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+section .content {
+    font-size: 1.0rem;
 }
 
 section .row {

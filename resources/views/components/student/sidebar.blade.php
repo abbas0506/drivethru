@@ -8,7 +8,13 @@ $user=session('user');
       <div class="mt-2 txt-10 txt-orange">
          <a href="{{url('signout')}}"><i data-feather='power' class="feather-xsmall"></i></a>
       </div>
-      <div class="mt-2 txt-10 free-report"><a href="http://">Get Free Report</a></div>
+      <div class="mt-2 txt-10 free-report">
+         @if(session('mode')==0)
+         <a href="{{route('finduniversitiesbyname.index')}}">Get Free Report</a>
+         @else
+         <a href="{{route('findcountriesbyname.index')}}">Get Free Report</a>
+         @endif
+      </div>
    </div>
    <span class="border-bottom border-light-silver px-4"></span>
    <ul>

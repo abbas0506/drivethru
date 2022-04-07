@@ -22,7 +22,7 @@
    <div class="title">Who we are?</div>
    <div class="content">We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
       We provide sufficient information and services that empower you to take a lead in your academic career. <br>
-      We believe in <b>right candidate to right university</b>
+      We believe in the right candidate to right university
    </div>
 </section>
 
