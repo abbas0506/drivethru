@@ -125,25 +125,36 @@
 <section class="footer">
    <x-index.footer></x-index.footer>
 </section>
+@endsection
 
-@if ($errors->any())
-<div class="alert alert-danger mt-5">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-<br />
-@elseif(session('success'))
+@section('script')
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Subscibed",
-   showConfirmButton: false,
-   timer: 2000
-});
-</script>
-@endif
+function validate() {
+   var regex = /^\d{10}$/;
+   var msg = '';
+   var name = $('#name').val()
+   var phone = $('#phone').val();
+   var email = $('#email').val();
+   var message = $('#message').val();
 
+   //validate name
+   if (name == '' || name == null) msg = 'Name required!';
+   //validare phone no.
+   else if (phone == '' || phone == null) msg = 'Phone required!';
+   else if (email == '' || email == null) msg = 'Email required!';
+   else if (phone.length < 10) msg = 'Too short phone no!';
+   else if (phone.length > 10) msg = 'Too long phone no!';
+   else if (regex.test(phone) == false) msg = 'invalid phone';
+   else if (message == '' || messaage == null) msg = 'Message required!';
+
+   //show validation error, if any
+   if (msg != '') {
+      Toast.fire({
+         icon: 'warning',
+         title: msg
+      });
+      return false;
+   }
+}
+</script>
 @endsection

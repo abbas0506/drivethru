@@ -52,6 +52,7 @@ use App\Http\Controllers\ClosingController;
 use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
 use App\Http\Controllers\BankpaymentController;
+use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriberController;
 
@@ -179,8 +180,9 @@ Route::group(['middleware' => 'student'], function () {
     //payments
     Route::resource('bankpayments', BankpaymentController::class);
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
-    Route::resource('subscribers', SubscriberController::class);
 });
-
+// for guest user
+Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscribers.store');
+Route::post('guestqueries', [GuestQueryController::class, 'store'])->name('guestqueries.store');
 Route::get('facebook.redirect', [FbController::class, 'redirect']);
 Route::get('facebook.callback', [FbController::class, 'callback']);

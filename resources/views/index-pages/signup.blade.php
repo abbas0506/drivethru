@@ -57,15 +57,7 @@
 
       </form>
 
-      <!-- display authentication error if any -->
-      @if ($errors->any())
-      <div class="fcol w-100 rw-100 my-2 txt-orange">
-         @foreach ($errors->all() as $error)
-         <div class="txt-s">- {{ $error }}</div>
-         @endforeach
-      </div>
-      @endif
-
+      <!-- display error if any -->
 
       @if ($errors->any())
       <div class="my-2 txt-red">
@@ -79,40 +71,37 @@
 
    </div>
 
-   <!-- <div class="copyright">
-      ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-skyblue">PRIVACY POLICY </span>
-   </div> -->
 </section>
 @endsection
 @section('script')
 <script>
-   function validate() {
-      var regex = /^\d{10}$/;
-      var msg = '';
-      var name = $('#name').val()
-      var phone = $('#phone').val();
-      var password = $('#password').val();
-      var confirmpw = $('#confirmpw').val();
+function validate() {
+   var regex = /^\d{10}$/;
+   var msg = '';
+   var name = $('#name').val()
+   var phone = $('#phone').val();
+   var password = $('#password').val();
+   var confirmpw = $('#confirmpw').val();
 
-      //validate name
-      if (name == '' || name == null) msg = 'Name required!';
-      //validare phone no.
-      else if (phone == '' || phone == null) msg = 'Phone required!';
-      else if (phone.length < 10) msg = 'Too short phone no!';
-      else if (phone.length > 10) msg = 'Too long phone no!';
-      else if (regex.test(phone) == false) msg = 'invalid phone';
-      //validate password
-      else if (password == '' || password == null) msg = 'Password required!';
-      else if (confirmpw == '' || confirmpw == null) msg = 'Confirm password required!';
-      else if (password != confirmpw) msg = "Confirm password not matched"
-      //show validation error, if any
-      if (msg != '') {
-         Toast.fire({
-            icon: 'warning',
-            title: msg
-         });
-         return false;
-      }
+   //validate name
+   if (name == '' || name == null) msg = 'Name required!';
+   //validare phone no.
+   else if (phone == '' || phone == null) msg = 'Phone required!';
+   else if (phone.length < 10) msg = 'Too short phone no!';
+   else if (phone.length > 10) msg = 'Too long phone no!';
+   else if (regex.test(phone) == false) msg = 'invalid phone';
+   //validate password
+   else if (password == '' || password == null) msg = 'Password required!';
+   else if (confirmpw == '' || confirmpw == null) msg = 'Confirm password required!';
+   else if (password != confirmpw) msg = "Confirm password not matched"
+   //show validation error, if any
+   if (msg != '') {
+      Toast.fire({
+         icon: 'warning',
+         title: msg
+      });
+      return false;
    }
+}
 </script>
 @endsection

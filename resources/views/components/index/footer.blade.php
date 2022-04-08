@@ -24,17 +24,18 @@
    </div>
    <div class="col contact">
       <h2>CONTACT US</h2>
-      <form action="" class="contactus">
+      <form action="{{route('guestqueries.store')}}" method='post' class="contactus" onsubmit="return validate()">
+         @csrf
          <div class="row">
-            <input type="text" placeholder="name">
-            <input type="text" placeholder="email">
+            <input type="text" name='name' id='name' placeholder="name">
+            <input type="text" name='phone' id='phone' placeholder="phone">
          </div>
          <div class="row">
-            <input type="text" placeholder="phone">
-            <input type="text" placeholder="subject">
+            <input type="email" name='email' id='email' placeholder="email">
+            <input type="text" name='subject' placeholder="subject">
          </div>
          <div class="row">
-            <textarea name="" id="" rows="5" placeholder="message"></textarea>
+            <textarea name="message" id="message" rows="5" placeholder="message"></textarea>
          </div>
          <div class="row">
             <button class="btn btn-red">Submit Now</button>
