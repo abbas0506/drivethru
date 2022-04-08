@@ -53,6 +53,7 @@ use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
 use App\Http\Controllers\BankpaymentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,7 +136,6 @@ Route::group(['middleware' => 'representative'], function () {
 
 //student middleware
 Route::group(['middleware' => 'student'], function () {
-    Route::view('user_dashboard_old', 'student.dashboard_old');
     Route::view('student-dashboard', 'student.dashboard');
     Route::get('switch/{mode}', function ($mode) {
         session(['mode' => $mode,]);
@@ -143,15 +143,10 @@ Route::group(['middleware' => 'student'], function () {
     });
 
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
-    //Route::resource('unicourses', UnicourseController::class);
-    //Route::resource('finduniversity', FindUniversityController::class);
-    //Route::get('fetchUniversities', [FindUniversityController::class, 'fetchUniversities'])->name('fetchUniversities');
-    // Route::view('finalizeApplication', 'students.national.finalize');
     Route::resource('applications', ApplicationController::class);
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
 
-    //Route::get("finduni_download", [FindUniversityController::class, 'download'])->name("finduni_download");
     Route::resource('profiles', ProfileController::class);
     Route::view('change-pw', 'student.profile.personal.changepw');
     Route::view('change-pic', 'student.profile.personal.changepic');
@@ -184,6 +179,7 @@ Route::group(['middleware' => 'student'], function () {
     //payments
     Route::resource('bankpayments', BankpaymentController::class);
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
+    Route::resource('subscribers', SubscriberController::class);
 });
 
 Route::get('facebook.redirect', [FbController::class, 'redirect']);

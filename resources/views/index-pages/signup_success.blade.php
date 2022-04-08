@@ -13,10 +13,6 @@
       <div class="btn btn-red w-20"><a href="{{url('signin')}}">Sign In Now</a></div>
 
    </div>
-
-   <!-- <div class="copyright">
-      ALL RIGHTS RESERVED &copy; COPY RIGHTS 2021 <span class="txt-skyblue">PRIVACY POLICY </span>
-   </div> -->
 </section>
 
 @endsection

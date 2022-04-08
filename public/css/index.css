@@ -746,6 +746,10 @@ section .row.txt-l {
     width: 100%;
 }
 
+.newsletter form {
+    width: 100%;
+}
+
 .newsletter button {
     padding: 4px;
 }

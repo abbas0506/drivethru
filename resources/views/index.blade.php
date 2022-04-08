@@ -87,19 +87,6 @@
    </div>
 </section>
 
-<!-- <section class="mentor">
-      <h1 class="title">Our Mentor</h1>
-      <div class="row">
-         <div class="col">
-            <img src="/images/mentor/mentor2-01.png" alt="" width=300>
-         </div>
-         <div class="col">
-            <div class="content">
-               <h1>Mr. Hassan Tariq</h1>
-               <p>Drivethru.pk is a multi-dimensional solution of higher education requirements for students. From providing vast, authentic Information of 175+ HEC Recognized Universities to Admissions in 18+ International Countries, to applying on their behalf, Drivethru is proving to be rigmarole saver in case of both National and International admissions.</p>
-            </div>
-         </div>
-   </section> -->
 <!-- FAQ -->
 <section class="faq">
    <div class="row">
@@ -138,4 +125,25 @@
 <section class="footer">
    <x-index.footer></x-index.footer>
 </section>
+
+@if ($errors->any())
+<div class="alert alert-danger mt-5">
+   <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+   </ul>
+</div>
+<br />
+@elseif(session('success'))
+<script>
+Swal.fire({
+   icon: 'success',
+   title: "Subscibed",
+   showConfirmButton: false,
+   timer: 2000
+});
+</script>
+@endif
+
 @endsection

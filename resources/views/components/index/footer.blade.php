@@ -4,8 +4,11 @@
       <div class="title">Subscribe to Newsletter</div>
    </div>
    <div>
-      <input type="text">
-      <button class="btn btn-red">Submit</button>
+      <form action="{{route('subscribers.store')}}" method="post" class="frow">
+         @csrf
+         <input type="email" name="email" placeholder="your email" required>
+         <button type='submit' class="btn btn-red">Submit</button>
+      </form>
    </div>
 </div>
 <div class="content">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Exception;
 
 class SubscriberController extends Controller
 {
@@ -35,7 +36,21 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
+
         //
+        $request->validate([
+            'email' => 'required',
+        ]);
+
+        try {
+
+            $new = Subscriber::create($request->all());
+            $new->save();
+            return redirect()->back()->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -81,5 +96,8 @@ class SubscriberController extends Controller
     public function destroy(Subscriber $subscriber)
     {
         //
+    }
+    public function sendEmail()
+    {
     }
 }

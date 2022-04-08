@@ -6,8 +6,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>DriveThru</title>
    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
-   <link href="{{ asset('/css/index_responsive.css') }}" rel="stylesheet">
-   <script src="{{ asset('/js/feather.min.js') }}"></script>
+   <link href="{{ asset('/css/index_responsive.css')}}" rel="stylesheet">
+   <script src="{{ asset('/js/feather.min.js')}}"></script>
+   <script src="{{ asset('/js/sweetalert.min.js') }}"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
