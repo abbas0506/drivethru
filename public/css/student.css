@@ -724,23 +724,18 @@ section {
     width: 100%;
 }
 
-section .global-header-section {
-    position: fixed;
-    top: 0;
-    z-index: 3;
-}
-
 .global-header {
     display: flex;
     background-color: #fff;
     align-items: center;
     line-height: 50px;
     align-items: center;
-    /* border-bottom: solid 1px #ddd; */
     box-shadow: 0 3px 6px rgba(140, 149, 159, 0.15);
     max-width: 100%;
-    /* background: url("/images/bg/bg-data-section.jpg");
-    background-repeat: repeat-x; */
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
 }
 
 .logo img {

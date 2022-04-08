@@ -348,7 +348,7 @@ a {
 
 nav {
     display: flex;
-    padding: 0% 5%;
+    padding: 0% 2%;
     line-height: 60px;
     justify-content: space-between;
     align-items: center;
