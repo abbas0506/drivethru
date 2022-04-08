@@ -83,7 +83,7 @@
         }
         .faq h2 {
             font-size: 1.2rem;
-            text-align: center;
+            margin-bottom: 10px;
         }
         .faq .question :not(.show) {
             margin-top: 0;
@@ -99,24 +99,26 @@
             padding: 30px;
         }
         .footer,
-        .footer .newsletter,
+        .newsletter,
         .footer .content {
             display: block;
         }
+        .newsletter>div {
+            padding: 15px 20px;
+        }
+        .newsletter .icon {
+            width: 25px;
+            height: 25px;
+        }
         .newsletter .title {
-            font-size: 16px;
+            font-size: 14px;
         }
-        .newsletter .left,
-        .newsletter .right {
-            padding: 10px 5px;
+        .newsletter input {
+            padding: 5px;
         }
-        .newsletter img {
-            width: 30px;
-        }
+        /* content */
         .footer .content {
-            position: relative;
-            margin-top: 100px;
-            justify-content: space-between;
+            margin-top: 50px;
         }
         .footer .about,
         .footer .contact,
@@ -124,8 +126,8 @@
             margin-top: 20px;
         }
         .copyright {
-            bottom: -24px;
-            width: 100%;
+            bottom: 10px;
+            width: 89%;
             font-size: 0.6rem;
         }
         .auth-section {

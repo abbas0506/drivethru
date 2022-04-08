@@ -1,13 +1,12 @@
 <div class="newsletter">
-   <div class="left">
-      <img src="{{asset('/images/icons/newsletter.png')}}" alt="" width="60">
-      <div class="title txt-light">Subscribe to Newsletter</div>
+   <div>
+      <img src="{{asset('/images/icons/newsletter.png')}}" alt="" class="icon">
+      <div class="title">Subscribe to Newsletter</div>
    </div>
-   <div class="right">
+   <div>
       <input type="text">
       <button class="btn btn-red">Submit</button>
    </div>
-</div>
 </div>
 <div class="content">
    <div class="col about">
