@@ -397,7 +397,8 @@ nav .feather-small {
     display: none;
 }
 
-.app-msg {
+.app-msg,
+.page-centered-msg {
     font-family: 'Quicksand', sans-serif;
     width: 100%;
     position: absolute;
@@ -436,6 +437,25 @@ nav .feather-small {
     border-color: transparent;
     background-color: rgb(36, 36, 41);
     color: #fff;
+}
+
+.page-centered-msg h2 {
+    color: #0098FE;
+    font-size: 1.6rem;
+}
+
+.page-centered-msg .msg {
+    color: #bbb;
+    padding: 0 10%;
+    font-size: 1rem;
+}
+
+.page-centered-msg .btn {
+    padding: 5px 20px;
+    text-align: center;
+    background-color: #ff5421;
+    margin: 10px auto;
+    border-radius: 5px;
 }
 
 section {

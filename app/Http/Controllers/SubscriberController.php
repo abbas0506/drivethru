@@ -46,7 +46,7 @@ class SubscriberController extends Controller
 
             $new = Subscriber::create($request->all());
             $new->save();
-            return redirect()->back()->with('success', 'Successfully created');
+            return redirect('subscription.success');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong

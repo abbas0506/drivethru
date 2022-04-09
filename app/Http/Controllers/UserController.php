@@ -67,7 +67,7 @@ class UserController extends Controller
                 $user->email = $request->email;
 
             $user->save();
-            return redirect('signup_success');
+            return redirect('signup.success');
         } catch (Exception $e) {
             return redirect()->back()
                 ->withErrors($e->getMessage());

@@ -48,25 +48,21 @@ Swal.fire({
       </div>
    </div>
    <!-- table header -->
-   <div class="frow lh-40 txt-s txt-silver border-bottom border-silver mt-3">
+   <div class="frow lh-30 txt-s txt-grey border-bottom border-silver mt-3">
       <div class="w-15">ID</div>
       <div class="w-60 ">Created At</div>
-      <div class="w-15 txt-s txt-grey">Status</div>
-      <div class="w-10 txt-s txt-grey txt-center">View</div>
+      <div class="flex-grow txt-r">Status</div>
    </div>
 
    <div class="lh-30">
       @foreach($user->counsellings()->where('mode','=', session('mode')) as $counselling)
-      <div class="frow tr txt-s py-1 border-bottom border-silver">
-         <div class="w-15">{{$counselling->id}}</div>
+      <div class="frow align-center tr txt-s border-bottom border-silver">
+         <div class="w-15 txt-red"><a href="{{route('counselling.show',$counselling)}}">{{$counselling->id}}</a></div>
          <div class="w-60">{{$counselling->created_at}}</div>
-         <div class="w-15">@if($counselling->status==0) Pending @else Finished @endif </div>
-         <div class="w-10 txt-center">
-            <a href="{{route('counselling.show',$counselling)}}">
-               <i data-feather='eye' class="feather-xsmall text-primary"></i>
-            </a>
-            &nbsp
-         </div>
+         <div class="flex-grow txt-r">
+            @if($counselling->status==0) <i data-feather='clock' class="feather-small mt-1"></i>
+            @else <i data-feather='check' class="feather-small mt-1"></i>
+            @endif </div>
       </div>
       @endforeach
    </div>

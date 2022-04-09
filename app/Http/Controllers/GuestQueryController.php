@@ -50,7 +50,7 @@ class GuestQueryController extends Controller
 
             $new = GuestQuery::create($request->all());
             $new->save();
-            return redirect()->back()->with('success', 'Successfully created');
+            return redirect('guestquery.success');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong

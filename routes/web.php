@@ -86,7 +86,6 @@ Route::view('main', '');
 Route::resource('users', UserController::class);
 Route::view('signin', 'index-pages.signin');
 Route::view('signup', 'index-pages.signup');
-Route::view('signup_success', 'index-pages.signup_success');
 Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::get('signout', [UserController::class, 'signout']);
 
@@ -183,6 +182,11 @@ Route::group(['middleware' => 'student'], function () {
 });
 // for guest user
 Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscribers.store');
+
+Route::view('subscription.success', 'index-pages.success_subscription');
+Route::view('signup.success', 'index-pages.success_signup');
+Route::view('guestquery.success', 'index-pages.success_guestquery');
+
 Route::post('guestqueries', [GuestQueryController::class, 'store'])->name('guestqueries.store');
 Route::get('facebook.redirect', [FbController::class, 'redirect']);
 Route::get('facebook.callback', [FbController::class, 'callback']);
