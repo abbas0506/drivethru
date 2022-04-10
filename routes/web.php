@@ -144,6 +144,9 @@ Route::group(['middleware' => 'student'], function () {
 
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     Route::resource('applications', ApplicationController::class);
+
+
+
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
 
@@ -179,6 +182,7 @@ Route::group(['middleware' => 'student'], function () {
     //payments
     Route::resource('bankpayments', BankpaymentController::class);
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
+    Route::get('feevoucher/{id}', [ApplicationController::class, 'voucher'])->name('feevoucher');
 });
 // for guest user
 Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscribers.store');

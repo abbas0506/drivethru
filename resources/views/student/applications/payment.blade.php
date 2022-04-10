@@ -44,7 +44,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
    <div class="frow bg-light txt-s">
       <div class="frow btn-rounded-custom-orange centered px-3 mr-3">Bank</div>
-      <a href="">Jazz Cash</a>
+      <!-- <a href="">Jazz Cash</a> -->
    </div>
 
    <div class="border-bottom border-silver p-4">
@@ -55,7 +55,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
       </ol>
    </div>
    <div class="lh-40 txt-center border-bottom border-silver">
-      <a href="http://" class="hover-orange">
+      <a href="{{route('feevoucher', $application)}}" class="hover-orange" target="_blank">
          <div class="text-center text-primary">Print Challan<i data-feather='printer' class="feather-small ml-3"></i></div>
       </a>
    </div>
@@ -76,7 +76,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
          <div class="frow mt-4 stretched auto-col">
             <div class="fancyinput w-20">
-               <input type="text" name=' bank' id='bank' value='HBL' placeholder="HBL" class="txt-center">
+               <input type="text" name=' bank' id='bank' value='' placeholder="Bank name" class="txt-center">
                <label>Bank Name</label>
             </div>
             <div class="fancyinput w-30">

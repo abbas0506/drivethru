@@ -9,6 +9,7 @@ use App\Models\NationalApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Exception;
 
 class ApplicationController extends Controller
@@ -193,10 +194,39 @@ class ApplicationController extends Controller
         $application = Application::find($request->id);
         $profile = $application->user->profile();
 
-        // echo "id" . $profile->id;
-
         $pdf = PDF::loadView("student.applications.download", compact('application', 'profile'));
         $pdf->output();
         return $pdf->setPaper('a4')->stream();
+    }
+    public function voucher(Request $request)
+    {
+
+        $application = Application::find($request->id);
+        $profile = $application->user->profile();
+
+        $issuedate = Carbon::now();
+        $duedate = Carbon::now()->addDays(5);
+
+        //if due on sunday, then move it to next day i.e monday
+        if ($duedate->dayOfWeek == 0) $duedate->addDays(1);
+
+        $applicationSr = $application->id;
+        if ($applicationSr < 10) $applicationSr = '0' . $applicationSr;
+
+        $depositSlipId = Carbon::now()->format('Y') . '-' . $applicationSr;
+
+        $inwords = '';
+        if ($application->charges == 1) $inwords = 'One hundred and fifty rupees only';
+        else if ($application->charges == 2) $inwords = 'Three hundred rupees only';
+        else if ($application->charges == 3) $inwords = 'Four hundred and fifty rupees only';
+        else if ($application->charges == 4) $inwords = 'Six hundred rupees only';
+        else if ($application->charges == 5) $inwords = 'Seven hundred and fifty rupees only';
+        else if ($application->charges == 6) $inwords = 'Nine hundred rupees only';
+        else if ($application->charges == 7) $inwords = 'One thousand and fifty rupees only';
+
+        $pdf = PDF::loadView("student.applications.voucher", compact('application', 'issuedate', 'duedate', 'depositSlipId', 'inwords'))->setPaper('a4', 'landscape');
+        $pdf->output();
+        return $pdf->stream();
+        return $pdf->setPaper('a4')->stream(); # code...
     }
 }
