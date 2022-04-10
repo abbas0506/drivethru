@@ -8,10 +8,6 @@
    <link href="/css/app.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
-   <!-- <link href="/fonts/icon-font/lineicons.css" rel="stylesheet"> -->
-   <!-- <link href="/fonts/linear_icons/webfont/selection.json" rel="stylesheet"> -->
-   <!-- <link href="/css/linear_icons.css" rel="stylesheet"> -->
-
    <!-- external js files -->
    <script src="/js/app.js"></script>
    <script src="/js/autoformat.js"></script>
