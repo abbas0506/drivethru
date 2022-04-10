@@ -9,15 +9,15 @@
    <title>Drivethru</title>
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
 
-   <link href="/css/app.css" rel="stylesheet">
+   <link href="{{asset('/css/app.css')}}" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
    <!-- external js files -->
-   <script src="/js/app.js"></script>
-   <script src="/js/autoformat.js"></script>
-   <script src="/js/feather.min.js"></script>
-   <script src="/js/scrolltop.js"></script>
-   <script src="/js/carousel.js"></script>
+   <script src="{{asset('/js/app.js')}}"></script>
+   <script src="{{asset('/js/autoformat.js')}}"></script>
+   <script src="{{asset('/js/feather.min.js')}}"></script>
+   <script src="{{asset('/js/scrolltop.js')}}"></script>
+   <script src="{{asset('/js/carousel.js')}}"></script>
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <style>
