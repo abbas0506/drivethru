@@ -806,15 +806,19 @@ body {
   transition: 0.5s;
 }
 
+.fancy-search-grow {
+  position: relative;
+}
 .fancy-search-grow input, .fancy-search-grow .fancyinput textarea, .fancyinput .fancy-search-grow textarea {
   border-style: solid;
   border-width: thin;
   border-color: silver;
   border-radius: 50px;
-  width: 30%;
+  width: 100%;
   line-height: 1.2rem;
   background-color: transparent;
-  padding: 5px 15px 5px 15px;
+  padding: 5px 10px 5px 25px;
+  text-align: center;
 }
 .fancy-search-grow input:focus, .fancy-search-grow .fancyinput textarea:focus, .fancyinput .fancy-search-grow textarea:focus {
   outline: 0;
@@ -822,19 +826,16 @@ body {
 }
 .fancy-search-grow input:not(:-moz-placeholder-shown), .fancy-search-grow .fancyinput textarea:not(:-moz-placeholder-shown), .fancyinput .fancy-search-grow textarea:not(:-moz-placeholder-shown) {
   outline: 0;
-  width: 40%;
   -moz-transition: 1s;
   transition: 1s;
 }
 .fancy-search-grow input:not(:-ms-input-placeholder), .fancy-search-grow .fancyinput textarea:not(:-ms-input-placeholder), .fancyinput .fancy-search-grow textarea:not(:-ms-input-placeholder) {
   outline: 0;
-  width: 40%;
   -ms-transition: 1s;
   transition: 1s;
 }
 .fancy-search-grow input:not(:placeholder-shown), .fancy-search-grow .fancyinput textarea:not(:placeholder-shown), .fancyinput .fancy-search-grow textarea:not(:placeholder-shown) {
   outline: 0;
-  width: 40%;
   transition: 1s;
 }
 
@@ -1236,6 +1237,52 @@ body {
   border-radius: 50%;
   top: -3px;
   right: 3px;
+}
+
+.horizontal-navbar {
+  display: flex;
+  background-color: #22395b;
+  color: #ddd;
+  align-items: center;
+  line-height: 50px;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(140, 149, 159, 0.15);
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+}
+.horizontal-navbar .logo img {
+  width: 140px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.horizontal-navbar .nav-links {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.horizontal-navbar .nav-links ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 0 !important;
+}
+.horizontal-navbar .nav-links > ul > li {
+  padding: 0px 15px;
+}
+.horizontal-navbar a {
+  color: inherit;
+  text-decoration: none;
+}
+.horizontal-navbar a:hover {
+  color: #f0744e;
+}
+
+section.page-content {
+  position: absolute;
+  width: 100%;
+  top: 50px;
 }
 
 .bg-banner {

@@ -1,0 +1,45 @@
+.horizontal-navbar {
+    display: flex;
+    background-color: #22395b;
+    color: #ddd;
+    align-items: center;
+    line-height: 50px;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(140, 149, 159, 0.15);
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    & .logo img {
+        width: 140px;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+    & .nav-links {
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
+    }
+    & .nav-links ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin-bottom: 0 !important;
+    }
+    & .nav-links>ul>li {
+        padding: 0px 15px;
+    }
+    & a {
+        color: inherit;
+        text-decoration: none;
+    }
+    & a:hover {
+        color: #f0744e;
+    }
+}
+
+section.page-content {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+}

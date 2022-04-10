@@ -1,17 +1,6 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Faculties</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home</a> <span class="mx-1"> / </span>
-      <a href="{{url('primary')}}">primary data </a> <span class="mx-1"> / </span>
-      faculties
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
 @section('page-content')
 <!-- display record save, del, update message if any -->
@@ -34,33 +23,32 @@ Swal.fire({
 });
 </script>
 @endif
-
-<div class="container-60">
-
-   <div class="w-100 bg-light px-4 pb-2 my-4 border-left border-2 border-success">
-      <div class="txt-b txt-orange">Create New Faculty</div>
+<section class="page-content">
+   <div class="mx-auto w-60">
+      <div class="frow align-items-center my-5">
+         <div class='txt-l mr-3'>Faculties</div>
+         <div class="w-30">
+            <div class="fancy-search-grow">
+               <input type="text" placeholder="Search" oninput="search(event)">
+               <i data-feather='search' class="feather-small absolute" style='top:8px;left:10px'></i>
+            </div>
+         </div>
+      </div>
+      <!-- search option -->
       <form action="{{route('faculties.store')}}" method='post'>
          @csrf
-         <div class="frow stretched mt-3">
-            <div class="fancyinput w-80">
+         <div class="frow mt-3">
+            <div class="fancyinput w-80 mr-auto">
                <input type="text" name='name' placeholder="Enter name" required>
                <label for="Name">Name</label>
             </div>
-            <div class="w-15">
-               <button type="submit" class="btn btn-success">Create</button>
-            </div>
+            <button type=" submit" class="btn btn-success">Create</button>
          </div>
       </form>
 
-   </div>
-   <!-- page content -->
-   <div class="bg-custom-light p-4">
-      <div class="fancy-search-grow">
-         <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      </div>
 
       <div class="frow px-2 py-1 my-3 border-bottom">
-         <div class="frow mid-left w-80"><span class='txt-b'> Faculty Name </span><span class="txt-s txt-grey ml-4">(Click on any faculty name to add courses)</span> </div>
+         <div class="frow mid-left w-80"><span class='txt-b'> Faculty Name </span><span class="txt-s text-danger ml-4"> ** Click on any faculty name to add courses</span> </div>
          <div class="fcol mid-right pr-3 w-20"><i data-feather='settings' class="feather-xsmall"></i></div>
       </div>
 
@@ -82,9 +70,7 @@ Swal.fire({
       </div>
       @endforeach
    </div>
-
-</div>
-
+</section>
 @endsection
 
 @section('script')

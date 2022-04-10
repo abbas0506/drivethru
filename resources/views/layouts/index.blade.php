@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Drivethru</title>
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
+
    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
    <link href="{{ asset('/css/index_responsive.css')}}" rel="stylesheet">
 

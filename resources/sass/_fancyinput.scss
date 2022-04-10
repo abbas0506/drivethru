@@ -145,22 +145,23 @@
 
 //rounded input for search
 .fancy-search-grow {
+    position: relative;
     input {
         border-style: solid;
         border-width: thin;
         border-color: silver;
         border-radius: 50px;
-        width: 30%;
+        width: 100%;
         line-height: 1.2rem;
         background-color: transparent;
-        padding: 5px 15px 5px 15px;
+        padding: 5px 10px 5px 25px;
+        text-align: center;
         &:focus {
             outline: 0;
             transition: 1s;
         }
         &:not(:placeholder-shown) {
             outline: 0;
-            width: 40%;
             transition: 1s;
         }
     }

@@ -1,17 +1,6 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Scholarships</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home</a> <span class="mx-1"> / </span>
-      <a href="{{url('primary')}}">primary data </a> <span class="mx-1"> / </span>
-      scholarships
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
 @section('page-content')
 <!-- display record save, del, update message if any -->
@@ -34,42 +23,46 @@ Swal.fire({
 });
 </script>
 @endif
-
-<div class="container-60">
-   <!-- search option -->
-   <div class="frow my-4 mid-left fancy-search-grow">
-      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable" onclick="toggle_addslider()">+</div>
-      Create New
-   </div>
-
-   <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
-      <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-75">Name </div>
-      <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
-   </div>
-   @php $sr=1; @endphp
-   @foreach($scholarships as $scholarship)
-   <div class="frow px-2 my-2 tr">
-      <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$scholarship->name}} </div>
-      <div class="fcol mid-right w-15">
-         <div class="frow stretched">
-            <a href="{{route('scholarships.edit',$scholarship)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
-            <div>
-               <form action="{{route('scholarships.destroy',$scholarship)}}" method="POST" id='del_form{{$sr}}'>
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-               </form>
+<section class="page-content">
+   <div class="mx-auto w-60">
+      <div class="frow align-items-center stretched my-5">
+         <div class='txt-l mr-3'>Scholarship Titles </div>
+         <div class="frow box-25 circular bg-success text-light centered mr-auto hoverable" onclick="toggle_addslider()">+</div>
+         <div class="w-30 justify-content-end">
+            <div class="fancy-search-grow">
+               <input type="text" placeholder="Search" oninput="search(event)">
+               <i data-feather='search' class="feather-small absolute" style='top:8px;left:10px'></i>
             </div>
          </div>
       </div>
-   </div>
-   @endforeach
-</div>
 
+      <!-- page content -->
+      <div class="frow px-2 py-1 mb-2 txt-b bg-light-grey">
+         <div class="fcol mid-left w-10">Sr </div>
+         <div class="fcol mid-left w-75">Name </div>
+         <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+      </div>
+      @php $sr=1; @endphp
+      @foreach($scholarships as $scholarship)
+      <div class="frow px-2 my-2 tr">
+         <div class="fcol mid-left w-10">{{$sr++}} </div>
+         <div class="fcol mid-left w-75"> {{$scholarship->name}} </div>
+         <div class="fcol mid-right w-15">
+            <div class="frow stretched">
+               <a href="{{route('scholarships.edit',$scholarship)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+               <div>
+                  <form action="{{route('scholarships.destroy',$scholarship)}}" method="POST" id='del_form{{$sr}}'>
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      @endforeach
+   </div>
+</section>
 @endsection
 
 @section('slider')

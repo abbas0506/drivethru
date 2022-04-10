@@ -937,10 +937,10 @@ ul li img {
     display: flex;
     color: #171f32;
     font-size: 18px;
-    font-weight: bold;
     line-height: 80px;
     padding-left: 25px;
     align-items: center;
+    color: #eee;
 }
 
 

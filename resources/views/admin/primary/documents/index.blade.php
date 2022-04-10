@@ -1,17 +1,6 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Documents</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home</a> <span class="mx-1"> / </span>
-      <a href="{{url('primary')}}">primary data </a> <span class="mx-1"> / </span>
-      documents
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
 @section('page-content')
 <!-- display record save, del, update message if any -->
@@ -26,50 +15,55 @@
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
-
-<div class="container-60">
-   <!-- search option -->
-   <div class="frow my-4 mid-left fancy-search-grow">
-      <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:relative; right:24;"></i>
-      <div class="frow box-25 circular bg-success text-light centered mr-2 hoverable" onclick="toggle_addslider()">+</div>
-      Create New
-   </div>
-
-   <!-- page content -->
-   <div class="frow px-2 py-1 mb-2 txt-b bg-info">
-      <div class="fcol mid-left w-10">Sr </div>
-      <div class="fcol mid-left w-75">Name </div>
-      <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
-   </div>
-   @php $sr=1; @endphp
-   @foreach($documents as $document)
-   <div class="frow px-2 my-2 tr">
-      <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="fcol mid-left w-75"> {{$document->name}} </div>
-      <div class="fcol mid-right w-15">
-         <div class="frow stretched">
-            <a href="{{route('documents.edit',$document)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
-            <div>
-               <form action="{{route('documents.destroy',$document)}}" method="POST" id='del_form{{$sr}}'>
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-               </form>
+<section class="page-content">
+   <div class="mx-auto w-60">
+      <div class="frow align-items-center stretched my-5">
+         <div class='txt-l mr-3'>Visa Documents </div>
+         <div class="frow box-25 circular bg-success text-light centered mr-auto hoverable" onclick="toggle_addslider()">+</div>
+         <div class="w-30 justify-content-end">
+            <div class="fancy-search-grow">
+               <input type="text" placeholder="Search" oninput="search(event)">
+               <i data-feather='search' class="feather-small absolute" style='top:8px;left:10px'></i>
             </div>
          </div>
       </div>
-   </div>
-   @endforeach
-</div>
+      <!-- search option -->
 
+      <!-- page content -->
+      <div class="frow px-2 py-1 mb-2 txt-b bg-light-grey">
+         <div class="fcol mid-left w-10">Sr </div>
+         <div class="fcol mid-left w-75">Name </div>
+         <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+      </div>
+      @php $sr=1; @endphp
+      @foreach($documents as $document)
+      <div class="frow px-2 my-2 tr">
+         <div class="fcol mid-left w-10">{{$sr++}} </div>
+         <div class="fcol mid-left w-75"> {{$document->name}} </div>
+         <div class="fcol mid-right w-15">
+            <div class="frow stretched">
+               <a href="{{route('documents.edit',$document)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
+               <div>
+                  <form action="{{route('documents.destroy',$document)}}" method="POST" id='del_form{{$sr}}'>
+                     @csrf
+                     @method('DELETE')
+                     <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+      @endforeach
+   </div>
+</section>
 @endsection
 
 @section('slider')
@@ -81,7 +75,7 @@ Swal.fire({
    <!-- data form -->
    <form action="{{route('documents.store')}}" method='post'>
       @csrf
-      <div class="frow stretched my-4 auto-col">
+      <div class="frow stretched my-5 auto-col">
          <div class="fancyinput w-100">
             <input type="text" name='name' placeholder="Enter name" required>
             <label for="Name">Name</label>
@@ -97,40 +91,40 @@ Swal.fire({
 
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
 
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#del_form' + formid).submit();
-      }
-   });
-}
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#del_form' + formid).submit();
+         }
+      });
+   }
 
-function toggle_addslider() {
-   $("#addslider").toggleClass('slide-left');
-}
+   function toggle_addslider() {
+      $("#addslider").toggleClass('slide-left');
+   }
 </script>
 @endsection
