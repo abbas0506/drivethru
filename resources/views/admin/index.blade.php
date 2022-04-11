@@ -19,25 +19,25 @@
             <h5 class="text-danger bg-light-grey p-2">Step 1: Primary Data</h5>
             <ol type='i'>
                <li>
-                  <a href="{{url('cities')}}" class='mr-3'>Cities</a> (3)
+                  <a href="{{url('cities')}}" class='mr-3'>Cities</a>
                </li>
                <li>
-                  <a href="{{url('levels')}}" class='mr-3'>Study Levels</a>(3)
+                  <a href="{{url('levels')}}" class='mr-3'>Study Levels</a>
                </li>
                <li>
-                  <a href="{{url('faculties')}}" class='mr-3'>Faculties plus their course titles</a>(3)
+                  <a href="{{url('faculties')}}" class='mr-3'>Faculties plus their course titles</a>
                </li>
                <li>
-                  <a href="{{url('papertypes')}}" class='mr-3'>Past Paper Types</a>(3)
+                  <a href="{{url('papertypes')}}" class='mr-3'>Past Paper Types</a>
                </li>
                <li>
-                  <a href="{{url('documents')}}" class='mr-3'>Document Titles (international visa)</a>(3)
+                  <a href="{{url('documents')}}" class='mr-3'>Document Titles (international visa)</a>
                </li>
                <li>
-                  <a href="{{url('scholarships')}}" class="mr-3">Scholarship Titles (international)</a>(3)
+                  <a href="{{url('scholarships')}}" class="mr-3">Scholarship Titles (international)</a>
                </li>
                <li>
-                  <a href="{{url('expensetypes')}}" class="mr-3">Living Expenses Types (international)</a>(3)
+                  <a href="{{url('expensetypes')}}" class="mr-3">Living Expenses Types (international)</a>
                </li>
             </ol>
 
@@ -46,10 +46,10 @@
             <h5 class="text-secondary bg-light-grey p-2">Step 2: Higher level data</h5>
             <ol type='i'>
                <li>
-                  <a href="{{url('universities')}}" class='mr-3'>National universities</a>(3)
+                  <a href="{{url('universities')}}" class='mr-3'>National universities</a>
                </li>
                <li>
-                  <a href="{{url('countries')}}" class='mr-3'>Foreign Countries</a>(3)
+                  <a href="{{url('countries')}}" class='mr-3'>Foreign Countries</a>
                </li>
             </ol>
 

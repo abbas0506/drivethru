@@ -26,7 +26,7 @@ Swal.fire({
 <section class="page-content">
    <div class="mx-auto w-60">
       <div class="frow align-items-center my-5">
-         <div class='txt-l mr-3'>Universities </div>
+         <div class='txt-l mr-3'>National Universities </div>
          <a href="{{route('universities.create')}}" class="mr-auto">
             <div class="frow box-25 circular bg-success text-light centered mr-auto hoverable">+</div>
          </a>
@@ -39,17 +39,17 @@ Swal.fire({
       </div>
       <!-- page content -->
       <div class="frow py-1 mb-2 txt-b bg-light-grey">
-         <div class="fcol mid-left w-10">Sr </div>
-         <div class="fcol mid-left w-60">Name </div>
-         <div class="fcol mid-left w-15">Data Feed</div>
-         <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+         <div class="w-10">Sr </div>
+         <div class="w-60">Name </div>
+         <div class="w-15">Data Feed</div>
+         <div class="w-15 text-right"><i data-feather='settings' class="feather-xsmall"></i></div>
       </div>
       @php $sr=1; @endphp
       @foreach($universities as $university)
       <div class="frow my-2 tr">
-         <div class="fcol mid-left w-10">{{$sr++}} </div>
-         <div class="fcol mid-left w-5"><img src="{{url(asset('images/universities/'.$university->logo))}}" alt='flag' width=20 height=20 class='rounded-circle'> </div>
-         <div class="fcol mid-left w-55"> {{$university->name}} </div>
+         <div class="w-10">{{$sr++}} </div>
+         <div class="w-5"><img src="{{url(asset('images/universities/'.$university->logo))}}" alt='flag' width=20 height=20 class='rounded-circle'> </div>
+         <div class="w-55 text-primary"><a href="{{route('universities.show',$university)}}">{{$university->name}} </a> </div>
          <div class="fcol centered w-15">
             <div class="frow w-100 mid-left">
                @if($university->progress()==50)
@@ -60,17 +60,17 @@ Swal.fire({
                <div class="bar-val">{{$university->progress()}}%</div>
             </div>
          </div>
-         <div class="fcol mid-right w-15">
-            <div class="frow stretched">
-               <div><a href="{{route('universities.show',$university)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
-               <div>
-                  <form action="{{route('universities.destroy',$university)}}" method="POST" id='deleteform{{$university->id}}'>
-                     @csrf
-                     @method('DELETE')
-                     <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$university->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-                  </form>
-               </div>
-            </div>
+         <div class="w-15 text-right">
+
+            <!-- <div><a href="{{route('universities.show',$university)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div> -->
+
+            <form action="{{route('universities.destroy',$university)}}" method="POST" id='deleteform{{$university->id}}'>
+               @csrf
+               @method('DELETE')
+               <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$university->id}}')"><i data-feather='x' class="feather-xsmall txt-red"></i></button>
+            </form>
+
+
          </div>
       </div>
       @endforeach

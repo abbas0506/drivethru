@@ -75,10 +75,15 @@ Swal.fire({
                <button type="submit" class="btn btn-success">Create</button>
             </div>
          </form>
-         <div class="bg-light-grey px-5 py-2">
+         <div class="bg-light-grey px-5 py-2 relative">
+            <a href="{{route('universities.index')}}">
+               <div class="top-right-icon circular-20">
+                  <i data-feather='x' class="feather-xsmall mb-1"></i>
+               </div>
+            </a>
             <div class="txt-b txt-m txt-orange">Universities List</div>
             @foreach($universities as $university)
-            <div class="txt-s tr">{{$university->name}}</div>
+            <div class="txt-s tr"><a href="{{route('universities.show',$university)}}">{{$university->name}}</a></div>
             @endforeach
          </div>
 

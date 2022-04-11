@@ -21,6 +21,10 @@
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <style>
+   body {
+      background-color: #f8fafc !important;
+   }
+
    #scrollup_btn {
       display: none;
       position: fixed;

@@ -1,19 +1,9 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Universities</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a> <span class="mx-1"> / </span>
-      <a href="{{route('universities.index')}}">Universities </a> <span class="mx-1"> / </span> Create New
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
 @section('page-content')
-
+<!-- display record save, del, update message if any -->
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
    <ul>
@@ -33,18 +23,14 @@ Swal.fire({
 });
 </script>
 @endif
-
-<div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
-   <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
-      <div class="frow stretched">
-         <div class="frow txt-b txt-m txt-orange">Edit University</div>
-         <a href="{{route('universities.index')}}">
-            <div class="frow centered box-30 bg-orange circular txt-white hoverable">
-               <i data-feather='x' class="feather-xsmall"></i>
-            </div>
-         </a>
-      </div>
-
+<section class="page-content">
+   <div class='w-70 mx-auto txt-l my-5'>National Universities <span class="txt-s ml-2"> - {{$university->name}} - edit</span> </div> <!-- data form -->
+   <div class="w-70 mx-auto bg-custom-light p-4 relative">
+      <a href="{{route('universities.index')}}">
+         <div class="top-right-icon circular-20">
+            <i data-feather='x' class="feather-xsmall mb-1"></i>
+         </div>
+      </a>
       <!-- data form -->
       <form action="{{route('universities.update', $university)}}" method='post' enctype="multipart/form-data">
          @csrf
@@ -99,15 +85,9 @@ Swal.fire({
          </div>
       </form>
    </div>
-   <!-- right hand profile bar -->
-   <div class="fcol hw-25 bg-white p-4 rw-100">
-      <div class="txt-b txt-m txt-orange">Universities List</div>
-      @foreach($universities as $university)
-      <div class="txt-s tr">{{$university->name}}</div>
-      @endforeach
-   </div>
-</div>
 
+
+</section>
 @endsection
 
 @section('script')
