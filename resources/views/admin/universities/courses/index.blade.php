@@ -30,7 +30,7 @@ Swal.fire({
       <div class="w-30 bg-custom-light">
          <x-university__profile :university=$university></x-university__profile>
       </div>
-      <div class="fcol w-60 py-4">
+      <div class="w-70 p-4 border">
          <div class="frow mb-4">
             <div class="txt-b txt-m txt-orange mr-3">List of Courses</div>
             <a href="{{route('unicourses.create')}}">

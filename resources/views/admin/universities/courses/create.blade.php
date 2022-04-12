@@ -31,7 +31,7 @@ Swal.fire({
          <x-university__profile :university=$university></x-university__profile>
       </div>
 
-      <div class="fcol w-60 p-4 border relative">
+      <div class="w-70 p-4 border relative">
          <div class="frow stretched">
             <div class="frow txt-m txt-orange">Add New Course</div>
             <a href="{{route('unicourses.index')}}">
@@ -64,15 +64,15 @@ Swal.fire({
             </div>
 
             <div class="frow w-100 rw-100 mt-3 stretched auto-col">
-               <div class="fancyinput w-15 rw-100">
-                  <input type="number" name='duration' min=0 max=10 placeholder="Duration" value='4' required>
+               <div class="fancyinput w-20">
+                  <input type="number" name='duration' min=0 max=10 placeholder="Duration" value='4' class='text-center' required>
                   <label>Duration (yr)</label>
                </div>
-               <div class="fancyinput w-20 rw-100">
-                  <input type="number" name='fee' min=0 max=10000 placeholder="Fee (k)" value='1' required>
+               <div class="fancyinput w-20">
+                  <input type="number" name='fee' min=0 max=10000 placeholder="Fee (k)" value='1' class='text-center' required>
                   <label>Fee (k)</label>
                </div>
-               <div class="fancyinput w-60 rw-100">
+               <div class="fancyinput w-55">
                   <input type="text" name='criteria' placeholder="Criteria" value='60% Fsc' required>
                   <label>Criteria</label>
                </div>

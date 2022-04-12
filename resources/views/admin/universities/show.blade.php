@@ -29,7 +29,7 @@ Swal.fire({
       <div class="w-30 bg-custom-light">
          <x-university__profile :university=$university></x-university__profile>
       </div>
-      <div class="w-60 py-4 px-5 bg-white border relative">
+      <div class="w-70 py-4 px-5 bg-white border relative">
          <a href="{{route('universities.edit', $university)}}">
             <div class="top-right-icon circular-20">
                <i data-feather='edit-2' class="feather-xsmall mb-1"></i>
