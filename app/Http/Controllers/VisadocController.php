@@ -52,7 +52,7 @@ class VisadocController extends Controller
             }
             DB::commit();
             //all good
-            return redirect()->back()->with('success', 'Scuccesful');
+            return redirect()->route('visadocs.index', $country)->with('success', 'Scuccesful');
         } catch (Exception $ex) {
             return redirect()->back()->withErrors('error', $ex->getMessage());
             DB::rollBack();

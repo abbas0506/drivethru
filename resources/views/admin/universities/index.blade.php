@@ -61,16 +61,11 @@ Swal.fire({
             </div>
          </div>
          <div class="w-15 text-right">
-
-            <!-- <div><a href="{{route('universities.show',$university)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div> -->
-
             <form action="{{route('universities.destroy',$university)}}" method="POST" id='deleteform{{$university->id}}'>
                @csrf
                @method('DELETE')
                <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$university->id}}')"><i data-feather='x' class="feather-xsmall txt-red"></i></button>
             </form>
-
-
          </div>
       </div>
       @endforeach

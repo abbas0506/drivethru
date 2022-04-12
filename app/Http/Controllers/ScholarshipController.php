@@ -40,6 +40,7 @@ class ScholarshipController extends Controller
     public function store(Request $request)
     {
         //
+        $country = session('country');
         $request->validate([
             'name' => 'required',
         ]);
@@ -47,7 +48,7 @@ class ScholarshipController extends Controller
         try {
             $scholarship = Scholarship::create($request->all());
             $scholarship->save();
-            return redirect()->back()->with('success', 'Successfully created');
+            return redirect()->route('scholarships.index', $country)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong

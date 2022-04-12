@@ -1,19 +1,8 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
-      <a href="{{route('countries.index')}}">Countries </a><span class="mx-1"> / </span>
-      {{$country->name}}
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
-
+@section('page-content')
 <!-- display record save, del, update message if any -->
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
@@ -33,54 +22,50 @@ Swal.fire({
    timer: 1500
 });
 </script>
-
 @endif
-
-@section('page-content')
-
-<div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
-   <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
-      <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Basic Profile </div>
-         <div class="frow">
-            <a href="{{route('countries.edit', $country)}}">
-               <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
-            </a>
+<section class="page-content">
+   <div class='w-70 mx-auto txt-l my-5 '>Countries <span class="txt-s ml-2"> - {{$country->name}} </span> </div>
+   <div class="frow w-70 mx-auto stretched mt-2">
+      <div class="w-30 bg-custom-light">
+         <x-country__profile :country=$country></x-country__profile>
+      </div>
+      <div class="w-70 py-4 px-5 bg-white border relative">
+         <a href="{{route('countries.edit', $country)}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='edit-2' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-m my-2 txt-orange">Basic Profile </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Introduction:</div>
+            <div class="w-70">{{$country->intro}}</div>
+         </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Essestials:</div>
+            <div class="w-70">{{$country->essential}}</div>
+         </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Is Education Free?</div>
+            <div class="">@if($country->edufree==1) Yes @else No @endif</div>
+         </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Life There:</div>
+            <div class="w-70">{{$country->lifethere}}</div>
+         </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Job Description:</div>
+            <div class="w-70">{{$country->jobdesc}}</div>
+         </div>
+         <div class="frow mt-3">
+            <div class="w-30 txt-b pr-3">Living Cost Desc:</div>
+            <div class="w-70">{{$country->livingcostdesc}}</div>
          </div>
 
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Introduction:</div>
-         <div class="fcol w-80 rw-100 mid-left">{{$country->intro}}</div>
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Essestials:</div>
-         <div class="fcol w-80 rw-100 mid-left">{{$country->essential}}</div>
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Is Education Free?</div>
-         <div class="fcol w-80 rw-100 mid-left">@if($country->edufree==1) Yes @else No @endif</div>
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Life There:</div>
-         <div class="fcol w-80 rw-100 mid-left">{{$country->lifethere}}</div>
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Job Description:</div>
-         <div class="fcol w-80 rw-100 mid-left">{{$country->jobdesc}}</div>
-      </div>
-      <div class="frow w-100 rw-100 mt-3 auto-col">
-         <div class="fcol w-20 rw-100 txt-b top-right pr-3">Living Cost Desc:</div>
-         <div class="fcol w-80 rw-100 mid-left">{{$country->livingcostdesc}}</div>
-      </div>
 
+      </div>
+   </div>
 
-   </div>
-   <!-- right hand profile bar -->
-   <div class="fcol hw-25 bg-white p-4 rw-100">
-      <x-country__profile :country=$country></x-country__profile>
-   </div>
-</div>
+</section>
 
 @endsection
 

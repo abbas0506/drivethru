@@ -152,7 +152,7 @@ class CountryController extends Controller
 
             $country->save();   //update the record
             DB::commit();
-            return redirect()->back()->with('success', 'Basic info updated successfully.');
+            return redirect()->route('countries.show', $country)->with('success', 'Basic info updated successfully.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->getMessage());

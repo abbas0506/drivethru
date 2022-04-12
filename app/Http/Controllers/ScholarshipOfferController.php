@@ -54,7 +54,7 @@ class ScholarshipOfferController extends Controller
             }
             DB::commit();
             //all good
-            return redirect()->back()->with('success', 'Scuccesful');
+            return redirect()->route('scholarship_offers.index', $country)->with('success', 'Scuccesful');
         } catch (Exception $ex) {
             return redirect()->back()->withErrors('error', $ex->getMessage());
             DB::rollBack();
