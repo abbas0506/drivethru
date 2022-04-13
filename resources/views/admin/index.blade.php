@@ -43,7 +43,7 @@
 
          </div>
          <div class="w-48">
-            <h5 class="text-secondary bg-light-grey p-2">Step 2: Higher level data</h5>
+            <h5 class="text-secondary bg-light-grey p-2">Step 2: High Level Data</h5>
             <ol type='i'>
                <li>
                   <a href="{{url('universities')}}" class='mr-3'>National universities</a>

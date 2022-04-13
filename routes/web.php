@@ -124,6 +124,7 @@ Route::group(['middleware' => 'admin'], function () {
 //representative middleware
 Route::group(['middleware' => 'representative'], function () {
     Route::resource('representative', RepresentativeController::class);
+    Route::view('r/changepw', 'representative.changepw');
     Route::resource('news', NewsController::class);
     Route::resource('advertisements', AdvertisementController::class);
     Route::resource('closing', ClosingController::class);

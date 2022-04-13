@@ -1,20 +1,9 @@
-@extends('layouts.admin')
-@section('header')
+@extends('layouts.representative')
 
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-representative__header></x-representative__header>
-   </div>
-   <div class='txt-l txt-white mt-3'>Change Password</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('representative')}}">Home</a> <span class="mx-1"> / </span>
-      Change password
-   </div>
-</div>
-@endsection
 @php
 $user=session('user');
 @endphp
+
 @section('page-content')
 <!-- display record save, del, update message if any -->
 @if ($errors->any())
@@ -37,47 +26,39 @@ Swal.fire({
 </script>
 @endif
 <!-- change password -->
-<div class="container-60 mt-4">
-   <div class="fcol w-100 rw-100 centered text-justify">
-      <div class="txt-custom-blue"><i data-feather='key' class="feather-large mx-1 txt-orange"></i></div>
+<section class="page-content">
+   <div class='w-60 mx-auto txt-l my-5 '>Representative <span class="txt-s ml-2"> - {{$user->name}} - change password </span> </div>
+   <div class="frow w-60 mx-auto border bg-custom-light p-4">
+      <div class="fcol w-20 centered">
+         <div class="txt-custom-blue"><i data-feather='key' class="feather-large txt-orange"></i></div>
 
-      <div class="fcol w-100 rw-100 bg-white rounded p-2 relative">
-
+      </div>
+      <div class="w-80 mx-auto rounded px-2 relative">
          <form action="{{route('representative.update', $user)}}" method="post" id='form' onsubmit="return validate()">
             @csrf
             @method('PATCH')
-            <!-- display authentication error if any -->
-            @if ($errors->any())
-            <div class="fcol w-100 rw-100 my-2 txt-orange">
-               @foreach ($errors->all() as $error)
-               <div class="txt-s">- {{ $error }}</div>
-               @endforeach
-            </div>
-            @elseif(session('success'))
-            <div class="frow bg-primary txt-white p-2 rounded">Password successfully changed.</div>
-            @endif
-
-            <div class="fancyinput w-100 mt-3 ">
-               <input type="text" name='current' id='current' placeholder="Current password">
+            <div class="fancyinput mt-3 ">
+               <input type="password" name='current' id='current' placeholder="Current password">
                <label class="bg-transparent">Current Password</label>
             </div>
-            <div class="fancyinput w-100 mt-3 ">
+            <div class="fancyinput mt-3 ">
                <input type="password" name='new' id='new' placeholder="New password">
                <label class="bg-transparent">New Password</label>
             </div>
-            <div class="fancyinput w-100 mt-3 ">
+            <div class="fancyinput mt-3 ">
                <input type="password" id='confirm' placeholder="Confirm password">
                <label class="bg-transparent">Confirm Password</label>
             </div>
 
-            <div class="frow mid-right w-100 rw-100 mt-3">
+            <div class="frow mid-right mt-3">
                <button type='submit' class="btn btn-primary">Change</button>
             </div>
 
          </form>
       </div>
    </div>
-</div>
+
+</section>
 @endsection
 
 @section('script')

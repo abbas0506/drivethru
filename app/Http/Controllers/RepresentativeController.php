@@ -28,7 +28,7 @@ class RepresentativeController extends Controller
     public function create()
     {
         //
-        return view('representative.changepw');
+
     }
 
     /**
