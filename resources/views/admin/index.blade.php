@@ -6,7 +6,7 @@
 <section class='page-content'>
    <div class="mx-auto w-70 my-5 ">
       <div class="txt-b txt-m">Instructions:</div>
-      <div class="mt-2">Data is an important asset of any organization. Correct data results in correct output. In order to feed data smoothly, you need to follow the following sequence of steps for both national and international panels</div>
+      <div class="mt-2">Data is an important asset of any organization. Only correct data can result in correct output. In order to feed data correctly and smoothly, please follow the following sequence of steps</div>
       <ol type='i' class="txt-s">
          <li>Collect and prepare your data completely before taking actual start</li>
          <li>Complete step 1 before going to next step</li>

@@ -58,11 +58,9 @@ Swal.fire({
          </div>
          @endforeach
          @else
-         <div class="fcol">
-            <div class="txt-grey text-center mt-5"><i data-feather='frown' class="feather-xlarge txt-grey"></i></div>
-            <div class="txt-grey text-center mt-3">
-               Docs list is empty
-            </div>
+         <div class="txt-grey text-center mt-5"><i data-feather='frown' class="feather-xlarge txt-grey"></i></div>
+         <div class="txt-grey text-center mt-3">
+            Docs list is empty
          </div>
          @endif
       </div>

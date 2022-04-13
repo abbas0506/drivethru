@@ -50,7 +50,7 @@ class FavcourseController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->back()->with('success', 'Scuccesful');
+            return redirect()->route('favcourses.index', $country)->with('success', 'Scuccesful');
         } catch (Exception $ex) {
             return redirect()->back()->withErrors('error', $ex->getMessage());
             DB::rollBack();

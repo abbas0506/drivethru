@@ -1,19 +1,8 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
-      <a href="{{route('countries.index')}}">Countries </a><span class="mx-1"> / </span>
-      {{$country->name}}
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
-
+@section('page-content')
 <!-- display record save, del, update message if any -->
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
@@ -33,74 +22,57 @@ Swal.fire({
    timer: 1500
 });
 </script>
-
 @endif
-
-@section('page-content')
-
-<div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
-   <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
-      <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Universities </div>
-         <div class="frow">
-            <a href="#">
-
-            </a>
-         </div>
+<section class="page-content">
+   <div class='w-70 mx-auto txt-l my-5'>Countries <span class="txt-s ml-2"> - {{$country->name}} - top universities </span> </div>
+   <div class="frow w-70 mx-auto stretched mt-2">
+      <div class="w-30 bg-custom-light">
+         <x-country__profile :country=$country></x-country__profile>
       </div>
-
-
-      <div class="fcol w-100 rw-100 centered">
-         <div class="frow my-2 w-80 stretched">
-            <form action="{{route('funiversities.store')}}" method="post" class='w-100' id='form' onsubmit="return validate()">
-               @csrf
-               <div class="frow w-100 mt-3 mid-left stretched">
-                  <div class="fancyinput w-90">
-                     <input type="text" name='name' id='name' value='' placeholder="Enter university name">
-                     <label>University Name</label>
-                  </div>
-                  <button type='submit' class="btn btn-transparent">
-                     <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='plus' class="feather-xsmall txt-white"></i></div>
-                  </button>
+      <div class="w-70 py-4 px-5 bg-white border relative">
+         <a href="{{route('countries.show', $country)}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='x' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-m txt-b mr-3">Top Universities</div>
+         <form action="{{route('funiversities.store')}}" method="post" class='' id='form' onsubmit="return validate()">
+            @csrf
+            <div class="frow w-100 mt-3 mid-left stretched">
+               <div class="fancyinput w-90">
+                  <input type="text" name='name' id='name' value='' placeholder="Enter university name">
+                  <label>University Name</label>
                </div>
-            </form>
-         </div>
-         <div class="w-80 my-4 border-bottom" style="border-style:dashed; border-color:orange"></div>
+               <button type='submit' class="btn btn-transparent">
+                  <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='plus' class="feather-xsmall txt-white"></i></div>
+               </button>
+            </div>
+         </form>
+
+         <div class="my-4 border-bottom"></div>
 
          @if($country->funiversities()->count()>0)
 
          @foreach($country->funiversities()->sortByDesc('id') as $funiversity)
-         <div class="frow my-1 w-80 stretched">
-            <div class="fcol">{{$funiversity->name}}</div>
-            <div class="row mid-right">
-               <div><a href="{{route('funiversities.edit', $funiversity)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a></div>
+         <div class="frow my-1 stretched">
+            <div class="text-primary"><a href="{{route('funiversities.edit', $funiversity)}}">{{$funiversity->name}}</a></div>
+            <div>
                <form action="{{route('funiversities.destroy',$funiversity)}}" method="POST" id='deluniversity{{$funiversity->id}}'>
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="bg-transparent p-0 border-0" onclick="deluniversity('{{$funiversity->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+                  <button type="submit" class="bg-transparent p-0 border-0" onclick="deluniversity('{{$funiversity->id}}')"><i data-feather='x' class="feather-xsmall txt-red"></i></button>
                </form>
             </div>
          </div>
          @endforeach
+
          @else
-         <div class="fcol">
-            <div class="txt-grey text-center mt-5"><i data-feather='meh' class="feather-xlarge txt-grey"></i></div>
-            <div class="txt-grey text-center mt-3">
-               Universities list has been found empty. You may type university name and press + button to add a unviersity</div>
-         </div>
+         <div class="txt-grey text-center mt-5"><i data-feather='meh' class="feather-xlarge txt-grey"></i></div>
+         <div class="txt-grey text-center mt-3">Top universities list found empty</div>
          @endif
-
       </div>
-
-
-
    </div>
-   <!-- right hand profile bar -->
-   <div class="fcol hw-25 bg-white p-4 rw-100">
-      <x-country__profile :country=$country></x-country__profile>
-   </div>
-</div>
-
+</section>
 @endsection
 
 @section('script')

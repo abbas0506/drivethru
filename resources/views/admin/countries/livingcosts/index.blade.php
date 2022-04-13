@@ -1,19 +1,8 @@
 @extends('layouts.admin')
 @section('header')
-
-<div class="fcol h-30 w-100 bg-banner top-mid sticky-top">
-   <div class="w-100">
-      <x-admin__header></x-admin__header>
-   </div>
-   <div class='txt-l txt-white'>Countries</div>
-   <div class='frow txt-s txt-white'>
-      <a href="{{url('admin')}}">Home </a><span class="mx-1"> / </span>
-      <a href="{{route('countries.index')}}">Countries </a><span class="mx-1"> / </span>
-      {{$country->name}}
-   </div>
-</div>
+<x-admin.header></x-admin.header>
 @endsection
-
+@section('page-content')
 <!-- display record save, del, update message if any -->
 @if ($errors->any())
 <div class="alert alert-danger mt-5">
@@ -26,27 +15,29 @@
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
-
 @endif
-
-@section('page-content')
-
-<div class="frow w-100 bg-custom-light p-4 rw-100 auto-col stretched">
-   <div class="fcol w-72 rw-100 py-4 px-5 bg-white ">
-      <div class="frow w-100 rw-100 stretched">
-         <div class="txt-b txt-m">Living Cost </div>
+<section class="page-content">
+   <div class='w-70 mx-auto txt-l my-5'>Countries <span class="txt-s ml-2"> - {{$country->name}} - living cost </span> </div>
+   <div class="frow w-70 mx-auto stretched mt-2">
+      <div class="w-30 bg-custom-light">
+         <x-country__profile :country=$country></x-country__profile>
       </div>
-      <div class="fcol w-100 rw-100 centered">
-
+      <div class="w-70 py-4 px-5 bg-white border relative">
+         <a href="{{route('countries.show', $country)}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='x' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-m txt-b mr-3">Living Cost - <span class="txt-s">in dollars / year</span></div>
          @if($expensetypes->count()>0)
-         <div class="frow my-2 w-80 stretched">
+         <div class="frow my-2 stretched">
             <form action="{{route('livingcosts.store')}}" class='w-100' method='post' onsubmit="return validate()">
                @csrf
                <div class="frow my-4 stretched">
@@ -75,95 +66,82 @@ Swal.fire({
 
          </div>
          @endif
-         <div class="w-80 my-1 border-bottom" style="border-style:dashed; border-color:orange"></div>
 
          @if($livingcosts->count()>0)
-         <div class="frow w-80 my-1 txt-grey th">
-            <div class="fcol mid-top w-10">Sr</div>
-            <div class="fcol mid-left w-50">Expense Type</div>
-            <div class="frow mid-left w-25">Cost<span class="txt-s ml-1"> / year</span></div>
-            <div class="fcol mid-right pr-3 w-15"><i data-feather='settings' class="feather-xsmall"></i></div>
+         <div class="frow my-1 txt-grey th">
+            <div class="w-10">Sr</div>
+            <div class="w-50">Expense Type</div>
+            <div class="w-25 text-center">Cost<span class="txt-s ml-1"> / year</span></div>
+            <div class="w-15 text-right"><i data-feather='settings' class="feather-xsmall"></i></div>
          </div>
          @php $sr=1; @endphp
          @foreach($livingcosts as $livingcost)
-         <div class="frow w-80 my-1 tr">
-            <div class="fcol mid-left w-10">{{$sr++}} </div>
-            <div class="fcol mid-left w-50"> {{$livingcost->expensetype->name}} </div>
-            <div class="fcol mid-left w-25"> {{$livingcost->minexp}} - {{$livingcost->maxexp}}</div>
-            <div class="fcol mid-right w-15">
-               <div class="frow stretched">
-                  <a href="{{route('livingcosts.edit',$livingcost)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
-                  <div>
-                     <form action="{{route('livingcosts.destroy',$livingcost)}}" method="POST" id='del_form{{$sr}}'>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
-                     </form>
-                  </div>
-               </div>
+         <div class="frow my-1 tr">
+            <div class="w-10">{{$sr++}} </div>
+            <div class="w-50 text-primary"><a href="{{route('livingcosts.edit',$livingcost)}}"> {{$livingcost->expensetype->name}}</a> </div>
+            <div class="w-25 text-center"> {{$livingcost->minexp}} - {{$livingcost->maxexp}}</div>
+            <div class="w-15 text-right">
+               <form action="{{route('livingcosts.destroy',$livingcost)}}" method="POST" id='del_form{{$sr}}'>
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$sr}}')"><i data-feather='x' class="feather-xsmall txt-red"></i></button>
+               </form>
+
             </div>
          </div>
          @endforeach
          @else
-         <div class="fcol">
-            <div class="txt-grey text-center mt-5"><i data-feather='meh' class="feather-xlarge txt-grey"></i></div>
-            <div class="txt-grey text-center mt-3">
-               Living Costs list has been found empty. You may use press + button to add new living cost</div>
+         <div class="txt-grey text-center mt-5"><i data-feather='frown' class="feather-xlarge txt-grey"></i></div>
+         <div class="txt-grey text-center mt-3">
+            Found empty
          </div>
          @endif
 
       </div>
-
-
-
    </div>
-   <!-- right hand profile bar -->
-   <div class="fcol hw-25 bg-white p-4 rw-100">
-      <x-country__profile :country=$country></x-country__profile>
-   </div>
-</div>
+</section>
 
 @endsection
 
 @section('script')
 <script lang="javascript">
-function validate() {
-   var minexp = $('#minexp').val();
-   var maxexp = $('#maxexp').val();
-   var msg = '';
-   if (minexp == '') msg = 'Minimum cost is required';
-   else if (maxexp == '') msg = 'Maximum cost is required';
-   else {
-      minexp = parseInt(minexp);
-      maxexp = parseInt(maxexp)
-      if (minexp < 0 || maxexp < 0) msg = 'Cost values cant be negative';
-      else if (minexp > maxexp) msg = 'Min cost cant be greater than max';
-   }
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
-   }
-}
-
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#del_form' + formid).submit();
+   function validate() {
+      var minexp = $('#minexp').val();
+      var maxexp = $('#maxexp').val();
+      var msg = '';
+      if (minexp == '') msg = 'Minimum cost is required';
+      else if (maxexp == '') msg = 'Maximum cost is required';
+      else {
+         minexp = parseInt(minexp);
+         maxexp = parseInt(maxexp)
+         if (minexp < 0 || maxexp < 0) msg = 'Cost values cant be negative';
+         else if (minexp > maxexp) msg = 'Min cost cant be greater than max';
       }
-   });
-}
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+   }
+
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#del_form' + formid).submit();
+         }
+      });
+   }
 </script>
 @endsection
