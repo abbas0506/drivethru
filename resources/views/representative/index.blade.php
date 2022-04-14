@@ -21,7 +21,7 @@
                   <a href="http://"><span class="lnr lnr-envelope mr-3"></span>Mail to</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-calendar-full mr-3"></span>Set Closing Date</a>
+                  <a href="{{route('closing.index')}}"><span class="lnr lnr-calendar-full mr-3"></span>Closing Date</a>
                </li>
                <li>
                   <a href="http://"><span class="lnr lnr-flag mr-3"></span>Site Banner</a>
