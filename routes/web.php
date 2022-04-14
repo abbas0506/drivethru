@@ -70,7 +70,16 @@ use App\Http\Controllers\SubscriberController;
 // Route::permanentRedirect('/', 'public');
 
 Route::get('/', function () {
-    return view('index');
+    if (!session('usertype'))
+        return view('index');
+    if (session('usertype') == 'admin')
+        return redirect('admin');
+    else if (session('usertype') == 'representative')
+        return redirect('representative');
+    else if (session('usertype') == 'student')
+        return redirect('student-dashboard');
+    else
+        return view('index');
 });
 
 Route::view('admission', 'index-pages.admission');
@@ -145,9 +154,6 @@ Route::group(['middleware' => 'student'], function () {
 
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
     Route::resource('applications', ApplicationController::class);
-
-
-
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
 
