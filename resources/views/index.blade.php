@@ -114,7 +114,11 @@
       </div>
       <div class="col">
          <video width="400" controls autoplay muted>
+            @if($video)
+            <source src="{{asset('/videos/'.$video->name)}}" type="video/mp4">
+            @else
             <source src="{{asset('/videos/drivethru.mp4')}}" type="video/mp4">
+            @endif
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
          </video>

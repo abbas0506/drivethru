@@ -56,6 +56,7 @@ use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VideoController;
+use App\Models\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,16 +72,16 @@ use App\Http\Controllers\VideoController;
 // Route::permanentRedirect('/', 'public');
 
 Route::get('/', function () {
-    if (!session('usertype'))
-        return view('index');
-    if (session('usertype') == 'admin')
-        return redirect('admin');
-    else if (session('usertype') == 'representative')
-        return redirect('representative');
-    else if (session('usertype') == 'student')
-        return redirect('student-dashboard');
-    else
-        return view('index');
+    $video = Video::first();
+    if (session('usertype')) {
+        if (session('usertype') == 'admin')
+            return redirect('admin');
+        if (session('usertype') == 'representative')
+            return redirect('representative');
+        else
+            return view('index', compact('video'));
+    } else
+        return view('index', compact('video'));
 });
 
 Route::view('admission', 'index-pages.admission');
