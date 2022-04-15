@@ -38,8 +38,7 @@
          </ul>
       </div>
       <div class="my-5 text-center">
-         <img @if($advertisement->banner) src="{{asset('/images/advertisement/'. $advertisement->banner)}}" @else src="" @endif
-         id='preview_img' alt="Banner" width="100" height="100">
+         <img @if($advertisement) src="{{asset('/images/advertisement/'. $advertisement->banner)}}" @else src="" @endif id='preview_img' alt="Banner" width="100" height="100">
       </div>
       <form action="{{route('advertisements.store')}}" method="post" enctype="multipart/form-data">
          @csrf
