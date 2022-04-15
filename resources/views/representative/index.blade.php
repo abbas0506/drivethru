@@ -11,8 +11,8 @@
       </ol>
 
       <div class="frow stretched mt-5">
-         <div class="w-80">
-            <h5 class="text-danger bg-light-grey p-2">Routine Activities</h5>
+         <div class="w-48">
+            <h5 class="text-danger bg-light-grey p-2">Site Administration</h5>
             <ul type='i' style="list-style: none;">
                <li>
                   <a href="{{route('news.index')}}"><span class="lnr lnr-bullhorn mr-3"></span>News Feed</a>
@@ -24,19 +24,29 @@
                   <a href="{{route('closing.index')}}"><span class="lnr lnr-calendar-full mr-3"></span>Closing Date</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-flag mr-3"></span>Site Banner</a>
+                  <a href="{{route('advertisements.index')}}"><span class="lnr lnr-flag mr-3"></span>Site Banner</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-film-play mr-3"></span>Site Video</a>
+                  <a href="{{route('sitevideo.index')}}"><span class="lnr lnr-film-play mr-3"></span>Site Video</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-users mr-3"></span>Registered Candidates</a>
+                  <a href="http://"><span class="lnr lnr-users mr-3"></span>Registerations</a>
                </li>
 
             </ul>
 
          </div>
-
+         <div class="w-48">
+            <h5 class="txt-grey bg-light-grey p-2">Responsive Actions</h5>
+            <ul type='i' style="list-style: none;">
+               <li>
+                  <a href="{{route('news.index')}}"><span class="lnr lnr-checkmark-circle mr-3"></span>Fee Verification</a>
+               </li>
+               <li>
+                  <a href="http://"><span class="lnr lnr-bubble mr-3"></span>Counselling Requests</a>
+               </li>
+            </ul>
+         </div>
       </div>
    </div>
 </section>

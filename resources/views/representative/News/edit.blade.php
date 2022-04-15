@@ -23,19 +23,21 @@
    </script>
    @endif
 
-   <div class='w-60 mx-auto txt-l my-5 '>News Feed - <span class="txt-s">edit</span> </div>
+   <div class='w-60 mx-auto txt-l my-5 '><span class="lnr lnr-bullhorn mr-3"></span> News Feed - <span class="txt-s">edit</span> </div>
 
-   <div class="w-60 mx-auto p-4 bg-white border relative">
-      <a href="{{route('news.index')}}">
-         <div class="top-right-icon circular-20">
-            <i data-feather='x' class="feather-xsmall mb-1"></i>
-         </div>
-      </a>
-      <ul class="txt-s">
-         <li>Try to be concise</li>
-         <li>Dont leave empty news. Empty news is not allowed</li>
-      </ul>
-
+   <div class="w-60 mx-auto">
+      <div class="bg-custom-light p-2 mb-3 relative">
+         <a href="{{route('news.index')}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='x' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-b">Instructions:</div>
+         <ul class="txt-s">
+            <li>Try to be concise</li>
+            <li>Dont leave empty news. Empty news is not allowed</li>
+         </ul>
+      </div>
       <form action="{{route('news.update',$news)}}" method='post'>
          @csrf
          @method('PATCH')

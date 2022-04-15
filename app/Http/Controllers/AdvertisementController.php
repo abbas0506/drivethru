@@ -16,7 +16,8 @@ class AdvertisementController extends Controller
     public function index()
     {
         //
-        return view('representative.advertisement.banner');
+        $advertisement = Advertisement::first();
+        return view('representative.advertisement.banner', compact('advertisement'));
     }
 
     /**

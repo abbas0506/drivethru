@@ -55,6 +55,7 @@ use App\Http\Controllers\BankpaymentController;
 use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,7 @@ Route::group(['middleware' => 'representative'], function () {
     Route::view('r/changepw', 'representative.changepw');
     Route::resource('news', NewsController::class);
     Route::resource('advertisements', AdvertisementController::class);
+    Route::resource('sitevideo', VideoController::class);
     Route::resource('closing', ClosingController::class);
     Route::get('closing/courselist/{id}', [ClosingController::class, 'courselist']);
     Route::resource('papers', PaperController::class);

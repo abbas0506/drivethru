@@ -25,11 +25,18 @@
 
    <div class='w-60 mx-auto txt-l my-5 '> <span class="lnr lnr-calendar-full mr-3"></span> Closing Date - <span class="txt-s">{{$unicourse->university->name}} - {{$unicourse->course->name}} - edit</span></div>
    <div class="w-60 mx-auto">
-      <div class="txt-b">Instructions:</div>
-      <ul>
-         <li>Be wise while setting closing date of the course</li>
-         <li>System applies no cross checking on the said date</li>
-      </ul>
+      <div class="bg-custom-light p-2 mb-3 relative">
+         <a href="{{route('closing.index')}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='x' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-b">Instructions:</div>
+         <ul>
+            <li>Be wise while setting closing date of the course</li>
+            <li>System applies no cross checking on the said date</li>
+         </ul>
+      </div>
       <div class="frow w-30 fancy-search-grow bg-light relative">
          <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:absolute; top:7px;left:12px"></i>
       </div>

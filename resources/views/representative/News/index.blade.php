@@ -22,19 +22,20 @@
    </script>
    @endif
 
-   <div class='w-60 mx-auto txt-l my-5 '>News Feed </span> </div>
-
-   <div class="w-60 mx-auto p-4 bg-white border relative">
-      <a href="{{route('representative.index')}}">
-         <div class="top-right-icon circular-20">
-            <i data-feather='x' class="feather-xsmall mb-1"></i>
-         </div>
-      </a>
-      <ul class="txt-s">
-         <li>Try to be concise</li>
-         <li>The most recent top 2 news will be considered for display on student panel</li>
-      </ul>
-
+   <div class='w-60 mx-auto txt-l my-5 '><span class="lnr lnr-bullhorn mr-3"></span> News Feed </span> </div>
+   <div class="w-60 mx-auto">
+      <div class="bg-custom-light p-2 mb-3 relative">
+         <a href="{{route('representative.index')}}">
+            <div class="top-right-icon circular-20">
+               <i data-feather='x' class="feather-xsmall mb-1"></i>
+            </div>
+         </a>
+         <div class="txt-b">Instructions:</div>
+         <ul class="txt-s">
+            <li>Try to be concise</li>
+            <li>The most recent top 2 news will be considered for display on student panel</li>
+         </ul>
+      </div>
       <form action="{{route('news.store')}}" method='post'>
          @csrf
          <div class="fancyinput">
@@ -47,13 +48,13 @@
       </form>
 
       <!-- news panel -->
-      <div class="bg-custom-light p-4 mt-3">
+      <div class="mt-3">
          <div class="fancy-search-grow w-30 relative">
             <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:absolute; left:12; top:8px;"></i>
          </div>
 
          <div class="frow px-2 py-1 my-3 border-bottom txt-b">
-            <div class="fcol mid-left w-80">News Text </div>
+            <div class="fcol mid-left w-80">Current News / Announcements</div>
             <div class="fcol mid-right pr-3 w-20"><i data-feather='settings' class="feather-xsmall"></i></div>
          </div>
 
