@@ -30,7 +30,7 @@
                   <a href="{{route('sitevideo.index')}}"><span class="lnr lnr-film-play mr-3"></span>Site Video</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-users mr-3"></span>Registerations</a>
+                  <a href="{{route('registrations.index')}}"><span class="lnr lnr-users mr-3"></span>User Control</a>
                </li>
 
             </ul>
