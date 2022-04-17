@@ -51,11 +51,13 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
 use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\BankpaymentController;
 use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\VerifyBankPaymentController;
 use App\Http\Controllers\VideoController;
 use App\Models\Video;
 
@@ -146,6 +148,7 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('counselling/requests', CounsellingRequestController::class);
     Route::resource('admission/requests', AdmissionRequestController::class);
     Route::resource('registrations', RegistrationController::class);
+    Route::resource('verifybankpayments', VerifyBankPaymentController::class);
 });
 
 

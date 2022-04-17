@@ -30,6 +30,9 @@
                   <a href="{{route('sitevideo.index')}}"><span class="lnr lnr-film-play mr-3"></span>Site Video</a>
                </li>
                <li>
+                  <a href="{{route('registrations.index')}}"><span class="lnr lnr-envelope mr-3"></span>Subscription</a>
+               </li>
+               <li>
                   <a href="{{route('registrations.index')}}"><span class="lnr lnr-users mr-3"></span>User Control</a>
                </li>
 
@@ -40,11 +43,15 @@
             <h5 class="txt-grey bg-light-grey p-2">Responsive Actions</h5>
             <ul type='i' style="list-style: none;">
                <li>
-                  <a href="{{route('news.index')}}"><span class="lnr lnr-checkmark-circle mr-3"></span>Fee Verification</a>
+                  <a href="{{route('news.index')}}"><span class="lnr lnr-question-circle mr-3"></span>General Queries</a>
                </li>
                <li>
                   <a href="http://"><span class="lnr lnr-bubble mr-3"></span>Counselling Requests</a>
                </li>
+               <li>
+                  <a href="{{route('verifybankpayments.index')}}"><span class="lnr lnr-checkmark-circle mr-3"></span>Fee Verification</a>
+               </li>
+
             </ul>
          </div>
       </div>

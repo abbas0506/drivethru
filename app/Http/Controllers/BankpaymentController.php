@@ -91,6 +91,7 @@ class BankpaymentController extends Controller
     public function show(Bankpayment $bankpayment)
     {
         //
+
     }
 
     /**
