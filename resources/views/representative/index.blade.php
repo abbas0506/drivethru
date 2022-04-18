@@ -30,7 +30,7 @@
                   <a href="{{route('sitevideo.index')}}"><span class="lnr lnr-film-play mr-3"></span>Site Video</a>
                </li>
                <li>
-                  <a href="{{route('registrations.index')}}"><span class="lnr lnr-envelope mr-3"></span>Subscription</a>
+                  <a href="{{route('papers.index')}}"><span class="lnr lnr-file-add mr-3"></span>Past Papers</a>
                </li>
                <li>
                   <a href="{{route('registrations.index')}}"><span class="lnr lnr-users mr-3"></span>User Control</a>
@@ -51,7 +51,9 @@
                <li>
                   <a href="{{route('verifybankpayments.index')}}"><span class="lnr lnr-checkmark-circle mr-3"></span>Fee Verification</a>
                </li>
-
+               <li>
+                  <a href="{{route('registrations.index')}}"><span class="lnr lnr-envelope mr-3"></span>Newsletter Subscription</a>
+               </li>
             </ul>
          </div>
       </div>
