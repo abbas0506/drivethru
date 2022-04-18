@@ -25,12 +25,12 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -72,7 +72,7 @@ Swal.fire({
       <div class="frow mb-1">
          <div class="w-10 txt-center"><i data-feather='message-circle' class="feather-small rotate-270 txt-blue"></i></div>
          <div class="fancyinput w-90">
-            <textarea name="querydetail" id="" rows="3" placeholder="I would like to express my query in words (upto 300 characters)"></textarea>
+            <textarea name="query" id="" rows="3" placeholder="I would like to express my query in words (upto 300 characters)"></textarea>
          </div>
       </div>
       <div class="my-2 txt-right">

@@ -25,12 +25,12 @@
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -103,7 +103,7 @@ Swal.fire({
                         <li id='option3'>Website usage issue</li>
                         <li id='option4'>Fee payment issue</li>
                         <li id='option5'>General information required</li>
-                        <li id='querydetail'></li>
+                        <li id='query'></li>
                      </ul>
                   </div>
                </div>
@@ -122,45 +122,45 @@ Swal.fire({
 @endsection
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
-
-function showModal(user, created_at, option1, option2, option3, option4, option5, querydetail) {
-
-   $('#user').html(user);
-   $('#created_at').html(created_at);
-
-   if (option1 == '0') $('#option1').hide();
-   else $('#option1').show();
-   if (option2 == '0') $('#option2').hide();
-   else $('#option2').show();
-   if (option3 == '0') $('#option3').hide();
-   else $('#option3').show();
-   if (option4 == '0') $('#option4').hide();
-   else $('#option4').show();
-   if (option5 == '0') $('#option5').hide();
-   else $('#option5').show();
-   if (querydetail == '')
-      $('#querydetail').hide();
-   else {
-      $('#querydetail').html(querydetail);
-      $('#querydetail').show();
-
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
    }
 
+   function showModal(user, created_at, option1, option2, option3, option4, option5, query) {
 
-   $('#viewapplicationDetailModal').modal('show');
-}
+      $('#user').html(user);
+      $('#created_at').html(created_at);
+
+      if (option1 == '0') $('#option1').hide();
+      else $('#option1').show();
+      if (option2 == '0') $('#option2').hide();
+      else $('#option2').show();
+      if (option3 == '0') $('#option3').hide();
+      else $('#option3').show();
+      if (option4 == '0') $('#option4').hide();
+      else $('#option4').show();
+      if (option5 == '0') $('#option5').hide();
+      else $('#option5').show();
+      if (query == '')
+         $('#query').hide();
+      else {
+         $('#query').html(query);
+         $('#query').show();
+
+      }
+
+
+      $('#viewapplicationDetailModal').modal('show');
+   }
 </script>
 @endsection

@@ -21,8 +21,8 @@ class CreateCounsellingsTable extends Migration
             $table->boolean('option3')->default(0);
             $table->boolean('option4')->default(0);
             $table->boolean('option5')->default(0);
-            $table->string('querydetail', 300)->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('query', 300)->nullable();
+            $table->string('response', 300)->nullable();
             $table->boolean('mode')->default(0);
             $table->timestamps();
 

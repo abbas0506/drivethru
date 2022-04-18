@@ -15,8 +15,8 @@ class Counselling extends Model
         'option3',
         'option4',
         'option5',
-        'querydetail',
-        'status',
+        'query',
+        'response', //representative response
         'mode', //national or international
     ];
     // public $timestamps = false;

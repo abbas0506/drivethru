@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Counselling;
-use Exception;
 use Illuminate\Http\Request;
+use Exception;
 
-class CounsellingRequestController extends Controller
+class CounsellingResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class CounsellingRequestController extends Controller
     public function index()
     {
         //
-        $counselling_requests = Counselling::where('status', 0)->orderBy('id', 'desc')->get();
-        return view('representative.counselling_requests.index', compact('counselling_requests'));
+        $crequests = Counselling::all();
+        // $crequests = Counselling::where('status', 0)->get();
+        return view('representative.response.counsellings.index', compact('crequests'));
     }
 
     /**
@@ -50,6 +51,8 @@ class CounsellingRequestController extends Controller
     public function show($id)
     {
         //
+        $counselling = Counselling::find($id);
+        return view('representative.response.counsellings.show', compact('counselling'));
     }
 
     /**
@@ -61,8 +64,6 @@ class CounsellingRequestController extends Controller
     public function edit($id)
     {
         //
-
-
     }
 
     /**
@@ -75,6 +76,20 @@ class CounsellingRequestController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'response' => 'required',
+        ]);
+
+        try {
+
+            $counselling = Counselling::find($id);
+            $counselling->response = $request->response;
+            $counselling->update();
+            return redirect()->route('counsellingresponses.index')->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**

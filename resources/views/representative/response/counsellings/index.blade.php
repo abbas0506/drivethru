@@ -22,7 +22,7 @@
    </script>
    @endif
 
-   <div class='w-60 mx-auto txt-l my-5 '><span class="lnr lnr-checkmark-circle mr-3"></span> Fee Verification </span> </div>
+   <div class='w-60 mx-auto txt-l my-5 '><span class="lnr lnr-bubble mr-3"></span> Response <span class="txt-s">- counsellig requests</span></div>
    <div class="w-60 mx-auto">
       <div class="bg-custom-light p-2 mb-3 relative">
          <a href="{{route('representative.index')}}">
@@ -32,8 +32,8 @@
          </a>
          <div class="txt-b">Instructions:</div>
          <ul class="txt-s">
-            <li>Click on "verify" or "verified" to see detail</li>
-            <li>Next page will show enlarged scan copy of paid voucher, where you can verify or cancel the payment </li>
+            <li>Click on reply to answer the request</li>
+            <li>Use keywords "reply" or "replied" or specific user name for quick search</li>
          </ul>
       </div>
       <!-- news panel -->
@@ -42,38 +42,33 @@
             <input type="text" placeholder="Search" oninput="search(event)"><i data-feather='search' class="feather-small" style="position:absolute; left:12; top:8px;"></i>
          </div>
 
-         <div class="frow my-3 stretched border-bottom txt-b">
+         <div class="frow py-2 mt-3 stretched border-bottom txt-b">
             <div class="w-10">ID</div>
-            <div class="w-20">Bank</div>
-            <div class="w-20">Branch</div>
-            <div class="w-10">Fee (Rs)</div>
-            <div class="w-15">Date On</div>
-            <div class="w-15 text-center">Proof</div>
-            <div class="w-10 text-center">Status</div>
+            <div class="w-20">Created At</div>
+            <div class="w-20">Student</div>
+            <div class="w-40">Request Desc.</div>
+            <div class="w-10 text-right">Status</div>
          </div>
 
-         @foreach($bankpayments as $bankpayment)
-         <div class="frow my-2 stretched tr">
-            <div class="w-10">{{$bankpayment->application_id}}</div>
-            <div class="w-20">{{$bankpayment->bank}}</div>
-            <div class="w-20">{{$bankpayment->branch}}</div>
-            <div class="w-10">{{$bankpayment->charges*150}}</div>
-            <div class="w-15">{{$bankpayment->dateon}}</div>
-            <div class="w-15 text-center"><img src="{{asset('images/vouchers/'.$bankpayment->scancopy)}}" alt="" width='25' height="25"></div>
-            <div class="w-10 text-center text-primary">
-               <a href="{{route('verifybankpayments.show', $bankpayment)}}">
-                  @if($bankpayment->isverified=='')
-                  <div class="bg-primary text-light rounded">Verify</div>
-                  @else
-                  Verified
-                  @endif
-               </a>
+         @php $sr=1; @endphp
+         @foreach($crequests->sortByDesc('id') as $counselling)
+
+         <div class="frow py-2 txt-s border-bottom tr">
+            <div class="w-10">{{$sr++}}</div>
+            <div class="w-20">{{$counselling->created_at}} </div>
+            <div class="w-20">{{$counselling->user->name}}</div>
+            <div class="w-40">@if($counselling->query) {{$counselling->query}} @else <a href="{{route('counsellingresponses.show',$counselling)}}" class="text-primary">Click here to see request detail</a> @endif</div>
+            <div class="w-10 text-right">
+               @if($counselling->response=='')
+               <a href="{{route('counsellingresponses.show',$counselling)}}" class="bade badge-primary px-1 rounded">Reply</a>
+               @else
+               Replied
+               @endif
             </div>
          </div>
          @endforeach
       </div>
-
-
+   </div>
 </section>
 @endsection
 
@@ -84,7 +79,8 @@ function search(event) {
    var str = 0;
    $('.tr').each(function() {
       if (!(
-            $(this).children().eq(0).prop('outerText').toLowerCase().includes(searchtext)
+            $(this).children().eq(2).prop('outerText').toLowerCase().includes(searchtext) ||
+            $(this).children().eq(4).prop('outerText').toLowerCase().includes(searchtext)
          )) {
          $(this).addClass('hide');
       } else {

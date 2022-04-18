@@ -53,8 +53,10 @@ use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\BankpaymentController;
+use App\Http\Controllers\CounsellingResponseController;
 use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\QueryResponseController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VerifyBankPaymentController;
@@ -149,6 +151,8 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('admission/requests', AdmissionRequestController::class);
     Route::resource('registrations', RegistrationController::class);
     Route::resource('verifybankpayments', VerifyBankPaymentController::class);
+    Route::resource('queryresponses', QueryResponseController::class);
+    Route::resource('counsellingresponses', CounsellingResponseController::class);
 });
 
 
@@ -205,7 +209,7 @@ Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscr
 Route::view('subscription.success', 'index-pages.success_subscription');
 Route::view('signup.success', 'index-pages.success_signup');
 Route::view('guestquery.success', 'index-pages.success_guestquery');
-
 Route::post('guestqueries', [GuestQueryController::class, 'store'])->name('guestqueries.store');
+
 Route::get('facebook.redirect', [FbController::class, 'redirect']);
 Route::get('facebook.callback', [FbController::class, 'callback']);

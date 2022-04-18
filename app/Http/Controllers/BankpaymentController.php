@@ -74,7 +74,7 @@ class BankpaymentController extends Controller
             $application->update();
 
             DB::commit();
-            return redirect()->back()->with('success', 'Successfully created');
+            return redirect('student-dashboard')->with('success', 'Successfully created');
         } catch (Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();

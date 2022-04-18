@@ -21,6 +21,7 @@
                      <!-- <span class="caret"></span> -->
                   </label>
                </li>
+
                <!-- submenu -->
                <li class="submenu">
                   <ul>
@@ -46,8 +47,9 @@
 
             </ul>
          </li>
-         <li><a href=""><i data-feather='bell' class="feather-small" onclick=""></i></a></li>
-         <li><a href="/">Main</a></li>
+         <li><a href="/"><span class="lnr lnr-home"></span></a></li>
+         <li><a href=""><span class="lnr lnr-alarm"></span></a></li>
+         <li><a href="{{url('signout')}}"><span class="lnr lnr-power-switch"></span></a></li>
       </ul>
 
    </div>

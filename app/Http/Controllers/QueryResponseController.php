@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Counselling;
-use Exception;
+use App\Models\GuestQuery;
 use Illuminate\Http\Request;
 
-class CounsellingRequestController extends Controller
+class QueryResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class CounsellingRequestController extends Controller
     public function index()
     {
         //
-        $counselling_requests = Counselling::where('status', 0)->orderBy('id', 'desc')->get();
-        return view('representative.counselling_requests.index', compact('counselling_requests'));
+        $guestqueries = GuestQuery::all();
+        return view('representative.guestqueries.index', compact('guestqueries'));
     }
 
     /**
@@ -50,6 +49,8 @@ class CounsellingRequestController extends Controller
     public function show($id)
     {
         //
+        $guestquery = GuestQuery::find($id);
+        return view('representative.guestqueries.show', compact('guestquery'));
     }
 
     /**
@@ -61,8 +62,6 @@ class CounsellingRequestController extends Controller
     public function edit($id)
     {
         //
-
-
     }
 
     /**

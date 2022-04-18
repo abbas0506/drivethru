@@ -38,7 +38,9 @@ Swal.fire({
 <!-- create new acadmeic -->
 <div class="bg-white p-4">
    <div class="frow stretched">
-      <div class="txt-red txt-m">My Counselling Requests</div>
+      <div class="frow lh-30 txt-blue txt-m">
+         My Requestes <div class="ml-3">@if(session('mode')==0) <img src="{{asset('/images/icons/pakistan-flag.png')}}" width="22"> @else <img src="{{asset('/images/icons/globe.png')}}" width="20"> @endif</div>
+      </div>
 
       <div class="frow">
          <a href="{{route('counselling.create')}}">
@@ -49,20 +51,24 @@ Swal.fire({
    </div>
    <!-- table header -->
    <div class="frow lh-30 txt-s txt-grey border-bottom border-silver mt-3">
-      <div class="w-15">ID</div>
-      <div class="w-60 ">Created At</div>
-      <div class="flex-grow txt-r">Status</div>
+      <div class="w-10">ID</div>
+      <div class="w-30 ">Created At</div>
+      <div class="w-50 ">Query</div>
+      <div class="flex-grow txt-c">Status</div>
    </div>
 
-   <div class="lh-30">
-      @foreach($user->counsellings()->where('mode','=', session('mode')) as $counselling)
-      <div class="frow align-center tr txt-s border-bottom border-silver">
-         <div class="w-15 txt-red"><a href="{{route('counselling.show',$counselling)}}">{{$counselling->id}}</a></div>
-         <div class="w-60">{{$counselling->created_at}}</div>
-         <div class="flex-grow txt-r">
-            @if($counselling->status==0) <i data-feather='clock' class="feather-small mt-1"></i>
-            @else <i data-feather='check' class="feather-small mt-1"></i>
-            @endif </div>
+   <div class="">
+      @foreach($user->counsellings()->where('mode','=', session('mode'))->sortByDesc('id') as $counselling)
+      <div class="frow align-center tr txt-s border-bottom border-silver py-2">
+         <div class="w-10">{{$counselling->id}}</div>
+         <div class="w-30">{{$counselling->created_at}}</div>
+         <div class="w-50">{{Str::limit($counselling->query,50)}}</div>
+         <div class="flex-grow txt-c">
+            @if($counselling->response=='') <i data-feather='clock' class="feather-small mt-1"></i>
+            @else
+            <a href="{{route('counselling.show',$counselling)}}" class="txt-red">Replied</a>
+            @endif
+         </div>
       </div>
       @endforeach
    </div>

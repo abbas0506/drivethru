@@ -32,7 +32,7 @@ Welcome, {{$user->name}}
          <div class="w-10 txt-red"><a href="{{route('applications.show',$application)}}">{{$application->id}}</a></div>
          <div class="w-50">{{$application->created_at}}</div>
          <div class="w-20 txt-r">{{$application->charges}} $ </div>
-         <div class="flex-grow txt-r">@if($application->ispaid) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-success txt-s"> pay</a> @endif</div>
+         <div class="flex-grow txt-r">@if($application->isverified) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-success txt-s"> pay</a> @endif</div>
       </div>
       @endforeach
    </div>

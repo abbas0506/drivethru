@@ -52,10 +52,10 @@ Swal.fire({
 
    <div class="frow py-2 my-1 border-bottom tr">
       <div class="fcol mid-left w-10">{{$sr++}} </div>
-      <div class="frow mid-left w-60 text-primary hoverable" onclick="showModal('{{$counselling->user->name}}', '{{$counselling->created_at}}', '{{$counselling->option1}}','{{$counselling->option2}}','{{$counselling->option3}}','{{$counselling->option4}}','{{$counselling->option5}}','{{$counselling->querydetail}}')">
+      <div class="frow mid-left w-60 text-primary hoverable" onclick="showModal('{{$counselling->user->name}}', '{{$counselling->created_at}}', '{{$counselling->option1}}','{{$counselling->option2}}','{{$counselling->option3}}','{{$counselling->option4}}','{{$counselling->option5}}','{{$counselling->query}}')">
          {{$counselling->created_at}}
       </div>
-      @if($counselling->status==0)
+      @if($counselling->response)
       <div class="fcol mid-left w-20"> Pending </div>
       <div class="fcol centered w-10">
          <a href="{{url('counselling/requests/'.$counselling->id.'/edit')}}">
@@ -103,7 +103,7 @@ Swal.fire({
                         <li id='option3'>Website usage issue</li>
                         <li id='option4'>Fee payment issue</li>
                         <li id='option5'>General information required</li>
-                        <li id='querydetail'></li>
+                        <li id='query'></li>
                      </ul>
                   </div>
                </div>
@@ -136,7 +136,7 @@ function search(event) {
    });
 }
 
-function showModal(user, created_at, option1, option2, option3, option4, option5, querydetail) {
+function showModal(user, created_at, option1, option2, option3, option4, option5, query) {
 
    $('#user').html(user);
    $('#created_at').html(created_at);
@@ -151,11 +151,11 @@ function showModal(user, created_at, option1, option2, option3, option4, option5
    else $('#option4').show();
    if (option5 == '0') $('#option5').hide();
    else $('#option5').show();
-   if (querydetail == '')
-      $('#querydetail').hide();
+   if (query == '')
+      $('#query').hide();
    else {
-      $('#querydetail').html(querydetail);
-      $('#querydetail').show();
+      $('#query').html(query);
+      $('#query').show();
 
    }
 

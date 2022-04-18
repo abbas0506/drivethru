@@ -43,10 +43,10 @@
             <h5 class="txt-grey bg-light-grey p-2">Responsive Actions</h5>
             <ul type='i' style="list-style: none;">
                <li>
-                  <a href="{{route('news.index')}}"><span class="lnr lnr-question-circle mr-3"></span>General Queries</a>
+                  <a href="{{route('queryresponses.index')}}"><span class="lnr lnr-question-circle mr-3"></span>General Queries</a>
                </li>
                <li>
-                  <a href="http://"><span class="lnr lnr-bubble mr-3"></span>Counselling Requests</a>
+                  <a href="{{route('counsellingresponses.index')}}"><span class="lnr lnr-bubble mr-3"></span>Counselling Requests</a>
                </li>
                <li>
                   <a href="{{route('verifybankpayments.index')}}"><span class="lnr lnr-checkmark-circle mr-3"></span>Fee Verification</a>

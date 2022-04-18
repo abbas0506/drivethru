@@ -761,11 +761,13 @@ section {
 }
 
 .nav-links>ul>li:last-child {
-    background-color: #db6743;
+    color: #db6743;
+    /* background-color: #db6743; */
 }
 
 .nav-links>ul>li:last-child:hover {
-    color: #eee;
+    color: red;
+    /* color: #eee; */
 }
 
 .has-submenu {

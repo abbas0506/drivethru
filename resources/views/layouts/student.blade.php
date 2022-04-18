@@ -8,6 +8,7 @@
 
    <title>Drivethru</title>
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
+   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
    <link href="{{asset('/css/student.css')}}" rel="stylesheet">
    <link href="{{asset('/css/fancyinput.css')}}" rel="stylesheet">
