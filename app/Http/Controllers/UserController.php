@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        
+
 
     }
 
@@ -190,6 +190,7 @@ class UserController extends Controller
                 ->withErrors('Either phone or password incorrect');
         }
     }
+
     public function signout()
     {
         //destroy session
