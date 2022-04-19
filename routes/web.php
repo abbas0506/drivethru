@@ -55,6 +55,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\BankpaymentController;
 use App\Http\Controllers\CounsellingResponseController;
 use App\Http\Controllers\GuestQueryController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QueryResponseController;
 use App\Http\Controllers\RegistrationController;
@@ -95,6 +96,14 @@ Route::view('about', 'index-pages.about');
 Route::view('blog', 'index-pages.blog');
 Route::view('contact', 'index-pages.contact');
 
+Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscribers.store');
+Route::view('subscription.success', 'index-pages.success_subscription');
+Route::view('signup.success', 'index-pages.success_signup');
+Route::view('guestquery.success', 'index-pages.success_guestquery');
+Route::post('guestqueries', [GuestQueryController::class, 'store'])->name('guestqueries.store');
+Route::get('facebook.redirect', [FbController::class, 'redirect']);
+Route::get('facebook.callback', [FbController::class, 'callback']);
+
 Auth::routes();
 
 Route::view('main', '');
@@ -105,12 +114,13 @@ Route::view('signup', 'index-pages.signup');
 Route::post('signin', [UserController::class, 'signin'])->name('signin');
 Route::get('signout', [UserController::class, 'signout']);
 
-//Route::resource('unicourses', UnicourseController::class);
 //**student and admin middleware have been registered in app/http/kernel.php
 
 //admin middleware
 Route::group(['middleware' => 'admin'], function () {
     Route::view('admin', 'admin.index');
+    Route::view('admin/changepw', 'admin.changepw');
+
     Route::view('primary', 'admin.primary.index');
     Route::resource('faculties', FacultyController::class);
     Route::resource('levels', LevelController::class);
@@ -168,7 +178,6 @@ Route::group(['middleware' => 'student'], function () {
     Route::resource('applications', ApplicationController::class);
     Route::get('applications_success', [ApplicationController::class, 'success'])->name('applications_success');
     Route::get("application_download/{id}", [ApplicationController::class, 'download'])->name("application_download");
-
     Route::resource('profiles', ProfileController::class);
     Route::view('change-pw', 'student.profile.personal.changepw');
     Route::view('change-pic', 'student.profile.personal.changepic');
@@ -203,13 +212,3 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
     Route::get('feevoucher/{id}', [ApplicationController::class, 'voucher'])->name('feevoucher');
 });
-// for guest user
-Route::post('subscribers', [SubscriberController::class, 'store'])->name('subscribers.store');
-
-Route::view('subscription.success', 'index-pages.success_subscription');
-Route::view('signup.success', 'index-pages.success_signup');
-Route::view('guestquery.success', 'index-pages.success_guestquery');
-Route::post('guestqueries', [GuestQueryController::class, 'store'])->name('guestqueries.store');
-
-Route::get('facebook.redirect', [FbController::class, 'redirect']);
-Route::get('facebook.callback', [FbController::class, 'callback']);
