@@ -27,13 +27,13 @@ Swal.fire({
 @endif
 <!-- change password -->
 <section class="page-content">
-   <div class='w-60 mx-auto txt-l my-5 '>Admin <span class="txt-s ml-2"> - {{$user->name}} - change password </span> </div>
-   <div class="frow w-60 mx-auto border bg-custom-light p-4">
-      <div class="fcol w-20 centered">
-         <div class="txt-custom-blue"><i data-feather='key' class="feather-large txt-orange"></i></div>
+   <div class='w-60 mx-auto txt-l my-5 '>Admin <span class="txt-s ml-2"> - change password </span> </div>
+   <div class="frow w-40 p-4 mx-auto border rounded shadow">
+      <div class="fcol w-30 centered">
+         <i data-feather='key' class="feather-large txt-orange"></i>
 
       </div>
-      <div class="w-80 mx-auto rounded px-2 relative">
+      <div class="w-70 mx-auto rounded px-2 relative">
          <form action="{{route('users.update', $user)}}" method="post" id='form' onsubmit="return validate()">
             @csrf
             @method('PATCH')

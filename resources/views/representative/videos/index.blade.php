@@ -23,7 +23,7 @@
    </script>
    @endif
 
-   <div class='w-60 mx-auto txt-l my-5 '> <span class="lnr lnr-flag mr-3"></span> Site Banner</div>
+   <div class='w-60 mx-auto txt-l my-5 '> <span class="lnr lnr-film-play mr-3"></span> Site Video</div>
    <div class="w-60 mx-auto">
       <div class="bg-custom-light p-2 mb-3 relative">
          <a href="{{route('representative.index')}}">
