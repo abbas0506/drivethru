@@ -17,22 +17,21 @@
    <script src="{{asset('/js/autoformat.js')}}"></script>
    <script src="{{asset('/js/feather.min.js')}}"></script>
    <script src="{{asset('/js/scrolltop.js')}}"></script>
-   <script src="{{asset('/js/carousel.js')}}"></script>
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <style>
-   body {
-      background-color: #f8fafc !important;
-   }
+      body {
+         background-color: #f8fafc !important;
+      }
 
-   #scrollup_btn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      z-index: 99;
+      #scrollup_btn {
+         display: none;
+         position: fixed;
+         bottom: 20px;
+         right: 30px;
+         z-index: 99;
 
-   }
+      }
    </style>
 
 </head>
@@ -48,7 +47,7 @@
 
    <!-- for feather icons display -->
    <script>
-   feather.replace()
+      feather.replace()
    </script>
 
    <div id="scrollup_btn" class="box-30 bg-orange">up</div>
