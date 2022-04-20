@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use App\Models\University;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
@@ -12,7 +13,9 @@ class FindUniversitiesByNameController extends Controller
     {
         //
         $universities = University::all();
-        return view('student.finduniversities.byname.index', compact('universities'));
+        $advertisement = Advertisement::first();
+        // echo $advertisement->banner;
+        return view('student.finduniversities.byname.index', compact('universities', 'advertisement'));
     }
 
     /**

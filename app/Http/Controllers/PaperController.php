@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use App\Models\Paper;
 use App\Models\PaperType;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class PaperController extends Controller
     {
         ////
         $data = Paper::all()->sortByDesc('id');
-        return view('representative.papers.index', compact('data'));
+        $advertisement = Advertisement::first();
+        return view('representative.papers.index', compact('data', 'advertisement'));
     }
 
     /**
@@ -130,6 +132,7 @@ class PaperController extends Controller
     public function download()
     {
         $papers = Paper::all();
-        return view('student.papers.download', compact('papers'));
+        $advertisement = Advertisement::first();
+        return view('student.papers.download', compact('papers', 'advertisement'));
     }
 }

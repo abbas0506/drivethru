@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use App\Models\Country;
 use App\Models\Course;
 use App\Models\Favcourse;
@@ -23,7 +24,8 @@ class FindCountriesByCourseController extends Controller
         //
         $favcourse_ids = Favcourse::distinct()->get('course_id');
         $courses = Course::whereIn('id', $favcourse_ids)->get();
-        return view('student.findcountries.bycourse.index', compact('courses'));
+        $advertisement = Advertisement::first();
+        return view('student.findcountries.bycourse.index', compact('courses', 'advertisement'));
     }
 
     /**

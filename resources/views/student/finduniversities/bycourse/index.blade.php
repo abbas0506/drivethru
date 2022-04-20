@@ -32,12 +32,12 @@ Find University - <span class="txt-12 px-2">search by course name</span>
    <br />
    @elseif(session('success'))
    <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+      Swal.fire({
+         icon: 'success',
+         title: "Successful",
+         showConfirmButton: false,
+         timer: 1500
+      });
    </script>
    @endif
 
@@ -154,38 +154,38 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 @endsection
 
 @section('promotion')
-<x-student.newspanel></x-student.newspanel>
+<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function loadCourses(event, priority) {
-   var token = $("meta[name='csrf-token']").attr("content");
-   var faculty_id = event.target.value;
-   $.ajax({
-      type: 'POST',
-      url: "fetchCoursesByFacultyId",
-      data: {
-         "faculty_id": faculty_id,
-         "_token": token,
+   function loadCourses(event, priority) {
+      var token = $("meta[name='csrf-token']").attr("content");
+      var faculty_id = event.target.value;
+      $.ajax({
+         type: 'POST',
+         url: "fetchCoursesByFacultyId",
+         data: {
+            "faculty_id": faculty_id,
+            "_token": token,
 
-      },
-      success: function(response) {
-         //
+         },
+         success: function(response) {
+            //
 
-         if (priority == 1) $('#course_id1').html(response.course_options);
-         if (priority == 2) $('#course_id2').html(response.course_options);
-         if (priority == 3) $('#course_id3').html(response.course_options);
+            if (priority == 1) $('#course_id1').html(response.course_options);
+            if (priority == 2) $('#course_id2').html(response.course_options);
+            if (priority == 3) $('#course_id3').html(response.course_options);
 
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-         Toast.fire({
-            icon: 'warning',
-            title: errorThrown
-         });
-      }
-   }); //ajax end
-}
+         },
+         error: function(XMLHttpRequest, textStatus, errorThrown) {
+            Toast.fire({
+               icon: 'warning',
+               title: errorThrown
+            });
+         }
+      }); //ajax end
+   }
 </script>
 @endsection

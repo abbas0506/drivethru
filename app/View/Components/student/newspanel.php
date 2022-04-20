@@ -11,9 +11,11 @@ class newspanel extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $advertisement;
+    public function __construct($advertisement)
     {
         //
+        $this->advertisement = $advertisement;
     }
 
     /**

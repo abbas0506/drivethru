@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -18,7 +19,8 @@ class FindCountriesByNameController extends Controller
     {
         //
         $countries = Country::all();
-        return view('student.findcountries.byname.index', compact('countries'));
+        $advertisement = Advertisement::first();
+        return view('student.findcountries.byname.index', compact('countries', 'advertisement'));
     }
 
     /**

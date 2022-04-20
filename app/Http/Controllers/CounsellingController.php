@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -17,7 +18,8 @@ class CounsellingController extends Controller
     public function index()
     {
         //
-        return view('student.counselling.index');
+        $advertisement = Advertisement::first();
+        return view('student.counselling.index', compact('advertisement'));
     }
 
     /**

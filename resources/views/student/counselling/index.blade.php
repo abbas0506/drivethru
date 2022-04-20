@@ -26,12 +26,12 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
@@ -76,24 +76,24 @@ Swal.fire({
 @endsection
 
 @section('promotion')
-<x-student.newspanel></x-student.newspanel>
+<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
 </script>
 @endsection

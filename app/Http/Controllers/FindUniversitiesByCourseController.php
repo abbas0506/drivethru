@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use App\Models\City;
 use App\Models\Course;
 use App\Models\Faculty;
@@ -23,7 +24,8 @@ class FindUniversitiesByCourseController extends Controller
         $cities = City::all()->sortBy('name');
         $faculty_ids = Course::distinct()->get('faculty_id');
         $faculties = Faculty::whereIn('id', $faculty_ids)->get();
-        return view('student.finduniversities.bycourse.index', compact('cities', 'faculties'));
+        $advertisement = Advertisement::first();
+        return view('student.finduniversities.bycourse.index', compact('cities', 'faculties', 'advertisement'));
     }
 
     /**

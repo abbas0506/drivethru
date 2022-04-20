@@ -40,24 +40,24 @@ Past Papers - <span class="txt-12 px-2">download</span>
 @endsection
 
 @section('promotion')
-<x-student.newspanel></x-student.newspanel>
+<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
+   }
 </script>
 @endsection

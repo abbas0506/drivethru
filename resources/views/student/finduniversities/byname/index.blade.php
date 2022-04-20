@@ -59,7 +59,7 @@ Find University - <span class="txt-12 px-2">search by name</span>
 @endsection
 
 @section('promotion')
-<x-student.newspanel></x-student.newspanel>
+<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
 @endsection
 
 <!-- script goes here -->
