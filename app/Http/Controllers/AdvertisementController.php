@@ -55,8 +55,8 @@ class AdvertisementController extends Controller
                     //unlink existing banner
                     $file_path = $destination_path . $advertisement->banner;
                     if (file_exists($file_path)) {
-                        File::delete($file_path);
-                        // unlink($file_path);
+                        // File::delete($file_path);
+                        unlink($file_path);
                     }
                     $advertisement->banner = $file_name;
                     $advertisement->save();
