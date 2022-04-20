@@ -49,7 +49,7 @@ class AdvertisementController extends Controller
             if ($request->hasFile('banner')) {
                 //save new pic after renaming
                 $file_name = "banner" . '.' . $request->banner->extension();
-                $destination_path = public_path('images/advertisemnet/');
+                $destination_path = public_path('images/advertisement/');
                 $advertisement = Advertisement::first();
                 if ($advertisement) {
                     //unlink existing banner

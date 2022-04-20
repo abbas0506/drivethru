@@ -17,7 +17,6 @@
    <script src="{{asset('/js/autoformat.js')}}"></script>
    <script src="{{asset('/js/feather.min.js')}}"></script>
    <script src="{{asset('/js/scrolltop.js')}}"></script>
-   <script src="{{asset('/js/carousel.js')}}"></script>
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
    <style>
