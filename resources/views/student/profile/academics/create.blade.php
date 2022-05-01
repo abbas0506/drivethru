@@ -100,32 +100,28 @@ Profile - <span class="txt-12 px-2">create academic detail</span>
 
 @endsection
 
-@section('profile')
-<x-profile__strength :user="$user"></x-profile__strength>
-@endsection
-
 <!-- script goes here -->
 @section('script')
 <script>
-   function reset() {
-      $('#form')[0].reset();
+function reset() {
+   $('#form')[0].reset();
+}
+
+function validate() {
+   var obtained = $('#obtained').val()
+   var total = $('#total').val()
+
+   var msg = '';
+   if (obtained < 0) msg = 'Obtained marks too low';
+   else if (obtained > total) msg = 'Obtained greater than total?';
+   if (msg != '') {
+      Toast.fire({
+         icon: 'warning',
+         title: msg
+      });
+      return false;
    }
 
-   function validate() {
-      var obtained = $('#obtained').val()
-      var total = $('#total').val()
-
-      var msg = '';
-      if (obtained < 0) msg = 'Obtained marks too low';
-      else if (obtained > total) msg = 'Obtained greater than total?';
-      if (msg != '') {
-         Toast.fire({
-            icon: 'warning',
-            title: msg
-         });
-         return false;
-      }
-
-   }
+}
 </script>
 @endsection

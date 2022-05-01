@@ -6,7 +6,10 @@
 
 
    <div class="frow justify-center">
-      <img src="{{url(asset('images/users/'.$user->pic))}}" alt="" class="rounded" width='50' height='50'>
+      <div class="profile-image relative">
+         <img src="{{url(asset('images/users/'.$user->pic))}}" alt="img">
+         <a href="{{url('change-pic')}}" class="mask"><i data-feather='edit' class="feather-small txt-blue"></i></a>
+      </div>
    </div>
 
 
@@ -28,35 +31,33 @@
       <div class='progress-bar' style='width:0%'></div>
       @endif
    </div>
-   <div class="frow space-between mt-2">
-
-      <div class="txt-s"><a href="{{url('change-pic')}}">Profile Picture</a></div>
-
+   <!-- <div class="frow space-between mt-2">
+      <a href="{{url('change-pic')}}" class="txt-s">Profile Picture</a>
       @if($user->hasPic())
-      <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
+      <a href="{{url('change-pic')}}"><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
       @else
-      <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
+      <a href="{{url('change-pic')}}"><i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
       @endif
-   </div>
-   <div class="frow space-between mt-2">
+   </div> -->
+   <div class="frow space-between mt-4">
 
       @if($user->hasProfile())
-      <div class="txt-s"><a href="{{route('profiles.edit',$user->profile())}}">Personal Information</a></div>
-      <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
+      <a href="{{route('profiles.edit',$user->profile())}}" class="txt-s">Personal Information</a>
+      <a href="{{route('profiles.edit',$user->profile())}}"><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
       @else
-      <div class="txt-s"><a href="{{route('profiles.create')}}">Personal Information</a></div>
-      <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
+      <a href="{{route('profiles.create')}}" class="txt-s">Personal Information</a>
+      <a href="{{route('profiles.create')}}"><i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
       @endif
 
    </div>
    <div class="frow space-between mt-2">
 
       @if($user->hasAcademics())
-      <div class="txt-s"><a href="{{route('academics.index')}}">Academic Information</a></div>
-      <div class="fcol circular-15 border-0 centered bg-green"><i data-feather='check' class="feather-xsmall txt-white"></i></div>
+      <a href="{{route('academics.index')}}" class="txt-s">Academic Information</a>
+      <a href="{{route('academics.index')}}"><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
       @else
-      <div class="txt-s"><a href="{{route('academics.create')}}">Academic Information</a></div>
-      <div class="fcol circular-15 border-0 centered bg-dark-grey"><i data-feather='x' class="feather-xsmall txt-white"></i></div>
+      <a href="{{route('academics.create')}}" class="txt-s">Academic Information</a>
+      <a href="{{route('academics.create')}}"><i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
       @endif
 
    </div>

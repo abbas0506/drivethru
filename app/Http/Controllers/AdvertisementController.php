@@ -19,6 +19,7 @@ class AdvertisementController extends Controller
     {
         //
         $advertisement = Advertisement::first();
+        // echo $advertisement->banner;
         return view('representative.advertisement.banner', compact('advertisement'));
     }
 

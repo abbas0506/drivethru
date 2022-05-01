@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Payment;
 
+use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\Bankpayment;
 use Illuminate\Http\Request;
+use Exception;
 
-class PaymentController extends Controller
+class VerifyBankPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +18,8 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $bankpayments = Application::join('bankpayments', 'bankpayments.application_id', 'applications.id')->get();
+        return view('representative.feeverification.index', compact('bankpayments'));
     }
 
     /**
@@ -22,11 +27,9 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
         //
-        $application = Application::find($id);
-        return view('student.applications.payment', compact('application'));
     }
 
     /**
@@ -49,6 +52,9 @@ class PaymentController extends Controller
     public function show($id)
     {
         //
+        $bankpayment = Bankpayment::find($id);
+        $application = $bankpayment->application;
+        return view('representative.feeverification.show', compact('bankpayment', 'application'));
     }
 
     /**
@@ -72,6 +78,20 @@ class PaymentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'isverified' => 'required',
+        ]);
+
+        try {
+
+            $application = Application::find($id);
+            $application->isverified = $request->isverified;
+            $application->update();
+            return redirect()->back()->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**

@@ -67,7 +67,7 @@ body {
 }
 
 .txt-s {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .txt-xs {
@@ -98,7 +98,8 @@ body {
     text-align: center;
 }
 
-.txt-right {
+.txt-right,
+.txt-r {
     text-align: right;
 }
 

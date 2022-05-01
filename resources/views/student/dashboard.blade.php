@@ -20,7 +20,7 @@ Welcome, {{$user->name}}
    <!-- table header -->
    <div class="frow align-center border-bottom border-silver txt-s txt-grey lh-40">
       <div class="w-10">ID</div>
-      <div class="w-50">Created At</div>
+      <div class="w-40">Created At</div>
       <div class="w-20 txt-r">Charges</div>
       <div class="flex-grow txt-r">Status</div>
       <!-- <div class="w-10 txt-c">...</div> -->
@@ -30,9 +30,15 @@ Welcome, {{$user->name}}
       @foreach($user->applications()->where('mode',session('mode'))->sortByDesc('id') as $application)
       <div class="frow w-100 tr align-center txt-s py-1 border-bottom border-silver lh-30">
          <div class="w-10 txt-red"><a href="{{route('applications.show',$application)}}">{{$application->id}}</a></div>
-         <div class="w-50">{{$application->created_at}}</div>
+         <div class="w-40">{{$application->created_at}}</div>
          <div class="w-20 txt-r">{{$application->charges}} $ </div>
-         <div class="flex-grow txt-r">@if($application->isverified) Paid @else <a href="{{url('payments/create',$application)}}" class="btn btn-success txt-s"> pay</a> @endif</div>
+         <div class="flex-grow txt-r">
+            @if($application->isverified) Payment Verified
+            @elseif($application->hasBankPayment()) <a href="{{url('payments/edit',$application)}}" class="btn btn-success txt-s">Paid</a>
+            @else <a href="{{url('payments/create',$application)}}" class="btn btn-primary txt-s">Payable</a>
+            @endif
+         </div>
+
       </div>
       @endforeach
    </div>

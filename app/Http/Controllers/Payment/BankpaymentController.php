@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Payment;
 
+use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\Bankpayment;
 use Illuminate\Http\Request;
@@ -56,12 +57,12 @@ class BankpaymentController extends Controller
             $bankpayment = Bankpayment::create($request->all());
             if ($request->hasFile('scancopy')) {
                 //dont remove default.png
-                // if (!$bankpayment->scancopy == 'default.png') {
-                //     $file_path = public_path('images/vouchers/') . $bankpayment->scancopy;
-                //     if (file_exists($file_path)) {
-                //         unlink($file_path);
-                //     }
-                // }
+                if (!$bankpayment->scancopy == 'default.png') {
+                    $file_path = public_path('images/vouchers/') . $bankpayment->scancopy;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
                 //construct image name
                 $file_name = $request->application_id . '.' . $request->scancopy->extension();
                 $request->file('scancopy')->move(public_path('images/vouchers/'), $file_name);
@@ -115,6 +116,44 @@ class BankpaymentController extends Controller
     public function update(Request $request, Bankpayment $bankpayment)
     {
         //
+        $request->validate([
+            'dateon' => 'required',
+            'bank' => 'required',
+            'branch' => 'required',
+            'challan' => 'required',
+            'scancopy' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            // $bankpayment = Bankpayment::create($request->all());
+
+            if ($request->hasFile('scancopy')) {
+                //dont remove default.png
+                if (!$bankpayment->scancopy == 'default.png') {
+                    $file_path = public_path('images/vouchers/') . $bankpayment->scancopy;
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
+                }
+                //construct image name
+                $file_name = $request->application_id . '.' . $request->scancopy->extension();
+                $request->file('scancopy')->move(public_path('images/vouchers/'), $file_name);
+                $bankpayment->scancopy = $file_name;
+            }
+
+            $bankpayment->bank = $request->bank;
+            $bankpayment->branch = $request->branch;
+            $bankpayment->challan = $request->challan;
+            $bankpayment->update();
+
+            DB::commit();
+            return redirect('student-dashboard')->with('success', 'Successfully created');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            DB::rollBack();
+            // something went wrong
+        }
     }
 
     /**

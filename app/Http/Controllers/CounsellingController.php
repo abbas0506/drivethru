@@ -97,5 +97,13 @@ class CounsellingController extends Controller
     public function destroy($id)
     {
         //
+        $counselling = Counselling::find($id);
+        try {
+            $counselling->delete();
+            return redirect()->back()->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 }

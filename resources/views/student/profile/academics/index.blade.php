@@ -39,7 +39,7 @@ Profile - <span class="txt-12 px-2">academic detail</span>
       <div class="w-30">BISE/Uni</div>
       <div class="w-10 hide-sm">Roll No.</div>
       <div class="w-10">Marks</div>
-      <div class="w-10 ">Actions</div>
+      <div class="w-10 txt-center">Actions</div>
    </div>
 
    @php $sr=1; @endphp
@@ -52,7 +52,7 @@ Profile - <span class="txt-12 px-2">academic detail</span>
       <div class="w-10 hide-sm">{{$academic->rollno}}</div>
       <div class="w-10">{{$academic->obtained}}/{{$academic->total}}</div>
       <div class="w-10">
-         <div class="frow centered">
+         <div class="frow space-around centered">
             <a href="{{route('academics.edit',$academic)}}"><i data-feather='edit-2' class="feather-xsmall mx-1 txt-blue"></i></a>
             <div>
                <form action="{{route('academics.destroy',$academic)}}" method="POST" id='del_form{{$sr}}'>

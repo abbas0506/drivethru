@@ -1,22 +1,41 @@
 <nav>
-   <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" class='app-header-logo'>
+   <a href="/">
+      <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" class='app-header-logo'>
+   </a>
+
    <div class="nav-links" id='nav-links'>
       <i data-feather="x" class="feather-small feather-red" onclick="hidemenu()"></i>
       <ul>
-         <li><a href="/">HOME</a></li>
-         <li><a href="admission">ADMISSION</a></li>
-         <li><a href="services">SERVICES</a></li>
-         <li><a href="about">ABOUT</a></li>
-         <li><a href="blog">BLOG</a></li>
-         <li><a href="contact">CONTACT</a></li>
-         <li>
-            @if(session('user'))
-            <a href="student-dashboard">DASHBOARD</a>
-            @else
-            <a href="signin">LOGIN</a>
-            @endif
+         <a href="/">
+            <li>HOME</li>
+         </a>
+         <a href="admission">
+            <li>ADMISSION</li>
+         </a>
+         <a href="services">
+            <li>SERVICES</li>
+         </a>
+         <a href="about">
+            <li>ABOUT</li>
+         </a>
+         <a href="blog">
+            <li>BLOG</li>
+         </a>
+         <a href="contact">
+            <li>CONTACT</li>
+         </a>
 
-         </li>
+         @if(session('user'))
+         <a href="student-dashboard">
+            <li>DASHBOARD</li>
+         </a>
+         @else
+         <a href="signin">
+            <li>LOGIN</li>
+         </a>
+         @endif
+
+
       </ul>
    </div>
    <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>

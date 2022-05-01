@@ -14,8 +14,14 @@
 </head>
 
 <body>
-   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Top Countries Search Report</div>
-   <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">100% Free</div>
+   <table class="w-100 bg-light-grey mx-5 py-2">
+      <tbody>
+         <tr>
+            <td class="w-40 pl-4"><img src="{{public_path('images/logo/dark.png')}}" width='150' alt=""></td>
+            <td class="txt-r pr-4">Top Countries Report, 100 % free</td>
+         </tr>
+      </tbody>
+   </table>
    <div class="w-100 txt-center txt-s py-2 mx-5">This is an auto generated report, purely based on your field/course/program preference. This is just for better decision making. It has nothing to do with anything else. Below is the complete list of top countries matching your field/program preference</div>
    <!-- personal info -->
    <!-- courses applied for -->

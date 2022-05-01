@@ -47,4 +47,11 @@ class Application extends Model
         $countries = Country::whereIn('id', $country_ids)->get();
         return $countries;
     }
+
+    public function hasBankPayment()
+    {
+        $bankpayment = Bankpayment::where('application_id', $this->id);
+        if ($bankpayment->count() > 0) return true;
+        else return false;
+    }
 }

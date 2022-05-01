@@ -348,7 +348,7 @@ a {
 
 nav {
     display: flex;
-    padding: 0% 2%;
+    padding: 0% 4%;
     line-height: 60px;
     justify-content: space-between;
     align-items: center;
@@ -359,17 +359,17 @@ nav {
     text-align: right;
 }
 
-.nav-links ul li {
+.nav-links ul a {
     /* font-family: 'Syncopate'; */
     font-family: 'Quicksand', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     list-style: none;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 8px 16px;
     color: #fff;
 }
 
-.nav-links ul li:last-child {
+.nav-links ul a:last-child {
     /* font-family: 'Syncopate'; */
     font-weight: 800;
     color: #ff5421;
@@ -381,7 +381,7 @@ nav {
     background: #ff5421;
     display: block;
     height: 2px;
-    margin: auto;
+    /* margin: auto; */
     transition: 0.5s;
 }
 

@@ -15,7 +15,7 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 @section('content')
 <ul class="page-nav">
    <li>
-      <a href="{{route('findcountriesbycourse.index')}}">By Name</a>
+      <a href="{{route('findcountriesbyname.index')}}">By Name</a>
    </li>
    <li class="active">By Course</li>
 </ul>
@@ -32,12 +32,12 @@ Find University - <span class="txt-12 px-2">search by course name</span>
    <br />
    @elseif(session('success'))
    <script>
-      Swal.fire({
-         icon: 'success',
-         title: "Successful",
-         showConfirmButton: false,
-         timer: 1500
-      });
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
    </script>
    @endif
 

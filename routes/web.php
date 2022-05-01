@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 //middleware classes
-use App\http\Middleware\Admin;
-use App\http\Middleware\Student;
+// use App\http\Middleware\Admin;
+// use App\http\Middleware\Student;
 
 use App\Http\Controllers\UserController;
 
@@ -51,16 +51,20 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
 use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\BankpaymentController;
+// use App\Http\Controllers\Auth\VerificationController;
+
 use App\Http\Controllers\CounsellingResponseController;
 use App\Http\Controllers\GuestQueryController;
 use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\QueryResponseController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SubscriberController;
-use App\Http\Controllers\VerifyBankPaymentController;
+
+use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\Payment\BankpaymentController;
+use App\Http\Controllers\Payment\VerifyBankPaymentController;
+
 use App\Http\Controllers\VideoController;
 use App\Models\Video;
 
@@ -208,7 +212,10 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('findcountriesbycourse_report}', [FindCountriesByCourseController::class, 'report'])->name("findcountriesbycourse_report");
     Route::get('findcountriesbycourse_apply', [FindCountriesByCourseController::class, 'apply'])->name("findcountriesbycourse_apply");
     //payments
+
     Route::resource('bankpayments', BankpaymentController::class);
     Route::get('payments/create/{id}', [PaymentController::class, 'create']);
+    Route::get('payments/edit/{id}', [PaymentController::class, 'edit']);
+
     Route::get('feevoucher/{id}', [ApplicationController::class, 'voucher'])->name('feevoucher');
 });

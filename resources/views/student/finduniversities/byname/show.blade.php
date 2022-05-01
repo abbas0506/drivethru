@@ -39,33 +39,43 @@ Find University - <span class="txt-12 px-2">{{$university->name}}</span>
       </div>
    </div>
    <!-- report content goes here -->
-   <div class="p-4">
-      <div class="frow">
-         <div class="txt-b w-30 rw-40">Location: </div>
-         <div class="">{{$university->city->name}}</div>
+   <div class="frow p-4 auto-col">
+      <div class="w-30">
+         <img src="{{url(asset('images/universities/'.$university->logo))}}" alt='logo' width=70 height=70 class='rounded-circle'>
       </div>
-      <div class="frow">
-         <div class="txt-b w-30 rw-40">Type: </div>
-         <div class="">{{$university->type}}</div>
+      <div class="flex-grow">
+         <div class="frow">
+            <div class="txt-b w-30 rw-40">Name: </div>
+            <div class="">{{$university->name}}</div>
+         </div>
+         <div class="frow">
+            <div class="txt-b w-30 rw-40">Location: </div>
+            <div class="">{{$university->city->name}}</div>
+         </div>
+         <div class="frow">
+            <div class="txt-b w-30 rw-40">Type: </div>
+            <div class="">{{$university->type}}</div>
+         </div>
+         <div class="frow">
+            <div class="txt-b w-30 rw-40">Rank: </div>
+            <div class="">{{$university->rank}}</div>
+         </div>
       </div>
-      <div class="frow">
-         <div class="txt-b w-30 rw-40">Ranking: </div>
-         <div class="">{{$university->rank}}</div>
-      </div>
+
    </div>
 
    <div class="txt-b lh-30">Offered Courses: </div>
    @if($university->unicourses()->count()>0)
    <div class="frow txt-grey bg-silver lh-30 txt-s">
       <div class="w-50">Course</div>
-      <div class="w-15">Fee</div>
+      <div class="w-15">Fee (Rs)</div>
       <div class="w-20 hide-sm">Last Merit</div>
       <div class="flex-grow">Closing</div>
    </div>
    @foreach($university->unicourses() as $unicourse)
    <div class="frow txt-s lh-30">
       <div class="w-50">{{$unicourse->course->name}}</div>
-      <div class="w-15">{{$unicourse->fee}}</div>
+      <div class="w-15">{{$unicourse->fee}} k</div>
       <div class="w-20 hide-sm">{{$unicourse->lastmerit}}</div>
       <div class="flex-grow">{{$unicourse->closing}}</div>
    </div>

@@ -16,7 +16,7 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
 
 <div class="page-centered w-70 bg-light p-4">
    <!-- close icon -->
-   <a href="{{route('findcountriesbyname.index')}}">
+   <a href="{{route('findcountriesbycourse.index')}}">
       <div class="top-right-icon circular-20">
          <i data-feather='x' class="feather-xsmall"></i>
       </div>
@@ -52,8 +52,8 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
    <div class="frow lh-30 mt-2 border-bottom border-silver tr txt-s txt-grey">
       <div class="w-10">Sr. </div>
       <div class="w-50"> Country </div>
-      <div class="w-20 text-right flex-grow ">Study Cost</div>
-      <div class="w-20 text-right rhide">Living Cost</div>
+      <div class="w-20 text-right flex-grow ">Study Cost ($)</div>
+      <div class="w-20 text-right rhide">Living Cost ($)</div>
    </div>
 
    @php $sr=1; @endphp
@@ -74,8 +74,4 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
    @endif
 </div>
 
-@endsection
-
-@section('social')
-<x-sidebar__news></x-sidebar__news>
 @endsection

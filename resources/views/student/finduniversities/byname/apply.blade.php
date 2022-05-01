@@ -37,15 +37,15 @@ Find University - <span class="txt-12 px-2">{{$university->name}} - apply</span>
       <div class="w-40 rw-50">Course </div>
       <div class="w-15 rw-20 text-right rhide">Fee</div>
       <div class="w-15 text-right rhide">Last Merit</div>
-      <div class="w-20 rw-30">Closing</div>
+      <div class="w-20 rw-30 text-right">Closing</div>
       <div class="flex-grow txt-c">Apply</div>
    </div>
    @foreach($university->unicourses() as $unicourse)
    <div class="frow p-1 border-bottom border-silver txt-s tr">
       <div class="w-40 rw-50">{{$unicourse->course->name}}</div>
-      <div class="w-15 text-right hide-sm"> {{$unicourse->fee}}</div>
+      <div class="w-15 text-right hide-sm"> {{$unicourse->fee}} k</div>
       <div class="w-15 text-right hide-sm">{{$unicourse->lastmerit}}</div>
-      <div class="w-20 rw-30">{{$unicourse->closing}}</div>
+      <div class="w-20 rw-30 text-right">{{$unicourse->closing}}</div>
       <div class="flex-grow txt-c chk-apply"><input type="checkbox" name='chk' value="{{$unicourse->id}}" onclick="updateChkCount()"></div>
    </div>
    @endforeach

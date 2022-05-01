@@ -26,12 +26,12 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
 <br />
 @elseif(session('success'))
 <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+Swal.fire({
+   icon: 'success',
+   title: "Successful",
+   showConfirmButton: false,
+   timer: 1500
+});
 </script>
 @endif
 
@@ -49,6 +49,11 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
          <div class="ml-3 hide-sm">Create New</div>
       </div>
    </div>
+   <ul class="txt-s txt-grey">
+      Read me
+      <li class="ml-3">Click on <i data-feather='x' class="feather-xsmall txt-red mt-1"></i> button to cancel the request at any time </li>
+      <li class="ml-3">Click on <span class="txt-green txt-b"> replied</span> to see reply from drivethru representative</li>
+   </ul>
    <!-- table header -->
    <div class="frow lh-30 txt-s txt-grey border-bottom border-silver mt-3">
       <div class="w-10">ID</div>
@@ -64,9 +69,17 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
          <div class="w-30">{{$counselling->created_at}}</div>
          <div class="w-50">{{Str::limit($counselling->query,50)}}</div>
          <div class="flex-grow txt-c">
-            @if($counselling->response=='') <i data-feather='clock' class="feather-small mt-1"></i>
+            @if($counselling->response=='')
+            <!-- <i data-feather='clock' class="feather-xsmall mt-1 mr-2"></i> -->
+            <!-- <i data-feather='x' class="feather-xsmall txt-red mt-1"></i> -->
+
+            <form action="{{route('counselling.destroy',$counselling)}}" method="POST" id='del_form{{$counselling->id}}'>
+               @csrf
+               @method('DELETE')
+               <button type="submit" class="bg-transparent p-0 border-0" onclick="delme('{{$counselling->id}}')"><i data-feather='x' class="feather-xsmall mx-1 txt-red"></i></button>
+            </form>
             @else
-            <a href="{{route('counselling.show',$counselling)}}" class="txt-red">Replied</a>
+            <a href="{{route('counselling.show',$counselling)}}" class="txt-green txt-b">Replied</a>
             @endif
          </div>
       </div>
@@ -82,18 +95,18 @@ Career Counselling - <span class="txt-12 px-2">100% free</span>
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      var str = 0;
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hide');
-         } else {
-            $(this).removeClass('hide');
-         }
-      });
-   }
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hide');
+      } else {
+         $(this).removeClass('hide');
+      }
+   });
+}
 </script>
 @endsection
