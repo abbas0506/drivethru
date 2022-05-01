@@ -20,6 +20,6 @@ Application Submission - <span class="txt-12 px-2">successful</span>
    <div class="mb-2 txt-j">Your application No. <strong>{{$application->id}} </strong>has been successfully submitted.
       For further processing, you need to pay {{$application->charges}} $ as processing charges.
    </div>
-   <div><a class='btn btn-primary float-right' href="{{url('student-dashboard')}}">Ok, I got</a></div>
+   <div><a class='btn btn-primary float-right' href="{{url('/')}}">Ok, I got</a></div>
 </div>
 @endsection

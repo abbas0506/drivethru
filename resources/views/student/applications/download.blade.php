@@ -18,14 +18,27 @@
    $user=session('user')
    @endphp
    @if($application->mode==0)
-   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Application for Local Admission</div>
+   <table class="w-100 bg-light-grey mx-5 py-2">
+      <tbody>
+         <tr>
+            <td class="w-40 pl-4"><img src="{{public_path('images/logo/dark.png')}}" width='150' alt=""></td>
+            <td class="txt-r pr-4">Application for Local Admission</td>
+         </tr>
+      </tbody>
+   </table>
 
    @elseif($application->mode==1)
-   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Application for International Admission</div>
-
+   <table class="w-100 bg-light-grey mx-5 py-2">
+      <tbody>
+         <tr>
+            <td class="w-40 pl-4"><img src="{{public_path('images/logo/dark.png')}}" width='150' alt=""></td>
+            <td class="txt-r pr-4">Application for International Admission</td>
+         </tr>
+      </tbody>
+   </table>
    @endif
-   <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">Application Track ID {{$application->id}}</div>
-   <div class="w-100 txt-center txt-s py-2 mx-5">This is a system generated application form for admission into your selected courses/programs at the most suitable national universities of Pakistan</div>
+   <div class="w-100 txt-center txt-s my-2">Track ID : {{$application->id}}</div>
+   <div class="w-100 txt-s my-2 mx-5">This is a system generated application form for admission into your selected courses/programs at the most suitable national universities of Pakistan</div>
 
    <!-- personal info -->
    <div class="w-40 mt-4 ml-5 border-bottom thin">Personal Info</div>

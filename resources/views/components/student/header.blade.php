@@ -1,7 +1,9 @@
 <nav class="global-header">
    <i data-feather="menu" class="feather-small hide-lg px-3" onclick="toggle_sidebar()"></i>
    <div class="logo">
-      <img src="{{asset('/images/logo/dark.png')}}" alt="" href="">
+      <a href="/">
+         <img src="{{asset('/images/logo/dark.png')}}" alt="" href="">
+      </a>
    </div>
 
    <div class="nav-links" id='nav-links'>

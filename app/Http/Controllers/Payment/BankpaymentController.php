@@ -75,7 +75,7 @@ class BankpaymentController extends Controller
             $application->update();
 
             DB::commit();
-            return redirect('student-dashboard')->with('success', 'Successfully created');
+            return redirect('/')->with('success', 'Successfully created');
         } catch (Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
@@ -148,7 +148,7 @@ class BankpaymentController extends Controller
             $bankpayment->update();
 
             DB::commit();
-            return redirect('student-dashboard')->with('success', 'Successfully created');
+            return redirect('/')->with('success', 'Successfully created');
         } catch (Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();

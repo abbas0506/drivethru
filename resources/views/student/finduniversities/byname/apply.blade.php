@@ -24,7 +24,7 @@ Find University - <span class="txt-12 px-2">{{$university->name}} - apply</span>
    <div class="frow txt-custom-blue txt-b"><span class="border-bottom">Apply Through Us</span></div>
    @if(!$user->hasFinishedProfile())
    <div class="frow p-5 centered">
-      <div class="w-20 txt-c mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
+      <div class="w-20 txt-c p-3 mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
       <div class="text-justify">
          Your profile has been found incomplete. We need your personal as well as academic details
          for the processing of your applicaiton. So, first complete your profile and then visit this page again.

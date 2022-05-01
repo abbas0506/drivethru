@@ -33,7 +33,7 @@ Find University - <span class="txt-12 px-2">by course - search result</span>
       <div class="mx-3">|</div>
 
       <div class="frow">
-         <a href="{{route('finduniversitiesbycourse_apply',)}}">
+         <a href="{{route('finduniversitiesbycourse_apply')}}">
             <div class="fcol circular-25 border-0 bg-orange centered hoverable"><i data-feather='edit-2' class="feather-xsmall txt-white"></i></div>
          </a>
          <div class="ml-2">Apply</div>

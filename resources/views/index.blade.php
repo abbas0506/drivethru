@@ -8,7 +8,7 @@
       <h1>Single-Click Application Form</h1>
       <button class="btn btn-red">
          @if(session('user'))
-         <a href="{{url('student-dashboard')}}">Apply Now</a>
+         <a href="{{url('/')}}">Apply Now</a>
          @else
          <a href="{{url('signin')}}">Apply Now</a>
          @endif

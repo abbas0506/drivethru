@@ -16,7 +16,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
 <div class="page-centered w-70 bg-light p-4">
    <!-- close button -->
-   <a href="{{url('student-dashboard')}}">
+   <a href="{{url('/')}}">
       <div class="top-right-icon circular-20">
          <i data-feather='x' class="feather-xsmall"></i>
       </div>

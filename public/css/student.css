@@ -121,6 +121,10 @@ body {
     background-color: #EAEEF1;
 }
 
+.bg-transparent {
+    background-color: transparent;
+}
+
 .btn {
     font-size: 14px;
     padding: 5px 10px;

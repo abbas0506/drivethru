@@ -24,6 +24,9 @@
                   <a href="{{route('closing.index')}}"><span class="lnr lnr-calendar-full mr-3"></span>Closing Date</a>
                </li>
                <li>
+                  <a href="{{route('lastmerit.index')}}"><span class="lnr lnr-graduation-hat mr-3"></span>Last Merit</a>
+               </li>
+               <li>
                   <a href="{{route('advertisements.index')}}"><span class="lnr lnr-flag mr-3"></span>Site Banner</a>
                </li>
                <li>

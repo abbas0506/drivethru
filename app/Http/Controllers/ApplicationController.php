@@ -183,6 +183,14 @@ class ApplicationController extends Controller
     public function destroy(Application $application)
     {
         //
+        // $counselling = Counselling::find($id);
+        try {
+            $application->delete();
+            return redirect()->back()->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
     public function success(Request $request)
     {

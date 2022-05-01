@@ -17,6 +17,7 @@
    <script src="{{asset('/js/jquery.min.js')}}"></script>
    <script src="{{asset('/js/autoformat.js')}}"></script>
    <script src="{{asset('/js/feather.min.js')}}"></script>
+   <script src="{{asset('/js/sweetAlert2@9.js')}}"></script>
 
    <meta name="csrf-token" content="{{ csrf_token() }}" />
 

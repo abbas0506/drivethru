@@ -49,6 +49,7 @@ use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ClosingController;
+use App\Http\Controllers\LastmeritController;
 use App\Http\Controllers\CounsellingRequestController;
 use App\Http\Controllers\AdmissionRequestController;
 // use App\Http\Controllers\Auth\VerificationController;
@@ -86,10 +87,10 @@ Route::get('/', function () {
     if (session('usertype')) {
         if (session('usertype') == 'admin')
             return redirect('admin');
-        if (session('usertype') == 'representative')
+        else if (session('usertype') == 'representative')
             return redirect('representative');
-        else
-            return view('index', compact('video'));
+        else if (session('usertype') == 'student')
+            return redirect('student');
     } else
         return view('index', compact('video'));
 });
@@ -160,6 +161,9 @@ Route::group(['middleware' => 'representative'], function () {
     Route::resource('sitevideo', VideoController::class);
     Route::resource('closing', ClosingController::class);
     Route::get('closing/courselist/{id}', [ClosingController::class, 'courselist']);
+
+    Route::resource('lastmerit', LastmeritController::class);
+    Route::get('lastmerit/courselist/{id}', [LastmeritController::class, 'courselist']);
     Route::resource('papers', PaperController::class);
     Route::resource('counselling/requests', CounsellingRequestController::class);
     Route::resource('admission/requests', AdmissionRequestController::class);
@@ -172,10 +176,10 @@ Route::group(['middleware' => 'representative'], function () {
 
 //student middleware
 Route::group(['middleware' => 'student'], function () {
-    Route::view('student-dashboard', 'student.dashboard');
+    Route::view('student', 'student.index');
     Route::get('switch/{mode}', function ($mode) {
         session(['mode' => $mode,]);
-        return redirect('student-dashboard');
+        return redirect('student');
     });
 
     Route::get('uni_courses', [UniversityController::class, 'uni_courses'])->name('uni_courses');
