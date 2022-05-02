@@ -30,6 +30,10 @@ $user=session('user');
       </a>
 
    </div>
+   <div class="frow centered bg-light-grey txt-l txt-b py-2">
+      <img src="{{url(asset('images/countries/'.$country->flag))}}" alt='flag' width=40 height=40 class='rounded mr-4'>
+      {{$country->name}}
+   </div>
    <!-- report content goes here -->
    <div class="frow w-100 rw-100 mt-4">
       <div class="w-30 rw-50 txt-b">Education: </div>

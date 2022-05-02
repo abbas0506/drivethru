@@ -39,6 +39,10 @@ Find Country - <span class="txt-12 px-2">search result - {{$country->name}}</spa
       </div>
    </div>
 
+   <div class="frow centered bg-light-grey txt-l txt-b py-2">
+      <img src="{{url(asset('images/countries/'.$country->flag))}}" alt='flag' width=40 height=40 class='rounded mr-4'>
+      {{$country->name}}
+   </div>
    <!-- report content goes here -->
    <div class="frow mt-3 auto-col">
       <div class="w-30 txt-b">Education: </div>

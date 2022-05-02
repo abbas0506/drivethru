@@ -14,8 +14,14 @@
 </head>
 
 <body>
-   <div class="w-100 txt-center txt-m bg-light-grey mx-5 pt-2">Country Report</div>
-   <div class="w-100 txt-center txt-s bg-light-grey mx-5 py-2">100% Free</div>
+   <table class="w-100 bg-light-grey mx-5 py-2">
+      <tbody>
+         <tr>
+            <td class="w-40 pl-4"><img src="{{public_path('images/logo/dark.png')}}" width='150' alt=""></td>
+            <td class="txt-r pr-4">Country Report, 100 % free</td>
+         </tr>
+      </tbody>
+   </table>
    <div class="w-100 txt-center txt-s py-2 mx-5">This report is based on your country preference. It is just for better decision making. It has nothing to do with anything else. Following is the complete detail of your selected country.</div>
    <div class='w-100 txt-l txt-center txt-b my-2 py-2 mx-5'>
       {{$country->name}}
@@ -97,6 +103,20 @@
                </ul>
                @else
                List of favourite courses not available
+               @endif
+            </td>
+         </tr>
+         <tr>
+            <td class="w-30 txt-s txt-b mt-1">Favorite Universities: </td>
+            <td class="w-70 txt-s mt-1">
+               @if($country->funiversities()->count()>0)
+               <ul>
+                  @foreach($country->funiversities() as $funiversity)
+                  <li>{{$funiversity->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of universities not available
                @endif
             </td>
          </tr>

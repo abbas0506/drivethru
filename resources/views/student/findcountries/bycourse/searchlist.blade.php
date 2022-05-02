@@ -61,7 +61,7 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
 
    <div class="frow lh-30 border-bottom border-silver tr">
       <div class="w-10">{{$sr++}} </div>
-      <div class="w-50"><a href="{{route('findcountriesbycourse_countrypreview', $country->id)}}" class="text-primary"> {{$country->name}}</a></div>
+      <div class="w-50"><a href="{{route('findcountriesbycourse_countrypreview', $country->id)}}" target='_blank' class="text-primary"> {{$country->name}}</a></div>
       <div class="w-20 text-right flex-grow"> {{$country->studycost()}}</div>
       <div class="w-20 text-right rhide">{{$country->livingcost()}}</div>
    </div>
