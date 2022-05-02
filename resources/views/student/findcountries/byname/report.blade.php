@@ -108,6 +108,21 @@
          </tr>
 
          <tr>
+            <td class="w-30 txt-s txt-b mt-1">Favorite Universities: </td>
+            <td class="w-70 txt-s mt-1">
+               @if($country->funiversities()->count()>0)
+               <ul>
+                  @foreach($country->funiversities() as $funiversity)
+                  <li>{{$funiversity->name}}</li>
+                  @endforeach
+               </ul>
+               @else
+               List of universities not available
+               @endif
+            </td>
+         </tr>
+
+         <tr>
             <td class="w-30 txt-s txt-b mt-1">Study Cost: </td>
             <td class="w-70 txt-s mt-1">
                @if($country->studycosts()->count()>0)
