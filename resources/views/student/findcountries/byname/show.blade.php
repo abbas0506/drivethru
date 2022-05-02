@@ -114,6 +114,21 @@ Find Country - <span class="txt-12 px-2">search result - {{$country->name}}</spa
          @endif
       </div>
    </div>
+
+   <div class="frow mt-3 auto-col">
+      <div class="w-30 txt-b">Favorite Universities: </div>
+      <div class="pl-4">
+         @if($country->funiversities()->count()>0)
+         <ul>
+            @foreach($country->funiversities() as $funiversity)
+            <li>{{$funiversity->name}}</li>
+            @endforeach
+         </ul>
+         @else
+         <div class="txt-s txt-orange">List of universities not available</div>
+         @endif
+      </div>
+   </div>
    <div class="frow mt-3 auto-col">
       <div class="w-30 txt-b">Study Cost: </div>
       <div class="pl-4">

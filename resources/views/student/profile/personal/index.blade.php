@@ -79,7 +79,7 @@ $user=session('user');
    <div class="frow txt-b txt-14 lh-30 txt-red">Academic Detail</div>
    @if($user->hasAcademics())
    <!-- academics exist -->
-   <div class="frow txt-s py-2">
+   <div class="frow txt-s txt-grey py-2">
       <div class="w-10">Sr </div>
       <div class="w-20">Level</div>
       <div class="w-10">Year</div>
@@ -90,7 +90,7 @@ $user=session('user');
 
    @php $sr=1; @endphp
    @foreach($user->academics() as $academic)
-   <div class="frow txt-s">
+   <div class="frow txt-s lh-30">
       <div class="w-10">{{$sr++}}. </div>
       <div class="w-20">{{$academic->level->name}}</div>
       <div class="w-10">{{$academic->passyear}}</div>

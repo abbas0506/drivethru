@@ -21,11 +21,7 @@ Find University - <span class="txt-12 px-2">by course - apply</span>
          <i data-feather='x' class="feather-xsmall"></i>
       </div>
    </a>
-   <div>
-      <span class="txt-custom-blue txt-b border-bottom border-silver lh-30">Apply Through Us</span>
-   </div>
-
-   <div class="frow txt-custom-blue txt-b"><span class="border-bottom">Apply Through Us</span></div>
+   <div class="frow txt-custom-blue txt-b"><span class="border-bottom border-silver">Apply Through Us</span></div>
    @if(!$user->hasFinishedProfile())
    <div class="frow p-5 centered">
       <div class="mr-5"><i data-feather='meh' class="feather-large mx-1 txt-orange"></i></div>
@@ -88,29 +84,29 @@ Find University - <span class="txt-12 px-2">by course - apply</span>
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function updateChkCount() {
-      var chkArray = [];
-      var chks = document.getElementsByName('chk');
-      chks.forEach((chk) => {
-         if (chk.checked) chkArray.push(chk.value);
-      })
+function updateChkCount() {
+   var chkArray = [];
+   var chks = document.getElementsByName('chk');
+   chks.forEach((chk) => {
+      if (chk.checked) chkArray.push(chk.value);
+   })
 
-      if (chkArray.length > 0)
-         document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
-      else
-         document.getElementById("chkCount").innerHTML = "";
-   }
+   if (chkArray.length > 0)
+      document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
+   else
+      document.getElementById("chkCount").innerHTML = "";
+}
 
-   function postData() {
+function postData() {
 
-      var ids = [];
-      var chks = document.getElementsByName('chk');
-      chks.forEach((chk) => {
-         if (chk.checked) ids.push(chk.value);
-      })
+   var ids = [];
+   var chks = document.getElementsByName('chk');
+   chks.forEach((chk) => {
+      if (chk.checked) ids.push(chk.value);
+   })
 
-      $('#_ids').val(ids);
-      $('#applicationForm').submit();
-   }
+   $('#_ids').val(ids);
+   $('#applicationForm').submit();
+}
 </script>
 @endsection

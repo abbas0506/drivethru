@@ -29,6 +29,11 @@ Profile - <span class="txt-12 px-2">create academic detail</span>
       </div>
    </div>
 
+   <ul class="txt-s txt-grey ml-3">
+      <span class='txt-blue'>Read me **</span>
+      <li class="ml-3">Please provide academic information; starting from the most recent to matric</li>
+      <li class="ml-3">Don't duplicate same degree information</li>
+   </ul>
    <!-- personal data fields -->
    <form action="{{route('academics.store')}}" method="post" id='form' onsubmit="return validate()">
       @csrf
