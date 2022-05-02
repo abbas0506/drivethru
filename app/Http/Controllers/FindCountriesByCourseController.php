@@ -146,7 +146,7 @@ class FindCountriesByCourseController extends Controller
                 'selected_course' => $course,
                 'countries' => $countries,
             ]);
-            return view('student.findcountries.bycourse.searchlist', compact('countries'));
+            return view('student.findcountries.bycourse.searchlist', compact('countries', 'course'));
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong

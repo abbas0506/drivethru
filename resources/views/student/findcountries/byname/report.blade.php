@@ -106,7 +106,6 @@
                @endif
             </td>
          </tr>
-
          <tr>
             <td class="w-30 txt-s txt-b mt-1">Favorite Universities: </td>
             <td class="w-70 txt-s mt-1">

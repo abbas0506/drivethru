@@ -14,10 +14,11 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 
 @section('content')
 <ul class="page-nav">
+   <li class="active">By Course</li>
    <li>
       <a href="{{route('findcountriesbyname.index')}}">By Name</a>
    </li>
-   <li class="active">By Course</li>
+
 </ul>
 <div class="bg-light p-4">
 
@@ -104,5 +105,8 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 @endsection
 
 @section('promotion')
-<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
+<div class="mt-4">
+   <x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
+</div>
+
 @endsection

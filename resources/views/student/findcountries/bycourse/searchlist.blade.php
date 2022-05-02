@@ -42,7 +42,7 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
 
 
    <div class="mt-3">
-      <span class="txt-custom-blue txt-b border-bottom border-silver border-2">Search result</span>
+      <span class="txt-custom-blue txt-b border-bottom border-silver border-2">Search result : {{$course->name}}</span>
    </div>
 
 

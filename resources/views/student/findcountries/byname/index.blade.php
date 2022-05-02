@@ -39,12 +39,12 @@ Find Country - <span class="txt-12 px-2">search by name</span>
    <br />
    @elseif(session('success'))
    <script>
-      Swal.fire({
-         icon: 'success',
-         title: "Successful",
-         showConfirmButton: false,
-         timer: 1500
-      });
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
    </script>
    @endif
 
@@ -78,24 +78,26 @@ Find Country - <span class="txt-12 px-2">search by name</span>
 @endsection
 
 @section('promotion')
-<x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
+<div class="mt-4">
+   <x-student.newspanel :advertisement="$advertisement"></x-student.newspanel>
+</div>
 @endsection
 
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-   function search(event) {
-      var searchtext = event.target.value.toLowerCase();
-      var str = 0;
-      $('.tr').each(function() {
-         if (!(
-               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-            )) {
-            $(this).addClass('hidden');
-         } else {
-            $(this).removeClass('hidden');
-         }
-      });
-   }
+function search(event) {
+   var searchtext = event.target.value.toLowerCase();
+   var str = 0;
+   $('.tr').each(function() {
+      if (!(
+            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+         )) {
+         $(this).addClass('hidden');
+      } else {
+         $(this).removeClass('hidden');
+      }
+   });
+}
 </script>
 @endsection
