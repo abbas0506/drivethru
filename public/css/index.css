@@ -567,6 +567,10 @@ section .drivethru {
     margin-top: 70px;
 }
 
+.who .col:hover {
+    cursor: pointer;
+}
+
 .who .col:hover h1,
 .who .col:hover p {
     color: #ff5421;
