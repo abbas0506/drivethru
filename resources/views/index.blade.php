@@ -18,15 +18,8 @@
 </section>
 @endsection
 @section('content')
-<section class="who">
-   <div class="title">Who we are?</div>
-   <div class="content">We are an ed-tech firm, leading students to their national as well as international destinations for their higher studies.
-      We provide sufficient information and services that empower you to take a lead in your academic career. We believe in the right candidate to right university
-   </div>
-</section>
 
 <section class="offer">
-   <div class="title">What we offer?</div>
    <div class="row">
       <div class="col">
          <div class="ico">
@@ -60,38 +53,89 @@
    </div>
 </section>
 
-<section class="services">
-   <div class="title">Our Services</div>
+<section class="who">
+   <h2 class="drivethru">DRIVETHRU</h2>
+   <div class="title red-underline">Who We Are?</div>
    <div class="row">
       <div class="col">
-         <div class="content">
-            <h1>Universities Info</h1>
-            <p>Free of cost information about fee structures, offered degree programs, eligibility criteria, entrance exams and scholarships.</p>
+         <div class="ico">
+            <img src="{{asset('/images/icons/search.png')}}" alt="">
          </div>
-         <div class="title">Universities Info</div>
+         <div class="content">
+            <h1>FIND UNIVERSITY</h1>
+            <p>Intermediate students face issues, regrading decision making about their future scope of studies, and ....</p>
+         </div>
       </div>
+
       <div class="col">
-         <div class="content">
-            <h1>Single Click Application</h1>
-            <p>Hazzle free single click application for national as well as international admissions.</p>
+         <div class="ico">
+            <img src="{{asset('/images/icons/person-check.png')}}" alt="">
          </div>
-         <div class="title">Single Click Application</div>
+         <div class="content">
+            <h1>APPLY THROUGH US</h1>
+            <p>Long, time consuming and complex admission forms are a bitter jump student make due to which they dont take interest ....</p>
+         </div>
       </div>
+
       <div class="col">
-         <div class="content">
-            <h1>Personalized Reports</h1>
-            <p>We generate a free of cost user specific report on the basis of user's own preferences.</p>
+         <div class="ico">
+            <img src="{{asset('/images/icons/person-message.png')}}" alt="">
          </div>
-         <div class="title">Personalized Reports</div>
+         <div class="content">
+            <h1>CAREER COUNSELLING</h1>
+            <p>With less insight about the universities and without a proper career counseling, students may take
+               wrong decisions and end-up in a place where they shouldn’t be ....</p>
+         </div>
+      </div>
+   </div>
+   <!-- 2nd row -->
+   <div class="row">
+      <div class="col">
+         <div class="ico">
+            <img src="{{asset('/images/icons/report-edit.png')}}" alt="">
+         </div>
+         <div class="content">
+            <h1>PERSONALIZED REPORT</h1>
+            <p>Personalized report as the name displays, is specific for each student containing all the available options for him according to his field, interest, location and budget ....</p>
+         </div>
+      </div>
+
+      <div class="col">
+         <div class="ico">
+            <img src="{{asset('/images/icons/dollar-sign.png')}}" alt="">
+         </div>
+         <div class="content">
+            <h1>$1/UNIVERSITY</h1>
+            <p>We do not charge anything for providing information. We charge $1 ($1=150/-) per
+               university only for the applying process. There are no hidden charges included ....</p>
+         </div>
+      </div>
+
+      <div class="col">
+         <div class="ico">
+            <img src="{{asset('/images/icons/report.png')}}" alt="">
+         </div>
+         <div class="content">
+            <h1>PASTPAPERS</h1>
+            <p>Students face difficulty majorly in entrance exams while seeking admission to universities. Past papers help them to prepare for the exams in short time ....</p>
+         </div>
       </div>
    </div>
 </section>
 
+<!-- Quotation -->
+<section class="quote">
+   <p>The world is full of wonderful things you have not seen yet.<br>
+      Don't ever give up on the chance of seeing them.</p>
+</section>
 <!-- FAQ -->
 <section class="faq">
+   <h2 class="drivethru">DRIVETHRU</h2>
+   <div class="title red-underline">Frequently Asked Questions</div>
+
    <div class="row">
       <div class="col">
-         <h2>Frequently Asked Questions</h2>
+
          <div class="question show">
             <div class="q"> <i data-feather="bell" class="feather-small"></i> What service do you offer/provide? </div>
             <div class="ans">Drivethru provides information about 175+ National and International Universities from 17+ countries, for FREE. Admission applying services, Career counselling, Visa services.</div>
