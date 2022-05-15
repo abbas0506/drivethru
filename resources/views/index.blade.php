@@ -116,7 +116,7 @@
             <img src="{{asset('/images/icons/report.png')}}" alt="">
          </div>
          <div class="content">
-            <h1>PASTPAPERS</h1>
+            <h1>PAST PAPERS</h1>
             <p>Students face difficulty majorly in entrance exams while seeking admission to universities. Past papers help them to prepare for the exams in short time ....</p>
          </div>
       </div>
