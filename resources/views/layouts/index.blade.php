@@ -8,6 +8,7 @@
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
 
    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
+   <link href="{{ asset('/css/fa.css') }}" rel="stylesheet">
    <link href="{{ asset('/css/index_responsive.css')}}" rel="stylesheet">
 
    <script src="{{ asset('/js/feather.min.js')}}"></script>

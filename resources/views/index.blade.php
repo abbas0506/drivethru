@@ -26,7 +26,7 @@
             <img src="{{asset('/images/icons/3.png')}}" alt="">
          </div>
          <div class="content">
-            <h1>Oppertunities</h1>
+            <h1>Opportunities</h1>
             <p>Around the globe</p>
          </div>
       </div>
@@ -138,7 +138,7 @@
 
          <div class="question show">
             <div class="q"> <i data-feather="bell" class="feather-small"></i> What service do you offer/provide? </div>
-            <div class="ans">Drivethru provides information about 175+ National and International Universities from 17+ countries, for FREE. Admission applying services, Career counselling, Visa services.</div>
+            <div class="ans">Drivethru provides information about 175+ National Universities and Universities from 17+ International countries, for FREE.</div>
 
          </div>
          <div class="question">
@@ -156,8 +156,8 @@
          </div>
 
       </div>
-      <div class="col">
-         <video width="400" controls autoplay muted>
+      <div class="col video">
+         <video controls autoplay muted>
             @if($video)
             <source src="{{asset('/videos/'.$video->name)}}" type="video/mp4">
             @else

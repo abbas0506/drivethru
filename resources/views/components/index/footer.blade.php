@@ -14,7 +14,16 @@
 <div class="content">
    <div class="col about">
       <img src="{{asset('/images/logo/light.png')}}" alt="">
-      <p>Drivethu.pk is a simple one stop shop for all your higher education(nationa and international) universities requirements from education counselling to vetted admission process</p>
+      <p>Drivethu.pk is a simple one stop shop for all your higher education(national and international) universities requirements from education counselling to vetted admission process</p>
+
+      <div class="social-bar">
+         <a href="https://web.facebook.com/Drivethruupk" target="_blank"><i class="fa fa-facebook"></i></a>
+         <a href="https://www.twitter.com/Drivethrupk" target="_blank"><i class="fa fa-twitter"></i></a>
+         <a href="https://www.pinterest.com/Drivethrupk" target="_blank"><i class="fa fa-pinterest"></i></a>
+         <a href="https://www.linkedin.com/company/drivethrupk" target="_blank"><i class="fa fa-linkedin"></i></a>
+         <a href="https://www.instagram.com/Drivethrupk" target="_blank"><i class="fa fa-instagram"></i></a>
+      </div>
+
    </div>
    <div class="col address">
       <h2>ADDRESS</h2>

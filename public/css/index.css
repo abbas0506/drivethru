@@ -343,7 +343,7 @@ a {
     background-position: center;
     /* Center the image */
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 110vh;
     width: 100%;
     position: relative;
 }
@@ -408,7 +408,7 @@ nav .feather-small {
     font-family: 'Quicksand', sans-serif;
     width: 100%;
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -416,22 +416,22 @@ nav .feather-small {
 }
 
 .app-msg h1 {
-    font-size: 48px;
+    font-size: 36px;
 }
 
 .app-msg p {
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 20px;
     color: #ff5421;
 }
 
 .app-msg button {
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .btn-red {
     font-size: 18px;
-    padding: 8px;
+    padding: 6px 10px;
     border-radius: 5px;
     background-color: #ff5421;
     border-color: transparent;
@@ -577,7 +577,7 @@ section .drivethru {
 }
 
 .who .col:hover .ico {
-    border-color: #ff5521be;
+    border-color: #ff5521;
 }
 
 .who .col .ico {
@@ -635,11 +635,12 @@ section .drivethru {
 
 .offer .col h1 {
     font-weight: 200;
+    font-size: 16px;
     color: #fff;
 }
 
 .offer .col p {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 30px;
     color: #fff;
     /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
@@ -650,8 +651,8 @@ section .drivethru {
 }
 
 .offer .col img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -815,6 +816,17 @@ section .drivethru {
     transition: all 0.5s ease;
 }
 
+.video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video video {
+    width: 90%;
+    height: 90%;
+}
+
 
 /* Footer */
 
@@ -837,6 +849,20 @@ section .drivethru {
     width: 76%;
     top: -50px;
     left: 12%;
+}
+
+.footer .social-bar {
+    margin-top: 10px;
+}
+
+.footer .social-bar a {
+    color: #fff;
+    margin: 0px 5px;
+    transition: all 0.5s ease;
+}
+
+.footer .social-bar a:hover {
+    color: #ff5421;
 }
 
 .newsletter>div {
@@ -911,6 +937,15 @@ section .drivethru {
 .footer .content .address {
     flex-basis: 20%;
     justify-content: left;
+}
+
+.footer .content .about img {
+    width: 150px;
+}
+
+.footer .content .about p {
+    font-size: 0.75rem;
+    /* text-align: justify; */
 }
 
 .footer .content .contact {
