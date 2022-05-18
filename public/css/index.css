@@ -113,6 +113,10 @@ a {
     text-align: right;
 }
 
+.txt-c {
+    text-align: center;
+}
+
 .txt-b {
     font-weight: bold;
 }
@@ -138,7 +142,7 @@ a {
 }
 
 .mt-5,
-.my-2 {
+.my-5 {
     margin-top: 2rem;
 }
 
@@ -163,7 +167,7 @@ a {
 }
 
 .mb-5,
-.my-2 {
+.my-5 {
     margin-bottom: 2rem;
 }
 
@@ -551,6 +555,78 @@ section .drivethru {
     font-size: 18px;
     font-family: 'Quicksand';
 }
+
+.fancy-pallet {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: left;
+    align-items: center;
+    transition: 0.5s;
+    position: relative;
+    margin-top: 70px;
+}
+
+.fancy-pallet.half {
+    flex-basis: 48%;
+}
+
+.fancy-pallet.one-third {
+    flex-basis: 32%;
+}
+
+.fancy-pallet:hover {}
+
+.fancy-pallet:hover {
+    cursor: pointer;
+}
+
+.fancy-pallet:hover h1,
+.fancy-pallet:hover p {
+    color: #ff5421;
+}
+
+.fancy-pallet:hover .ico {
+    border-color: #ff5521;
+}
+
+.fancy-pallet .ico {
+    position: absolute;
+    left: cal(50%-50px);
+    top: -50px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 50%;
+    /* border-color: #f3f8f9; */
+    border-color: #edf3f4;
+    border-width: 5px;
+    border-style: solid;
+    transition: all 0.5s ease;
+}
+
+.fancy-pallet .ico img {
+    width: 50px;
+    height: 50px;
+}
+
+.fancy-pallet h1 {
+    margin-top: 70px;
+    font-weight: 200;
+    font-size: 1.2rem;
+    transition: all 0.5s ease;
+}
+
+.fancy-pallet p {
+    font-size: 0.9rem;
+    margin-top: 16px;
+    transition: all 0.5s ease;
+}
+
+
+/* ......... */
 
 .who .col {
     display: flex;
@@ -1027,7 +1103,7 @@ section .drivethru {
 }
 
 .mini_header {
-    min-height: 60vh;
+    min-height: 40vh;
     width: 100%;
     background-size: cover;
     background-position: center;
@@ -1091,6 +1167,10 @@ section .drivethru {
 
 .w-45 {
     flex-basis: 45%;
+}
+
+.w-50 {
+    flex-basis: 50%;
 }
 
 .w-60 {
@@ -1240,4 +1320,27 @@ section .drivethru {
     height: 25px;
     border: solid;
     border-radius: 50%;
+}
+
+.index-page {
+    color: #171f32;
+}
+
+.index-page .red-underline {
+    margin: 50px 0px;
+}
+
+.index-page .col.half {
+    flex-basis: 50%;
+}
+
+.index-page .col.half img {
+    width: 80%;
+}
+
+.index-page .mission,
+.index-page .vision {
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 40px 60px -20px;
 }
