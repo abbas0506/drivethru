@@ -30,7 +30,6 @@
             clear decision, the student must have insight about the potential universities that he/she is considering to choose for admission. Drivethru provides them with complete information of 175+ National Universities and 18+ International countries for their higher education...
          </p>
       </div>
-
    </div>
    <div class="title red-underline">Vision</div>
    <div class="row">

@@ -1,19 +1,30 @@
 @extends('layouts.index')
 
 @section('header')
-<section class="contact mini_header">
+<section class="about mini_header">
    <x-index.header></x-index.header>
 </section>
 @endsection
 @section('content')
-<section class="section-80">
-   <img src="{{asset('/images/contact/1.png')}}" alt="" width="400">
-   <div class="row mt-5">
+<section class="section-80 index-page block">
+   <div class="title red-underline my-5">Contact Us</div>
+   <div class="row my-5">
+      <div class="col half">
+         <p class="txt-l mt-4">
+            <span class="txt-red">Drivethru</span> is providing admission services in both National and International admissions throughout the year. We are offering
+            admissions in 175+ National HEC Recognized Universities and Universities from 18+ International Countries. Ourteam is available 24/7, through all the mediums, to process all your admissions.
+         </p>
+      </div>
+      <div class="col half">
+         <img src="{{asset('/images/contact/1.png')}}" alt="">
+      </div>
+
+   </div>
+
+   <div class="support row mt-5">
       <!-- 1st col -->
       <div class="col txt-j mt-4">
-         <h2>
-            General
-         </h2>
+         <h3>General Support</h3>
          <div class="row mt-3 txt-l">
             <div class="v-center p-3"><i data-feather="mail" class="feather-small feather-red"></i></div>
             <div class="txt-l">
@@ -41,9 +52,9 @@
       <!-- 2nd col -->
 
       <div class="col txt-j mt-4">
-         <h2>
-            Admission
-         </h2>
+         <h3>
+            Admission Support
+         </h3>
          <div class="row txt-l mt-3">
             <div class="v-center p-3"><i data-feather="mail" class="feather-small feather-red"></i></div>
             <div class="txt-l">
@@ -70,9 +81,9 @@
       </div>
       <!-- 3rd col -->
       <div class="col txt-j mt-4">
-         <h2>
-            Emergency
-         </h2>
+         <h3>
+            Technical Support
+         </h3>
          <div class="row txt-l mt-3">
             <div class="v-center p-3"><i data-feather="mail" class="feather-small feather-red"></i></div>
             <div class="txt-l">

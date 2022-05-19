@@ -32,6 +32,7 @@
                <div class="content mt-4 txt-c">
                   <p>Get ready to avail this golden opportunity of getting Information of all the National & International Uni-versities at a single platform. You can filter out the best suited options for you through a single click and can start your admission process through us. You just need to fill a single Unified application form and it's all done from your side! </p>
                </div>
+               <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
             </div>
          </div>
       </div>
@@ -46,6 +47,7 @@
                   <p>Drivethru is here to take care of all your admission formalities from Ap-plying to getting slips for your entry test in case of National Admissions and Application processing to Call let-ters to Visa processing to Airport re-ceiving for International Applicants. You just need not to worry at any step. Drivethru is here to cater with all the requirements on your behalf.
                   </p>
                </div>
+               <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
             </div>
          </div>
       </div>

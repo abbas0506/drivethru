@@ -57,7 +57,7 @@
    <h2 class="drivethru">DRIVETHRU</h2>
    <div class="title red-underline">Who We Are?</div>
    <div class="row">
-      <div class="col">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/search.png')}}" alt="">
          </div>
@@ -65,9 +65,10 @@
             <h1>FIND UNIVERSITY</h1>
             <p>Intermediate students face issues, regrading decision making about their future scope of studies, and ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
 
-      <div class="col">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/person-check.png')}}" alt="">
          </div>
@@ -75,9 +76,10 @@
             <h1>APPLY THROUGH US</h1>
             <p>Long, time consuming and complex admission forms are a bitter jump student make due to which they dont take interest ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
 
-      <div class="col">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/person-message.png')}}" alt="">
          </div>
@@ -86,11 +88,12 @@
             <p>With less insight about the universities and without a proper career counseling, students may take
                wrong decisions and end-up in a place where they shouldn’t be ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
    </div>
    <!-- 2nd row -->
-   <div class="row">
-      <div class="col">
+   <div class="row mt-5">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/report-edit.png')}}" alt="">
          </div>
@@ -98,9 +101,10 @@
             <h1>PERSONALIZED REPORT</h1>
             <p>Personalized report as the name displays, is specific for each student containing all the available options for him according to his field, interest, location and budget ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
 
-      <div class="col">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/dollar-sign.png')}}" alt="">
          </div>
@@ -109,9 +113,10 @@
             <p>We do not charge anything for providing information. We charge $1 ($1=150/-) per
                university only for the applying process. There are no hidden charges included ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
 
-      <div class="col">
+      <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/report.png')}}" alt="">
          </div>
@@ -119,6 +124,7 @@
             <h1>PAST PAPERS</h1>
             <p>Students face difficulty majorly in entrance exams while seeking admission to universities. Past papers help them to prepare for the exams in short time ....</p>
          </div>
+         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
       </div>
    </div>
 </section>
@@ -137,8 +143,13 @@
       <div class="col">
 
          <div class="question show">
-            <div class="q"> <i data-feather="bell" class="feather-small"></i> What service do you offer/provide? </div>
-            <div class="ans">Drivethru provides information about 175+ National Universities and Universities from 17+ International countries, for FREE.</div>
+            <div class="q"> <i data-feather="bell" class="feather-small"></i> What is drivethru.pk? </div>
+            <div class="ans">Drivethru.pk is first of its kind, an ed-tech firm that is working to meet the higher educational requirements of students of Pakistan. </div>
+
+         </div>
+         <div class="question">
+            <div class="q"> <i data-feather="bell" class="feather-small"></i> What services do you provide? </div>
+            <div class="ans">Drivethru provides information about 175+ National HEC Recognized Universities and International Universities from 17+ countries, for FREE.</div>
 
          </div>
          <div class="question">
@@ -150,11 +161,6 @@
             <div class="q"><i data-feather="bell" class="feather-small"></i> How can I book an appointment?</div>
             <div class="ans">User can book an appointment with us through website You can reach us via WhatsApp in office timing 9:00-5:00 at following Contact Number. +92 316 4515249, +92 345 7515152.</div>
          </div>
-         <div class="question">
-            <div class="q"><i data-feather="bell" class="feather-small"></i> Where can I get this Information? </div>
-            <div class="ans">By creating a free login user can extract every information they want. User can also leave a message on social media profiles or user can contact our Student Advisor on mentioned WhatsApp in office timings to get complete Information.</div>
-         </div>
-
       </div>
       <div class="col video">
          <video controls autoplay muted>

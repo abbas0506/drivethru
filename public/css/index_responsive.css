@@ -1,200 +1,202 @@
-    @media only screen and (max-width: 800px) {
-        .rcol {
-            display: block;
-        }
-        .app-header-logo {
-            width: 110px;
-        }
-        .app-msg h1 {
-            font-size: 20px;
-        }
-        .app-msg p {
-            margin-top: 20px;
-            font-size: 10px;
-            color: #ff5421;
-        }
-        section {
-            width: 100%;
-            text-align: center;
-        }
-        section .title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        section .content {
-            font-size: 0.8rem;
-            text-align: justify;
-        }
-        .who,
-        .offer,
-        .services,
-        .faq {
-            width: 90%;
-            margin: auto;
-        }
-        .offer .col {
-            padding: 10px 0px 10px 20px;
-        }
-        .offer .col img {
-            width: 30px;
-            height: 30px;
-        }
-        nav {
-            padding: 4% 6%;
-        }
-        .nav-links {
-            position: fixed;
-            width: 50%;
-            overflow: auto;
-            top: 0px;
-            height: 100vh;
-            line-height: 40px;
-            right: 0px;
-            background-color: #171f32;
-            z-index: 10;
-            text-align: left;
-            padding: 20px;
-            transform: translateX(100%);
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide-left {
-            transform: translateX(0);
-        }
-        .nav-links ul a {
-            display: block;
-            margin-left: 30px;
-            /* line-height: 40px; */
-            padding: 0px;
-        }
-        .nav-links ul a:nth-of-type(1) {
-            margin-top: 50px;
-        }
-        nav .feather {
-            display: block;
-        }
-        section .row {
-            display: block;
-            justify-content: space-between;
-        }
-        section .col {
-            margin-top: 10px;
-        }
-        .quote {
-            min-height: 20vh;
-        }
-        .quote p {
-            font-size: 0.8rem;
-        }
-        .quote p::before,
-        .quote p::after {
-            font-size: 1.5rem;
-        }
-        .quote p::before {
-            top: 20px;
-            left: -5%;
-            text-align: left;
-        }
-        .quote p::after {
-            top: 5px;
-            right: -5%;
-            text-align: right;
-        }
-        .faq video {
-            width: 100%;
-        }
-        .faq h2 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .faq .question :not(.show) {
-            margin-top: 0;
-        }
-        .faq .question .q {
-            font-size: 0.9rem;
-        }
-        .faq .question .ans {
-            font-size: 0.8rem;
-        }
-        .footer {
-            margin-top: 100px !important;
-            padding: 30px;
-        }
-        .footer,
-        .newsletter,
-        .footer .content {
-            display: block;
-        }
-        .newsletter>div {
-            padding: 15px 20px;
-        }
-        .newsletter .icon {
-            width: 25px;
-            height: 25px;
-        }
-        .newsletter .title {
-            font-size: 14px;
-        }
-        .newsletter input {
-            padding: 5px;
-        }
-        /* content */
-        .footer .content {
-            margin-top: 50px;
-        }
-        .footer .about,
-        .footer .contact,
-        .footer .address {
-            margin-top: 20px;
-        }
-        .copyright {
-            bottom: 10px;
-            width: 89%;
-            font-size: 0.6rem;
-        }
-        .auth-section {
-            display: block;
-            max-width: 100%;
-        }
-        .auth-section .site-slogan {
-            width: 90%;
-            height: 60vh;
-        }
-        .site-slogan img {
-            width: 80%;
-        }
-        .site-slogan p {
-            color: #e6e6e6b2;
-            font-size: 1.0rem;
-            margin-top: 25px;
-            text-align: justify;
-        }
-        .auth-section .auth-form {
-            display: block;
-            min-width: 70%;
-            margin-top: 30px;
-        }
+@media only screen and (max-width: 800px) {
+    .rcol {
+        display: block;
     }
-    
-    @media only screen and (max-width: 440px) {
-        .quote {
-            min-height: 15vh;
-        }
-        .quote p {
-            font-size: 0.6rem;
-        }
-        .quote p::before,
-        .quote p::after {
-            font-size: 1.5rem;
-        }
-        .quote p::before {
-            top: 20px;
-            left: -5%;
-            text-align: left;
-        }
-        .quote p::after {
-            top: 5px;
-            right: -5%;
-            text-align: right;
-        }
+    .app-header-logo {
+        width: 110px;
     }
+    .app-msg h1 {
+        font-size: 20px;
+    }
+    .app-msg p {
+        margin-top: 20px;
+        font-size: 10px;
+        color: #ff5421;
+    }
+    section {
+        width: 100%;
+        text-align: center;
+    }
+    section .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    section .content {
+        font-size: 0.8rem;
+        text-align: justify;
+    }
+    .who,
+    .offer,
+    .services,
+    .faq {
+        width: 90%;
+        margin: auto;
+    }
+    .offer .col {
+        padding: 10px 0px 10px 20px;
+    }
+    .offer .col img {
+        width: 30px;
+        height: 30px;
+    }
+    nav {
+        padding: 4% 6%;
+    }
+    .nav-links {
+        position: fixed;
+        width: 50%;
+        overflow: auto;
+        top: 0px;
+        height: 100vh;
+        line-height: 40px;
+        right: 0px;
+        background-color: #171f32;
+        z-index: 10;
+        text-align: left;
+        padding: 20px;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+    .slide-left {
+        transform: translateX(0);
+    }
+    .nav-links ul a {
+        display: block;
+        margin-left: 30px;
+        padding: 0;
+    }
+    .nav-links ul a:nth-of-type(1) {
+        margin-top: 50px;
+    }
+    nav .feather {
+        display: block;
+    }
+    section .row {
+        display: block;
+        justify-content: space-between;
+    }
+    section .col {
+        margin-top: 10px;
+    }
+    .fancy-pallet {
+        margin-top: 100px !important;
+    }
+    .quote {
+        min-height: 20vh;
+    }
+    .quote p {
+        font-size: 0.8rem;
+    }
+    .quote p::before,
+    .quote p::after {
+        font-size: 1.5rem;
+    }
+    .quote p::before {
+        top: 20px;
+        left: -5%;
+        text-align: left;
+    }
+    .quote p::after {
+        top: 5px;
+        right: -5%;
+        text-align: right;
+    }
+    .faq video {
+        width: 100%;
+    }
+    .faq h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    .faq .question :not(.show) {
+        margin-top: 0;
+    }
+    .faq .question .q {
+        font-size: 0.9rem;
+    }
+    .faq .question .ans {
+        font-size: 0.8rem;
+    }
+    .footer {
+        margin-top: 100px !important;
+        padding: 30px;
+    }
+    .footer,
+    .newsletter,
+    .footer .content {
+        display: block;
+    }
+    .newsletter>div {
+        padding: 15px 20px;
+    }
+    .newsletter .icon {
+        width: 25px;
+        height: 25px;
+    }
+    .newsletter .title {
+        font-size: 14px;
+    }
+    .newsletter input {
+        padding: 5px;
+    }
+    /* content */
+    .footer .content {
+        margin-top: 50px;
+    }
+    .footer .about,
+    .footer .contact,
+    .footer .address {
+        margin-top: 20px;
+    }
+    .copyright {
+        bottom: 10px;
+        width: 89%;
+        font-size: 0.6rem;
+    }
+    .auth-section {
+        display: block;
+        max-width: 100%;
+    }
+    .auth-section .site-slogan {
+        width: 90%;
+        height: 60vh;
+    }
+    .site-slogan img {
+        width: 80%;
+    }
+    .site-slogan p {
+        color: #e6e6e6b2;
+        font-size: 1.0rem;
+        margin-top: 25px;
+        text-align: justify;
+    }
+    .auth-section .auth-form {
+        display: block;
+        min-width: 70%;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .quote {
+        min-height: 15vh;
+    }
+    .quote p {
+        font-size: 0.6rem;
+    }
+    .quote p::before,
+    .quote p::after {
+        font-size: 1.5rem;
+    }
+    .quote p::before {
+        top: 20px;
+        left: -5%;
+        text-align: left;
+    }
+    .quote p::after {
+        top: 5px;
+        right: -5%;
+        text-align: right;
+    }
+}
