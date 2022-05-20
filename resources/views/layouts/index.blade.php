@@ -23,18 +23,16 @@
    @yield('footer')
    @yield('script')
 
-   <!-- facebook plugin -->
-
-   <!-- Messenger Chat Plugin Code -->
+   <!-- Messenger Chat plugin Code -->
    <div id="fb-root"></div>
 
-   <!-- Your Chat Plugin code -->
+   <!-- Your Chat plugin code -->
    <div id="fb-customer-chat" class="fb-customerchat">
    </div>
 
    <script>
    var chatbox = document.getElementById('fb-customer-chat');
-   chatbox.setAttribute("page_id", "109959645054420");
+   chatbox.setAttribute("page_id", "103096905391237");
    chatbox.setAttribute("attribution", "biz_inbox");
    </script>
 
@@ -56,12 +54,6 @@
       fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
    </script>
-
-   <!-- massenger ends -->
-
-
-
-
 
    <script>
    feather.replace();
