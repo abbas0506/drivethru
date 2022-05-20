@@ -1033,32 +1033,19 @@
         font-size: 0.8rem;
     }
     
-    .social-group-vertical {
+    .whatsapp-icon {
         position: fixed;
-        bottom: 30px;
-        right: 0px;
-        transform: rotate(90deg);
+        bottom: 70px;
+        right: 24px;
         z-index: 5;
     }
     
-    .social-icon {
+    .whatsapp-icon img {
         width: 30px;
         height: 30px;
-        transform: rotate(-90deg);
     }
     
-    .social-icon.whatsapp {
-        width: 30px;
-        height: 30px;
-        margin-left: 10px;
-    }
-    
-    .social-icon.facebook {
-        width: 16px;
-        height: 30px;
-    }
-    
-    .social-icon:hover {
+    .whatsapp:hover {
         cursor: pointer;
     }
     

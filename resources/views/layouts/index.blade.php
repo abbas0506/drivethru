@@ -23,16 +23,16 @@
    @yield('footer')
    @yield('script')
 
-   <!-- Messenger Chat plugin Code -->
+   <!-- Messenger Chat Plugin Code -->
    <div id="fb-root"></div>
 
-   <!-- Your Chat plugin code -->
+   <!-- Your Chat Plugin code -->
    <div id="fb-customer-chat" class="fb-customerchat">
    </div>
 
    <script>
    var chatbox = document.getElementById('fb-customer-chat');
-   chatbox.setAttribute("page_id", "103096905391237");
+   chatbox.setAttribute("page_id", "109959645054420");
    chatbox.setAttribute("attribution", "biz_inbox");
    </script>
 
