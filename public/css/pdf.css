@@ -667,3 +667,8 @@ td {
     top: 0;
     left: 69%;
 }
+
+.report-footer {
+    position: fixed;
+    bottom: 0px;
+}

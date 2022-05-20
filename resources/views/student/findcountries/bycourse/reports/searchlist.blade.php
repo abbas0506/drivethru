@@ -52,7 +52,9 @@
          @endforeach
       </tbody>
    </table>
-
+   <div class="report-footer">
+      <img src="{{public_path('/images/logo/report-footer.png')}}" alt="" width='100%'>
+   </div>
 </body>
 
 </html>
