@@ -40,8 +40,8 @@
    </div>
    <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>
 </nav>
-<!-- <div class="whatsapp-icon">
+<div class="whatsapp-icon">
    <a href="https://wa.me/+923457515152" target="_blank">
       <img src=" {{asset('/images/icons/whatsapp.png')}}" alt="">
    </a>
-</div> -->
+</div>
