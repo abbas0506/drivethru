@@ -1,4 +1,4 @@
-<nav>
+<nav id='navbar'>
    <a href="/">
       <img src="{{asset('/images/logo/dark.png')}}" alt="" href="" class='app-header-logo'>
    </a>
@@ -35,7 +35,7 @@
 
       </ul>
    </div>
-   <i data-feather="menu" class="feather-small feather-light" onclick="showmenu()"></i>
+   <i data-feather="menu" id='menubars' class="feather-small feather-light" onclick="showmenu()"></i>
 </nav>
 <div class="whatsapp-icon">
    <a href="https://wa.me/+923457515152" target="_blank">
