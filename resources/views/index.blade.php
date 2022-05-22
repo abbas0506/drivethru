@@ -10,7 +10,7 @@
       <img src="{{asset('/images/bg/1.jpg')}}" alt="">
    </div>
    <div class="app-msg">
-      <p>175+ Universities from Pakistan and 18+ other Countries</p>
+      <p>175+ Universities from Pakistan and <br>18+ other Countries</p>
       <h1>Single-Click Application Form</h1>
       <button class="btn btn-red">
          @if(session('user'))

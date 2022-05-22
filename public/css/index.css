@@ -502,11 +502,11 @@
     
     .app-msg h1 {
         font-size: 36px;
+        margin-top: 20px;
     }
     
     .app-msg p {
-        margin-top: 20px;
-        font-size: 20px;
+        font-size: 24px;
         color: #ff5421;
     }
     
@@ -1122,8 +1122,8 @@
     
     .whatsapp-icon {
         position: fixed;
-        bottom: 100px;
-        right: 50px;
+        bottom: 50px;
+        right: 20px;
         z-index: 5;
     }
     
