@@ -1,14 +1,14 @@
 @extends('layouts.index')
 
 @section('header')
-<section class="header1">
+<section class="header">
    <x-index.header></x-index.header>
-   <div id="image-animator">
+   <!-- <div id="image-animator">
       <img src="{{asset('/images/bg/auth.jpg')}}" alt="">
       <img src="{{asset('/images/bg/mini/adm.jpg')}}" alt="">
       <img src="{{asset('/images/bg/mini/services.jpg')}}" alt="">
       <img src="{{asset('/images/bg/1.jpg')}}" alt="">
-   </div>
+   </div> -->
    <div class="app-msg">
       <p>175+ Universities from Pakistan and <br>18+ other Countries</p>
       <h1>Single-Click Application Form</h1>
