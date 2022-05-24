@@ -716,6 +716,7 @@ section .drivethru {
 
 .fancy-pallet p {
     font-size: 0.9rem;
+    text-align: left;
     margin-top: 16px;
     transition: all 0.5s ease;
 }
@@ -1449,7 +1450,6 @@ section .drivethru {
 }
 
 .index-page .blog ul {
-    /* list-style: none; */
     padding: 10px;
     margin-left: 30px;
 }

@@ -8,7 +8,7 @@
 @section('content')
 <section class="section-80 index-page block">
    <div class="title red-underline my-5">Services</div>
-   <div class="row my-5">
+   <div class="row desc my-5">
       <div class="col half">
          <p class="txt-l mt-4">
             <span class="txt-red">Drivethru</span> is providing admission services in both National and International admissions throughout the year. We are offering admissions in 175+ National H EC Recognized Universities and Universities from 18+ International Countries. Our team is available 24/7, through all the mediums, to process all your admissions.

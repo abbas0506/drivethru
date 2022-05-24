@@ -72,6 +72,12 @@
     nav .feather {
         display: block;
     }
+    nav.light .nav-links {
+        text-align: left;
+    }
+    nav.light .nav-links ul a {
+        color: #fff;
+    }
     section .row {
         display: block;
         justify-content: space-between;
@@ -179,11 +185,20 @@
     .whatsapp-icon {
         bottom: 80px;
     }
-    .index-page .blog {
+    .index-page {
+        width: 92%;
+    }
+    .index-page .desc {
+        padding: 0 4%;
+    }
+    .index-page .blog,
+    .index-page .mission,
+    .index-page .vision {
         margin-top: 30px;
-        padding: 5px;
-        /* background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 40px 60px -20px; */
+        padding: 2%;
+    }
+    .index-page .col>img {
+        margin: 40px 0;
     }
 }
 
