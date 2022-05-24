@@ -62,7 +62,7 @@
 <section class="who">
    <h2 class="drivethru">DRIVETHRU</h2>
    <div class="title red-underline">Who We Are?</div>
-   <div class="frow">
+   <div class="row">
       <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/search.png')}}" alt="">
@@ -75,7 +75,6 @@
             Read More
          </a>
       </div>
-
 
       <div class="col fancy-pallet one-third">
          <div class="ico">
