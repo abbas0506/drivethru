@@ -534,39 +534,23 @@ nav .feather-small {
     margin-top: 25px;
 }
 
-.btn-red {
-    font-size: 18px;
-    padding: 8px 16px !important;
-    border-radius: 50px !important;
-    background-color: #ff5421;
-    border-color: transparent;
-    color: white;
-}
-
-.btn-red:hover {
-    cursor: pointer;
-    border-color: transparent;
-    background-color: rgb(36, 36, 41);
-    color: #fff;
-}
-
 .btn {
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 5px;
-    background-color: #ff5421;
+    font-size: 14px;
+    padding: 8px 16px;
     border-color: transparent;
-    color: white;
 }
 
 .btn:hover {
     cursor: pointer;
 }
 
-.btn.red {
-    border-radius: 5px;
-    border-color: transparent;
+.btn-red {
     background-color: #ff5421;
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #ff5521c0;
 }
 
 .btn.rounded {
@@ -705,39 +689,6 @@ section .drivethru {
     flex-basis: 32%;
 }
 
-.fancy-pallet:hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 40px 60px -20px;
-}
-
-.fancy-pallet:hover h1 {
-    animation-name: moveup;
-    animation-duration: 1s;
-    animation-timing-function: ease;
-}
-
-@keyframes moveup {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.fancy-pallet:hover p {
-    color: inherit;
-}
-
-.fancy-pallet:hover,
-.fancy-pallet:hover .ico {
-    /* border-color: #da907a; */
-    background-color: #e2e2e2e2;
-}
-
 .fancy-pallet .ico {
     position: absolute;
     left: cal(50%-50px);
@@ -787,6 +738,38 @@ section .drivethru {
     border-color: transparent;
     background-color: #ff5521;
     color: #fff;
+}
+
+.fancy-pallet:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 40px 60px -20px;
+}
+
+.fancy-pallet:hover h1 {
+    animation-name: moveup;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
+
+@keyframes moveup {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.fancy-pallet:hover h1,
+.fancy-pallet:hover p {
+    color: #ff5421;
+}
+
+.fancy-pallet:hover .ico {
+    border-color: #ff5421;
 }
 
 
@@ -1176,14 +1159,14 @@ section .drivethru {
 
 .whatsapp-icon {
     position: fixed;
-    bottom: 50px;
-    right: 20px;
+    bottom: 70px;
+    right: 35px;
     z-index: 5;
 }
 
 .whatsapp-icon img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 
 .whatsapp:hover {
