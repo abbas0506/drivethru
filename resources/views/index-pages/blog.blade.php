@@ -23,7 +23,7 @@
    <div class="title red-underline my-5">Blog</div>
    <!-- find uni blog -->
    <div class="row blog" id='find-university'>
-      <div class="col  half txt-j">
+      <div class="col half txt-l">
          <h3>FIND UNIVERSITY</h3>
          <p class="txt-j mt-4">
             The dynamic environment of an emerging country like Pakistan, students face multiple challenges while selecting their majors and thrust areas for further studying. Students of Pakistan have been struggling with decision making, and this leads to poor decisions for their further studies. Many students regret their degree selection after a year or two in the field, many students tend to change their discipline afterwards. Students are also un-aware of the number of programs offered by
@@ -47,7 +47,7 @@
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
-      <div class="col half txt-j">
+      <div class="col half txt-l">
          <h3>PERSONALIZED REPORT</h3>
          <p class="txt-j mt-4">
             The dynamic environment of an emerging country like Pakistan, students face multiple challenges while selecting their majors and thrust areas for further studying. Students of Pakistan have been struggling with decision making, and this leads to poor decisions for their further studies. Many students regret their degree selection after a year or two in the field, many students tend to change their discipline afterwards. Students are also un-aware of the number of programs offered by
@@ -65,7 +65,7 @@
    </div>
    <!-- past papers blog -->
    <div class="row blog" id='past-papers'>
-      <div class="col half txt-j">
+      <div class="col half txt-l">
          <h3>PAST PAPERS</h3>
          <p class="txt-j mt-4">
             Unfortunately, in Pakistan there is no platform which is providing clear, accurate, easily accessible, updated and timely information about universities, their criterion, programs they are offering and their respective enrollment dates and most Importantly the con-tent about the Entrance exams. Drivethru has resolved this problem of students in an effective and efficient manner by placing all the available past papers of almost every field on its website. <br>
@@ -97,7 +97,7 @@
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
-      <div class="col half txt-j">
+      <div class="col half txt-l">
          <h3>APPLY THROUGH US</h3>
          <p class="txt-j mt-4">
             Another problem they face is the complex, time consuming and lengthy admission Forms they have to fill for every university they are considering to apply for. And for the students who are looking to study abroad in renowned international universities may have to pay multiple visits to their consultants for their counselling and application processing which is very difficult in some situations.
@@ -125,7 +125,7 @@
 
    <!-- Career Counselling -->
    <div class="row blog" id='career-counselling'>
-      <div class="col half txt-j">
+      <div class="col half txt-l">
          <h3>CAREER COUNSELLING</h3>
          <p class="txt-j mt-4">
             We close-loop your journey starting from discovering your options to demonstrating your interest. This helps you hone your innovation skills, creativity and build expertise in your desired career field.
@@ -147,7 +147,7 @@
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
-      <div class="col half txt-j" id='our-services'>
+      <div class="col half txt-l" id='our-services'>
          <h3>OUR SERVICES</h3>
          <h4 class="mt-4">Find University</h4>
          <p class="txt-j mt-2">
@@ -181,7 +181,7 @@
    </div>
    <!-- FAQ -->
    <div class="row blog" id='faq'>
-      <div class="col txt-j">
+      <div class="col txt-l">
          <h3>FREQUENTLY ASKED QUESTIONS</h3>
          <h4 class="mt-4">1. What is Drivethru.pk?</h4>
          <p class="txt-j mt-2">
