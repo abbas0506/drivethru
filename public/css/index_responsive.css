@@ -179,6 +179,12 @@
     .whatsapp-icon {
         bottom: 80px;
     }
+    .index-page .blog {
+        margin-top: 30px;
+        padding: 5px;
+        /* background-color: transparent;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 40px 60px -20px; */
+    }
 }
 
 @media only screen and (max-width: 440px) {
