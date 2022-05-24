@@ -3,7 +3,7 @@
         display: block;
     }
     .app-header-logo {
-        width: 110px;
+        width: 150px;
     }
     .app-msg h1 {
         font-size: 20px;
@@ -41,7 +41,7 @@
         height: 30px;
     }
     nav {
-        padding: 4% 6%;
+        padding: 4%;
     }
     .nav-links {
         position: fixed;
