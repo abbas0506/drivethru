@@ -22,13 +22,19 @@
 
    <div class="title red-underline my-5">Blog</div>
    <!-- find uni blog -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='find-university'>
       <div class="col  half txt-j">
          <h3>FIND UNIVERSITY</h3>
          <p class="txt-j mt-4">
             The dynamic environment of an emerging country like Pakistan, students face multiple challenges while selecting their majors and thrust areas for further studying. Students of Pakistan have been struggling with decision making, and this leads to poor decisions for their further studies. Many students regret their degree selection after a year or two in the field, many students tend to change their discipline afterwards. Students are also un-aware of the number of programs offered by
-            number of universities inside and out of Pa-kistan. Drive Thru aims to tackle all of these problems, in order to make perfect decision making for students possible, Drive Thru will help students in determining their own road map which is better for everyone. Our mission is to satisfy the needs that all high school students in Pakistan have for quali-ty Information Technology (IT) services for Online educational consultancy, in a way that is consistent with our values of excellence,
-            efficiency, effectiveness and attention to de-tails. For National Admissions, Student can come to our website and select the degree pro-gram of his/her choice. All the Universities in Pakistan offering that specific degree pro-gram will appear and student can choose any of them by looking at the details of the In-stitute including location, deadline, fee structure etc. Student can also filter the Universi-ties by choosing the desired fee structure or by choosing the preferable
+            number of universities inside and out of Pakistan.
+         </p>
+         <p class="mt-1">
+            Drive Thru aims to tackle all of these problems, in order to make perfect decision making for students possible, Drive Thru will help students in determining their own road map which is better for everyone. Our mission is to satisfy the needs that all high school students in Pakistan have for quali-ty Information Technology (IT) services for Online educational consultancy, in a way that is consistent with our values of excellence,
+            efficiency, effectiveness and attention to de-tails.
+         </p>
+         <p class="mt-1">
+            For National Admissions, Student can come to our website and select the degree pro-gram of his/her choice. All the Universities in Pakistan offering that specific degree pro-gram will appear and student can choose any of them by looking at the details of the In-stitute including location, deadline, fee structure etc. Student can also filter the Universi-ties by choosing the desired fee structure or by choosing the preferable
             location. Facility of entering the University name and extracting all information regarding the University is also available. In case of International Admissions, student have to select the country he/she wants to go for study and all the on-board Universities along with their details will show up. Stu-dent can get Information about the Visa process, living cost of that country, study cost, job or work opportunities, Scholarships etc.
          </p>
       </div>
@@ -37,7 +43,7 @@
       </div>
    </div>
    <!-- personalized report blog -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='personalized-report'>
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
@@ -45,14 +51,20 @@
          <h3>PERSONALIZED REPORT</h3>
          <p class="txt-j mt-4">
             The dynamic environment of an emerging country like Pakistan, students face multiple challenges while selecting their majors and thrust areas for further studying. Students of Pakistan have been struggling with decision making, and this leads to poor decisions for their further studies. Many students regret their degree selection after a year or two in the field, many students tend to change their discipline afterwards. Students are also un-aware of the number of programs offered by
-            number of universities inside and out of Pa-kistan. Drive Thru aims to tackle all of these problems, in order to make perfect decision making for students possible, Drive Thru will help students in determining their own road map which is better for everyone. Our mission is to satisfy the needs that all high school students in Pakistan have for quali-ty Information Technology (IT) services for Online educational consultancy, in a way that is consistent with our values of excellence,
-            efficiency, effectiveness and attention to de-tails. For National Admissions, Student can come to our website and select the degree pro-gram of his/her choice. All the Universities in Pakistan offering that specific degree pro-gram will appear and student can choose any of them by looking at the details of the In-stitute including location, deadline, fee structure etc. Student can also filter the Universi-ties by choosing the desired fee structure or by choosing the preferable
+            number of universities inside and out of Pakistan.
+         </p>
+         <p class="mt-1">
+            Drive Thru aims to tackle all of these problems, in order to make perfect decision making for students possible, Drive Thru will help students in determining their own road map which is better for everyone. Our mission is to satisfy the needs that all high school students in Pakistan have for quali-ty Information Technology (IT) services for Online educational consultancy, in a way that is consistent with our values of excellence,
+            efficiency, effectiveness and attention to details.
+         </p>
+         <p class="mt-1">
+            For National Admissions, Student can come to our website and select the degree pro-gram of his/her choice. All the Universities in Pakistan offering that specific degree pro-gram will appear and student can choose any of them by looking at the details of the In-stitute including location, deadline, fee structure etc. Student can also filter the Universi-ties by choosing the desired fee structure or by choosing the preferable
             location. Facility of entering the University name and extracting all information regarding the University is also available. In case of International Admissions, student have to select the country he/she wants to go for study and all the on-board Universities along with their details will show up. Stu-dent can get Information about the Visa process, living cost of that country, study cost, job or work opportunities, Scholarships etc.
          </p>
       </div>
    </div>
    <!-- past papers blog -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='past-papers'>
       <div class="col half txt-j">
          <h3>PAST PAPERS</h3>
          <p class="txt-j mt-4">
@@ -81,7 +93,7 @@
       </div>
    </div>
    <!-- Apply through us blog -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='apply-through-us'>
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
@@ -112,16 +124,16 @@
    </div>
 
    <!-- Career Counselling -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='career-counselling'>
       <div class="col half txt-j">
          <h3>CAREER COUNSELLING</h3>
          <p class="txt-j mt-4">
             We close-loop your journey starting from discovering your options to demonstrating your interest. This helps you hone your innovation skills, creativity and build expertise in your desired career field.
          </p>
-         <p>
+         <p class="mt-1">
             In order to provide students a vibrant environment to find the best university which matches their interests, prior education, and budget, we help. Our counselors and platform provide them the updated knowledge of the deadlines at Domestic and International universities.
          </p>
-         <p>
+         <p class="mt-1">
             In case of international admissions, as you complete your undergraduate degree from a local university or in many cases well before it ends, or even in case of Undergraduate degree after intermediate, you may have evaluated questions regarding the next degree. We have helped candidates from across Pakistan secure top offers across Engineering, Sciences, Management, Social Sciences, Environment, Law, Public Policy, Administration, Fashion, Fine Art and Architecture in USA, Canada, UK,
             Europe, East Asia and Australia. We also work on scholarship applications like Chevening, Fulbright and Erasmus Mundus and grants or fellowships from universities
          </p>
@@ -131,11 +143,11 @@
       </div>
    </div>
    <!-- Services blog -->
-   <div class="row blog mt-5">
+   <div class="row blog">
       <div class="col half centered">
          <img src="{{asset('/images/blog/3.png')}}" alt="">
       </div>
-      <div class="col half txt-j">
+      <div class="col half txt-j" id='our-services'>
          <h3>OUR SERVICES</h3>
          <h4 class="mt-4">Find University</h4>
          <p class="txt-j mt-2">
@@ -168,7 +180,7 @@
       </div>
    </div>
    <!-- FAQ -->
-   <div class="row blog mt-5">
+   <div class="row blog" id='faq'>
       <div class="col txt-j">
          <h3>FREQUENTLY ASKED QUESTIONS</h3>
          <h4 class="mt-4">1. What is Drivethru.pk?</h4>

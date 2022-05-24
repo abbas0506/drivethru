@@ -951,6 +951,7 @@ section .drivethru {
 }
 
 .faq .question .ans {
+    font-size: 0.8rem;
     align-items: center;
     background-color: transparent;
     margin-top: 10px;
@@ -967,12 +968,31 @@ section .drivethru {
     color: #fff;
 }
 
+.question.show .ans {
+    animation-name: toggleSlow;
+    animation-duration: 0.5s;
+    overflow: hidden;
+}
+
+@keyframes toggleSlow {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 15%;
+    }
+    100% {
+        height: 25%;
+    }
+}
+
 .faq .question:not(.show) .q:hover {
     cursor: pointer;
 }
 
 .question:not(.show) .ans {
     display: none;
+    height: 0%;
     transition: all 0.5s ease;
 }
 
@@ -1418,6 +1438,7 @@ section .drivethru {
 .index-page .mission,
 .index-page .vision,
 .index-page .blog {
+    margin-top: 50px;
     padding: 40px;
     background-color: transparent;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 40px 60px -20px;

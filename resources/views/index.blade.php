@@ -62,7 +62,7 @@
 <section class="who">
    <h2 class="drivethru">DRIVETHRU</h2>
    <div class="title red-underline">Who We Are?</div>
-   <div class="row">
+   <div class="frow">
       <div class="col fancy-pallet one-third">
          <div class="ico">
             <img src="{{asset('/images/icons/search.png')}}" alt="">
@@ -71,8 +71,11 @@
             <h1>FIND UNIVERSITY</h1>
             <p>Intermediate students face issues, regrading decision making about their future scope of studies, and ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#find-university')}}" class="btn-blue">
+            Read More
+         </a>
       </div>
+
 
       <div class="col fancy-pallet one-third">
          <div class="ico">
@@ -82,7 +85,10 @@
             <h1>APPLY THROUGH US</h1>
             <p>Long, time consuming and complex admission forms are a bitter jump student make due to which they dont take interest ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#apply-through-us')}}" class="btn-blue">
+            Read More
+         </a>
+
       </div>
 
       <div class="col fancy-pallet one-third">
@@ -94,7 +100,9 @@
             <p>With less insight about the universities and without a proper career counseling, students may take
                wrong decisions and end-up in a place where they shouldn’t be ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#career-counselling')}}" class="btn-blue">
+            Read More
+         </a>
       </div>
    </div>
    <!-- 2nd row -->
@@ -107,7 +115,9 @@
             <h1>PERSONALIZED REPORT</h1>
             <p>Personalized report as the name displays, is specific for each student containing all the available options for him according to his field, interest, location and budget ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#personalized-report')}}" class="btn-blue">
+            Read More
+         </a>
       </div>
 
       <div class="col fancy-pallet one-third">
@@ -119,7 +129,9 @@
             <p>We do not charge anything for providing information. We charge $1 ($1=150/-) per
                university only for the applying process. There are no hidden charges included ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#faq')}}" class="btn-blue">
+            Read More
+         </a>
       </div>
 
       <div class="col fancy-pallet one-third">
@@ -130,7 +142,9 @@
             <h1>PAST PAPERS</h1>
             <p>Students face difficulty majorly in entrance exams while seeking admission to universities. Past papers help them to prepare for the exams in short time ....</p>
          </div>
-         <div class="btn-blue"><a href="{{url('blog')}}"> Read More</a></div>
+         <a href="{{url('blog#past-papers')}}" class="btn-blue">
+            Read More
+         </a>
       </div>
    </div>
 </section>
@@ -155,17 +169,20 @@
          </div>
          <div class="question">
             <div class="q"> <i data-feather="bell" class="feather-small"></i> What services do you provide? </div>
-            <div class="ans">Drivethru provides information about 175+ National HEC Recognized Universities and International Universities from 17+ countries, for FREE.</div>
+            <div class="ans">Drivethru provides information about 175+ National HEC Recognized Universities and International Universities from 17+ countries, for FREE. We let you know about their eligibility criteria, offered programs, Fee structure, Entrance tests, past papers and complete counselling.</div>
 
          </div>
          <div class="question">
             <div class="q"><i data-feather="bell" class="feather-small"></i> How much do you charge? </div>
-            <div class="ans">We provide complete information about National and International admissions, FREE OF COST. If you proceed for admission we will apply on your behalf in these Universities, then we charge $1/ University ($1=150 pkr).</div>
+            <div class="ans">We provide complete information about National and International admissions, FREE OF COST. If you want us to apply on your behalf in these Universities, then we charge $1/ University ($1=150 pkr). (Note: We charge no consultancy fees.</div>
          </div>
          <div class="question">
 
             <div class="q"><i data-feather="bell" class="feather-small"></i> How can I book an appointment?</div>
-            <div class="ans">User can book an appointment with us through website You can reach us via WhatsApp in office timing 9:00-5:00 at following Contact Number. +92 316 4515249, +92 345 7515152.</div>
+            <div class="ans">You can reach us via WhatsApp in office timing 9:00 A.M-5:00 P.M at following Contact Number.<br>
+               <strong>+92 316 4515249</strong> <br>
+               Further, you can leave your message at our Facebook and Instagram. Our team is available for you 24/7 on mentioned sites.
+            </div>
          </div>
       </div>
       <div class="col video">

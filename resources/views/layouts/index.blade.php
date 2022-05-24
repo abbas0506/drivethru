@@ -77,6 +77,22 @@
       })
 
    })
+
+   // if window scrolled down, make header light
+   window.onscroll = function(ev) {
+      // var navbar=document.getElementById('navbar');
+
+
+      if ((window.scrollY) >= 120) {
+         // you're at the bottom of the page
+         if (!$('#navbar').hasClass('light'))
+            $('#navbar').addClass('light');
+         $('#menubars').toggleClass('feather-light');
+
+      } else {
+         $('#navbar').removeClass('light');
+      }
+   };
    </script>
 </body>
 

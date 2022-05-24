@@ -6,6 +6,9 @@
    <div class="nav-links" id='nav-links'>
       <i data-feather="x" class="feather-small feather-red" onclick="hidemenu()"></i>
       <ul>
+         <a href="/">
+            <li>HOME</li>
+         </a>
          <a href="admission">
             <li>ADMISSION</li>
          </a>
