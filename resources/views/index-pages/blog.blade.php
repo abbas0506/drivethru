@@ -189,7 +189,7 @@
          </p>
          <h4 class="mt-4">2. What differentiates Drivethru.pk from other Educational Consultants?</h4>
          <p class="txt-j mt-2">
-            Students with different educational background approach Drivethru.pk and we entertain them efficiently due to bunch of competitive and energetic professional in our team who have vast experience in the field of Educational Consultancy. Our student advisors collaborate with each other and assess the Universities according to the student’s interest and benefits.
+            Drivethru is providing free of cost and thorough Information to students about 176+ National Universities and 700+ International Universities at ease of a single click. Students don’t need to visit consultants again and again. We provide personalized reports to our students and entertain them efficiently due to bunch of competitive and energetic professional in our team with whom students can have one-one session virtually, for admission in World’s Top Ranked Universities.
          </p>
 
          <h4 class="mt-4">3. What services do you provide?</h4>
@@ -200,7 +200,7 @@
 
          <h4 class="mt-4">4. How much do you charge?</h4>
          <p class="txt-j mt-2">
-            We provide complete information about National and International admissions, FREE OF COST. If you want us to apply on your behalf in these Universities, then we charge $1/ University ($1=150 pkr). (Note: We charge no consultancy fee. In case of International admissions, application fee is required by the respective University.)
+            We provide complete information about National and International admissions, FREE OF COST. If you want us to apply on your behalf in these Universities, then we charge $1/ University ($1=150 pkr). (Note: We charge no consultancy fees. In case of International admissions, application fee is required by the respective University.)
          </p>
 
          <h4 class="mt-4">5. How can I book an appointment?</h4>
@@ -208,12 +208,8 @@
             You can reach us via WhatsApp in office timing 9:00 A.M-5:00 P.M at following Contact Number.
          </p>
          <h5 class="my-1">+92 316 4515249</h5>
-         </p>
          <p>Further, you can leave your message at our Facebook and Instagram. Our team is available for you 24/7 on mentioned sites. We would really love to entertain your concerns.</p>
-         <h4 class="mt-4">$1/University</h4>
-         <p class="txt-j mt-2">
-            We do not charge anything for the providing Information. We only charge only $1 ($1= 150/-) per university for the applying process. There are no hidden charges included.
-         </p>
+
          <h4 class="mt-4">6. Is there any Scholarship available?</h4>
          <p class="txt-j mt-2">
             Yes, Scholarships are available for both National & International Universities. You can easily find them by following us on our Social Media Platforms where they are uploaded on daily basis. You can check out previous scholarships in our Instagram highlights and on Scholarship page of our website.
@@ -231,7 +227,7 @@
          </p>
          <h4 class="mt-4">9. Is the application process same for each country?</h4>
          <p class="txt-j mt-2">
-            No, Its different for each country and University. Drivethru.pk provides a Unified application form by which you get free from the hassle of different application processes. You can just fill one form and apply to as many countries as you want.
+            No, it's different for each country and University. Drivethru.pk provides a Unified application form by which you get free from the hassle of different application processes. You can just fill one form and apply to as many countries as you want.
          </p>
          <h4 class="mt-4">10. Can International students’ do part-time work/job while studying abroad?</h4>
          <p class="txt-j mt-2">
