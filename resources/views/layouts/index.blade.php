@@ -80,7 +80,6 @@
 
    // if window scrolled down, make header light
    window.onscroll = function(ev) {
-      // var navbar=document.getElementById('navbar');
       if ((window.scrollY) >= 120) {
          if (!$('#navbar').hasClass('light')) {
             $('#navbar').addClass('light');

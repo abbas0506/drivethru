@@ -95,7 +95,7 @@
    <!-- Apply through us blog -->
    <div class="row blog" id='apply-through-us'>
       <div class="col half centered">
-         <img src="{{asset('/images/blog/3.png')}}" alt="">
+         <img src="{{asset('/images/blog/5.png')}}" alt="">
       </div>
       <div class="col half txt-l">
          <h3>APPLY THROUGH US</h3>
@@ -139,13 +139,13 @@
          </p>
       </div>
       <div class="col half centered">
-         <img src="{{asset('/images/blog/3.png')}}" alt="">
+         <img src="{{asset('/images/blog/6.png')}}" alt="">
       </div>
    </div>
    <!-- Services blog -->
    <div class="row blog">
       <div class="col half centered">
-         <img src="{{asset('/images/blog/3.png')}}" alt="">
+         <img src="{{asset('/images/blog/7.png')}}" alt="">
       </div>
       <div class="col half txt-l" id='our-services'>
          <h3>OUR SERVICES</h3>

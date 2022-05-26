@@ -14,7 +14,11 @@
 <div class="content">
    <div class="col about">
       <img src="{{asset('/images/logo/light.png')}}" alt="">
-      <p>Drivethu.pk is a simple one stop shop for all your higher education(national and international) universities requirements from education counselling to vetted admission process</p>
+      <p>Drivethu.pk is a simple one stop shop for all your higher education
+         universities requirements from education counselling to vetted admission process.
+         We are providing admission servies in 176+ HEC Recognized National Universities and
+         700+ Universities from 18+ International Countries. From Finding Universities to Past papers,
+         Counselling Sessions to Personalized Reports, Drivethru is here to cater.</p>
 
       <div class="social-bar">
          <a href="https://web.facebook.com/Drivethruupk" target="_blank"><i class="fa fa-facebook"></i></a>
