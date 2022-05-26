@@ -1224,6 +1224,10 @@ section .drivethru {
     background-image: url('../images/bg/mini/contact.jpg');
 }
 
+.header.signup {
+    background-image: url('../images/bg/full/2.png');
+}
+
 .frow {
     display: flex;
 }

@@ -1,14 +1,14 @@
 @extends('layouts.index')
 
 @section('header')
-<section class="header">
+<section class="header signup">
    <x-index.header></x-index.header>
 </section>
 @endsection
 @section('content')
 <section class="auth-section">
    <div class="site-slogan">
-      <img src="{{url(asset('images/illustrations/howtoapply.png'))}}" alt="" width="400">
+      <img src="{{url(asset('images/illustrations/steps.png'))}}" alt="" width="400">
       <p>drivethru.pk is a simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process.</p>
    </div>
    <div class='auth-form'>
