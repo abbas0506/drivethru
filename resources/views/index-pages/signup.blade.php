@@ -9,7 +9,8 @@
 <section class="auth-section">
    <div class="site-slogan">
       <img src="{{url(asset('images/illustrations/steps.png'))}}" alt="" width="400">
-      <p>drivethru.pk is a simple one step solution for all of your higher education requirements in national as well as inernational universities from education couselling to vetted admission process.</p>
+      <p>Drivethru.pk is a multi-dimensional solution for higher education requirements of students. From providing vast, authentic information of 175+ National HEC Recognized Universities to Admissions in 18+ International Countries, drivethru.pk is proving to be rigmarole saver in case of both National and International admissions.<br>
+         Login on Drivethru and get ready to have easy access to your desired University, Degree Program, Past Papers, Counselling Sessions and Personalized Report in just one click. </p>
    </div>
    <div class='auth-form'>
 
