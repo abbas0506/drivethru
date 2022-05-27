@@ -165,10 +165,19 @@
         font-size: 0.6rem;
     }
     .auth-section {
-        display: block;
-        max-width: 100%;
+        /* display: block;
+        max-width: 100%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        padding: 0;
+        margin: 0;
     }
     .auth-section .site-slogan {
+        display: none;
+    }
+    /* .auth-section .site-slogan {
         width: 90%;
         height: 60vh;
     }
@@ -180,11 +189,11 @@
         font-size: 1.0rem;
         margin-top: 25px;
         text-align: justify;
-    }
+    } */
     .auth-section .auth-form {
         display: block;
-        min-width: 70%;
-        margin-top: 30px;
+        width: 80%;
+        /* margin-top: 30px; */
     }
     .whatsapp-icon {
         bottom: 80px;

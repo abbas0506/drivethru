@@ -78,6 +78,20 @@ Welcome, {{$user->name}}
       </div>
       @endforeach
    </div>
+
+   <div class="mt-4">
+      <h4>Instructions:</h4>
+      <ul style="margin-left: 20px;" class="txt-s txt-grey lh-20">
+         <li>You can find your desired University by searching through its name or by course.</li>
+         <li>Small or Capital letter does not affect the search result.</li>
+         <li>You can also search by selecting the faculty and then selecting the course.</li>
+         <li>You can choose more than one course to get the desired options.</li>
+         <li>You can also filter out the University by selecting the location or minimum & maximum fee.</li>
+         <li>You can search and download relevant past papers from “Past Papers” portion of this website.</li>
+         <li>To schedule one-one counselling session, go to “Career Counselling” portion of website and create a new request.</li>
+      </ul>
+   </div>
+
 </div>
 
 @endsection

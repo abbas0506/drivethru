@@ -13,7 +13,6 @@
          Login on Drivethru and get ready to have easy access to your desired University, Degree Program, Past Papers, Counselling Sessions and Personalized Report in just one click. </p>
    </div>
    <div class='auth-form'>
-
       <form action="{{route('users.store')}}" method='post' onsubmit="return validate()">
          @csrf
          <div class="title mb-5">SIGN UP</div>
