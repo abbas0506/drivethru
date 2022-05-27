@@ -10,8 +10,8 @@
       <img src="{{asset('/images/bg/1.jpg')}}" alt="">
    </div> -->
    <div class="app-msg">
-      <p>175+ Universities from Pakistan and <br>18+ other Countries</p>
-      <h1>Single-Click Application Form</h1>
+      <p>175+ Universities from Pakistan and <br>735+ universities from 18 Countries</p>
+      <h1>Unified Application Form</h1>
       <button class="btn btn-red rounded">
          @if(session('user'))
          <a href="{{url('/')}}">Apply Now</a>

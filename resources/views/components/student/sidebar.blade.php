@@ -31,7 +31,7 @@ $user=session('user');
          <a href="{{route('finduniversitiesbyname.index')}}">
             <ul>
                <li><i data-feather='search' class="feather-small"></i></li>
-               <li>Find Uni</li>
+               <li>Find University</li>
             </ul>
          </a>
       </li>

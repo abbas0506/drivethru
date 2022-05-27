@@ -82,6 +82,10 @@
         display: block;
         justify-content: space-between;
     }
+    section .row.reverse {
+        display: flex !important;
+        flex-direction: column-reverse;
+    }
     section .col {
         margin-top: 10px;
     }

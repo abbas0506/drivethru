@@ -9,7 +9,7 @@ $user=session('user');
 @endsection
 
 @section('page-title')
-Career Counselling - <span class="txt-12 px-2">100% free</span>
+Career Counselling
 @endsection
 
 

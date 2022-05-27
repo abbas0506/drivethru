@@ -8,7 +8,7 @@
 @section('content')
 <section class="section-80 index-page block">
    <div class="title red-underline my-5">Our Blogs</div>
-   <div class="row desc my-5">
+   <div class="row desc my-5 reverse">
       <div class="col half">
          <p class="txt-l mt-4">
             <span class="txt-red">Drivethru</span> is providing admission services in both National and International admissions throughout the year. We are offering
@@ -22,7 +22,7 @@
 
    <div class="title red-underline my-5">Blog</div>
    <!-- find uni blog -->
-   <div class="row blog" id='find-university'>
+   <div class="row blog reverse" id='find-university'>
       <div class="col half txt-l">
          <h3>FIND UNIVERSITY</h3>
          <p class="txt-j mt-4">
@@ -64,7 +64,7 @@
       </div>
    </div>
    <!-- past papers blog -->
-   <div class="row blog" id='past-papers'>
+   <div class="row blog reverse" id='past-papers'>
       <div class="col half txt-l">
          <h3>PAST PAPERS</h3>
          <p class="txt-j mt-4">
@@ -124,7 +124,7 @@
    </div>
 
    <!-- Career Counselling -->
-   <div class="row blog" id='career-counselling'>
+   <div class="row blog reverse" id='career-counselling'>
       <div class="col half txt-l">
          <h3>CAREER COUNSELLING</h3>
          <p class="txt-j mt-4">
