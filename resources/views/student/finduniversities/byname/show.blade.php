@@ -67,14 +67,16 @@ Find University - <span class="txt-12 px-2">{{$university->name}}</span>
    <div class="txt-b lh-30">Offered Courses: </div>
    @if($university->unicourses()->count()>0)
    <div class="frow txt-grey bg-silver lh-30 txt-s">
-      <div class="w-50">Course</div>
+      <div class="w-30">Course</div>
+      <div class="w-20">Criteria</div>
       <div class="w-15">Fee (Rs)</div>
       <div class="w-20 hide-sm">Last Merit</div>
       <div class="flex-grow">Closing</div>
    </div>
    @foreach($university->unicourses() as $unicourse)
    <div class="frow txt-s lh-30">
-      <div class="w-50">{{$unicourse->course->name}}</div>
+      <div class="w-30">{{$unicourse->course->name}}</div>
+      <div class="w-30">{{$unicourse->criteria}}</div>
       <div class="w-15">{{$unicourse->fee}} k</div>
       <div class="w-20 hide-sm">{{$unicourse->lastmerit}}</div>
       <div class="flex-grow">{{$unicourse->closing}}</div>

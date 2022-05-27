@@ -75,12 +75,10 @@ Welcome, {{$user->name}}
             </div>
             @endif
          </div>
-
-
       </div>
       @endforeach
    </div>
-   @endif
+   @else
    <div class="mt-4">
       <h4>Instructions:</h4>
       <ul style="margin-left: 20px;" class="txt-grey lh-20 mt-3">
@@ -93,7 +91,7 @@ Welcome, {{$user->name}}
          <li>To schedule one-one counselling session, go to “Career Counselling” portion of website and create a new request.</li>
       </ul>
    </div>
-
+   @endif
 </div>
 
 @endsection
