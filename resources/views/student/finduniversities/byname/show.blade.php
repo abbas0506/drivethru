@@ -76,7 +76,7 @@ Find University - <span class="txt-12 px-2">{{$university->name}}</span>
    @foreach($university->unicourses() as $unicourse)
    <div class="frow txt-s lh-30">
       <div class="w-30">{{$unicourse->course->name}}</div>
-      <div class="w-30">{{$unicourse->criteria}}</div>
+      <div class="w-20">{{$unicourse->criteria}}</div>
       <div class="w-15">{{$unicourse->fee}} k</div>
       <div class="w-20 hide-sm">{{$unicourse->lastmerit}}</div>
       <div class="flex-grow">{{$unicourse->closing}}</div>
