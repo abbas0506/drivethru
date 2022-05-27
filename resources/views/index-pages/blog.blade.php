@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <section class="section-80 index-page block">
-   <div class="title red-underline my-5">Our Blogs</div>
+   <div class="title red-underline my-5">Our Blog</div>
    <div class="row desc my-5 reverse">
       <div class="col half">
          <p class="txt-l mt-4">
