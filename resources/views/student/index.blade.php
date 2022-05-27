@@ -14,6 +14,8 @@ Welcome, {{$user->name}}
 @section('content')
 
 <div class="block bg-light p-4">
+
+   @if($user->applications()->where('mode',session('mode'))->count()>0)
    <div class="frow lh-30 txt-blue txt-m">
       My Applications <div class="ml-3">@if(session('mode')==0) <img src="{{asset('/images/icons/pakistan-flag.png')}}" width="22"> @else <img src="{{asset('/images/icons/globe.png')}}" width="20"> @endif</div>
    </div>
@@ -78,10 +80,10 @@ Welcome, {{$user->name}}
       </div>
       @endforeach
    </div>
-
+   @endif
    <div class="mt-4">
       <h4>Instructions:</h4>
-      <ul style="margin-left: 20px;" class="txt-s txt-grey lh-20">
+      <ul style="margin-left: 20px;" class="txt-grey lh-20 mt-3">
          <li>You can find your desired University by searching through its name or by course.</li>
          <li>Small or Capital letter does not affect the search result.</li>
          <li>You can also search by selecting the faculty and then selecting the course.</li>
