@@ -5,7 +5,7 @@
 <div class="slideshow-container">
 
    <div class="mySlides fade">
-      <img src="{{asset('../images/bg/1.png')}}" style="width:100%">
+      <img src="{{asset('/images/bg/1.png')}}" style="width:100%">
       <div class="app-msg">
          <p>175+ Universities from Pakistan and <br>735+ universities from 18 Countries</p>
          <h1>Unified Application Form</h1>
@@ -22,7 +22,7 @@
    </div>
 
    <div class="mySlides fade">
-      <img src="{{asset('../images/bg/2.png')}}" style="width:100%">
+      <img src="{{asset('/images/bg/2.png')}}" style="width:100%">
 
       <div class="app-msg">
          <p>175+ Universities from Pakistan and <br>735+ universities from 18 Countries</p>
