@@ -21,7 +21,7 @@
 
    </div>
 
-   <div class="mySlides fade">
+   <div class="mySlides temo fade">
       <img src="{{asset('/images/bg/2.png')}}" style="width:100%">
 
       <div class="app-msg">
