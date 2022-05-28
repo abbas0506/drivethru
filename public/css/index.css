@@ -357,18 +357,6 @@ a {
 }
 
 #image-animator img {
-    -webkit-animation-name: imgFade;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-duration: 20s;
-    -moz-animation-name: imgFade;
-    -moz-animation-timing-function: ease-in-out;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-duration: 20s;
-    -o-animation-name: imgFade;
-    -o-animation-timing-function: ease-in-out;
-    -o-animation-iteration-count: infinite;
-    -o-animation-duration: 20s;
     animation-name: imgFade;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -403,7 +391,8 @@ a {
     animation-delay: 0;
 }
 
-@keyframes imgFade {
+
+/* @keyframes imgFade {
     0% {
         opacity: 1;
     }
@@ -419,16 +408,15 @@ a {
     100% {
         opacity: 1;
     }
-}
+} */
 
 .header {
     /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('./images/capture1.png'); */
     background-image: url('../images/bg/1.jpg');
     background-size: cover;
     background-position: center;
-    /* Center the image */
     background-repeat: no-repeat;
-    min-height: 110vh;
+    height: 110vh;
     width: 100%;
     position: relative;
 }

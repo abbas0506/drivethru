@@ -2,6 +2,9 @@
     .rcol {
         display: block;
     }
+    .header {
+        height: 50%;
+    }
     .app-header-logo {
         width: 150px;
     }
@@ -10,7 +13,7 @@
     }
     .app-msg p {
         margin-top: 20px;
-        font-size: 10px;
+        font-size: 14px;
         color: #ff5421;
     }
     section {
@@ -32,6 +35,9 @@
     .faq {
         width: 90%;
         margin: auto;
+    }
+    section.offer {
+        margin-top: 100px;
     }
     .offer .col {
         padding: 10px 0px 10px 20px;

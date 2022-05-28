@@ -6,10 +6,11 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Drivethru</title>
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
-
-   <link href="{{ asset('/css/index_temp.css') }}" rel="stylesheet">
+   <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
+   <link href="{{ asset('/css/index.responsive.css')}}" rel="stylesheet">
+   <link href="{{ asset('/css/slider.css') }}" rel="stylesheet">
    <link href="{{ asset('/css/fontawesome.css') }}" rel="stylesheet">
-   <link href="{{ asset('/css/index_responsive.css')}}" rel="stylesheet">
+
 
    <script src="{{ asset('/js/feather.min.js')}}"></script>
    <script src="{{ asset('/js/app.js') }}"></script>
