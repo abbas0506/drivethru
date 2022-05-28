@@ -8,7 +8,6 @@
    <link rel="icon" href="{{ asset('/images/logo/favicon.ico') }}">
    <link href="{{ asset('/css/index.css') }}" rel="stylesheet">
    <link href="{{ asset('/css/index.responsive.css')}}" rel="stylesheet">
-   <link href="{{ asset('/css/slider.css') }}" rel="stylesheet">
    <link href="{{ asset('/css/fontawesome.css') }}" rel="stylesheet">
 
 

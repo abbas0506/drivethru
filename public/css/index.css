@@ -346,6 +346,7 @@ a {
     position: relative;
     left: 0;
     top: 0;
+    user-select: none;
 }
 
 #image-animator img {
@@ -391,8 +392,7 @@ a {
     animation-delay: 0;
 }
 
-
-/* @keyframes imgFade {
+@keyframes imgFade {
     0% {
         opacity: 1;
     }
@@ -408,11 +408,11 @@ a {
     100% {
         opacity: 1;
     }
-} */
+}
 
 .header {
     /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('./images/capture1.png'); */
-    background-image: url('../images/bg/1.jpg');
+    background-image: url('../images/bg/2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
