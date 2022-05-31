@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('header')
-<section class="about mini_header">
+<section class="services mini_header">
    <x-index.header></x-index.header>
 </section>
 @endsection

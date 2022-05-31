@@ -4,10 +4,12 @@
 <section>
    <x-index.header></x-index.header>
    <div id="image-animator">
-      <img src="{{asset('/images/bg/2.png')}}" alt="">
-      <img src="{{asset('/images/bg/1.png')}}" alt="">
-      <img src="{{asset('/images/bg/2.png')}}" alt="">
-      <img src="{{asset('/images/bg/1.png')}}" alt="">
+      <img src="{{asset('/images/bg/full/6.jpg')}}" alt="">
+      <img src="{{asset('/images/bg/full/5.jpg')}}" alt="">
+      <img src="{{asset('/images/bg/full/4.jpg')}}" alt="">
+      <img src="{{asset('/images/bg/full/3.jpg')}}" alt="">
+      <img src="{{asset('/images/bg/full/2.jpg')}}" alt="">
+      <img src="{{asset('/images/bg/full/1.jpg')}}" alt="">
    </div>
    <div class="app-msg">
       <p>175+ Universities from Pakistan and <br>735+ universities from 18 Countries</p>

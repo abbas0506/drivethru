@@ -361,7 +361,7 @@ a {
     animation-name: imgFade;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-    animation-duration: 20s;
+    animation-duration: 24s;
 }
 
 #image-animator img:nth-of-type(1) {
@@ -375,17 +375,31 @@ a {
     -webkit-animation-delay: 10s;
     -moz-animation-delay: 10s;
     -o-animation-delay: 10s;
-    animation-delay: 10s;
+    animation-delay: 16s;
 }
 
 #image-animator img:nth-of-type(3) {
     -webkit-animation-delay: 5s;
     -moz-animation-delay: 5s;
     -o-animation-delay: 5s;
-    animation-delay: 5s;
+    animation-delay: 12s;
 }
 
 #image-animator img:nth-of-type(4) {
+    -webkit-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -o-animation-delay: 0;
+    animation-delay: 8s;
+}
+
+#image-animator img:nth-of-type(5) {
+    -webkit-animation-delay: 0;
+    -moz-animation-delay: 0;
+    -o-animation-delay: 0;
+    animation-delay: 4s;
+}
+
+#image-animator img:nth-of-type(6) {
     -webkit-animation-delay: 0;
     -moz-animation-delay: 0;
     -o-animation-delay: 0;
@@ -1193,23 +1207,23 @@ section .drivethru {
 }
 
 .mini_header.admission {
-    background-image: url('../images/bg/mini/admission.jpg');
+    background-image: url('../images/bg/mini/admission.png');
 }
 
 .mini_header.services {
-    background-image: url('../images/bg/mini/services.jpg');
+    background-image: url('../images/bg/mini/services.png');
 }
 
 .mini_header.about {
-    background-image: url('../images/bg/mini/about.jpg');
+    background-image: url('../images/bg/mini/about.png');
 }
 
 .mini_header.blog {
-    background-image: url('../images/bg/mini/blog.jpg');
+    background-image: url('../images/bg/mini/blog.png');
 }
 
 .mini_header.contact {
-    background-image: url('../images/bg/mini/contact.jpg');
+    background-image: url('../images/bg/mini/contact.png');
 }
 
 .header.signup {
@@ -1440,7 +1454,13 @@ section .drivethru {
 }
 
 .index-page p {
+    line-height: 28px;
+    text-align: left;
+}
+
+.fancy-pallet p {
     line-height: 22px;
+    text-align: left;
 }
 
 .index-page .blog ul {

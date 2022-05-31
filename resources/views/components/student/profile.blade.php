@@ -43,10 +43,10 @@
 
       @if($user->hasProfile())
       <a href="{{route('profiles.edit',$user->profile())}}" class="txt-s">Personal Information</a>
-      <a href="{{route('profiles.edit',$user->profile())}}"><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
+      <a href="{{route('profiles.edit',$user->profile())}}"><span class="txt-s mr-1">Edit</span><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
       @else
       <a href="{{route('profiles.create')}}" class="txt-s">Personal Information</a>
-      <a href="{{route('profiles.create')}}"><i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
+      <a href="{{route('profiles.create')}}"><span class="txt-s mr-1">Edit</span> <i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
       @endif
 
    </div>
@@ -54,10 +54,10 @@
 
       @if($user->hasAcademics())
       <a href="{{route('academics.index')}}" class="txt-s">Academic Information</a>
-      <a href="{{route('academics.index')}}"><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
+      <a href="{{route('academics.index')}}"><span class="txt-s mr-1">Edit</span><i data-feather='edit-2' class="feather-xsmall txt-green"></i></a>
       @else
       <a href="{{route('academics.create')}}" class="txt-s">Academic Information</a>
-      <a href="{{route('academics.create')}}"><i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
+      <a href="{{route('academics.create')}}"><span class="txt-s mr-1">Edit</span> <i data-feather='edit-2' class="feather-xsmall txt-grey"></i></a>
       @endif
 
    </div>
