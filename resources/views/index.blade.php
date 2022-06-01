@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('header')
-<section class="home">
+<section class="header">
    <x-index.header></x-index.header>
    <div id="image-animator">
       <img src="{{asset('/images/bg/full/6.jpg')}}" alt="">
