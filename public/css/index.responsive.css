@@ -180,23 +180,9 @@
     .auth-section .site-slogan {
         display: none;
     }
-    /* .auth-section .site-slogan {
-        width: 90%;
-        height: 60vh;
-    }
-    .site-slogan img {
-        width: 80%;
-    }
-    .site-slogan p {
-        color: #e6e6e6b2;
-        font-size: 1.0rem;
-        margin-top: 25px;
-        text-align: justify;
-    } */
     .auth-section .auth-form {
         display: block;
         width: 80%;
-        /* margin-top: 30px; */
     }
     .whatsapp-icon {
         bottom: 80px;
@@ -219,17 +205,14 @@
     .header {
         height: 50vh;
         background-image: none;
+        margin: 0;
+        padding: 0;
     }
     #image-animator,
     #image-animator img {
         width: 100%;
         height: 50vh;
     }
-    /* .home {
-        background-color: #fff;
-        border-bottom: solid 3px #ff5421;
-        height: 70vh;
-    } */
     .app-msg h1 {
         color: white;
     }
