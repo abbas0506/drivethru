@@ -3,7 +3,7 @@
         display: block;
     }
     .header {
-        height: 50%;
+        height: auto;
     }
     .app-header-logo {
         width: 150px;
@@ -218,6 +218,19 @@
     }
     .index-page .col>img {
         margin: 40px 0;
+    }
+    #image-animator,
+    #image-animator img {
+        width: 100%;
+        height: auto;
+    }
+    .home {
+        background-color: #fff;
+        border-bottom: solid 3px #ff5421;
+        height: 95vh;
+    }
+    .app-msg h1 {
+        color: #234878;
     }
 }
 
