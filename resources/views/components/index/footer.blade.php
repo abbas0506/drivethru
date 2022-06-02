@@ -18,7 +18,7 @@
          universities requirements from education counselling to vetted admission process.
          We are providing admission servies in 176+ HEC Recognized National Universities and
          700+ Universities from 18+ International Countries. From Finding Universities to Past papers,
-         Counselling Sessions to Personalized Reports, Drivethru i here to cater.</p>
+         Counselling Sessions to Personalized Reports, Drivethru is here to cater.</p>
 
       <div class="social-bar">
          <a href="https://web.facebook.com/Drivethruupk" target="_blank"><i class="fa fa-facebook"></i></a>
