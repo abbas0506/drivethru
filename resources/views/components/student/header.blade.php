@@ -21,7 +21,7 @@
                      <!-- <img src="{{asset('/images/icons/pakistan-flag.png')}}" alt="" width="25"> -->
                      <!-- <span class="hide-sm"><img src="{{asset('/images/icons/national.png')}}" alt="" width="80"></span>
                      <i data-feather="chevron-down" class="feather-xsmall" onclick="showmenu()"></i> -->
-                     <img src="{{asset('/images/icons/national.png')}}" alt="" width="80" onclick="showmenu()">
+                     <img src="{{asset('/images/icons/national.png')}}" alt="" width="100" onclick="showmenu()">
 
                      <!-- <span class="caret"></span> -->
                   </label>
@@ -38,7 +38,7 @@
                <li>
                   <label for="country-toggle">
                      <!-- <img src="{{asset('/images/icons/globe.png')}}" alt="" width="25"> -->
-                     <img src="{{asset('/images/icons/international.png')}}" alt="" width="80" onclick="showmenu()">
+                     <img src="{{asset('/images/icons/international.png')}}" alt="" width="100" onclick="showmenu()">
                   </label>
                </li>
                <!-- submenu -->
