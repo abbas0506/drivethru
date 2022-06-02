@@ -14,7 +14,7 @@
 <div class="content">
    <div class="col about">
       <img src="{{asset('/images/logo/light.png')}}" alt="">
-      <p>Drivethu.pk is a simple one stop shop for all your higher education
+      <p class="txt-l">Drivethu.pk is a simple one stop shop for all your higher education
          universities requirements from education counselling to vetted admission process.
          We are providing admission servies in 176+ HEC Recognized National Universities and
          700+ Universities from 18+ International Countries. From Finding Universities to Past papers,
