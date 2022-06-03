@@ -145,10 +145,10 @@ class ProfileController extends Controller
                 // $file_path = $destination_path . "15330.*";
 
                 if (file_exists($file_path)) {
-
+                    unlink($file_path);
                     File::delete($file_path);
-                    // unlink($file_path);
-                    echo "file deleted";
+
+                    // echo "file deleted";
                 }
             }
 
