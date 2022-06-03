@@ -6,6 +6,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\models\User;
 use Exception;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -124,6 +125,10 @@ class ProfileController extends Controller
     }
     public function change_pic(Request $request)
     {
+        $file_name = '';
+        $file_path = '';
+
+
         $request->validate([
             'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -135,10 +140,15 @@ class ProfileController extends Controller
             //unlink(storage_path('app/public/images/profile/' . $profile->pic));
 
             //never destroy default.png as it is used as default image for every new user
-            if (!$user->pic == 'default.png') {
+            if ($user->pic != 'default.png') {
                 $file_path = $destination_path . $user->pic;
+                // $file_path = $destination_path . "15330.*";
+
                 if (file_exists($file_path)) {
-                    unlink($file_path);
+
+                    File::delete($file_path);
+                    // unlink($file_path);
+                    echo "file deleted";
                 }
             }
 
@@ -146,6 +156,7 @@ class ProfileController extends Controller
             //save new pic after renaming
             $file_name = $user->id . '.' . $request->pic->extension();
             //->move(public_path('images'), $imageName);
+
             $request->file('pic')->move(public_path('images/users'), $file_name);
             //->storeAs($destination_path, $file_name);
             $user->pic = $file_name;
@@ -153,6 +164,7 @@ class ProfileController extends Controller
 
         try {
             $user->update();
+            // echo $file_name . "path" . $file_path;;
             return redirect()->route('profiles.index')->with('success', 'Image uploaded successfully');
         } catch (Exception $ex) {
             return redirect()->back()
