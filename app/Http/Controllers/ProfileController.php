@@ -133,10 +133,6 @@ class ProfileController extends Controller
         $image_path = public_path('images/users/');
         $user = session('user');    //current user
 
-        $file_name = '';
-        $file_path = '';
-        $destination_path = public_path('images/users/');
-
         $request->validate([
             'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -173,21 +169,15 @@ class ProfileController extends Controller
                     }
                 }
             }
-
-
             //constrcut full name of new image
             $image_name = $user->id . '-' . $image_version . '.' . $request->pic->extension();
-            //->move(public_path('images'), $imageName);
 
             $request->file('pic')->move($image_path, $image_name);
-            //->storeAs($destination_path, $file_name);
             $user->pic = $image_name;
         }
 
         try {
             $user->update();
-            // echo "image name:" . $image_name;
-            // echo $file_name . "path" . $file_path;;
             return redirect()->route('profiles.index')->with('success', 'Image uploaded successfully');
         } catch (Exception $ex) {
             return redirect()->back()
