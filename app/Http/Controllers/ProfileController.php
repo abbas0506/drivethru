@@ -125,45 +125,68 @@ class ProfileController extends Controller
     }
     public function change_pic(Request $request)
     {
+        //delete old image and replace it by new image
+        $image_name = '';
+        $image_extension = '';
+        $image_version = 0; //version is being used to fix cache refresh issue
+
+        $image_path = public_path('images/users/');
+        $user = session('user');    //current user
+
         $file_name = '';
         $file_path = '';
-
+        $destination_path = public_path('images/users/');
 
         $request->validate([
             'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $user = session('user');
+
         if ($request->hasFile('pic')) {
-            //unlink old image
-            $destination_path = public_path('images/users/');
-            //unlink(storage_path('app/public/images/profile/' . $profile->pic));
 
-            //never destroy default.png as it is used as default image for every new user
-            if ($user->pic != 'default.png') {
-                $file_path = $destination_path . $user->pic;
-                // $file_path = $destination_path . "15330.*";
+            //if avatar is default image
 
-                if (file_exists($file_path)) {
-                    unlink($file_path);
-                    File::delete($file_path);
+            if ($user->pic == 'default.png') {
+                //do nothing with image itself
+                //set image version to 0
+                $image_version = 0;
+            } else {
+                //delete old image and increase version no. by 1
+                $file_url = $image_path . $user->pic;
 
-                    // echo "file deleted";
+                if (file_exists($file_url)) {
+                    // unlink($file_path);
+                    File::delete($file_url);
+                    echo 'deleted';
+                }
+
+                //get version no. of the current image
+                $current_image_name = $user->pic;
+                $pieces = explode('.', $current_image_name);
+                if (sizeof($pieces) > 1) {
+                    $image_name = $pieces[0];
+                    $image_name_pieces = explode('-', $image_name);
+                    // echo $image_name;
+                    if (sizeof($image_name_pieces) > 1) {
+                        $image_version = $image_name_pieces[1];
+                        $image_version++;
+                    }
                 }
             }
 
 
-            //save new pic after renaming
-            $file_name = $user->id . '.' . $request->pic->extension();
+            //constrcut full name of new image
+            $image_name = $user->id . '-' . $image_version . '.' . $request->pic->extension();
             //->move(public_path('images'), $imageName);
 
-            $request->file('pic')->move(public_path('images/users'), $file_name);
+            $request->file('pic')->move($image_path, $image_name);
             //->storeAs($destination_path, $file_name);
-            $user->pic = $file_name;
+            $user->pic = $image_name;
         }
 
         try {
             $user->update();
+            // echo "image name:" . $image_name;
             // echo $file_name . "path" . $file_path;;
             return redirect()->route('profiles.index')->with('success', 'Image uploaded successfully');
         } catch (Exception $ex) {
