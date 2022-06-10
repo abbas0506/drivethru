@@ -48,8 +48,8 @@ $user=session('user');
          <div class="">{{$user->profile()->gender}}</div>
       </div>
       <div class="fcol w-48 mt-3">
-         <div class="txt-s">Date of birth</div>
-         <div class="">{{$user->profile()->dob}}</div>
+         <div class="txt-s">Date of birth (mm/dd/yyyy)</div>
+         <div class="">{{date_format($user->profile()->dob,'m/d/Y')}}</div>
       </div>
    </div>
    <div class="frow w-100 rw-100 mt-3 stretched auto-col">

@@ -73,8 +73,8 @@ Profile - <span class="txt-12 px-2">edit</span>
             <label for="">Gender</label>
          </div>
          <div class="fcol w-48 mt-3 fancyinput">
-            <input type="text" name='dob' id='dob' placeholder="Date of birth (dd-mm-yyyy)" value="{{date_format($profile->dob,'d-m-Y')}}" oninput="formatAsDate(event)" required>
-            <label for="">Date of Birth (dd-mm-yyyy)</label>
+            <input type="date" name='dob' id='dob' placeholder="Date of birth" value="{{$profile->dob->toDateString()}}" required>
+            <label for="">Date of Birth(mm/dd/yyyy)</label>
          </div>
       </div>
       <div class="frow mt-3 stretched auto-col">
