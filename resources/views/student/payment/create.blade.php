@@ -23,7 +23,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
    </a>
 
    @if ($errors->any())
-   <div class="alert alert-danger mt-5">
+   <div class="txt-s txt-red">
       <ul>
          @foreach ($errors->all() as $error)
          <li>{{ $error }}</li>
@@ -76,15 +76,15 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
          <div class="frow mt-4 stretched auto-col">
             <div class="fancyinput w-20">
-               <input type="text" name=' bank' id='bank' value='' placeholder="Bank name" class="txt-center">
+               <input type="text" name=' bank' id='bank' value='' placeholder="Bank name" class="txt-center" required>
                <label>Bank Name</label>
             </div>
             <div class="fancyinput w-30">
-               <input type="text" name='branch' id='branch' value='' placeholder="Branch name">
+               <input type="text" name='branch' id='branch' value='' placeholder="Branch name" required>
                <label>Branch Name</label>
             </div>
             <div class="fancyinput w-20">
-               <input type="text" name='challan' id='challan' value='' placeholder="Challan no.">
+               <input type="text" name='challan' id='challan' value='' placeholder="Challan no." required>
                <label>Challan No.</label>
             </div>
             <div class="fancyinput w-20">
