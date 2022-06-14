@@ -1228,7 +1228,7 @@ section .drivethru {
 
 .header.signup {
     min-height: 100vh;
-    background-image: url('../images/bg/full/2.png');
+    background-image: url('../images/bg/2.png');
 }
 
 .frow {
