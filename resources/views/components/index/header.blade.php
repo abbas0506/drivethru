@@ -19,7 +19,7 @@
             <li>ABOUT</li>
          </a>
          <a href="blog">
-            <li>BLOGS</li>
+            <li>BLOG</li>
          </a>
          <a href="contact">
             <li>CONTACT</li>
