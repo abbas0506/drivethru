@@ -13,7 +13,7 @@ Profile - <span class="txt-12 px-2">change password</span>
 @endsection
 @section('content')
 <!-- counselling success -->
-<div class="w-50 bg-light p-4 page-centered">
+<div class="w-50 bg-light p-4 border page-centered">
    <div class="frow lh-30 txt-blue txt-m txt-b">Change Password</div>
    <a href="{{route('profiles.index')}}">
       <div class="top-right-icon circular-20">

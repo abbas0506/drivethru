@@ -14,7 +14,7 @@ Find Country - <span class="txt-12 px-2">by course - search result</span>
 
 @section('content')
 
-<div class="page-centered w-70 bg-light p-4">
+<div class="page-centered w-70 bg-light p-4 border">
    <!-- close icon -->
    <a href="{{route('findcountriesbycourse.index')}}">
       <div class="top-right-icon circular-20">

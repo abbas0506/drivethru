@@ -32,6 +32,10 @@
   text-align: justify;
 }
 
+.lh-16 {
+  line-height: 1.6;
+}
+
 body {
   min-height: 100vh !important;
   padding: 0px;

@@ -14,7 +14,7 @@ Find University - <span class="txt-12 px-2">{{$university->name}}</span>
 
 @section('content')
 
-<div class="page-centered w-70 bg-light p-4">
+<div class="page-centered w-70 bg-light p-4 border">
    <!-- close icon -->
    <a href="{{route('finduniversitiesbyname.index')}}">
       <div class="top-right-icon circular-20">

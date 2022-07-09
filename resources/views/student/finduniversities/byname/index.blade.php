@@ -19,7 +19,7 @@ Find University - <span class="txt-12 px-2">search by name</span>
       <a href="{{route('finduniversitiesbycourse.index')}}">By Course</a>
    </li>
 </ul>
-<div class="bg-light p-4">
+<div class="bg-light p-4 border">
    <ul class="ml-3 txt-s txt-grey">
       <li>Part of university name is also acceptable</li>
       <li>Capital or small letters will not affect search result</li>
@@ -68,18 +68,18 @@ Find University - <span class="txt-12 px-2">search by name</span>
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hidden');
-      } else {
-         $(this).removeClass('hidden');
-      }
-   });
-}
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hidden');
+         } else {
+            $(this).removeClass('hidden');
+         }
+      });
+   }
 </script>
 @endsection

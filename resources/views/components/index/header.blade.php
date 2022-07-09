@@ -26,7 +26,7 @@
          </a>
 
          @if(session('user'))
-         <a href="/">
+         <a href="dashboard">
             <li>DASHBOARD</li>
          </a>
          @else

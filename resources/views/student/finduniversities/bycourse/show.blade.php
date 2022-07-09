@@ -22,7 +22,7 @@ $user=session('user');
 @endsection
 
 @section('data')
-<div class="w-100 rw-100 bg-light p-4">
+<div class="w-100 rw-100 bg-light p-4 border">
    <div class="frow mid-right">
       <div class="mr-2 txt-grey">Download</div>
       <a href="{{route('findcountriesbycourse_countrypreview',$country->id)}}">

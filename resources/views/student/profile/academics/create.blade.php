@@ -13,7 +13,7 @@ Profile - <span class="txt-12 px-2">create academic detail</span>
 @endsection
 
 @section('content')
-<div class="page-centered w-50 bg-white p-4">
+<div class="page-centered w-50 bg-light p-4 border">
    <div class="frow stretched">
       <div class="txt-grey txt-m lh-40">Academic Detail</div>
       <a href="{{route('profiles.index')}}">
@@ -108,25 +108,25 @@ Profile - <span class="txt-12 px-2">create academic detail</span>
 <!-- script goes here -->
 @section('script')
 <script>
-function reset() {
-   $('#form')[0].reset();
-}
-
-function validate() {
-   var obtained = $('#obtained').val()
-   var total = $('#total').val()
-
-   var msg = '';
-   if (obtained < 0) msg = 'Obtained marks too low';
-   else if (obtained > total) msg = 'Obtained greater than total?';
-   if (msg != '') {
-      Toast.fire({
-         icon: 'warning',
-         title: msg
-      });
-      return false;
+   function reset() {
+      $('#form')[0].reset();
    }
 
-}
+   function validate() {
+      var obtained = $('#obtained').val()
+      var total = $('#total').val()
+
+      var msg = '';
+      if (obtained < 0) msg = 'Obtained marks too low';
+      else if (obtained > total) msg = 'Obtained greater than total?';
+      if (msg != '') {
+         Toast.fire({
+            icon: 'warning',
+            title: msg
+         });
+         return false;
+      }
+
+   }
 </script>
 @endsection

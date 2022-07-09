@@ -1,4 +1,4 @@
-<div class="block bg-white p-4">
+<div class="block bg-white border p-4">
 
    <div class="txt-grey txt-14 txt-b mb-3 txt-center">
       <a href="{{route('profiles.index')}}">My Profile</a>
@@ -66,7 +66,7 @@
 
 <!-- Change password -->
 
-<div class="frow centered bg-white p-4 mt-3">
+<div class="frow centered bg-light p-4 border mt-3 border">
    <i data-feather='key' class="feather-xsmall feather-red pr-4"></i>
    <a href="{{url('change-pw')}}">Change Password</a>
 </div>

@@ -26,17 +26,17 @@ Career Counselling
 <br />
 @elseif(session('success'))
 <script>
-Swal.fire({
-   icon: 'success',
-   title: "Successful",
-   showConfirmButton: false,
-   timer: 1500
-});
+   Swal.fire({
+      icon: 'success',
+      title: "Successful",
+      showConfirmButton: false,
+      timer: 1500
+   });
 </script>
 @endif
 
 <!-- create new acadmeic -->
-<div class="bg-white p-4">
+<div class="bg-light p-4 border">
    <div class="frow stretched">
       <div class="frow lh-30 txt-blue txt-m">
          My Requestes <div class="ml-3">@if(session('mode')==0) <img src="{{asset('/images/icons/pakistan-flag.png')}}" width="22"> @else <img src="{{asset('/images/icons/globe.png')}}" width="20"> @endif</div>
@@ -95,37 +95,37 @@ Swal.fire({
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function search(event) {
-   var searchtext = event.target.value.toLowerCase();
-   var str = 0;
-   $('.tr').each(function() {
-      if (!(
-            $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
-         )) {
-         $(this).addClass('hide');
-      } else {
-         $(this).removeClass('hide');
-      }
-   });
+   function search(event) {
+      var searchtext = event.target.value.toLowerCase();
+      var str = 0;
+      $('.tr').each(function() {
+         if (!(
+               $(this).children().eq(1).prop('outerText').toLowerCase().includes(searchtext)
+            )) {
+            $(this).addClass('hide');
+         } else {
+            $(this).removeClass('hide');
+         }
+      });
 
-}
+   }
 
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#del_form' + formid).submit();
-      }
-   });
-}
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#del_form' + formid).submit();
+         }
+      });
+   }
 </script>
 @endsection

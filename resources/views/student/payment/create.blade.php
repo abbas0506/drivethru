@@ -14,7 +14,7 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 
 @section('content')
 
-<div class="page-centered w-70 bg-light p-4">
+<div class="page-centered w-70 bg-light p-4 border">
    <!-- close button -->
    <a href="{{url('/')}}">
       <div class="top-right-icon circular-20">
@@ -33,12 +33,12 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
    <br />
    @elseif(session('success'))
    <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+      Swal.fire({
+         icon: 'success',
+         title: "Successful",
+         showConfirmButton: false,
+         timer: 1500
+      });
    </script>
    @endif
 
@@ -114,14 +114,14 @@ Dashboard - <span class="txt-12 px-2">my applications - show</span>
 @section('script')
 
 <script>
-document.getElementById('dateon').valueAsDate = new Date();
+   document.getElementById('dateon').valueAsDate = new Date();
 
-function preview_pic() {
-   const [file] = scancopy.files
-   if (file) {
-      preview_img.src = URL.createObjectURL(file)
-      $('#image_frame').addClass('has-image');
+   function preview_pic() {
+      const [file] = scancopy.files
+      if (file) {
+         preview_img.src = URL.createObjectURL(file)
+         $('#image_frame').addClass('has-image');
+      }
    }
-}
 </script>
 @endsection

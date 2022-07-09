@@ -14,7 +14,7 @@ Profile - <span class="txt-12 px-2">academic detail</span>
 
 @section('content')
 <!-- create new acadmeic -->
-<div class="page-centered w-50 bg-white p-4">
+<div class="page-centered w-50 bg-light p-4 border">
    <div class="frow stretched">
       <div class="frow txt-grey txt-m align-center">
          <div class="txt-grey txt-m lh-40">Academic Detail</div>

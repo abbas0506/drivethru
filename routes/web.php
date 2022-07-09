@@ -84,6 +84,17 @@ use App\Models\Video;
 
 Route::get('/', function () {
     $video = Video::first();
+    // if (session('usertype')) {
+    //     if (session('usertype') == 'admin')
+    //         return redirect('admin');
+    //     else if (session('usertype') == 'representative')
+    //         return redirect('representative');
+    //     else if (session('usertype') == 'student')
+    //         return redirect('student');
+    // } else
+    return view('index', compact('video'));
+});
+Route::get('dashboard', function () {
     if (session('usertype')) {
         if (session('usertype') == 'admin')
             return redirect('admin');
@@ -91,8 +102,7 @@ Route::get('/', function () {
             return redirect('representative');
         else if (session('usertype') == 'student')
             return redirect('student');
-    } else
-        return view('index', compact('video'));
+    }
 });
 
 Route::view('admission', 'index-pages.admission');

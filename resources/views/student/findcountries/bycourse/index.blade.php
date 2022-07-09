@@ -20,7 +20,7 @@ Find University - <span class="txt-12 px-2">search by course name</span>
    </li>
 
 </ul>
-<div class="bg-light p-4">
+<div class="bg-light p-4 border">
 
    @if ($errors->any())
    <div class="alert alert-danger mt-5">
@@ -33,12 +33,12 @@ Find University - <span class="txt-12 px-2">search by course name</span>
    <br />
    @elseif(session('success'))
    <script>
-   Swal.fire({
-      icon: 'success',
-      title: "Successful",
-      showConfirmButton: false,
-      timer: 1500
-   });
+      Swal.fire({
+         icon: 'success',
+         title: "Successful",
+         showConfirmButton: false,
+         timer: 1500
+      });
    </script>
    @endif
 

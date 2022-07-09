@@ -13,7 +13,7 @@ Profile - <span class="txt-12 px-2">edit academic detail</span>
 @endsection
 
 @section('content')
-<div class="page-centered w-50 bg-white p-4">
+<div class="page-centered w-50 bg-light p-4 border">
    <div class="frow stretched">
       <div class="txt-grey txt-m lh-40">Academic Detail</div>
       <a href="{{route('profiles.index')}}">

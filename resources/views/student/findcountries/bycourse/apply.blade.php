@@ -13,7 +13,7 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 @endsection
 
 @section('content')
-<div class="page-centered w-70 bg-light p-4">
+<div class="page-centered w-70 bg-light p-4 border">
    <!-- close icon -->
    <a href="{{route('finduniversitiesbyname.index')}}">
       <div class="top-right-icon circular-20">
@@ -67,29 +67,29 @@ Find University - <span class="txt-12 px-2">search by course name</span>
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function updateChkCount() {
-   var chkArray = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) chkArray.push(chk.value);
-   })
+   function updateChkCount() {
+      var chkArray = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) chkArray.push(chk.value);
+      })
 
-   if (chkArray.length > 0)
-      document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
-   else
-      document.getElementById("chkCount").innerHTML = "";
-}
+      if (chkArray.length > 0)
+         document.getElementById("chkCount").innerHTML = "+" + chkArray.length;
+      else
+         document.getElementById("chkCount").innerHTML = "";
+   }
 
-function postData() {
+   function postData() {
 
-   var ids = [];
-   var chks = document.getElementsByName('chk');
-   chks.forEach((chk) => {
-      if (chk.checked) ids.push(chk.value);
-   })
+      var ids = [];
+      var chks = document.getElementsByName('chk');
+      chks.forEach((chk) => {
+         if (chk.checked) ids.push(chk.value);
+      })
 
-   $('#_ids').val(ids);
-   $('#applicationForm').submit();
-}
+      $('#_ids').val(ids);
+      $('#applicationForm').submit();
+   }
 </script>
 @endsection

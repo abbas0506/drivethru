@@ -15,7 +15,7 @@ $user=session('user');
 
 @if($user->profile())
 <!-- profile exists, now edit -->
-<div class="bg-white p-4 relative">
+<div class="bg-light p-4 border relative">
    <div class="top-right-icon circular-20">
       <a href="{{route('profiles.edit',$user->profile())}}">
          <i data-feather='edit-2' class="feather-xsmall"></i>
@@ -70,7 +70,7 @@ $user=session('user');
 
 <!-- profile exists, show academic details as well-->
 
-<div class="bg-white p-4 mt-3 relative">
+<div class="bg-light p-4 border mt-3 relative">
    <div class="top-right-icon circular-20">
       <a href="{{route('academics.index')}}">
          <i data-feather='edit-2' class="feather-xsmall"></i>
@@ -110,21 +110,20 @@ $user=session('user');
 
 @else
 <!-- profile does not exist -->
-<div class="bg-white p-5">
+<div class="bg-white p-5 border">
    <div class="frow">
       <div>
          <span class="txt-blue txt-b border-bottom border-2">Profile Incomplete</span>
       </div>
    </div>
-   <div class="txt-center my-4"><i data-feather='meh' class="feather-xlarge txt-orange"></i></div>
-   <div class="frow space-between centered">
-      <div class="text-justify">
-         Your profile has been found incomplete. We need your personal as well as academic details
-         for the processing of your applicaiton. So, first complete your profile and then visit this page again.
-         <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
-      </div>
+   <div class="txt-center my-4"><i data-feather='meh' class="feather-large txt-orange"></i></div>
+   <div class="text-justify lh-1x5">
+      Your profile has been found incomplete. We need your personal as well as academic details
+      for the processing of your applicaiton. So, first complete your profile and then visit this page again.
+      <a href="{{route('profiles.create')}}" class="txt-blue"> Click here </a> to complete your profile.
    </div>
 </div>
+
 @endif
 
 @endsection

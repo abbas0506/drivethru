@@ -1,4 +1,4 @@
-<div class="fcol bg-white p-4">
+<div class="fcol bg-white border p-4">
    <div class="mb-2 txt-grey txt-b ">
       <a href="#" class="txt-orange">NEWS</a>
       <img src="{{url(asset('images/app/live.png'))}}" class="ml-2" alt="" width=25 height=25>

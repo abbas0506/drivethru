@@ -9,8 +9,6 @@
    <div class="nav-links" id='nav-links'>
       <!-- main menu -->
       <ul>
-
-
          <li class="has-submenu">
             <ul>
                <input type="checkbox" id='country-toggle' class="hidden" />
@@ -52,7 +50,6 @@
 
             </ul>
          </li>
-         <li><a href="/"><span class="lnr lnr-home"></span></a></li>
          <li><a href=""><span class="lnr lnr-alarm"></span></a></li>
          <li><a href="{{url('signout')}}"><span class="lnr lnr-power-switch"></span></a></li>
       </ul>

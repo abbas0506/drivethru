@@ -13,7 +13,7 @@ Welcome, {{$user->name}}
 @endsection
 @section('content')
 
-<div class="block bg-light p-4">
+<div class="block bg-light p-4 border">
 
    @if($user->applications()->where('mode',session('mode'))->count()>0)
    <div class="frow lh-30 txt-blue txt-m">
@@ -104,22 +104,22 @@ Welcome, {{$user->name}}
 <!-- script goes here -->
 @section('script')
 <script lang="javascript">
-function delme(formid) {
-   event.preventDefault();
-   Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-      if (result.value) {
-         //submit corresponding form
-         $('#del_form' + formid).submit();
-      }
-   });
-}
+   function delme(formid) {
+      event.preventDefault();
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            //submit corresponding form
+            $('#del_form' + formid).submit();
+         }
+      });
+   }
 </script>
 @endsection

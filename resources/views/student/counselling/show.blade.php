@@ -14,7 +14,7 @@ Career Counselling - <span class="txt-12 px-2">view detail</span>
 @section('content')
 
 <!-- create new acadmeic -->
-<div class="page-centered w-70 bg-white p-4">
+<div class="page-centered w-70 bg-light p-4 border">
    <a href="{{route('counselling.index')}}">
       <div class="top-right-icon circular-20">
          <i data-feather='x' class="feather-xsmall"></i>
