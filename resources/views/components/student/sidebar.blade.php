@@ -19,7 +19,7 @@ $user=session('user');
    <span class="border-bottom border-light-silver px-4"></span>
    <ul>
       <li @if($activeItem=='dashboard' ) class="active" @endif>
-         <a href="{{url('/')}}">
+         <a href="{{url('dashboard')}}">
             <ul>
                <li><i data-feather='grid' class="feather-small"></i></li>
                <li>Dashboard</li>
